@@ -245,4 +245,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     handleFormSubmit(contactForm, 'Contact Form');
     handleFormSubmit(quoteForm, 'Quick Quote');
+
+    // 8. Email Obfuscation Decoder
+    const decodeEmail = () => {
+        document.querySelectorAll('.email-link').forEach(link => {
+            const user = link.getAttribute('data-user');
+            const domain = link.getAttribute('data-domain');
+            if (user && domain) {
+                const email = `${user}@${domain}`;
+                link.setAttribute('href', `mailto:${email}`);
+                if (link.textContent.trim().includes('[at]')) {
+                    link.textContent = email;
+                }
+            }
+        });
+        document.querySelectorAll('.email-text').forEach(el => {
+            const user = el.getAttribute('data-user');
+            const domain = el.getAttribute('data-domain');
+            if (user && domain) {
+                el.textContent = `${user}@${domain}`;
+            }
+        });
+    };
+    decodeEmail();
 });

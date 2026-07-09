@@ -777,3 +777,23 @@ footer p.text-muted,
 footer span.text-muted {
     color: #ECEAE4 !important;
 }
+
+/* Mobile Tap Target Accessibility Optimizations */
+@media (max-width: 992px) {
+    .navbar-nav .nav-link {
+        padding: 0.8rem 1rem !important; /* Minimum 48px height tap target */
+        margin: 0.25rem 0 !important;
+        display: block;
+    }
+    .gallery-filter-btn {
+        padding: 0.8rem 1.8rem !important;
+        min-height: 48px; /* Touch target minimum height */
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .footer a, .footer p a, footer a, footer p a {
+        padding: 0.6rem 0.4rem;
+        display: inline-block; /* Increases touch target area */
+    }
+}
