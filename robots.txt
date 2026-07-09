@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://siddhivinayakdesigners.com/sitemap.xml
+Sitemap: https://sidhivinayakdesigners.github.io/sitemap.xml
