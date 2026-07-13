@@ -1,12 +1,14 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Partner With Us | Strategic Channel Partnership | Siddhivinayak Designers</title>
-    <meta name="description" content="Elite Channel Partnership for real estate professionals in Navi Mumbai. Seamlessly monetize premium closures with up to 10% commission and 48-hour tranche payouts.">
+    <meta name="description"
+        content="Elite Channel Partnership for real estate professionals in Navi Mumbai. Seamlessly monetize premium closures with up to 10% commission and 48-hour tranche payouts.">
     <link rel="canonical" href="https://sidhivinayakdesigners.github.io/partner-with-us/">
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="../assets/images/favicon.png">
     <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
@@ -38,22 +40,105 @@
 
     <!-- Custom Premium Styles for Partner Page -->
     <style>
-        /* Light theme styling matching index.html */
+        /* Modern Premium Style Overrides */
+        :root {
+            --gold-gradient: linear-gradient(135deg, #D4AF37 0%, #B89047 50%, #9E7A37 100%);
+            --dark-gold: #8C6B2D;
+            --gold-glow: 0 10px 30px rgba(184, 144, 71, 0.18);
+            --luxury-shadow: 0 15px 45px rgba(0, 0, 0, 0.04);
+            --border-glow: rgba(184, 144, 71, 0.25);
+            --card-radius: 16px;
+        }
+
+        /* Smooth page scroll & styling */
+        body {
+            background-color: #F7F5F0;
+            color: #2C2A27;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Typography & luxury accentuation */
+        .font-serif-italic {
+            font-family: var(--font-heading);
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .luxury-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: rgba(184, 144, 71, 0.05);
+            border: 1px solid var(--border-glow);
+            color: var(--color-gold);
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+        }
+
+        .luxury-badge .dot-pulse {
+            width: 6px;
+            height: 6px;
+            background-color: var(--color-gold);
+            border-radius: 50%;
+            display: inline-block;
+            animation: dot-pulse-animation 1.8s infinite ease-in-out;
+        }
+
+        @keyframes dot-pulse-animation {
+            0% { transform: scale(0.8); opacity: 0.5; box-shadow: 0 0 0 0 rgba(184, 144, 71, 0.7); }
+            50% { transform: scale(1.2); opacity: 1; box-shadow: 0 0 0 6px rgba(184, 144, 71, 0); }
+            100% { transform: scale(0.8); opacity: 0.5; box-shadow: 0 0 0 0 rgba(184, 144, 71, 0); }
+        }
+
+        /* Premium Glass Card override */
         .partner-glass-card {
             background: #FFFFFF;
             border: 1px solid var(--color-border);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            border-radius: 0;
+            box-shadow: var(--luxury-shadow);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .partner-glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gold-gradient);
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
         .partner-glass-card:hover {
-            border-color: var(--color-gold);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-color: rgba(184, 144, 71, 0.3);
+            transform: translateY(-6px);
+            box-shadow: 0 25px 50px rgba(184, 144, 71, 0.08);
         }
 
-        /* Interactive Commission Table */
+        .partner-glass-card:hover::before {
+            opacity: 1;
+        }
+
+        /* Hero section refactoring */
+        .partner-hero-card {
+            border-radius: var(--card-radius);
+            border: 1px solid var(--color-border) !important;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+            transition: all 0.5s ease;
+        }
+
+        /* Interactive Commission Table (Desktop only) */
         .commission-table {
             border-collapse: separate;
             border-spacing: 0;
@@ -61,19 +146,23 @@
         }
 
         .commission-table th {
-            background-color: var(--color-gold-light);
+            background-color: rgba(184, 144, 71, 0.03);
             color: var(--color-gold);
             border-bottom: 2px solid var(--color-gold);
             font-family: var(--font-heading);
-            padding: 1.2rem 1rem;
+            padding: 1.4rem 1.2rem;
             font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
         }
 
         .commission-table td {
-            padding: 1.2rem 1rem;
+            padding: 1.4rem 1.2rem;
             border-bottom: 1px solid var(--color-border);
             transition: all 0.3s ease;
             color: var(--color-text-muted);
+            font-size: 0.95rem;
         }
 
         .commission-table tr {
@@ -81,126 +170,341 @@
         }
 
         .commission-table tr.active-tier {
-            background-color: rgba(184, 144, 71, 0.08) !important;
+            background-color: rgba(184, 144, 71, 0.04) !important;
         }
 
         .commission-table tr.active-tier td {
             color: var(--color-text-light) !important;
-            border-top: 1px solid var(--color-gold);
-            border-bottom: 1px solid var(--color-gold);
+            border-top: 1px solid var(--border-glow);
+            border-bottom: 1px solid var(--border-glow);
             font-weight: 600;
         }
 
-        /* Live Calculator Widget */
+        /* Mobile Tier Cards (Beautiful stacked card UI for mobile viewports) */
+        .mobile-tier-cards-container {
+            display: none;
+        }
+
+        .mobile-tier-card {
+            background: #FFFFFF;
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .mobile-tier-card.active-tier {
+            border-color: var(--color-gold);
+            background: rgba(184, 144, 71, 0.03);
+            box-shadow: 0 10px 25px rgba(184, 144, 71, 0.08);
+        }
+
+        .mobile-tier-card.active-tier::after {
+            content: 'Selected Tier';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--gold-gradient);
+            color: #FFFFFF;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .mobile-tier-card .tier-name {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            color: var(--color-text-light);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-tier-card .tier-val {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .mobile-tier-card .tier-percentage-badge {
+            display: inline-block;
+            background: rgba(184, 144, 71, 0.08);
+            color: var(--color-gold);
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-family: var(--font-body);
+        }
+
+        /* Live Yield Estimator Widget - Private Banking style */
+        .premium-slider-container {
+            position: relative;
+            padding: 1.5rem 0 0.5rem 0;
+        }
+
+        .premium-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 10px;
+            background: #E6E2DB;
+            outline: none;
+            margin: 1.5rem 0;
+            transition: background 0.3s ease;
+        }
+
+        .premium-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--color-gold);
+            border: 3px solid #FFFFFF;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(184, 144, 71, 0.35);
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .premium-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            background: var(--color-gold-hover);
+        }
+
+        .premium-slider::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--color-gold);
+            border: 3px solid #FFFFFF;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(184, 144, 71, 0.35);
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .premium-slider::-moz-range-thumb:hover {
+            transform: scale(1.2);
+            background: var(--color-gold-hover);
+        }
+
+        .slider-scale-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: -0.5rem;
+            padding: 0 5px;
+        }
+
+        .slider-scale-labels span {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            font-weight: 500;
+        }
+
         .calc-input-group {
             position: relative;
         }
 
         .calc-input-group span.currency-prefix {
             position: absolute;
-            left: 15px;
+            left: 18px;
             top: 50%;
             transform: translateY(-50%);
             color: var(--color-gold);
             font-weight: 600;
+            font-size: 1.1rem;
+            z-index: 10;
         }
 
         .calc-input-group input {
-            padding-left: 45px !important;
+            padding-left: 40px !important;
             background-color: #FFFFFF !important;
             border: 1px solid var(--color-border) !important;
             color: var(--color-text-light) !important;
-            font-size: 1.15rem;
-            border-radius: 0;
+            font-size: 1.1rem;
+            border-radius: 8px !important;
             transition: all 0.3s ease;
         }
 
         .calc-input-group input:focus {
             border-color: var(--color-gold) !important;
-            box-shadow: 0 4px 15px rgba(184, 144, 71, 0.08) !important;
+            box-shadow: 0 0 0 4px rgba(184, 144, 71, 0.08) !important;
         }
 
-        /* Tranche Release Visuals */
-        .tranche-card {
-            padding: 2rem;
-            background: #FFFFFF;
-            border: 1px solid var(--color-border);
-            height: 100%;
-            transition: all 0.4s ease;
-            border-radius: 0;
-        }
-
-        .tranche-card:hover {
-            background: var(--color-gold-light);
-            border-color: var(--color-gold);
-            transform: translateY(-3px);
-        }
-
-        .tranche-icon-box {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--color-gold-light);
-            border: 1px solid var(--color-gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            color: var(--color-gold);
-            font-size: 1.5rem;
+        .calc-output-box {
+            background: rgba(184, 144, 71, 0.03);
+            border: 1px dashed var(--color-gold);
+            border-radius: 12px;
+            padding: 1.75rem;
+            position: relative;
+            overflow: hidden;
             transition: all 0.3s ease;
         }
 
-        .tranche-card:hover .tranche-icon-box {
-            background: var(--color-gold);
-            color: #FFFFFF;
-            box-shadow: 0 0 20px rgba(184, 144, 71, 0.4);
+        /* Tranche Release Timeline Visualization */
+        .timeline-steps-wrapper {
+            position: relative;
+            padding-left: 2.5rem;
+            margin: 1.5rem 0;
         }
 
-        #form-success-message {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
+        .timeline-steps-wrapper::before {
+            content: '';
+            position: absolute;
+            left: 11px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--color-gold) 0%, var(--color-border) 100%);
+        }
+
+        .timeline-card-step {
+            position: relative;
+            margin-bottom: 2rem;
+            transition: all 0.4s ease;
+        }
+
+        .timeline-card-step:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .timeline-card-step-bullet {
+            position: absolute;
+            left: -33px;
+            top: 4px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            border: 2px solid var(--color-gold);
+            display: flex;
             align-items: center;
+            justify-content: center;
+            z-index: 2;
+            box-shadow: 0 3px 8px rgba(184, 144, 71, 0.2);
         }
 
-        /* Form elements */
+        .timeline-card-step-bullet .bullet-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--color-gold);
+            display: block;
+        }
+
+        .tranche-card {
+            padding: 1.5rem;
+            background: #FFFFFF;
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+
+        .tranche-card:hover {
+            background: rgba(184, 144, 71, 0.02);
+            border-color: var(--color-gold);
+            transform: translateX(5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+        }
+
+        .tranche-card .tranche-number {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: rgba(184, 144, 71, 0.12);
+            position: absolute;
+            top: 0.5rem;
+            right: 1.2rem;
+            line-height: 1;
+        }
+
+        /* Portfolio Showcase card override */
+        .showcase-card {
+            background: #FFFFFF;
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--luxury-shadow);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .showcase-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(184, 144, 71, 0.3);
+            box-shadow: 0 25px 50px rgba(184, 144, 71, 0.08);
+        }
+
+        .showcase-img-wrap {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 16/11;
+        }
+
+        .showcase-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .showcase-card:hover .showcase-img-wrap img {
+            transform: scale(1.08);
+        }
+
+        .showcase-details {
+            padding: 1.5rem;
+            background: #FFFFFF;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .showcase-details-list li {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .showcase-details-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Form styling: Modern Float Accent UI */
+        .luxury-input-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .luxury-input-group label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
         .partner-form .form-control {
             background-color: #FFFFFF !important;
             border: 1px solid var(--color-border) !important;
             color: var(--color-text-light) !important;
-            border-radius: 0;
-            padding: 0.9rem 1.1rem;
+            border-radius: 8px !important;
+            padding: 0.85rem 1.1rem;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
         }
 
         .partner-form .form-control:focus {
             border-color: var(--color-gold) !important;
-            box-shadow: 0 4px 15px rgba(184, 144, 71, 0.08) !important;
+            box-shadow: 0 0 0 4px rgba(184, 144, 71, 0.08) !important;
+            outline: none;
         }
 
-        .partner-form label {
-            color: var(--color-text-muted);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        /* PDF Download floating/trigger styling */
-        .pdf-download-btn {
-            background: linear-gradient(135deg, var(--color-gold), #9E7A37);
-            color: #FFFFFF !important;
-            border: none;
-            transition: all 0.3s ease;
-        }
-        .pdf-download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(184, 144, 71, 0.4);
-        }
-
-        /* Print Media Styles (High Fidelity PDF slide deck mock) */
+        /* Print Deck CSS */
         @media print {
             body {
                 background: #FFFFFF !important;
@@ -209,11 +513,11 @@
                 width: 100%;
             }
 
-            .navbar, 
-            footer, 
-            .floating-widgets, 
-            .sticky-cta-banner, 
-            .btn:not(.print-keep), 
+            .navbar,
+            footer,
+            .floating-widgets,
+            .sticky-cta-banner,
+            .btn:not(.print-keep),
             .pdf-hide,
             .calculator-inputs,
             .success-btn-back {
@@ -227,7 +531,6 @@
                 margin: 0 !important;
             }
 
-            /* Page Structure */
             .print-page {
                 page-break-before: always !important;
                 break-before: page !important;
@@ -247,7 +550,6 @@
                 break-before: avoid !important;
             }
 
-            /* Styles inside printable deck */
             h1, h2, h3, h4, h5, h6 {
                 color: #12110F !important;
                 page-break-after: avoid;
@@ -308,7 +610,6 @@
                 color: #777777 !important;
             }
 
-            /* Custom spacing to force items cleanly onto pages */
             .page-title {
                 font-size: 28pt !important;
                 line-height: 1.2;
@@ -316,44 +617,17 @@
             }
         }
 
-        /* Screen-only styling for print elements */
-        .print-logo-header, .print-footer-info {
+        .print-logo-header,
+        .print-footer-info {
             display: none;
         }
 
-        /* Custom spacing utilities */
         .border-gold-dashed {
             border: 1px dashed var(--color-gold);
-        }
-        /* Hero card text overrides for contrast */
-        body .partner-hero-card .text-white:not(.navbar-brand):not(.nav-link):not(.btn):not(.float-btn):not(footer *):not(.hero-section *):not(.lightbox-modal *),
-        .partner-hero-card h1,
-        .partner-hero-card h2,
-        .partner-hero-card h3,
-        .partner-hero-card h4,
-        .partner-hero-card h5,
-        .partner-hero-card h6,
-        .partner-hero-card .text-white {
-            color: #FFFFFF !important;
-        }
-        .partner-hero-card p,
-        .partner-hero-card .lead {
-            color: #ECEAE4 !important;
-        }
-        .partner-hero-card .text-gold {
-            color: var(--color-gold) !important;
+            border-radius: 12px;
         }
 
-        /* Hover Zoom and Pointer for Lightbox Trigger Images */
-        .partner-glass-card img.lightbox-trigger {
-            cursor: pointer;
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .partner-glass-card img.lightbox-trigger:hover {
-            transform: scale(1.05);
-        }
-
-
+        /* Floating Lightbox */
         .lightbox-close {
             position: fixed !important;
             top: 20px !important;
@@ -364,9 +638,11 @@
             z-index: 10010 !important;
             transition: color 0.2s ease !important;
         }
+
         .lightbox-close:hover {
             color: var(--color-gold) !important;
         }
+
         .lightbox-caption {
             margin-top: 15px;
             color: #E5E2DD;
@@ -374,15 +650,61 @@
             font-size: 1.1rem;
             letter-spacing: 1px;
         }
+
+        /* Responsive Breakpoints & Fine-tuning */
+        @media (max-width: 991.98px) {
+            .partner-hero-card {
+                padding: 3rem 1.5rem !important;
+            }
+            .timeline-steps-wrapper {
+                padding-left: 2rem;
+            }
+            .timeline-steps-wrapper::before {
+                left: 9px;
+            }
+            .timeline-card-step-bullet {
+                left: -29px;
+                width: 20px;
+                height: 20px;
+            }
+            .timeline-card-step-bullet .bullet-dot {
+                width: 6px;
+                height: 6px;
+            }
+            .tranche-card {
+                padding: 1.25rem;
+            }
+        }
+
+        @media (max-width: 767.98px) {
+            .commission-table-container {
+                display: none;
+            }
+            .mobile-tier-cards-container {
+                display: block;
+            }
+            h1.page-title {
+                font-size: 2.25rem !important;
+                line-height: 1.3 !important;
+            }
+            .section-title {
+                font-size: 1.75rem !important;
+            }
+            .partner-glass-card {
+                border-radius: 12px;
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <!-- Header & Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark scrolled navbar-partner">
         <div class="container">
             <a class="navbar-brand text-white d-flex align-items-center gap-2" href="/">
-                <img src="../assets/images/logo_icon.webp" alt="Siddhivinayak Designers" height="36" class="d-inline-block align-text-top">
+                <img src="../assets/images/logo_icon.webp" alt="Siddhivinayak Designers" height="36"
+                    class="d-inline-block align-text-top">
                 <span><span class="text-gold">Siddhivinayak</span> Designers</span>
             </a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -391,16 +713,16 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/gallery">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/pricing.html">Pricing</a></li>
                     <li class="nav-item"><a class="nav-link" href="/blog/">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/faqs">FAQs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/faqs.html">FAQs</a></li>
                     <li class="nav-item"><a class="nav-link active" href="/">Partner With Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact.html">Contact</a></li>
                     <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
-                        <a href="/contact" class="btn btn-gold btn-sm px-3 text-dark">Get Quote</a>
+                        <a href="/contact.html" class="btn btn-gold btn-sm px-3 text-dark">Get Quote</a>
                     </li>
                 </ul>
             </div>
@@ -413,28 +735,38 @@
         <div class="print-logo-header">
             <img src="../assets/images/logo_icon.webp" alt="Logo" height="70" style="margin-bottom: 15px;">
             <h2 style="font-size: 24pt; letter-spacing: 2px; text-transform: uppercase;">Siddhivinayak Designers</h2>
-            <p style="font-size: 11pt; letter-spacing: 5px; color: #B89047 !important; text-transform: uppercase; margin-bottom: 0;">Interior Architecture & Design</p>
+            <p
+                style="font-size: 11pt; letter-spacing: 5px; color: #B89047 !important; text-transform: uppercase; margin-bottom: 0;">
+                Interior Architecture & Design</p>
         </div>
 
-        <section class="py-5 partner-hero-card" style="margin-top: 80px; background-image: linear-gradient(135deg, rgba(18, 17, 15, 0.94) 50%, rgba(18, 17, 15, 0.6) 100%), url('../assets/images/modular-kitchen-koparkhairne-siddhivinayak-interior.webp'); background-size: cover; background-position: center; border: 1px solid var(--color-partner-border); padding: 5rem 3rem !important;">
+        <section class="py-5 partner-hero-card"
+            style="margin-top: 80px; background-image: linear-gradient(135deg, rgba(18, 17, 15, 0.97) 35%, rgba(18, 17, 15, 0.75) 100%), url('../assets/images/modular-kitchen-koparkhairne-siddhivinayak-interior.webp'); background-size: cover; background-position: center; border: 1px solid var(--color-partner-border); padding: clamp(3rem, 6vw, 6rem) clamp(1.5rem, 5vw, 4rem) !important;">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-9" data-aos="fade-right">
-                        <span class="section-subtitle">Corporate Alliance Deck</span>
-                        <h1 class="page-title text-white font-luxury mb-4" style="font-size: 3rem; font-weight: 700; line-height: 1.25;">
-                            Elevate Your Closures.<br><span class="text-gold">Multiply Your Returns.</span>
+                        <h1 class="page-title text-white font-luxury mb-4"
+                            style="color: #FFFFFF !important; font-size: clamp(2.2rem, 5vw, 3.8rem); font-weight: 700; line-height: 1.15; letter-spacing: -0.5px;">
+                            Elevate Your Closures.<br><span class="text-gold font-serif-italic">Multiply Your Returns.</span>
                         </h1>
-                        <h3 class="h5 text-gold font-luxury mb-4" style="letter-spacing: 1px;">An Exclusive Channel Partnership for Elite Real Estate Professionals</h3>
-                        <p class="lead mb-5" style="color: var(--color-partner-text); font-size: 1.15rem; line-height: 1.8;">
-                            Siddhivinayak Designers formally extends a private invitation to Navi Mumbai's leading real estate consultants and visionaries. Establish an unparalleled, high-yield alliance to seamlessly monetize your high-end property closures into extraordinary secondary revenue streams, while ensuring your clients receive absolute white-glove luxury design execution.
+                        <h3 class="h5 text-gold font-luxury mb-4" style="letter-spacing: 1.5px; text-transform: uppercase; font-size: clamp(0.9rem, 2vw, 1.1rem);">
+                            An Exclusive Channel Partnership for Elite Real Estate Professionals
+                        </h3>
+                        <p class="lead mb-5"
+                            style="color: #ECEAE4 !important; font-size: clamp(1rem, 2.5vw, 1.15rem); line-height: 1.8; font-weight: 300;">
+                            Siddhivinayak Designers formally extends a private invitation to Navi Mumbai's leading real
+                            estate consultants and visionaries. Establish an unparalleled, high-yield alliance to
+                            seamlessly monetize your high-end property closures into extraordinary secondary revenue
+                            streams, while ensuring your clients receive absolute white-glove luxury design execution.
                         </p>
-                        
+
                         <div class="d-flex flex-wrap gap-3 pdf-hide">
-                            <a href="../assets/documents/Siddhivinayak_Partnership_Deck.pdf" download class="btn pdf-download-btn py-3 px-4 fw-bold">
-                                <i class="fas fa-file-pdf me-2"></i>Download Partnership Deck (PDF)
+                            <a href="../assets/documents/Siddhivinayak_Partnership_Deck.pdf" download
+                                class="btn pdf-download-btn py-3 px-4 fw-bold text-uppercase" style="color: #FFFFFF !important; background: linear-gradient(135deg, var(--color-gold), #9E7A37); border-radius: 8px; letter-spacing: 1px; font-size: 0.85rem;">
+                                <i class="fas fa-file-pdf me-2"></i>Download Deck (PDF)
                             </a>
-                            <a href="#register-form" class="btn btn-outline-gold py-3 px-4 fw-bold">
-                                Become a Partner Today
+                            <a href="#register-form" class="btn btn-outline-gold py-3 px-4 fw-bold text-uppercase" style="border-radius: 8px; letter-spacing: 1px; font-size: 0.85rem;">
+                                Become a Partner
                             </a>
                         </div>
                     </div>
@@ -456,114 +788,114 @@
     <div class="print-page" id="page-structure">
         <!-- Print-only header -->
         <div class="print-logo-header" style="margin-bottom: 10mm; padding-bottom: 5mm;">
-            <h3 style="font-size: 14pt; letter-spacing: 2px; text-transform: uppercase; color: #B89047 !important;">Siddhivinayak Designers</h3>
-            <p style="font-size: 9pt; text-transform: uppercase; margin-bottom: 0;">1. Commission Tiers & 2. Tranche Payout Model</p>
+            <h3 style="font-size: 14pt; letter-spacing: 2px; text-transform: uppercase; color: #B89047 !important;">
+                Siddhivinayak Designers</h3>
+            <p style="font-size: 9pt; text-transform: uppercase; margin-bottom: 0;">1. Commission Tiers & Payout Model</p>
         </div>
 
         <section class="py-5 border-top border-secondary">
             <div class="container">
-                <div class="row g-5">
-                    <!-- Left Side: Table and Live Calculator -->
-                    <div class="col-xl-6" data-aos="fade-up">
-                        <div class="mb-4">
+                <div class="row">
+                    <!-- Centered Commission Table/Cards and Live Calculator -->
+                    <div class="col-lg-8 mx-auto" data-aos="fade-up">
+                        <div class="mb-4 text-center">
                             <span class="section-subtitle">Financial Yield Matrix</span>
                             <h2 class="font-luxury text-white h3 mb-3">Industry-Leading Commission Structure</h2>
-                            <p class="text-muted small">Your scaling secondary revenue yields are automatically grouped by standard project classification contracts:</p>
-                        </div>
-                        
-                        <!-- Table -->
-                        <div class="table-responsive partner-glass-card p-2 mb-4">
-                            <table class="table commission-table text-left mb-0">
-                                <thead>
-                                    <tr>
-                                        <th>Project Classification</th>
-                                        <th>Contract Value Range (INR)</th>
-                                        <th>Your Scaled Yield</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr id="tier-silver">
-                                        <td class="fw-bold">Tier I (Silver)</td>
-                                        <td>Up to 10,00,000</td>
-                                        <td class="text-gold fw-bold">5.0% Gross Allocation</td>
-                                    </tr>
-                                    <tr id="tier-gold">
-                                        <td class="fw-bold">Tier II (Gold)</td>
-                                        <td>10,00,000 to 25,00,000</td>
-                                        <td class="text-gold fw-bold">7.0% Gross Allocation</td>
-                                    </tr>
-                                    <tr id="tier-platinum">
-                                        <td class="fw-bold">Tier III (Platinum)</td>
-                                        <td>Above 25,00,000</td>
-                                        <td class="text-gold fw-bold">8.0% - 10.0% Scaled Yield</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <p class="text-muted small">Your scaling secondary revenue yields are automatically grouped
+                                by standard project classification contracts:</p>
                         </div>
 
-                        <!-- Live Calculator (hides on print, replaced by printable note if needed) -->
+                        <!-- Market Rate vs Our Rate Comparison Grid -->
+                        <div class="row g-3 mb-4 text-start">
+                            <div class="col-md-4 col-sm-12">
+                                <div class="partner-glass-card p-3 text-center h-100" style="background: #FFFFFF; border-radius: 12px; border: 1px solid var(--color-border);">
+                                    <span class="d-block small text-muted text-uppercase mb-2" style="font-size: 0.68rem; letter-spacing: 1px; font-weight: 600;">Silver (Tier I)</span>
+                                    <div class="d-flex justify-content-center align-items-center gap-2 mb-2">
+                                        <div class="text-start">
+                                            <span class="d-block text-muted" style="font-size: 0.65rem; text-decoration: line-through;">3.0% Market Rate</span>
+                                            <span class="d-block small text-muted" style="font-size: 0.58rem; line-height: 1;">(Standard Agent Payout)</span>
+                                        </div>
+                                        <i class="fas fa-arrow-right text-gold" style="font-size: 0.8rem;"></i>
+                                        <div class="text-center">
+                                            <span class="h4 text-gold mb-0" style="font-weight: 700;">4.0%</span>
+                                            <span class="d-block text-gold" style="font-size: 0.58rem; font-weight: 600; line-height: 1; text-transform: uppercase;">Our Payout</span>
+                                        </div>
+                                    </div>
+                                    <span class="d-block text-muted" style="font-size: 0.72rem; font-weight: 600;">+1.0% Extra Payout</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-12">
+                                <div class="partner-glass-card p-3 text-center h-100" style="background: #FFFFFF; border-radius: 12px; border: 1px solid var(--color-border); border-color: rgba(184, 144, 71, 0.25);">
+                                    <span class="d-block small text-muted text-uppercase mb-2" style="font-size: 0.68rem; letter-spacing: 1px; font-weight: 600;">Gold (Tier II)</span>
+                                    <div class="d-flex justify-content-center align-items-center gap-2 mb-2">
+                                        <div class="text-start">
+                                            <span class="d-block text-muted" style="font-size: 0.65rem; text-decoration: line-through;">4.0% Market Rate</span>
+                                            <span class="d-block small text-muted" style="font-size: 0.58rem; line-height: 1;">(Standard Agent Payout)</span>
+                                        </div>
+                                        <i class="fas fa-arrow-right text-gold" style="font-size: 0.8rem;"></i>
+                                        <div class="text-center">
+                                            <span class="h4 text-gold mb-0" style="font-weight: 700;">6.0%</span>
+                                            <span class="d-block text-gold" style="font-size: 0.58rem; font-weight: 600; line-height: 1; text-transform: uppercase;">Our Payout</span>
+                                        </div>
+                                    </div>
+                                    <span class="d-block text-muted" style="font-size: 0.72rem; font-weight: 600;">+2.0% Extra Payout</span>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-12">
+                                <div class="partner-glass-card p-3 text-center h-100" style="background: #FFFFFF; border-radius: 12px; border: 1px solid var(--color-border);">
+                                    <span class="d-block small text-muted text-uppercase mb-2" style="font-size: 0.68rem; letter-spacing: 1px; font-weight: 600;">Platinum (Tier III)</span>
+                                    <div class="d-flex justify-content-center align-items-center gap-2 mb-2">
+                                        <div class="text-start">
+                                            <span class="d-block text-muted" style="font-size: 0.65rem; text-decoration: line-through;">5.0-7.0% Market</span>
+                                            <span class="d-block small text-muted" style="font-size: 0.58rem; line-height: 1;">(Standard Agent Payout)</span>
+                                        </div>
+                                        <i class="fas fa-arrow-right text-gold" style="font-size: 0.8rem;"></i>
+                                        <div class="text-center">
+                                            <span class="h4 text-gold mb-0" style="font-weight: 700;">8.0-10.0%</span>
+                                            <span class="d-block text-gold" style="font-size: 0.58rem; font-weight: 600; line-height: 1; text-transform: uppercase;">Our Payout</span>
+                                        </div>
+                                    </div>
+                                    <span class="d-block text-muted" style="font-size: 0.72rem; font-weight: 600;">+3.0% Extra Payout</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Market Rate vs Our Rate Cash Explanation Panel -->
+                        <div class="p-3 mb-4 rounded border-gold-dashed" style="background: rgba(184, 144, 71, 0.03); text-align: left; border: 1px dashed var(--color-gold);">
+                            <p class="small mb-0" style="color: var(--color-text-light) !important; line-height: 1.6;">
+                                <i class="fas fa-info-circle text-gold me-2"></i>
+                                <strong>Understanding Referral Commissions:</strong> Referral payouts are calculated as a percentage of the total project value closed. Standard designers in Navi Mumbai offer brokers a flat 2% to 4% commission. At Siddhivinayak, we pay a higher tier of <strong>4.0% to 10.0%</strong>. 
+                                <br><span class="d-block mt-2"><strong>Payout Example:</strong> On a ₹15 Lakh home interior project reference, a standard market referral pays you ₹60,000 (4.0%). Siddhivinayak pays you <strong>₹90,000 (6.0%)</strong>—which means you make an extra <strong>₹30,000</strong> for the exact same lead handover.</span>
+                            </p>
+                        </div>
+
+
+
+                        <!-- Live Calculator Widget (Refactored Premium Slider UI) -->
                         <div class="partner-glass-card p-4 calculator-inputs">
                             <h4 class="font-luxury h5 text-gold mb-3"><i class="fas fa-calculator me-2"></i>Live Yield Estimator</h4>
-                            <p class="small text-muted mb-3">Enter an estimated project budget contract size to instantly evaluate your payout allocation:</p>
-                            <div class="calc-input-group mb-3">
+                            <p class="small text-muted mb-3">Slide to adjust the estimated contract value (INR) and evaluate your payout allocation:</p>
+                            
+                            <div class="premium-slider-container">
+                                <input type="range" id="calc-contract-slider" class="premium-slider" min="100000" max="3000000" step="25000" value="1500000" oninput="syncSliderToInput(this.value)">
+                                <div class="slider-scale-labels position-relative mb-3" style="height: 20px;">
+                                    <span style="position: absolute; left: 0%; transform: translateX(0%);">₹1 L</span>
+                                    <span style="position: absolute; left: 31.03%; transform: translateX(-50%);">₹10 L</span>
+                                    <span style="position: absolute; left: 65.52%; transform: translateX(-50%);">₹20 L</span>
+                                    <span style="position: absolute; right: 0%; transform: translateX(0%);">₹30 L+</span>
+                                </div>
+                            </div>
+                            
+                            <div class="calc-input-group mb-4">
                                 <span class="currency-prefix">₹</span>
-                                <input type="number" id="calc-contract-value" class="form-control" placeholder="Enter Contract Value (e.g. 1500000)" oninput="calculatePayout()">
+                                <input type="number" id="calc-contract-value" class="form-control"
+                                    placeholder="Or enter custom value" value="1500000" oninput="syncInputToSlider(this.value)">
                             </div>
-                            <div class="p-3 border-gold-dashed bg-dark-card rounded text-center">
-                                <span class="d-block small text-muted text-uppercase mb-1">Estimated Partner Payout</span>
-                                <span class="h3 font-luxury text-gold mb-0" id="calc-payout-text">₹ 0</span>
-                                <span class="d-block small text-light mt-1" id="calc-tier-text">Enter value to see tier</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Right Side: Trust Factor / Tranche Model -->
-                    <div class="col-xl-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="mb-4">
-                            <span class="section-subtitle">Liquidity Framework</span>
-                            <h2 class="font-luxury text-white h3 mb-3">The Trust Factor: Tranche Release</h2>
-                            <p class="text-muted small">We respect your business cash flow. Our transparent, milestone-linked Tranche Release Model ensures you get paid efficiently without waiting for total construction handovers:</p>
-                        </div>
-
-                        <div class="row g-4">
-                            <div class="col-12">
-                                <div class="tranche-card">
-                                    <div class="d-flex align-items-start gap-3">
-                                        <div class="tranche-icon-box flex-shrink-0">
-                                            <i class="fas fa-bolt"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="h5 text-white mb-2">20% Advance Liquidity</h4>
-                                            <p class="text-muted small mb-0">Released within 48 business hours of the client executing the final layout contract and clearing the initial token deposit payment.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="tranche-card">
-                                    <div class="d-flex align-items-start gap-3">
-                                        <div class="tranche-icon-box flex-shrink-0">
-                                            <i class="fas fa-hammer"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="h5 text-white mb-2">40% Mid-Execution Release</h4>
-                                            <p class="text-muted small mb-0">Released immediately upon completion of major raw site civil milestones, specifically carpentry framework erections and false ceiling support frameworks.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="tranche-card">
-                                    <div class="d-flex align-items-start gap-3">
-                                        <div class="tranche-icon-box flex-shrink-0">
-                                            <i class="fas fa-key"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="h5 text-white mb-2">40% Final Settlement</h4>
-                                            <p class="text-muted small mb-0">Cleared concurrently with the official keys handover handover ceremony to the client.</p>
-                                        </div>
-                                    </div>
-                                </div>
+                            
+                            <div class="calc-output-box text-center">
+                                <span class="d-block small text-muted text-uppercase mb-1" style="letter-spacing: 1px;">Estimated Partner Payout</span>
+                                <span class="h2 font-luxury text-gold mb-0" id="calc-payout-text">₹ 90,000</span>
+                                <span class="d-block small mt-2 font-weight-bold" id="calc-tier-text" style="color: var(--color-gold) !important; font-weight: 600;">Tier II (Gold) - 6.0% Gross</span>
                             </div>
                         </div>
                     </div>
@@ -585,8 +917,10 @@
     <div class="print-page" id="page-portfolio">
         <!-- Print-only header -->
         <div class="print-logo-header" style="margin-bottom: 10mm; padding-bottom: 5mm;">
-            <h3 style="font-size: 14pt; letter-spacing: 2px; text-transform: uppercase; color: #B89047 !important;">Siddhivinayak Designers</h3>
-            <p style="font-size: 9pt; text-transform: uppercase; margin-bottom: 0;">3. Design Excellence Portfolio Showcase</p>
+            <h3 style="font-size: 14pt; letter-spacing: 2px; text-transform: uppercase; color: #B89047 !important;">
+                Siddhivinayak Designers</h3>
+            <p style="font-size: 9pt; text-transform: uppercase; margin-bottom: 0;">3. Design Excellence Portfolio
+                Showcase</p>
         </div>
 
         <section class="py-5 border-top border-secondary">
@@ -594,102 +928,128 @@
                 <div class="text-center mb-5" data-aos="fade-up">
                     <span class="section-subtitle">Real Executed Mastery</span>
                     <h2 class="font-luxury text-white h3">Design Excellence Portfolio Showcase</h2>
-                    <p class="text-muted max-w-600 mx-auto mt-2">Explore the design execution that safeguards your reputation. We have completed over 500+ premium handovers in Navi Mumbai since the late 1990s.</p>
+                    <p class="text-muted max-w-600 mx-auto mt-2">Explore the design execution that safeguards your
+                        reputation. We have completed over 500+ premium handovers in Navi Mumbai since the late 1990s.
+                    </p>
                 </div>
 
                 <div class="row g-4 justify-content-center">
                     <!-- Project 1 -->
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="partner-glass-card h-100 overflow-hidden">
-                            <a href="javascript:void(0)" class="lightbox-trigger" data-src="../assets/images/IMG_0804.webp" data-caption="Luxury Residential Handover - Palm Beach Road, Sanpada">
-                                <img src="../assets/images/IMG_0804.webp" class="img-fluid w-100" style="height: 220px; object-fit: cover;" alt="Luxury Residential Handover">
-                            </a>
-                            <div class="p-4">
-                                <h4 class="h5 text-white font-luxury mb-3">Luxury Residential Handover</h4>
-                                <ul class="list-unstyled small mb-0" style="color: var(--color-partner-text-muted);">
-                                    <li class="mb-2"><strong class="text-white">Location:</strong> Palm Beach Road, Sanpada</li>
-                                    <li class="mb-2"><strong class="text-white">Typology:</strong> 4 BHK Premium Duplex</li>
-                                    <li><strong class="text-white">Execution Style:</strong> Contemporary Minimalist with Bespoke Veneer Articulations</li>
+                        <div class="showcase-card h-100">
+                            <div class="showcase-img-wrap">
+                                <a href="javascript:void(0)" class="lightbox-trigger"
+                                    data-src="../assets/images/IMG_0804.webp"
+                                    data-caption="Luxury Residential Handover - Palm Beach Road, Sanpada">
+                                    <img src="../assets/images/IMG_0804.webp" alt="Luxury Residential Handover">
+                                </a>
+                            </div>
+                            <div class="showcase-details">
+                                <h4 class="h5 text-white font-luxury mb-3" style="font-weight: 600;">Luxury Residential Handover</h4>
+                                <ul class="list-unstyled showcase-details-list mb-0" style="color: var(--color-text-muted);">
+                                    <li><strong class="text-white">Location:</strong> Palm Beach Road, Sanpada</li>
+                                    <li><strong class="text-white">Typology:</strong> 4 BHK Premium Duplex</li>
+                                    <li><strong class="text-white">Execution Style:</strong> Contemporary Minimalist with Veneer</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <!-- Project 2 -->
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="partner-glass-card h-100 overflow-hidden">
-                            <a href="javascript:void(0)" class="lightbox-trigger" data-src="../assets/images/images (3).webp" data-caption="Couture Living Concepts - Seawoods Grand Central, Navi Mumbai">
-                                <img src="../assets/images/images (3).webp" class="img-fluid w-100" style="height: 220px; object-fit: cover;" alt="Couture Living Concepts">
-                            </a>
-                            <div class="p-4">
-                                <h4 class="h5 text-white font-luxury mb-3">Couture Living Concepts</h4>
-                                <ul class="list-unstyled small mb-0" style="color: var(--color-partner-text-muted);">
-                                    <li class="mb-2"><strong class="text-white">Location:</strong> Seawoods Grand Central, Navi Mumbai</li>
-                                    <li class="mb-2"><strong class="text-white">Typology:</strong> High-End Penthouse Suite</li>
-                                    <li><strong class="text-white">Execution Style:</strong> Transitional Luxury featuring Ambient Architectural Valance Lighting</li>
+                        <div class="showcase-card h-100">
+                            <div class="showcase-img-wrap">
+                                <a href="javascript:void(0)" class="lightbox-trigger"
+                                    data-src="../assets/images/images (3).webp"
+                                    data-caption="Couture Living Concepts - Seawoods Grand Central, Navi Mumbai">
+                                    <img src="../assets/images/images (3).webp" alt="Couture Living Concepts">
+                                </a>
+                            </div>
+                            <div class="showcase-details">
+                                <h4 class="h5 text-white font-luxury mb-3" style="font-weight: 600;">Couture Living Concepts</h4>
+                                <ul class="list-unstyled showcase-details-list mb-0" style="color: var(--color-text-muted);">
+                                    <li><strong class="text-white">Location:</strong> Seawoods Grand Central, Navi Mumbai</li>
+                                    <li><strong class="text-white">Typology:</strong> High-End Penthouse Suite</li>
+                                    <li><strong class="text-white">Execution Style:</strong> Transitional Luxury with Cove Lighting</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <!-- Project 3 -->
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="partner-glass-card h-100 overflow-hidden">
-                            <a href="javascript:void(0)" class="lightbox-trigger" data-src="../assets/images/luxury-home-interior-designer-vashi (1).webp" data-caption="Project Titan - Palm Beach Road, Sanpada">
-                                <img src="../assets/images/luxury-home-interior-designer-vashi (1).webp" class="img-fluid w-100" style="height: 220px; object-fit: cover;" alt="Project Titan">
-                            </a>
-                            <div class="p-4">
-                                <h4 class="h5 text-white font-luxury mb-3">Project Titan: Urban Minimalism</h4>
-                                <ul class="list-unstyled small mb-0" style="color: var(--color-partner-text-muted);">
-                                    <li class="mb-2"><strong class="text-white">Location:</strong> Palm Beach Road, Sanpada</li>
-                                    <li class="mb-2"><strong class="text-white">Typology:</strong> Premium 3 BHK Apartment</li>
-                                    <li><strong class="text-white">Execution Style:</strong> Contemporary Architectural Design incorporating Sustainable Louvered Timber Panels</li>
+                        <div class="showcase-card h-100">
+                            <div class="showcase-img-wrap">
+                                <a href="javascript:void(0)" class="lightbox-trigger"
+                                    data-src="../assets/images/luxury-home-interior-designer-vashi (1).webp"
+                                    data-caption="Project Titan - Palm Beach Road, Sanpada">
+                                    <img src="../assets/images/luxury-home-interior-designer-vashi (1).webp" alt="Project Titan">
+                                </a>
+                            </div>
+                            <div class="showcase-details">
+                                <h4 class="h5 text-white font-luxury mb-3" style="font-weight: 600;">Project Titan: Urban</h4>
+                                <ul class="list-unstyled showcase-details-list mb-0" style="color: var(--color-text-muted);">
+                                    <li><strong class="text-white">Location:</strong> Palm Beach Road, Sanpada</li>
+                                    <li><strong class="text-white">Typology:</strong> Premium 3 BHK Apartment</li>
+                                    <li><strong class="text-white">Execution Style:</strong> Minimalist with Louvered Timber Panels</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <!-- Project 4 -->
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="partner-glass-card h-100 overflow-hidden">
-                            <a href="javascript:void(0)" class="lightbox-trigger" data-src="../assets/images/modular-kitchen-koparkhairne-siddhivinayak-interior.webp" data-caption="Premium Modular Kitchen - Koparkhairne, Navi Mumbai">
-                                <img src="../assets/images/modular-kitchen-koparkhairne-siddhivinayak-interior.webp" class="img-fluid w-100" style="height: 220px; object-fit: cover;" alt="Acrylic Modular Kitchen">
-                            </a>
-                            <div class="p-4">
-                                <h4 class="h5 text-white font-luxury mb-3">Premium Modular Kitchen</h4>
-                                <ul class="list-unstyled small mb-0" style="color: var(--color-partner-text-muted);">
-                                    <li class="mb-2"><strong class="text-white">Location:</strong> Sector 23, Koparkhairne</li>
-                                    <li class="mb-2"><strong class="text-white">Typology:</strong> Premium Parallel Kitchen Layout</li>
-                                    <li><strong class="text-white">Execution Style:</strong> High-Gloss Acrylic Cabinets with Soft-close Drawers</li>
+                        <div class="showcase-card h-100">
+                            <div class="showcase-img-wrap">
+                                <a href="javascript:void(0)" class="lightbox-trigger"
+                                    data-src="../assets/images/modular-kitchen-koparkhairne-siddhivinayak-interior.webp"
+                                    data-caption="Premium Modular Kitchen - Koparkhairne, Navi Mumbai">
+                                    <img src="../assets/images/modular-kitchen-koparkhairne-siddhivinayak-interior.webp" alt="Acrylic Modular Kitchen">
+                                </a>
+                            </div>
+                            <div class="showcase-details">
+                                <h4 class="h5 text-white font-luxury mb-3" style="font-weight: 600;">Premium Modular Kitchen</h4>
+                                <ul class="list-unstyled showcase-details-list mb-0" style="color: var(--color-text-muted);">
+                                    <li><strong class="text-white">Location:</strong> Sector 23, Koparkhairne</li>
+                                    <li><strong class="text-white">Typology:</strong> Parallel Kitchen Layout</li>
+                                    <li><strong class="text-white">Execution Style:</strong> High-Gloss Acrylic, Soft-Close</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <!-- Project 5 -->
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-                        <div class="partner-glass-card h-100 overflow-hidden">
-                            <a href="javascript:void(0)" class="lightbox-trigger" data-src="../assets/images/living-room-interior-designer-koparkhairne.webp" data-caption="Luxury Lounge Concept - Palm Beach Road, Sanpada">
-                                <img src="../assets/images/living-room-interior-designer-koparkhairne.webp" class="img-fluid w-100" style="height: 220px; object-fit: cover;" alt="Living Room Wall Paneling">
-                            </a>
-                            <div class="p-4">
-                                <h4 class="h5 text-white font-luxury mb-3">Luxury Lounge Concept</h4>
-                                <ul class="list-unstyled small mb-0" style="color: var(--color-partner-text-muted);">
-                                    <li class="mb-2"><strong class="text-white">Location:</strong> Palm Beach Road, Sanpada</li>
-                                    <li class="mb-2"><strong class="text-white">Typology:</strong> High-End Lounge Suite</li>
-                                    <li><strong class="text-white">Execution Style:</strong> Warm Cove Lighting & Gold Trim Wall Paneling</li>
+                        <div class="showcase-card h-100">
+                            <div class="showcase-img-wrap">
+                                <a href="javascript:void(0)" class="lightbox-trigger"
+                                    data-src="../assets/images/living-room-interior-designer-koparkhairne.webp"
+                                    data-caption="Luxury Lounge Concept - Palm Beach Road, Sanpada">
+                                    <img src="../assets/images/living-room-interior-designer-koparkhairne.webp" alt="Living Room Wall Paneling">
+                                </a>
+                            </div>
+                            <div class="showcase-details">
+                                <h4 class="h5 text-white font-luxury mb-3" style="font-weight: 600;">Luxury Lounge Concept</h4>
+                                <ul class="list-unstyled showcase-details-list mb-0" style="color: var(--color-text-muted);">
+                                    <li><strong class="text-white">Location:</strong> Palm Beach Road, Sanpada</li>
+                                    <li><strong class="text-white">Typology:</strong> High-End Lounge Suite</li>
+                                    <li><strong class="text-white">Execution Style:</strong> Warm Cove & Gold Trim Panels</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <!-- Project 6 -->
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-                        <div class="partner-glass-card h-100 overflow-hidden">
-                            <a href="javascript:void(0)" class="lightbox-trigger" data-src="../assets/images/turnkey-residential-interior-navi-mumbai.webp" data-caption="Bespoke Bedroom Suite - Seawoods Grand Central, Navi Mumbai">
-                                <img src="../assets/images/turnkey-residential-interior-navi-mumbai.webp" class="img-fluid w-100" style="height: 220px; object-fit: cover;" alt="Master Bedroom Design">
-                            </a>
-                            <div class="p-4">
-                                <h4 class="h5 text-white font-luxury mb-3">Master Bedroom Suite</h4>
-                                <ul class="list-unstyled small mb-0" style="color: var(--color-partner-text-muted);">
-                                    <li class="mb-2"><strong class="text-white">Location:</strong> Seawoods Grand Central, Navi Mumbai</li>
-                                    <li class="mb-2"><strong class="text-white">Typology:</strong> Luxury Penthouse Master Bedroom</li>
-                                    <li><strong class="text-white">Execution Style:</strong> Velvet Tufted Headboard with Custom Architectural Valance Lighting</li>
+                        <div class="showcase-card h-100">
+                            <div class="showcase-img-wrap">
+                                <a href="javascript:void(0)" class="lightbox-trigger"
+                                    data-src="../assets/images/turnkey-residential-interior-navi-mumbai.webp"
+                                    data-caption="Bespoke Bedroom Suite - Seawoods Grand Central, Navi Mumbai">
+                                    <img src="../assets/images/turnkey-residential-interior-navi-mumbai.webp" alt="Master Bedroom Design">
+                                </a>
+                            </div>
+                            <div class="showcase-details">
+                                <h4 class="h5 text-white font-luxury mb-3" style="font-weight: 600;">Master Bedroom Suite</h4>
+                                <ul class="list-unstyled showcase-details-list mb-0" style="color: var(--color-text-muted);">
+                                    <li><strong class="text-white">Location:</strong> Seawoods Grand Central, Navi Mumbai</li>
+                                    <li><strong class="text-white">Typology:</strong> Luxury Penthouse Suite</li>
+                                    <li><strong class="text-white">Execution Style:</strong> Velvet Headboard, Custom Lighting</li>
                                 </ul>
                             </div>
                         </div>
@@ -712,8 +1072,10 @@
     <div class="print-page" id="page-registration">
         <!-- Print-only header -->
         <div class="print-logo-header" style="margin-bottom: 10mm; padding-bottom: 5mm;">
-            <h3 style="font-size: 14pt; letter-spacing: 2px; text-transform: uppercase; color: #B89047 !important;">Siddhivinayak Designers</h3>
-            <p style="font-size: 9pt; text-transform: uppercase; margin-bottom: 0;">4. Channels of Interaction & Head Office</p>
+            <h3 style="font-size: 14pt; letter-spacing: 2px; text-transform: uppercase; color: #B89047 !important;">
+                Siddhivinayak Designers</h3>
+            <p style="font-size: 9pt; text-transform: uppercase; margin-bottom: 0;">4. Channels of Interaction & Head
+                Office</p>
         </div>
 
         <section class="py-5 border-top border-secondary" id="register-form">
@@ -725,49 +1087,62 @@
                             <div class="mb-4" id="partner-form-header">
                                 <span class="section-subtitle">Instant Onboarding</span>
                                 <h2 class="font-luxury text-white h3 mb-2">Become a Strategic Partner Today</h2>
-                                <p class="text-muted small">Safeguard your reputation with over 25 years of institutional mastery and 500+ ultra-high-net-worth client handovers. Let's build something extraordinary together.</p>
+                                <p class="text-muted small">Safeguard your reputation with over 25 years of
+                                    institutional mastery and 500+ ultra-high-net-worth client handovers. Let's build
+                                    something extraordinary together.</p>
                             </div>
 
-                            <form id="partner-registration-form" class="partner-form text-left" onsubmit="handleRegistrationSubmit(event)">
+                            <form id="partner-registration-form" class="partner-form text-left"
+                                onsubmit="handleRegistrationSubmit(event)">
                                 <div class="row g-3">
                                     <div class="col-md-6">
-                                        <div class="form-group">
+                                        <div class="luxury-input-group">
                                             <label for="partner-name">Name *</label>
-                                            <input type="text" id="partner-name" class="form-control" placeholder="Full Name" required>
+                                            <input type="text" id="partner-name" class="form-control"
+                                                placeholder="Full Name" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group">
+                                        <div class="luxury-input-group">
                                             <label for="partner-mobile">Mobile Number *</label>
-                                            <input type="tel" id="partner-mobile" class="form-control" placeholder="Mobile Number" required>
+                                            <input type="tel" id="partner-mobile" class="form-control"
+                                                placeholder="Mobile Number" required>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <div class="form-group">
+                                        <div class="luxury-input-group">
                                             <label for="partner-rera">RERA Registration Number / Agency Name *</label>
-                                            <input type="text" id="partner-rera" class="form-control" placeholder="e.g. M517000XXXXX / Elite Realty" required>
+                                            <input type="text" id="partner-rera" class="form-control"
+                                                placeholder="e.g. M517000XXXXX / Elite Realty" required>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <div class="form-group">
+                                        <div class="luxury-input-group">
                                             <label for="partner-inventory">Message / Current Premium Inventory Location</label>
-                                            <textarea id="partner-inventory" class="form-control" rows="3" placeholder="e.g., Active inventory around Sanpada, Palm Beach Road, modular kitchen referral..."></textarea>
+                                            <textarea id="partner-inventory" class="form-control" rows="3"
+                                                placeholder="e.g., Active inventory around Sanpada, Palm Beach Road, modular kitchen referral..."></textarea>
                                         </div>
                                     </div>
                                     <div class="col-12 mt-4">
-                                        <button type="submit" class="btn btn-gold w-100 py-3 text-dark fw-bold uppercase">Register as a Channel Partner</button>
+                                        <button type="submit"
+                                            class="btn btn-gold w-100 py-3 text-dark fw-bold text-uppercase" style="border-radius: 8px; letter-spacing: 1px; font-size: 0.9rem;">Register as a Channel Partner</button>
                                     </div>
                                 </div>
                             </form>
 
                             <!-- Success state container (hidden initially) -->
-                            <div id="form-success-message" class="p-4 border-gold-dashed text-center my-auto">
-                                <div class="tranche-icon-box bg-gold text-white mb-3" style="width: 70px; height: 70px; font-size: 2rem;">
+                            <div id="form-success-message" class="p-4 border-gold-dashed text-center my-auto" style="display: none; flex-direction: column; justify-content: center; align-items: center;">
+                                <div class="d-inline-flex align-items-center justify-content-center text-gold mb-3"
+                                     style="width: 70px; height: 70px; font-size: 3rem;">
                                     <i class="fas fa-check-circle"></i>
                                 </div>
                                 <h3 class="font-luxury text-gold h4 mb-2">Registration Request Received</h3>
-                                <p class="small text-light mb-4">Thank you for registering as a Strategic Channel Partner. Our Executive Partnership Liaison will reach out to you within 2 business hours to share documents and finalize details.</p>
-                                <button onclick="resetRegistrationForm()" class="btn btn-outline-gold btn-sm px-4 success-btn-back">Submit Another Registration</button>
+                                <p class="small text-light mb-4">Thank you for registering as a Strategic Channel
+                                    Partner. Our Executive Partnership Liaison will reach out to you within 2 business
+                                    hours to share documents and finalize details.</p>
+                                <button onclick="resetRegistrationForm()"
+                                    class="btn btn-outline-gold btn-sm px-4 success-btn-back" style="border-radius: 6px;">Submit Another
+                                    Registration</button>
                             </div>
                         </div>
                     </div>
@@ -778,7 +1153,7 @@
                             <div>
                                 <span class="section-subtitle">Head Office</span>
                                 <h3 class="font-luxury text-white h4 mb-4">Channels of Interaction</h3>
-                                
+
                                 <ul class="list-unstyled mb-0" style="font-size: 0.95rem;">
                                     <li class="d-flex align-items-start gap-3 mb-4">
                                         <i class="fas fa-building text-gold mt-1 flex-shrink-0"></i>
@@ -791,22 +1166,26 @@
                                         <i class="fas fa-map-marker-alt text-gold mt-1 flex-shrink-0"></i>
                                         <div>
                                             <strong class="text-white d-block mb-1">Office / Studio Address</strong>
-                                            <span class="text-muted">shree laxmi chs, A 301, sector: 23, Kopar Khairane, Navi Mumbai, Maharashtra 400709</span>
+                                            <span class="text-muted">shree laxmi chs, A 301, sector: 23, Kopar Khairane,
+                                                Navi Mumbai, Maharashtra 400709</span>
                                         </div>
                                     </li>
                                     <li class="d-flex align-items-start gap-3 mb-4">
                                         <i class="fas fa-phone-alt text-gold mt-1 flex-shrink-0"></i>
                                         <div>
                                             <strong class="text-white d-block mb-1">Phone Connections</strong>
-                                            <span class="text-muted d-block"><a href="tel:+918369297174" class="text-muted">+91 8369297174</a></span>
-                                            <span class="text-muted d-block"><a href="tel:+919892668429" class="text-muted">+91 9892668429</a></span>
+                                            <span class="text-muted d-block"><a href="tel:+918369297174"
+                                                    class="text-muted">+91 8369297174</a></span>
+                                            <span class="text-muted d-block"><a href="tel:+919892668429"
+                                                    class="text-muted">+91 9892668429</a></span>
                                         </div>
                                     </li>
                                     <li class="d-flex align-items-start gap-3">
                                         <i class="fas fa-envelope text-gold mt-1 flex-shrink-0"></i>
                                         <div>
                                             <strong class="text-white d-block mb-1">Email Inquiries</strong>
-                                            <span class="text-muted"><a href="mailto:siddhivinayakdesigners1@gmail.com" class="text-muted">siddhivinayakdesigners1@gmail.com</a></span>
+                                            <span class="text-muted"><a href="mailto:siddhivinayakdesigners1@gmail.com"
+                                                    class="text-muted">siddhivinayakdesigners1@gmail.com</a></span>
                                         </div>
                                     </li>
                                 </ul>
@@ -814,7 +1193,9 @@
 
                             <div class="mt-5 border-top border-secondary pt-4 text-center">
                                 <span class="d-block small text-muted text-uppercase mb-2">Web Interface</span>
-                                <span class="d-block text-gold fw-bold"><a href="https://sidhivinayakdesigners.github.io/" target="_blank" class="text-gold">https://sidhivinayakdesigners.github.io/</a></span>
+                                <span class="d-block text-gold fw-bold"><a
+                                        href="https://sidhivinayakdesigners.github.io/" target="_blank"
+                                        class="text-gold">https://sidhivinayakdesigners.github.io/</a></span>
                             </div>
                         </div>
                     </div>
@@ -834,7 +1215,8 @@
 
     <!-- Floating Actions -->
     <div class="floating-widgets pdf-hide">
-        <a href="https://wa.me/918369297174?text=Hi%20Siddhivinayak%20Designers,%20I'm%20interested%20in%20a%20strategic%20channel%20partnership." class="float-btn float-whatsapp" target="_blank" title="Chat on WhatsApp">
+        <a href="https://wa.me/918369297174?text=Hi%20Siddhivinayak%20Designers,%20I'm%20interested%20in%20a%20strategic%20channel%20partnership."
+            class="float-btn float-whatsapp" target="_blank" title="Chat on WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
         <a href="tel:+918369297174" class="float-btn float-call" title="Call Us Now">
@@ -848,21 +1230,28 @@
             <div class="row g-4">
                 <div class="col-lg-4">
                     <h5 class="font-luxury mb-3"><span class="text-gold">Siddhivinayak</span> Designers</h5>
-                    <p class="small text-muted mb-4">Crafting luxurious homes, modular kitchens, and high-end offices across Koparkhairane, Vashi, and entire Navi Mumbai. Licensed civil and interior contractors.</p>
+                    <p class="small text-muted mb-4">Crafting luxurious homes, modular kitchens, and high-end offices
+                        across Koparkhairane, Vashi, and entire Navi Mumbai. Licensed civil and interior contractors.
+                    </p>
                     <div class="social-icons">
-                        <a href="https://www.facebook.com/people/Siddhivinayak-Interior/61591244265786/" target="_blank" aria-label="Facebook Page"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/siddhivinayakdesigners/" target="_blank" aria-label="Instagram Profile"><i class="fab fa-instagram"></i></a>
-                        <a href="https://linkedin.com/company/siddhivinayakdesigners" target="_blank" aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://maps.google.com/?cid=6911458856073113523" target="_blank" title="Google Business Profile" aria-label="Google Business Profile"><i class="fab fa-google"></i></a>
+                        <a href="https://www.facebook.com/people/Siddhivinayak-Interior/61591244265786/" target="_blank"
+                            aria-label="Facebook Page"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/siddhivinayakdesigners/" target="_blank"
+                            aria-label="Instagram Profile"><i class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com/company/siddhivinayakdesigners" target="_blank"
+                            aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://maps.google.com/?cid=6911458856073113523" target="_blank"
+                            title="Google Business Profile" aria-label="Google Business Profile"><i
+                                class="fab fa-google"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-2">
                     <h6 class="font-luxury text-white mb-3">Quick Links</h6>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="/about">About Us</a></li>
-                        <li class="mb-2"><a href="/services">Our Services</a></li>
-                        <li class="mb-2"><a href="/gallery">Gallery</a></li>
-                        <li class="mb-2"><a href="/pricing">Pricing Plans</a></li>
+                        <li class="mb-2"><a href="/about.html">About Us</a></li>
+                        <li class="mb-2"><a href="/services.html">Our Services</a></li>
+                        <li class="mb-2"><a href="/gallery.html">Gallery</a></li>
+                        <li class="mb-2"><a href="/pricing.html">Pricing Plans</a></li>
                         <li class="mb-2"><a href="/blog/">Blog</a></li>
                         <li class="mb-2"><a href="/">Partner With Us</a></li>
                     </ul>
@@ -870,31 +1259,36 @@
                 <div class="col-lg-3">
                     <h6 class="font-luxury text-white mb-3">Our Core Services</h6>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="/services">Complete Home Interior</a></li>
-                        <li class="mb-2"><a href="/services">Modular Kitchens</a></li>
-                        <li class="mb-2"><a href="/services">Living Room Designs</a></li>
-                        <li class="mb-2"><a href="/services">False Ceiling & Lighting</a></li>
-                        <li class="mb-2"><a href="/services">Office & Commercial</a></li>
-                        <li class="mb-2"><a href="/services">Contracting & Civil Work</a></li>
+                        <li class="mb-2"><a href="/services.html">Complete Home Interior</a></li>
+                        <li class="mb-2"><a href="/services.html">Modular Kitchens</a></li>
+                        <li class="mb-2"><a href="/services.html">Living Room Designs</a></li>
+                        <li class="mb-2"><a href="/services.html">False Ceiling & Lighting</a></li>
+                        <li class="mb-2"><a href="/services.html">Office & Commercial</a></li>
+                        <li class="mb-2"><a href="/services.html">Contracting & Civil Work</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3">
                     <h6 class="font-luxury text-white mb-3">Contact Details</h6>
-                    <p class="small text-muted mb-2"><i class="fas fa-map-marker-alt text-gold me-2"></i> <span class="text-muted">shree laxmi chs, A 301, sector: 23, Kopar Khairane, Navi Mumbai, Maharashtra 400709</span></p>
-                    <p class="small text-muted mb-2"><i class="fas fa-phone-alt text-gold me-2"></i> <a href="tel:+918369297174" class="text-muted">+91 83692 97174</a></p>
-                    <p class="small text-muted"><i class="fas fa-envelope text-gold me-2"></i> <a href="mailto:siddhivinayakdesigners1@gmail.com" class="text-muted">siddhivinayakdesigners1@gmail.com</a></p>
+                    <p class="small text-muted mb-2"><i class="fas fa-map-marker-alt text-gold me-2"></i> <span
+                            class="text-muted">shree laxmi chs, A 301, sector: 23, Kopar Khairane, Navi Mumbai,
+                            Maharashtra 400709</span></p>
+                    <p class="small text-muted mb-2"><i class="fas fa-phone-alt text-gold me-2"></i> <a
+                            href="tel:+918369297174" class="text-muted">+91 83692 97174</a></p>
+                    <p class="small text-muted"><i class="fas fa-envelope text-gold me-2"></i> <a
+                            href="mailto:siddhivinayakdesigners1@gmail.com"
+                            class="text-muted">siddhivinayakdesigners1@gmail.com</a></p>
                 </div>
             </div>
-            
+
             <hr class="border-secondary my-4">
-            
+
             <div class="row align-items-center">
                 <div class="col-md-6 text-center text-md-start">
                     <p class="small text-muted mb-0">&copy; 2026 Siddhivinayak Designers. All Rights Reserved.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
-                    <a href="/privacy-policy" class="small text-muted me-3">Privacy Policy</a>
-                    <a href="/terms-conditions" class="small text-muted">Terms & Conditions</a>
+                    <a href="/privacy-policy.html" class="small text-muted me-3">Privacy Policy</a>
+                    <a href="/terms-conditions.html" class="small text-muted">Terms & Conditions</a>
                 </div>
             </div>
         </div>
@@ -904,7 +1298,7 @@
     <div class="lightbox-modal" id="lightboxModal">
         <div class="lightbox-content">
             <span class="lightbox-close"><i class="fas fa-times"></i></span>
-            <img alt="Lightbox View" class="lightbox-img" id="lightboxImg" src=""/>
+            <img alt="Lightbox View" class="lightbox-img" id="lightboxImg" src="" />
             <div class="lightbox-caption" id="lightboxCaption"></div>
         </div>
     </div>
@@ -920,20 +1314,49 @@
             once: true
         });
 
-        // Live Calculator Logics
+        // Sync functions for interactive range slider
+        function syncSliderToInput(value) {
+            document.getElementById('calc-contract-value').value = value;
+            calculatePayout();
+        }
+
+        function syncInputToSlider(value) {
+            const slider = document.getElementById('calc-contract-slider');
+            const val = parseFloat(value);
+            if (!isNaN(val)) {
+                // Constrain value to slider range dynamically for visualization
+                if (val >= parseFloat(slider.min) && val <= parseFloat(slider.max)) {
+                    slider.value = val;
+                } else if (val > parseFloat(slider.max)) {
+                    slider.value = slider.max;
+                } else {
+                    slider.value = slider.min;
+                }
+            }
+            calculatePayout();
+        }
+
+        // Live Calculator Logics (Desktop Table & Mobile Card highlights)
         function calculatePayout() {
             const inputVal = document.getElementById('calc-contract-value').value;
             const payoutText = document.getElementById('calc-payout-text');
             const tierText = document.getElementById('calc-tier-text');
-            
+
+            // Desktop Elements
             const tierSilver = document.getElementById('tier-silver');
             const tierGold = document.getElementById('tier-gold');
             const tierPlatinum = document.getElementById('tier-platinum');
 
-            // Reset highlighted rows
-            tierSilver.classList.remove('active-tier');
-            tierGold.classList.remove('active-tier');
-            tierPlatinum.classList.remove('active-tier');
+            // Mobile Elements
+            const mTierSilver = document.getElementById('m-tier-silver');
+            const mTierGold = document.getElementById('m-tier-gold');
+            const mTierPlatinum = document.getElementById('m-tier-platinum');
+
+            // Reset highlighted rows and mobile cards
+            const activeTiers = [tierSilver, tierGold, tierPlatinum, mTierSilver, mTierGold, mTierPlatinum];
+            activeTiers.forEach(el => {
+                if (el) el.classList.remove('active-tier');
+            });
 
             if (!inputVal || inputVal <= 0) {
                 payoutText.innerText = "₹ 0";
@@ -947,26 +1370,29 @@
             let tierName = "";
 
             if (val <= 1000000) {
-                percentage = 5.0;
+                percentage = 4.0;
                 payout = val * (percentage / 100.0);
-                tierName = "Tier I (Silver) - 5.0% Gross";
-                tierSilver.classList.add('active-tier');
+                tierName = "Tier I (Silver) - 4.0% Gross";
+                if (tierSilver) tierSilver.classList.add('active-tier');
+                if (mTierSilver) mTierSilver.classList.add('active-tier');
             } else if (val <= 2500000) {
-                percentage = 7.0;
+                percentage = 6.0;
                 payout = val * (percentage / 100.0);
-                tierName = "Tier II (Gold) - 7.0% Gross";
-                tierGold.classList.add('active-tier');
+                tierName = "Tier II (Gold) - 6.0% Gross";
+                if (tierGold) tierGold.classList.add('active-tier');
+                if (mTierGold) mTierGold.classList.add('active-tier');
             } else {
-                if (val <= 5000000) {
-                    percentage = 8.0;
-                } else if (val <= 10000000) {
-                    percentage = 9.0;
-                } else {
+                if (val >= 3000000) {
                     percentage = 10.0;
+                } else {
+                    // Linear scaling between 8.0% at 25,00,000 and 10.0% at 30,00,000 (30 Lakhs)
+                    const ratio = (val - 2500000) / (3000000 - 2500000);
+                    percentage = 8.0 + ratio * (10.0 - 8.0);
                 }
                 payout = val * (percentage / 100.0);
-                tierName = `Tier III (Platinum) - ${percentage.toFixed(1)}% Scaled Yield`;
-                tierPlatinum.classList.add('active-tier');
+                tierName = `Tier III (Platinum) - ${percentage.toFixed(2)}% Scaled Yield`;
+                if (tierPlatinum) tierPlatinum.classList.add('active-tier');
+                if (mTierPlatinum) mTierPlatinum.classList.add('active-tier');
             }
 
             const formatter = new Intl.NumberFormat('en-IN', {
@@ -982,7 +1408,7 @@
         // Onboarding Form Handlers
         function handleRegistrationSubmit(event) {
             event.preventDefault();
-            
+
             const name = document.getElementById('partner-name').value;
             const mobile = document.getElementById('partner-mobile').value;
             const rera = document.getElementById('partner-rera').value;
@@ -1013,6 +1439,12 @@
         function triggerPdfPrint() {
             window.print();
         }
+
+        // Initialize state on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            calculatePayout();
+        });
     </script>
 </body>
+
 </html>

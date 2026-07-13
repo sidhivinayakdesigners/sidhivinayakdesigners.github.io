@@ -1,28 +1,26 @@
-<!DOCTYPE html>
-
+﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>About Us | Siddhivinayak Designers</title>
-<meta content="Learn about Siddhivinayak Designers, offering top-rated interior designing services in Koparkhairne. Creating the best residential and commercial spaces in Navi Mumbai." name="description"/>
-<link href="https://sidhivinayakdesigners.github.io/about" rel="canonical"/>
-<!-- Favicon -->
-<link href="assets/images/favicon.png" rel="icon" type="image/png"/>
-<link href="favicon.ico" rel="shortcut icon" type="image/x-icon"/>
-<!-- Open Graph -->
-<meta content="website" property="og:type"/>
-<meta content="https://sidhivinayakdesigners.github.io/about" property="og:url"/>
-<meta content="About Us | Siddhivinayak Designers" property="og:title"/>
-<meta content="Read about our design and contracting team in Koparkhairane. Our values, 12+ years experience, and commitment to high-end execution." property="og:description"/>
-<meta content="assets/images/hero_bg.webp" property="og:image"/>
-<!-- Bootstrap 5 & Styles -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.min.css" rel="stylesheet"/>
-<link href="assets/css/style.min.css" rel="stylesheet"/>
-<!-- JSON-LD BreadcrumbList Schema -->
-<script type="application/ld+json">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partner With Us | Strategic Channel Partnership | Siddhivinayak Designers</title>
+  <meta name="description"
+    content="Elite Channel Partnership for real estate professionals in Navi Mumbai. Seamlessly monetize premium closures with up to 10% commission and 48-hour tranche payouts.">
+  <link rel="canonical" href="https://sidhivinayakdesigners.github.io/partner-with-us/">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+  <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico">
+
+  <!-- Bootstrap 5 & Styles -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.min.css">
+  <link rel="stylesheet" href="../assets/css/style.min.css">
+
+  <!-- JSON-LD BreadcrumbList Schema -->
+  <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
@@ -34,207 +32,1079 @@
       },{
         "@type": "ListItem",
         "position": 2,
-        "name": "About Us",
-        "item": "https://sidhivinayakdesigners.github.io/about"
+        "name": "Partner With Us",
+        "item": "https://sidhivinayakdesigners.github.io/partner-with-us/"
       }]
     }
     </script>
-<!-- Google Tag (gtag.js) - Google Analytics -->
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER"></script>
-<script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-PLACEHOLDER');
-    </script>
+
+  <!-- Custom Premium Styles for Partner Page -->
+  <style>
+    /* Light theme styling matching index.html */
+    .partner-glass-card {
+      background: #FFFFFF;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      border-radius: 0;
+    }
+
+    .partner-glass-card:hover {
+      border-color: var(--color-gold);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Interactive Commission Table */
+    .commission-table {
+      border-collapse: separate;
+      border-spacing: 0;
+      width: 100%;
+    }
+
+    .commission-table th {
+      background-color: var(--color-gold-light);
+      color: var(--color-gold);
+      border-bottom: 2px solid var(--color-gold);
+      font-family: var(--font-heading);
+      padding: 1.2rem 1rem;
+      font-weight: 600;
+    }
+
+    .commission-table td {
+      padding: 1.2rem 1rem;
+      border-bottom: 1px solid var(--color-border);
+      transition: all 0.3s ease;
+      color: var(--color-text-muted);
+    }
+
+    .commission-table tr {
+      transition: all 0.3s ease;
+    }
+
+    .commission-table tr.active-tier {
+      background-color: rgba(184, 144, 71, 0.08) !important;
+    }
+
+    .commission-table tr.active-tier td {
+      color: var(--color-text-light) !important;
+      border-top: 1px solid var(--color-gold);
+      border-bottom: 1px solid var(--color-gold);
+      font-weight: 600;
+    }
+
+    /* Live Calculator Widget */
+    .calc-input-group {
+      position: relative;
+    }
+
+    .calc-input-group span.currency-prefix {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-gold);
+      font-weight: 600;
+    }
+
+    .calc-input-group input {
+      padding-left: 45px !important;
+      background-color: #FFFFFF !important;
+      border: 1px solid var(--color-border) !important;
+      color: var(--color-text-light) !important;
+      font-size: 1.15rem;
+      border-radius: 0;
+      transition: all 0.3s ease;
+    }
+
+    .calc-input-group input:focus {
+      border-color: var(--color-gold) !important;
+      box-shadow: 0 4px 15px rgba(184, 144, 71, 0.08) !important;
+    }
+
+    /* Tranche Release Visuals */
+    .tranche-card {
+      padding: 2rem;
+      background: #FFFFFF;
+      border: 1px solid var(--color-border);
+      height: 100%;
+      transition: all 0.4s ease;
+      border-radius: 0;
+    }
+
+    .tranche-card:hover {
+      background: var(--color-gold-light);
+      border-color: var(--color-gold);
+      transform: translateY(-3px);
+    }
+
+    .tranche-icon-box {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--color-gold-light);
+      border: 1px solid var(--color-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      color: var(--color-gold);
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .tranche-card:hover .tranche-icon-box {
+      background: var(--color-gold);
+      color: #FFFFFF;
+      box-shadow: 0 0 20px rgba(184, 144, 71, 0.4);
+    }
+
+    #form-success-message {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Form elements */
+    .partner-form .form-control {
+      background-color: #FFFFFF !important;
+      border: 1px solid var(--color-border) !important;
+      color: var(--color-text-light) !important;
+      border-radius: 0;
+      padding: 0.9rem 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    .partner-form .form-control:focus {
+      border-color: var(--color-gold) !important;
+      box-shadow: 0 4px 15px rgba(184, 144, 71, 0.08) !important;
+    }
+
+    .partner-form label {
+      color: var(--color-text-muted);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    /* PDF Download floating/trigger styling */
+    .pdf-download-btn {
+      background: linear-gradient(135deg, var(--color-gold), #9E7A37);
+      color: #FFFFFF !important;
+      border: none;
+      transition: all 0.3s ease;
+    }
+
+    .pdf-download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(184, 144, 71, 0.4);
+    }
+
+    /* Print Media Styles (High Fidelity PDF slide deck mock) */
+    @media print {
+      body {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+        font-size: 12pt;
+        width: 100%;
+      }
+
+      .navbar,
+      footer,
+      .floating-widgets,
+      .sticky-cta-banner,
+      .btn:not(.print-keep),
+      .pdf-hide,
+      .calculator-inputs,
+      .success-btn-back {
+        display: none !important;
+      }
+
+      .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      /* Page Structure */
+      .print-page {
+        page-break-before: always !important;
+        break-before: page !important;
+        padding: 20mm 10mm !important;
+        min-height: 270mm;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: #FFFFFF !important;
+        border: 1px solid #CCCCCC;
+        margin-bottom: 10mm;
+      }
+
+      .print-page:first-of-type {
+        page-break-before: avoid !important;
+        break-before: avoid !important;
+      }
+
+      /* Styles inside printable deck */
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: #12110F !important;
+        page-break-after: avoid;
+      }
+
+      .text-gold {
+        color: #B89047 !important;
+      }
+
+      p,
+      td,
+      th {
+        color: #333333 !important;
+      }
+
+      .partner-glass-card {
+        background: #FFFFFF !important;
+        border: 1px solid #DDDDDD !important;
+        box-shadow: none !important;
+        transform: none !important;
+        padding: 10px !important;
+      }
+
+      .tranche-card {
+        background: #F9F9F9 !important;
+        border: 1px solid #DDDDDD !important;
+        padding: 15px !important;
+      }
+
+      .commission-table {
+        width: 100% !important;
+      }
+
+      .commission-table th {
+        background-color: #F0EDE6 !important;
+        border-bottom: 2px solid #B89047 !important;
+        color: #B89047 !important;
+      }
+
+      .commission-table td {
+        border-bottom: 1px solid #DDDDDD !important;
+      }
+
+      .print-logo-header {
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 30mm;
+        border-bottom: 2px solid #B89047;
+        padding-bottom: 10mm;
+      }
+
+      .print-footer-info {
+        display: block !important;
+        border-top: 1px solid #DDDDDD;
+        padding-top: 5mm;
+        font-size: 9pt;
+        text-align: center;
+        color: #777777 !important;
+      }
+
+      /* Custom spacing to force items cleanly onto pages */
+      .page-title {
+        font-size: 28pt !important;
+        line-height: 1.2;
+        margin-top: 20mm;
+      }
+    }
+
+    /* Screen-only styling for print elements */
+    .print-logo-header,
+    .print-footer-info {
+      display: none;
+    }
+
+    /* Custom spacing utilities */
+    .border-gold-dashed {
+      border: 1px dashed var(--color-gold);
+    }
+
+    /* Hero card text overrides for contrast */
+    body .partner-hero-card .text-white:not(.navbar-brand):not(.nav-link):not(.btn):not(.float-btn):not(footer *):not(.hero-section *):not(.lightbox-modal *),
+    .partner-hero-card h1,
+    .partner-hero-card h2,
+    .partner-hero-card h3,
+    .partner-hero-card h4,
+    .partner-hero-card h5,
+    .partner-hero-card h6,
+    .partner-hero-card .text-white {
+      color: #FFFFFF !important;
+    }
+
+    .partner-hero-card p,
+    .partner-hero-card .lead {
+      color: #ECEAE4 !important;
+    }
+
+    .partner-hero-card .text-gold {
+      color: var(--color-gold) !important;
+    }
+
+    /* Hover Zoom and Pointer for Lightbox Trigger Images */
+    .partner-glass-card img.lightbox-trigger {
+      cursor: pointer;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .partner-glass-card img.lightbox-trigger:hover {
+      transform: scale(1.05);
+    }
+
+
+    .lightbox-close {
+      position: fixed !important;
+      top: 20px !important;
+      right: 20px !important;
+      color: #FFFFFF !important;
+      font-size: 2.5rem !important;
+      cursor: pointer !important;
+      z-index: 10010 !important;
+      transition: color 0.2s ease !important;
+    }
+
+    .lightbox-close:hover {
+      color: var(--color-gold) !important;
+    }
+
+    .lightbox-caption {
+      margin-top: 15px;
+      color: #E5E2DD;
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+    }
+  </style>
 </head>
+
 <body>
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg fixed-top navbar-dark scrolled">
-<div class="container">
-<a class="navbar-brand text-white d-flex align-items-center gap-2" href="/">
-<img alt="Siddhivinayak Designers" class="d-inline-block align-text-top" height="36" src="assets/images/logo_icon.webp"/>
-<span><span class="text-gold">Siddhivinayak</span> Designers</span>
-</a>
-<button class="navbar-toggler border-0" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
-<span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarNav">
-<ul class="navbar-nav ms-auto align-items-center">
-<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-<li class="nav-item"><a class="nav-link active" href="/about">About</a></li>
-<li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
-<li class="nav-item"><a class="nav-link" href="/gallery">Gallery</a></li>
-<li class="nav-item"><a class="nav-link" href="/pricing">Pricing</a></li>
-<li class="nav-item"><a class="nav-link" href="/blog/">Blog</a></li>
-<li class="nav-item"><a class="nav-link" href="/faqs">FAQs</a></li>
-<li class="nav-item"><a class="nav-link" href="/partner-with-us/">Partner With Us</a></li><li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
-<li class="nav-item ms-lg-3 mt-3 mt-lg-0">
-<a class="btn btn-gold btn-sm px-3 text-dark" href="/contact">Get Quote</a>
-</li>
-</ul>
-</div>
-</div>
-</nav>
-<!-- Header Banner -->
-<section class="py-5 bg-dark" style="margin-top: 70px;">
-<div class="container py-4 text-center">
-<h1 class="font-luxury text-white mb-2" data-aos="fade-down">Top-rated Interior Designing Services in Koparkhairne</h1>
-<div class="custom-breadcrumb text-center justify-content-center d-flex gap-2">
-<a href="/">Home</a>
-<span class="text-muted">/</span>
-<span>About Us</span>
-</div>
-</div>
-</section>
-<!-- Narrative Section -->
-<section class="py-5 bg-dark">
-<div class="container py-5">
-<div class="row align-items-center g-5">
-<div class="col-lg-6" data-aos="fade-right">
-<div class="img-zoom-hover border border-light-subtle">
-<img alt="Siddhivinayak Designers Portfolio Navi Mumbai" class="img-fluid w-100" loading="lazy" src="assets/images/2026-04-11 (19).webp"/>
-</div>
-</div>
-<div class="col-lg-6" data-aos="fade-left">
-<span class="section-subtitle">Since 2014</span>
-<h2 class="section-title text-white font-luxury mb-4">Creating the Best Residential and Commercial Spaces in Navi Mumbai</h2>
-<p class="text-muted">Siddhivinayak Designers is Navi Mumbai's leading premium interior contracting agency. Based in Koparkhairane, we deliver complete turnkey contracting solutions for luxury homes and commercial spaces.</p>
-<p class="text-muted">Our strength lies in our **in-house manufacturing units** and dedicated team of over 30 master craftsmen, carpenters, and civil engineers. We manage everything directly, ensuring strict quality control, transparent material specs, and precise timelines.</p>
-<p class="text-gold fw-bold">"We don't just design layouts on a screen; we execute them with precision in wood, metal, glass, and marble."</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Trust Pillars -->
-<section class="py-5 bg-dark">
-<div class="container py-5">
-<div class="text-center mb-5" data-aos="fade-up">
-<span class="section-subtitle">Pillars of Excellence</span>
-<h2 class="section-title text-white font-luxury">Our Commitments to Clients</h2>
-</div>
-<div class="row g-4 text-center">
-<div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-<div class="premium-card p-4 h-100">
-<div class="text-gold mb-3 fs-3"><i class="fas fa-history"></i></div>
-<h4 class="text-white h5 font-luxury mb-2">12+ Years Experience</h4>
-<p class="small text-muted">Over a decade of tackling complex civil and contracting challenges in Navi Mumbai flats, villas, and showrooms.</p>
-</div>
-</div>
-<div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-<div class="premium-card p-4 h-100">
-<div class="text-gold mb-3 fs-3"><i class="fas fa-truck-loading"></i></div>
-<h4 class="text-white h5 font-luxury mb-2">On-Time Delivery</h4>
-<p class="small text-muted">A strict 45-day handover agreement with financial penalty clauses in case of unapproved layout delays.</p>
-</div>
-</div>
-<div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-<div class="premium-card p-4 h-100">
-<div class="text-gold mb-3 fs-3"><i class="fas fa-search-dollar"></i></div>
-<h4 class="text-white h5 font-luxury mb-2">Transparent BOQs</h4>
-<p class="small text-muted">Every quotation lists raw material brands, plywood grades (BWP/BWR), veneer thicknesses, and hardware specs.</p>
-</div>
-</div>
-<div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-<div class="premium-card p-4 h-100">
-<div class="text-gold mb-3 fs-3"><i class="fas fa-shield-alt"></i></div>
-<h4 class="text-white h5 font-luxury mb-2">10-Year Warranty</h4>
-<p class="small text-muted">All customized wardrobes, modular kitchen cabinets, and structural woodwork carry certified warranty certificates.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Design Process CTA -->
-<section class="py-5 bg-dark">
-<div class="container py-5 text-center">
-<div class="row justify-content-center">
-<div class="col-lg-8" data-aos="zoom-in">
-<h2 class="section-title text-white font-luxury mb-4">Ready to Create Your Luxury Home?</h2>
-<p class="text-muted mb-5">Our specialist design consultants are ready to assist you. Get a complete layout mapping and a transparent budget breakdown during our free site consultation.</p>
-<div class="d-flex justify-content-center gap-3">
-<a class="btn btn-gold px-4 py-3" href="/contact">Book Site Visit</a>
-<a class="btn btn-outline-gold px-4 py-3" href="https://wa.me/918369297174" target="_blank">
-<i class="fab fa-whatsapp me-2"></i>Connect on WhatsApp
-                        </a>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Floating Actions -->
-<div class="floating-widgets">
-<a class="float-btn float-whatsapp" href="https://wa.me/918369297174?text=Hi%20Siddhivinayak%20Designers,%20I'm%20interested%20in%20a%20free%20design%20consultation." target="_blank">
-<i class="fab fa-whatsapp"></i>
-</a>
-<a class="float-btn float-call" href="tel:+918369297174">
-<i class="fas fa-phone-alt"></i>
-</a>
-</div>
-<!-- Footer -->
-<footer class="py-5 text-white">
-<div class="container py-4">
-<div class="row g-4">
-<div class="col-lg-4">
-<h5 class="font-luxury mb-3"><span class="text-gold">Siddhivinayak</span> Designers</h5>
-<p class="small text-muted mb-4">Crafting luxurious homes, modular kitchens, and high-end offices across Koparkhairane, Vashi, and entire Navi Mumbai. Licensed civil and interior contractors.</p>
-<div class="social-icons">
-<a aria-label="Facebook Page" href="https://www.facebook.com/people/Siddhivinayak-Interior/61591244265786/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-<a aria-label="Instagram Profile" href="https://www.instagram.com/siddhivinayakdesigners/" target="_blank"><i class="fab fa-instagram"></i></a>
-<a aria-label="LinkedIn Profile" href="https://linkedin.com/company/siddhivinayakdesigners" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-<a aria-label="Google Business Profile" href="https://maps.google.com/?cid=6911458856073113523" target="_blank" title="Google Business Profile"><i class="fab fa-google"></i></a>
-</div>
-</div>
-<div class="col-lg-2">
-<h6 class="font-luxury text-white mb-3">Quick Links</h6>
-<ul class="list-unstyled">
-<li class="mb-2"><a href="/about">About Us</a></li>
-<li class="mb-2"><a href="/services">Our Services</a></li>
-<li class="mb-2"><a href="/gallery">Gallery</a></li>
-<li class="mb-2"><a href="/pricing">Pricing Plans</a></li>
-<li class="mb-2"><a href="/blog/">Blog</a></li>
-</ul>
-</div>
-<div class="col-lg-3">
-<h6 class="font-luxury text-white mb-3">Our Core Services</h6>
-<ul class="list-unstyled">
-<li class="mb-2"><a href="/services">Complete Home Interior</a></li>
-<li class="mb-2"><a href="/services">Modular Kitchens</a></li>
-<li class="mb-2"><a href="/services">Living Room Designs</a></li>
-<li class="mb-2"><a href="/services">False Ceiling &amp; Lighting</a></li>
-<li class="mb-2"><a href="/services">Office &amp; Commercial</a></li>
-<li class="mb-2"><a href="/services">Contracting &amp; Civil Work</a></li>
-</ul>
-</div>
-<div class="col-lg-3">
-<h6 class="font-luxury text-white mb-3">Contact Details</h6>
-<p class="small text-muted mb-2"><i class="fas fa-map-marker-alt text-gold me-2"></i> <a class="text-muted" href="https://maps.google.com/?cid=6911458856073113523" rel="noopener" target="_blank">shree laxmi chs, A 301, sector: 23, Kopar Khairane, Navi Mumbai, Maharashtra 400709</a></p>
-<p class="small text-muted mb-2"><i class="fas fa-phone-alt text-gold me-2"></i> <a href="tel:+918369297174">+91 83692 97174</a></p>
-<p class="small text-muted"><i class="fas fa-envelope text-gold me-2"></i> <a class="email-link" data-domain="gmail.com" data-user="siddeshmachale" href="#">siddeshmachale [at] gmail.com</a></p>
-</div>
-</div>
-<hr class="border-secondary my-4"/>
-<div class="row align-items-center">
-<div class="col-md-6 text-center text-md-start">
-<p class="small text-muted mb-0">© 2026 Siddhivinayak Designers. All Rights Reserved.</p>
-</div>
-<div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
-<a class="small text-muted me-3" href="/privacy-policy">Privacy Policy</a>
-<a class="small text-muted" href="/terms-conditions">Terms &amp; Conditions</a>
-</div>
-</div>
-</div>
-</footer>
-<!-- JS CDN -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.min.js"></script>
-<script src="assets/js/main.min.js?v=2"></script>
-<script>
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
-        });
-    </script>
+
+  <!-- Header & Navigation -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-dark scrolled navbar-partner">
+    <div class="container">
+      <a class="navbar-brand text-white d-flex align-items-center gap-2" href="/">
+        <img src="../assets/images/logo_icon.webp" alt="Siddhivinayak Designers" height="36"
+          class="d-inline-block align-text-top">
+        <span><span class="text-gold">Siddhivinayak</span> Designers</span>
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="/services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="/gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="/pricing.html">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="/blog/">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="/faqs.html">FAQs</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/">Partner With Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="/contact.html">Contact</a></li>
+          <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+            <a href="/contact.html" class="btn btn-gold btn-sm px-3 text-dark">Get Quote</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PRINT PAGE 1: Invitation Deck Cover & Hero -->
+  <div class="print-page" id="page-invitation">
+    <!-- Print-only header -->
+    <div class="print-logo-header">
+      <img src="../assets/images/logo_icon.webp" alt="Logo" height="70" style="margin-bottom: 15px;">
+      <h2 style="font-size: 24pt; letter-spacing: 2px; text-transform: uppercase;">Siddhivinayak Designers</h2>
+      <p
+        style="font-size: 11pt; letter-spacing: 5px; color: #B89047 !important; text-transform: uppercase; margin-bottom: 0;">
+        Interior Architecture & Design</p>
+    </div>
+
+    <section class="py-5 partner-hero-card"
+      style="margin-top: 80px; background-image: linear-gradient(135deg, rgba(18, 17, 15, 0.94) 50%, rgba(18, 17, 15, 0.6) 100%), url('../assets/images/modular-kitchen-koparkhairne-siddhivinayak-interior.webp'); background-size: cover; background-position: center; border: 1px solid var(--color-partner-border); padding: 5rem 3rem !important;">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-9" data-aos="fade-right">
+            <span class="section-subtitle">Corporate Alliance Deck</span>
+            <h1 class="page-title text-white font-luxury mb-4"
+              style="font-size: 3rem; font-weight: 700; line-height: 1.25;">
+              Elevate Your Closures.<br><span class="text-gold">Multiply Your Returns.</span>
+            </h1>
+            <h3 class="h5 text-gold font-luxury mb-4" style="letter-spacing: 1px;">An Exclusive Channel Partnership for
+              Elite Real Estate Professionals</h3>
+            <p class="lead mb-5" style="color: var(--color-partner-text); font-size: 1.15rem; line-height: 1.8;">
+              Siddhivinayak Designers formally extends a private invitation to Navi Mumbai's leading real estate
+              consultants and visionaries. Establish an unparalleled, high-yield alliance to seamlessly monetize your
+              high-end property closures into extraordinary secondary revenue streams, while ensuring your clients
+              receive absolute white-glove luxury design execution.
+            </p>
+
+            <div class="d-flex flex-wrap gap-3 pdf-hide">
+              <a href="../assets/documents/Siddhivinayak_Partnership_Deck.pdf" download
+                class="btn pdf-download-btn py-3 px-4 fw-bold">
+                <i class="fas fa-file-pdf me-2"></i>Download Partnership Deck (PDF)
+              </a>
+              <a href="#register-form" class="btn btn-outline-gold py-3 px-4 fw-bold">
+                Become a Partner Today
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Print-only footer page number / notice -->
+    <div class="print-footer-info">
+      <div class="d-flex justify-content-between">
+        <span>Siddhivinayak Designers &copy; 2026</span>
+        <span>CONFIDENTIAL - FOR PRIVATE CIRCULATION ONLY</span>
+        <span>Page 1 of 4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRINT PAGE 2: Commission Structure & Payout Model -->
+  <div class="print-page" id="page-structure">
+    <!-- Print-only header -->
+    <div class="print-logo-header" style="margin-bottom: 10mm; padding-bottom: 5mm;">
+      <h3 style="font-size: 14pt; letter-spacing: 2px; text-transform: uppercase; color: #B89047 !important;">
+        Siddhivinayak Designers</h3>
+      <p style="font-size: 9pt; text-transform: uppercase; margin-bottom: 0;">1. Commission Tiers & 2. Tranche Payout
+        Model</p>
+    </div>
+
+    <section class="py-5 border-top border-secondary">
+      <div class="container">
+        <div class="row g-5">
+          <!-- Left Side: Table and Live Calculator -->
+          <div class="col-xl-6" data-aos="fade-up">
+            <div class="mb-4">
+              <span class="section-subtitle">Financial Yield Matrix</span>
+              <h2 class="font-luxury text-white h3 mb-3">Industry-Leading Commission Structure</h2>
+              <p class="text-muted small">Your scaling secondary revenue yields are automatically grouped by standard
+                project classification contracts:</p>
+            </div>
+
+            <!-- Table -->
+            <div class="table-responsive partner-glass-card p-2 mb-4">
+              <table class="table commission-table text-left mb-0">
+                <thead>
+                  <tr>
+                    <th>Project Classification</th>
+                    <th>Contract Value Range (INR)</th>
+                    <th>Your Scaled Yield</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr id="tier-silver">
+                    <td class="fw-bold">Tier I (Silver)</td>
+                    <td>Up to 10,00,000</td>
+                    <td class="text-gold fw-bold">5.0% Gross Allocation</td>
+                  </tr>
+                  <tr id="tier-gold">
+                    <td class="fw-bold">Tier II (Gold)</td>
+                    <td>10,00,000 to 25,00,000</td>
+                    <td class="text-gold fw-bold">7.0% Gross Allocation</td>
+                  </tr>
+                  <tr id="tier-platinum">
+                    <td class="fw-bold">Tier III (Platinum)</td>
+                    <td>Above 25,00,000</td>
+                    <td class="text-gold fw-bold">8.0% - 10.0% Scaled Yield</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Live Calculator (hides on print, replaced by printable note if needed) -->
+            <div class="partner-glass-card p-4 calculator-inputs">
+              <h4 class="font-luxury h5 text-gold mb-3"><i class="fas fa-calculator me-2"></i>Live Yield Estimator</h4>
+              <p class="small text-muted mb-3">Enter an estimated project budget contract size to instantly evaluate
+                your payout allocation:</p>
+              <div class="calc-input-group mb-3">
+                <span class="currency-prefix">₹</span>
+                <input type="number" id="calc-contract-value" class="form-control"
+                  placeholder="Enter Contract Value (e.g. 1500000)" oninput="calculatePayout()">
+              </div>
+              <div class="p-3 border-gold-dashed bg-dark-card rounded text-center">
+                <span class="d-block small text-muted text-uppercase mb-1">Estimated Partner Payout</span>
+                <span class="h3 font-luxury text-gold mb-0" id="calc-payout-text">₹ 0</span>
+                <span class="d-block small text-light mt-1" id="calc-tier-text">Enter value to see tier</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Side: Trust Factor / Tranche Model -->
+          <div class="col-xl-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="mb-4">
+              <span class="section-subtitle">Liquidity Framework</span>
+              <h2 class="font-luxury text-white h3 mb-3">The Trust Factor: Tranche Release</h2>
+              <p class="text-muted small">We respect your business cash flow. Our transparent, milestone-linked Tranche
+                Release Model ensures you get paid efficiently without waiting for total construction handovers:</p>
+            </div>
+
+            <div class="row g-4">
+              <div class="col-12">
+                <div class="tranche-card">
+                  <div class="d-flex align-items-start gap-3">
+                    <div class="tranche-icon-box flex-shrink-0">
+                      <i class="fas fa-bolt"></i>
+                    </div>
+                    <div>
+                      <h4 class="h5 text-white mb-2">20% Advance Liquidity</h4>
+                      <p class="text-muted small mb-0">Released within 48 business hours of the client executing the
+                        final layout contract and clearing the initial token deposit payment.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="tranche-card">
+                  <div class="d-flex align-items-start gap-3">
+                    <div class="tranche-icon-box flex-shrink-0">
+                      <i class="fas fa-hammer"></i>
+                    </div>
+                    <div>
+                      <h4 class="h5 text-white mb-2">40% Mid-Execution Release</h4>
+                      <p class="text-muted small mb-0">Released immediately upon completion of major raw site civil
+                        milestones, specifically carpentry framework erections and false ceiling support frameworks.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="tranche-card">
+                  <div class="d-flex align-items-start gap-3">
+                    <div class="tranche-icon-box flex-shrink-0">
+                      <i class="fas fa-key"></i>
+                    </div>
+                    <div>
+                      <h4 class="h5 text-white mb-2">40% Final Settlement</h4>
+                      <p class="text-muted small mb-0">Cleared concurrently with the official keys handover handover
+                        ceremony to the client.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Print-only footer -->
+    <div class="print-footer-info">
+      <div class="d-flex justify-content-between">
+        <span>Siddhivinayak Designers &copy; 2026</span>
+        <span>CONFIDENTIAL - FOR PRIVATE CIRCULATION ONLY</span>
+        <span>Page 2 of 4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRINT PAGE 3: Portfolio Showcases -->
+  <div class="print-page" id="page-portfolio">
+    <!-- Print-only header -->
+    <div class="print-logo-header" style="margin-bottom: 10mm; padding-bottom: 5mm;">
+      <h3 style="font-size: 14pt; letter-spacing: 2px; text-transform: uppercase; color: #B89047 !important;">
+        Siddhivinayak Designers</h3>
+      <p style="font-size: 9pt; text-transform: uppercase; margin-bottom: 0;">3. Design Excellence Portfolio Showcase
+      </p>
+    </div>
+
+    <section class="py-5 border-top border-secondary">
+      <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+          <span class="section-subtitle">Real Executed Mastery</span>
+          <h2 class="font-luxury text-white h3">Design Excellence Portfolio Showcase</h2>
+          <p class="text-muted max-w-600 mx-auto mt-2">Explore the design execution that safeguards your reputation. We
+            have completed over 500+ premium handovers in Navi Mumbai since the late 1990s.</p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+          <!-- Project 1 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="partner-glass-card h-100 overflow-hidden">
+              <a href="javascript:void(0)" class="lightbox-trigger" data-src="../assets/images/IMG_0804.webp"
+                data-caption="Luxury Residential Handover - Palm Beach Road, Sanpada">
+                <img src="../assets/images/IMG_0804.webp" class="img-fluid w-100"
+                  style="height: 220px; object-fit: cover;" alt="Luxury Residential Handover">
+              </a>
+              <div class="p-4">
+                <h4 class="h5 text-white font-luxury mb-3">Luxury Residential Handover</h4>
+                <ul class="list-unstyled small mb-0" style="color: var(--color-partner-text-muted);">
+                  <li class="mb-2"><strong class="text-white">Location:</strong> Palm Beach Road, Sanpada</li>
+                  <li class="mb-2"><strong class="text-white">Typology:</strong> 4 BHK Premium Duplex</li>
+                  <li><strong class="text-white">Execution Style:</strong> Contemporary Minimalist with Bespoke Veneer
+                    Articulations</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- Project 2 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="partner-glass-card h-100 overflow-hidden">
+              <a href="javascript:void(0)" class="lightbox-trigger" data-src="../assets/images/images (3).webp"
+                data-caption="Couture Living Concepts - Seawoods Grand Central, Navi Mumbai">
+                <img src="../assets/images/images (3).webp" class="img-fluid w-100"
+                  style="height: 220px; object-fit: cover;" alt="Couture Living Concepts">
+              </a>
+              <div class="p-4">
+                <h4 class="h5 text-white font-luxury mb-3">Couture Living Concepts</h4>
+                <ul class="list-unstyled small mb-0" style="color: var(--color-partner-text-muted);">
+                  <li class="mb-2"><strong class="text-white">Location:</strong> Seawoods Grand Central, Navi Mumbai
+                  </li>
+                  <li class="mb-2"><strong class="text-white">Typology:</strong> High-End Penthouse Suite</li>
+                  <li><strong class="text-white">Execution Style:</strong> Transitional Luxury featuring Ambient
+                    Architectural Valance Lighting</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- Project 3 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="partner-glass-card h-100 overflow-hidden">
+              <a href="javascript:void(0)" class="lightbox-trigger"
+                data-src="../assets/images/luxury-home-interior-designer-vashi (1).webp"
+                data-caption="Project Titan - Palm Beach Road, Sanpada">
+                <img src="../assets/images/luxury-home-interior-designer-vashi (1).webp" class="img-fluid w-100"
+                  style="height: 220px; object-fit: cover;" alt="Project Titan">
+              </a>
+              <div class="p-4">
+                <h4 class="h5 text-white font-luxury mb-3">Project Titan: Urban Minimalism</h4>
+                <ul class="list-unstyled small mb-0" style="color: var(--color-partner-text-muted);">
+                  <li class="mb-2"><strong class="text-white">Location:</strong> Palm Beach Road, Sanpada</li>
+                  <li class="mb-2"><strong class="text-white">Typology:</strong> Premium 3 BHK Apartment</li>
+                  <li><strong class="text-white">Execution Style:</strong> Contemporary Architectural Design
+                    incorporating Sustainable Louvered Timber Panels</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- Project 4 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="partner-glass-card h-100 overflow-hidden">
+              <a href="javascript:void(0)" class="lightbox-trigger"
+                data-src="../assets/images/modular-kitchen-koparkhairne-siddhivinayak-interior.webp"
+                data-caption="Premium Modular Kitchen - Koparkhairne, Navi Mumbai">
+                <img src="../assets/images/modular-kitchen-koparkhairne-siddhivinayak-interior.webp"
+                  class="img-fluid w-100" style="height: 220px; object-fit: cover;" alt="Acrylic Modular Kitchen">
+              </a>
+              <div class="p-4">
+                <h4 class="h5 text-white font-luxury mb-3">Premium Modular Kitchen</h4>
+                <ul class="list-unstyled small mb-0" style="color: var(--color-partner-text-muted);">
+                  <li class="mb-2"><strong class="text-white">Location:</strong> Sector 23, Koparkhairne</li>
+                  <li class="mb-2"><strong class="text-white">Typology:</strong> Premium Parallel Kitchen Layout</li>
+                  <li><strong class="text-white">Execution Style:</strong> High-Gloss Acrylic Cabinets with Soft-close
+                    Drawers</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- Project 5 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="partner-glass-card h-100 overflow-hidden">
+              <a href="javascript:void(0)" class="lightbox-trigger"
+                data-src="../assets/images/living-room-interior-designer-koparkhairne.webp"
+                data-caption="Luxury Lounge Concept - Palm Beach Road, Sanpada">
+                <img src="../assets/images/living-room-interior-designer-koparkhairne.webp" class="img-fluid w-100"
+                  style="height: 220px; object-fit: cover;" alt="Living Room Wall Paneling">
+              </a>
+              <div class="p-4">
+                <h4 class="h5 text-white font-luxury mb-3">Luxury Lounge Concept</h4>
+                <ul class="list-unstyled small mb-0" style="color: var(--color-partner-text-muted);">
+                  <li class="mb-2"><strong class="text-white">Location:</strong> Palm Beach Road, Sanpada</li>
+                  <li class="mb-2"><strong class="text-white">Typology:</strong> High-End Lounge Suite</li>
+                  <li><strong class="text-white">Execution Style:</strong> Warm Cove Lighting & Gold Trim Wall Paneling
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- Project 6 -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+            <div class="partner-glass-card h-100 overflow-hidden">
+              <a href="javascript:void(0)" class="lightbox-trigger"
+                data-src="../assets/images/turnkey-residential-interior-navi-mumbai.webp"
+                data-caption="Bespoke Bedroom Suite - Seawoods Grand Central, Navi Mumbai">
+                <img src="../assets/images/turnkey-residential-interior-navi-mumbai.webp" class="img-fluid w-100"
+                  style="height: 220px; object-fit: cover;" alt="Master Bedroom Design">
+              </a>
+              <div class="p-4">
+                <h4 class="h5 text-white font-luxury mb-3">Master Bedroom Suite</h4>
+                <ul class="list-unstyled small mb-0" style="color: var(--color-partner-text-muted);">
+                  <li class="mb-2"><strong class="text-white">Location:</strong> Seawoods Grand Central, Navi Mumbai
+                  </li>
+                  <li class="mb-2"><strong class="text-white">Typology:</strong> Luxury Penthouse Master Bedroom</li>
+                  <li><strong class="text-white">Execution Style:</strong> Velvet Tufted Headboard with Custom
+                    Architectural Valance Lighting</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Print-only footer -->
+    <div class="print-footer-info">
+      <div class="d-flex justify-content-between">
+        <span>Siddhivinayak Designers &copy; 2026</span>
+        <span>CONFIDENTIAL - FOR PRIVATE CIRCULATION ONLY</span>
+        <span>Page 3 of 4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRINT PAGE 4: Registration CTA & Office Channels -->
+  <div class="print-page" id="page-registration">
+    <!-- Print-only header -->
+    <div class="print-logo-header" style="margin-bottom: 10mm; padding-bottom: 5mm;">
+      <h3 style="font-size: 14pt; letter-spacing: 2px; text-transform: uppercase; color: #B89047 !important;">
+        Siddhivinayak Designers</h3>
+      <p style="font-size: 9pt; text-transform: uppercase; margin-bottom: 0;">4. Channels of Interaction & Head Office
+      </p>
+    </div>
+
+    <section class="py-5 border-top border-secondary" id="register-form">
+      <div class="container">
+        <div class="row g-5 align-items-stretch">
+          <!-- Left: Form -->
+          <div class="col-lg-7" data-aos="fade-right">
+            <div class="partner-glass-card p-4 p-md-5 h-100 d-flex flex-column">
+              <div class="mb-4" id="partner-form-header">
+                <span class="section-subtitle">Instant Onboarding</span>
+                <h2 class="font-luxury text-white h3 mb-2">Become a Strategic Partner Today</h2>
+                <p class="text-muted small">Safeguard your reputation with over 25 years of institutional mastery and
+                  500+ ultra-high-net-worth client handovers. Let's build something extraordinary together.</p>
+              </div>
+
+              <form id="partner-registration-form" class="partner-form text-left"
+                onsubmit="handleRegistrationSubmit(event)">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="partner-name">Name *</label>
+                      <input type="text" id="partner-name" class="form-control" placeholder="Full Name" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="partner-mobile">Mobile Number *</label>
+                      <input type="tel" id="partner-mobile" class="form-control" placeholder="Mobile Number" required>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label for="partner-rera">RERA Registration Number / Agency Name *</label>
+                      <input type="text" id="partner-rera" class="form-control"
+                        placeholder="e.g. M517000XXXXX / Elite Realty" required>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-group">
+                      <label for="partner-inventory">Message / Current Premium Inventory Location</label>
+                      <textarea id="partner-inventory" class="form-control" rows="3"
+                        placeholder="e.g., Active inventory around Sanpada, Palm Beach Road, modular kitchen referral..."></textarea>
+                    </div>
+                  </div>
+                  <div class="col-12 mt-4">
+                    <button type="submit" class="btn btn-gold w-100 py-3 text-dark fw-bold uppercase">Register as a
+                      Channel Partner</button>
+                  </div>
+                </div>
+              </form>
+
+              <!-- Success state container (hidden initially) -->
+              <div id="form-success-message" class="p-4 border-gold-dashed text-center my-auto">
+                <div class="tranche-icon-box bg-gold text-white mb-3"
+                  style="width: 70px; height: 70px; font-size: 2rem;">
+                  <i class="fas fa-check-circle"></i>
+                </div>
+                <h3 class="font-luxury text-gold h4 mb-2">Registration Request Received</h3>
+                <p class="small text-light mb-4">Thank you for registering as a Strategic Channel Partner. Our Executive
+                  Partnership Liaison will reach out to you within 2 business hours to share documents and finalize
+                  details.</p>
+                <button onclick="resetRegistrationForm()"
+                  class="btn btn-outline-gold btn-sm px-4 success-btn-back">Submit Another Registration</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Channels of Interaction -->
+          <div class="col-lg-5" data-aos="fade-left" data-aos-delay="200">
+            <div class="partner-glass-card p-4 p-md-5 h-100 d-flex flex-column justify-content-between">
+              <div>
+                <span class="section-subtitle">Head Office</span>
+                <h3 class="font-luxury text-white h4 mb-4">Channels of Interaction</h3>
+
+                <ul class="list-unstyled mb-0" style="font-size: 0.95rem;">
+                  <li class="d-flex align-items-start gap-3 mb-4">
+                    <i class="fas fa-building text-gold mt-1 flex-shrink-0"></i>
+                    <div>
+                      <strong class="text-white d-block mb-1">Corporate Identity</strong>
+                      <span class="text-muted">Siddhivinayak Designers</span>
+                    </div>
+                  </li>
+                  <li class="d-flex align-items-start gap-3 mb-4">
+                    <i class="fas fa-map-marker-alt text-gold mt-1 flex-shrink-0"></i>
+                    <div>
+                      <strong class="text-white d-block mb-1">Office / Studio Address</strong>
+                      <span class="text-muted">shree laxmi chs, A 301, sector: 23, Kopar Khairane, Navi Mumbai,
+                        Maharashtra 400709</span>
+                    </div>
+                  </li>
+                  <li class="d-flex align-items-start gap-3 mb-4">
+                    <i class="fas fa-phone-alt text-gold mt-1 flex-shrink-0"></i>
+                    <div>
+                      <strong class="text-white d-block mb-1">Phone Connections</strong>
+                      <span class="text-muted d-block"><a href="tel:+918369297174" class="text-muted">+91
+                          8369297174</a></span>
+                      <span class="text-muted d-block"><a href="tel:+919892668429" class="text-muted">+91
+                          9892668429</a></span>
+                    </div>
+                  </li>
+                  <li class="d-flex align-items-start gap-3">
+                    <i class="fas fa-envelope text-gold mt-1 flex-shrink-0"></i>
+                    <div>
+                      <strong class="text-white d-block mb-1">Email Inquiries</strong>
+                      <span class="text-muted"><a href="mailto:siddhivinayakdesigners1@gmail.com"
+                          class="text-muted">siddhivinayakdesigners1@gmail.com</a></span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="mt-5 border-top border-secondary pt-4 text-center">
+                <span class="d-block small text-muted text-uppercase mb-2">Web Interface</span>
+                <span class="d-block text-gold fw-bold"><a href="https://sidhivinayakdesigners.github.io/"
+                    target="_blank" class="text-gold">https://sidhivinayakdesigners.github.io/</a></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Print-only footer -->
+    <div class="print-footer-info">
+      <div class="d-flex justify-content-between">
+        <span>Siddhivinayak Designers &copy; 2026</span>
+        <span>CONFIDENTIAL - FOR PRIVATE CIRCULATION ONLY</span>
+        <span>Page 4 of 4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Actions -->
+  <div class="floating-widgets pdf-hide">
+    <a href="https://wa.me/918369297174?text=Hi%20Siddhivinayak%20Designers,%20I'm%20interested%20in%20a%20strategic%20channel%20partnership."
+      class="float-btn float-whatsapp" target="_blank" title="Chat on WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="tel:+918369297174" class="float-btn float-call" title="Call Us Now">
+      <i class="fas fa-phone-alt"></i>
+    </a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="py-5 text-white pdf-hide">
+    <div class="container py-4">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <h5 class="font-luxury mb-3"><span class="text-gold">Siddhivinayak</span> Designers</h5>
+          <p class="small text-muted mb-4">Crafting luxurious homes, modular kitchens, and high-end offices across
+            Koparkhairane, Vashi, and entire Navi Mumbai. Licensed civil and interior contractors.</p>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/people/Siddhivinayak-Interior/61591244265786/" target="_blank"
+              aria-label="Facebook Page"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/siddhivinayakdesigners/" target="_blank"
+              aria-label="Instagram Profile"><i class="fab fa-instagram"></i></a>
+            <a href="https://linkedin.com/company/siddhivinayakdesigners" target="_blank"
+              aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://maps.google.com/?cid=6911458856073113523" target="_blank" title="Google Business Profile"
+              aria-label="Google Business Profile"><i class="fab fa-google"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2">
+          <h6 class="font-luxury text-white mb-3">Quick Links</h6>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="/about.html">About Us</a></li>
+            <li class="mb-2"><a href="/services.html">Our Services</a></li>
+            <li class="mb-2"><a href="/gallery.html">Gallery</a></li>
+            <li class="mb-2"><a href="/pricing.html">Pricing Plans</a></li>
+            <li class="mb-2"><a href="/blog/">Blog</a></li>
+            <li class="mb-2"><a href="/">Partner With Us</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3">
+          <h6 class="font-luxury text-white mb-3">Our Core Services</h6>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="/services.html">Complete Home Interior</a></li>
+            <li class="mb-2"><a href="/services.html">Modular Kitchens</a></li>
+            <li class="mb-2"><a href="/services.html">Living Room Designs</a></li>
+            <li class="mb-2"><a href="/services.html">False Ceiling & Lighting</a></li>
+            <li class="mb-2"><a href="/services.html">Office & Commercial</a></li>
+            <li class="mb-2"><a href="/services.html">Contracting & Civil Work</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3">
+          <h6 class="font-luxury text-white mb-3">Contact Details</h6>
+          <p class="small text-muted mb-2"><i class="fas fa-map-marker-alt text-gold me-2"></i> <span
+              class="text-muted">shree laxmi chs, A 301, sector: 23, Kopar Khairane, Navi Mumbai, Maharashtra
+              400709</span></p>
+          <p class="small text-muted mb-2"><i class="fas fa-phone-alt text-gold me-2"></i> <a href="tel:+918369297174"
+              class="text-muted">+91 83692 97174</a></p>
+          <p class="small text-muted"><i class="fas fa-envelope text-gold me-2"></i> <a
+              href="mailto:siddhivinayakdesigners1@gmail.com" class="text-muted">siddhivinayakdesigners1@gmail.com</a>
+          </p>
+        </div>
+      </div>
+
+      <hr class="border-secondary my-4">
+
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="small text-muted mb-0">&copy; 2026 Siddhivinayak Designers. All Rights Reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
+          <a href="/privacy-policy.html" class="small text-muted me-3">Privacy Policy</a>
+          <a href="/terms-conditions.html" class="small text-muted">Terms & Conditions</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal container -->
+  <div class="lightbox-modal" id="lightboxModal">
+    <div class="lightbox-content">
+      <span class="lightbox-close"><i class="fas fa-times"></i></span>
+      <img alt="Lightbox View" class="lightbox-img" id="lightboxImg" src="" />
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5, AOS, and custom scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.min.js"></script>
+  <script src="../assets/js/main.min.js?v=2"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true
+    });
+
+    // Live Calculator Logics
+    function calculatePayout() {
+      const inputVal = document.getElementById('calc-contract-value').value;
+      const payoutText = document.getElementById('calc-payout-text');
+      const tierText = document.getElementById('calc-tier-text');
+
+      const tierSilver = document.getElementById('tier-silver');
+      const tierGold = document.getElementById('tier-gold');
+      const tierPlatinum = document.getElementById('tier-platinum');
+
+      // Reset highlighted rows
+      tierSilver.classList.remove('active-tier');
+      tierGold.classList.remove('active-tier');
+      tierPlatinum.classList.remove('active-tier');
+
+      if (!inputVal || inputVal <= 0) {
+        payoutText.innerText = "₹ 0";
+        tierText.innerText = "Enter value to see tier";
+        return;
+      }
+
+      const val = parseFloat(inputVal);
+      let payout = 0;
+      let percentage = 0;
+      let tierName = "";
+
+      if (val <= 1000000) {
+        percentage = 5.0;
+        payout = val * (percentage / 100.0);
+        tierName = "Tier I (Silver) - 5.0% Gross";
+        tierSilver.classList.add('active-tier');
+      } else if (val <= 2500000) {
+        percentage = 7.0;
+        payout = val * (percentage / 100.0);
+        tierName = "Tier II (Gold) - 7.0% Gross";
+        tierGold.classList.add('active-tier');
+      } else {
+        if (val <= 5000000) {
+          percentage = 8.0;
+        } else if (val <= 10000000) {
+          percentage = 9.0;
+        } else {
+          percentage = 10.0;
+        }
+        payout = val * (percentage / 100.0);
+        tierName = `Tier III (Platinum) - ${percentage.toFixed(1)}% Scaled Yield`;
+        tierPlatinum.classList.add('active-tier');
+      }
+
+      const formatter = new Intl.NumberFormat('en-IN', {
+        style: 'currency',
+        currency: 'INR',
+        maximumFractionDigits: 0
+      });
+
+      payoutText.innerText = formatter.format(payout);
+      tierText.innerText = tierName;
+    }
+
+    // Onboarding Form Handlers
+    function handleRegistrationSubmit(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('partner-name').value;
+      const mobile = document.getElementById('partner-mobile').value;
+      const rera = document.getElementById('partner-rera').value;
+      const inventory = document.getElementById('partner-inventory').value;
+
+      console.log("Partner Registration Submitted:", {
+        name,
+        mobile,
+        rera,
+        inventory,
+        timestamp: new Date().toISOString()
+      });
+
+      // Hide the form and header, and show success
+      document.getElementById('partner-form-header').style.display = 'none';
+      document.getElementById('partner-registration-form').style.display = 'none';
+      document.getElementById('form-success-message').style.display = 'flex';
+    }
+
+    function resetRegistrationForm() {
+      document.getElementById('partner-registration-form').reset();
+      document.getElementById('partner-form-header').style.display = 'block';
+      document.getElementById('partner-registration-form').style.display = 'block';
+      document.getElementById('form-success-message').style.display = 'none';
+    }
+
+    // Download Deck PDF Handler
+    function triggerPdfPrint() {
+      window.print();
+    }
+  </script>
 </body>
+
 </html>
