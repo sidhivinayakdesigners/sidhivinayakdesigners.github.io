@@ -160,3 +160,81 @@
     margin-left: auto !important;
   }
 }
+
+/* --- WORLD-CLASS FULL-WIDTH DROP-DOWN NAVIGATION OVERLAY (NO PUSHING / NO WRAPPING BUGS) --- */
+@media (max-width: 992px) {
+  .navbar .container {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    position: relative !important;
+  }
+
+  .navbar-brand {
+    font-size: 1.2rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 75% !important;
+    margin-right: 0 !important;
+    display: block !important;
+    z-index: 10000 !important;
+  }
+
+  .navbar-toggler {
+    display: block !important;
+    padding: 4px 8px !important;
+    margin-left: auto !important;
+    z-index: 10000 !important;
+  }
+
+  /* Force the collapsible nav to act as a premium overlay instead of a side drawer or pushing content */
+  .navbar-collapse {
+    position: absolute !important;
+    top: 70px !important; /* height of the navbar */
+    left: 0 !important;
+    width: 100vw !important;
+    margin-left: calc(-1 * var(--bs-gutter-x, 1.5rem)) !important; /* align to the viewport edges */
+    background-color: rgba(21, 20, 19, 0.98) !important;
+    backdrop-filter: blur(15px) !important;
+    padding: 2.5rem 1.5rem !important;
+    border-bottom: 1px solid rgba(184, 144, 71, 0.2) !important;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6) !important;
+    z-index: 9999 !important;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  .navbar-nav {
+    width: 100% !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 1.15rem !important;
+    letter-spacing: 1.5px !important;
+    text-transform: uppercase !important;
+    padding: 0.8rem 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    width: 100% !important;
+    text-align: center !important;
+    color: rgba(255,255,255,0.9) !important;
+  }
+
+  .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+    color: var(--color-gold) !important;
+  }
+
+  .navbar-nav .nav-item:last-child .nav-link,
+  .navbar-nav .nav-item .btn-gold {
+    border-bottom: none !important;
+  }
+
+  .navbar-nav .nav-item {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+}
