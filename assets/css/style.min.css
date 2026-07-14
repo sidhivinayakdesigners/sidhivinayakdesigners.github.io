@@ -352,3 +352,27 @@ body.mobile-nav-open {
 .navbar .nav-link:hover, .navbar .nav-link.active {
   color: var(--color-gold) !important;
 }
+
+/* --- MOBILE NAV SCROLLABILITY & LOGO SPACING CORRECTIONS --- */
+@media (max-width: 992px) {
+  /* Spacing between logo icon and brand text */
+  .navbar-brand {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 12px !important; /* Premium spacious gap */
+    font-size: 1.2rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    max-width: 75% !important;
+    margin-right: 0 !important;
+    z-index: 10000 !important;
+  }
+
+  /* Make mobile dropdown scrollable if links exceed height of screen */
+  .navbar-collapse {
+    max-height: calc(100vh - 75px) !important; /* height minus header */
+    overflow-y: auto !important; /* Enable internal scrolling */
+    -webkit-overflow-scrolling: touch !important; /* Smooth touch inertia on iOS devices */
+  }
+}
