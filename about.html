@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -538,13 +538,13 @@
               <p class="small text-muted mb-3">Enter an estimated project budget contract size to instantly evaluate
                 your payout allocation:</p>
               <div class="calc-input-group mb-3">
-                <span class="currency-prefix">₹</span>
+                <span class="currency-prefix">?</span>
                 <input type="number" id="calc-contract-value" class="form-control"
                   placeholder="Enter Contract Value (e.g. 1500000)" oninput="calculatePayout()">
               </div>
               <div class="p-3 border-gold-dashed bg-dark-card rounded text-center">
                 <span class="d-block small text-muted text-uppercase mb-1">Estimated Partner Payout</span>
-                <span class="h3 font-luxury text-gold mb-0" id="calc-payout-text">₹ 0</span>
+                <span class="h3 font-luxury text-gold mb-0" id="calc-payout-text">? 0</span>
                 <span class="d-block small text-light mt-1" id="calc-tier-text">Enter value to see tier</span>
               </div>
             </div>
@@ -928,7 +928,7 @@
     <div class="container py-4">
       <div class="row g-4">
         <div class="col-lg-4">
-          <h5 class="font-luxury mb-3"><span class="text-gold">Siddhivinayak</span> Designers</h5>
+          <h5 class="font-luxury text-white mb-3"><span class="text-gold">Siddhivinayak</span> Designers</h5>
           <p class="small text-muted mb-4">Crafting luxurious homes, modular kitchens, and high-end offices across
             Koparkhairane, Vashi, and entire Navi Mumbai. Licensed civil and interior contractors.</p>
           <div class="social-icons">
@@ -936,8 +936,7 @@
               aria-label="Facebook Page"><i class="fab fa-facebook-f"></i></a>
             <a href="https://www.instagram.com/siddhivinayakdesigners/" target="_blank"
               aria-label="Instagram Profile"><i class="fab fa-instagram"></i></a>
-            <a href="https://linkedin.com/company/siddhivinayakdesigners" target="_blank"
-              aria-label="LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+            
             <a href="https://maps.google.com/?cid=6911458856073113523" target="_blank" title="Google Business Profile"
               aria-label="Google Business Profile"><i class="fab fa-google"></i></a>
           </div>
@@ -954,14 +953,14 @@
           </ul>
         </div>
         <div class="col-lg-3">
-          <h6 class="font-luxury text-white mb-3">Our Core Services</h6>
+                    <h6 class="font-luxury text-white mb-3">Our Core Services</h6>
           <ul class="list-unstyled">
-            <li class="mb-2"><a href="/services.html">Complete Home Interior</a></li>
-            <li class="mb-2"><a href="/services.html">Modular Kitchens</a></li>
-            <li class="mb-2"><a href="/services.html">Living Room Designs</a></li>
-            <li class="mb-2"><a href="/services.html">False Ceiling & Lighting</a></li>
-            <li class="mb-2"><a href="/services.html">Office & Commercial</a></li>
-            <li class="mb-2"><a href="/services.html">Contracting & Civil Work</a></li>
+            <li class="mb-2"><a href="/complete-home-interior.html">Complete Home Interior</a></li>
+            <li class="mb-2"><a href="/modular-kitchens.html">Modular Kitchens</a></li>
+            <li class="mb-2"><a href="/bedroom-wardrobes.html">Bedroom &amp; Wardrobes</a></li>
+            <li class="mb-2"><a href="/living-room.html">Living Room Designs</a></li>
+            <li class="mb-2"><a href="/office-spaces.html">Office &amp; Commercial</a></li>
+            <li class="mb-2"><a href="/civil-renovations.html">Contracting &amp; Civil Work</a></li>
           </ul>
         </div>
         <div class="col-lg-3">
@@ -1027,7 +1026,7 @@
       tierPlatinum.classList.remove('active-tier');
 
       if (!inputVal || inputVal <= 0) {
-        payoutText.innerText = "₹ 0";
+        payoutText.innerText = "? 0";
         tierText.innerText = "Enter value to see tier";
         return;
       }
@@ -1070,7 +1069,6 @@
       tierText.innerText = tierName;
     }
 
-    // Onboarding Form Handlers
     function handleRegistrationSubmit(event) {
       event.preventDefault();
 
@@ -1079,18 +1077,42 @@
       const rera = document.getElementById('partner-rera').value;
       const inventory = document.getElementById('partner-inventory').value;
 
-      console.log("Partner Registration Submitted:", {
-        name,
-        mobile,
-        rera,
-        inventory,
-        timestamp: new Date().toISOString()
-      });
+      const submitBtn = event.target.querySelector('button[type="submit"]');
+      const originalText = submitBtn ? submitBtn.innerHTML : 'Submit';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Registering...';
+      }
 
-      // Hide the form and header, and show success
-      document.getElementById('partner-form-header').style.display = 'none';
-      document.getElementById('partner-registration-form').style.display = 'none';
-      document.getElementById('form-success-message').style.display = 'flex';
+      const url = 'https://script.google.com/macros/s/AKfycbyaOLtqYYNWRfjIuyBnW81_RnYziWCuSqO660SKF3n4N3w4vL7GNqvYb58o-3K29e6I/exec';
+      const params = new URLSearchParams();
+      params.append('name', name);
+      params.append('phone', mobile);
+      params.append('email', '');
+      params.append('service', 'Partner Registration');
+      params.append('message', `RERA Number: ${rera} | Focus/Inventory: ${inventory}`);
+
+      fetch(url, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: params.toString()
+      })
+      .then(() => {
+        document.getElementById('partner-form-header').style.display = 'none';
+        document.getElementById('partner-registration-form').style.display = 'none';
+        document.getElementById('form-success-message').style.display = 'flex';
+      })
+      .catch(err => {
+        console.error("Partner submission error:", err);
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+        }
+        alert("There was an error submitting your registration. Please try again.");
+      });
     }
 
     function resetRegistrationForm() {
@@ -1108,3 +1130,5 @@
 </body>
 
 </html>
+
+

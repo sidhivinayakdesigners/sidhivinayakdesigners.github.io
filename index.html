@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en">
 
@@ -34,8 +34,260 @@
   <!-- Bootstrap 5 & Styles -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.min.css" rel="stylesheet" />
+  <link href="assets/css/aos.css" rel="stylesheet" />
   <link href="assets/css/style.min.css" rel="stylesheet" />
+  <style>
+    /* Rotating Review Cards CSS */
+    .rotating-card {
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .rotating-card.fade-out {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    /* Premium 10k$ Hero Styling Overhaul */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 120px;
+      padding-bottom: 100px;
+      overflow: hidden;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(21, 20, 19, 0.98) 0%, rgba(21, 20, 19, 0.92) 40%, rgba(21, 20, 19, 0.6) 100%);
+      z-index: 1;
+    }
+
+    /* Glow backdrop element */
+    .hero-glow-orb {
+      position: absolute;
+      top: 20%;
+      right: 10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(184, 144, 71, 0.15) 0%, rgba(184, 144, 71, 0) 70%);
+      filter: blur(50px);
+      z-index: 2;
+      pointer-events: none;
+      animation: pulse-glow 8s infinite alternate;
+    }
+
+    @keyframes pulse-glow {
+      0% { transform: scale(1); opacity: 0.7; }
+      100% { transform: scale(1.2); opacity: 1; }
+    }
+
+    .hero-container {
+      position: relative;
+      z-index: 3;
+    }
+
+    .hero-subtitle-premium {
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--color-gold);
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-left: 45px;
+    }
+
+    .hero-subtitle-premium::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 30px;
+      height: 1px;
+      background-color: var(--color-gold);
+    }
+
+    .hero-title-premium {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.15;
+      font-weight: 800;
+      color: #fff !important;
+      letter-spacing: -1px;
+    }
+
+    .hero-title-premium .text-gradient-gold {
+      background: linear-gradient(135deg, #FFF 30%, #D4AF37 70%, #B89047 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .hero-text-premium {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      font-weight: 300;
+      color: #D1CFC9 !important;
+      max-width: 650px;
+      margin-top: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Floating Showcase Card UI */
+    .hero-showcase-glass-card {
+      background: rgba(30, 28, 26, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 3rem 2.5rem;
+      border-radius: 1px;
+      position: relative;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+      z-index: 10;
+      animation: float-slow 6s ease-in-out infinite;
+    }
+
+    .hero-showcase-glass-card::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(184, 144, 71, 0.3) 0%, rgba(184, 144, 71, 0) 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    @keyframes float-slow {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .stat-row {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .stat-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--color-gold);
+      line-height: 1;
+      font-family: var(--font-heading);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #A6A097;
+      font-weight: 600;
+      margin-top: 0.25rem;
+    }
+
+    /* Premium Call to Action System */
+    .cta-container-premium {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .cta-primary-btn {
+      background: linear-gradient(135deg, #D4AF37 0%, #B89047 100%);
+      color: #151413 !important;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 0.85rem;
+      padding: 1.25rem 2.5rem;
+      border: none;
+      border-radius: 1px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(184, 144, 71, 0.3);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      width: fit-content;
+      text-decoration: none;
+    }
+
+    .cta-primary-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(184, 144, 71, 0.5);
+      background: linear-gradient(135deg, #E5C158 0%, #D4AF37 100%);
+    }
+
+    .cta-secondary-row {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-top: 0.5rem;
+    }
+
+    .cta-link-minimal {
+      color: #FFF !important;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s ease;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      padding-bottom: 4px;
+    }
+
+    .cta-link-minimal:hover {
+      color: var(--color-gold) !important;
+      border-color: var(--color-gold);
+    }
+
+    /* Glassmorphic Form Overrides for Hero */
+    .hero-glass-form .form-control {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
+      color: #fff !important;
+      border-radius: 1px !important;
+      padding: 0.9rem 1rem !important;
+      font-size: 0.9rem !important;
+    }
+
+    .hero-glass-form .form-control:focus {
+      background: rgba(255, 255, 255, 0.08) !important;
+      border-color: var(--color-gold) !important;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2) !important;
+    }
+
+    .hero-glass-form label {
+      color: #A6A097 !important;
+      font-size: 0.7rem !important;
+      letter-spacing: 1.5px !important;
+      text-transform: uppercase !important;
+      font-weight: 700 !important;
+      margin-bottom: 0.4rem !important;
+    }
+  </style>
   <!-- JSON-LD LocalBusiness Schema -->
   <script type="application/ld+json">
     {
@@ -225,22 +477,34 @@
   <!-- Hero Section -->
   <section class="hero-section" style="background-image: url('assets/images/hero_bg.webp');">
     <div class="hero-overlay"></div>
-    <div class="container text-left z-3">
-      <div class="row">
-        <div class="col-lg-8" data-aos="fade-right" data-aos-duration="1200">
-          <span class="section-subtitle">A Modern Interior Design Company</span>
-          <h1 class="hero-title text-white font-luxury">Top-rated Interior Designing Services<br><span class="text-gold">Backed by 25+ Years of Experience</span></h1>
-          <p class="lead text-light mb-5 fs-5">Every project is executed by skilled contractors and craftsmen with over 25 years of industry experience. Quality workmanship, modern design, and professional delivery.</p>
-          <div class="d-flex flex-wrap gap-3">
-            <a class="btn btn-gold py-3 px-4" href="/contact.html">Get Free Consultation</a>
-            <a class="btn btn-outline-gold py-3 px-4"
-              href="https://wa.me/918369297174?text=Hi%20Siddhivinayak%20Designers,%20I'm%20interested%20in%20a%20free%20design%20consultation."
-              target="_blank">
-              <i class="fab fa-whatsapp me-2"></i>WhatsApp Now
+    <div class="hero-glow-orb"></div>
+    <div class="container hero-container py-5 z-3">
+      <div class="row align-items-center">
+        <!-- Left: Text Column -->
+        <div class="col-lg-9 text-left" data-aos="fade-right" data-aos-duration="1200">
+          <span class="hero-subtitle-premium">A Modern Interior Design Company</span>
+          <h1 class="hero-title-premium font-luxury">
+            Top-Rated Interior<br>
+            <span class="text-gradient-gold">Designing &amp; Contracting</span>
+          </h1>
+          <p class="hero-text-premium text-muted">
+            Every project is executed by skilled contractors and craftsmen with over 25 years of industry experience. Quality workmanship, modern design, and professional execution.
+          </p>
+          <div class="cta-container-premium">
+            <a class="cta-primary-btn" href="/contact.html">
+              <span>Get Free Site Consultation</span>
+              <i class="fas fa-chevron-right" style="font-size: 0.75rem;"></i>
             </a>
-            <a class="btn btn-outline-gold py-3 px-4" href="tel:+918369297174">
-              <i class="fas fa-phone-alt me-2"></i>Call Now
-            </a>
+            <div class="cta-secondary-row">
+              <a class="cta-link-minimal" href="https://wa.me/918369297174?text=Hi%20Siddhivinayak%20Designers,%20I'm%20interested%20in%20a%20free%20design%20consultation." target="_blank">
+                <i class="fab fa-whatsapp text-gold"></i>
+                <span>WhatsApp Now</span>
+              </a>
+              <a class="cta-link-minimal" href="tel:+918369297174">
+                <i class="fas fa-phone-alt text-gold"></i>
+                <span>Call Directly</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -259,9 +523,10 @@
           <div class="premium-card">
             <div class="premium-card-img">
               <img alt="Complete Home Interior Design Navi Mumbai" class="img-fluid w-100" loading="lazy"
-                src="assets/images/living-room-interior-designer-koparkhairne.webp" style="height: 250px; object-fit: cover;" />
+                src="assets/images/living-room-interior-designer-koparkhairne.webp"
+                style="height: 250px; object-fit: cover;" />
               <div class="premium-card-overlay">
-                <a class="btn btn-gold btn-sm" href="/services.html">Explore Details</a>
+                <a class="btn btn-gold btn-sm" href="/complete-home-interior.html">Explore Details</a>
               </div>
             </div>
             <div class="p-4">
@@ -278,7 +543,7 @@
                 src="assets/images/modular-kitchen-koparkhairne-siddhivinayak-interior.webp"
                 style="height: 250px; object-fit: cover;" />
               <div class="premium-card-overlay">
-                <a class="btn btn-gold btn-sm" href="/services.html">Explore Details</a>
+                <a class="btn btn-gold btn-sm" href="/modular-kitchens.html">Explore Details</a>
               </div>
             </div>
             <div class="p-4">
@@ -288,66 +553,19 @@
             </div>
           </div>
         </div>
-
         <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
           <div class="premium-card">
             <div class="premium-card-img">
-              <img alt="Wardrobes and Bedroom Interior Navi Mumbai" class="img-fluid w-100" loading="lazy"
-                src="assets/images/turnkey-residential-interior-navi-mumbai.webp" style="height: 250px; object-fit: cover;" />
-              <div class="premium-card-overlay">
-                <a class="btn btn-gold btn-sm" href="/services.html">Explore Details</a>
-              </div>
-            </div>
-            <div class="p-4">
-              <h4 class="text-white h5 font-luxury mb-2">Wardrobe &amp; Bedroom Design</h4>
-              <p class="small text-muted">Custom sliding wardrobes, designer beds, smart lighting, and space layouts.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-          <div class="premium-card">
-            <div class="premium-card-img">
-              <img alt="False Ceiling and Ambient Lighting Designs" class="img-fluid w-100" loading="lazy"
-                src="assets/images/modern-false-ceiling-design-koparkhairne.webp" style="height: 250px; object-fit: cover;" />
-              <div class="premium-card-overlay">
-                <a class="btn btn-gold btn-sm" href="/services.html">Explore Details</a>
-              </div>
-            </div>
-            <div class="p-4">
-              <h4 class="text-white h5 font-luxury mb-2">False Ceiling &amp; Lighting</h4>
-              <p class="small text-muted">Gypsum designs, modern cove lighting, track systems, and statement
-                chandeliers.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-          <div class="premium-card">
-            <div class="premium-card-img">
               <img alt="Luxury Living Room Designs Navi Mumbai" class="img-fluid w-100" loading="lazy"
-                src="assets/images/living-room-interior-designer-koparkhairne.webp" style="height: 250px; object-fit: cover;" />
+                src="assets/images/living-room-interior-designer-koparkhairne.webp"
+                style="height: 250px; object-fit: cover;" />
               <div class="premium-card-overlay">
-                <a class="btn btn-gold btn-sm" href="/services.html">Explore Details</a>
+                <a class="btn btn-gold btn-sm" href="/living-room.html">Explore Details</a>
               </div>
             </div>
             <div class="p-4">
               <h4 class="text-white h5 font-luxury mb-2">Living Room &amp; TV Units</h4>
               <p class="small text-muted">Premium TV consoles, marble backing, louvers, and smart partition systems.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-          <div class="premium-card">
-            <div class="premium-card-img">
-              <img alt="Luxury Bedroom Wardrobe Designs" class="img-fluid w-100" loading="lazy"
-                src="assets/images/turnkey-residential-interior-navi-mumbai.webp" style="height: 250px; object-fit: cover;" />
-              <div class="premium-card-overlay">
-                <a class="btn btn-gold btn-sm" href="/services.html">Explore Details</a>
-              </div>
-            </div>
-            <div class="p-4">
-              <h4 class="text-white h5 font-luxury mb-2">Luxury Bedrooms &amp; Wardrobes</h4>
-              <p class="small text-muted">Floor-to-ceiling wardrobes, custom headboards, and vanity integrations.</p>
             </div>
           </div>
         </div>
@@ -385,7 +603,8 @@
           <div class="premium-card">
             <div class="premium-card-img">
               <img alt="Real Living Room Wall Paneling in Navi Mumbai" class="img-fluid w-100" loading="lazy"
-                src="assets/images/living-room-interior-designer-koparkhairne.webp" style="height: 180px; object-fit: cover;" />
+                src="assets/images/living-room-interior-designer-koparkhairne.webp"
+                style="height: 180px; object-fit: cover;" />
               <div class="premium-card-overlay">
                 <a class="btn btn-gold btn-sm lightbox-trigger"
                   data-caption="Luxury Living Room - Customized TV Panels &amp; Backlighting"
@@ -398,7 +617,8 @@
           <div class="premium-card">
             <div class="premium-card-img">
               <img alt="Real Master Bedroom Wardrobe in Nerul" class="img-fluid w-100" loading="lazy"
-                src="assets/images/turnkey-residential-interior-navi-mumbai.webp" style="height: 180px; object-fit: cover;" />
+                src="assets/images/turnkey-residential-interior-navi-mumbai.webp"
+                style="height: 180px; object-fit: cover;" />
               <div class="premium-card-overlay">
                 <a class="btn btn-gold btn-sm lightbox-trigger"
                   data-caption="Master Bedroom - Warm Veneered Backing &amp; Bed Headboard"
@@ -411,7 +631,8 @@
           <div class="premium-card">
             <div class="premium-card-img">
               <img alt="Real False Ceiling Lighting Work in Vashi" class="img-fluid w-100" loading="lazy"
-                src="assets/images/modern-false-ceiling-design-koparkhairne.webp" style="height: 180px; object-fit: cover;" />
+                src="assets/images/modern-false-ceiling-design-koparkhairne.webp"
+                style="height: 180px; object-fit: cover;" />
               <div class="premium-card-overlay">
                 <a class="btn btn-gold btn-sm lightbox-trigger"
                   data-caption="Gypsum False Ceiling - Linear Track Lighting &amp; Cove Details"
@@ -450,7 +671,8 @@
           <div class="premium-card">
             <div class="premium-card-img">
               <img alt="Real Kitchen Dry Area Cabinetry in Ghansoli" class="img-fluid w-100" loading="lazy"
-                src="assets/images/luxury-home-interior-designer-vashi (1).webp" style="height: 180px; object-fit: cover;" />
+                src="assets/images/luxury-home-interior-designer-vashi (1).webp"
+                style="height: 180px; object-fit: cover;" />
               <div class="premium-card-overlay">
                 <a class="btn btn-gold btn-sm lightbox-trigger"
                   data-caption="Project Titan - Urban Minimalist Living Room, Sanpada"
@@ -463,7 +685,8 @@
           <div class="premium-card">
             <div class="premium-card-img">
               <img alt="Real Gypsum Work Ceiling Grid in Sanpada" class="img-fluid w-100" loading="lazy"
-                src="assets/images/commercial-office-space-designer-navi-mumbai.webp" style="height: 180px; object-fit: cover;" />
+                src="assets/images/commercial-office-space-designer-navi-mumbai.webp"
+                style="height: 180px; object-fit: cover;" />
               <div class="premium-card-overlay">
                 <a class="btn btn-gold btn-sm lightbox-trigger"
                   data-caption="Bespoke Executive Office Cabin &amp; Workstations"
@@ -478,26 +701,7 @@
       </div>
     </div>
   </section>
-  <!-- Featured Project Handover Section -->
-  <section class="py-5 bg-dark">
-    <div class="container py-5">
-      <div class="row align-items-center">
-        <div class="col-lg-5 mb-5 mb-lg-0" data-aos="fade-right">
-          <span class="section-subtitle">Featured Project Handover</span>
-          <h2 class="section-title with-underline">Luxury Duplex Handover</h2>
-          <p class="text-muted mt-4">Witness our meticulous execution on-site. Showing the final handover of a luxury 4 BHK duplex apartment on Palm Beach Road, Sanpada, Navi Mumbai. From layout configurations to final custom veneer details and ambient architectural lighting, executed fully by our in-house contracting team.</p>
-          <a class="btn btn-gold mt-3" href="/gallery.html">See Our Projects</a>
-        </div>
-        <div class="col-lg-7" data-aos="fade-left">
-          <div class="premium-card">
-            <div class="img-zoom-hover">
-              <img alt="Luxury Duplex Handover Palm Beach Road Sanpada by Siddhivinayak Designers" class="img-fluid w-100" loading="lazy" src="assets/images/IMG_0804.webp" style="max-height: 480px; object-fit: cover;" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+
   <!-- Interactive Calculator snippet -->
   <section class="py-5 bg-dark">
     <div class="container py-5">
@@ -554,93 +758,35 @@
       </div>
     </div>
   </section>
-  <!-- Work Process Section -->
-  <section class="py-5 bg-dark">
-    <div class="container py-5">
-      <div class="text-center mb-5" data-aos="fade-up">
-        <span class="section-subtitle">How We Work</span>
-        <h2 class="section-title text-white font-luxury">Our Turnkey Execution Process</h2>
-      </div>
-      <div class="row g-4">
-        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-          <div class="premium-card process-step">
-            <div class="process-number">01</div>
-            <h4 class="text-white h5 mb-3 font-luxury">Consultation &amp; Planning</h4>
-            <p class="small text-muted mb-0">Site measurement, layout mapping, budgeting, and color theme planning
-              during the initial visit.</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-          <div class="premium-card process-step">
-            <div class="process-number">02</div>
-            <h4 class="text-white h5 mb-3 font-luxury">3D Modeling &amp; Layouts</h4>
-            <p class="small text-muted mb-0">Photorealistic 3D visuals and precise plumbing/electrical layouts for final
-              approval.</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-          <div class="premium-card process-step">
-            <div class="process-number">03</div>
-            <h4 class="text-white h5 mb-3 font-luxury">In-House Manufacturing</h4>
-            <p class="small text-muted mb-0">Precision panel cutting and custom woodwork fabrication in our automated
-              facility.</p>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-          <div class="premium-card process-step">
-            <div class="process-number">04</div>
-            <h4 class="text-white h5 mb-3 font-luxury">Execution &amp; Handover</h4>
-            <p class="small text-muted mb-0">Final site assembly, electrical/lighting installations, clean-up, and key
-              handover.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Testimonials Section -->
+
+  <!-- Google Reviews Section -->
   <section class="py-5 bg-dark">
     <div class="container py-5">
       <div class="text-center mb-5" data-aos="fade-up">
         <span class="section-subtitle">Real Reviews</span>
         <h2 class="section-title text-white font-luxury">What Our Clients Say</h2>
       </div>
-      <div class="row g-4">
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="premium-card p-4">
-            <div class="d-flex text-gold mb-3">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            <p class="small text-muted italic mb-4">"Excellent interior design work! The design is modern, creative, and
-              well-planned with great attention to detail. The space is utilized efficiently, and the overall look is
-              both elegant and functional. The team was professional, responsive, and delivered high-quality results."
-            </p>
-            <h5 class="text-white h6 font-luxury mb-1">Ayush Sabale</h5>
-            <p class="small text-gold mb-0">Koparkhairane Customer</p>
+
+      <div class="row g-4" id="reviewsContainer">
+        <!-- Card 1 -->
+        <div class="col-md-4 col-12">
+          <div class="premium-card p-4 h-100 d-flex flex-column justify-content-between rotating-card" id="reviewCard0"
+            style="border-radius: 8px;">
+            <!-- content dynamically inserted -->
           </div>
         </div>
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="premium-card p-4">
-            <div class="d-flex text-gold mb-3">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            <p class="small text-muted italic mb-4">"The owner Dattatray Machale has been our number one guy for our
-              interior of the home. He has made our interior very very great in Vashi. Highly recommended!"</p>
-            <h5 class="text-white h6 font-luxury mb-1">Shakuntala Kokate</h5>
-            <p class="small text-gold mb-0">Vashi Homeowner</p>
+        <!-- Card 2 -->
+        <div class="col-md-4 col-12">
+          <div class="premium-card p-4 h-100 d-flex flex-column justify-content-between rotating-card" id="reviewCard1"
+            style="border-radius: 8px;">
+            <!-- content dynamically inserted -->
           </div>
         </div>
-        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-          <div class="premium-card p-4">
-            <div class="d-flex text-gold mb-3">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            <p class="small text-muted italic mb-4">"Best interior designer in Koparkhairne with a lower cost. Highly
-              professional execution team."</p>
-            <h5 class="text-white h6 font-luxury mb-1">Parth Sabale</h5>
-            <p class="small text-gold mb-0">Koparkhairne Resident</p>
+        <!-- Card 3 -->
+        <div class="col-md-4 col-12">
+          <div class="premium-card p-4 h-100 d-flex flex-column justify-content-between rotating-card" id="reviewCard2"
+            style="border-radius: 8px;">
+            <!-- content dynamically inserted -->
           </div>
         </div>
       </div>
@@ -809,15 +955,16 @@
     <div class="container py-4">
       <div class="row g-4">
         <div class="col-lg-4">
-          <h5 class="font-luxury mb-3"><span class="text-gold">Siddhivinayak</span> Designers</h5>
-          <p class="small text-muted mb-4">Siddhivinayak Designers is a modern interior design company serving Navi Mumbai. Our projects are executed by experienced contractors with over 25 years of industry expertise, delivering quality workmanship and reliable execution.</p>
+          <h5 class="font-luxury text-white mb-3"><span class="text-gold">Siddhivinayak</span> Designers</h5>
+          <p class="small text-muted mb-4">Siddhivinayak Designers is a modern interior design company serving Navi
+            Mumbai. Our projects are executed by experienced contractors with over 25 years of industry expertise,
+            delivering quality workmanship and reliable execution.</p>
           <div class="social-icons">
             <a aria-label="Facebook Page" href="https://www.facebook.com/people/Siddhivinayak-Interior/61591244265786/"
               target="_blank"><i class="fab fa-facebook-f"></i></a>
             <a aria-label="Instagram Profile" href="https://www.instagram.com/siddhivinayakdesigners/"
               target="_blank"><i class="fab fa-instagram"></i></a>
-            <a aria-label="LinkedIn Profile" href="https://linkedin.com/company/siddhivinayakdesigners"
-              target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            
             <a aria-label="Google Business Profile" href="https://maps.google.com/?cid=6911458856073113523"
               target="_blank" title="Google Business Profile"><i class="fab fa-google"></i></a>
           </div>
@@ -833,14 +980,14 @@
           </ul>
         </div>
         <div class="col-lg-3">
-          <h6 class="font-luxury text-white mb-3">Our Core Services</h6>
+                    <h6 class="font-luxury text-white mb-3">Our Core Services</h6>
           <ul class="list-unstyled">
-            <li class="mb-2"><a href="/services.html">Complete Home Interior</a></li>
-            <li class="mb-2"><a href="/services.html">Modular Kitchens</a></li>
-            <li class="mb-2"><a href="/services.html">Living Room Designs</a></li>
-            <li class="mb-2"><a href="/services.html">False Ceiling &amp; Lighting</a></li>
-            <li class="mb-2"><a href="/services.html">Office &amp; Commercial</a></li>
-            <li class="mb-2"><a href="/services.html">Contracting &amp; Civil Work</a></li>
+            <li class="mb-2"><a href="/complete-home-interior.html">Complete Home Interior</a></li>
+            <li class="mb-2"><a href="/modular-kitchens.html">Modular Kitchens</a></li>
+            <li class="mb-2"><a href="/bedroom-wardrobes.html">Bedroom &amp; Wardrobes</a></li>
+            <li class="mb-2"><a href="/living-room.html">Living Room Designs</a></li>
+            <li class="mb-2"><a href="/office-spaces.html">Office &amp; Commercial</a></li>
+            <li class="mb-2"><a href="/civil-renovations.html">Contracting &amp; Civil Work</a></li>
           </ul>
         </div>
         <div class="col-lg-3">
@@ -887,15 +1034,101 @@
   </div>
   <!-- Bootstrap 5, AOS, and custom scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.min.js"></script>
+  <script src="assets/js/aos.js"></script>
   <script src="assets/js/main.min.js?v=2"></script>
   <script>
-    AOS.init({
-      duration: 800,
-      easing: 'ease-in-out',
-      once: true
-    });
+    // Safely initialize AOS
+    try {
+      if (typeof AOS !== 'undefined') {
+        AOS.init({
+          duration: 800,
+          easing: 'ease-in-out',
+          once: true
+        });
+      } else {
+        console.warn("AOS library failed to load or is not defined.");
+      }
+    } catch (e) {
+      console.error("AOS initialization error:", e);
+    }
+
+    // Rotating Reviews Logic
+    try {
+      const reviewsPool = [
+        { name: "Parth Sabale", avatar: "PS", bgColor: "#4a69bd", badge: "Verified Reviewer", text: "Best interior designer in Koparkhairne with a lower cost" },
+        { name: "Shakuntala Kokate", avatar: "SK", bgColor: "#e67e22", badge: "Verified Client", text: "The owner name Dattatray Machale has been our number one guy for our interior of the home, he has made our interior very very great in Vashi. Highly recommended." },
+        { name: "Mayuri 82", avatar: "M8", bgColor: "#16a085", badge: "Verified Client", text: "Good interior designer in koparkhairne" },
+        { name: "Ayush Sabale", avatar: "AS", bgColor: "#2980b9", badge: "Local Guide", text: "Excellent interior design work! The design is modern, creative, and well-planned with great attention to detail. The space is utilized efficiently, and the overall look is both elegant and functional." },
+        { name: "Parth Gawde", avatar: "PG", bgColor: "#27ae60", badge: "Verified Reviewer", text: "Awesome nice and humble owner" },
+        { name: "Dattatray Machale", avatar: "DM", bgColor: "#8e44ad", badge: "Verified Reviewer", text: "Excellent interior design, wood cabinetry fabrication, false ceiling lightings, and civil renovations." },
+        { name: "Githubsarhi", avatar: "GS", bgColor: "#d35400", badge: "Verified Reviewer", text: "Highly trusted civil renovation and modular wardrobe works. Beautiful finishes." },
+        { name: "Ruchita Machale", avatar: "RM", bgColor: "#c0392b", badge: "Verified Client", text: "Very good and modern work done by them. He is very humble, genuine, and attentive. He listened to each of our requirements and built everything with great attention to detail." }
+      ];
+
+      let activeIndices = [0, 1, 2];
+      let nextCardToUpdate = 0;
+
+      function renderReviewCard(cardId, review) {
+        const card = document.getElementById(cardId);
+        if (!card) return;
+        card.innerHTML = `
+          <div>
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div class="d-flex align-items-center gap-2">
+                <div class="avatar text-white rounded-circle d-flex align-items-center justify-content-center fw-bold" style="width: 40px; height: 40px; font-size: 0.95rem; background-color: ${review.bgColor};">
+                  ${review.avatar}
+                </div>
+                <div>
+                  <h5 class="text-white h6 font-body mb-0" style="font-weight: 600;">${review.name}</h5>
+                  <span class="text-muted" style="font-size: 0.65rem;"><i class="fas fa-user-check text-success me-1"></i>${review.badge}</span>
+                </div>
+              </div>
+              <i class="fab fa-google text-muted" style="font-size: 0.9rem; opacity: 0.5;"></i>
+            </div>
+            <div class="text-gold mb-2" style="font-size: 0.75rem;">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="small text-muted italic mb-0">"${review.text}"</p>
+          </div>
+        `;
+      }
+
+      // Initialize
+      activeIndices.forEach((poolIdx, cardSlot) => {
+        renderReviewCard(`reviewCard${cardSlot}`, reviewsPool[poolIdx]);
+      });
+
+      function rotateNextReview() {
+        let availableIndices = [];
+        for (let i = 0; i < reviewsPool.length; i++) {
+          if (!activeIndices.includes(i)) {
+            availableIndices.push(i);
+          }
+        }
+        if (availableIndices.length === 0) return;
+
+        const nextReviewIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
+        const targetCardId = `reviewCard${nextCardToUpdate}`;
+        const targetCard = document.getElementById(targetCardId);
+
+        if (targetCard) {
+          targetCard.classList.add('fade-out');
+          setTimeout(() => {
+            activeIndices[nextCardToUpdate] = nextReviewIndex;
+            renderReviewCard(targetCardId, reviewsPool[nextReviewIndex]);
+            targetCard.classList.remove('fade-out');
+            nextCardToUpdate = (nextCardToUpdate + 1) % 3;
+          }, 500);
+        }
+      }
+
+      setInterval(rotateNextReview, 4000);
+    } catch (e) {
+      console.warn("Reviews rotation error:", e);
+    }
   </script>
 </body>
 
 </html>
+
+
