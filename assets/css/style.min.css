@@ -238,3 +238,11 @@
     justify-content: center !important;
   }
 }
+
+/* --- SCROLLED NAVBAR BRAND COLOR CORRECTION --- */
+.navbar.scrolled .navbar-brand {
+  color: #151413 !important; /* Forces Designers text to be premium dark charcoal on white background */
+}
+.navbar.scrolled .navbar-toggler-icon {
+  filter: invert(1) !important; /* Ensure hamburger icon is dark/visible on white scrolled header */
+}
