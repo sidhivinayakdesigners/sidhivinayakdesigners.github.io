@@ -246,3 +246,81 @@
 .navbar.scrolled .navbar-toggler-icon {
   filter: invert(1) !important; /* Ensure hamburger icon is dark/visible on white scrolled header */
 }
+
+/* --- DYNAMIC MOBILE NAVBAR COLOR & WIDTH ALIGNMENT FIX --- */
+@media (max-width: 992px) {
+  /* Prevent horizontal parent padding wrapping conflicts */
+  .navbar .container {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    position: static !important; /* Let absolute collapse align to the full navbar boundary */
+  }
+
+  /* Full screen width mobile menu dropdown (no background gaps) */
+  .navbar-collapse {
+    position: absolute !important;
+    top: 100% !important; /* Right below the navbar header */
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 2rem 1.5rem !important;
+    z-index: 9999 !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .navbar-nav {
+    width: 100% !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .navbar-nav .nav-item {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  /* DEFAULT/UNSCROLLED (At Top - Dark Theme) */
+  .navbar:not(.scrolled) .navbar-collapse {
+    background-color: rgba(21, 20, 19, 0.98) !important;
+    border-bottom: 1px solid rgba(184, 144, 71, 0.2) !important;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6) !important;
+  }
+  .navbar:not(.scrolled) .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    width: 100% !important;
+    padding: 0.8rem 0 !important;
+  }
+  .navbar:not(.scrolled) .navbar-nav .nav-link:hover,
+  .navbar:not(.scrolled) .navbar-nav .nav-link.active {
+    color: var(--color-gold) !important;
+  }
+
+  /* SCROLLED STATE (On Scroll - White Theme) */
+  .navbar.scrolled .navbar-collapse {
+    background-color: rgba(255, 255, 255, 0.98) !important;
+    border-bottom: 1px solid var(--color-border) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08) !important;
+  }
+  .navbar.scrolled .navbar-nav .nav-link {
+    color: #151413 !important; /* Premium dark text for light menu background */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+    width: 100% !important;
+    padding: 0.8rem 0 !important;
+  }
+  .navbar.scrolled .navbar-nav .nav-link:hover,
+  .navbar.scrolled .navbar-nav .nav-link.active {
+    color: var(--color-gold) !important;
+  }
+
+  .navbar-nav .nav-item:last-child .nav-link,
+  .navbar-nav .nav-item .btn-gold {
+    border-bottom: none !important;
+  }
+}
