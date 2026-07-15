@@ -513,7 +513,7 @@ body.mobile-nav-open {
   display: flex;
   position: relative;
   box-shadow: 0 35px 80px rgba(0, 0, 0, 0.25);
-  border-radius: 0;
+  border-radius: 16px;
   overflow: hidden;
   border: 1px solid rgba(184, 144, 71, 0.15);
   transform: translateY(40px) scale(0.92);
@@ -526,20 +526,21 @@ body.mobile-nav-open {
 
 .consultation-popup-close {
   position: absolute;
-  top: 15px;
-  right: 18px;
-  font-size: 1.5rem;
-  color: #2c2a27;
+  top: 16px;
+  right: 16px;
+  font-size: 1.3rem;
+  color: #5c5852;
   cursor: pointer;
-  border: none;
-  background: transparent;
+  border: none !important;
+  background: rgba(30, 28, 26, 0.06) !important;
   width: 32px;
   height: 32px;
+  border-radius: 50% !important;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  z-index: 10;
+  z-index: 100;
   opacity: 0;
   transform: scale(0.5);
 }
@@ -551,8 +552,9 @@ body.mobile-nav-open {
 }
 
 .consultation-popup-close:hover {
-  color: #B89047;
-  transform: rotate(90deg) scale(1.1);
+  background: #B89047 !important;
+  color: #ffffff !important;
+  transform: rotate(90deg) scale(1.08) !important;
 }
 
 .consultation-popup-left {
@@ -686,7 +688,7 @@ body.mobile-nav-open {
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   text-align: center;
-  border-radius: 0;
+  border-radius: 6px;
 }
 
 .consultation-popup-prop-btn:hover {
@@ -708,7 +710,7 @@ body.mobile-nav-open {
   background-color: #ffffff !important;
   border: 1px solid #e6e2db !important;
   color: #2c2a27 !important;
-  border-radius: 0 !important;
+  border-radius: 6px !important;
   padding: 0.65rem 0.9rem !important;
   font-size: 0.85rem !important;
   font-family: 'Inter', sans-serif !important;
@@ -784,7 +786,7 @@ body.mobile-nav-open {
   font-size: 0.85rem !important;
   letter-spacing: 1.5px !important;
   padding: 0.8rem 2.2rem !important;
-  border-radius: 0 !important;
+  border-radius: 6px !important;
   border: 1px solid #B89047 !important;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
   text-transform: uppercase !important;
@@ -830,13 +832,16 @@ body.mobile-nav-open {
     width: 90% !important;
     max-width: 420px !important;
     overflow-y: auto !important;
-    border-radius: 0 !important;
+    border-radius: 16px !important;
   }
   .consultation-popup-left {
     display: block !important;
     width: 100% !important;
-    height: 140px !important;
+    height: 160px !important;
     min-width: 100% !important;
+    border-top-left-radius: 16px !important;
+    border-top-right-radius: 16px !important;
+    overflow: hidden !important;
   }
   .consultation-popup-right {
     padding: 1.5rem 1.25rem !important;
@@ -872,12 +877,15 @@ body.mobile-nav-open {
     font-size: 0.8rem !important;
   }
   .consultation-popup-close {
-    background: rgba(255, 255, 255, 0.9) !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
-    top: 10px !important;
-    right: 10px !important;
-    width: 28px !important;
-    height: 28px !important;
-    font-size: 1.2rem !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    color: #1a1918 !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+    top: 12px !important;
+    right: 12px !important;
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 1.1rem !important;
+    border-radius: 50% !important;
+    border: none !important;
   }
 }
