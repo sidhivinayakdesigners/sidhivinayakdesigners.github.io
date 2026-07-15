@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -178,6 +178,17 @@
             border-top: 1px solid var(--border-glow);
             border-bottom: 1px solid var(--border-glow);
             font-weight: 600;
+        }
+
+        .partner-glass-card.active-tier {
+            border-color: var(--color-gold) !important;
+            background: rgba(184, 144, 71, 0.05) !important;
+            box-shadow: 0 10px 30px rgba(184, 144, 71, 0.18) !important;
+            transform: translateY(-6px);
+        }
+
+        .partner-glass-card.active-tier::before {
+            opacity: 1;
         }
 
         /* Mobile Tier Cards (Beautiful stacked card UI for mobile viewports) */
@@ -757,7 +768,7 @@
                         </p>
 
                         <div class="d-flex flex-wrap gap-3 pdf-hide">
-                            <a href="/assets/documents/Siddhivinayak_Partnership_Deck.pdf" download
+                            <a href="/assets/documents/Siddhivinayak_Partnership_Deck.pdf?v=2" download="Siddhivinayak_Partnership_Deck.pdf"
                                 class="btn pdf-download-btn py-3 px-4 fw-bold text-uppercase" style="color: #FFFFFF !important; background: linear-gradient(135deg, var(--color-gold), #9E7A37); border-radius: 8px; letter-spacing: 1px; font-size: 0.85rem;">
                                 <i class="fas fa-file-pdf me-2"></i>Download Deck (PDF)
                             </a>
@@ -804,45 +815,45 @@
                         <!-- Market Rate vs Our Rate Comparison Grid -->
                         <div class="row g-3 mb-4 text-start">
                             <div class="col-md-4 col-sm-12">
-                                <div class="partner-glass-card p-3 text-center h-100" style="background: #FFFFFF; border-radius: 12px; border: 1px solid var(--color-border);">
+                                <div id="tier-silver" class="partner-glass-card p-3 text-center h-100" style="background: #FFFFFF; border-radius: 12px; border: 1px solid var(--color-border);">
                                     <span class="d-block small text-muted text-uppercase mb-2" style="font-size: 0.68rem; letter-spacing: 1px; font-weight: 600;">Silver (Tier I)</span>
                                     <div class="d-flex justify-content-center align-items-center gap-2 mb-2">
                                         <div class="text-start">
-                                            <span class="d-block text-muted" style="font-size: 0.65rem; text-decoration: line-through;">3.0% Market Rate</span>
+                                            <span class="d-block text-muted" style="font-size: 0.65rem; text-decoration: line-through;">3.0% - 4.0% Market</span>
                                             <span class="d-block small text-muted" style="font-size: 0.58rem; line-height: 1;">(Standard Agent Payout)</span>
                                         </div>
                                         <i class="fas fa-arrow-right text-gold" style="font-size: 0.8rem;"></i>
                                         <div class="text-center">
-                                            <span class="h4 text-gold mb-0" style="font-weight: 700;">4.0%</span>
+                                            <span class="h4 text-gold mb-0" style="font-weight: 700;">5.0%</span>
                                             <span class="d-block text-gold" style="font-size: 0.58rem; font-weight: 600; line-height: 1; text-transform: uppercase;">Our Payout</span>
                                         </div>
                                     </div>
-                                    <span class="d-block text-muted" style="font-size: 0.72rem; font-weight: 600;">+1.0% Extra Payout</span>
+                                    <span class="d-block text-muted" style="font-size: 0.72rem; font-weight: 600;">+1.0% to +2.0% Extra</span>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-12">
-                                <div class="partner-glass-card p-3 text-center h-100" style="background: #FFFFFF; border-radius: 12px; border: 1px solid var(--color-border); border-color: rgba(184, 144, 71, 0.25);">
+                                <div id="tier-gold" class="partner-glass-card p-3 text-center h-100" style="background: #FFFFFF; border-radius: 12px; border: 1px solid var(--color-border); border-color: rgba(184, 144, 71, 0.25);">
                                     <span class="d-block small text-muted text-uppercase mb-2" style="font-size: 0.68rem; letter-spacing: 1px; font-weight: 600;">Gold (Tier II)</span>
                                     <div class="d-flex justify-content-center align-items-center gap-2 mb-2">
                                         <div class="text-start">
-                                            <span class="d-block text-muted" style="font-size: 0.65rem; text-decoration: line-through;">4.0% Market Rate</span>
+                                            <span class="d-block text-muted" style="font-size: 0.65rem; text-decoration: line-through;">4.0% - 5.0% Market</span>
                                             <span class="d-block small text-muted" style="font-size: 0.58rem; line-height: 1;">(Standard Agent Payout)</span>
                                         </div>
                                         <i class="fas fa-arrow-right text-gold" style="font-size: 0.8rem;"></i>
                                         <div class="text-center">
-                                            <span class="h4 text-gold mb-0" style="font-weight: 700;">6.0%</span>
+                                            <span class="h4 text-gold mb-0" style="font-weight: 700;">7.0%</span>
                                             <span class="d-block text-gold" style="font-size: 0.58rem; font-weight: 600; line-height: 1; text-transform: uppercase;">Our Payout</span>
                                         </div>
                                     </div>
-                                    <span class="d-block text-muted" style="font-size: 0.72rem; font-weight: 600;">+2.0% Extra Payout</span>
+                                    <span class="d-block text-muted" style="font-size: 0.72rem; font-weight: 600;">+2.0% to +3.0% Extra</span>
                                 </div>
                             </div>
                             <div class="col-md-4 col-sm-12">
-                                <div class="partner-glass-card p-3 text-center h-100" style="background: #FFFFFF; border-radius: 12px; border: 1px solid var(--color-border);">
+                                <div id="tier-platinum" class="partner-glass-card p-3 text-center h-100" style="background: #FFFFFF; border-radius: 12px; border: 1px solid var(--color-border);">
                                     <span class="d-block small text-muted text-uppercase mb-2" style="font-size: 0.68rem; letter-spacing: 1px; font-weight: 600;">Platinum (Tier III)</span>
                                     <div class="d-flex justify-content-center align-items-center gap-2 mb-2">
                                         <div class="text-start">
-                                            <span class="d-block text-muted" style="font-size: 0.65rem; text-decoration: line-through;">5.0-7.0% Market</span>
+                                            <span class="d-block text-muted" style="font-size: 0.65rem; text-decoration: line-through;">5.0% Max Market</span>
                                             <span class="d-block small text-muted" style="font-size: 0.58rem; line-height: 1;">(Standard Agent Payout)</span>
                                         </div>
                                         <i class="fas fa-arrow-right text-gold" style="font-size: 0.8rem;"></i>
@@ -851,7 +862,7 @@
                                             <span class="d-block text-gold" style="font-size: 0.58rem; font-weight: 600; line-height: 1; text-transform: uppercase;">Our Payout</span>
                                         </div>
                                     </div>
-                                    <span class="d-block text-muted" style="font-size: 0.72rem; font-weight: 600;">+3.0% Extra Payout</span>
+                                    <span class="d-block text-muted" style="font-size: 0.72rem; font-weight: 600;">+3.0% to +5.0% Extra</span>
                                 </div>
                             </div>
                         </div>
@@ -860,8 +871,8 @@
                         <div class="p-3 mb-4 rounded border-gold-dashed" style="background: rgba(184, 144, 71, 0.03); text-align: left; border: 1px dashed var(--color-gold);">
                             <p class="small mb-0" style="color: var(--color-text-light) !important; line-height: 1.6;">
                                 <i class="fas fa-info-circle text-gold me-2"></i>
-                                <strong>Understanding Referral Commissions:</strong> Referral payouts are calculated as a percentage of the total project value closed. Standard designers in Navi Mumbai offer brokers a flat 2% to 4% commission. At Siddhivinayak, we pay a higher tier of <strong>4.0% to 10.0%</strong>. 
-                                <br><span class="d-block mt-2"><strong>Payout Example:</strong> On a ?15 Lakh home interior project reference, a standard market referral pays you ?60,000 (4.0%). Siddhivinayak pays you <strong>?90,000 (6.0%)</strong>—which means you make an extra <strong>?30,000</strong> for the exact same lead handover.</span>
+                                <strong>Understanding Referral Commissions:</strong> Referral payouts are calculated as a percentage of the total project value closed. Standard designers in Navi Mumbai offer brokers a flat 2% to 4% commission. At Siddhivinayak, we pay a higher tier of <strong>5.0% to 10.0%</strong>. 
+                                <br><span class="d-block mt-2"><strong>Payout Example:</strong> On a ?15 Lakh home interior project reference, a standard market referral pays you ?75,000 (5.0% max). Siddhivinayak pays you <strong>?1,05,000 (7.0%)</strong>—which means you make an extra <strong>?30,000</strong> for the exact same lead handover.</span>
                             </p>
                         </div>
 
@@ -890,8 +901,8 @@
                             
                             <div class="calc-output-box text-center">
                                 <span class="d-block small text-muted text-uppercase mb-1" style="letter-spacing: 1px;">Estimated Partner Payout</span>
-                                <span class="h2 font-luxury text-gold mb-0" id="calc-payout-text">? 90,000</span>
-                                <span class="d-block small mt-2 font-weight-bold" id="calc-tier-text" style="color: var(--color-gold) !important; font-weight: 600;">Tier II (Gold) - 6.0% Gross</span>
+                                <span class="h2 font-luxury text-gold mb-0" id="calc-payout-text">? 1,05,000</span>
+                                <span class="d-block small mt-2 font-weight-bold" id="calc-tier-text" style="color: var(--color-gold) !important; font-weight: 600;">Tier II (Gold) - 7.0% Gross</span>
                             </div>
                         </div>
                     </div>
@@ -1365,15 +1376,15 @@
             let tierName = "";
 
             if (val <= 1000000) {
-                percentage = 4.0;
+                percentage = 5.0;
                 payout = val * (percentage / 100.0);
-                tierName = "Tier I (Silver) - 4.0% Gross";
+                tierName = "Tier I (Silver) - 5.0% Gross";
                 if (tierSilver) tierSilver.classList.add('active-tier');
                 if (mTierSilver) mTierSilver.classList.add('active-tier');
             } else if (val <= 2500000) {
-                percentage = 6.0;
+                percentage = 7.0;
                 payout = val * (percentage / 100.0);
-                tierName = "Tier II (Gold) - 6.0% Gross";
+                tierName = "Tier II (Gold) - 7.0% Gross";
                 if (tierGold) tierGold.classList.add('active-tier');
                 if (mTierGold) mTierGold.classList.add('active-tier');
             } else {
