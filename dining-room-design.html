@@ -68,6 +68,10 @@
       transform: scale(1.02);
     }
     .lightbox-arrow-btn {
+      touch-action: manipulation;
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
@@ -96,6 +100,9 @@
       right: 20px;
     }
     #imageMaximizeModal .modal-content {
+      touch-action: manipulation;
+      -webkit-user-select: none;
+      user-select: none;
       background-color: #0b0f19 !important;
     }
     #imageMaximizeModal .modal-header {
@@ -1895,7 +1902,7 @@
             <i class="fas fa-chevron-left"></i>
           </button>
           
-          <img id="maximizedImage" src="" class="img-fluid rounded shadow-lg" style="max-height: 80vh; object-fit: contain; image-rendering: -webkit-optimize-contrast;">
+          <img id="maximizedImage" src="" class="img-fluid rounded shadow-lg" style="max-height: 80vh; object-fit: contain; image-rendering: -webkit-optimize-contrast; touch-action: manipulation; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;">
 
           <button type="button" class="lightbox-arrow-btn lightbox-arrow-next" id="lightboxNextBtn" onclick="navigateGallery(1)">
             <i class="fas fa-chevron-right"></i>
@@ -1920,6 +1927,14 @@
       }
 
       bsGalleryModal = new bootstrap.Modal(document.getElementById('imageMaximizeModal'));
+
+      const modalEl = document.getElementById('imageMaximizeModal');
+      if (modalEl) {
+        modalEl.addEventListener('dblclick', function(e) {
+          e.preventDefault();
+        }, { passive: false });
+      }
+
 
       document.querySelectorAll(".explore-content-wrapper").forEach(wrapper => {
         wrapper.addEventListener("show.bs.collapse", function () {

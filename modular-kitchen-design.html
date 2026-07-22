@@ -67,6 +67,10 @@
       transform: scale(1.02);
     }
     .lightbox-arrow-btn {
+      touch-action: manipulation;
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
@@ -95,6 +99,9 @@
       right: 20px;
     }
     #imageMaximizeModal .modal-content {
+      touch-action: manipulation;
+      -webkit-user-select: none;
+      user-select: none;
       background-color: #0b0f19 !important;
     }
     #imageMaximizeModal .modal-header {
@@ -2119,6 +2126,14 @@
       }
 
       bsGalleryModal = new bootstrap.Modal(document.getElementById('imageMaximizeModal'));
+
+      const modalEl = document.getElementById('imageMaximizeModal');
+      if (modalEl) {
+        modalEl.addEventListener('dblclick', function(e) {
+          e.preventDefault();
+        }, { passive: false });
+      }
+
 
       // Explore More / Explore Less toggle listener
       document.querySelectorAll(".explore-content-wrapper").forEach(wrapper => {
