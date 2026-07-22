@@ -1,13 +1,12 @@
-﻿<!DOCTYPE html>
-
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  <title>Services | Siddhivinayak Designers</title>
+  <title>Interior Design Services &amp; Catalogs | Siddhivinayak Designers</title>
   <meta
-    content="Siddhivinayak Designers offers top-rated interior designing services in Koparkhairne, creating the best residential and commercial spaces in Navi Mumbai."
+    content="Explore Siddhivinayak Designers' full range of interior design services: Modular Kitchens, Bedroom Wardrobes, Living Rooms, Kids Rooms, Space Saving, Pooja Rooms &amp; BHK Interiors in Navi Mumbai."
     name="description" />
   <link href="https://siddhivinayakdesigners.in/services" rel="canonical" />
   <!-- Favicon -->
@@ -16,109 +15,53 @@
   <!-- Bootstrap 5 & Styles -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+  <link href="/assets/css/aos.css" rel="stylesheet" />
   <link href="/assets/css/style.min.css?v=10" rel="stylesheet" />
-  <!-- JSON-LD Service Schemas -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "serviceType": "Interior Design and Contracting",
-      "provider": {
-        "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
-        "name": "Siddhivinayak Designers",
-        "telephone": "+918369297174",
-      "sameAs": [
-        "https://www.facebook.com/people/Siddhivinayak-Interior/61591244265786/",
-        "https://www.instagram.com/siddhivinayakdesigners/",
-        "https://maps.google.com/?cid=6911458856073113523"
-      ],
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Shree Laxmi CHS, A 301, Sector 23, Kopar Khairane",
-          "addressLocality": "Navi Mumbai",
-          "postalCode": "400709",
-          "addressCountry": "IN"
-        }
-      },
-      "areaServed": {
-        "@type": "State",
-        "name": "Maharashtra"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Interior Design Catalog",
-        "itemListElement": [
-          {
-            "@type": "OfferCatalog",
-            "name": "Residential Interiors",
-            "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Complete Home Interior Design"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Modular Kitchen Design"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Wardrobe & Bedroom Design"
-                }
-              }
-            ]
-          },
-          {
-            "@type": "OfferCatalog",
-            "name": "Commercial & Contracting",
-            "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Office & Retail Interiors"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "False Ceiling & Electrical Contracting"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Civil Work & Renovation"
-                }
-              }
-            ]
-          }
-        ]
-      }
+  <style>
+    .text-gold { color: #dfb259 !important; }
+    .bg-gold { background-color: #dfb259 !important; }
+    .btn-gold {
+      background-color: #dfb259;
+      color: #0b0f19;
+      font-weight: 600;
+      border: 1px solid #dfb259;
+      transition: all 0.3s ease;
     }
-    </script>
-  <!-- Google Tag (gtag.js) - Google Analytics -->
-  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-PLACEHOLDER');
-  </script>
+    .btn-gold:hover {
+      background-color: #c99b42;
+      color: #000;
+      border-color: #c99b42;
+    }
+    .service-catalog-card {
+      background: #121826;
+      border: 1px solid #2a3447;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .service-catalog-card:hover {
+      transform: translateY(-5px);
+      border-color: #dfb259;
+      box-shadow: 0 10px 25px rgba(223, 178, 89, 0.15);
+    }
+    .service-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(11, 15, 25, 0.85);
+      color: #dfb259;
+      border: 1px solid #dfb259;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      backdrop-filter: blur(4px);
+    }
+  </style>
 </head>
 
-<body>
-  <!-- Navigation -->
+<body class="bg-dark text-white">
+  <!-- Navigation Header -->
   <nav class="navbar navbar-expand-lg fixed-top navbar-dark scrolled">
     <div class="container">
       <a class="navbar-brand text-white d-flex align-items-center gap-2" href="/">
@@ -143,333 +86,318 @@
       </div>
     </div>
   </nav>
+
   <!-- Header Banner -->
-  <section class="py-5 bg-dark" style="margin-top: 70px;">
+  <section class="py-5 bg-dark border-bottom border-secondary" style="margin-top: 70px;">
     <div class="container py-4 text-center">
-      <h1 class="font-luxury text-white mb-2" data-aos="fade-down">Top-rated Interior Designing Services in Koparkhairne
-      </h1>
-      <div class="custom-breadcrumb text-center justify-content-center d-flex gap-2">
-        <a href="/">Home</a>
-        <span class="text-muted">/</span>
-        <span>Services</span>
+      <div class="custom-breadcrumb text-center justify-content-center d-flex gap-2 mb-3">
+        <a href="/" class="text-muted text-decoration-none small">Home</a>
+        <span class="text-muted small">/</span>
+        <span class="text-gold small">Our Interior Design Services</span>
       </div>
+      <h1 class="font-luxury text-white display-4 mb-3" data-aos="fade-down">Our Design Services &amp; Catalogs</h1>
+      <p class="text-muted lead mx-auto" style="max-width: 800px;" data-aos="fade-up">
+        Explore Siddhivinayak Designers' complete portfolio of custom interior design solutions for residential and commercial spaces across Navi Mumbai, Mumbai, and Thane.
+      </p>
     </div>
   </section>
-  <!-- Detailed Services List -->
+
+  <!-- Services Grid Section -->
   <section class="py-5 bg-dark">
-    <div class="container py-5">
-      <!-- Residential Services Category -->
+    <div class="container py-4">
+      
+      <!-- Residential Room-by-Room Solutions -->
       <div class="mb-5">
-        <span class="section-subtitle">Category 01</span>
-        <h2 class="section-title text-white font-luxury mb-4">Creating the Best Residential &amp; Commercial Spaces in
-          Navi Mumbai</h2>
+        <div class="d-flex align-items-center gap-3 mb-4" data-aos="fade-right">
+          <span class="bg-gold text-dark px-3 py-1 rounded-pill fw-bold small">01</span>
+          <h2 class="font-luxury text-white h3 mb-0">Room-By-Room Interior Design Catalogs</h2>
+        </div>
         <div class="row g-4">
+          
+          <!-- Modular Kitchen -->
           <div class="col-lg-4 col-md-6" data-aos="fade-up">
-            <div class="premium-card h-100">
-              <div class="premium-card-img">
-                <img alt="Complete Home Interior Design Navi Mumbai" class="img-fluid w-100" loading="lazy"
-                  src="/assets/images/living-room-interior-designer-koparkhairne.webp"
-                  style="height: 200px; object-fit: cover;" />
-              </div>
-              <div class="p-4">
-                <div class="text-gold mb-3 fs-3"><i class="fas fa-home"></i></div>
-                <h3 class="text-white h5 font-luxury mb-2">Complete Home Interior</h3>
-                <p class="small text-muted mb-3">End-to-end solutions for 1BHK, 2BHK, and 3BHK flats, handling
-                  everything from architectural design to masonry, wood fabrication, and polishing.</p>
-                <a class="btn btn-gold btn-sm mt-2" href="/complete-home-interior.html">Explore Details</a>
+            <div class="service-catalog-card h-100 position-relative d-flex flex-column">
+              <span class="service-badge">140+ Designs</span>
+              <img src="/assets/images/modular-kitchen/parallel-kitchen-with-sliding-glass-door-to-balcony.jpg" alt="Modular Kitchen Design" class="w-100" style="height: 220px; object-fit: cover;">
+              <div class="p-4 d-flex flex-column flex-grow-1">
+                <div class="text-gold mb-2 fs-4"><i class="fas fa-utensils"></i></div>
+                <h3 class="h5 font-luxury text-white mb-2">Modular Kitchen Designs</h3>
+                <p class="small text-muted mb-4">L-shaped, U-shaped, parallel, and island kitchen layouts built with 100% waterproof marine plywood, acrylic finishes &amp; Blum hardware.</p>
+                <a href="/modular-kitchens.html" class="btn btn-gold w-100 mt-auto">Explore Kitchen Catalogs ›</a>
               </div>
             </div>
           </div>
+
+          <!-- Living Room -->
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="premium-card h-100">
-              <div class="premium-card-img">
-                <img alt="Modular Kitchen Design Navi Mumbai" class="img-fluid w-100" loading="lazy"
-                  src="/assets/images/modular-kitchen-koparkhairne-siddhivinayak-interior.webp"
-                  style="height: 200px; object-fit: cover;" />
-              </div>
-              <div class="p-4">
-                <div class="text-gold mb-3 fs-3"><i class="fas fa-utensils"></i></div>
-                <h3 class="text-white h5 font-luxury mb-2">Modular Kitchen Design</h3>
-                <p class="small text-muted mb-3">L-shaped, U-shaped, parallel, and island kitchen modules using marine
-                  plywood, high-gloss laminates, acrylic panels, and Hafele hardware.</p>
-                <a class="btn btn-gold btn-sm mt-2" href="/modular-kitchens.html">Explore Details</a>
+            <div class="service-catalog-card h-100 position-relative d-flex flex-column">
+              <span class="service-badge">150+ Designs</span>
+              <img src="/assets/images/living-room/chic-living-room-tv-unit-grey-and-lightwood-laminates.jpg" alt="Living Room Design" class="w-100" style="height: 220px; object-fit: cover;">
+              <div class="p-4 d-flex flex-column flex-grow-1">
+                <div class="text-gold mb-2 fs-4"><i class="fas fa-couch"></i></div>
+                <h3 class="h5 font-luxury text-white mb-2">Living Room Interiors</h3>
+                <p class="small text-muted mb-4">TV back panels, fluted louvers, partition designs, false ceilings, sofa layouts, and customized accent wall cladding.</p>
+                <a href="/living-room.html" class="btn btn-gold w-100 mt-auto">Explore Living Room Catalogs ›</a>
               </div>
             </div>
           </div>
+
+          <!-- Bedroom & Wardrobe -->
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="premium-card h-100">
-              <div class="premium-card-img">
-                <img alt="Bedroom &amp; Wardrobes Design Navi Mumbai" class="img-fluid w-100" loading="lazy"
-                  src="/assets/images/turnkey-residential-interior-navi-mumbai.webp"
-                  style="height: 200px; object-fit: cover;" />
-              </div>
-              <div class="p-4">
-                <div class="text-gold mb-3 fs-3"><i class="fas fa-bed"></i></div>
-                <h3 class="text-white h5 font-luxury mb-2">Bedroom &amp; Wardrobes</h3>
-                <p class="small text-muted mb-3">Custom slider wardrobes, floor-to-ceiling cabinetry, upholstered
-                  king-size beds, dressing tables, and optimized bedroom space planning.</p>
-                <a class="btn btn-gold btn-sm mt-2" href="/bedroom-wardrobes.html">Explore Details</a>
+            <div class="service-catalog-card h-100 position-relative d-flex flex-column">
+              <span class="service-badge">150+ Designs</span>
+              <img src="/assets/images/bedroom/full-height-luxury-bedroom-marble-finish-wardrobe.jpg" alt="Bedroom Design" class="w-100" style="height: 220px; object-fit: cover;">
+              <div class="p-4 d-flex flex-column flex-grow-1">
+                <div class="text-gold mb-2 fs-4"><i class="fas fa-bed"></i></div>
+                <h3 class="h5 font-luxury text-white mb-2">Bedroom &amp; Wardrobes</h3>
+                <p class="small text-muted mb-4">Walk-in closets, floor-to-ceiling sliding door wardrobes, padded headboards, vanity units, and hidden study nooks.</p>
+                <a href="/bedroom-wardrobes.html" class="btn btn-gold w-100 mt-auto">Explore Bedroom Catalogs ›</a>
               </div>
             </div>
           </div>
+
+          <!-- Kids Bedroom -->
           <div class="col-lg-4 col-md-6" data-aos="fade-up">
-            <div class="premium-card h-100">
-              <div class="premium-card-img">
-                <img alt="Living Room Interiors Navi Mumbai" class="img-fluid w-100" loading="lazy"
-                  src="/assets/images/images (3).webp" style="height: 200px; object-fit: cover;" />
-              </div>
-              <div class="p-4">
-                <div class="text-gold mb-3 fs-3"><i class="fas fa-couch"></i></div>
-                <h3 class="text-white h5 font-luxury mb-2">Living Room Interiors</h3>
-                <p class="small text-muted mb-3">Custom TV panels featuring back-lit translucent marble, wooden louvers,
-                  designer partitions, glass displays, and customized sofas.</p>
-                <a class="btn btn-gold btn-sm mt-2" href="/living-room.html">Explore Details</a>
+            <div class="service-catalog-card h-100 position-relative d-flex flex-column">
+              <span class="service-badge">100+ Designs</span>
+              <img src="/assets/images/kids-bedroom/fairytale-kids-bedroom-design.jpg" alt="Kids Bedroom Design" class="w-100" style="height: 220px; object-fit: cover;">
+              <div class="p-4 d-flex flex-column flex-grow-1">
+                <div class="text-gold mb-2 fs-4"><i class="fas fa-child"></i></div>
+                <h3 class="h5 font-luxury text-white mb-2">Kids Bedroom Designs</h3>
+                <p class="small text-muted mb-4">Fun, space-saving bunk beds, study corners, twin beds for siblings, cartoon themes, and integrated toy storage.</p>
+                <a href="/kids-bedroom-design.html" class="btn btn-gold w-100 mt-auto">Explore Kids Room Catalogs ›</a>
               </div>
             </div>
           </div>
+
+          <!-- Space Saving Furniture -->
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="premium-card h-100">
-              <div class="premium-card-img">
-                <img alt="Luxury Apartments &amp; Villas Navi Mumbai" class="img-fluid w-100" loading="lazy"
-                  src="/assets/images/IMG_0804.webp" style="height: 200px; object-fit: cover;" />
-              </div>
-              <div class="p-4">
-                <div class="text-gold mb-3 fs-3"><i class="fas fa-gem"></i></div>
-                <h3 class="text-white h5 font-luxury mb-2">Luxury Apartments &amp; Villas</h3>
-                <p class="small text-muted mb-3">High-end bespoke interiors with structural modifications, customized
-                  metal details, profile integrations, and imported wall textures.</p>
-                <a class="btn btn-gold btn-sm mt-2" href="/luxury-apartments-villas.html">Explore Details</a>
+            <div class="service-catalog-card h-100 position-relative d-flex flex-column">
+              <span class="service-badge">96+ Designs</span>
+              <img src="/assets/images/space-saving/nook-minimalist-bedroom-study-desk-handleless.webp" alt="Space Saving Design" class="w-100" style="height: 220px; object-fit: cover;">
+              <div class="p-4 d-flex flex-column flex-grow-1">
+                <div class="text-gold mb-2 fs-4"><i class="fas fa-arrows-alt"></i></div>
+                <h3 class="h5 font-luxury text-white mb-2">Space-Saving Furniture</h3>
+                <p class="small text-muted mb-4">Folding Murphy beds, pull-out study desks, fold-away dining tables, nesting tables, and under-bed storage drawers.</p>
+                <a href="/space-saving-design.html" class="btn btn-gold w-100 mt-auto">Explore Space-Saving Catalogs ›</a>
               </div>
             </div>
           </div>
+
+          <!-- Pooja Room -->
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="premium-card h-100">
-              <div class="premium-card-img">
-                <img alt="Bespoke Furniture Design Navi Mumbai" class="img-fluid w-100" loading="lazy"
-                  src="/assets/images/luxury-home-interior-designer-vashi (1).webp"
-                  style="height: 200px; object-fit: cover;" />
-              </div>
-              <div class="p-4">
-                <div class="text-gold mb-3 fs-3"><i class="fas fa-chair"></i></div>
-                <h3 class="text-white h5 font-luxury mb-2">Bespoke Furniture Design</h3>
-                <p class="small text-muted mb-3">In-house manufacturing of custom dining tables, designer sideboards,
-                  bar consoles, sofa tables, and study desks using premium veneers.</p>
-                <a class="btn btn-gold btn-sm mt-2" href="/bespoke-furniture.html">Explore Details</a>
+            <div class="service-catalog-card h-100 position-relative d-flex flex-column">
+              <span class="service-badge">67+ Designs</span>
+              <img src="/assets/images/pooja-room/pooja-room-designs-for-indian-homes.jpg" alt="Pooja Room Design" class="w-100" style="height: 220px; object-fit: cover;">
+              <div class="p-4 d-flex flex-column flex-grow-1">
+                <div class="text-gold mb-2 fs-4"><i class="fas fa-om"></i></div>
+                <h3 class="h5 font-luxury text-white mb-2">Pooja Room Mandir Designs</h3>
+                <p class="small text-muted mb-4">CNC cut jali mandir units, marble finish altars, floating mandir shelves, wooden backpanelling, and bell mandir setups.</p>
+                <a href="/pooja-room-design.html" class="btn btn-gold w-100 mt-auto">Explore Pooja Room Catalogs ›</a>
               </div>
             </div>
           </div>
+
+          <!-- Wardrobe Design -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up">
+            <div class="service-catalog-card h-100 position-relative d-flex flex-column">
+              <span class="service-badge">150+ Designs</span>
+              <img src="/assets/images/wardrobe/floor-to-ceiling-wardrobe-design-with-glass-shutters.jpg" alt="Wardrobe Design" class="w-100" style="height: 220px; object-fit: cover;">
+              <div class="p-4 d-flex flex-column flex-grow-1">
+                <div class="text-gold mb-2 fs-4"><i class="fas fa-door-closed"></i></div>
+                <h3 class="h5 font-luxury text-white mb-2">Wardrobe Designs</h3>
+                <p class="small text-muted mb-4">Sliding door wardrobes, hinged shutters, lacquered glass wardrobes, mirror fronts, and internal organizer drawers.</p>
+                <a href="/wardrobe-design.html" class="btn btn-gold w-100 mt-auto">Explore Wardrobe Catalogs ›</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dining Room -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-catalog-card h-100 position-relative d-flex flex-column">
+              <span class="service-badge">150+ Designs</span>
+              <img src="/assets/images/dining-room/moroccan-living-room-interior-and-dining-area.jpg" alt="Dining Room Design" class="w-100" style="height: 220px; object-fit: cover;">
+              <div class="p-4 d-flex flex-column flex-grow-1">
+                <div class="text-gold mb-2 fs-4"><i class="fas fa-wine-glass-alt"></i></div>
+                <h3 class="h5 font-luxury text-white mb-2">Dining Room Interiors</h3>
+                <p class="small text-muted mb-4">6-seater dining tables, bar consoles, crockery display units, breakfast counters, and decorative ceiling lighting.</p>
+                <a href="/dining-room-design.html" class="btn btn-gold w-100 mt-auto">Explore Dining Catalogs ›</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Home Office -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-catalog-card h-100 position-relative d-flex flex-column">
+              <span class="service-badge">62+ Designs</span>
+              <img src="/assets/images/home-office/wfh-friendly-living-room-for-working-professionals.jpg" alt="Home Office Design" class="w-100" style="height: 220px; object-fit: cover;">
+              <div class="p-4 d-flex flex-column flex-grow-1">
+                <div class="text-gold mb-2 fs-4"><i class="fas fa-laptop-house"></i></div>
+                <h3 class="h5 font-luxury text-white mb-2">Home Office &amp; Study Nooks</h3>
+                <p class="small text-muted mb-4">Ergonomic study desks, WFH nooks, wall-mounted bookshelves, dual workstations, and sound-absorbing wall panels.</p>
+                <a href="/home-office-design.html" class="btn btn-gold w-100 mt-auto">Explore Home Office Catalogs ›</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bathroom -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up">
+            <div class="service-catalog-card h-100 position-relative d-flex flex-column">
+              <span class="service-badge">108+ Designs</span>
+              <img src="/assets/images/bathroom/master-bathroom-ideas.jpg" alt="Bathroom Design" class="w-100" style="height: 220px; object-fit: cover;">
+              <div class="p-4 d-flex flex-column flex-grow-1">
+                <div class="text-gold mb-2 fs-4"><i class="fas fa-bath"></i></div>
+                <h3 class="h5 font-luxury text-white mb-2">Bathroom &amp; Vanity Designs</h3>
+                <p class="small text-muted mb-4">Floating vanity units, anti-skid floor tiles, glass shower partitions, backlit mirrors, and master bath layouts.</p>
+                <a href="/bathroom-design.html" class="btn btn-gold w-100 mt-auto">Explore Bathroom Catalogs ›</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Balcony -->
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-catalog-card h-100 position-relative d-flex flex-column">
+              <span class="service-badge">74+ Designs</span>
+              <img src="/assets/images/balcony/balcony-wall-design-ideas.jpg" alt="Balcony Design" class="w-100" style="height: 220px; object-fit: cover;">
+              <div class="p-4 d-flex flex-column flex-grow-1">
+                <div class="text-gold mb-2 fs-4"><i class="fas fa-tree"></i></div>
+                <h3 class="h5 font-luxury text-white mb-2">Balcony &amp; Terrace Designs</h3>
+                <p class="small text-muted mb-4">Outdoor balcony seating, vertical gardens, wood-finish wall panels, iron railing patterns, and cozy lighting setups.</p>
+                <a href="/balcony-design.html" class="btn btn-gold w-100 mt-auto">Explore Balcony Catalogs ›</a>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
-      <!-- Commercial Services Category -->
-      <div class="mb-5 pt-5">
-        <span class="section-subtitle">Category 02</span>
-        <h2 class="section-title text-white font-luxury mb-4">Corporate &amp; Commercial Interiors</h2>
+
+      <!-- Complete Apartment Packages -->
+      <div class="mb-5 pt-4">
+        <div class="d-flex align-items-center gap-3 mb-4" data-aos="fade-right">
+          <span class="bg-gold text-dark px-3 py-1 rounded-pill fw-bold small">02</span>
+          <h2 class="font-luxury text-white h3 mb-0">Complete Flat &amp; Apartment Interior Packages</h2>
+        </div>
         <div class="row g-4">
+          
+          <!-- 1 BHK -->
           <div class="col-lg-4 col-md-6" data-aos="fade-up">
-            <div class="premium-card h-100">
-              <div class="premium-card-img">
-                <img alt="Premium Office Spaces Navi Mumbai" class="img-fluid w-100" loading="lazy"
-                  src="/assets/images/commercial-office-space-designer-navi-mumbai.webp"
-                  style="height: 200px; object-fit: cover;" />
-              </div>
-              <div class="p-4">
-                <div class="text-gold mb-3 fs-3"><i class="fas fa-briefcase"></i></div>
-                <h3 class="text-white h5 font-luxury mb-2">Premium Office Spaces</h3>
-                <p class="small text-muted mb-3">Modern workspaces featuring MD cabins, staff workstations, soundproof
-                  conference rooms, reception lobbies, and network server cabling.</p>
-                <a class="btn btn-gold btn-sm mt-2" href="/office-spaces.html">Explore Details</a>
+            <div class="service-catalog-card h-100 position-relative d-flex flex-column">
+              <span class="service-badge">31+ Showcase Homes</span>
+              <img src="/assets/images/1bhk/1bhk-interior-design-ideas.jpg" alt="1 BHK Interior Design" class="w-100" style="height: 220px; object-fit: cover;">
+              <div class="p-4 d-flex flex-column flex-grow-1">
+                <div class="text-gold mb-2 fs-4"><i class="fas fa-building"></i></div>
+                <h3 class="h5 font-luxury text-white mb-2">1 BHK Home Interiors</h3>
+                <p class="small text-muted mb-4">Compact space planning, multi-functional furniture, open kitchen partitions, and bright interior styling.</p>
+                <a href="/1bhk-interior-design.html" class="btn btn-gold w-100 mt-auto">Explore 1 BHK Catalogs ›</a>
               </div>
             </div>
           </div>
+
+          <!-- 2 BHK -->
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="premium-card h-100">
-              <div class="premium-card-img">
-                <img alt="Retail &amp; Showrooms Design Navi Mumbai" class="img-fluid w-100" loading="lazy"
-                  src="/assets/images/commercial-office-space-designer-navi-mumbai.webp"
-                  style="height: 200px; object-fit: cover;" />
-              </div>
-              <div class="p-4">
-                <div class="text-gold mb-3 fs-3"><i class="fas fa-store"></i></div>
-                <h3 class="text-white h5 font-luxury mb-2">Retail &amp; Showrooms</h3>
-                <p class="small text-muted mb-3">Design and execution of visual display counters, customized retail
-                  racks, premium lighting configurations, and facade glass installations.</p>
-                <a class="btn btn-gold btn-sm mt-2" href="/retail-showrooms.html">Explore Details</a>
+            <div class="service-catalog-card h-100 position-relative d-flex flex-column">
+              <span class="service-badge">109+ Showcase Homes</span>
+              <img src="/assets/images/2bhk/2bhk-mumbai-flat-interior-design.jpg" alt="2 BHK Interior Design" class="w-100" style="height: 220px; object-fit: cover;">
+              <div class="p-4 d-flex flex-column flex-grow-1">
+                <div class="text-gold mb-2 fs-4"><i class="fas fa-city"></i></div>
+                <h3 class="h5 font-luxury text-white mb-2">2 BHK Home Interiors</h3>
+                <p class="small text-muted mb-4">Complete 2BHK flat transformation: Master bedroom, kid's room, modular kitchen, living room &amp; foyer decor.</p>
+                <a href="/2bhk-interior-design.html" class="btn btn-gold w-100 mt-auto">Explore 2 BHK Catalogs ›</a>
               </div>
             </div>
           </div>
+
+          <!-- 3 BHK -->
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="premium-card h-100">
-              <div class="premium-card-img">
-                <img alt="Turnkey Contracting Solutions Navi Mumbai" class="img-fluid w-100" loading="lazy"
-                  src="/assets/images/IMG_0804.webp" style="height: 200px; object-fit: cover;" />
-              </div>
-              <div class="p-4">
-                <div class="text-gold mb-3 fs-3"><i class="fas fa-cubes"></i></div>
-                <h3 class="text-white h5 font-luxury mb-2">Turnkey Contracting Solutions</h3>
-                <p class="small text-muted mb-3">A single-window model: site layouts, architectural modeling, civil
-                  changes, electrical load approvals, and fire safety systems mapping.</p>
-                <a class="btn btn-gold btn-sm mt-2" href="/turnkey-contracting.html">Explore Details</a>
+            <div class="service-catalog-card h-100 position-relative d-flex flex-column">
+              <span class="service-badge">70+ Showcase Homes</span>
+              <img src="/assets/images/3bhk/regal-3-bhk-home-in-mumbai.jpg" alt="3 BHK Interior Design" class="w-100" style="height: 220px; object-fit: cover;">
+              <div class="p-4 d-flex flex-column flex-grow-1">
+                <div class="text-gold mb-2 fs-4"><i class="fas fa-crown"></i></div>
+                <h3 class="h5 font-luxury text-white mb-2">3 BHK Home Interiors</h3>
+                <p class="small text-muted mb-4">Luxury apartment interiors, spacious dining zones, guest rooms, entertainment walls &amp; turnkey execution.</p>
+                <a href="/3bhk-interior-design.html" class="btn btn-gold w-100 mt-auto">Explore 3 BHK Catalogs ›</a>
               </div>
             </div>
           </div>
+
         </div>
       </div>
-      <!-- Structural and Civil Category -->
-      <div class="mb-5 pt-5">
-        <span class="section-subtitle">Category 03</span>
-        <h2 class="section-title text-white font-luxury mb-4">Civil, Renovations &amp; Ceiling Works</h2>
-        <div class="row g-4">
-          <div class="col-lg-4 col-md-6" data-aos="fade-up">
-            <div class="premium-card h-100">
-              <div class="premium-card-img">
-                <img alt="Civil &amp; Renovation Work Navi Mumbai" class="img-fluid w-100" loading="lazy"
-                  src="/assets/images/modular-kitchen-koparkhairne-siddhivinayak-interior.webp"
-                  style="height: 200px; object-fit: cover;" />
-              </div>
-              <div class="p-4">
-                <div class="text-gold mb-3 fs-3"><i class="fas fa-hammer"></i></div>
-                <h3 class="text-white h5 font-luxury mb-2">Civil &amp; Renovation Work</h3>
-                <p class="small text-muted mb-3">Wall demolitions, partition masonry, kitchen platform modifications,
-                  structural column wraps, tiling, and complete bathroom waterproofing.</p>
-                <a class="btn btn-gold btn-sm mt-2" href="/civil-renovations.html">Explore Details</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="premium-card h-100">
-              <div class="premium-card-img">
-                <img alt="False Ceiling &amp; Lighting Navi Mumbai" class="img-fluid w-100" loading="lazy"
-                  src="/assets/images/modern-false-ceiling-design-koparkhairne.webp"
-                  style="height: 200px; object-fit: cover;" />
-              </div>
-              <div class="p-4">
-                <div class="text-gold mb-3 fs-3"><i class="fas fa-lightbulb"></i></div>
-                <h3 class="text-white h5 font-luxury mb-2">False Ceiling &amp; Lighting</h3>
-                <p class="small text-muted mb-3">Grid plaster ceilings, multi-level gypsum designs, cove styling, COB
-                  spotlight positioning, profile LEDs, and luxury chandeliers mapping.</p>
-                <a class="btn btn-gold btn-sm mt-2" href="/false-ceiling.html">Explore Details</a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="premium-card h-100">
-              <div class="premium-card-img">
-                <img alt="Premium Painting &amp; Textures Navi Mumbai" class="img-fluid w-100" loading="lazy"
-                  src="/assets/images/luxury-home-interior-designer-vashi (1).webp"
-                  style="height: 200px; object-fit: cover;" />
-              </div>
-              <div class="p-4">
-                <div class="text-gold mb-3 fs-3"><i class="fas fa-paint-roller"></i></div>
-                <h3 class="text-white h5 font-luxury mb-2">Premium Painting &amp; Textures</h3>
-                <p class="small text-muted mb-3">Wall putty preparation, premium interior emulsion coatings (Asian
-                  Paints Royale/Dulux Velvet), texture finishes, and custom wallpapers.</p>
-                <a class="btn btn-gold btn-sm mt-2" href="/painting-textures.html">Explore Details</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+
+    </div>
   </section>
+
   <!-- CTA Quote Form -->
   <section class="py-5 bg-dark border-top border-secondary">
     <div class="container py-5 text-center">
       <div class="row justify-content-center" data-aos="zoom-in">
         <div class="col-lg-8">
-          <span class="section-subtitle">Get Started</span>
-          <h2 class="section-title text-white font-luxury mb-4">Request A Customized Quote For Your Space</h2>
-          <p class="text-muted mb-5">Select from our 22 service offerings and get a transparent estimate calculated by
-            our technical managers.</p>
-          <a class="btn btn-gold px-5 py-3" href="/contact.html">Submit Site Inquiry</a>
+          <span class="bg-gold text-dark px-3 py-1 rounded-pill fw-bold small">Get Started</span>
+          <h2 class="section-title text-white font-luxury mb-3 mt-3">Book A FREE Consultation For Your Space</h2>
+          <p class="text-muted mb-4">Select from our 14 comprehensive design catalog offerings and receive a transparent estimate from our technical managers.</p>
+          <a class="btn btn-gold px-5 py-3 text-dark fw-bold fs-6" href="/contact.html">Submit Site Inquiry</a>
         </div>
       </div>
     </div>
   </section>
-  <!-- Floating Actions -->
-  <div class="floating-widgets">
-    <a class="float-btn float-whatsapp"
-      href="https://wa.me/918369297174?text=Hi%20Siddhivinayak%20Designers,%20I'm%20interested%20in%20a%20free%20design%20consultation."
-      target="_blank">
-      <i class="fab fa-whatsapp"></i>
-    </a>
-    <a class="float-btn float-call" href="tel:+918369297174">
-      <i class="fas fa-phone-alt"></i>
-    </a>
-  </div>
+
   <!-- Footer -->
-  <footer class="py-5 text-white">
-    <div class="container py-4">
-      <div class="row g-4">
+  <footer class="bg-black py-5 border-top border-secondary">
+    <div class="container">
+      <div class="row g-4 text-muted small">
         <div class="col-lg-4">
-          <h5 class="font-luxury text-white mb-3"><span class="text-gold">Siddhivinayak</span> Designers</h5>
-          <p class="small text-muted mb-4">Siddhivinayak Designers is a modern interior design company serving Navi
-            Mumbai. Our projects are executed by experienced contractors with over 25 years of industry expertise,
-            delivering quality workmanship and reliable execution.</p>
-          <div class="social-icons">
-            <a aria-label="Facebook Page" href="https://www.facebook.com/people/Siddhivinayak-Interior/61591244265786/"
-              target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a aria-label="Instagram Profile" href="https://www.instagram.com/siddhivinayakdesigners/"
-              target="_blank"><i class="fab fa-instagram"></i></a>
-            
-            <a aria-label="Google Business Profile" href="https://maps.google.com/?cid=6911458856073113523"
-              target="_blank" title="Google Business Profile"><i class="fab fa-google"></i></a>
+          <a class="text-white h5 text-decoration-none font-luxury d-inline-block mb-3" href="/">
+            <span class="text-gold">Siddhivinayak</span> Designers
+          </a>
+          <p>Navi Mumbai's trusted residential &amp; commercial interior design studio specializing in bespoke modular kitchens, bedroom wardrobes, living rooms, complete home interiors, and turnkey space execution.</p>
+          <div class="d-flex gap-3 fs-5 text-gold">
+            <a href="#" class="text-gold"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="text-gold"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-gold"><i class="fab fa-whatsapp"></i></a>
           </div>
         </div>
-        <div class="col-lg-2">
-          <h6 class="font-luxury text-white mb-3">Quick Links</h6>
+        <div class="col-lg-2 col-6">
+          <h6 class="text-white font-luxury mb-3">Core Catalogs</h6>
           <ul class="list-unstyled">
-            <li class="mb-2"><a href="/about.html">About Us</a></li>
-            <li class="mb-2"><a href="/services.html">Our Services</a></li>
-            <li class="mb-2"><a href="/gallery.html">Gallery</a></li>
-            <li class="mb-2"><a href="/pricing.html">Pricing Plans</a></li>
-            <li class="mb-2"><a href="/blog/">Blog</a></li>
+            <li class="mb-2"><a href="/modular-kitchens.html" class="text-muted text-decoration-none">Modular Kitchens</a></li>
+            <li class="mb-2"><a href="/living-room.html" class="text-muted text-decoration-none">Living Room</a></li>
+            <li class="mb-2"><a href="/bedroom-wardrobes.html" class="text-muted text-decoration-none">Bedroom &amp; Wardrobes</a></li>
+            <li class="mb-2"><a href="/kids-bedroom-design.html" class="text-muted text-decoration-none">Kids Bedroom</a></li>
+            <li class="mb-2"><a href="/space-saving-design.html" class="text-muted text-decoration-none">Space Saving</a></li>
           </ul>
         </div>
-        <div class="col-lg-3">
-                    <h6 class="font-luxury text-white mb-3">Our Core Services</h6>
+        <div class="col-lg-2 col-6">
+          <h6 class="text-white font-luxury mb-3">Apartment Packages</h6>
           <ul class="list-unstyled">
-            <li class="mb-2"><a href="/complete-home-interior.html">Complete Home Interior</a></li>
-            <li class="mb-2"><a href="/modular-kitchens.html">Modular Kitchens</a></li>
-            <li class="mb-2"><a href="/bedroom-wardrobes.html">Bedroom &amp; Wardrobes</a></li>
-            <li class="mb-2"><a href="/living-room.html">Living Room Designs</a></li>
-            <li class="mb-2"><a href="/office-spaces.html">Office &amp; Commercial</a></li>
-            <li class="mb-2"><a href="/civil-renovations.html">Contracting &amp; Civil Work</a></li>
+            <li class="mb-2"><a href="/1bhk-interior-design.html" class="text-muted text-decoration-none">1 BHK Interior</a></li>
+            <li class="mb-2"><a href="/2bhk-interior-design.html" class="text-muted text-decoration-none">2 BHK Interior</a></li>
+            <li class="mb-2"><a href="/3bhk-interior-design.html" class="text-muted text-decoration-none">3 BHK Interior</a></li>
+            <li class="mb-2"><a href="/pooja-room-design.html" class="text-muted text-decoration-none">Pooja Room Mandir</a></li>
+            <li class="mb-2"><a href="/home-office-design.html" class="text-muted text-decoration-none">Home Office</a></li>
           </ul>
         </div>
-        <div class="col-lg-3">
-          <h6 class="font-luxury text-white mb-3">Contact Details</h6>
-          <p class="small text-muted mb-2"><i class="fas fa-map-marker-alt text-gold me-2"></i> <a class="text-muted"
-              href="https://maps.google.com/?cid=6911458856073113523" rel="noopener" target="_blank">Shree Laxmi CHS, A 301, Sector 23, Kopar Khairane, Navi Mumbai, Maharashtra 400709</a></p>
-          <p class="small text-muted mb-2"><i class="fas fa-phone-alt text-gold me-2"></i> <a
-              href="tel:+918369297174">+91 83692 97174</a></p>
-          <p class="small text-muted"><i class="fas fa-envelope text-gold me-2"></i> <a class="email-link"
-              data-domain="siddhivinayakdesigners.in" data-user="admin" href="#">admin [at] siddhivinayakdesigners.in</a></p>
+        <div class="col-lg-4">
+          <h6 class="text-white font-luxury mb-3">Contact Us</h6>
+          <p class="mb-1"><i class="fas fa-location-dot text-gold me-2"></i>Shop No. 12, Sector 15, Koparkhairane, Navi Mumbai, Maharashtra 400709</p>
+          <p class="mb-1"><i class="fas fa-phone text-gold me-2"></i>+91 83692 97174</p>
+          <p class="mb-0"><i class="fas fa-envelope text-gold me-2"></i>info@siddhivinayakdesigners.in</p>
         </div>
       </div>
-      <hr class="border-secondary my-4" />
-      <div class="row align-items-center">
-        <div class="col-md-6 text-center text-md-start">
-          <p class="small text-muted mb-0">© 2026 Siddhivinayak Designers. All Rights Reserved.</p>
-        </div>
-        <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
-          <a class="small text-muted me-3" href="/privacy-policy.html">Privacy Policy</a>
-          <a class="small text-muted" href="/terms-conditions.html">Terms &amp; Conditions</a>
-        </div>
+      <hr class="border-secondary my-4">
+      <div class="text-center text-muted small">
+        &copy; 2026 Siddhivinayak Designers. All rights reserved.
       </div>
     </div>
   </footer>
-  <!-- JS CDN -->
+
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <script src="/assets/js/main.min.js?v=3"></script>
+  <script src="/assets/js/aos.js"></script>
   <script>
-    AOS.init({
-      duration: 800,
-      easing: 'ease-in-out',
-      once: true
-    });
+    if (typeof AOS !== 'undefined') {
+      AOS.init({ duration: 800, once: true });
+    }
   </script>
 </body>
 
 </html>
-
-
