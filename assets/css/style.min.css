@@ -752,6 +752,50 @@ body.mobile-nav-open {
   gap: 0.5rem !important;
 }
 
+.lightbox-arrow-next {
+  right: 25px !important;
+}
+
+/* ULTRA-LUXURY CATALOGUE CARD STYLING */
+.catalog-card-thumbs {
+  display: flex;
+  gap: 6px;
+  padding: 8px 12px;
+  background: rgba(18, 17, 16, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.catalog-thumb-img {
+  width: 100%;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.catalog-thumb-img:hover {
+  border-color: var(--color-gold);
+  transform: scale(1.06);
+}
+
+.catalog-badge-pill {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(18, 17, 16, 0.88);
+  color: var(--color-gold);
+  border: 1px solid rgba(184, 144, 71, 0.4);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(8px);
+  z-index: 3;
+}
+
 .consultation-popup-checkbox {
   width: 16px !important;
   height: 16px !important;
@@ -889,3 +933,134 @@ body.mobile-nav-open {
     border: none !important;
   }
 }
+
+
+/* HIGH VISIBILITY WHITE CARD TEXT OVERRIDES */
+.premium-card .card-title,
+.premium-card h3,
+.premium-card h4,
+.premium-card h5,
+.premium-service-card .card-title,
+.premium-service-card h3,
+.premium-service-card h4,
+.premium-service-card h5 {
+  color: #FFFFFF !important;
+}
+
+.premium-card p,
+.premium-card .card-text,
+.premium-service-card p,
+.premium-service-card .card-text {
+  color: #F8F9FA !important;
+}
+
+/* Official WhatsApp Brand Styling for Get a Quote Buttons */
+.btn-whatsapp,
+a.btn-whatsapp,
+a[href*="wa.me"],
+.btn-gold[href*="wa.me"] {
+  background-color: #25D366 !important;
+  background: #25D366 !important;
+  border-color: #25D366 !important;
+  color: #FFFFFF !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35) !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+.btn-whatsapp:hover,
+a.btn-whatsapp:hover,
+a[href*="wa.me"]:hover,
+.btn-gold[href*="wa.me"]:hover {
+  background-color: #128C7E !important;
+  background: #128C7E !important;
+  border-color: #128C7E !important;
+  color: #FFFFFF !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5) !important;
+}
+
+/* LUXURY DESIGN CATALOG DIRECTORY SHOWCASE */
+.catalog-directory-section {
+  background: radial-gradient(circle at top center, #1F1C18 0%, #0D0C0B 100%) !important;
+  border-top: 1px solid rgba(184, 144, 71, 0.25);
+  border-bottom: 1px solid rgba(184, 144, 71, 0.25);
+}
+
+.design-catalog-card {
+  background: #161412 !important;
+  border: 1px solid rgba(184, 144, 71, 0.3) !important;
+  border-radius: 8px !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  overflow: hidden !important;
+}
+
+.design-catalog-card:hover {
+  transform: translateY(-8px) !important;
+  border-color: #B89047 !important;
+  box-shadow: 0 20px 40px rgba(184, 144, 71, 0.3) !important;
+}
+
+.catalog-ribbon-tag {
+  background: linear-gradient(90deg, #B89047 0%, #9E7A37 100%);
+  color: #FFFFFF !important;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  display: inline-block;
+  border-bottom-right-radius: 6px;
+}
+
+.catalog-overlay-badge {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(13, 12, 11, 0.88);
+  color: #B89047;
+  border: 1px solid rgba(184, 144, 71, 0.5);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  backdrop-filter: blur(8px);
+}
+
+/* $10,000 EDITORIAL LOOKBOOK CATALOG CARDS */
+.catalog-lookbook-card {
+  transition: all 0.4s ease;
+}
+
+.catalog-lookbook-card:hover .catalog-img {
+  transform: scale(1.06) !important;
+}
+
+.catalog-lookbook-card:hover .transition-icon {
+  transform: translateX(6px) !important;
+}
+
+.catalog-img-wrapper {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.catalog-img-glass-pill {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  background: rgba(12, 11, 10, 0.75);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 4px 14px;
+  border-radius: 30px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(10px);
+}
+
+.transition-icon {
+  transition: transform 0.3s ease;
+}
+
+
