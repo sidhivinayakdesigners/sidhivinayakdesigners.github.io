@@ -982,23 +982,30 @@ a[href*="wa.me"]:hover,
 
 /* LUXURY DESIGN CATALOG DIRECTORY SHOWCASE */
 .catalog-directory-section {
-  background: radial-gradient(circle at top center, #1F1C18 0%, #0D0C0B 100%) !important;
-  border-top: 1px solid rgba(184, 144, 71, 0.25);
-  border-bottom: 1px solid rgba(184, 144, 71, 0.25);
+  background-color: #FFFFFF !important;
+  background: #FFFFFF !important;
+  border-top: 1px solid #E6E2DB !important;
+  border-bottom: 1px solid #E6E2DB !important;
 }
 
 .design-catalog-card {
-  background: #161412 !important;
-  border: 1px solid rgba(184, 144, 71, 0.3) !important;
+  background-color: #FFFFFF !important;
+  background: #FFFFFF !important;
+  border: 1px solid #E6E2DB !important;
   border-radius: 8px !important;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
   overflow: hidden !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+}
+
+.design-catalog-card h3 {
+  color: #151413 !important;
 }
 
 .design-catalog-card:hover {
   transform: translateY(-8px) !important;
   border-color: #B89047 !important;
-  box-shadow: 0 20px 40px rgba(184, 144, 71, 0.3) !important;
+  box-shadow: 0 15px 35px rgba(184, 144, 71, 0.18) !important;
 }
 
 .catalog-ribbon-tag {
@@ -1064,3 +1071,57 @@ a[href*="wa.me"]:hover,
 }
 
 
+
+
+/* GLOBAL LIGHT THEME OVERRIDES MATCHING SERVICES.HTML */
+:root {
+  --color-dark: #ffffff !important;
+  --color-dark-card: #ffffff !important;
+  --color-gold: #189ba6 !important;
+  --color-gold-hover: #127c85 !important;
+  --color-gold-light: rgba(24, 155, 166, 0.08) !important;
+  --color-text-light: #1a1a1a !important;
+  --color-text-muted: #555555 !important;
+  --color-text-white: #ffffff !important;
+  --color-bg-dark: #ffffff !important;
+  --color-border: #e0e6ed !important;
+}
+
+html, body {
+  background-color: #ffffff !important;
+  color: #212529 !important;
+}
+
+.bg-dark, .bg-dark-card, .bg-dark-contrast, .catalog-directory-section, .catalog-directory-hero, .hero-section {
+  background-color: #f3f6f8 !important;
+  color: #1a1a1a !important;
+}
+
+.card, .premium-card, .calc-card, .dc-exact-card {
+  background-color: #ffffff !important;
+  border: 1px solid #e0e6ed !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+}
+
+h1, h2, h3, h4, h5, h6, .section-title, .dc-section-head-title, .dc-page-main-title {
+  color: #1a1a1a !important;
+}
+
+p, span, li, .section-desc, .dc-page-main-desc {
+  color: #555555 !important;
+}
+
+.btn-gold, .btn-primary, .dc-get-quote-button {
+  background-color: #189ba6 !important;
+  border-color: #189ba6 !important;
+  color: #ffffff !important;
+}
+
+.btn-gold:hover, .btn-primary:hover, .dc-get-quote-button:hover {
+  background-color: #127c85 !important;
+  border-color: #127c85 !important;
+}
+
+.text-gold, .dc-more-details-btn, .dc-show-less-link {
+  color: #189ba6 !important;
+}
