@@ -1125,3 +1125,9 @@ p, span, li, .section-desc, .dc-page-main-desc {
 .text-gold, .dc-more-details-btn, .dc-show-less-link {
   color: #189ba6 !important;
 }
+
+/* Make main index hero banner photos show pointer cursor */
+.hero-banner-img, .hero-banner-popup-trigger {
+  cursor: pointer !important;
+}
+
