@@ -477,6 +477,49 @@
         right: 10px;
       }
     }
+
+    /* Slider container and track layout matching Instagram carousel */
+    .dc-lightbox-slider-container {
+      width: 100vw;
+      height: 80vh;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      touch-action: pan-y;
+    }
+    .dc-lightbox-slider-track {
+      display: flex;
+      width: 300%;
+      height: 100%;
+      transform: translate3d(-100vw, 0, 0);
+      will-change: transform;
+    }
+    .dc-lightbox-slide {
+      width: 100vw;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      user-select: none;
+    }
+    .dc-lightbox-slide img {
+      max-width: 85%;
+      max-height: 75vh;
+      object-fit: contain;
+      border: 1px solid #189ba6;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+    /* Hide navigation arrows on all touch-supported screens and mobile viewports (e.g. mobile, iPads, tablets) */
+    @media (max-width: 1024px) {
+      .dc-lightbox-nav {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -25552,6 +25595,22 @@
       let lbIndex = 0;
       let lbTitle = '';
 
+      if (lbImg) {
+        lbImg.style.display = 'none';
+      }
+
+      const lbContent = lbOverlay.querySelector('.dc-lightbox-content');
+      let sliderContainer = lbContent.querySelector('.dc-lightbox-slider-container');
+      if (!sliderContainer) {
+        sliderContainer = document.createElement('div');
+        sliderContainer.className = 'dc-lightbox-slider-container';
+        const sliderTrack = document.createElement('div');
+        sliderTrack.className = 'dc-lightbox-slider-track';
+        sliderContainer.appendChild(sliderTrack);
+        lbContent.insertBefore(sliderContainer, lbCaption);
+      }
+      const sliderTrack = sliderContainer.querySelector('.dc-lightbox-slider-track');
+
       window.openLightbox = function(imgEl) {
         const container = imgEl.closest('.dc-exact-card-img');
         if (!container) return;
@@ -25569,36 +25628,236 @@
       };
 
       function showLbSlide() {
-        lbImg.src = lbPhotos[lbIndex];
         lbCaption.textContent = lbTitle + ' (' + (lbIndex + 1) + ' / ' + lbPhotos.length + ')';
-        lbPrev.style.display = lbPhotos.length > 1 ? 'flex' : 'none';
-        lbNext.style.display = lbPhotos.length > 1 ? 'flex' : 'none';
+        
+        const total = lbPhotos.length;
+        const prevIndex = (lbIndex - 1 + total) % total;
+        const nextIndex = (lbIndex + 1) % total;
+        
+        const prevSrc = total > 1 ? lbPhotos[prevIndex] : '';
+        const currentSrc = lbPhotos[lbIndex];
+        const nextSrc = total > 1 ? lbPhotos[nextIndex] : '';
+
+        sliderTrack.innerHTML = '';
+        sliderTrack.style.transition = 'none';
+
+        // 1. Prev slide
+        const prevSlide = document.createElement('div');
+        prevSlide.className = 'dc-lightbox-slide prev-slide';
+        if (prevSrc) {
+          prevSlide.innerHTML = `<img src="${prevSrc}" alt="Previous Image" />`;
+        }
+        sliderTrack.appendChild(prevSlide);
+
+        // 2. Active slide
+        const activeSlide = document.createElement('div');
+        activeSlide.className = 'dc-lightbox-slide active-slide';
+        activeSlide.innerHTML = `<img src="${currentSrc}" alt="${lbTitle}" />`;
+        sliderTrack.appendChild(activeSlide);
+
+        // 3. Next slide
+        const nextSlide = document.createElement('div');
+        nextSlide.className = 'dc-lightbox-slide next-slide';
+        if (nextSrc) {
+          nextSlide.innerHTML = `<img src="${nextSrc}" alt="Next Image" />`;
+        }
+        sliderTrack.appendChild(nextSlide);
+
+        // Center active slide
+        const width = sliderContainer.offsetWidth || window.innerWidth;
+        sliderTrack.style.transform = `translate3d(-${width}px, 0, 0)`;
+
+        // Hide navigation arrows on touch screens (iPads, mobile phones) and screens <= 1024px
+        const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || window.innerWidth <= 1024;
+        if (total <= 1 || isTouchDevice) {
+          lbPrev.style.display = 'none';
+          lbNext.style.display = 'none';
+        } else {
+          lbPrev.style.display = 'flex';
+          lbNext.style.display = 'flex';
+        }
       }
 
       function closeLightbox() {
         lbOverlay.classList.remove('active');
+        sliderTrack.innerHTML = '';
         document.body.style.overflow = '';
       }
 
       lbClose.addEventListener('click', closeLightbox);
       lbOverlay.addEventListener('click', function(e) {
-        if (e.target === lbOverlay) closeLightbox();
+        if (e.target === lbOverlay || e.target === lbCaption) closeLightbox();
       });
+
       lbPrev.addEventListener('click', function(e) {
         e.stopPropagation();
-        lbIndex = (lbIndex - 1 + lbPhotos.length) % lbPhotos.length;
-        showLbSlide();
+        if (lbPhotos.length <= 1) return;
+        sliderTrack.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
+        sliderTrack.style.transform = `translate3d(0px, 0, 0)`;
+        setTimeout(() => {
+          lbIndex = (lbIndex - 1 + lbPhotos.length) % lbPhotos.length;
+          showLbSlide();
+        }, 250);
       });
+
       lbNext.addEventListener('click', function(e) {
         e.stopPropagation();
-        lbIndex = (lbIndex + 1) % lbPhotos.length;
-        showLbSlide();
+        if (lbPhotos.length <= 1) return;
+        const width = sliderContainer.offsetWidth || window.innerWidth;
+        sliderTrack.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
+        sliderTrack.style.transform = `translate3d(-${2 * width}px, 0, 0)`;
+        setTimeout(() => {
+          lbIndex = (lbIndex + 1) % lbPhotos.length;
+          showLbSlide();
+        }, 250);
       });
+
       document.addEventListener('keydown', function(e) {
         if (!lbOverlay.classList.contains('active')) return;
         if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowLeft') { lbIndex = (lbIndex - 1 + lbPhotos.length) % lbPhotos.length; showLbSlide(); }
-        if (e.key === 'ArrowRight') { lbIndex = (lbIndex + 1) % lbPhotos.length; showLbSlide(); }
+        if (e.key === 'ArrowLeft' && lbPhotos.length > 1) {
+          sliderTrack.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
+          sliderTrack.style.transform = `translate3d(0px, 0, 0)`;
+          setTimeout(() => {
+            lbIndex = (lbIndex - 1 + lbPhotos.length) % lbPhotos.length;
+            showLbSlide();
+          }, 250);
+        }
+        if (e.key === 'ArrowRight' && lbPhotos.length > 1) {
+          const width = sliderContainer.offsetWidth || window.innerWidth;
+          sliderTrack.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
+          sliderTrack.style.transform = `translate3d(-${2 * width}px, 0, 0)`;
+          setTimeout(() => {
+            lbIndex = (lbIndex + 1) % lbPhotos.length;
+            showLbSlide();
+          }, 250);
+        }
+      });
+
+      // Swipe/Drag scrolling implementation (Instagram style)
+      let startX = 0;
+      let currentX = 0;
+      let isDragging = false;
+      let containerWidth = 0;
+
+      const getTouchX = (e) => {
+        return e.touches ? e.touches[0].clientX : e.clientX;
+      };
+
+      const handleDragStart = (e) => {
+        if (lbPhotos.length <= 1) return;
+        if (e.target.closest('#dcLightboxClose') || e.target.closest('#dcLightboxCaption')) return;
+        
+        isDragging = true;
+        startX = getTouchX(e);
+        currentX = startX;
+        containerWidth = sliderContainer.offsetWidth || window.innerWidth;
+        sliderTrack.style.transition = 'none';
+      };
+
+      const handleDragMove = (e) => {
+        if (!isDragging) return;
+        currentX = getTouchX(e);
+        const deltaX = currentX - startX;
+        const translation = -containerWidth + deltaX;
+        sliderTrack.style.transform = `translate3d(${translation}px, 0, 0)`;
+      };
+
+      const handleDragEnd = () => {
+        if (!isDragging) return;
+        isDragging = false;
+        const deltaX = currentX - startX;
+        const threshold = containerWidth * 0.15; // 15% swipe threshold
+
+        sliderTrack.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
+
+        if (deltaX > threshold) {
+          // Swiped right -> show previous slide
+          sliderTrack.style.transform = `translate3d(0px, 0, 0)`;
+          setTimeout(() => {
+            lbIndex = (lbIndex - 1 + lbPhotos.length) % lbPhotos.length;
+            showLbSlide();
+          }, 250);
+        } else if (deltaX < -threshold) {
+          // Swiped left -> show next slide
+          sliderTrack.style.transform = `translate3d(-${2 * containerWidth}px, 0, 0)`;
+          setTimeout(() => {
+            lbIndex = (lbIndex + 1) % lbPhotos.length;
+            showLbSlide();
+          }, 250);
+        } else {
+          // Snap back to center active slide
+          sliderTrack.style.transform = `translate3d(-${containerWidth}px, 0, 0)`;
+        }
+      };
+
+      // Left/Right side click tap navigation + background click close
+      sliderContainer.addEventListener('click', (e) => {
+        if (isDragging || Math.abs(currentX - startX) > 8) return;
+        
+        // Close if clicking outside the image boundaries (on the slide background itself)
+        if (e.target.classList.contains('dc-lightbox-slide')) {
+          closeLightbox();
+          return;
+        }
+
+        if (e.target.closest('#dcLightboxClose')) return;
+
+        // Ignore left/right click navigation if only 1 image
+        if (lbPhotos.length <= 1) return;
+
+        const rect = sliderContainer.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const width = rect.width;
+
+        sliderTrack.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1)';
+
+        if (clickX < width * 0.4) {
+          sliderTrack.style.transform = `translate3d(0px, 0, 0)`;
+          setTimeout(() => {
+            lbIndex = (lbIndex - 1 + lbPhotos.length) % lbPhotos.length;
+            showLbSlide();
+          }, 250);
+        } else {
+          sliderTrack.style.transform = `translate3d(-${2 * width}px, 0, 0)`;
+          setTimeout(() => {
+            lbIndex = (lbIndex + 1) % lbPhotos.length;
+            showLbSlide();
+          }, 250);
+        }
+      });
+
+      // Provide visual navigation cursor arrows on hover
+      sliderContainer.addEventListener('mousemove', (e) => {
+        if (lbPhotos.length <= 1) {
+          sliderContainer.style.cursor = 'default';
+          return;
+        }
+        const rect = sliderContainer.getBoundingClientRect();
+        const hoverX = e.clientX - rect.left;
+        const width = rect.width;
+        
+        if (hoverX < width * 0.4) {
+          sliderContainer.style.cursor = 'w-resize';
+        } else {
+          sliderContainer.style.cursor = 'e-resize';
+        }
+      });
+
+      // Register touch events
+      sliderContainer.addEventListener('touchstart', handleDragStart, { passive: true });
+      sliderContainer.addEventListener('touchmove', handleDragMove, { passive: true });
+      sliderContainer.addEventListener('touchend', handleDragEnd);
+
+      // Register mouse events for drag/swipe support on desktop
+      sliderContainer.addEventListener('mousedown', (e) => {
+        if (e.button !== 0) return;
+        handleDragStart(e);
+      });
+      sliderContainer.addEventListener('mousemove', handleDragMove);
+      sliderContainer.addEventListener('mouseup', handleDragEnd);
+      sliderContainer.addEventListener('mouseleave', () => {
+        if (isDragging) handleDragEnd();
       });
   </script>
 </body>
