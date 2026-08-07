@@ -584,14 +584,89 @@
       ]
     }
     </script>
-  <!-- Google Tag (gtag.js) - Google Analytics -->
-  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER"></script>
+  <!-- Google Tag Manager -->
+  <script>
+  (function(w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({
+          'gtm.start': new Date().getTime(),
+          event: 'gtm.js'
+      });
+      var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+      j.async = true;
+      j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+      f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', 'GTM-WLR8MTX');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Google Analytics / Google Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-770899520"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
+    function gtag() {
+        dataLayer.push(arguments);
+    }
     gtag('js', new Date());
-    gtag('config', 'G-PLACEHOLDER');
+    gtag('config', 'AW-844999971');
+    gtag('config', 'AW-770899520');
+    gtag('event', 'page_view', {
+        'send_to': 'AW-770899520',
+        'user_id': 'replace with value'
+    });
+    function trackCTAClick(ctaName, ctaLocation) {
+      window.dataLayer.push({
+        'event': 'cta_click',
+        'cta_name': ctaName,
+        'cta_location': ctaLocation
+      });
+    }
   </script>
+  <!-- End Google Analytics / Google Ads -->
+
+  <!-- Microsoft Bing UET -->
+  <script>
+  (function(w, d, t, r, u) {
+      var f, n, i;
+      w[u] = w[u] || [], f = function() {
+          var o = {
+              ti: "134601667"
+          };
+          o.q = w[u], w[u] = new UET(o), w[u].push("pageLoad")
+      }, n = d.createElement(t), n.src = r, n.async = 1, n.onload = n.onreadystatechange = function() {
+          var s = this.readyState;
+          s && s !== "loaded" && s !== "complete" || (f(), n.onload = n.onreadystatechange = null)
+      }, i = d.getElementsByTagName(t)[0], i.parentNode.insertBefore(n, i)
+  })(window, document, "script", "//bat.bing.com/bat.js", "uetq");
+  </script>
+  <!-- End Microsoft Bing UET -->
+
+  <!-- Facebook Pixel -->
+  <script>
+  ! function(f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function() {
+          n.callMethod ?
+              n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = '2.0';
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+  }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '555410081511945');
+  fbq('track', 'PageView');
+  </script>
+  <!-- End Facebook Pixel -->
 
   <!-- Light Theme Override matching services.html -->
   <style id="services-light-theme-override">
@@ -626,28 +701,59 @@
 </head>
 
 <body>
-  <!-- Header & Navigation -->
-  <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WLR8MTX"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Facebook Pixel (noscript) -->
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=555410081511945&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Facebook Pixel (noscript) -->
+
+
+  <!-- Header & Navigation Bar (DesignCafe Mega-Menu) -->
+  <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark shadow-sm py-2">
     <div class="container">
       <a class="navbar-brand text-white d-flex align-items-center gap-2" href="/">
         <img alt="Siddhivinayak Designers" class="d-inline-block align-text-top" height="36" src="/assets/images/logo_icon.webp" />
-        <span><span class="text-gold">Siddhivinayak</span> Designers</span>
+        <span><span class="text-gold" style="color: #189ba6 !important;">Siddhivinayak</span> Designers</span>
       </a>
       <button class="navbar-toggler border-0" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto align-items-center">
+        <ul class="navbar-nav ms-auto align-items-center gap-1">
           <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="/about.html">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="/services.html">Services</a></li>
+          
+          <!-- Design Ideas Dropdown Only -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="/services.html" id="navDesignsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Design Ideas
+            </a>
+            <ul class="dropdown-menu bg-dark border border-secondary shadow" aria-labelledby="navDesignsDropdown">
+              <li><a class="dropdown-item text-white-50" href="/modular-kitchen-design.html">Modular Kitchens</a></li>
+              <li><a class="dropdown-item text-white-50" href="/bedroom-design.html">Bedroom &amp; Wardrobes</a></li>
+              <li><a class="dropdown-item text-white-50" href="/living-room-design.html">Living Room Renders</a></li>
+              <li><a class="dropdown-item text-white-50" href="/space-saving-design.html">Space Saving Furniture</a></li>
+              <li><a class="dropdown-item text-white-50" href="/pooja-room-design.html">Pooja Room Designs</a></li>
+              <li><a class="dropdown-item text-white-50" href="/balcony-design.html">Balcony &amp; Sitouts</a></li>
+              <li><a class="dropdown-item text-white-50" href="/home-office-design.html">Home Office Workspaces</a></li>
+              <li><a class="dropdown-item text-white-50" href="/civil-renovations.html">Turnkey Civil Renovations</a></li>
+            </ul>
+          </li>
+
           <li class="nav-item"><a class="nav-link" href="/gallery.html">Gallery</a></li>
           <li class="nav-item"><a class="nav-link" href="/pricing.html">Pricing</a></li>
           <li class="nav-item"><a class="nav-link" href="/blog/">Blog</a></li>
-          <li class="nav-item"><a class="nav-link" href="/faqs.html">FAQs</a></li>
-          <li class="nav-item"><a class="nav-link" href="/partner-with-us/">Partner With Us</a></li>
           <li class="nav-item"><a class="nav-link" href="/contact.html">Contact</a></li>
         </ul>
+        <!-- Header Live Search Trigger Button -->
+        <button class="btn btn-outline-light btn-sm ms-lg-3 rounded-circle" type="button" data-bs-toggle="modal" data-bs-target="#liveSearchModal" aria-label="Search">
+          <i class="fas fa-search"></i>
+        </button>
       </div>
     </div>
   </nav>
@@ -1249,12 +1355,12 @@
     </a>
   </div>
   <!-- Footer -->
-  <footer class="py-5 text-white">
+  <footer class="py-5 text-white" style="background-color: #0b0b10 !important; color: #ffffff !important;">
     <div class="container py-4">
       <div class="row g-4">
         <div class="col-lg-4">
-          <h5 class="font-luxury text-white mb-3"><span class="text-gold">Siddhivinayak</span> Designers</h5>
-          <p class="small text-muted mb-4">Siddhivinayak Designers is a modern interior design company serving Navi
+          <h5 class="font-luxury text-white mb-3" style="color: #ffffff !important;"><span class="text-gold">Siddhivinayak</span> Designers</h5>
+          <p class="small mb-4" style="color: #d1cfc9 !important;">Siddhivinayak Designers is a modern interior design company serving Navi
             Mumbai. Our projects are executed by experienced contractors with over 25 years of industry expertise,
             delivering quality workmanship and reliable execution.</p>
           <div class="social-icons">
@@ -1268,37 +1374,37 @@
           </div>
         </div>
         <div class="col-lg-2">
-          <h6 class="font-luxury text-white mb-3">Quick Links</h6>
+          <h6 class="font-luxury text-white mb-3" style="color: #ffffff !important;">Quick Links</h6>
           <ul class="list-unstyled">
-            <li class="mb-2"><a href="/about.html">About Us</a></li>
-            <li class="mb-2"><a href="/services.html">Our Services</a></li>
-            <li class="mb-2"><a href="/gallery.html">Gallery</a></li>
-            <li class="mb-2"><a href="/pricing.html">Pricing Plans</a></li>
-            <li class="mb-2"><a href="/blog/">Blog</a></li>
+            <li class="mb-2"><a href="/about.html" style="color: #d1cfc9 !important;">About Us</a></li>
+            <li class="mb-2"><a href="/services.html" style="color: #d1cfc9 !important;">Our Services</a></li>
+            <li class="mb-2"><a href="/gallery.html" style="color: #d1cfc9 !important;">Gallery</a></li>
+            <li class="mb-2"><a href="/pricing.html" style="color: #d1cfc9 !important;">Pricing Plans</a></li>
+            <li class="mb-2"><a href="/blog/" style="color: #d1cfc9 !important;">Blog</a></li>
           </ul>
         </div>
         <div class="col-lg-3">
-                    <h6 class="font-luxury text-white mb-3">Our Core Services</h6>
+          <h6 class="font-luxury text-white mb-3" style="color: #ffffff !important;">Our Core Services</h6>
           <ul class="list-unstyled">
-            <li class="mb-2"><a href="/complete-home-interior.html">Complete Home Interior</a></li>
-            <li class="mb-2"><a href="/modular-kitchens.html">Modular Kitchens</a></li>
-            <li class="mb-2"><a href="/bedroom-wardrobes.html">Bedroom &amp; Wardrobes</a></li>
-            <li class="mb-2"><a href="/living-room.html">Living Room Designs</a></li>
-            <li class="mb-2"><a href="/office-spaces.html">Office &amp; Commercial</a></li>
-            <li class="mb-2"><a href="/civil-renovations.html">Contracting &amp; Civil Work</a></li>
+            <li class="mb-2"><a href="/complete-home-interior.html" style="color: #d1cfc9 !important;">Complete Home Interior</a></li>
+            <li class="mb-2"><a href="/modular-kitchens.html" style="color: #d1cfc9 !important;">Modular Kitchens</a></li>
+            <li class="mb-2"><a href="/bedroom-wardrobes.html" style="color: #d1cfc9 !important;">Bedroom &amp; Wardrobes</a></li>
+            <li class="mb-2"><a href="/living-room.html" style="color: #d1cfc9 !important;">Living Room Designs</a></li>
+            <li class="mb-2"><a href="/office-spaces.html" style="color: #d1cfc9 !important;">Office &amp; Commercial</a></li>
+            <li class="mb-2"><a href="/civil-renovations.html" style="color: #d1cfc9 !important;">Contracting &amp; Civil Work</a></li>
           </ul>
         </div>
         <div class="col-lg-3">
-          <h6 class="font-luxury text-white mb-3">Contact Details</h6>
-          <p class="small text-muted mb-2"><i class="fas fa-map-marker-alt text-gold me-2"></i> <a class="text-muted"
+          <h6 class="font-luxury text-white mb-3" style="color: #ffffff !important;">Contact Details</h6>
+          <p class="small mb-2" style="color: #d1cfc9 !important;"><i class="fas fa-map-marker-alt text-gold me-2"></i> <a style="color: #d1cfc9 !important;"
               href="https://maps.google.com/?cid=6911458856073113523" rel="noopener" target="_blank">Shree Laxmi CHS, A 301, Sector 23, Kopar Khairane, Navi Mumbai, Maharashtra 400709</a></p>
-          <p class="small text-muted mb-2"><i class="fas fa-phone-alt text-gold me-2"></i> <a
+          <p class="small mb-2" style="color: #d1cfc9 !important;"><i class="fas fa-phone-alt text-gold me-2"></i> <a style="color: #d1cfc9 !important;"
               href="tel:+918369297174">+91 83692 97174</a></p>
-          <p class="small text-muted"><i class="fas fa-envelope text-gold me-2"></i> <a class="email-link"
+          <p class="small" style="color: #d1cfc9 !important;"><i class="fas fa-envelope text-gold me-2"></i> <a class="email-link" style="color: #d1cfc9 !important;"
               data-domain="siddhivinayakdesigners.in" data-user="admin" href="#">admin [at] siddhivinayakdesigners.in</a></p>
         </div>
       </div>
-      <hr class="border-secondary my-4" />
+      <hr class="border-secondary my-4" style="border-color: rgba(255,255,255,0.2) !important;" />
       <!-- Map Embed Column -->
       <div class="row">
         <div class="col-12 mb-3">
@@ -1312,11 +1418,11 @@
       </div>
       <div class="row align-items-center">
         <div class="col-md-6 text-center text-md-start">
-          <p class="small text-muted mb-0">© 2026 Siddhivinayak Designers. All Rights Reserved.</p>
+          <p class="small mb-0" style="color: #d1cfc9 !important;">© 2026 Siddhivinayak Designers. All Rights Reserved.</p>
         </div>
         <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
-          <a class="small text-muted me-3" href="/privacy-policy.html">Privacy Policy</a>
-          <a class="small text-muted" href="/terms-conditions.html">Terms &amp; Conditions</a>
+          <a class="small me-3" style="color: #d1cfc9 !important;" href="/privacy-policy.html">Privacy Policy</a>
+          <a class="small" style="color: #d1cfc9 !important;" href="/terms-conditions.html">Terms &amp; Conditions</a>
         </div>
       </div>
     </div>
@@ -1424,6 +1530,48 @@
       console.warn("Reviews rotation error:", e);
     }
   </script>
+  <!-- DesignCafe Style Live Search Modal Overlay -->
+  <div class="modal fade" id="liveSearchModal" tabindex="-1" aria-labelledby="liveSearchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-dark text-white border border-secondary shadow-lg">
+        <div class="modal-header border-bottom border-secondary">
+          <h5 class="modal-title h6 font-luxury" id="liveSearchModalLabel"><i class="fas fa-search text-gold me-2"></i>Search Interior Designs &amp; Packages</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <form action="/gallery.html" method="GET" class="d-flex gap-2">
+            <input type="text" name="q" class="form-control bg-secondary text-white border-0 py-3" placeholder="Search 2BHK, Modular Kitchen, Kharghar, Wardrobes..." required />
+            <button type="submit" class="btn btn-gold px-4 fw-bold">Search</button>
+          </form>
+          <div class="mt-4">
+            <span class="small text-muted d-block mb-2">Popular Searches:</span>
+            <div class="d-flex flex-wrap gap-2">
+              <a href="/modular-kitchen-design.html" class="badge bg-secondary text-decoration-none py-2 px-3">Modular Kitchen</a>
+              <a href="/2bhk-interior-design.html" class="badge bg-secondary text-decoration-none py-2 px-3">2BHK Package</a>
+              <a href="/vashi/" class="badge bg-secondary text-decoration-none py-2 px-3">Vashi Designer</a>
+              <a href="/pricing.html" class="badge bg-secondary text-decoration-none py-2 px-3">Cost Calculator</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Dual-Button Mobile Conversion Bar (DesignCafe Style) -->
+  <div class="d-lg-none fixed-bottom bg-dark border-top border-secondary py-2 px-3 z-index-1050 shadow-lg">
+    <div class="row g-2">
+      <div class="col-6">
+        <a href="tel:+918369297174" class="btn btn-outline-light w-100 py-2 font-body small fw-bold" onclick="trackCTAClick('Sticky Mobile Call', 'Mobile Footer');">
+          <i class="fas fa-phone-alt me-1 text-gold"></i> Call Us
+        </a>
+      </div>
+      <div class="col-6">
+        <a href="/contact.html" class="btn btn-gold w-100 py-2 font-body small fw-bold" onclick="trackCTAClick('Sticky Mobile Consultation', 'Mobile Footer');">
+          <i class="fas fa-calendar-check me-1"></i> Book Free Visit
+        </a>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
