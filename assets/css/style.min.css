@@ -1169,3 +1169,31 @@ footer hr, footer .border-secondary {
 }
 
 
+
+
+/* HIGH-CONTRAST TEXT FIX: Prevent white text on white/light background sections */
+:not(footer) .text-white,
+body:not(footer) .text-white,
+.bg-dark .text-white,
+.bg-dark-card .text-white,
+.bg-dark-contrast .text-white,
+.calc-card .text-white,
+.glass-panel .text-white,
+a.text-white:not(footer a),
+a.text-white:not(footer *),
+.hero-section .text-white,
+.section-title.text-white {
+  color: #1a1a1a !important;
+}
+
+.calc-card label, .luxury-form label {
+  color: #212529 !important;
+}
+
+footer, footer *, footer .text-white, footer a.text-white {
+  color: #ffffff !important;
+}
+
+footer p, footer span, footer li, footer div, footer small, footer .text-muted {
+  color: #d1cfc9 !important;
+}
