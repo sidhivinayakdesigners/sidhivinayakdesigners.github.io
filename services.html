@@ -25667,7 +25667,7 @@
         showLbSlide();
       };
 
-      function showLbSlide() {
+            function showLbSlide() {
         lbCaption.textContent = lbTitle + ' (' + (lbIndex + 1) + ' / ' + lbPhotos.length + ')';
         
         const total = lbPhotos.length;
@@ -25681,39 +25681,53 @@
         sliderTrack.innerHTML = '';
         sliderTrack.style.transition = 'none';
 
-        // 1. Prev slide
-        const prevSlide = document.createElement('div');
-        prevSlide.className = 'dc-lightbox-slide prev-slide';
-        if (prevSrc) {
-          prevSlide.innerHTML = `<img src="${prevSrc}" alt="Previous Image" />`;
-        }
-        sliderTrack.appendChild(prevSlide);
-
-        // 2. Active slide
-        const activeSlide = document.createElement('div');
-        activeSlide.className = 'dc-lightbox-slide active-slide';
-        activeSlide.innerHTML = `<img src="${currentSrc}" alt="${lbTitle}" />`;
-        sliderTrack.appendChild(activeSlide);
-
-        // 3. Next slide
-        const nextSlide = document.createElement('div');
-        nextSlide.className = 'dc-lightbox-slide next-slide';
-        if (nextSrc) {
-          nextSlide.innerHTML = `<img src="${nextSrc}" alt="Next Image" />`;
-        }
-        sliderTrack.appendChild(nextSlide);
-
-        // Center active slide
-        const width = sliderContainer.offsetWidth || window.innerWidth;
-        sliderTrack.style.transform = `translate3d(-${width}px, 0, 0)`;
-
-        // Hide navigation arrows if there is only 1 photo
         if (total <= 1) {
-          lbPrev.style.display = 'none';
-          lbNext.style.display = 'none';
+          sliderTrack.style.width = '100%';
+          sliderTrack.style.transform = 'translate3d(0px, 0, 0)';
+          
+          const activeSlide = document.createElement('div');
+          activeSlide.className = 'dc-lightbox-slide active-slide';
+          activeSlide.style.width = '100%';
+          activeSlide.style.height = '100%';
+          activeSlide.style.display = 'flex';
+          activeSlide.style.alignItems = 'center';
+          activeSlide.style.justifyContent = 'center';
+          activeSlide.innerHTML = `<img src="${currentSrc}" alt="${lbTitle}" />`;
+          sliderTrack.appendChild(activeSlide);
+          
+          if (lbPrev) lbPrev.style.display = 'none';
+          if (lbNext) lbNext.style.display = 'none';
         } else {
-          lbPrev.style.display = 'flex';
-          lbNext.style.display = 'flex';
+          sliderTrack.style.width = '300%';
+          
+          // 1. Prev slide
+          const prevSlide = document.createElement('div');
+          prevSlide.className = 'dc-lightbox-slide prev-slide';
+          if (prevSrc) {
+            prevSlide.innerHTML = `<img src="${prevSrc}" alt="Previous Image" />`;
+          }
+          sliderTrack.appendChild(prevSlide);
+
+          // 2. Active slide
+          const activeSlide = document.createElement('div');
+          activeSlide.className = 'dc-lightbox-slide active-slide';
+          activeSlide.innerHTML = `<img src="${currentSrc}" alt="${lbTitle}" />`;
+          sliderTrack.appendChild(activeSlide);
+
+          // 3. Next slide
+          const nextSlide = document.createElement('div');
+          nextSlide.className = 'dc-lightbox-slide next-slide';
+          if (nextSrc) {
+            nextSlide.innerHTML = `<img src="${nextSrc}" alt="Next Image" />`;
+          }
+          sliderTrack.appendChild(nextSlide);
+
+          // Center active slide
+          const width = sliderContainer.offsetWidth || (window.innerWidth * 0.9);
+          sliderTrack.style.transform = `translate3d(-${width}px, 0, 0)`;
+
+          if (lbPrev) lbPrev.style.display = 'flex';
+          if (lbNext) lbNext.style.display = 'flex';
         }
       }
 
