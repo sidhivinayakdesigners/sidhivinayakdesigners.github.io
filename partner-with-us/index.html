@@ -17,7 +17,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <link rel="stylesheet" href="/assets/css/style.min.css?v=10">
+    <link rel="stylesheet" href="/assets/css/style.min.css?v=1009">
 
     <!-- JSON-LD BreadcrumbList Schema -->
     <script type="application/ld+json">
@@ -1312,7 +1312,7 @@
     <!-- Bootstrap 5, AOS, and custom scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="/assets/js/main.min.js?v=10"></script>
+    <script src="/assets/js/main.min.js?v=1009"></script>
     <script>
         AOS.init({
             duration: 800,
@@ -1427,35 +1427,26 @@
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Registering...';
             }
 
-            const url = 'https://script.google.com/macros/s/AKfycbyaOLtqYYNWRfjIuyBnW81_RnYziWCuSqO660SKF3n4N3w4vL7GNqvYb58o-3K29e6I/exec';
-            const params = new URLSearchParams();
-            params.append('name', name);
-            params.append('phone', mobile);
-            params.append('email', '');
-            params.append('service', 'Partner Registration');
-            params.append('message', `RERA Number: ${rera} | Focus/Inventory: ${inventory}`);
+            // Redirect to WhatsApp with prefilled message
+            const msgText = `Hi Siddhivinayak Designers, I would like to register as a Partner:\n- Name: ${name}\n- Phone: ${mobile}\n- Email: N/A\n- Service: Partner Registration\n- Message: RERA Number: ${rera} | Focus/Inventory: ${inventory}`;
+            const whatsappUrl = `https://wa.me/918369297174?text=${encodeURIComponent(msgText)}`;
+            window.open(whatsappUrl, '_blank');
 
-            fetch(url, {
-                method: 'POST',
-                mode: 'no-cors',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: params.toString()
-            })
-            .then(() => {
-                document.getElementById('partner-form-header').style.display = 'none';
-                document.getElementById('partner-registration-form').style.display = 'none';
-                document.getElementById('form-success-message').style.display = 'flex';
-            })
-            .catch(err => {
-                console.error("Partner submission error:", err);
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalText;
-                }
-                alert("There was an error submitting your registration. Please try again.");
-            });
+            // Reset submit button state so it's clean if they reset the form
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+            }
+
+            // Update success message text dynamically
+            const successDesc = document.querySelector('#form-success-message p');
+            if (successDesc) {
+                successDesc.innerText = 'Your registration request details have been prepared in WhatsApp. Please send the message to finalize details. Our Executive Partnership Liaison will contact you shortly.';
+            }
+
+            document.getElementById('partner-form-header').style.display = 'none';
+            document.getElementById('partner-registration-form').style.display = 'none';
+            document.getElementById('form-success-message').style.display = 'flex';
         }
 
         function resetRegistrationForm() {

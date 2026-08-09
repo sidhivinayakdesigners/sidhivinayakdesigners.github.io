@@ -14,14 +14,20 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
 <link href="/assets/css/aos.css" rel="stylesheet"/>
-<link href="/assets/css/style.min.css?v=9999999999999999999999" rel="stylesheet"/>
+<link href="/assets/css/style.min.css?v=1009" rel="stylesheet"/>
 <style>
     /* DESIGN CAFE EXACT REPLICA COMPLETE ISOLATED STYLES */
     html, body {
       background-color: #ffffff !important;
-      color: #212529 !important;
+      color: #000000 !important;
       font-family: Arial, Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
       scroll-behavior: smooth;
+    }
+    p, span, li, label, div, small, strong, p *, li *, span *, label *, div *, small *, strong *, .text-muted, .text-white-50, .text-secondary, .text-muted * {
+      color: #000000 !important;
+    }
+    :not(footer) .text-white, body:not(footer) .text-white, a.text-white:not(footer a), .section-title.text-white {
+      color: #000000 !important;
     }
 
     .consultation-popup-overlay {
@@ -39,14 +45,14 @@
     .dc-page-main-title {
       font-size: 24px !important;
       font-weight: 700 !important;
-      color: #1a1a1a !important;
+      color: #000000 !important;
       margin-bottom: 8px !important;
       font-family: Arial, sans-serif !important;
     }
 
     .dc-page-main-desc {
       font-size: 14px !important;
-      color: #555555 !important;
+      color: #000000 !important;
       line-height: 1.5 !important;
       margin-bottom: 4px !important;
       max-width: 950px;
@@ -540,14 +546,12 @@
 </button>
 <div class="collapse navbar-collapse" id="navbarNav">
 <ul class="navbar-nav ms-auto align-items-center">
-<li class="nav-item"><a class="nav-link" href="/" style="color: #333333 !important; font-weight: 500;">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="/index.html" style="color: #333333 !important; font-weight: 500;">Home</a></li>
 <li class="nav-item"><a class="nav-link" href="/about.html" style="color: #333333 !important; font-weight: 500;">About</a></li>
-<li class="nav-item"><a class="nav-link active" href="/services.html" style="color: #189ba6 !important; font-weight: 700;">Designs</a></li>
+<li class="nav-item"><a class="nav-link active" href="/services.html" style="color: #189ba6 !important; font-weight: 700;">Design Ideas</a></li>
 <li class="nav-item"><a class="nav-link" href="/gallery.html" style="color: #333333 !important; font-weight: 500;">Gallery</a></li>
 <li class="nav-item"><a class="nav-link" href="/pricing.html" style="color: #333333 !important; font-weight: 500;">Pricing</a></li>
-<li class="nav-item"><a class="nav-link" href="/blog/" style="color: #333333 !important; font-weight: 500;">Blog</a></li>
-<li class="nav-item"><a class="nav-link" href="/faqs.html" style="color: #333333 !important; font-weight: 500;">FAQs</a></li>
-<li class="nav-item"><a class="nav-link" href="/partner-with-us/" style="color: #333333 !important; font-weight: 500;">Partner With Us</a></li>
+<li class="nav-item"><a class="nav-link" href="/blog/index.html" style="color: #333333 !important; font-weight: 500;">Blog</a></li>
 <li class="nav-item"><a class="nav-link" href="/contact.html" style="color: #333333 !important; font-weight: 500;">Contact</a></li>
 </ul>
 </div>
@@ -25495,7 +25499,7 @@
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/assets/js/aos.js"></script>
-<script src="/assets/js/main.min.js?v=10"></script>
+<script src="/assets/js/main.min.js?v=1009"></script>
 <script>
     if (typeof AOS !== 'undefined') {
       AOS.init({ duration: 800, once: true });
@@ -25649,8 +25653,20 @@
           }
         }
 
-        // Find exact index of clicked img in cardImgs
-        let foundIdx = cardImgs.indexOf(imgEl);
+        // Find index by active carousel item (most robust for dynamic carousels)
+        let foundIdx = -1;
+        if (container) {
+          const activeItem = container.querySelector('.carousel-item.active');
+          if (activeItem) {
+            const carouselItems = Array.from(container.querySelectorAll('.carousel-item'));
+            foundIdx = carouselItems.indexOf(activeItem);
+          }
+        }
+
+        // If not found, fallback to exact index of clicked img in cardImgs
+        if (foundIdx < 0) {
+          foundIdx = cardImgs.indexOf(imgEl);
+        }
 
         // Fallback matching by src / filename
         if (foundIdx < 0 && imgEl) {
@@ -25666,7 +25682,7 @@
           }
         }
 
-        // Fallback matching by active carousel item
+        // Fallback matching by active carousel item image
         if (foundIdx < 0 && container) {
           const activeImg = container.querySelector('.carousel-item.active img');
           if (activeImg) {
