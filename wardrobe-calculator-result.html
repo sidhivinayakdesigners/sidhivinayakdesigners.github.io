@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Wardrobe Estimate | Siddhivinayak Designers</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-color: #189ba6;
+      --secondary-color: #22c55e;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --bg-light: #f8fafc;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-light);
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Header Styling */
+    .result-header {
+      background: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 0.75rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo-img {
+      height: 36px;
+      object-fit: contain;
+    }
+
+    /* Result Card Styling */
+    .result-card-wrap {
+      max-width: 600px;
+      margin: 4rem auto 2rem;
+      padding: 0 15px;
+    }
+    .result-card {
+      background: #ffffff;
+      border-radius: 24px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 15px 35px rgba(15, 23, 42, 0.05);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+
+    .success-icon-box {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #f0fdf4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+    .success-icon-box i {
+      font-size: 2.2rem;
+      color: var(--secondary-color);
+    }
+
+    .result-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 0.5rem;
+    }
+    .result-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    /* Price Label Block */
+    .price-block {
+      background: #f0fdf4;
+      border: 1.5px dashed var(--secondary-color);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .price-label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #166534;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 0.25rem;
+    }
+    .price-value {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #166534;
+    }
+
+    /* CTA buttons */
+    .btn-cta-consult {
+      background: #ec5252;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      border: none;
+      box-shadow: 0 6px 18px rgba(236, 82, 82, 0.25);
+      width: 100%;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-cta-consult:hover {
+      background: #dc2626;
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+    .btn-cta-gallery {
+      background: transparent;
+      color: #475569;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0.85rem 2rem;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 50px;
+      width: 100%;
+      margin-top: 1rem;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-cta-gallery:hover {
+      background: #f1f5f9;
+      color: #1e293b;
+    }
+
+    /* Detailed Specifications drawer */
+    .summary-drawer {
+      margin-top: 2rem;
+      text-align: left;
+      border-top: 1px solid #cbd5e1;
+      padding-top: 1.5rem;
+    }
+    .summary-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      padding: 0.5rem 0;
+    }
+    .summary-header h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #1e293b;
+      margin: 0;
+    }
+    .summary-header i {
+      transition: transform 0.2s ease;
+      color: #64748b;
+    }
+    .summary-drawer.expanded .summary-header i {
+      transform: rotate(180deg);
+    }
+    .summary-body {
+      display: none;
+      margin-top: 1.25rem;
+    }
+    .summary-drawer.expanded .summary-body {
+      display: block;
+    }
+    .spec-item {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #f1f5f9;
+      padding: 0.85rem 0;
+      font-size: 0.9rem;
+    }
+    .spec-item:last-child {
+      border-bottom: none;
+    }
+    .spec-label {
+      font-weight: 600;
+      color: #64748b;
+    }
+    .spec-val {
+      font-weight: 700;
+      color: #1e293b;
+      text-align: right;
+    }
+
+    .disclaimer {
+      font-size: 0.72rem;
+      color: #94a3b8;
+      margin-top: 1.5rem;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Result Page Header -->
+  <header class="result-header">
+    <a href="/" class="d-flex align-items-center text-decoration-none" style="font-weight: 700; font-size: 1.1rem; color: #151413 !important; font-family: 'Plus Jakarta Sans', sans-serif;">
+      <img src="/assets/images/logo_icon.webp" class="logo-img" alt="Siddhivinayak Designers" />
+      <span class="ms-2">
+        <span style="color: #189ba6 !important;">Siddhivinayak</span> Designers
+      </span>
+    </a>
+    <a href="/pricing.html" class="btn btn-sm btn-outline-secondary fw-bold rounded-pill px-3">View Packages</a>
+  </header>
+
+  <!-- Result Content Wrapper -->
+  <div class="result-card-wrap">
+    <div class="result-card">
+      <div class="success-icon-box">
+        <i class="fas fa-check-circle"></i>
+      </div>
+
+      <h1 class="result-title">Thank you!</h1>
+      <p class="result-subtitle">We have successfully calculated your modular wardrobe estimate based on Navi Mumbai market execution values</p>
+
+      <!-- Dynamic Price Range -->
+      <div class="price-block">
+        <div class="price-label">Estimated Price Range</div>
+        <div class="price-value" id="resultPrice">₹0.50L - ₹0.75L*</div>
+      </div>
+
+      <!-- Action buttons -->
+      <a href="/contact.html?source=wardrobe_calc" class="btn-cta-consult">Book Free Design Consultation</a>
+      <a href="/gallery.html" class="btn-cta-gallery">Explore Our Design Gallery</a>
+
+      <!-- Collapsible Detailed Specifications Drawer -->
+      <div class="summary-drawer" id="summaryPanel" onclick="toggleSummaryPanel()">
+        <div class="summary-header">
+          <h3>Your Selected Configurations</h3>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="summary-body" onclick="event.stopPropagation()">
+          <div class="spec-item">
+            <span class="spec-label">Wardrobe Height:</span>
+            <span class="spec-val" id="summaryHeight">7 ft</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Door Type:</span>
+            <span class="spec-val" id="summaryType">Swing</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Preferred Finish:</span>
+            <span class="spec-val" id="summaryFinish">Luxe - Acrylic</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Core Material:</span>
+            <span class="spec-val" id="summaryMaterial">HDF/HMR</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Added Accessories:</span>
+            <span class="spec-val" id="summaryAccessories">Loft, Drawer</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Price Disclaimer -->
+      <p class="disclaimer">
+        *Disclaimer: The above budget estimate range is indicative of the standard material cost, installation, and assembly in Navi Mumbai. Actual quotes may vary depending on customized site layout complexities, glass/shutter preferences, and specific wireframe basket inserts.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      // Parse parameters from query URL
+      const params = new URLSearchParams(window.location.search);
+      const min = params.get('min') || '0.50';
+      const max = params.get('max') || '0.75';
+
+      document.getElementById('resultPrice').textContent = `₹${min}L - ₹${max}L*`;
+
+      // Load configurations summary from localStorage
+      const savedSummary = localStorage.getItem("wardrobe_calc_summary");
+      if (savedSummary) {
+        try {
+          const data = JSON.parse(savedSummary);
+          document.getElementById('summaryHeight').textContent = data.height || "7 ft";
+          document.getElementById('summaryType').textContent = data.type || "Swing";
+          document.getElementById('summaryFinish').textContent = data.finish || "Standard - Laminate";
+          document.getElementById('summaryMaterial').textContent = data.material || "MDF";
+          document.getElementById('summaryAccessories').textContent = data.accessories || "None";
+        } catch (e) {
+          console.error("Error parsing wardrobe configurations summary:", e);
+        }
+      }
+    });
+
+    function toggleSummaryPanel() {
+      const panel = document.getElementById("summaryPanel");
+      panel.classList.toggle("expanded");
+    }
+  </script>
+</body>
+</html>

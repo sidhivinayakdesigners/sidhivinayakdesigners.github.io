@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modular Wardrobe Price Calculator | Siddhivinayak Designers</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary-color: #189ba6;
+      --secondary-color: #ec5252;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --bg-light: #f1f5f9;
+      --border-color: #cbd5e1;
+    }
+
+    html, body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--text-main);
+      background-color: var(--bg-light);
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    .calc-header-logo {
+      min-width: auto;
+    }
+    .calc-header-counter {
+      min-width: auto;
+    }
+    @media (min-width: 768px) {
+      .calc-header-logo {
+        min-width: 320px;
+      }
+      .calc-header-counter {
+        min-width: 320px;
+      }
+    }
+
+    /* Sticky Header Timeline */
+    .calc-top-header {
+      background: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 0.75rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .step-counter-label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #475569;
+    }
+    .timeline-container-wrap {
+      max-width: 600px;
+    }
+    .timeline-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      width: 100%;
+      height: 48px;
+    }
+    .timeline-line {
+      position: absolute;
+      top: 24px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: #e2e8f0;
+      z-index: 1;
+    }
+    .timeline-progress {
+      position: absolute;
+      top: 24px;
+      left: 0;
+      height: 3px;
+      background: var(--secondary-color);
+      z-index: 2;
+      width: 0%;
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .timeline-step {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+    }
+    .step-dot {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 3px solid #cbd5e1;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .step-dot i {
+      font-size: 8px;
+      color: #ffffff;
+      display: none;
+    }
+    .step-text {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #94a3b8;
+      margin-top: 6px;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .timeline-step.active .step-dot {
+      border-color: var(--secondary-color);
+      background: var(--secondary-color);
+      box-shadow: 0 0 0 4px rgba(236, 82, 82, 0.2);
+    }
+    .timeline-step.active .step-text {
+      color: var(--secondary-color);
+    }
+    .timeline-step.completed .step-dot {
+      border-color: var(--secondary-color);
+      background: var(--secondary-color);
+    }
+    .timeline-step.completed .step-dot i {
+      display: block;
+    }
+    .timeline-step.completed .step-text {
+      color: var(--text-main);
+    }
+
+    /* Calculator wrapper & box */
+    .calc-card-wrapper {
+      max-width: 680px;
+      margin: 3rem auto;
+      padding: 0 15px;
+    }
+    .calc-box {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+      padding: 2.5rem;
+      min-height: 520px;
+    }
+    .calc-heading {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: #0f172a;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .calc-subheading {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .calc-subheading a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Beige Notice Info bar */
+    .notice-bar {
+      background-color: #f7e8cf;
+      border-radius: 6px;
+      padding: 0.5rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #78350f;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Choice list (Step 1 height lists) */
+    .height-option-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .height-option-card {
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      cursor: pointer;
+      background: #ffffff;
+      transition: all 0.2s ease;
+    }
+    .height-option-card:hover {
+      border-color: #94a3b8;
+    }
+    .height-option-card.selected {
+      border-color: var(--secondary-color) !important;
+      background: #fef2f2 !important;
+    }
+    .height-radio {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .height-option-card.selected .height-radio {
+      border-color: var(--secondary-color);
+      background: var(--secondary-color);
+    }
+    .height-radio-inner {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ffffff;
+      display: none;
+    }
+    .height-option-card.selected .height-radio-inner {
+      display: block;
+    }
+    .height-label-text {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #334155;
+    }
+
+    /* Vertically Stacked Cards (Steps 2, 3, 4) */
+    .vertical-choices-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .choice-card-row {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.5rem;
+      background: #ffffff;
+      cursor: pointer;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: all 0.3s ease;
+    }
+    .choice-card-row:hover {
+      border-color: #fca5a5;
+    }
+    .choice-card-row.selected {
+      border-color: var(--secondary-color) !important;
+      background: #fef2f2 !important;
+    }
+    .choice-card-radio-col {
+      width: 20px;
+      margin-top: 3px;
+    }
+    .choice-card-content-col {
+      flex: 1;
+    }
+    .choice-card-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #1e293b;
+      margin-bottom: 0.25rem;
+    }
+    .choice-card-desc {
+      font-size: 0.82rem;
+      color: #64748b;
+      line-height: 1.45;
+      margin-bottom: 0.75rem;
+    }
+    .choice-card-img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      margin-bottom: 0.75rem;
+    }
+    .choice-card-caption {
+      font-size: 0.8rem;
+      color: #475569;
+      line-height: 1.3;
+    }
+    .choice-card-meta {
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Step 5 Accessories Grid styling */
+    .acc-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .acc-choice-card {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.25s ease;
+    }
+    .acc-choice-card:hover {
+      border-color: #fca5a5;
+    }
+    .acc-choice-card.selected {
+      border-color: var(--secondary-color) !important;
+      background: #fef2f2 !important;
+    }
+    .acc-img-wrapper {
+      width: 100%;
+      height: 120px;
+      position: relative;
+    }
+    .acc-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .acc-checkbox-abs {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      border: 2px solid #cbd5e1;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: transparent;
+      transition: all 0.2s ease;
+      z-index: 10;
+    }
+    .acc-choice-card.selected .acc-checkbox-abs {
+      border-color: var(--secondary-color);
+      background: var(--secondary-color);
+      color: #ffffff;
+    }
+    .acc-label-band {
+      background: #f8fafc;
+      padding: 0.75rem 0.5rem;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #334155;
+      border-top: 1px solid #e2e8f0;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .acc-choice-card.selected .acc-label-band {
+      background: #fef2f2;
+      color: var(--secondary-color);
+    }
+
+    /* Fixed Bottom Action Bar */
+    .calc-bottom-action-bar {
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      padding: 1rem 0;
+      position: sticky;
+      bottom: 0;
+      width: 100%;
+      z-index: 100;
+    }
+    .action-bar-container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .calc-btn-pill-back {
+      background: transparent;
+      border: none;
+      font-weight: 700;
+      color: #fca5a5;
+      font-size: 0.95rem;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      transition: color 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .calc-btn-pill-back:hover {
+      color: var(--secondary-color);
+    }
+    .calc-btn-pill-next {
+      background: #ec5252 !important;
+      color: #ffffff !important;
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 0.85rem 3.5rem;
+      border-radius: 50px;
+      border: none;
+      box-shadow: 0 6px 18px rgba(236, 82, 82, 0.28);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .calc-btn-pill-next:disabled {
+      background: #cbd5e1 !important;
+      box-shadow: none !important;
+      cursor: not-allowed;
+    }
+
+    /* Step Containers */
+    .calc-step {
+      display: none;
+      animation: fadeInSlide 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    .calc-step.active {
+      display: block;
+    }
+
+    @keyframes fadeInSlide {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .acc-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      .acc-img-wrapper {
+        height: 100px;
+      }
+      .choice-card-row {
+        flex-direction: row;
+        padding: 1rem;
+      }
+    }
+
+    /* Lead Form styling matching the reference screenshot */
+    .lead-form-wrap {
+      max-width: 440px;
+      margin: 2rem auto 0;
+      width: 100%;
+    }
+    .calc-input-group {
+      margin-bottom: 1.25rem;
+      position: relative;
+    }
+    .form-input-field {
+      width: 100%;
+      height: 48px;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      padding: 0 16px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #1e293b;
+      background: #ffffff;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+    .form-input-field:focus {
+      border-color: #ec5252;
+    }
+    .form-input-field::placeholder {
+      color: #94a3b8;
+    }
+
+    /* Custom Flex Phone input with flag selector */
+    .phone-input-group {
+      display: flex;
+      align-items: center;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      background: #ffffff;
+      width: 100%;
+      height: 48px;
+      transition: border-color 0.2s ease;
+    }
+    .phone-input-group:focus-within {
+      border-color: #ec5252;
+    }
+    .country-flag-selector {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 0 12px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .flag-icon {
+      font-size: 1.25rem;
+    }
+    .chevron-down-mini {
+      font-size: 0.65rem;
+      color: #64748b;
+    }
+    .divider-vertical {
+      width: 1px;
+      height: 24px;
+      background-color: #cbd5e1;
+    }
+    .phone-input-field-core {
+      flex: 1;
+      border: none;
+      background: transparent;
+      outline: none;
+      padding: 0 12px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #1e293b;
+      height: 100%;
+    }
+    .phone-input-field-core::placeholder {
+      color: #94a3b8;
+    }
+
+    /* WhatsApp checkbox styling */
+    .whatsapp-checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 1rem 0 1.25rem;
+      cursor: pointer;
+      user-select: none;
+    }
+    .whatsapp-check-box {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      border: 1px solid #ec5252;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: transparent;
+      transition: all 0.2s ease;
+    }
+    .whatsapp-check-box i {
+      display: none;
+    }
+    .whatsapp-checkbox-row.active .whatsapp-check-box {
+      color: #ec5252;
+    }
+    .whatsapp-checkbox-row.active .whatsapp-check-box i {
+      display: block;
+    }
+    .whatsapp-label {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: #475569;
+    }
+
+    /* Select City dropdown wrapper */
+    .city-select-wrapper {
+      position: relative;
+      width: 100%;
+    }
+    .city-select-field {
+      width: 100%;
+      height: 48px;
+      border: 1px solid #cbd5e1;
+      border-radius: 4px;
+      padding: 0 16px;
+      font-size: 0.95rem;
+      color: #94a3b8;
+      background: #ffffff;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+    }
+    .city-select-field:focus {
+      border-color: #ec5252;
+    }
+    .city-select-wrapper::after {
+      content: "\f078";
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.8rem;
+      color: #64748b;
+      pointer-events: none;
+    }
+
+    /* Consent & Disclaimers text */
+    .consent-disclaimer {
+      font-size: 0.78rem;
+      color: #64748b;
+      text-align: center;
+      line-height: 1.5;
+      margin-top: 1.5rem;
+    }
+    .recaptcha-disclaimer {
+      font-size: 0.78rem;
+      color: #64748b;
+      text-align: center;
+      line-height: 1.5;
+      margin-top: 0.5rem;
+    }
+    .disclaimer-link {
+      color: #ec5252 !important;
+      text-decoration: none !important;
+      font-weight: 600;
+    }
+    .disclaimer-link:hover {
+      text-decoration: underline !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar Timeline Progress -->
+  <header class="calc-top-header">
+    <div class="container-fluid px-0 d-flex align-items-center justify-content-between position-relative">
+      
+      <!-- Left Logo and Name -->
+      <div class="calc-header-logo d-flex align-items-center" style="gap: 12px;">
+        <a href="/" class="d-flex align-items-center text-decoration-none" style="font-weight: 700; font-size: 1.1rem; color: #151413 !important; font-family: 'Plus Jakarta Sans', sans-serif;">
+          <img src="/assets/images/logo_icon.webp" style="height: 36px; object-fit: contain;" alt="Siddhivinayak Designers Logo" />
+          <span class="ms-2">
+            <span style="color: #189ba6 !important;">Siddhivinayak</span> Designers
+          </span>
+        </a>
+      </div>
+
+      <!-- Centered Progress Timeline -->
+      <div class="timeline-container-wrap flex-grow-1 d-none d-md-block position-relative" style="max-width: 600px; margin: 0 auto;">
+        <div class="timeline-container" style="max-width: 100%; padding: 0 10px;">
+          <div class="timeline-line"></div>
+          <div class="timeline-progress" id="timelineProgress"></div>
+
+          <!-- 1. LENGTH -->
+          <div class="timeline-step active" id="timeStep1">
+            <div class="step-dot"><i class="fas fa-check"></i></div>
+            <span class="step-text">Length</span>
+          </div>
+
+          <!-- 2. TYPE -->
+          <div class="timeline-step" id="timeStep2">
+            <div class="step-dot"><i class="fas fa-check"></i></div>
+            <span class="step-text">Type</span>
+          </div>
+
+          <!-- 3. FINISH -->
+          <div class="timeline-step" id="timeStep3">
+            <div class="step-dot"><i class="fas fa-check"></i></div>
+            <span class="step-text">Finish</span>
+          </div>
+
+          <!-- 4. MATERIAL -->
+          <div class="timeline-step" id="timeStep4">
+            <div class="step-dot"><i class="fas fa-check"></i></div>
+            <span class="step-text">Material</span>
+          </div>
+
+          <!-- 5. ACCESSORIES -->
+          <div class="timeline-step" id="timeStep5">
+            <div class="step-dot"><i class="fas fa-check"></i></div>
+            <span class="step-text">Accessories</span>
+          </div>
+
+          <!-- 6. GET QUOTE -->
+          <div class="timeline-step" id="timeStep6">
+            <div class="step-dot"><i class="fas fa-check"></i></div>
+            <span class="step-text">Get Quote</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Right Step Counter -->
+      <div class="calc-header-counter d-flex justify-content-end">
+        <div class="step-counter-label" id="stepCounterLabel">1/6</div>
+      </div>
+      
+    </div>
+  </header>
+
+  <!-- Calculator Main Box -->
+  <div class="calc-card-wrapper">
+    <div class="calc-box">
+      
+      <!-- STEP 1: WARDROBE HEIGHT (LENGTH) -->
+      <div class="calc-step active" id="stepBox1">
+        <h1 class="calc-heading">What is the height of your wardrobe?</h1>
+        <p class="calc-subheading">Want to know more. <a href="#">Check here</a></p>
+
+        <!-- Beige notice block -->
+        <div class="notice-bar">
+          Standard size has been set for your convenience
+        </div>
+
+        <div class="height-option-list">
+          <!-- 4 ft -->
+          <div class="height-option-card" onclick="selectHeight('4 ft', 0.60, this)">
+            <div class="height-radio">
+              <div class="height-radio-inner"></div>
+            </div>
+            <span class="height-label-text">4 ft</span>
+          </div>
+
+          <!-- 6 ft -->
+          <div class="height-option-card" onclick="selectHeight('6 ft', 0.85, this)">
+            <div class="height-radio">
+              <div class="height-radio-inner"></div>
+            </div>
+            <span class="height-label-text">6 ft</span>
+          </div>
+
+          <!-- 7 ft (default) -->
+          <div class="height-option-card selected" onclick="selectHeight('7 ft', 1.0, this)">
+            <div class="height-radio">
+              <div class="height-radio-inner"></div>
+            </div>
+            <span class="height-label-text">7 ft</span>
+          </div>
+
+          <!-- 9 ft -->
+          <div class="height-option-card" onclick="selectHeight('9 ft', 1.30, this)">
+            <div class="height-radio">
+              <div class="height-radio-inner"></div>
+            </div>
+            <span class="height-label-text">9 ft</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2: WARDROBE TYPE -->
+      <div class="calc-step" id="stepBox2">
+        <h1 class="calc-heading">Select the type of wardrobe</h1>
+        <p class="calc-subheading">Choose door mechanisms matching your bedroom layout space</p>
+        <div class="vertical-choices-list">
+          <!-- Sliding -->
+          <div class="choice-card-row" onclick="selectType('Sliding', 1.40, this)">
+            <div class="choice-card-radio-col">
+              <div class="height-radio">
+                <div class="height-radio-inner"></div>
+              </div>
+            </div>
+            <div class="choice-card-content-col">
+              <h3 class="choice-card-title">Sliding</h3>
+              <p class="choice-card-desc">Movable doors that slide horizontally along a metal rail and save floor space.</p>
+              <img src="https://d3gq2merok8n5r.cloudfront.net/stage2-1623054096-6N9Ti/wardrobe-price-calculator-1672758178-cTiiD/wardrobe-type-1672758191-cJbbM/desktop-1672758199-Y1Dwl/wardrobe-sliding-d-1672758217-GCBFE.jpg" class="choice-card-img" alt="Sliding Wardrobe Render" />
+              <p class="choice-card-caption">Make a style statement even in a compact space.</p>
+            </div>
+          </div>
+
+          <!-- Swing -->
+          <div class="choice-card-row" onclick="selectType('Swing', 1.0, this)">
+            <div class="choice-card-radio-col">
+              <div class="height-radio">
+                <div class="height-radio-inner"></div>
+              </div>
+            </div>
+            <div class="choice-card-content-col">
+              <h3 class="choice-card-title">Swing</h3>
+              <p class="choice-card-desc">Movable doors that swing out to open, giving better visibility and storage space.</p>
+              <img src="https://d3gq2merok8n5r.cloudfront.net/stage2-1623054096-6N9Ti/wardrobe-price-calculator-1672758178-cTiiD/wardrobe-type-1672758191-cJbbM/desktop-1672758199-Y1Dwl/wardrobe-swing-d-1672758218-tmwbj.jpg" class="choice-card-img" alt="Swing Wardrobe Render" />
+              <p class="choice-card-caption">A cost-effective option that never goes out of style.</p>
+            </div>
+          </div>
+        </div>      </div>
+
+      <!-- STEP 3: PREFERRED FINISH -->
+      <div class="calc-step" id="stepBox3">
+        <h1 class="calc-heading">Select your preferred finish</h1>
+        <p class="calc-subheading">Choose design &amp; external textures suited for your bedroom style</p>
+
+        <div class="vertical-choices-list">
+          <!-- Laminate -->
+          <div class="choice-card-row" onclick="selectFinish('Standard - Laminate', 1.0, this)">
+            <div class="choice-card-radio-col">
+              <div class="height-radio">
+                <div class="height-radio-inner"></div>
+              </div>
+            </div>
+            <div class="choice-card-content-col">
+              <h3 class="choice-card-title">Standard - Laminate</h3>
+              <img src="https://d3gq2merok8n5r.cloudfront.net/stage2-1623054096-6N9Ti/wardrobe-price-calculator-1672758178-cTiiD/finish-type-1672761015-wBNh1/desktop-1672761020-UrtdK/laminate-d-1672761040-gX5Kj.jpg" class="choice-card-img" alt="Laminate Samples" />
+              <div class="choice-card-meta"><strong>Price : </strong>₹₹</div>
+              <div class="choice-card-meta"><strong>Pro Tip : </strong>Looking for a seamless finish that sits well with every interior? This one's for you.</div>
+            </div>
+          </div>
+
+          <!-- Membrane -->
+          <div class="choice-card-row" onclick="selectFinish('Premium - Membrane', 1.30, this)">
+            <div class="choice-card-radio-col">
+              <div class="height-radio">
+                <div class="height-radio-inner"></div>
+              </div>
+            </div>
+            <div class="choice-card-content-col">
+              <h3 class="choice-card-title">Premium - Membrane</h3>
+              <img src="https://d3gq2merok8n5r.cloudfront.net/stage2-1623054096-6N9Ti/wardrobe-price-calculator-1672758178-cTiiD/finish-type-1672761015-wBNh1/desktop-1672761020-UrtdK/membrane-d-1672761041-BOXib.jpg" class="choice-card-img" alt="Membrane Samples" />
+              <div class="choice-card-meta"><strong>Price : </strong>₹₹₹</div>
+              <div class="choice-card-meta"><strong>Pro Tip : </strong>Get a magazine-like look that requires low maintenance.</div>
+            </div>
+          </div>
+
+          <!-- Acrylic -->
+          <div class="choice-card-row" onclick="selectFinish('Luxe - Acrylic', 1.65, this)">
+            <div class="choice-card-radio-col">
+              <div class="height-radio">
+                <div class="height-radio-inner"></div>
+              </div>
+            </div>
+            <div class="choice-card-content-col">
+              <h3 class="choice-card-title">Luxe - Acrylic</h3>
+              <img src="https://d3gq2merok8n5r.cloudfront.net/stage2-1623054096-6N9Ti/wardrobe-price-calculator-1672758178-cTiiD/finish-type-1672761015-wBNh1/desktop-1672761020-UrtdK/acrylic-d-1672761038-i76NT.jpg" class="choice-card-img" alt="Acrylic Samples" />
+              <div class="choice-card-meta"><strong>Price : </strong>₹₹₹₹</div>
+              <div class="choice-card-meta"><strong>Pro Tip : </strong>Adds a touch of luxury to your modular wardrobe.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 4: CORE MATERIAL -->
+      <div class="calc-step" id="stepBox4">
+        <h1 class="calc-heading">Select your preferred core material</h1>
+        <p class="calc-subheading">Structural wood boards that provide core load capacity and lifetime strength</p>
+
+        <!-- Beige notice block -->
+        <div class="notice-bar">
+          Your core material options will be dependent on the finish you have chosen.
+        </div>
+        <p style="font-size: 0.9rem; font-weight: 700; margin-bottom: 1rem; color: #475569;">Available core materials options:</p>
+
+        <div class="vertical-choices-list">
+          <!-- MDF -->
+          <div class="choice-card-row" onclick="selectMaterial('MDF', 1.0, this)">
+            <div class="choice-card-radio-col">
+              <div class="height-radio">
+                <div class="height-radio-inner"></div>
+              </div>
+            </div>
+            <div class="choice-card-content-col">
+              <h3 class="choice-card-title">MDF</h3>
+              <p class="choice-card-desc">Seamless, free of knots, and has high resistance to wear &amp; tear.</p>
+              <img src="https://d3gq2merok8n5r.cloudfront.net/stage2-1623054096-6N9Ti/wardrobe-price-calculator-1672758178-cTiiD/finish-type-1672761015-wBNh1/desktop-1672761020-UrtdK/acrylic-d-1672761038-i76NT.jpg" class="choice-card-img" alt="MDF Core Samples" />
+              <div class="choice-card-meta"><strong>Price : </strong>₹₹</div>
+              <div class="choice-card-meta"><strong>Pro Tip : </strong>An ideal choice for the cabinets owing to its smooth surface.</div>
+            </div>
+          </div>
+
+          <!-- HDF/HMR -->
+          <div class="choice-card-row" onclick="selectMaterial('HDF/HMR', 1.25, this)">
+            <div class="choice-card-radio-col">
+              <div class="height-radio">
+                <div class="height-radio-inner"></div>
+              </div>
+            </div>
+            <div class="choice-card-content-col">
+              <h3 class="choice-card-title">HDF/HMR</h3>
+              <p class="choice-card-desc">Sturdy and highly dense along with a solid screw-holding capacity.</p>
+              <img src="https://d3gq2merok8n5r.cloudfront.net/stage2-1623054096-6N9Ti/wardrobe-price-calculator-1672758178-cTiiD/finish-type-1672761015-wBNh1/desktop-1672761020-UrtdK/acrylic-d-1672761038-i76NT.jpg" class="choice-card-img" alt="HDF Core Samples" />
+              <div class="choice-card-meta"><strong>Price : </strong>₹₹₹</div>
+              <div class="choice-card-meta"><strong>Pro Tip : </strong>A good option that comes with a high load-bearing capacity.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 5: ACCESSORIES -->
+      <div class="calc-step" id="stepBox5">
+        <h1 class="calc-heading">Add your preferred accessories (optional)</h1>
+        <p class="calc-subheading">Configure built-in storage units to organize your clothes and accessories</p>
+
+        <div class="acc-cards-grid">
+          <!-- Loft -->
+          <div class="acc-choice-card" onclick="toggleAcc('Loft', 8000, this)">
+            <div class="acc-img-wrapper">
+              <img src="https://d3gq2merok8n5r.cloudfront.net/stage2-1623054096-6N9Ti/wardrobe-price-calculator-1672758178-cTiiD/accessories-1672842145-MTXWF/desktop-1672842150-kxlym/loft-d-1673521886-COr4B.jpeg" class="acc-image" alt="Loft accessory" />
+              <div class="acc-checkbox-abs"><i class="fas fa-check"></i></div>
+            </div>
+            <div class="acc-label-band">Loft</div>
+          </div>
+
+          <!-- Single Drawer -->
+          <div class="acc-choice-card" onclick="toggleAcc('Single full-size drawer', 3000, this)">
+            <div class="acc-img-wrapper">
+              <img src="https://d3gq2merok8n5r.cloudfront.net/stage2-1623054096-6N9Ti/wardrobe-price-calculator-1672758178-cTiiD/accessories-1672842145-MTXWF/desktop-1672842150-kxlym/1-drawer-full-d-1672842168-j8Hp1.jpg" class="acc-image" alt="Single full-size drawer accessory" />
+              <div class="acc-checkbox-abs"><i class="fas fa-check"></i></div>
+            </div>
+            <div class="acc-label-band">Single full-size drawer</div>
+          </div>
+
+          <!-- 1 half-drawer -->
+          <div class="acc-choice-card" onclick="toggleAcc('1 half-drawer', 2000, this)">
+            <div class="acc-img-wrapper">
+              <img src="https://d3gq2merok8n5r.cloudfront.net/stage2-1623054096-6N9Ti/wardrobe-price-calculator-1672758178-cTiiD/accessories-1672842145-MTXWF/desktop-1672842150-kxlym/1-drawer-half-d-1672842169-WOo38.jpg" class="acc-image" alt="1 half-drawer accessory" />
+              <div class="acc-checkbox-abs"><i class="fas fa-check"></i></div>
+            </div>
+            <div class="acc-label-band">1 half-drawer</div>
+          </div>
+
+          <!-- 2 half-drawers -->
+          <div class="acc-choice-card" onclick="toggleAcc('2 half-drawers', 3500, this)">
+            <div class="acc-img-wrapper">
+              <img src="https://d3gq2merok8n5r.cloudfront.net/stage2-1623054096-6N9Ti/wardrobe-price-calculator-1672758178-cTiiD/accessories-1672842145-MTXWF/desktop-1672842150-kxlym/2-drawer-half-d-1672842171-3a5B4.jpg" class="acc-image" alt="2 half-drawers accessory" />
+              <div class="acc-checkbox-abs"><i class="fas fa-check"></i></div>
+            </div>
+            <div class="acc-label-band">2 half-drawers</div>
+          </div>
+
+          <!-- Wicker pull out -->
+          <div class="acc-choice-card" onclick="toggleAcc('Wicker pull out', 5000, this)">
+            <div class="acc-img-wrapper">
+              <img src="https://d3gq2merok8n5r.cloudfront.net/stage2-1623054096-6N9Ti/wardrobe-price-calculator-1672758178-cTiiD/accessories-1672842145-MTXWF/desktop-1672842150-kxlym/wicker-pull-out-d-1672842172-OFkvM.jpg" class="acc-image" alt="Wicker pull out accessory" />
+              <div class="acc-checkbox-abs"><i class="fas fa-check"></i></div>
+            </div>
+            <div class="acc-label-band">Wicker pull out</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 6: LEAD FORM -->
+      <div class="calc-step" id="stepBox6">
+        <h2 class="calc-heading" style="font-weight: 700; margin-bottom: 2rem; color: #1e293b;">Your wardrobe estimate is almost ready</h2>
+
+        <div class="lead-form-wrap">
+          <form onsubmit="handleFinalSubmit(event)">
+            <!-- Name Input -->
+            <div class="calc-input-group">
+              <input type="text" class="form-input-field" placeholder="Name" id="leadName" required />
+            </div>
+
+            <!-- Email Input -->
+            <div class="calc-input-group">
+              <input type="email" class="form-input-field" placeholder="Email ID" id="leadEmail" required />
+            </div>
+
+            <!-- Custom Flex Phone Group -->
+            <div class="calc-input-group">
+              <div class="phone-input-group">
+                <div class="country-flag-selector">
+                  <span class="flag-icon">🇮🇳</span>
+                  <span class="chevron-down-mini">▾</span>
+                </div>
+                <div class="divider-vertical"></div>
+                <input type="tel" class="phone-input-field-core" placeholder="Phone number" id="leadPhone" required />
+              </div>
+            </div>
+            
+            <!-- WhatsApp checkbox -->
+            <div class="whatsapp-checkbox-row active" onclick="toggleWhatsAppCheckbox(this)">
+              <div class="whatsapp-check-box">
+                <i class="fas fa-check"></i>
+              </div>
+              <span class="whatsapp-label">Send me updates on WhatsApp</span>
+            </div>
+
+            <!-- City Select Dropdown -->
+            <div class="calc-input-group">
+              <div class="city-select-wrapper">
+                <select class="city-select-field" id="leadCity" required>
+                  <option value="" disabled selected>Select City</option>
+                  <option value="Vashi">Vashi</option>
+                  <option value="Kharghar">Kharghar</option>
+                  <option value="Nerul">Nerul</option>
+                  <option value="Belapur">Belapur</option>
+                  <option value="Sanpada">Sanpada</option>
+                  <option value="Airoli">Airoli</option>
+                  <option value="Ghansoli">Ghansoli</option>
+                  <option value="Kopar Khairane">Kopar Khairane</option>
+                  <option value="Panvel">Panvel</option>
+                  <option value="Rabale">Rabale</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Disclaimers text -->
+            <div class="consent-disclaimer">
+              By submitting this form, you agree to the <a href="/privacy-policy.html" class="disclaimer-link">privacy policy</a> &amp; <a href="/terms.html" class="disclaimer-link">terms and conditions</a>
+            </div>
+            <div class="recaptcha-disclaimer">
+              This site is protected by reCAPTCHA and the Google <a href="https://policies.google.com/privacy" target="_blank" class="disclaimer-link">Privacy Policy</a> and <a href="https://policies.google.com/terms" target="_blank" class="disclaimer-link">Terms of Service</a> apply.
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom Navigation Action Bar -->
+  <footer class="calc-bottom-action-bar">
+    <div class="action-bar-container">
+      <button class="calc-btn-pill-back" id="btnPillBack" onclick="goPillBack()" style="visibility: hidden;">
+        Back
+      </button>
+
+      <button class="calc-btn-pill-next" id="btnPillNext" onclick="goPillNext()" disabled>
+        Next
+      </button>
+    </div>
+  </footer>
+
+  <script>
+    let currentStep = 1;
+    
+    // Configurations selections
+    let heightSelectedName = '7 ft';
+    let heightMultiplier = 1.0;
+    
+    let typeSelectedName = '';
+    let typeMultiplier = 0.0;
+    
+    let finishSelectedName = '';
+    let finishMultiplier = 0.0;
+    
+    let materialSelectedName = '';
+    let materialMultiplier = 0.0;
+    
+    let selectedAccList = [];
+    let accCostTotal = 0;
+
+    // Default base prices for a standard modular wardrobe carcass (width ~5-6 ft)
+    const baseMinPrice = 45000;
+    const baseMaxPrice = 70000;
+
+    function selectHeight(heightName, multiplier, cardElement) {
+      document.querySelectorAll('#stepBox1 .height-option-card').forEach(c => c.classList.remove('selected'));
+      cardElement.classList.add('selected');
+      heightSelectedName = heightName;
+      heightMultiplier = multiplier;
+      checkStep1Valid();
+    }
+
+    function checkStep1Valid() {
+      // Step 1 height is pre-selected (7 ft), so Next is enabled
+      document.getElementById('btnPillNext').disabled = false;
+    }
+
+    function selectType(typeName, multiplier, cardElement) {
+      document.querySelectorAll('#stepBox2 .choice-card-row').forEach(c => c.classList.remove('selected'));
+      cardElement.classList.add('selected');
+      typeSelectedName = typeName;
+      typeMultiplier = multiplier;
+      document.getElementById('btnPillNext').disabled = false;
+    }
+
+    function selectFinish(finishName, multiplier, cardElement) {
+      document.querySelectorAll('#stepBox3 .choice-card-row').forEach(c => c.classList.remove('selected'));
+      cardElement.classList.add('selected');
+      finishSelectedName = finishName;
+      finishMultiplier = multiplier;
+      document.getElementById('btnPillNext').disabled = false;
+    }
+
+    function selectMaterial(materialName, multiplier, cardElement) {
+      document.querySelectorAll('#stepBox4 .choice-card-row').forEach(c => c.classList.remove('selected'));
+      cardElement.classList.add('selected');
+      materialSelectedName = materialName;
+      materialMultiplier = multiplier;
+      document.getElementById('btnPillNext').disabled = false;
+    }
+
+    function toggleAcc(accName, cost, cardElement) {
+      cardElement.classList.toggle('selected');
+      const index = selectedAccList.indexOf(accName);
+      if (index > -1) {
+        selectedAccList.splice(index, 1);
+        accCostTotal -= cost;
+      } else {
+        selectedAccList.push(accName);
+        accCostTotal += cost;
+      }
+      // Optional selection, Next stays enabled
+      document.getElementById('btnPillNext').disabled = false;
+    }
+
+    function toggleWhatsAppCheckbox(element) {
+      element.classList.toggle('active');
+    }
+
+    function showStepBox(num) {
+      document.querySelectorAll('.calc-step').forEach(box => box.classList.remove('active'));
+      document.getElementById('stepBox' + num).classList.add('active');
+
+      // Update Progress Timeline
+      document.querySelectorAll('.timeline-step').forEach((step, index) => {
+        step.classList.remove('active', 'completed');
+        if (index + 1 < num) {
+          step.classList.add('completed');
+        } else if (index + 1 === num) {
+          step.classList.add('active');
+        }
+      });
+
+      // Update Timeline line progress width
+      const progressPercent = ((num - 1) / 5) * 90;
+      document.getElementById('timelineProgress').style.width = progressPercent + '%';
+
+      // Update Counter Label
+      document.getElementById('stepCounterLabel').textContent = num + '/6';
+
+      // Back button visibility
+      if (num === 1) {
+        document.getElementById('btnPillBack').style.visibility = 'hidden';
+      } else {
+        document.getElementById('btnPillBack').style.visibility = 'visible';
+      }
+
+      // Check validation states to auto-enable Next button
+      if (num === 1) {
+        document.getElementById('btnPillNext').disabled = false;
+      } else if (num === 2) {
+        document.getElementById('btnPillNext').disabled = (typeSelectedName === '');
+      } else if (num === 3) {
+        document.getElementById('btnPillNext').disabled = (finishSelectedName === '');
+      } else if (num === 4) {
+        document.getElementById('btnPillNext').disabled = (materialSelectedName === '');
+      } else if (num === 5) {
+        document.getElementById('btnPillNext').disabled = false;
+      } else if (num === 6) {
+        document.getElementById('btnPillNext').disabled = false;
+      }
+
+      // Submit or Next wording
+      if (num === 6) {
+        document.getElementById('btnPillNext').textContent = 'Submit';
+      } else {
+        document.getElementById('btnPillNext').textContent = 'Next';
+      }
+    }
+
+    function goPillNext() {
+      if (currentStep === 1) {
+        currentStep = 2;
+        showStepBox(2);
+      } else if (currentStep === 2) {
+        if (!typeSelectedName) return;
+        currentStep = 3;
+        showStepBox(3);
+      } else if (currentStep === 3) {
+        if (!finishSelectedName) return;
+        currentStep = 4;
+        showStepBox(4);
+      } else if (currentStep === 4) {
+        if (!materialSelectedName) return;
+        currentStep = 5;
+        showStepBox(5);
+      } else if (currentStep === 5) {
+        currentStep = 6;
+        showStepBox(6);
+      } else if (currentStep === 6) {
+        // Trigger lead form submit
+        const name = document.getElementById('leadName').value;
+        const email = document.getElementById('leadEmail').value;
+        const phone = document.getElementById('leadPhone').value;
+        const city = document.getElementById('leadCity').value;
+
+        if (name && email && phone && city) {
+          const prices = calculateWardrobeEstimate();
+
+          const summaryData = {
+            height: heightSelectedName,
+            type: typeSelectedName,
+            finish: finishSelectedName,
+            material: materialSelectedName,
+            accessories: selectedAccList.length > 0 ? selectedAccList.join(', ') : 'None added'
+          };
+
+          localStorage.setItem("wardrobe_calc_summary", JSON.stringify(summaryData));
+          window.location.href = `/wardrobe-calculator-result.html?min=${prices.min}&max=${prices.max}`;
+        } else {
+          alert('Please fill out all fields.');
+        }
+      }
+    }
+
+    function goPillBack() {
+      if (currentStep > 1) {
+        currentStep--;
+        showStepBox(currentStep);
+      }
+    }
+
+    function calculateWardrobeEstimate() {
+      // Base calculation
+      const calculatedMin = (baseMinPrice * heightMultiplier * typeMultiplier * finishMultiplier * materialMultiplier + accCostTotal) / 100000;
+      const calculatedMax = (baseMaxPrice * heightMultiplier * typeMultiplier * finishMultiplier * materialMultiplier + accCostTotal) / 100000;
+
+      return {
+        min: calculatedMin.toFixed(2),
+        max: calculatedMax.toFixed(2)
+      };
+    }
+
+    // Auto-enable next on startup
+    window.addEventListener('DOMContentLoaded', () => {
+      checkStep1Valid();
+    });
+  </script>
+</body>
+</html>

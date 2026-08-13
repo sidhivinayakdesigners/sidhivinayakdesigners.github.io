@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modular Kitchen Price Calculator | Siddhivinayak Designers</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Plus Jakarta Sans Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    html, body {
+      background-color: #f3f6f8 !important;
+      color: #333333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    .calc-header-logo {
+      min-width: auto;
+    }
+    .calc-header-counter {
+      min-width: auto;
+    }
+    @media (min-width: 768px) {
+      .calc-header-logo {
+        min-width: 320px;
+      }
+      .calc-header-counter {
+        min-width: 320px;
+      }
+    }
+
+    /* Progress Header */
+    .calc-top-header {
+      background: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 0.75rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .timeline-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 100%;
+      padding: 0;
+    }
+    .timeline-line {
+      position: absolute;
+      top: 10px;
+      left: 10%;
+      right: 10%;
+      height: 3px;
+      background: #e2e8f0;
+      z-index: 1;
+    }
+    .timeline-progress {
+      position: absolute;
+      top: 10px;
+      left: 10%;
+      height: 3px;
+      background: #4a3748;
+      width: 0%;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 2;
+    }
+    .timeline-step {
+      flex: 1;
+      text-align: center;
+      position: relative;
+      z-index: 3;
+    }
+    .step-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 3px solid #cbd5e1;
+      margin: 0 auto 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      color: transparent;
+      transition: all 0.3s ease;
+    }
+    .timeline-step.active .step-dot {
+      border-color: #4a3748;
+      background: #ffffff;
+    }
+    .timeline-step.active .step-dot::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4a3748;
+    }
+    .timeline-step.completed .step-dot {
+      border-color: #4a3748;
+      background: #4a3748;
+      color: #ffffff;
+    }
+    .step-text {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #94a3b8;
+      letter-spacing: 0.5px;
+      display: block;
+    }
+    .timeline-step.active .step-text, .timeline-step.completed .step-text {
+      color: #4a3748;
+    }
+    .step-counter-label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #475569;
+    }
+
+    /* Main Calculator Container Card */
+    .calc-card-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1rem;
+    }
+    .calc-box {
+      background: #ffffff;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 680px;
+      padding: 3rem 2.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      min-height: 480px;
+      display: flex;
+      flex-direction: column;
+    }
+    .calc-heading {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: #2d1e2f !important;
+      margin-bottom: 0.4rem;
+      text-align: center;
+    }
+    .calc-subheading {
+      font-size: 0.95rem;
+      color: #64748b;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-weight: 500;
+    }
+    .calc-subheading a {
+      color: #ec5252;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Step 1: Layout Selection Cards */
+    .layout-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .layout-choice-card {
+      border: 1.5px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.5rem;
+      cursor: pointer;
+      background: #ffffff;
+      transition: all 0.25s ease;
+      text-align: center;
+      position: relative;
+    }
+    .layout-choice-card:hover {
+      border-color: #fca5a5;
+    }
+    .layout-choice-card.selected {
+      border-color: #ec5252 !important;
+      background: #fef2f2 !important;
+    }
+    .layout-icon-box {
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: center;
+    }
+    .layout-label {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #334155;
+    }
+
+    /* Step 2: Measurements Dropdowns */
+    .measure-box {
+      background: #fafbfc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .measure-label {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: #ec5252;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 0.5rem;
+    }
+    .measure-select-field {
+      width: 100%;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 0.85rem 1.25rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1e293b;
+      background: #ffffff;
+      outline: none;
+      transition: all 0.25s ease;
+    }
+    .measure-select-field:focus {
+      border-color: #ec5252;
+    }
+
+    /* Step 3: Packages styling (Compact) */
+    .package-scroll-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .pkg-choice-card {
+      border: 1.5px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 0.9rem;
+      cursor: pointer;
+      background: #ffffff;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      gap: 12px;
+    }
+    .pkg-choice-card:hover {
+      border-color: #fca5a5;
+    }
+    .pkg-choice-card.selected {
+      border-color: #ec5252 !important;
+      background: #fef2f2 !important;
+    }
+    .pkg-radio-col {
+      width: 20px;
+    }
+    .pkg-info-col {
+      flex: 1;
+    }
+    .pkg-title-line {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #1e293b !important;
+      margin-bottom: 0.2rem;
+    }
+    .pkg-subtitle-line {
+      font-size: 0.78rem;
+      color: #64748b;
+      line-height: 1.4;
+      margin-bottom: 0.6rem;
+    }
+    .pkg-image {
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 0.6rem;
+      border: 1px solid #f1f5f9;
+    }
+    .pkg-checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .pkg-checklist li {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 4px;
+    }
+    .pkg-checklist li i {
+      color: #ec5252;
+    }
+
+    /* Step 4: Form */
+    .lead-form-wrap {
+      max-width: 480px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .calc-input-group {
+      margin-bottom: 1.25rem;
+    }
+    .calc-input-field {
+      width: 100%;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 0.85rem 1.25rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1e293b;
+      background: #ffffff;
+      outline: none;
+      transition: all 0.25s ease;
+    }
+    .calc-input-field:focus {
+      border-color: #ec5252;
+      box-shadow: 0 0 0 4px rgba(236, 82, 82, 0.1);
+    }
+    .whatsapp-checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+      cursor: pointer;
+      user-select: none;
+    }
+    .whatsapp-check-box {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      border: 2px solid #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: transparent;
+      transition: all 0.2s ease;
+    }
+    .whatsapp-checkbox-row.active .whatsapp-check-box {
+      border-color: #ec5252;
+      background: #ec5252;
+      color: #ffffff;
+    }
+    .whatsapp-label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #475569;
+    }
+
+    /* Fixed Bottom Action Bar */
+    .calc-bottom-action-bar {
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      padding: 1rem 0;
+      position: sticky;
+      bottom: 0;
+      width: 100%;
+      z-index: 100;
+    }
+    .action-bar-container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .calc-btn-pill-back {
+      background: transparent;
+      border: none;
+      font-weight: 700;
+      color: #fca5a5;
+      font-size: 0.95rem;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      transition: color 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .calc-btn-pill-back:hover {
+      color: #ec5252;
+    }
+    .calc-btn-pill-next {
+      background: #ec5252 !important;
+      color: #ffffff !important;
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 0.85rem 3.5rem;
+      border-radius: 50px;
+      border: none;
+      box-shadow: 0 6px 18px rgba(236, 82, 82, 0.28);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .calc-btn-pill-next:disabled {
+      background: #cbd5e1 !important;
+      box-shadow: none !important;
+      cursor: not-allowed;
+    }
+    .calc-btn-pill-next:not(:disabled):hover {
+      background: #d93d3d !important;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(236, 82, 82, 0.42);
+    }
+
+    /* Step Containers */
+    .calc-step {
+      display: none;
+      animation: fadeInSlide 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+    .calc-step.active {
+      display: block;
+    }
+
+    @keyframes fadeInSlide {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .layout-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      .layout-choice-card {
+        padding: 0.75rem 0.5rem;
+      }
+      .layout-label {
+        font-size: 0.9rem;
+      }
+      .layout-icon-box svg {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar Timeline Progress -->
+  <header class="calc-top-header">
+    <div class="container-fluid px-0 d-flex align-items-center justify-content-between position-relative">
+      
+      <!-- Left Logo and Name -->
+      <div class="calc-header-logo d-flex align-items-center" style="gap: 12px;">
+        <a href="/" class="d-flex align-items-center text-decoration-none" style="font-weight: 700; font-size: 1.1rem; color: #151413 !important; font-family: 'Plus Jakarta Sans', sans-serif;">
+          <img src="/assets/images/logo_icon.webp" style="height: 36px; object-fit: contain;" alt="Siddhivinayak Designers Logo" />
+          <span class="ms-2">
+            <span style="color: #189ba6 !important;">Siddhivinayak</span> Designers
+          </span>
+        </a>
+      </div>
+
+      <!-- Centered Progress Timeline -->
+      <div class="timeline-container-wrap flex-grow-1 d-none d-md-block position-relative" style="max-width: 600px; margin: 0 auto;">
+        <div class="timeline-container" style="max-width: 100%; padding: 0 10px;">
+          <div class="timeline-line"></div>
+          <div class="timeline-progress" id="timelineProgress"></div>
+
+          <!-- 1. Kitchen Layout -->
+          <div class="timeline-step active" id="timeStep1">
+            <div class="step-dot"><i class="fas fa-check"></i></div>
+            <span class="step-text">Kitchen Layout</span>
+          </div>
+
+          <!-- 2. Measurements -->
+          <div class="timeline-step" id="timeStep2">
+            <div class="step-dot"><i class="fas fa-check"></i></div>
+            <span class="step-text">Measurements</span>
+          </div>
+
+          <!-- 3. Package -->
+          <div class="timeline-step" id="timeStep3">
+            <div class="step-dot"><i class="fas fa-check"></i></div>
+            <span class="step-text">Package</span>
+          </div>
+
+          <!-- 4. Get Quote -->
+          <div class="timeline-step" id="timeStep4">
+            <div class="step-dot"><i class="fas fa-check"></i></div>
+            <span class="step-text">Get Quote</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Right Step Counter -->
+      <div class="calc-header-counter d-flex justify-content-end">
+        <div class="step-counter-label" id="stepCounterLabel">1/4</div>
+      </div>
+      
+    </div>
+  </header>
+
+  <!-- Calculator Main Box -->
+  <div class="calc-card-wrapper">
+    <div class="calc-box">
+      
+      <!-- STEP 1: KITCHEN LAYOUT -->
+      <div class="calc-step active" id="stepBox1">
+        <h1 class="calc-heading">Select the layout of your kitchen</h1>
+        <p class="calc-subheading">To know more about layouts, <a href="#">click here</a></p>
+
+        <div class="layout-grid">
+          <!-- L-shaped -->
+          <div class="layout-choice-card" onclick="selectKitchenLayout('L-shaped', 180000, 260000, this)">
+            <div class="layout-icon-box" style="min-height: 100px; display: flex; align-items: center; justify-content: center;">
+              <svg width="140" height="85" viewBox="0 0 150 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- L-Shape countertop -->
+                <path d="M20 75 V15 H130 V45 H50 V75 H20 Z" fill="#ebd9d0" stroke="#7e6e65" stroke-width="2" stroke-linejoin="round"/>
+                <!-- Refrigerator (bottom left) -->
+                <rect x="23" y="55" width="24" height="17" fill="#dfcfc7" stroke="#7e6e65" stroke-width="1.5" rx="1"/>
+                <circle cx="35" cy="63.5" r="4" fill="none" stroke="#7e6e65" stroke-width="1"/>
+                <line x1="31" y1="63.5" x2="39" y2="63.5" stroke="#7e6e65" stroke-width="1"/>
+                <line x1="35" y1="59.5" x2="35" y2="67.5" stroke="#7e6e65" stroke-width="1"/>
+                
+                <!-- Sink (top left) -->
+                <rect x="55" y="18" width="28" height="16" fill="#ffffff" stroke="#7e6e65" stroke-width="1.5" rx="1"/>
+                <rect x="58" y="21" width="10" height="10" fill="none" stroke="#7e6e65" stroke-width="1"/>
+                <line x1="72" y1="21" x2="72" y2="31" stroke="#7e6e65" stroke-width="1"/>
+                <line x1="75" y1="21" x2="75" y2="31" stroke="#7e6e65" stroke-width="1"/>
+                <line x1="78" y1="21" x2="78" y2="31" stroke="#7e6e65" stroke-width="1"/>
+                <circle cx="63" cy="26" r="1.5" fill="#7e6e65"/>
+                
+                <!-- Stove (top right) -->
+                <rect x="100" y="18" width="24" height="16" fill="#ffffff" stroke="#7e6e65" stroke-width="1.5" rx="1"/>
+                <circle cx="106" cy="23" r="2.5" fill="#ec5252"/>
+                <circle cx="118" cy="23" r="2.5" fill="#ec5252"/>
+                <circle cx="106" cy="29" r="2.5" fill="#ec5252"/>
+                <circle cx="118" cy="29" r="2.5" fill="#ec5252"/>
+              </svg>
+            </div>
+            <div class="layout-label">L-shaped</div>
+          </div>
+
+          <!-- Straight -->
+          <div class="layout-choice-card" onclick="selectKitchenLayout('Straight', 120000, 180000, this)">
+            <div class="layout-icon-box" style="min-height: 100px; display: flex; align-items: center; justify-content: center;">
+              <svg width="140" height="85" viewBox="0 0 150 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Straight countertop -->
+                <rect x="15" y="32" width="120" height="26" fill="#ebd9d0" stroke="#7e6e65" stroke-width="2" rx="2"/>
+                <!-- Refrigerator (left) -->
+                <rect x="20" y="35" width="20" height="20" fill="#dfcfc7" stroke="#7e6e65" stroke-width="1.5" rx="1"/>
+                <circle cx="30" cy="45" r="4" fill="none" stroke="#7e6e65" stroke-width="1"/>
+                <line x1="26" y1="45" x2="34" y2="45" stroke="#7e6e65" stroke-width="1"/>
+                <line x1="30" y1="41" x2="30" y2="49" stroke="#7e6e65" stroke-width="1"/>
+
+                <!-- Sink (middle) -->
+                <rect x="61" y="36" width="28" height="18" fill="#ffffff" stroke="#7e6e65" stroke-width="1.5" rx="1"/>
+                <rect x="64" y="39" width="10" height="12" fill="none" stroke="#7e6e65" stroke-width="1"/>
+                <line x1="78" y1="39" x2="78" y2="51" stroke="#7e6e65" stroke-width="1"/>
+                <line x1="81" y1="39" x2="81" y2="51" stroke="#7e6e65" stroke-width="1"/>
+                <line x1="84" y1="39" x2="84" y2="51" stroke="#7e6e65" stroke-width="1"/>
+                <circle cx="69" cy="45" r="1.5" fill="#7e6e65"/>
+
+                <!-- Stove (right) -->
+                <rect x="105" y="36" width="24" height="18" fill="#ffffff" stroke="#7e6e65" stroke-width="1.5" rx="1"/>
+                <circle cx="111" cy="41" r="2.5" fill="#ec5252"/>
+                <circle cx="123" cy="41" r="2.5" fill="#ec5252"/>
+                <circle cx="111" cy="49" r="2.5" fill="#ec5252"/>
+                <circle cx="123" cy="49" r="2.5" fill="#ec5252"/>
+              </svg>
+            </div>
+            <div class="layout-label">Straight</div>
+          </div>
+
+          <!-- U-shaped -->
+          <div class="layout-choice-card" onclick="selectKitchenLayout('U-shaped', 220000, 320000, this)">
+            <div class="layout-icon-box" style="min-height: 100px; display: flex; align-items: center; justify-content: center;">
+              <svg width="140" height="85" viewBox="0 0 150 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- U-Shape countertop -->
+                <path d="M20 75 V15 H130 V75 H100 V45 H50 V75 H20 Z" fill="#ebd9d0" stroke="#7e6e65" stroke-width="2" stroke-linejoin="round"/>
+                <!-- Refrigerator (bottom left) -->
+                <rect x="23" y="55" width="24" height="17" fill="#dfcfc7" stroke="#7e6e65" stroke-width="1.5" rx="1"/>
+                <circle cx="35" cy="63.5" r="4" fill="none" stroke="#7e6e65" stroke-width="1"/>
+                <line x1="31" y1="63.5" x2="39" y2="63.5" stroke="#7e6e65" stroke-width="1"/>
+                <line x1="35" y1="59.5" x2="35" y2="67.5" stroke="#7e6e65" stroke-width="1"/>
+
+                <!-- Sink (top middle) -->
+                <rect x="61" y="18" width="28" height="16" fill="#ffffff" stroke="#7e6e65" stroke-width="1.5" rx="1"/>
+                <rect x="64" y="21" width="10" height="10" fill="none" stroke="#7e6e65" stroke-width="1"/>
+                <line x1="78" y1="21" x2="78" y2="31" stroke="#7e6e65" stroke-width="1"/>
+                <line x1="81" y1="21" x2="81" y2="31" stroke="#7e6e65" stroke-width="1"/>
+                <line x1="84" y1="21" x2="84" y2="31" stroke="#7e6e65" stroke-width="1"/>
+                <circle cx="69" cy="26" r="1.5" fill="#7e6e65"/>
+
+                <!-- Stove (bottom right) -->
+                <rect x="103" y="50" width="24" height="17" fill="#ffffff" stroke="#7e6e65" stroke-width="1.5" rx="1"/>
+                <circle cx="109" cy="55.5" r="2.5" fill="#ec5252"/>
+                <circle cx="121" cy="55.5" r="2.5" fill="#ec5252"/>
+                <circle cx="109" cy="61.5" r="2.5" fill="#ec5252"/>
+                <circle cx="121" cy="61.5" r="2.5" fill="#ec5252"/>
+              </svg>
+            </div>
+            <div class="layout-label">U-shaped</div>
+          </div>
+
+          <!-- Parallel -->
+          <div class="layout-choice-card" onclick="selectKitchenLayout('Parallel', 160000, 240000, this)">
+            <div class="layout-icon-box" style="min-height: 100px; display: flex; align-items: center; justify-content: center;">
+              <svg width="140" height="85" viewBox="0 0 150 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Top countertop -->
+                <rect x="20" y="12" width="110" height="24" fill="#ebd9d0" stroke="#7e6e65" stroke-width="2" rx="2"/>
+                <!-- Bottom countertop -->
+                <rect x="20" y="54" width="110" height="24" fill="#ebd9d0" stroke="#7e6e65" stroke-width="2" rx="2"/>
+                
+                <!-- Refrigerator (top left) -->
+                <rect x="25" y="15" width="20" height="18" fill="#dfcfc7" stroke="#7e6e65" stroke-width="1.5" rx="1"/>
+                <circle cx="35" cy="24" r="4" fill="none" stroke="#7e6e65" stroke-width="1"/>
+                <line x1="31" y1="24" x2="39" y2="24" stroke="#7e6e65" stroke-width="1"/>
+                <line x1="35" y1="20" x2="35" y2="28" stroke="#7e6e65" stroke-width="1"/>
+
+                <!-- Sink (top center-right) -->
+                <rect x="70" y="15" width="28" height="18" fill="#ffffff" stroke="#7e6e65" stroke-width="1.5" rx="1"/>
+                <rect x="73" y="18" width="10" height="12" fill="none" stroke="#7e6e65" stroke-width="1"/>
+                <line x1="87" y1="18" x2="87" y2="30" stroke="#7e6e65" stroke-width="1"/>
+                <line x1="90" y1="18" x2="90" y2="30" stroke="#7e6e65" stroke-width="1"/>
+                <line x1="93" y1="18" x2="93" y2="30" stroke="#7e6e65" stroke-width="1"/>
+                <circle cx="78" cy="24" r="1.5" fill="#7e6e65"/>
+
+                <!-- Stove (bottom center) -->
+                <rect x="63" y="57" width="24" height="18" fill="#ffffff" stroke="#7e6e65" stroke-width="1.5" rx="1"/>
+                <circle cx="69" cy="62" r="2.5" fill="#ec5252"/>
+                <circle cx="81" cy="62" r="2.5" fill="#ec5252"/>
+                <circle cx="69" cy="70" r="2.5" fill="#ec5252"/>
+                <circle cx="81" cy="70" r="2.5" fill="#ec5252"/>
+              </svg>
+            </div>
+            <div class="layout-label">Parallel</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2: MEASUREMENTS -->
+      <div class="calc-step" id="stepBox2">
+        <h1 class="calc-heading">Now review the measurements for accuracy</h1>
+        <p class="calc-subheading">Standard size has been set for your convenience</p>
+
+        <!-- Reference Photo/Diagram Container -->
+        <div id="measureRefPhotoContainer" style="display: flex; justify-content: center; margin-bottom: 2rem; background: #fafbfc; border: 1px dashed #cbd5e1; border-radius: 12px; padding: 1.5rem; min-height: 180px;">
+          <!-- Loaded dynamically via JavaScript -->
+        </div>
+
+        <div class="measure-box">
+          <div class="row">
+            <div class="col-md-6 mb-3 mb-md-0">
+              <div class="measure-label">Size A (ft.)</div>
+              <select class="measure-select-field" id="measureA" onchange="updateDimensions()">
+                <!-- 3 to 12 ft options -->
+                <option value="3" selected>3 ft</option>
+                <option value="4">4 ft</option>
+                <option value="5">5 ft</option>
+                <option value="6">6 ft</option>
+                <option value="7">7 ft</option>
+                <option value="8">8 ft</option>
+                <option value="9">9 ft</option>
+                <option value="10">10 ft</option>
+                <option value="11">11 ft</option>
+                <option value="12">12 ft</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <div class="measure-label">Size B (ft.)</div>
+              <select class="measure-select-field" id="measureB" onchange="updateDimensions()">
+                <option value="3">3 ft</option>
+                <option value="4">4 ft</option>
+                <option value="5">5 ft</option>
+                <option value="6">6 ft</option>
+                <option value="7">7 ft</option>
+                <option value="8" selected>8 ft</option>
+                <option value="9">9 ft</option>
+                <option value="10">10 ft</option>
+                <option value="11">11 ft</option>
+                <option value="12">12 ft</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3: PICK PACKAGE -->
+      <div class="calc-step" id="stepBox3">
+        <h1 class="calc-heading">Pick your package</h1>
+        <p class="calc-subheading">Choose design &amp; materials suited for your cooking style</p>
+
+        <div class="package-scroll-wrap">
+          <!-- Essentials -->
+          <div class="pkg-choice-card selected" onclick="selectPkgCard(this, 'Essentials', 1.0)">
+            <div class="pkg-radio-col">
+              <div class="custom-radio"></div>
+            </div>
+            <div class="pkg-info-col">
+              <h3 class="pkg-title-line">Essentials (₹₹)</h3>
+              <p class="pkg-subtitle-line">A range of basic units and acessories that are necessary for a comfortable modular kitchen.</p>
+              <img src="/assets/images/modular-kitchen/kitchen-with-foldable-breakfast-table-and-yellow-chairs.webp" class="pkg-image" alt="Essentials Kitchen Package" />
+              <ul class="pkg-checklist">
+                <li><i class="fas fa-check"></i> Affordable pricing</li>
+                <li><i class="fas fa-check"></i> Convenient designs</li>
+                <li><i class="fas fa-check"></i> Basic accessories</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Premium -->
+          <div class="pkg-choice-card" onclick="selectPkgCard(this, 'Premium', 1.35)">
+            <div class="pkg-radio-col">
+              <div class="custom-radio"></div>
+            </div>
+            <div class="pkg-info-col">
+              <h3 class="pkg-title-line">Premium (₹₹₹)</h3>
+              <p class="pkg-subtitle-line">An exquisite offering with sleek fixtures, hardware, cabinets and fittings for an elegant kitchen design.</p>
+              <img src="/assets/images/modular-kitchen/an-l-shaped-kitchen-with-green-base-cabinets-and-white-upper-cabinets-kitchen-interior-design.jpg" class="pkg-image" alt="Premium Kitchen Package" />
+              <ul class="pkg-checklist">
+                <li><i class="fas fa-check"></i> Mid-range pricing</li>
+                <li><i class="fas fa-check"></i> Premium designs</li>
+                <li><i class="fas fa-check"></i> Wide range of accessories</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Luxe -->
+          <div class="pkg-choice-card" onclick="selectPkgCard(this, 'Luxe', 1.75)">
+            <div class="pkg-radio-col">
+              <div class="custom-radio"></div>
+            </div>
+            <div class="pkg-info-col">
+              <h3 class="pkg-title-line">Luxe (₹₹₹₹)</h3>
+              <p class="pkg-subtitle-line">A swanky kitchen package that's a fine blend of aesthetics and high functionality with chic-looking units and accessories.</p>
+              <img src="/assets/images/modular-kitchen/a-u-shaped-kitchen-home-interior-design-with-black-matte-finish-cabinets-that-add-a-sleek-look.jpg" class="pkg-image" alt="Luxe Kitchen Package" onerror="this.src='/assets/images/modular-kitchen/kitchen-with-foldable-breakfast-table-and-yellow-chairs.webp'" />
+              <ul class="pkg-checklist">
+                <li><i class="fas fa-check"></i> Elite pricing</li>
+                <li><i class="fas fa-check"></i> Lavish designs</li>
+                <li><i class="fas fa-check"></i> Extensive range of accessories</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Build your own package -->
+          <div class="pkg-choice-card" onclick="selectPkgCard(this, 'Build your own package', 1.20)">
+            <div class="pkg-radio-col">
+              <div class="custom-radio"></div>
+            </div>
+            <div class="pkg-info-col">
+              <h3 class="pkg-title-line">Build your own package</h3>
+              <p class="pkg-subtitle-line">A flexible, built-to-suit option that lets you pick and choose from a collection of well-crafted finishes and accessories.</p>
+              <img src="/assets/images/modular-kitchen/bold-kitchen-design-with-drawers-and-organisers.jpg" class="pkg-image" alt="Build your own package Kitchen Package" onerror="this.src='/assets/images/modular-kitchen/kitchen-with-foldable-breakfast-table-and-yellow-chairs.webp'" />
+              <ul class="pkg-checklist">
+                <li><i class="fas fa-check"></i> Customised pricing</li>
+                <li><i class="fas fa-check"></i> Flexible designs</li>
+                <li><i class="fas fa-check"></i> Range of accessories to pick from</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 4: GET QUOTE / LEAD FORM -->
+      <div class="calc-step" id="stepBox4">
+        <h1 class="calc-heading">Your kitchen estimate is almost ready!</h1>
+        <p class="calc-subheading">Submit your contact info to view your instant cost estimate report</p>
+
+        <div class="lead-form-wrap">
+          <form onsubmit="handleFinalSubmit(event)">
+            <div class="calc-input-group">
+              <input type="text" class="calc-input-field" placeholder="Name" id="leadName" required />
+            </div>
+            <div class="calc-input-group">
+              <input type="email" class="calc-input-field" placeholder="Email ID" id="leadEmail" required />
+            </div>
+            <div class="calc-input-group">
+              <input type="tel" class="calc-input-field" placeholder="Phone number" id="leadPhone" required />
+            </div>
+            
+            <!-- WhatsApp checkbox -->
+            <div class="whatsapp-checkbox-row active" onclick="toggleWhatsAppCheckbox(this)">
+              <div class="whatsapp-check-box"><i class="fas fa-check"></i></div>
+              <span class="whatsapp-label">Send me updates on WhatsApp</span>
+            </div>
+
+            <div class="calc-input-group">
+              <select class="calc-input-field" id="leadCity" required>
+                <option value="" disabled selected>Select Locality in Navi Mumbai</option>
+                <option value="Vashi">Vashi</option>
+                <option value="Kharghar">Kharghar</option>
+                <option value="Nerul">Nerul</option>
+                <option value="Belapur">Belapur</option>
+                <option value="Sanpada">Sanpada</option>
+                <option value="Airoli">Airoli</option>
+                <option value="Ghansoli">Ghansoli</option>
+                <option value="Kopar Khairane">Kopar Khairane</option>
+                <option value="Panvel">Panvel</option>
+                <option value="Rabale">Rabale</option>
+              </select>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom Navigation Action Bar -->
+  <footer class="calc-bottom-action-bar">
+    <div class="action-bar-container">
+      <button class="calc-btn-pill-back" id="btnPillBack" onclick="goPillBack()" style="visibility: hidden;">
+        Back
+      </button>
+
+      <button class="calc-btn-pill-next" id="btnPillNext" onclick="goPillNext()" disabled>
+        Next
+      </button>
+    </div>
+  </footer>
+
+  <script>
+    let currentStep = 1;
+    let selectedLayoutName = '';
+    let minBasePrice = 0;
+    let maxBasePrice = 0;
+    let measureA = 3;
+    let measureB = 8;
+    let packageMultiplier = 1.0;
+    let packageName = 'Essentials';
+
+    function selectKitchenLayout(name, minP, maxP, cardElement) {
+      document.querySelectorAll('.layout-choice-card').forEach(c => c.classList.remove('selected'));
+      cardElement.classList.add('selected');
+      
+      selectedLayoutName = name;
+      minBasePrice = minP;
+      maxBasePrice = maxP;
+
+      document.getElementById('btnPillNext').disabled = false;
+    }
+
+    function updateDimensions() {
+      measureA = parseInt(document.getElementById('measureA').value);
+      measureB = parseInt(document.getElementById('measureB').value);
+    }
+
+    function selectPkgCard(element, pkgName, multiplier) {
+      document.querySelectorAll('.pkg-choice-card').forEach(c => c.classList.remove('selected'));
+      element.classList.add('selected');
+      packageName = pkgName;
+      packageMultiplier = multiplier;
+    }
+
+    function toggleWhatsAppCheckbox(element) {
+      element.classList.toggle('active');
+    }
+
+    function updateStep2ReferenceDiagram() {
+      const container = document.getElementById('measureRefPhotoContainer');
+      if (!container) return;
+
+      let svgHtml = '';
+      if (selectedLayoutName === 'L-shaped') {
+        svgHtml = `
+          <svg width="220" height="150" viewBox="0 0 220 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- L-shape Countertop -->
+            <path d="M45 125 V35 H175 V70 H85 V125 H45 Z" fill="#ebd9d0" stroke="#7e6e65" stroke-width="2.5" stroke-linejoin="round"/>
+            
+            <!-- Dimension Arrows -->
+            <!-- Side A (vertical left) -->
+            <path d="M22 35 V125" stroke="#ec5252" stroke-width="2" stroke-dasharray="3 3"/>
+            <path d="M22 35 L18 41 M22 35 L26 41 M22 125 L18 119 M22 125 L26 119" stroke="#ec5252" stroke-width="2"/>
+            <text x="5" y="85" fill="#ec5252" font-size="12" font-weight="bold">Side A</text>
+
+            <!-- Side B (horizontal top) -->
+            <path d="M45 15 H175" stroke="#ec5252" stroke-width="2" stroke-dasharray="3 3"/>
+            <path d="M45 15 L51 11 M45 15 L51 19 M175 15 L169 11 M175 15 L169 19" stroke="#ec5252" stroke-width="2"/>
+            <text x="100" y="8" fill="#ec5252" font-size="12" font-weight="bold">Side B</text>
+
+            <!-- Refrigerator (bottom left) -->
+            <rect x="49" y="100" width="28" height="20" fill="#dfcfc7" stroke="#7e6e65" stroke-width="1.5" rx="1"/>
+            <circle cx="63" cy="110" r="4.5" fill="none" stroke="#7e6e65" stroke-width="1"/>
+            
+            <!-- Sink (top left) -->
+            <rect x="90" y="38" width="32" height="18" fill="#ffffff" stroke="#7e6e65" stroke-width="1.5" rx="1"/>
+            <rect x="93" y="41" width="12" height="12" fill="none" stroke="#7e6e65" stroke-width="1"/>
+            <circle cx="99" cy="47" r="1.5" fill="#7e6e65"/>
+            
+            <!-- Stove (top right) -->
+            <rect x="140" y="38" width="28" height="18" fill="#ffffff" stroke="#7e6e65" stroke-width="1.5" rx="1"/>
+            <circle cx="147" cy="43" r="2.5" fill="#ec5252"/>
+            <circle cx="161" cy="43" r="2.5" fill="#ec5252"/>
+            <circle cx="147" cy="51" r="2.5" fill="#ec5252"/>
+            <circle cx="161" cy="51" r="2.5" fill="#ec5252"/>
+          </svg>
+        `;
+      } else if (selectedLayoutName === 'Straight') {
+        svgHtml = `
+          <svg width="220" height="150" viewBox="0 0 220 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Straight countertop -->
+            <rect x="30" y="55" width="160" height="30" fill="#ebd9d0" stroke="#7e6e65" stroke-width="2.5" rx="2"/>
+            
+            <!-- Dimension Arrows -->
+            <!-- Side A (horizontal) -->
+            <path d="M30 32 H190" stroke="#ec5252" stroke-width="2" stroke-dasharray="3 3"/>
+            <path d="M30 32 L36 28 M30 32 L36 36 M190 32 L184 28 M190 32 L184 36" stroke="#ec5252" stroke-width="2"/>
+            <text x="90" y="24" fill="#ec5252" font-size="12" font-weight="bold">Side A (Length)</text>
+
+            <!-- Refrigerator -->
+            <rect x="35" y="58" width="24" height="24" fill="#dfcfc7" stroke="#7e6e65" stroke-width="1.5" rx="1"/>
+            <circle cx="47" cy="70" r="4.5" fill="none" stroke="#7e6e65" stroke-width="1"/>
+
+            <!-- Sink -->
+            <rect x="90" y="60" width="32" height="20" fill="#ffffff" stroke="#7e6e65" stroke-width="1.5" rx="1"/>
+            <rect x="93" y="63" width="12" height="14" fill="none" stroke="#7e6e65" stroke-width="1"/>
+            <circle cx="99" cy="70" r="1.5" fill="#7e6e65"/>
+
+            <!-- Stove -->
+            <rect x="150" y="60" width="28" height="20" fill="#ffffff" stroke="#7e6e65" stroke-width="1.5" rx="1"/>
+            <circle cx="157" cy="66" r="2.5" fill="#ec5252"/>
+            <circle cx="171" cy="66" r="2.5" fill="#ec5252"/>
+            <circle cx="157" cy="74" r="2.5" fill="#ec5252"/>
+            <circle cx="171" cy="74" r="2.5" fill="#ec5252"/>
+          </svg>
+        `;
+      } else if (selectedLayoutName === 'U-shaped') {
+        svgHtml = `
+          <svg width="220" height="150" viewBox="0 0 220 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- U-shape Countertop -->
+            <path d="M40 125 V35 H180 V125 H140 V70 H80 V125 H40 Z" fill="#ebd9d0" stroke="#7e6e65" stroke-width="2.5" stroke-linejoin="round"/>
+            
+            <!-- Dimension Arrows -->
+            <!-- Side A (vertical left) -->
+            <path d="M18 35 V125" stroke="#ec5252" stroke-width="2" stroke-dasharray="3 3"/>
+            <path d="M18 35 L14 41 M18 35 L22 41 M18 125 L14 119 M18 125 L22 119" stroke="#ec5252" stroke-width="2"/>
+            <text x="0" y="85" fill="#ec5252" font-size="12" font-weight="bold">Side A</text>
+
+            <!-- Side B (horizontal top) -->
+            <path d="M40 15 H180" stroke="#ec5252" stroke-width="2" stroke-dasharray="3 3"/>
+            <path d="M40 15 L46 11 M40 15 L46 19 M180 15 L174 11 M180 15 L174 19" stroke="#ec5252" stroke-width="2"/>
+            <text x="100" y="8" fill="#ec5252" font-size="12" font-weight="bold">Side B</text>
+
+            <!-- Refrigerator (bottom left) -->
+            <rect x="44" y="100" width="28" height="20" fill="#dfcfc7" stroke="#7e6e65" stroke-width="1.5" rx="1"/>
+            <circle cx="58" cy="110" r="4.5" fill="none" stroke="#7e6e65" stroke-width="1"/>
+
+            <!-- Sink (top center) -->
+            <rect x="94" y="38" width="32" height="18" fill="#ffffff" stroke="#7e6e65" stroke-width="1.5" rx="1"/>
+            <rect x="97" y="41" width="12" height="12" fill="none" stroke="#7e6e65" stroke-width="1"/>
+            <circle cx="103" cy="47" r="1.5" fill="#7e6e65"/>
+
+            <!-- Stove (bottom right) -->
+            <rect x="148" y="90" width="28" height="20" fill="#ffffff" stroke="#7e6e65" stroke-width="1.5" rx="1"/>
+            <circle cx="155" cy="96" r="2.5" fill="#ec5252"/>
+            <circle cx="169" cy="96" r="2.5" fill="#ec5252"/>
+            <circle cx="155" cy="104" r="2.5" fill="#ec5252"/>
+            <circle cx="169" cy="104" r="2.5" fill="#ec5252"/>
+          </svg>
+        `;
+      } else if (selectedLayoutName === 'Parallel') {
+        svgHtml = `
+          <svg width="220" height="150" viewBox="0 0 220 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Top countertop -->
+            <rect x="30" y="30" width="160" height="24" fill="#ebd9d0" stroke="#7e6e65" stroke-width="2.5" rx="2"/>
+            <!-- Bottom countertop -->
+            <rect x="30" y="85" width="160" height="24" fill="#ebd9d0" stroke="#7e6e65" stroke-width="2.5" rx="2"/>
+            
+            <!-- Dimension Arrows -->
+            <!-- Side A (top length) -->
+            <path d="M30 15 H190" stroke="#ec5252" stroke-width="2" stroke-dasharray="3 3"/>
+            <path d="M30 15 L36 11 M30 15 L36 19 M190 15 L184 11 M190 15 L184 19" stroke="#ec5252" stroke-width="2"/>
+            <text x="80" y="8" fill="#ec5252" font-size="10" font-weight="bold">Side A (Top)</text>
+
+            <!-- Side B (bottom length) -->
+            <path d="M30 122 H190" stroke="#ec5252" stroke-width="2" stroke-dasharray="3 3"/>
+            <path d="M30 122 L36 118 M30 122 L36 126 M190 122 L184 118 M190 122 L184 126" stroke="#ec5252" stroke-width="2"/>
+            <text x="75" y="136" fill="#ec5252" font-size="10" font-weight="bold">Side B (Bottom)</text>
+
+            <!-- Refrigerator (top left) -->
+            <rect x="35" y="33" width="22" height="18" fill="#dfcfc7" stroke="#7e6e65" stroke-width="1.5" rx="1"/>
+            <circle cx="46" cy="42" r="3.5" fill="none" stroke="#7e6e65" stroke-width="1"/>
+
+            <!-- Sink (top center-right) -->
+            <rect x="90" y="32" width="32" height="20" fill="#ffffff" stroke="#7e6e65" stroke-width="1.5" rx="1"/>
+            <rect x="93" y="35" width="12" height="14" fill="none" stroke="#7e6e65" stroke-width="1"/>
+            <circle cx="99" cy="42" r="1.5" fill="#7e6e65"/>
+
+            <!-- Stove (bottom center) -->
+            <rect x="90" y="87" width="28" height="20" fill="#ffffff" stroke="#7e6e65" stroke-width="1.5" rx="1"/>
+            <circle cx="97" cy="93" r="2.5" fill="#ec5252"/>
+            <circle cx="111" cy="93" r="2.5" fill="#ec5252"/>
+            <circle cx="97" cy="101" r="2.5" fill="#ec5252"/>
+            <circle cx="111" cy="101" r="2.5" fill="#ec5252"/>
+          </svg>
+        `;
+      }
+      container.innerHTML = svgHtml;
+    }
+
+    function showStepBox(num) {
+      document.querySelectorAll('.calc-step').forEach(box => box.classList.remove('active'));
+      document.getElementById('stepBox' + num).classList.add('active');
+      
+      // If Step 2, update dynamic reference guide photo
+      if (num === 2) {
+        updateStep2ReferenceDiagram();
+      }
+
+      // Update Progress Timeline
+      document.querySelectorAll('.timeline-step').forEach((step, index) => {
+        step.classList.remove('active', 'completed');
+        if (index + 1 < num) {
+          step.classList.add('completed');
+        } else if (index + 1 === num) {
+          step.classList.add('active');
+        }
+      });
+
+      // Update Timeline line progress
+      const progressPercent = ((num - 1) / 3) * 80;
+      document.getElementById('timelineProgress').style.width = progressPercent + '%';
+
+      // Update Counter Label
+      document.getElementById('stepCounterLabel').textContent = num + '/4';
+
+      // Update footer buttons
+      if (num === 1) {
+        document.getElementById('btnPillBack').style.visibility = 'hidden';
+      } else {
+        document.getElementById('btnPillBack').style.visibility = 'visible';
+      }
+
+      if (num === 4) {
+        document.getElementById('btnPillNext').textContent = 'Submit';
+      } else {
+        document.getElementById('btnPillNext').textContent = 'Next';
+        document.getElementById('btnPillNext').style.display = 'inline-block';
+      }
+    }
+
+    function goPillNext() {
+      if (currentStep === 1) {
+        if (!selectedLayoutName) return;
+        currentStep = 2;
+        showStepBox(2);
+      } else if (currentStep === 2) {
+        currentStep = 3;
+        showStepBox(3);
+      } else if (currentStep === 3) {
+        currentStep = 4;
+        showStepBox(4);
+      } else if (currentStep === 4) {
+        // Trigger Submit Form
+        const name = document.getElementById('leadName').value;
+        const email = document.getElementById('leadEmail').value;
+        const phone = document.getElementById('leadPhone').value;
+        const city = document.getElementById('leadCity').value;
+        
+        if (name && email && phone && city) {
+          const prices = calculateInstantEstimate();
+          
+          const summaryData = {
+            layout: selectedLayoutName,
+            dimensions: `A: ${measureA} ft., B: ${measureB} ft.`,
+            package: packageName
+          };
+          
+          localStorage.setItem("kitchen_calc_summary", JSON.stringify(summaryData));
+          
+          window.location.href = `/kitchen-calculator-result.html?min=${prices.min}&max=${prices.max}`;
+        } else {
+          alert('Please fill out all fields.');
+        }
+      }
+    }
+
+    function goPillBack() {
+      if (currentStep > 1) {
+        currentStep--;
+        showStepBox(currentStep);
+      }
+    }
+
+    function calculateInstantEstimate() {
+      // Base Size total linear feet is 11 (A=3, B=8)
+      const totalLinearFeet = measureA + measureB;
+      const sizeMultiplier = totalLinearFeet / 11;
+
+      const calculatedMin = (minBasePrice * sizeMultiplier * packageMultiplier) / 100000;
+      const calculatedMax = (maxBasePrice * sizeMultiplier * packageMultiplier) / 100000;
+
+      return {
+        min: Math.round(calculatedMin),
+        max: Math.round(calculatedMax)
+      };
+    }
+  </script>
+</body>
+</html>

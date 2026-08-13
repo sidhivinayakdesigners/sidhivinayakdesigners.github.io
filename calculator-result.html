@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Interior Estimate | Siddhivinayak Designers</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Plus Jakarta Sans Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    body {
+      background-color: #f3f6f8 !important;
+      color: #333333;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header Logo bar */
+    .result-header {
+      background: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+    }
+    .logo-img {
+      height: 38px;
+      object-fit: contain;
+    }
+
+    /* Main Container */
+    .result-container {
+      max-width: 800px;
+      margin: 2.5rem auto;
+      padding: 0 15px;
+      flex: 1;
+    }
+
+    /* Top Result Card */
+    .result-box-top {
+      background: #ffffff;
+      border-radius: 16px 16px 0 0;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      border: 1px solid #e2e8f0;
+      border-bottom: none;
+    }
+    .result-label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #64748b;
+      margin-bottom: 0.5rem;
+    }
+    .price-range-text {
+      font-size: 2.75rem;
+      font-weight: 800;
+      color: #2bb35c;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.5px;
+    }
+    .price-sub-info {
+      background: #f1f5f9;
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #475569;
+      margin-bottom: 1.25rem;
+    }
+    .summary-link {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #ec5252;
+      text-decoration: underline;
+      cursor: pointer;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Detailed Summary Accordion Panel */
+    .summary-panel-box {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      background: #fafbfc;
+      border-radius: 12px;
+      margin: 1.5rem auto 0;
+      text-align: left;
+      border: 1px solid transparent;
+    }
+    .summary-panel-box.expanded {
+      max-height: 800px;
+      padding: 1.5rem;
+      border-color: #e2e8f0;
+      margin-top: 1.5rem;
+    }
+    .summary-title-heading {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #1e293b;
+      margin-bottom: 1.25rem;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 0.5rem;
+    }
+    .summary-row {
+      margin-bottom: 1.1rem;
+    }
+    .summary-row:last-child {
+      margin-bottom: 0;
+    }
+    .summary-key {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #ec5252;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 0.25rem;
+    }
+    .summary-value {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #334155;
+      line-height: 1.45;
+    }
+
+    /* CTA Consultation Box */
+    .cta-consultation-box {
+      background: #fff9f3;
+      border: 1px solid #e2e8f0;
+      border-radius: 0 0 16px 16px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .cta-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #1e293b;
+      margin-bottom: 0.6rem;
+    }
+    .cta-subtitle {
+      font-size: 0.92rem;
+      color: #475569;
+      font-weight: 500;
+      max-width: 500px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.5;
+    }
+    .free-badge {
+      background: #2bb35c;
+      color: #ffffff;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin: 0 2px;
+      display: inline-block;
+    }
+    .btn-detailed-quote {
+      background: #ec5252 !important;
+      color: #ffffff !important;
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 0.9rem 3.5rem;
+      border-radius: 50px;
+      border: none;
+      box-shadow: 0 6px 18px rgba(236, 82, 82, 0.28);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .btn-detailed-quote:hover {
+      background: #d93d3d !important;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(236, 82, 82, 0.42);
+    }
+
+    /* Why Choose Us Section */
+    .why-choose-box {
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid #e2e8f0;
+      padding: 2rem 2rem 2.5rem;
+      margin-bottom: 2rem;
+    }
+    .section-title-why {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #1e293b;
+      margin-bottom: 1.5rem;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+    .feature-item {
+      text-align: center;
+    }
+    .feature-icon-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #fff5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.75rem;
+    }
+    .feature-icon-circle svg, .feature-icon-circle i {
+      color: #ec5252;
+      font-size: 1.25rem;
+    }
+    .feature-label-text {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #475569;
+      line-height: 1.4;
+      max-width: 140px;
+      margin: 0 auto;
+    }
+
+    /* Disclaimer Footer */
+    .disclaimer-wrap {
+      font-size: 0.75rem;
+      color: #64748b;
+      line-height: 1.6;
+      padding: 0 10px;
+    }
+    .disclaimer-item {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px 15px;
+      }
+      .price-range-text {
+        font-size: 2.25rem;
+      }
+      .result-container {
+        margin: 1.5rem auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Result Page Header -->
+  <header class="result-header">
+    <a href="/" class="d-flex align-items-center text-decoration-none" style="font-weight: 700; font-size: 1.1rem; color: #151413 !important; font-family: 'Plus Jakarta Sans', sans-serif;">
+      <img src="/assets/images/logo_icon.webp" style="height: 36px; object-fit: contain;" alt="Siddhivinayak Designers Logo" />
+      <span class="ms-2">
+        <span style="color: #189ba6 !important;">Siddhivinayak</span> Designers
+      </span>
+    </a>
+  </header>
+
+  <!-- Content Wrap -->
+  <main class="result-container">
+    
+    <!-- Price card top -->
+    <div class="result-box-top">
+      <div class="result-label">Here's your estimated budget range</div>
+      <div class="price-range-text" id="resultPrice">₹9L - ₹12L*</div>
+      <div class="price-sub-info">This isn't a final quote and can be customised to suit your needs.</div>
+      <div>
+        <span class="summary-link" onclick="toggleSummaryPanel()">View detailed summary</span>
+      </div>
+      
+      <!-- Collapsible Summary Panel -->
+      <div class="summary-panel-box" id="summaryPanel">
+        <h4 class="summary-title-heading">Estimate Summary Breakdown</h4>
+        
+        <div class="summary-row">
+          <div class="summary-key">Type</div>
+          <div class="summary-value" id="summaryBhk">2 BHK</div>
+        </div>
+        
+        <div class="summary-row">
+          <div class="summary-key">Rooms</div>
+          <div class="summary-value" id="summaryRooms">Living Room, Kitchen, Bedroom, Bathroom, Dining</div>
+        </div>
+        
+        <div class="summary-row">
+          <div class="summary-key">Modular woodwork</div>
+          <div class="summary-value" id="summaryModular">-</div>
+        </div>
+        
+        <div class="summary-row">
+          <div class="summary-key">Furniture</div>
+          <div class="summary-value" id="summaryFurniture">-</div>
+        </div>
+        
+        <div class="summary-row">
+          <div class="summary-key">Services</div>
+          <div class="summary-value" id="summaryServices">-</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA card bottom -->
+    <div class="cta-consultation-box">
+      <h2 class="cta-title">Want an accurate quote?</h2>
+      <p class="cta-subtitle">
+        Book a <span class="free-badge">FREE</span> consultation with our designer to get a detailed quote for your interiors.
+      </p>
+      <button class="btn-detailed-quote" onclick="window.location.href='/contact.html'">
+        Get Detailed Quote
+      </button>
+    </div>
+
+    <!-- Why Choose Us -->
+    <div class="why-choose-box">
+      <h3 class="section-title-why">Why choose us</h3>
+      <div class="features-grid">
+        <!-- 45 days -->
+        <div class="feature-item">
+          <div class="feature-icon-circle">
+            <i class="fa-regular fa-calendar-check"></i>
+          </div>
+          <div class="feature-label-text">45 day move-in guarantee*</div>
+        </div>
+        <!-- 10 years -->
+        <div class="feature-item">
+          <div class="feature-icon-circle">
+            <i class="fa-solid fa-award"></i>
+          </div>
+          <div class="feature-label-text">Flat 10-year warranty**</div>
+        </div>
+        <!-- 146 checks -->
+        <div class="feature-item">
+          <div class="feature-icon-circle">
+            <i class="fa-solid fa-list-check"></i>
+          </div>
+          <div class="feature-label-text">146 quality checks</div>
+        </div>
+        <!-- Easy EMIs -->
+        <div class="feature-item">
+          <div class="feature-icon-circle">
+            <i class="fa-solid fa-wallet"></i>
+          </div>
+          <div class="feature-label-text">Easy EMI's</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Disclaimers Footer -->
+    <footer class="disclaimer-wrap">
+      <div class="disclaimer-item">
+        *This is only an indicative price based on typical project spends. The final price may vary depending on factors like finish material, amount of furniture, civil work required (painting, flooring, plumbing, etc.), design elements, and wood type. Don’t worry — our designers will help you understand it all better.
+      </div>
+      <div class="disclaimer-item">
+        ** Terms and conditions apply
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    // Read calculated price parameters and localStorage summary details
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const min = params.get('min');
+      const max = params.get('max');
+      if (min && max) {
+        document.getElementById('resultPrice').textContent = `₹${min}L - ₹${max}L*`;
+      } else {
+        document.getElementById('resultPrice').textContent = '₹9L - ₹12L*';
+      }
+
+      // Load stored configurations
+      const savedSummary = localStorage.getItem("calc_summary");
+      if (savedSummary) {
+        try {
+          const data = JSON.parse(savedSummary);
+          document.getElementById('summaryBhk').textContent = data.bhk || "-";
+          document.getElementById('summaryRooms').textContent = data.rooms || "-";
+          
+          const pkg = data.package || "Essentials";
+          
+          if (pkg === "Essentials") {
+            document.getElementById('summaryModular').textContent = "Modular Kitchen (MDF material, Matt Finish, Basic Accessories), Modular Wardrobe (2-Door Swing, MDF Material, Laminate finish, Basic Accessories), Basic Vanity Unit";
+            document.getElementById('summaryFurniture').textContent = "Basic Crockery Unit";
+            document.getElementById('summaryServices').textContent = "Basic Painting (Only Living Room)";
+          } else if (pkg === "Premium") {
+            document.getElementById('summaryModular').textContent = "Modular Kitchen (HDF material, High Gloss Finish, Premium Accessories), Modular Wardrobe (3-Door Sliding, HDF Material, Acrylic finish, Premium Accessories), Premium Vanity Unit";
+            document.getElementById('summaryFurniture').textContent = "Premium Crockery Unit, Basic TV Unit";
+            document.getElementById('summaryServices').textContent = "Premium Painting (All Rooms), Basic False Ceiling (Living Room)";
+          } else {
+            // Luxe
+            document.getElementById('summaryModular').textContent = "Modular Kitchen (Boiling Water Resistant Plywood, Glass/Acrylic Finish, Soft-close Blum Accessories), Modular Wardrobe (Walk-in Sliding, High-End Veneer/Mirror Finish, Luxury Accessories), Luxury Vanity Unit";
+            document.getElementById('summaryFurniture').textContent = "Premium Crockery Unit, Luxury TV Unit, Accent Bar Cabinet";
+            document.getElementById('summaryServices').textContent = "Premium Painting (All Rooms), Royal Wallpaper Accent, Custom False Ceiling (Living Room & Bed Rooms)";
+          }
+        } catch (e) {
+          console.error("Error parsing summary details:", e);
+        }
+      }
+    });
+
+    function toggleSummaryPanel() {
+      const panel = document.getElementById("summaryPanel");
+      panel.classList.toggle("expanded");
+    }
+  </script>
+</body>
+</html>
