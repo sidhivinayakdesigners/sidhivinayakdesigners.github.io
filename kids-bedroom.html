@@ -2645,19 +2645,19 @@
           }
         }
 
-        // Find index by active carousel item (most robust for dynamic carousels)
+        // Find exact index of clicked img in cardImgs first
         let foundIdx = -1;
-        if (container) {
+        if (imgEl && cardImgs.length > 0) {
+          foundIdx = cardImgs.indexOf(imgEl);
+        }
+
+        // Find index by active carousel item (most robust for dynamic carousels if imgEl not found)
+        if (foundIdx < 0 && container) {
           const activeItem = container.querySelector('.carousel-item.active');
           if (activeItem) {
             const carouselItems = Array.from(container.querySelectorAll('.carousel-item'));
             foundIdx = carouselItems.indexOf(activeItem);
           }
-        }
-
-        // If not found, fallback to exact index of clicked img in cardImgs
-        if (foundIdx < 0) {
-          foundIdx = cardImgs.indexOf(imgEl);
         }
 
         // Fallback matching by src / filename
