@@ -96,7 +96,7 @@
       color: #1a1a1a !important;
     }
     @media (max-width: 767px) {
-      #homeDesignGrid {
+      #homeDesignGrid, #naviNodesGrid {
         display: flex !important;
         flex-wrap: nowrap !important;
         overflow-x: auto !important;
@@ -106,20 +106,20 @@
         padding-right: 15px !important;
         -webkit-overflow-scrolling: touch !important;
       }
-      #homeDesignGrid > div {
+      #homeDesignGrid > div, #naviNodesGrid > div {
         flex: 0 0 85% !important;
         max-width: 85% !important;
         scroll-snap-align: center !important;
       }
-      #homeDesignGrid::-webkit-scrollbar {
+      #homeDesignGrid::-webkit-scrollbar, #naviNodesGrid::-webkit-scrollbar {
         display: none !important;
       }
-      #homeDesignGrid {
+      #homeDesignGrid, #naviNodesGrid {
         -ms-overflow-style: none !important;
         scrollbar-width: none !important;
         cursor: grab;
       }
-      #homeDesignGrid:active {
+      #homeDesignGrid:active, #naviNodesGrid:active {
         cursor: grabbing;
       }
     }
@@ -903,7 +903,9 @@
         </p>
       </div>
 
-      <div class="row g-4">
+      <span class="d-md-none text-muted d-block text-center small mb-4" style="font-size: 0.8rem; letter-spacing: 0.5px; color: #888888 !important;"><i class="fas fa-hand-pointer me-1" style="color: #189ba6 !important;"></i> Swipe horizontally to explore nodes</span>
+
+      <div class="row g-4" id="naviNodesGrid">
         <!-- Vashi -->
         <div class="col-md-6 col-lg-4" data-aos="fade-up">
           <div class="p-4 bg-dark-card rounded border border-secondary h-100 d-flex flex-column justify-content-between">
