@@ -153,7 +153,7 @@ const bodyContent = `<!DOCTYPE html>
     /* Calculator wrapper & box */
     .calc-card-wrapper {
       max-width: 680px;
-      margin: 3rem auto;
+      margin: 3rem auto 7.5rem !important;
       padding: 0 15px;
     }
     .calc-box {
@@ -387,13 +387,15 @@ const bodyContent = `<!DOCTYPE html>
 
     /* Fixed Bottom Action Bar */
     .calc-bottom-action-bar {
-      background: #ffffff;
+      background: #ffffff !important;
       border-top: 1px solid #e2e8f0;
       padding: 1rem 0;
-      position: sticky;
-      bottom: 0;
-      width: 100%;
-      z-index: 100;
+      position: fixed !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      z-index: 10000 !important;
     }
     .action-bar-container {
       max-width: 680px;
@@ -1017,13 +1019,32 @@ const bodyContent = `<!DOCTYPE html>
     </div>
   </div>
 
-  <!-- Bottom Navigation Action Bar -->`;
+  <!-- Bottom Navigation Action Bar -->
+  <div class="calc-bottom-action-bar">
+    <div class="action-bar-container">
+      <button class="calc-btn-pill-back" id="btnPillBack" onclick="goPillBack()" style="visibility: hidden;">
+        Back
+      </button>
+
+      <button class="calc-btn-pill-next" id="btnPillNext" onclick="goPillNext()" disabled>
+        Next
+      </button>
+    </div>
+  </div>`;
 ---
 <Layout title={title} description={description} canonical={canonical} schema={schema}>
   <Fragment set:html={bodyContent} />
 </Layout>
 
 <style is:global>
+    /* High specificity overrides to hide the dynamically injected mobile bottom bar */
+    div#dcMobileBottomBar {
+      display: none !important;
+    }
+    html body {
+      padding-bottom: 0 !important;
+    }
+
 :root {
       --primary-color: #189ba6;
       --secondary-color: #ec5252;
@@ -1158,7 +1179,7 @@ const bodyContent = `<!DOCTYPE html>
     /* Calculator wrapper & box */
     .calc-card-wrapper {
       max-width: 680px;
-      margin: 3rem auto;
+      margin: 3rem auto 7.5rem !important;
       padding: 0 15px;
     }
     .calc-box {
@@ -1392,13 +1413,25 @@ const bodyContent = `<!DOCTYPE html>
 
     /* Fixed Bottom Action Bar */
     .calc-bottom-action-bar {
-      background: #ffffff;
+      background: #ffffff !important;
       border-top: 1px solid #e2e8f0;
       padding: 1rem 0;
-      position: sticky;
-      bottom: 0;
-      width: 100%;
-      z-index: 100;
+      position: fixed !important;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      z-index: 10000 !important;
+    }
+
+    /* Hide mobile bottom bar specifically on calculator pages */
+    @media (max-width: 991px) {
+      .dc-mobile-bottom-bar {
+        display: none !important;
+      }
+      body {
+        padding-bottom: 0 !important;
+      }
     }
     .action-bar-container {
       max-width: 680px;
@@ -1651,6 +1684,61 @@ const bodyContent = `<!DOCTYPE html>
     }
     .disclaimer-link:hover {
       text-decoration: underline !important;
+    }
+
+    @media (max-width: 768px) {
+      .calc-card-wrapper {
+        padding: 1rem 0.5rem !important;
+        margin: 1.5rem auto 5.5rem !important;
+      }
+      .calc-box {
+        padding: 1.5rem 1rem !important;
+        min-height: auto !important;
+        border-radius: 12px !important;
+      }
+      .calc-heading {
+        font-size: 1.35rem !important;
+      }
+      .calc-subheading {
+        font-size: 0.85rem !important;
+        margin-bottom: 1.25rem !important;
+      }
+      .layout-grid, .grid-2x2, .grid-3x3, .grid, .layout-grid-custom, .height-options-grid, .acc-cards-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+      }
+      .layout-choice-card, .choice-card, .option-card, .height-option-card, .acc-choice-card {
+        padding: 0.75rem 0.5rem !important;
+      }
+      .layout-label, .card-label, .option-label, .height-label {
+        font-size: 0.85rem !important;
+      }
+      .layout-icon-box svg, .icon-box svg {
+        max-width: 100% !important;
+        height: auto !important;
+      }
+      .calc-bottom-action-bar {
+        padding: 0.75rem 0 !important;
+      }
+      .calc-btn-pill-next {
+        padding: 0.75rem 2.5rem !important;
+        font-size: 0.88rem !important;
+      }
+      .calc-btn-pill-back {
+        font-size: 0.88rem !important;
+      }
+      .acc-img-wrapper {
+        height: 80px !important;
+      }
+      .choice-card-row {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+      }
+      .choice-card-info {
+        padding-left: 0 !important;
+        margin-top: 0.5rem !important;
+      }
     }
 </style>
 
