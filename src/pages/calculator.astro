@@ -1752,7 +1752,7 @@ const bodyContent = `<!DOCTYPE html>
 
           localStorage.setItem("calc_summary", JSON.stringify(summaryData));
 
-          window.location.href = `/calculator-result.html?min=${prices.min}&max=${prices.max}`;
+          window.location.href = `/calculator-result?min=${prices.min}&max=${prices.max}`;
         } else {
           alert('Please fill out all fields.');
         }

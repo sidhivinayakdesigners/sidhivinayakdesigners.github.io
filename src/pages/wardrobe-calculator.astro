@@ -1909,7 +1909,7 @@ const bodyContent = `<!DOCTYPE html>
           };
 
           localStorage.setItem("wardrobe_calc_summary", JSON.stringify(summaryData));
-          window.location.href = `/wardrobe-calculator-result.html?min=${prices.min}&max=${prices.max}`;
+          window.location.href = `/wardrobe-calculator-result?min=${prices.min}&max=${prices.max}`;
         } else {
           alert('Please fill out all fields.');
         }
