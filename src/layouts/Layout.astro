@@ -36,21 +36,15 @@ const isDev = import.meta.env.DEV;
   <link href="/favicon.webp" rel="shortcut icon" type="image/x-icon" />
   <!-- Open Graph / Facebook -->
   <meta content="website" property="og:type" />
-  <meta content="https://siddhivinayakdesigners.in/" property="og:url" />
-  <meta content="Siddhivinayak Designers - Complete Home Interiors | Best Interior Designers in Navi Mumbai"
-    property="og:title" />
-  <meta
-    content="Siddhivinayak Designers is Navi Mumbai's trusted home interior design company. 500+ homes delivered by expert designers, backed by 25+ years experience &amp; 10-year warranty. Book FREE consultation today!"
-    property="og:description" />
+  <meta content={canonical} property="og:url" />
+  <meta content={title} property="og:title" />
+  <meta content={description} property="og:description" />
   <meta content="https://siddhivinayakdesigners.in/assets/images/hero_bg.webp" property="og:image" />
   <!-- Twitter -->
   <meta content="summary_large_image" name="twitter:card" />
-  <meta content="https://siddhivinayakdesigners.in/" name="twitter:url" />
-  <meta content="Siddhivinayak Designers - Complete Home Interiors | Best Interior Designers in Navi Mumbai"
-    name="twitter:title" />
-  <meta
-    content="Siddhivinayak Designers is Navi Mumbai's trusted home interior design company. 500+ homes delivered by expert designers, backed by 25+ years experience &amp; 10-year warranty. Book FREE consultation today!"
-    name="twitter:description" />
+  <meta content={canonical} name="twitter:url" />
+  <meta content={title} name="twitter:title" />
+  <meta content={description} name="twitter:description" />
   <meta content="https://siddhivinayakdesigners.in/assets/images/hero_bg.webp" name="twitter:image" />
   <!-- Bootstrap 5 & Styles -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
