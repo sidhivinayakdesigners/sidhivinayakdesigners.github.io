@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Privacy Policy | Siddhivinayak Designers - Navi Mumbai";
+const description = "Read the privacy policy of Siddhivinayak Designers. Learn how we collect, use, and protect your information when requesting interior design quotes.";
+const canonical = "https://siddhivinayakdesigners.in/privacy-policy";
+const schema = ``;
+const bodyContent = `<!-- Content -->
+    <section class="py-5 bg-dark text-white" style="margin-top: 70px;">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <h1 class="font-luxury text-white mb-4">Privacy Policy</h1>
+                    <p class="text-muted small">Last updated: July 2026</p>
+                    
+
+
+                    <h3 class="font-luxury text-gold h5 mt-4">1. Information Collection</h3>
+                    <p class="text-muted small">We collect information that you submit voluntarily through our quote calculators and contact forms, including your name, phone number, email address, property type, budget tier, and location details in Navi Mumbai.</p>
+
+                    <h3 class="font-luxury text-gold h5 mt-4">2. Use of Information</h3>
+                    <p class="text-muted small">The collected information is solely used to reach out to you, schedule complimentary site consultations, prepare preliminary design estimates, and communicate execution details regarding your interior projects.</p>
+
+                    <h3 class="font-luxury text-gold h5 mt-4">3. Data Protection</h3>
+                    <p class="text-muted small">We implement standard digital security measures to prevent unauthorized access or disclosure of your contact records. We strictly do not sell, rent, or lease client lists to third-party marketing companies.</p>
+
+                    <h3 class="font-luxury text-gold h5 mt-4">4. Cookies</h3>
+                    <p class="text-muted small">Our website may use cookies to measure page rendering performance and analyze user traffic sources to optimize the local Google search experience.</p>
+
+                    <h3 class="font-luxury text-gold h5 mt-4">5. Contact Information</h3>
+                    <p class="text-muted small">If you have any questions regarding this privacy statement, you can email us at <span class="email-text" data-user="admin" data-domain="siddhivinayakdesigners.in">admin [at] siddhivinayakdesigners.in</span> or write to our office in Koparkhairane.</p>
+                </div>
+            </div>
+        </div>
+    </section>`;
+---
+<Layout title={title} description={description} canonical={canonical} schema={schema}>
+  <Fragment set:html={bodyContent} />
+</Layout>
+
+<style is:global>
+html, body {
+      background-color: #ffffff !important;
+      color: #212529 !important;
+      font-family: Arial, Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    }
+    .hero-section, .catalog-directory-hero, .dc-top-section-bg, header.bg-dark, .bg-dark, .bg-dark-card, .bg-dark-contrast {
+      background-color: #f3f6f8 !important;
+      color: #1a1a1a !important;
+    }
+    h1, h2, h3, h4, h5, h6, .section-title {
+      color: #1a1a1a !important;
+    }
+    p, span, li, label, div {
+      color: #444444 !important;
+    }
+    :not(footer) .text-white, body:not(footer) .text-white, a.text-white:not(footer a), .section-title.text-white {
+      color: #1a1a1a !important;
+    }
+    .text-gold {
+      color: #189ba6 !important;
+    }
+    .btn-gold, .btn-primary {
+      background-color: #189ba6 !important;
+      border-color: #189ba6 !important;
+      color: #ffffff !important;
+    }
+    .btn-gold:hover, .btn-primary:hover {
+      background-color: #127c85 !important;
+      border-color: #127c85 !important;
+    }
+    footer, footer * {
+      color: #ffffff !important;
+    }
+    footer p, footer span, footer li, footer div, footer small, footer .text-muted {
+      color: #d1cfc9 !important;
+    }
+  
+    /* Fix headings appearing white on light background inside bg-dark / bg-dark-card / bg-dark-contrast elements */
+    .bg-dark h1, .bg-dark h2, .bg-dark h3, .bg-dark h4, .bg-dark h5, .bg-dark h6,
+    .bg-dark-card h1, .bg-dark-card h2, .bg-dark-card h3, .bg-dark-card h4, .bg-dark-card h5, .bg-dark-card h6,
+    .bg-dark-contrast h1, .bg-dark-contrast h2, .bg-dark-contrast h3, .bg-dark-contrast h4, .bg-dark-contrast h5, .bg-dark-contrast h6 {
+      color: #1a1a1a !important;
+    }
+    /* Fix text elements appearing light grey/white on light background inside bg-dark / bg-dark-card / bg-dark-contrast elements */
+    .bg-dark p, .bg-dark li, .bg-dark span:not(.text-gold):not(.text-teal), .bg-dark label, .bg-dark .text-muted,
+    .bg-dark-card p, .bg-dark-card li, .bg-dark-card span:not(.text-gold):not(.text-teal), .bg-dark-card label, .bg-dark-card .text-muted,
+    .bg-dark-contrast p, .bg-dark-contrast li, .bg-dark-contrast span:not(.text-gold):not(.text-teal), .bg-dark-contrast label, .bg-dark-contrast .text-muted {
+      color: #444444 !important;
+    }
+    .bg-dark strong, .bg-dark-card strong, .bg-dark-contrast strong {
+      color: #1a1a1a !important;
+    }
+</style>
+
+<script is:inline></script>
+
+<script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PLACEHOLDER');
+    </script>
+

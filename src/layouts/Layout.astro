@@ -1,0 +1,933 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  schema?: string;
+}
+
+const { title, description, canonical = Astro.url.href, schema } = Astro.props;
+const isDev = import.meta.env.DEV;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>{title}</title>
+  <meta content={description} name="description" />
+  <link href={canonical} rel="canonical" />
+  
+  <!-- Injected head meta and styling -->
+  {schema && <script type="application/ld+json" set:html={schema}></script>}
+  
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  
+  
+  
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <!-- Favicon -->
+  <link href="/assets/images/favicon.webp" rel="icon" type="image/png" />
+  <link href="/favicon.webp" rel="shortcut icon" type="image/x-icon" />
+  <!-- Open Graph / Facebook -->
+  <meta content="website" property="og:type" />
+  <meta content="https://siddhivinayakdesigners.in/" property="og:url" />
+  <meta content="Siddhivinayak Designers - Complete Home Interiors | Best Interior Designers in Navi Mumbai"
+    property="og:title" />
+  <meta
+    content="Siddhivinayak Designers is Navi Mumbai's trusted home interior design company. 500+ homes delivered by expert designers, backed by 25+ years experience &amp; 10-year warranty. Book FREE consultation today!"
+    property="og:description" />
+  <meta content="https://siddhivinayakdesigners.in/assets/images/hero_bg.webp" property="og:image" />
+  <!-- Twitter -->
+  <meta content="summary_large_image" name="twitter:card" />
+  <meta content="https://siddhivinayakdesigners.in/" name="twitter:url" />
+  <meta content="Siddhivinayak Designers - Complete Home Interiors | Best Interior Designers in Navi Mumbai"
+    name="twitter:title" />
+  <meta
+    content="Siddhivinayak Designers is Navi Mumbai's trusted home interior design company. 500+ homes delivered by expert designers, backed by 25+ years experience &amp; 10-year warranty. Book FREE consultation today!"
+    name="twitter:description" />
+  <meta content="https://siddhivinayakdesigners.in/assets/images/hero_bg.webp" name="twitter:image" />
+  <!-- Bootstrap 5 & Styles -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link href="/assets/css/aos.css" rel="stylesheet" />
+  <link href="/assets/css/style.min.css?v=1011" rel="stylesheet" />
+  <style>
+    /* Hero Banner Slider Responsive CSS */
+    .hero-banner-slider-section {
+      width: 100%;
+      overflow: hidden;
+      padding-top: 0 !important;
+      margin-top: 0 !important;
+    }
+
+    @media (max-width: 767px) {
+      .hero-banner-img {
+        width: 100% !important;
+        height: auto !important;
+        display: block !important;
+      }
+      .carousel-indicators {
+        bottom: 8px !important;
+        margin-bottom: 0 !important;
+      }
+      .carousel-indicators [data-bs-target] {
+        width: 8px !important;
+        height: 8px !important;
+        border-radius: 50% !important;
+        background-color: #189ba6 !important;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .hero-banner-img {
+        width: 100% !important;
+        max-height: 620px !important;
+        object-fit: cover !important;
+      }
+    }
+
+    /* Premium 10k$ Hero Styling Overhaul */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 120px;
+      padding-bottom: 100px;
+      overflow: hidden;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(21, 20, 19, 0.98) 0%, rgba(21, 20, 19, 0.92) 40%, rgba(21, 20, 19, 0.6) 100%);
+      z-index: 1;
+    }
+
+    /* Glow backdrop element */
+    .hero-glow-orb {
+      position: absolute;
+      top: 20%;
+      right: 10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(184, 144, 71, 0.15) 0%, rgba(184, 144, 71, 0) 70%);
+      filter: blur(50px);
+      z-index: 2;
+      pointer-events: none;
+      animation: pulse-glow 8s infinite alternate;
+    }
+
+    @keyframes pulse-glow {
+      0% { transform: scale(1); opacity: 0.7; }
+      100% { transform: scale(1.2); opacity: 1; }
+    }
+
+    .hero-container {
+      position: relative;
+      z-index: 3;
+    }
+
+    .hero-subtitle-premium {
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--color-gold);
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-left: 45px;
+    }
+
+    .hero-subtitle-premium::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 30px;
+      height: 1px;
+      background-color: var(--color-gold);
+    }
+
+    .hero-title-premium {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      line-height: 1.15;
+      font-weight: 800;
+      color: #fff !important;
+      letter-spacing: -1px;
+    }
+
+    .hero-title-premium .text-gradient-gold {
+      background: linear-gradient(135deg, #FFF 30%, #D4AF37 70%, #B89047 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .hero-text-premium {
+      font-size: 1.15rem;
+      line-height: 1.8;
+      font-weight: 300;
+      color: #D1CFC9 !important;
+      max-width: 650px;
+      margin-top: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Floating Showcase Card UI */
+    .hero-showcase-glass-card {
+      background: rgba(30, 28, 26, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 3rem 2.5rem;
+      border-radius: 1px;
+      position: relative;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+      z-index: 10;
+      animation: float-slow 6s ease-in-out infinite;
+    }
+
+    .hero-showcase-glass-card::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: -1px;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(184, 144, 71, 0.3) 0%, rgba(184, 144, 71, 0) 50%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    @keyframes float-slow {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .stat-row {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .stat-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--color-gold);
+      line-height: 1;
+      font-family: var(--font-heading);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #A6A097;
+      font-weight: 600;
+      margin-top: 0.25rem;
+    }
+
+    /* Premium Call to Action System */
+    .cta-container-premium {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .cta-primary-btn {
+      background: linear-gradient(135deg, #D4AF37 0%, #B89047 100%);
+      color: #151413 !important;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 0.85rem;
+      padding: 1.25rem 2.5rem;
+      border: none;
+      border-radius: 1px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(184, 144, 71, 0.3);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      width: fit-content;
+      text-decoration: none;
+    }
+
+    .cta-primary-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(184, 144, 71, 0.5);
+      background: linear-gradient(135deg, #E5C158 0%, #D4AF37 100%);
+    }
+
+    .cta-secondary-row {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      margin-top: 0.5rem;
+    }
+
+    .cta-link-minimal {
+      color: #FFF !important;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s ease;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      padding-bottom: 4px;
+    }
+
+    .cta-link-minimal:hover {
+      color: var(--color-gold) !important;
+      border-color: var(--color-gold);
+    }
+
+    /* Glassmorphic Form Overrides for Hero */
+    .hero-glass-form .form-control {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
+      color: #fff !important;
+      border-radius: 1px !important;
+      padding: 0.9rem 1rem !important;
+      font-size: 0.9rem !important;
+    }
+
+    .hero-glass-form .form-control:focus {
+      background: rgba(255, 255, 255, 0.08) !important;
+      border-color: var(--color-gold) !important;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2) !important;
+    }
+
+    .hero-glass-form label {
+      color: #A6A097 !important;
+      font-size: 0.7rem !important;
+      letter-spacing: 1.5px !important;
+      text-transform: uppercase !important;
+      font-weight: 700 !important;
+      margin-bottom: 0.4rem !important;
+    }
+  </style>
+  <!-- JSON-LD Unified Schema Graph -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://siddhivinayakdesigners.in/#organization",
+        "name": "Siddhivinayak Designers",
+        "alternateName": "Siddhivinayak Interior Designers Navi Mumbai",
+        "url": "https://siddhivinayakdesigners.in/",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://siddhivinayakdesigners.in/#logo",
+          "url": "https://siddhivinayakdesigners.in/assets/images/favicon.webp",
+          "caption": "Siddhivinayak Designers Logo"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+918369297174",
+          "contactType": "customer service",
+          "areaServed": "IN",
+          "availableLanguage": [
+            "en",
+            "hi",
+            "mr"
+          ]
+        },
+        "sameAs": [
+          "https://www.facebook.com/people/Siddhivinayak-Interior/61591244265786/",
+          "https://www.instagram.com/siddhivinayakdesigners/",
+          "https://maps.google.com/?cid=6911458856073113523"
+        ]
+      },
+      {
+        "@type": "LocalBusiness",
+        "@id": "https://siddhivinayakdesigners.in/#localbusiness",
+        "name": "Siddhivinayak Designers",
+        "alternateName": "Siddhivinayak Interior Designers Navi Mumbai",
+        "image": "https://siddhivinayakdesigners.in/assets/images/hero_bg.webp",
+        "logo": "https://siddhivinayakdesigners.in/assets/images/logo_icon.webp",
+        "email": "admin@siddhivinayakdesigners.in",
+        "hasMap": "https://maps.google.com/?cid=6911458856073113523",
+        "url": "https://siddhivinayakdesigners.in/",
+        "telephone": "+918369297174",
+        "priceRange": "$$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Shree Laxmi CHS, A 301, Sector 23, Kopar Khairane",
+          "addressLocality": "Koparkhairane, Navi Mumbai",
+          "addressRegion": "Maharashtra",
+          "postalCode": "400709",
+          "addressCountry": "IN"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 19.1039,
+          "longitude": 73.0031
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "09:00",
+          "closes": "21:00"
+        },
+        "sameAs": [
+          "https://www.facebook.com/people/Siddhivinayak-Interior/61591244265786/",
+          "https://www.instagram.com/siddhivinayakdesigners/",
+          "https://maps.google.com/?cid=6911458856073113523"
+        ],
+        "areaServed": [
+          {
+            "@type": "AdministrativeArea",
+            "name": "Koparkhairane"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Vashi"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Ghansoli"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Airoli"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Nerul"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Kharghar"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Panvel"
+          },
+          {
+            "@type": "AdministrativeArea",
+            "name": "Navi Mumbai"
+          }
+        ],
+        "review": [
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Ayush Sabale"
+            },
+            "reviewBody": "Excellent interior design work! The design is modern, creative, and well-planned with great attention to detail. The space is utilized efficiently, and the overall look is both elegant and functional. The team was professional, responsive, and delivered high-quality results.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          },
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Shakuntala Kokate"
+            },
+            "reviewBody": "The owner Dattatray Machale has been our number one guy for our interior of the home. He has made our interior very very great in Vashi. Highly recommended!",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          },
+          {
+            "@type": "Review",
+            "author": {
+              "@type": "Person",
+              "name": "Parth Sabale"
+            },
+            "reviewBody": "Best interior designer in Koparkhairne with a lower cost. Highly professional execution team.",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5",
+              "bestRating": "5"
+            }
+          }
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "186"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://siddhivinayakdesigners.in/#website",
+        "url": "https://siddhivinayakdesigners.in/",
+        "name": "Siddhivinayak Designers",
+        "alternateName": "Siddhivinayak Interior Designers",
+        "description": "Siddhivinayak Designers is Navi Mumbai's trusted home interior design company. 500+ homes delivered by expert designers, backed by 25+ years experience & 10-year warranty.",
+        "publisher": {
+          "@id": "https://siddhivinayakdesigners.in/#organization"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://siddhivinayakdesigners.in/gallery.html?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        },
+        "hasPart": [
+          {
+            "@type": "WebPage",
+            "name": "Interior Designers in Vashi",
+            "url": "https://siddhivinayakdesigners.in/vashi/",
+            "description": "Interior designers in Vashi for complete home interiors. 500+ homes delivered with 25+ years experience & 10-year warranty."
+          },
+          {
+            "@type": "WebPage",
+            "name": "Interior Designers in Kharghar",
+            "url": "https://siddhivinayakdesigners.in/interior-designer-kharghar",
+            "description": "Interior designers in Kharghar for home interiors. 500+ homes delivered with 25+ years experience & 10-year warranty."
+          },
+          {
+            "@type": "WebPage",
+            "name": "Interior Designers in Nerul",
+            "url": "https://siddhivinayakdesigners.in/interior-designer-nerul",
+            "description": "Interior designers in Nerul for 2BHK & 3BHK home interiors. 500+ homes delivered with 25+ years experience & 10-year warranty."
+          },
+          {
+            "@type": "WebPage",
+            "name": "Interior Designers in Belapur",
+            "url": "https://siddhivinayakdesigners.in/interior-designer-belapur",
+            "description": "Interior designers in Belapur for modern home & office interiors. 500+ homes delivered with 25+ years experience & 10-year warranty."
+          },
+          {
+            "@type": "WebPage",
+            "name": "Complete Home Interiors",
+            "url": "https://siddhivinayakdesigners.in/complete-home-interior",
+            "description": "Explore the latest home interior designs for Kitchen, Bedroom, Living Room & 2BHK/3BHK flats in Navi Mumbai."
+          },
+          {
+            "@type": "WebPage",
+            "name": "Modular Kitchen Designs",
+            "url": "https://siddhivinayakdesigners.in/modular-kitchens",
+            "description": "Custom modular kitchen designs in Navi Mumbai. Parallel, L-shaped & island kitchens with 10-year warranty."
+          },
+          {
+            "@type": "WebPage",
+            "name": "Interior Design Pricing",
+            "url": "https://siddhivinayakdesigners.in/pricing",
+            "description": "Transparent interior design cost & packages in Navi Mumbai. Budget pricing for Standard, Premium & Luxury home interiors."
+          },
+          {
+            "@type": "WebPage",
+            "name": "Design Gallery",
+            "url": "https://siddhivinayakdesigners.in/gallery",
+            "description": "Explore photos of completed home interior design projects in Navi Mumbai by Siddhivinayak Designers."
+          }
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://siddhivinayakdesigners.in/#service",
+        "name": "Home Interior Design Services",
+        "serviceType": "Home Interior Design",
+        "provider": {
+          "@id": "https://siddhivinayakdesigners.in/#organization"
+        },
+        "areaServed": [
+          {
+            "@type": "State",
+            "name": "Maharashtra"
+          },
+          {
+            "@type": "City",
+            "name": "Navi Mumbai"
+          }
+        ],
+        "description": "Complete end-to-end residential interior design and execution services including modular kitchens, bedroom wardrobes, and full turnkey flat interiors.",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "1BHK Standard Turnkey Interiors",
+            "price": "350000",
+            "priceCurrency": "INR"
+          },
+          {
+            "@type": "Offer",
+            "name": "2BHK Premium Turnkey Interiors",
+            "price": "550000",
+            "priceCurrency": "INR"
+          },
+          {
+            "@type": "Offer",
+            "name": "3BHK Luxury Turnkey Interiors",
+            "price": "850000",
+            "priceCurrency": "INR"
+          }
+        ]
+      },
+      {
+        "@type": "SiteNavigationElement",
+        "@id": "https://siddhivinayakdesigners.in/#navigation",
+        "itemListElement": [
+          {
+            "@type": "SiteNavigationElement",
+            "name": "Interior Designers in Vashi",
+            "url": "https://siddhivinayakdesigners.in/vashi/"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "name": "Interior Designers in Kharghar",
+            "url": "https://siddhivinayakdesigners.in/interior-designer-kharghar"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "name": "Interior Designers in Nerul",
+            "url": "https://siddhivinayakdesigners.in/interior-designer-nerul"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "name": "Interior Designers in Belapur",
+            "url": "https://siddhivinayakdesigners.in/interior-designer-belapur"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "name": "Complete Home Interiors",
+            "url": "https://siddhivinayakdesigners.in/complete-home-interior"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "name": "Modular Kitchen Designs",
+            "url": "https://siddhivinayakdesigners.in/modular-kitchens"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "name": "Interior Design Pricing",
+            "url": "https://siddhivinayakdesigners.in/pricing"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "name": "Design Gallery",
+            "url": "https://siddhivinayakdesigners.in/gallery"
+          }
+        ]
+      }
+    ]
+  }
+  <!-- Unified Marketing Analytics & Tracking Scripts (Disabled on localhost for performance) -->
+  <script is:inline>
+    (function() {
+      var isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      
+      if (!isLocalhost) {
+        // 1. Google Tag Manager (GTM-WLR8MTX)
+        (function(w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WLR8MTX');
+
+        // 2. Google Analytics / Google Ads (AW-770899520)
+        var gtagScript = document.createElement('script');
+        gtagScript.async = true;
+        gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=AW-770899520';
+        document.head.appendChild(gtagScript);
+
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function() { window.dataLayer.push(arguments); };
+        gtag('js', new Date());
+        gtag('config', 'AW-844999971');
+        gtag('config', 'AW-770899520');
+        gtag('event', 'page_view', {
+            'send_to': 'AW-770899520',
+            'user_id': 'replace with value'
+        });
+
+        // 3. Microsoft Bing UET (134601667)
+        (function(w, d, t, r, u) {
+            var f, n, i;
+            w[u] = w[u] || [], f = function() {
+                var o = {
+                    ti: "134601667"
+                };
+                o.q = w[u], w[u] = new UET(o), w[u].push("pageLoad")
+            }, n = d.createElement(t), n.src = r, n.async = 1, n.onload = n.onreadystatechange = function() {
+                var s = this.readyState;
+                s && s !== "loaded" && s !== "complete" || (f(), n.onload = n.onreadystatechange = null)
+            }, i = d.getElementsByTagName(t)[0], i.parentNode.insertBefore(n, i)
+        })(window, document, "script", "//bat.bing.com/bat.js", "uetq");
+
+        // 4. Facebook Pixel (555410081511945)
+        ! function(f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function() {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '555410081511945');
+        fbq('track', 'PageView');
+      } else {
+        // Mock gtag in development to prevent calls from throwing errors
+        window.gtag = function() {
+          console.log("[Localhost Dev Gtag Call]:", arguments);
+        };
+      }
+    })();
+
+    // Always define trackCTAClick globally in both development and production
+    function trackCTAClick(ctaName, ctaLocation) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        'event': 'cta_click',
+        'cta_name': ctaName,
+        'cta_location': ctaLocation
+      });
+      if (window.gtag) {
+        gtag('event', 'cta_click', {
+          'cta_name': ctaName,
+          'cta_location': ctaLocation
+        });
+      }
+    }
+  </script>
+
+  <!-- Light Theme Override matching services.html -->
+    <style id="services-light-theme-override">
+    html {
+      scroll-behavior: smooth !important;
+      text-rendering: optimizeLegibility !important;
+      -webkit-font-smoothing: antialiased !important;
+      -moz-osx-font-smoothing: grayscale !important;
+    }
+    html, body {
+      background-color: #ffffff !important;
+      color: #000000 !important;
+      font-family: Arial, Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    }
+    
+    /* Improve rendering and scrolling performance */
+    img, video, iframe {
+      content-visibility: auto !important;
+    }
+    
+    /* Hardware acceleration for smooth animations */
+    .glimpse-card, .premium-card, .btn, a, .hero-section {
+      transform: translate3d(0,0,0);
+      will-change: transform, opacity;
+      transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    }
+    .hero-section, .catalog-directory-hero, .dc-top-section-bg, header.bg-dark, .bg-dark, .bg-dark-card, .bg-dark-contrast {
+      background-color: #f3f6f8 !important;
+      color: #000000 !important;
+    }
+    h1, h2, h3, h4, h5, h6, .section-title {
+      color: #000000 !important;
+    }
+    p, span, li, label, div, small, strong, p *, li *, span *, label *, div *, small *, strong *, .text-muted, .text-white-50, .text-secondary, .text-muted * {
+      color: #000000 !important;
+    }
+    :not(footer) .text-white, body:not(footer) .text-white, a.text-white:not(footer a), .section-title.text-white {
+      color: #000000 !important;
+    }
+    .text-gold, .text-gold * {
+      color: #189ba6 !important;
+    }
+    .btn-gold, .btn-primary {
+      background-color: #189ba6 !important;
+      border-color: #189ba6 !important;
+      color: #ffffff !important;
+    }
+    .btn-gold:hover, .btn-primary:hover {
+      background-color: #127c85 !important;
+      border-color: #127c85 !important;
+    }
+    footer, footer *, footer p, footer span, footer li, footer div, footer small, footer .text-muted {
+      color: #ffffff !important;
+    }
+    footer p, footer span, footer li, footer div, footer small, footer .text-muted, footer a {
+      color: #d1cfc9 !important;
+    }
+    .dc-mobile-bottom-bar, .dc-mobile-bottom-bar *, .dc-bottom-bar-item, .dc-bottom-bar-item * {
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
+      stroke: #ffffff !important;
+    }
+    .dc-mobile-bottom-bar {
+      display: none !important;
+    }
+    @media (max-width: 991px) {
+      .dc-mobile-bottom-bar {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-around !important;
+        position: fixed !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        height: 68px !important;
+        background: #189ba6 !important;
+        z-index: 999999 !important;
+        box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.3) !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.25) !important;
+      }
+      body {
+        padding-bottom: 68px !important;
+      }
+      .floating-widgets {
+        display: none !important;
+      }
+    }
+    @media (max-width: 767px) {
+      #homeDesignGrid {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        padding-bottom: 20px !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        -webkit-overflow-scrolling: touch !important;
+      }
+      #homeDesignGrid > div {
+        flex: 0 0 85% !important;
+        max-width: 85% !important;
+        scroll-snap-align: center !important;
+      }
+      #homeDesignGrid::-webkit-scrollbar {
+        display: none !important;
+      }
+      #homeDesignGrid {
+        -ms-overflow-style: none !important;
+        scrollbar-width: none !important;
+        cursor: grab;
+      }
+      #homeDesignGrid:active {
+        cursor: grabbing;
+      }
+    }
+    img {
+      -webkit-user-drag: none !important;
+      user-select: none !important;
+      -moz-user-select: none !important;
+      -webkit-user-select: none !important;
+      -ms-user-select: none !important;
+    }
+  
+    /* Fix headings appearing white on light background inside bg-dark / bg-dark-card / bg-dark-contrast elements */
+    .bg-dark h1, .bg-dark h2, .bg-dark h3, .bg-dark h4, .bg-dark h5, .bg-dark h6,
+    .bg-dark-card h1, .bg-dark-card h2, .bg-dark-card h3, .bg-dark-card h4, .bg-dark-card h5, .bg-dark-card h6,
+    .bg-dark-contrast h1, .bg-dark-contrast h2, .bg-dark-contrast h3, .bg-dark-contrast h4, .bg-dark-contrast h5, .bg-dark-contrast h6 {
+      color: #1a1a1a !important;
+    }
+    /* Fix text elements appearing light grey/white on light background inside bg-dark / bg-dark-card / bg-dark-contrast elements */
+    .bg-dark p, .bg-dark li, .bg-dark span:not(.text-gold):not(.text-teal), .bg-dark label, .bg-dark .text-muted,
+    .bg-dark-card p, .bg-dark-card li, .bg-dark-card span:not(.text-gold):not(.text-teal), .bg-dark-card label, .bg-dark-card .text-muted,
+    .bg-dark-contrast p, .bg-dark-contrast li, .bg-dark-contrast span:not(.text-gold):not(.text-teal), .bg-dark-contrast label, .bg-dark-contrast .text-muted {
+      color: #444444 !important;
+    }
+    .bg-dark strong, .bg-dark-card strong, .bg-dark-contrast strong {
+      color: #1a1a1a !important;
+    }
+    
+    /* Restore white text for Top Categories collage card labels */
+    .dc-top-collage-label,
+    div.dc-top-collage-label,
+    a.dc-top-collage-card div.dc-top-collage-label,
+    .dc-top-collage-card .dc-top-collage-label {
+      color: #ffffff !important;
+    }
+
+    /* Restore white text for hero blog card overlays on dark image backgrounds */
+    .hero-blog-card,
+    .hero-blog-card *,
+    .hero-blog-overlay,
+    .hero-blog-overlay *,
+    .hero-blog-card h3,
+    .hero-blog-card p,
+    .hero-blog-card span {
+      color: #ffffff !important;
+    }
+    .hero-blog-overlay .cat-badge {
+      background-color: #189ba6 !important;
+      color: #ffffff !important;
+    }
+</style>
+  <meta name="p:domain_verify" content="5935ed97711f017b4d6c4759ccc92d76"/>
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) if present -->
+  {!isDev && (
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-ND5JCFH"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  )}
+  
+  <Header />
+  
+  <main>
+    <slot />
+  </main>
+  
+  <Footer />
+  
+  <!-- scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" is:inline></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" is:inline></script>
+  <script src="/assets/js/main.min.js?v=1009" is:inline></script>
+  <script is:inline>
+    AOS.init({
+        duration: 800,
+        once: true
+    });
+  </script>
+</body>
+</html>

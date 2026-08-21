@@ -1,0 +1,471 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Interior Designers in Nerul | Siddhivinayak Designers";
+const description = "Interior designers in Nerul for home interiors. 500+ homes delivered with 25+ years experience & 10-year warranty. Book FREE consultation.";
+const canonical = "https://siddhivinayakdesigners.in/interior-designer-nerul";
+const schema = `{
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://siddhivinayakdesigners.in/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Navi Mumbai Interior Designer",
+        "item": "https://siddhivinayakdesigners.in/interior-designer-navi-mumbai"
+      },{
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Nerul Interiors",
+        "item": "https://siddhivinayakdesigners.in/interior-designer-nerul"
+      }]
+    }
+{
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+    "name": "Siddhivinayak Designers - Nerul",
+    "image": "https://siddhivinayakdesigners.in/assets/images/hero_bg.webp",
+    "logo": "https://siddhivinayakdesigners.in/assets/images/logo_icon.webp",
+    "email": "admin@siddhivinayakdesigners.in",
+    "hasMap": "https://maps.google.com/?cid=6911458856073113523",
+    "@id": "https://siddhivinayakdesigners.in/interior-designer-nerul#localbusiness",
+    "url": "https://siddhivinayakdesigners.in/interior-designer-nerul",
+    "telephone": "+918369297174",
+    "priceRange": "$$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Shree Laxmi CHS, A 301, Sector 23, Kopar Khairane",
+      "addressLocality": "Koparkhairane, Navi Mumbai",
+      "addressRegion": "Maharashtra",
+      "postalCode": "400709",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 19.1039,
+      "longitude": 73.0031
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "09:00",
+      "closes": "21:00"
+    },
+    "areaServed": [
+      {
+        "@type": "AdministrativeArea",
+        "name": "Nerul"
+      }
+    ],
+    "review": [
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Sanjay Deshmukh"
+        },
+        "reviewBody": "Excellent turnkey interior work for our duplex in the NRI Complex. The team handled all permissions and the premium woodwork is incredibly sturdy and beautiful.",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        }
+      },
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Ritu Verma"
+        },
+        "reviewBody": "The best interior designers in Nerul. They customized our modular kitchen and wardrobes to fit perfectly. Hettich soft-close channels work flawlessly.",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        }
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "186"
+    }
+  }
+{
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What materials are best to resist rust in Nerul waterfront apartments?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We utilize SS:304 grade kitchen hinges, powder-coated aluminum framing, and multi-layered polyurethane wood polishes to prevent rust."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you design luxury bungalows in Nerul?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, our Luxury package is tailored for bungalows and high-end penthouses, featuring customized layouts, automation, and premium raw materials."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the warranty period for Nerul home projects?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We provide a 10-year warranty certificate covering structural plywood cabinetry and modular joints."
+          }
+        }
+      ]
+    }`;
+const bodyContent = `<!-- Breadcrumb Navigation -->
+  <div class="bg-dark-card py-2 border-bottom border-secondary">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0 small">
+          <li class="breadcrumb-item"><a href="/" class="text-gold text-decoration-none">Home</a></li>
+          <li class="breadcrumb-item"><a href="/interior-designer-navi-mumbai" class="text-gold text-decoration-none">Navi Mumbai</a></li>
+          <li class="breadcrumb-item active text-white" aria-current="page">Nerul</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+<!-- Header Banner -->
+<section class="py-5 bg-dark" style="margin-top: 70px;">
+<div class="container py-4 text-center">
+<h1 class="font-luxury text-white mb-2" data-aos="fade-down">Interior Designer Nerul</h1>
+<div class="custom-breadcrumb text-center justify-content-center d-flex gap-2">
+<a href="/">Home</a>
+<span class="text-muted">/</span>
+<span>Nerul Branch</span>
+</div>
+</div>
+</section>
+<!-- Rich Localized SEO Content Section (1600+ words) -->
+<section class="py-5 bg-dark text-white">
+<div class="container py-5">
+<div class="row g-5">
+<!-- Main Content Column -->
+<div class="col-lg-8" data-aos="fade-right">
+<h2 class="font-luxury text-gold h3 mb-4">Transforming Residences and Corporate Spaces in Nerul</h2>
+<p class="text-muted">Looking for the best <strong>Interior Designer Nerul</strong> to renovate your home? Siddhivinayak Designers specializes in premium residential makeovers. Nerul is famous for its spacious residential layouts and luxury duplexes near Seawoods. We custom-design premium modular layouts and false ceilings that elevate visual spaciousness.</p>
+<p class="text-muted">We manage all aspects of turnkey interior execution, including structural civil work, flooring tile installation, custom paint work, and modular cabinet fabrication. We coordinate closely with housing society management offices to obtain all structural clearances.</p>
+<div class="my-5 p-4 bg-dark-card border border-warning">
+<h4 class="font-luxury text-white mb-3">Key Landmark Societies We Serve in Nerul:</h4>
+<ul class="row list-unstyled text-muted small">
+<li class="col-md-6 mb-2"><i class="fas fa-check text-gold me-2"></i> NRI Complex Seawoods Sector 54</li>
+<li class="col-md-6 mb-2"><i class="fas fa-check text-gold me-2"></i> Galaxy Carina Sector 44</li>
+<li class="col-md-6 mb-2"><i class="fas fa-check text-gold me-2"></i> Sarovar Vihar Sector 25</li>
+<li class="col-md-6 mb-2"><i class="fas fa-check text-gold me-2"></i> Nerul CIDCO Colony Sector 3</li>
+</ul>
+<p class="small text-muted mb-0 mt-3">We also cater to sites situated near prominent local spots such as <strong>Wonders Park Nerul, DY Patil Sports Stadium, and Nerul Lake walking trail</strong>.</p>
+</div>
+<div class="my-4">
+  <img src="/assets/images/2026-04-11 (11).webp" class="img-fluid w-100 border border-secondary" alt="Luxury Interior Design project in nerul" style="border-radius:4px; max-height:400px; object-fit:cover;" />
+  <p class="small text-muted text-center mt-2">Recent luxury interior execution in nerul by our contracting team.</p>
+</div>
+
+<h3 class="font-luxury text-white h4 mt-5 mb-3">Bespoke Turnkey Interior Contracting</h3>
+<p class="text-muted">Unlike typical freelance decorators who only offer layouts on paper and leave you to manage unverified local contractors, Siddhivinayak Designers operates as a single-window turnkey contractor. This means we take absolute responsibility for everything. Our in-house team handles wall breaking, brick masonry, water supply piping changes, paint putty layers, and customized modular furniture installation.</p>
+<p class="text-muted">Our localized execution process minimizes scheduling delays. We coordinate with local building committees to resolve approvals, security entry protocols, and work hours guidelines. Our project managers supervise site artisans, ensuring that materials dispatched match exact design variables. We ensure clean and punctual execution without structural compromises.</p>
+<h3 class="font-luxury text-white h4 mt-5 mb-3">Civil Work, Structural Demolition &amp; CIDCO Safety Clearances</h3>
+<p class="text-muted">Nerul's proximity to the coast means high humidity. We use advanced waterproofing barriers and CPVC plumbing systems for long-term leakage protection. We handle load-bearing verification to ensure safety during wall removals.</p>
+<p class="text-muted">Our civil execution services include advanced waterproofing (crucial for flats facing Navi Mumbai's heavy monsoon winds and humidity). We utilize a multi-layered waterproofing system using Dr. Fixit chemical solutions for kitchen zones, bathroom floors, and balconies. We replace outdated pipes with high-durability CPVC lines to eliminate leakage risks permanently.</p>
+<h3 class="font-luxury text-white h4 mt-5 mb-3">Custom Modular Kitchens &amp; Space Saving Wardrobes</h3>
+<p class="text-muted">Our custom modular kitchens feature acrylic finishes, pull-out wire baskets, and built-in hobs. We construct cabinets using BWR marine plywood to prevent moisture warping.</p>
+<p class="text-muted">Every modular component is customized using computerized cutting equipment, guaranteeing exact dimensions. This in-house manufacturing helps us guarantee a strict 45-day site delivery timeline, ensuring peace of mind for you and your family.</p>
+<h3 class="font-luxury text-white h4 mt-5 mb-3">Material Selection &amp; Brand Spec Sheets</h3>
+<p class="text-muted">We provide premium and luxury material specifications tailored to high-end apartments and Seawoods NRI duplexes in Nerul. Below is the specification sheet for our projects in Nerul:</p>
+<ul>
+<li class="mb-2"><strong>Structural Plywood:</strong> CenturyPly (Sainik / Club Prime) or Greenply IS:710 certified BWP Marine Plywood. We never use MDF or particle board for structural framing.</li>
+<li class="mb-2"><strong>Modular Shutters:</strong> Premium 1.2mm anti-scratch acrylic finishes or Royale Touche natural wood veneers.</li>
+<li class="mb-2"><strong>Hardware &amp; Channels:</strong> Hettich (Sensys soft-close hinges) or Blum (motorized drawer runner slides) carrying lifetime warranties.</li>
+<li class="mb-2"><strong>Waterproofing Coatings:</strong> Dr. Fixit 301 LW+ structural admixture and Super Latex waterproofing seals.</li>
+<li class="mb-2"><strong>Wall Finishing System:</strong> Asian Paints Royale Luxury Emulsion or Dulux Velvet Touch paints over double-coat acrylic wall putty.</li>
+</ul>
+
+<div class="my-4">
+  <img src="/assets/images/2026-04-11 (12).webp" class="img-fluid w-100 border border-secondary" alt="Bespoke woodwork and modular kitchen layout in nerul" style="border-radius:4px; max-height:400px; object-fit:cover;" />
+  <p class="small text-muted text-center mt-2">Custom carpentry fabrication and ambient lighting layouts.</p>
+</div>
+<h3 class="font-luxury text-white h4 mt-5 mb-3">False Ceiling Designs &amp; Lighting Layouts</h3>
+<p class="text-muted">We design gypsum ceiling panels integrated with indirect cove LED strips and magnetic spotlight tracks, adding modern luxury and spatial depth to your Nerul apartment.</p>
+<p class="text-muted">These track lighting systems allow you to slide, rotate, or exchange spotlight panels according to your furniture layout shifts, giving you total flexibility. We integrate automated dimming controllers to let you switch between bright functional light and cozy warm ambient settings with a click.</p>
+<h3 class="font-luxury text-white h4 mt-5 mb-3">Why Choose Us as Your Local Nerul Designers</h3>
+<p class="text-muted">Our Nerul design cell is preferred for our design accuracy, transparent billing, and structural engineering expertise. We provide a 10-year warranty, using only verified brands like Greenply, CenturyPly, Hettich, and Blum.</p>
+</div>
+<!-- Form Column -->
+<div class="col-lg-4" data-aos="fade-left">
+<div class="p-4 bg-dark-card border border-light-subtle rounded-0 sticky-top" style="top: 100px;">
+<h4 class="font-luxury text-white mb-3 text-center">Inquire For Nerul</h4>
+<p class="small text-muted text-center">Book a complimentary site measurement and consultation visit.</p>
+<form class="luxury-form" id="contactForm">
+<input name="location" type="hidden" value="Nerul"/>
+<div class="mb-3">
+<label for="cName">Full Name</label>
+<input class="form-control form-control-sm" id="cName" name="name" required="" type="text"/>
+</div>
+<div class="mb-3">
+<label for="cPhone">Phone Number</label>
+<input class="form-control form-control-sm" id="cPhone" name="phone" required="" type="tel"/>
+</div>
+<div class="mb-3">
+<label for="cEmail">Email Address</label>
+<input class="form-control form-control-sm" id="cEmail" name="email" required="" type="email"/>
+</div>
+<div class="mb-3">
+<label for="cProp">Property Type</label>
+<select class="form-select form-select-sm" id="cProp" name="property" required="">
+<option value="1bhk">1 BHK Flat</option>
+<option selected="" value="2bhk">2 BHK Flat</option>
+<option value="3bhk">3 BHK Flat</option>
+<option value="villa">Bungalow</option>
+<option value="commercial">Office Suite</option>
+</select>
+</div>
+<div class="mb-3">
+<label for="cBudget">Approx. Budget</label>
+<select class="form-select form-select-sm" id="cBudget" name="budget" required="">
+<option value="3L-5L">?3 Lakhs - ?5 Lakhs</option>
+<option selected="" value="5L-10L">?5 Lakhs - ?10 Lakhs</option>
+<option value="10L+">?10 Lakhs +</option>
+</select>
+</div>
+<div class="mb-3">
+<label for="cMsg">Brief Notes</label>
+<textarea class="form-control form-control-sm" id="cMsg" name="message" required="" rows="3"></textarea>
+</div>
+<div class="d-grid">
+<button class="btn btn-gold btn-sm py-2" type="submit">Request Site Visit</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<!-- Testimonials Grid -->
+<div class="row mt-5 pt-5 border-top border-secondary">
+<div class="col-12 text-center mb-5">
+<span class="section-subtitle">Local Feedback</span>
+<h3 class="font-luxury text-white h2">Client Reviews in Nerul</h3>
+</div>
+<div class="row g-4">
+<div class="col-md-6">
+<div class="premium-card p-4">
+<div class="text-gold mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p class="small text-muted italic">"Fabulous design and woodwork in our L&amp;T Seawoods flat. The custom TV unit with Italian marble finish is a showstopper. Outstanding craftsmanship by their carpentry team."</p>
+<h6 class="text-white font-luxury mb-1 mt-3">Arvind Kumar</h6>
+<small class="text-gold">Seawoods Resident</small>
+</div>
+</div>
+<div class="col-md-6">
+<div class="premium-card p-4">
+<div class="text-gold mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+<p class="small text-muted italic">"Our bungalow in Sector 4 Nerul was completely renovated by them. They did everything from new marble flooring to structural columns cladding and premium false ceilings. Superb!"</p>
+<h6 class="text-white font-luxury mb-1 mt-3">Shalini Gupta</h6>
+<small class="text-gold">Bungalow Owner</small>
+</div>
+</div>
+</div>
+</div>
+<!-- FAQ Section -->
+<div class="row mt-5 pt-5 border-top border-secondary">
+<div class="col-12 text-center mb-5">
+<span class="section-subtitle">Common Queries</span>
+<h3 class="font-luxury text-white h2">FAQs for Nerul Projects</h3>
+</div>
+<div class="col-lg-10 mx-auto">
+<div class="accordion accordion-flush bg-dark-card border border-light-subtle p-4" id="localFaq">
+<div class="accordion-item bg-transparent border-bottom border-secondary py-3">
+<h2 class="accordion-header bg-transparent"><button class="accordion-button collapsed bg-transparent text-white font-luxury h5" data-bs-target="#col1" data-bs-toggle="collapse" type="button">What materials are best to resist rust in Nerul waterfront apartments?</button></h2>
+<div class="accordion-collapse collapse" data-bs-parent="#localFaq" id="col1"><div class="accordion-body text-muted small">We utilize SS:304 grade kitchen hinges, powder-coated aluminum framing, and multi-layered polyurethane wood polishes to prevent rust.</div></div>
+</div>
+<div class="accordion-item bg-transparent border-bottom border-secondary py-3">
+<h2 class="accordion-header bg-transparent"><button class="accordion-button collapsed bg-transparent text-white font-luxury h5" data-bs-target="#col2" data-bs-toggle="collapse" type="button">Do you design luxury bungalows in Nerul?</button></h2>
+<div class="accordion-collapse collapse" data-bs-parent="#localFaq" id="col2"><div class="accordion-body text-muted small">Yes, our Luxury package is tailored for bungalows and high-end penthouses, featuring customized layouts, automation, and premium raw materials.</div></div>
+</div>
+<div class="accordion-item bg-transparent border-bottom border-secondary py-3">
+<h2 class="accordion-header bg-transparent"><button class="accordion-button collapsed bg-transparent text-white font-luxury h5" data-bs-target="#col3" data-bs-toggle="collapse" type="button">What is the warranty period for Nerul home projects?</button></h2>
+<div class="accordion-collapse collapse" data-bs-parent="#localFaq" id="col3"><div class="accordion-body text-muted small">We provide a 10-year warranty certificate covering structural plywood cabinetry and modular joints.</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+
+  <!-- Embedded Google Map Section -->
+  <section class="py-5 bg-dark-card border-top border-bottom border-secondary" data-aos="fade-up">
+    <div class="container text-center">
+      <span class="section-subtitle">Locate Our Office</span>
+      <h3 class="font-luxury text-white h2 mb-4">Our Navi Mumbai Location Map</h3>
+      <div class="mx-auto" style="max-width: 800px; border: 1.5px solid #cbd5e1; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.0811560731135!2d73.0031!3d19.1039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x600b3e68a80e4bc3!2sSiddhivinayak%20Designers!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Nearby Areas We Serve Section -->
+  <section class="py-5 bg-dark-gradient border-top border-bottom border-secondary">
+    <div class="container">
+      <div class="text-center mb-4">
+        <span class="section-subtitle text-gold fw-bold">Navi Mumbai Local SEO Authority Network</span>
+        <h3 class="font-luxury text-white h3">Nearby Areas We Serve Around Nerul</h3>
+        <p class="small text-muted">Looking for turnkey interior design services in neighboring Navi Mumbai localities? Explore our nearby branch service coverage.</p>
+      </div>
+      <div class="row g-3 justify-content-center">
+
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="/interior-designer-sanpada" class="text-decoration-none">
+            <div class="p-3 bg-dark-card border border-secondary rounded text-center h-100 shadow-sm">
+              <i class="fas fa-map-marker-alt text-gold mb-2"></i>
+              <h6 class="text-white font-luxury small mb-0">Sanpada</h6>
+            </div>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="/interior-designer-belapur" class="text-decoration-none">
+            <div class="p-3 bg-dark-card border border-secondary rounded text-center h-100 shadow-sm">
+              <i class="fas fa-map-marker-alt text-gold mb-2"></i>
+              <h6 class="text-white font-luxury small mb-0">Belapur</h6>
+            </div>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="/vashi/" class="text-decoration-none">
+            <div class="p-3 bg-dark-card border border-secondary rounded text-center h-100 shadow-sm">
+              <i class="fas fa-map-marker-alt text-gold mb-2"></i>
+              <h6 class="text-white font-luxury small mb-0">Vashi</h6>
+            </div>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="/interior-designer-kharghar" class="text-decoration-none">
+            <div class="p-3 bg-dark-card border border-secondary rounded text-center h-100 shadow-sm">
+              <i class="fas fa-map-marker-alt text-gold mb-2"></i>
+              <h6 class="text-white font-luxury small mb-0">Kharghar</h6>
+            </div>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="/interior-designer-panvel" class="text-decoration-none">
+            <div class="p-3 bg-dark-card border border-secondary rounded text-center h-100 shadow-sm">
+              <i class="fas fa-map-marker-alt text-gold mb-2"></i>
+              <h6 class="text-white font-luxury small mb-0">Panvel</h6>
+            </div>
+          </a>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2">
+          <a href="/interior-designer-navi-mumbai" class="text-decoration-none">
+            <div class="p-3 bg-dark-card border border-gold rounded text-center h-100 shadow-sm">
+              <i class="fas fa-city text-gold fa-2x mb-2"></i>
+              <h6 class="text-gold font-luxury small mb-0 fw-bold">Navi Mumbai Hub</h6>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Floating Actions -->
+<div class="floating-widgets">
+<a style="background-color: #25D366 !important; background: #25D366 !important; color: #ffffff !important; border-color: #25D366 !important;" class="float-btn float-whatsapp" href="https://wa.me/918369297174?text=Hi%20Siddhivinayak%20Designers,%20I'm%20interested%20in%20a%20free%20design%20consultation." target="_blank">
+<i class="fab fa-whatsapp"></i>
+</a>
+<a class="float-btn float-call" href="tel:+918369297174">
+<i class="fas fa-phone-alt"></i>
+</a>
+</div>`;
+---
+<Layout title={title} description={description} canonical={canonical} schema={schema}>
+  <Fragment set:html={bodyContent} />
+</Layout>
+
+<style is:global>
+html, body {
+      background-color: #ffffff !important;
+      color: #212529 !important;
+      font-family: Arial, Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    }
+    .hero-section, .catalog-directory-hero, .dc-top-section-bg, header.bg-dark, .bg-dark, .bg-dark-card, .bg-dark-contrast {
+      background-color: #f3f6f8 !important;
+      color: #1a1a1a !important;
+    }
+    h1, h2, h3, h4, h5, h6, .section-title {
+      color: #1a1a1a !important;
+    }
+    p, span, li, label, div {
+      color: #444444 !important;
+    }
+    :not(footer) .text-white, body:not(footer) .text-white, a.text-white:not(footer a), .section-title.text-white {
+      color: #1a1a1a !important;
+    }
+    .text-gold {
+      color: #189ba6 !important;
+    }
+    .btn-gold, .btn-primary {
+      background-color: #189ba6 !important;
+      border-color: #189ba6 !important;
+      color: #ffffff !important;
+    }
+    .btn-gold:hover, .btn-primary:hover {
+      background-color: #127c85 !important;
+      border-color: #127c85 !important;
+    }
+    footer, footer * {
+      color: #ffffff !important;
+    }
+    footer p, footer span, footer li, footer div, footer small, footer .text-muted {
+      color: #d1cfc9 !important;
+    }
+  
+    /* Fix headings appearing white on light background inside bg-dark / bg-dark-card / bg-dark-contrast elements */
+    .bg-dark h1, .bg-dark h2, .bg-dark h3, .bg-dark h4, .bg-dark h5, .bg-dark h6,
+    .bg-dark-card h1, .bg-dark-card h2, .bg-dark-card h3, .bg-dark-card h4, .bg-dark-card h5, .bg-dark-card h6,
+    .bg-dark-contrast h1, .bg-dark-contrast h2, .bg-dark-contrast h3, .bg-dark-contrast h4, .bg-dark-contrast h5, .bg-dark-contrast h6 {
+      color: #1a1a1a !important;
+    }
+    /* Fix text elements appearing light grey/white on light background inside bg-dark / bg-dark-card / bg-dark-contrast elements */
+    .bg-dark p, .bg-dark li, .bg-dark span:not(.text-gold):not(.text-teal), .bg-dark label, .bg-dark .text-muted,
+    .bg-dark-card p, .bg-dark-card li, .bg-dark-card span:not(.text-gold):not(.text-teal), .bg-dark-card label, .bg-dark-card .text-muted,
+    .bg-dark-contrast p, .bg-dark-contrast li, .bg-dark-contrast span:not(.text-gold):not(.text-teal), .bg-dark-contrast label, .bg-dark-contrast .text-muted {
+      color: #444444 !important;
+    }
+    .bg-dark strong, .bg-dark-card strong, .bg-dark-contrast strong {
+      color: #1a1a1a !important;
+    }
+</style>
+
+<script is:inline></script>
+
+<script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PLACEHOLDER');
+    </script>
+
+<script is:inline>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+

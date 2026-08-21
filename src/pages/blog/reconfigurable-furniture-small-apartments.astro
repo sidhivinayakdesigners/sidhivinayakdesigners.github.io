@@ -1,0 +1,235 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const title = "Guide to Reconfigurable Furniture for Small Apartments | Siddhivinayak Designers";
+const description = "Discover the best reconfigurable and multi-purpose furniture for small apartments. Murphy beds, drop-leaf tables, and flexible modular layouts.";
+const canonical = "https://siddhivinayakdesigners.in/blog/reconfigurable-furniture-small-apartments";
+const schema = `{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Home",
+    "item": "https://siddhivinayakdesigners.in/"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Blog",
+    "item": "https://siddhivinayakdesigners.in/blog/"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "Reconfigurable Furniture Guide",
+    "item": "https://siddhivinayakdesigners.in/blog/reconfigurable-furniture-small-apartments"
+  }]
+}
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://siddhivinayakdesigners.in/blog/reconfigurable-furniture-small-apartments"
+  },
+  "headline": "The Ultimate Guide to Reconfigurable Furniture for Small Apartments",
+  "description": "Discover the best reconfigurable and multi-purpose furniture for small apartments. Murphy beds, drop-leaf tables, and flexible modular layouts.",
+  "image": "https://siddhivinayakdesigners.in/assets/images/space-saving/bedroom-with-space-saving-foldable-muphy-bed.webp",
+  "author": {
+    "@type": "Organization",
+    "name": "Siddhivinayak Designers"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Siddhivinayak Designers",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://siddhivinayakdesigners.in/assets/images/logo_icon.webp"
+    }
+  },
+  "datePublished": "2026-08-21",
+  "dateModified": "2026-08-21"
+}`;
+
+const bodyContent = `<!-- Bright Split Header Banner with Teal & Gold -->
+<section class="py-5" style="margin-top: 65px; background: linear-gradient(135deg, #189ba6 0%, #062639 100%); border-bottom: 3px solid #c5a880;">
+  <div class="container py-4 text-center">
+    <nav aria-label="breadcrumb" class="mb-2">
+      <ol class="breadcrumb small justify-content-center mb-0 bg-transparent p-0">
+        <li class="breadcrumb-item"><a href="/" style="color: #c5a880; text-decoration: none;">Home</a></li>
+        <li class="breadcrumb-item"><a href="/blog/" style="color: #c5a880; text-decoration: none;">Blog</a></li>
+        <li class="breadcrumb-item active text-white" aria-current="page">Reconfigurable Guide</li>
+      </ol>
+    </nav>
+    <h1 class="font-luxury text-white mb-2 h2 fw-bold" style="color: #ffffff !important; letter-spacing: 0.5px;">Reconfigurable Furniture for Small Apartments</h1>
+    <p class="small text-muted mb-0" style="color: #e2e8f0 !important;"><i class="far fa-calendar-alt text-teal me-1" style="color: #c5a880 !important;"></i> August 21, 2026 • 12 Min Read • By Siddhivinayak Team</p>
+  </div>
+</section>
+
+<!-- Single-Column Distraction-free Content -->
+<section class="py-5 bg-white text-dark">
+  <div class="container py-2">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        
+        <p class="lead text-secondary mb-5" style="font-size: 1.15rem; color: #444444 !important; line-height: 1.8;">
+          Compact apartments in Navi Mumbai require design layouts to make every square foot count. Reconfigurable furniture—pieces that fold, expand, slide, or stack—is the ideal solution to double the functionality of a room. This guide showcases how to use transforming modular furniture to keep your home open, clutter-free, and functional.
+        </p>
+
+        <!-- Dynamic Configuration Selector Widget (Unique Addition) -->
+        <div class="my-5 p-4 p-md-5 rounded-4 shadow-sm border text-white" style="background-color: #062639; border-color: #c5a880 !important;">
+          <h3 class="font-luxury text-white mb-2 h4 text-center fw-bold" style="color: #ffffff !important; letter-spacing: 0.5px;">Interactive Transformation Selector</h3>
+          <p class="small text-center text-muted mb-4" style="color: #cbd5e1 !important;">Click on a furniture piece below to see its transforming layout and details:</p>
+          
+          <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
+            <button class="btn btn-sm btn-outline-light active transform-btn" data-type="murphy">Murphy Bed Workdesk</button>
+            <button class="btn btn-sm btn-outline-light transform-btn" data-type="crockery">Crockery Drop-Leaf Table</button>
+            <button class="btn btn-sm btn-outline-light transform-btn" data-type="trundle">Kids Trundle Bed</button>
+          </div>
+
+          <div class="row align-items-center g-4" id="transformDetailBox">
+            <!-- Dynamic Content Load Area -->
+            <div class="col-md-5 text-center">
+              <img id="transformImg" src="/assets/images/space-saving/bedroom-with-space-saving-foldable-muphy-bed.webp" alt="Murphy Bed Unit" class="img-fluid rounded border border-secondary" style="max-height: 250px; object-fit: cover;" />
+            </div>
+            <div class="col-md-7">
+              <h4 class="h6 fw-bold text-white mb-2" id="transformTitle" style="color: #c5a880 !important; font-size: 1.1rem;">Murphy Bed Desk Unit</h4>
+              <p class="small text-muted mb-3" id="transformDesc" style="color: #cbd5e1 !important; line-height: 1.6;">
+                A custom vertical folding wall bed. When closed, it serves as a study workstation desk with wall shelves. Lowering the bed reveals a cozy guest bedroom sleep setup.
+              </p>
+              <div class="small mb-1"><strong>Converting Action:</strong> <span id="transformAction" class="text-muted" style="color: #cbd5e1 !important;">Folds down vertically in under 10 seconds.</span></div>
+              <div class="small"><strong>Best Suited For:</strong> <span id="transformSuit" class="text-muted" style="color: #cbd5e1 !important;">Guest bedrooms and compact home study office rooms.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="font-luxury text-dark h5 mt-5 mb-3" style="color: #062639 !important; font-weight: bold; border-left: 4px solid #189ba6; padding-left: 12px;">1. Vertical Murphy Beds (Wall Bed Systems)</h3>
+        <p class="text-secondary mb-4" style="color: #444444 !important; line-height: 1.7;">
+          A guest bed occupies significant bedroom floor space while only being used occasionally. Vertical Murphy beds fold upward flat against the wall, opening up the room's floor space. Modern systems combine wall beds with drop-down study desks or sofa seating units in front of the cabinet.
+        </p>
+
+        <!-- Murphy Bed Image Showcase -->
+        <div class="my-4 border border-light-subtle rounded p-3 bg-white" style="box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+          <img src="/assets/images/space-saving/bedroom-with-space-saving-foldable-muphy-bed.webp" alt="Murphy Bed Workstation" class="img-fluid rounded border mb-3" loading="lazy" style="width: 100%; max-height: 350px; object-fit: cover;" />
+          <h4 class="h6 fw-bold text-teal mb-1"><i class="fas fa-bed me-2"></i>Multi-Purpose Wall Bed</h4>
+          <p class="small text-muted mb-0">
+            A space-saving Murphy bed and home office desk setup that folds up flat against the wall when not in use.
+          </p>
+        </div>
+
+        <h3 class="font-luxury text-dark h5 mt-5 mb-3" style="color: #062639 !important; font-weight: bold; border-left: 4px solid #189ba6; padding-left: 12px;">2. Crockery Hutch with Foldable Dining Slab</h3>
+        <p class="text-secondary mb-4" style="color: #444444 !important; line-height: 1.7;">
+          A dining table set requires up to 30 square feet of floor space. If you live in a compact 1BHK or 2BHK flat, consider a crockery hutch with an integrated drop-leaf table. The central cabinet door pulls down flat to form a stable dining platform for four, and folds back upright after meals.
+        </p>
+
+        <!-- Crockery Image Showcase -->
+        <div class="my-4 border border-light-subtle rounded p-3 bg-white" style="box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+          <img src="/assets/images/space-saving/multipurpose-modular-furniture-design-with-crockery-cabinet.webp" alt="Crockery Unit with Fold-Down Table" class="img-fluid rounded border mb-3" loading="lazy" style="width: 100%; max-height: 350px; object-fit: cover;" />
+          <h4 class="h6 fw-bold text-teal mb-1"><i class="fas fa-utensils me-2"></i>Fold-Down Dining Crockery Cabinet</h4>
+          <p class="small text-muted mb-0">
+            A modular crockery unit with a fold-down door panel that converts into a sturdy 4-seater dining table, saving space in narrow dining alcoves.
+          </p>
+        </div>
+
+        <h3 class="font-luxury text-dark h5 mt-5 mb-3" style="color: #062639 !important; font-weight: bold; border-left: 4px solid #189ba6; padding-left: 12px;">3. Roll-Out Trundle Bed Systems</h3>
+        <p class="text-secondary mb-4" style="color: #444444 !important; line-height: 1.7;">
+          For kid's or guest bedrooms, trundle bed systems offer an extra pull-out mattress base underneath the main bed frame. During the day, the bottom mattress slides completely underneath, opening up the room's floor space for children's activities and study desks.
+        </p>
+
+        <!-- Trundle Bed Image Showcase -->
+        <div class="my-4 border border-light-subtle rounded p-3 bg-white" style="box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+          <img src="/assets/images/space-saving/a-kids-bedroom-with-a-trundle-bed.webp" alt="Kids Trundle Bed Layout" class="img-fluid rounded border mb-3" loading="lazy" style="width: 100%; max-height: 350px; object-fit: cover;" />
+          <h4 class="h6 fw-bold text-teal mb-1"><i class="fas fa-child me-2"></i>Roll-Out Trundle Bed Layout</h4>
+          <p class="small text-muted mb-0">
+            A compact kids' room layout featuring a roll-out bed base. The bottom mattress slides away when not in use to maximize playroom space.
+          </p>
+        </div>
+
+        <!-- Centered Premium CTA Callout -->
+        <div class="text-center py-5 px-4 rounded-4 my-5" style="background: linear-gradient(135deg, #e6f4f5 0%, #ffffff 100%); border: 1px solid rgba(24, 155, 166, 0.2);">
+          <h4 class="font-luxury mb-2 text-dark fw-bold" style="color: #062639 !important;">Design a Multi-Purpose Layout for Your Home</h4>
+          <p class="small text-secondary mb-4 mx-auto max-w-600" style="color: #555555 !important;">
+            Our space design specialists in Koparkhairane can help draft custom 3D layouts matching these spatial configurations for your flat. Get complete 3D layout options.
+          </p>
+          <a class="btn px-4 py-2 text-white fw-bold shadow-sm" href="/contact" style="background-color: #189ba6; border-color: #189ba6; border-radius: 30px; font-size: 0.9rem;">Book Custom Space Consultation</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Transformation Selector Logic script -->
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btns = document.querySelectorAll('.transform-btn');
+    
+    const details = {
+      murphy: {
+        img: '/assets/images/space-saving/bedroom-with-space-saving-foldable-muphy-bed.webp',
+        title: 'Murphy Bed Desk Unit',
+        desc: 'A custom vertical folding wall bed. When closed, it serves as a study workstation desk with wall shelves. Lowering the bed reveals a cozy guest bedroom sleep setup.',
+        action: 'Folds down vertically in under 10 seconds.',
+        suit: 'Guest bedrooms and compact home study office rooms.'
+      },
+      crockery: {
+        img: '/assets/images/space-saving/multipurpose-modular-furniture-design-with-crockery-cabinet.webp',
+        title: 'Crockery Drop-Leaf Table',
+        desc: 'A custom crockery hutch unit with a central cabinet drop-down door that pulls down flat, instantly forming a sturdy 4-seater dining platform. When meals are over, the table folds back upright, leaving the living room walkway completely clear.',
+        action: 'Pulls down to open and hinges flat against cabinet doors.',
+        suit: 'Living room dining corners and narrow kitchen galleys.'
+      },
+      trundle: {
+        img: '/assets/images/space-saving/a-kids-bedroom-with-a-trundle-bed.webp',
+        title: 'Kids Trundle Bed',
+        desc: 'Features a pull-out bed base frame in blue and white laminates. During daytime activities, the bottom mattress rolls fully underneath the upper bed structure, opening up the room floor for play area activities.',
+        action: 'Slides out horizontally on smooth nylon runners.',
+        suit: 'Kids bedrooms, playroom setups, and shared sleeping rooms.'
+      }
+    };
+    
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Toggle Active state
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const type = btn.getAttribute('data-type');
+        const data = details[type];
+        
+        document.getElementById('transformImg').src = data.img;
+        document.getElementById('transformTitle').innerText = data.title;
+        document.getElementById('transformDesc').innerText = data.desc;
+        document.getElementById('transformAction').innerText = data.action;
+        document.getElementById('transformSuit').innerText = data.suit;
+      });
+    });
+  });
+</script>
+
+<!-- Floating Actions -->
+<div class="floating-widgets">
+  <a style="background-color: #25D366 !important; background: #25D366 !important; color: #ffffff !important; border-color: #25D366 !important;" class="float-btn float-whatsapp" href="https://wa.me/918369297174?text=Hi%20Siddhivinayak%20Designers,%20I'm%20interested%20in%20a%20free%20design%20consultation." target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <a class="float-btn float-call" href="tel:+918369297174">
+    <i class="fas fa-phone-alt"></i>
+  </a>
+</div>`;
+---
+<Layout title={title} description={description} canonical={canonical} schema={schema}>
+  <Fragment set:html={bodyContent} />
+</Layout>
+
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PLACEHOLDER');
+</script>
+
+<script is:inline>
+  AOS.init({
+    duration: 800,
+    once: true
+  });
+</script>

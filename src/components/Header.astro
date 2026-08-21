@@ -1,0 +1,67 @@
+---
+const pathname = Astro.url.pathname;
+const cleanPath = pathname.endsWith('/') ? pathname : pathname + '/';
+---
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark shadow-sm py-2">
+    <div class="container">
+      <a class="navbar-brand text-white d-flex align-items-center gap-2" href="/">
+        <img alt="Siddhivinayak Designers" class="d-inline-block align-text-top" height="36" src="/assets/images/logo_icon.webp" />
+        <span><span class="text-gold" style="color: #189ba6 !important;">Siddhivinayak</span> Designers</span>
+      </a>
+      <button class="navbar-toggler border-0" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center gap-1">
+          <li class="nav-item"><a class={`nav-link ${pathname === '/' ? 'active' : ''}`} href="/">Home</a></li>
+          <li class="nav-item"><a class={`nav-link ${pathname.startsWith('/about') ? 'active' : ''}`} href="/about">About</a></li>
+          
+          <!-- Design Ideas Dropdown Only -->
+          <li class="nav-item dropdown">
+            <a class={`nav-link d-flex align-items-center gap-1 ${pathname.startsWith('/services') || pathname.startsWith('/modular-kitchens') || pathname.startsWith('/bedroom-wardrobes') || pathname.startsWith('/living-room') || pathname.startsWith('/space-saving') || pathname.startsWith('/pooja-room') || pathname.startsWith('/balcony') || pathname.startsWith('/home-office') || pathname.startsWith('/civil-renovations') ? 'active' : ''}`} href="/services" id="navDesignsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Design Ideas <i class="fas fa-chevron-down ms-1" style="font-size: 0.7rem; opacity: 0.85;"></i>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navDesignsDropdown">
+              <li><a class="dropdown-item" href="/modular-kitchens">Modular Kitchens</a></li>
+              <li><a class="dropdown-item" href="/bedroom-wardrobes">Bedroom &amp; Wardrobes</a></li>
+              <li><a class="dropdown-item" href="/living-room">Living Room Renders</a></li>
+              <li><a class="dropdown-item" href="/space-saving">Space Saving Furniture</a></li>
+              <li><a class="dropdown-item" href="/pooja-room">Pooja Room Designs</a></li>
+              <li><a class="dropdown-item" href="/balcony">Balcony &amp; Sitouts</a></li>
+              <li><a class="dropdown-item" href="/home-office">Home Office Workspaces</a></li>
+              <li><a class="dropdown-item" href="/civil-renovations">Turnkey Civil Renovations</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a class={`nav-link ${pathname.startsWith('/gallery') ? 'active' : ''}`} href="/gallery">Gallery</a></li>
+          <!-- Cities Dropdown -->
+          <li class="nav-item dropdown">
+            <a class={`nav-link d-flex align-items-center gap-1 ${pathname.startsWith('/vashi') || pathname.startsWith('/interior-designer-') ? 'active' : ''}`} href="#" id="navCitiesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Cities <i class="fas fa-chevron-down ms-1" style="font-size: 0.7rem; opacity: 0.85;"></i>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navCitiesDropdown">
+              <li><a class="dropdown-item" href="/interior-designer-navi-mumbai">Navi Mumbai (Hub)</a></li>
+              <li><hr class="dropdown-divider border-secondary" /></li>
+              <li><a class="dropdown-item" href="/vashi/">Vashi</a></li>
+              <li><a class="dropdown-item" href="/interior-designer-kharghar">Kharghar</a></li>
+              <li><a class="dropdown-item" href="/interior-designer-nerul">Nerul</a></li>
+              <li><a class="dropdown-item" href="/interior-designer-seawoods">Seawoods</a></li>
+              <li><a class="dropdown-item" href="/interior-designer-belapur">Belapur</a></li>
+              <li><a class="dropdown-item" href="/interior-designer-sanpada">Sanpada</a></li>
+              <li><a class="dropdown-item" href="/interior-designer-kopar-khairane">Kopar Khairane</a></li>
+              <li><a class="dropdown-item" href="/interior-designer-ghansoli">Ghansoli</a></li>
+              <li><a class="dropdown-item" href="/interior-designer-airoli">Airoli</a></li>
+              <li><a class="dropdown-item" href="/interior-designer-panvel">Panvel</a></li>
+              <li><a class="dropdown-item" href="/interior-designer-rabale">Rabale</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class={`nav-link ${pathname.startsWith('/blog') ? 'active' : ''}`} href="/blog/">Blog</a></li>
+          <li class="nav-item"><a class={`nav-link ${pathname.startsWith('/contact') ? 'active' : ''}`} href="/contact">Contact</a></li>
+        </ul>
+        <!-- Header Live Search Trigger Button -->
+        <button class="btn btn-outline-light btn-sm ms-lg-3 rounded-circle" type="button" data-bs-toggle="modal" data-bs-target="#liveSearchModal" aria-label="Search">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+  </nav>

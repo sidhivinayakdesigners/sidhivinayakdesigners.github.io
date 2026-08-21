@@ -1,0 +1,240 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Contact Us | Siddhivinayak Designers";
+const description = "Get in touch with Siddhivinayak Designers. Book a free design consultation, visit our Koparkhairane office, or request a quote online.";
+const canonical = "https://siddhivinayakdesigners.in/contact";
+const schema = `{
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://siddhivinayakdesigners.in/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Contact Us",
+        "item": "https://siddhivinayakdesigners.in/contact"
+      }]
+    }`;
+const bodyContent = `<!-- Header Banner -->
+<section class="py-5 bg-dark" style="margin-top: 70px;">
+<div class="container py-4 text-center">
+<h1 class="font-luxury text-white mb-2" data-aos="fade-down">Connect With Us</h1>
+<div class="custom-breadcrumb text-center justify-content-center d-flex gap-2">
+<a href="/">Home</a>
+<span class="text-muted">/</span>
+<span>Contact Us</span>
+</div>
+</div>
+</section>
+<!-- Contact & Map -->
+<section class="py-5 bg-dark text-white">
+<div class="container py-5">
+<div class="row g-5">
+<!-- Contact Info -->
+<div class="col-lg-5" data-aos="fade-right">
+<span class="section-subtitle">Get In Touch</span>
+<h2 class="section-title text-white font-luxury mb-4">Let's Discuss Your Space</h2>
+<p class="text-muted mb-5">Have an upcoming interior design project or office renovation in Navi Mumbai? Get in touch with our turnkey execution team today.</p>
+<div class="d-flex align-items-start mb-4">
+<div class="text-gold me-3 fs-4"><i class="fas fa-map-marker-alt"></i></div>
+<div>
+<h5 class="text-white h6 font-luxury mb-1">Our Office Address</h5>
+<p class="small text-muted mb-0"><a class="text-muted" href="https://maps.google.com/?cid=6911458856073113523" rel="noopener" target="_blank">Shree Laxmi CHS, A 301, Sector 23, Kopar Khairane, Navi Mumbai, Maharashtra 400709</a></p>
+</div>
+</div>
+<div class="d-flex align-items-start mb-4">
+<div class="text-gold me-3 fs-4"><i class="fas fa-phone-alt"></i></div>
+<div>
+<h5 class="text-white h6 font-luxury mb-1">Call Us Directly</h5>
+<p class="small text-muted mb-0"><a class="text-muted text-decoration-none fw-bold" href="tel:+918369297174">+91 83692 97174</a></p>
+</div>
+</div>
+<div class="d-flex align-items-start mb-4">
+<div class="text-gold me-3 fs-4"><i class="fas fa-envelope"></i></div>
+<div>
+<h5 class="text-white h6 font-luxury mb-1">Email For Proposals</h5>
+<p class="small text-muted mb-0"><a class="text-muted text-decoration-none fw-bold email-link" data-domain="siddhivinayakdesigners.in" data-user="admin" href="#">admin [at] siddhivinayakdesigners.in</a></p>
+</div>
+</div>
+<div class="d-flex align-items-start mb-5">
+<div class="text-gold me-3 fs-4"><i class="fas fa-clock"></i></div>
+<div>
+<h5 class="text-white h6 font-luxury mb-1">Operating Hours</h5>
+<p class="small text-muted mb-0">Open Daily: 9:00 AM - 9:00 PM (IST)</p>
+</div>
+</div>
+<!-- Social Icons -->
+<div class="social-icons">
+<a aria-label="Facebook Page" href="https://www.facebook.com/people/Siddhivinayak-Interior/61591244265786/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+<a aria-label="Instagram Profile" href="https://www.instagram.com/siddhivinayakdesigners/" target="_blank"><i class="fab fa-instagram"></i></a>
+
+<a aria-label="Google Business Profile" href="https://maps.google.com/?cid=6911458856073113523" target="_blank" title="Google Business Profile"><i class="fab fa-google"></i></a>
+</div>
+</div>
+<!-- Contact Form -->
+<div class="col-lg-7" data-aos="fade-left">
+<div class="p-4 bg-dark-card border border-light-subtle rounded-0">
+<form class="luxury-form" id="contactForm">
+<div class="row">
+<div class="col-md-6 mb-3">
+<label for="contactName">Full Name</label>
+<input class="form-control" id="contactName" name="name" placeholder="Enter your name" required="" type="text"/>
+</div>
+<div class="col-md-6 mb-3">
+<label for="contactPhone">Phone Number</label>
+<input class="form-control" id="contactPhone" name="phone" placeholder="Enter mobile number" required="" type="tel"/>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 mb-3">
+<label for="contactEmail">Email Address</label>
+<input class="form-control" id="contactEmail" name="email" placeholder="Enter email" required="" type="email"/>
+</div>
+<div class="col-md-6 mb-3">
+<label for="contactLocation">Property Location</label>
+<select class="form-select" id="contactLocation" name="location" required="">
+<option value="Koparkhairane">Koparkhairane</option>
+<option value="Ghansoli">Ghansoli</option>
+<option value="Vashi">Vashi</option>
+<option value="Sanpada">Sanpada</option>
+<option value="Airoli">Airoli</option>
+<option value="Nerul">Nerul</option>
+<option value="Kharghar">Kharghar</option>
+<option value="Panvel">Panvel</option>
+<option value="Other">Other Navi Mumbai</option>
+</select>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6 mb-3">
+<label for="contactProperty">Property Type</label>
+<select class="form-select" id="contactProperty" name="property" required="">
+<option value="1bhk">1 BHK Flat</option>
+<option selected="" value="2bhk">2 BHK Flat</option>
+<option value="3bhk">3 BHK Flat</option>
+<option value="villa">Bungalow / Villa</option>
+<option value="commercial">Office / Showroom</option>
+</select>
+</div>
+<div class="col-md-6 mb-3">
+<label for="contactBudget">Estimated Budget</label>
+<select class="form-select" id="contactBudget" name="budget" required="">
+<option value="Under 3L">Under ₹3 Lakhs</option>
+<option value="3L-5L">₹3 Lakhs - ₹5 Lakhs</option>
+<option selected="" value="5L-10L">₹5 Lakhs - ₹10 Lakhs</option>
+<option value="10L+">₹10 Lakhs - ₹20 Lakhs</option>
+<option value="20L+">₹20 Lakhs +</option>
+</select>
+</div>
+</div>
+<div class="mb-4">
+<label for="contactMessage">Describe Your Requirements</label>
+<textarea class="form-control" id="contactMessage" name="message" placeholder="Detail any structural alterations, false ceiling plans, modular kitchen layouts..." required="" rows="4"></textarea>
+</div>
+<div class="d-grid gap-2">
+<button class="btn btn-gold py-3" type="submit">Book Site Visit</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<!-- Map Section -->
+<div class="row mt-5" data-aos="fade-up">
+<div class="col-12">
+<div class="ratio ratio-21x9" style="max-height: 400px; border: 1px solid var(--glass-border);">
+<iframe allowfullscreen="" height="450" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.1691167440473!2d73.0016462758153!3d19.10014768212132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c0dbf117c093%3A0xe510e14ff28e6789!2sKopar%20Khairane%20Station%20Rd%2C%20Navi%20Mumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" style="border:0;" width="600"></iframe>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Floating Actions -->
+<div class="floating-widgets">
+<a style="background-color: #25D366 !important; background: #25D366 !important; color: #ffffff !important; border-color: #25D366 !important;" class="float-btn float-whatsapp" href="https://wa.me/918369297174?text=Hi%20Siddhivinayak%20Designers,%20I'm%20interested%20in%20a%20free%20design%20consultation." target="_blank">
+<i class="fab fa-whatsapp"></i>
+</a>
+<a class="float-btn float-call" href="tel:+918369297174">
+<i class="fas fa-phone-alt"></i>
+</a>
+</div>`;
+---
+<Layout title={title} description={description} canonical={canonical} schema={schema}>
+  <Fragment set:html={bodyContent} />
+</Layout>
+
+<style is:global>
+html, body {
+      background-color: #ffffff !important;
+      color: #212529 !important;
+      font-family: Arial, Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    }
+    .hero-section, .catalog-directory-hero, .dc-top-section-bg, header.bg-dark, .bg-dark, .bg-dark-card, .bg-dark-contrast {
+      background-color: #f3f6f8 !important;
+      color: #1a1a1a !important;
+    }
+    h1, h2, h3, h4, h5, h6, .section-title {
+      color: #1a1a1a !important;
+    }
+    p, span, li, label, div {
+      color: #444444 !important;
+    }
+    :not(footer) .text-white, body:not(footer) .text-white, a.text-white:not(footer a), .section-title.text-white {
+      color: #1a1a1a !important;
+    }
+    .text-gold {
+      color: #189ba6 !important;
+    }
+    .btn-gold, .btn-primary {
+      background-color: #189ba6 !important;
+      border-color: #189ba6 !important;
+      color: #ffffff !important;
+    }
+    .btn-gold:hover, .btn-primary:hover {
+      background-color: #127c85 !important;
+      border-color: #127c85 !important;
+    }
+    footer, footer * {
+      color: #ffffff !important;
+    }
+    footer p, footer span, footer li, footer div, footer small, footer .text-muted {
+      color: #d1cfc9 !important;
+    }
+  
+    /* Fix headings appearing white on light background inside bg-dark / bg-dark-card / bg-dark-contrast elements */
+    .bg-dark h1, .bg-dark h2, .bg-dark h3, .bg-dark h4, .bg-dark h5, .bg-dark h6,
+    .bg-dark-card h1, .bg-dark-card h2, .bg-dark-card h3, .bg-dark-card h4, .bg-dark-card h5, .bg-dark-card h6,
+    .bg-dark-contrast h1, .bg-dark-contrast h2, .bg-dark-contrast h3, .bg-dark-contrast h4, .bg-dark-contrast h5, .bg-dark-contrast h6 {
+      color: #1a1a1a !important;
+    }
+    /* Fix text elements appearing light grey/white on light background inside bg-dark / bg-dark-card / bg-dark-contrast elements */
+    .bg-dark p, .bg-dark li, .bg-dark span:not(.text-gold):not(.text-teal), .bg-dark label, .bg-dark .text-muted,
+    .bg-dark-card p, .bg-dark-card li, .bg-dark-card span:not(.text-gold):not(.text-teal), .bg-dark-card label, .bg-dark-card .text-muted,
+    .bg-dark-contrast p, .bg-dark-contrast li, .bg-dark-contrast span:not(.text-gold):not(.text-teal), .bg-dark-contrast label, .bg-dark-contrast .text-muted {
+      color: #444444 !important;
+    }
+    .bg-dark strong, .bg-dark-card strong, .bg-dark-contrast strong {
+      color: #1a1a1a !important;
+    }
+</style>
+
+<script is:inline></script>
+
+<script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PLACEHOLDER');
+    </script>
+
+<script is:inline>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+    </script>
+

@@ -1,0 +1,1721 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Home Interior Price Calculator | Siddhivinayak Designers";
+const description = "";
+const canonical = "";
+const schema = ``;
+const bodyContent = `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Interior Price Calculator | Siddhivinayak Designers</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Plus Jakarta Sans Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    html, body {
+      background-color: #f3f6f8 !important;
+      color: #333333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    .calc-header-logo {
+      min-width: auto;
+    }
+    .calc-header-counter {
+      min-width: auto;
+    }
+    @media (min-width: 768px) {
+      .calc-header-logo {
+        min-width: 320px;
+      }
+      .calc-header-counter {
+        min-width: 320px;
+      }
+    }
+
+    /* Progress Header */
+    .calc-top-header {
+      background: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 0.75rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .timeline-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .timeline-line {
+      position: absolute;
+      top: 10px;
+      left: 10%;
+      right: 10%;
+      height: 3px;
+      background: #e2e8f0;
+      z-index: 1;
+    }
+
+    .timeline-progress {
+      position: absolute;
+      top: 10px;
+      left: 10%;
+      height: 3px;
+      background: #4a3748;
+      width: 0%;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 2;
+    }
+
+    .timeline-step {
+      flex: 1;
+      text-align: center;
+      position: relative;
+      z-index: 3;
+    }
+
+    .step-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 3px solid #cbd5e1;
+      margin: 0 auto 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      color: transparent;
+      transition: all 0.3s ease;
+    }
+
+    .timeline-step.active .step-dot {
+      border-color: #4a3748;
+      background: #ffffff;
+    }
+
+    .timeline-step.active .step-dot::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4a3748;
+    }
+
+    .timeline-step.completed .step-dot {
+      border-color: #4a3748;
+      background: #4a3748;
+      color: #ffffff;
+    }
+
+    .step-text {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #94a3b8;
+      letter-spacing: 0.5px;
+      display: block;
+    }
+
+    .timeline-step.active .step-text,
+    .timeline-step.completed .step-text {
+      color: #4a3748;
+    }
+
+    .step-counter-label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #475569;
+    }
+
+    /* Main Calculator Container Card */
+    .calc-card-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1rem;
+    }
+
+    .calc-box {
+      background: #ffffff;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 680px;
+      padding: 3rem 2.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      min-height: 480px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .calc-heading {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: #2d1e2f !important;
+      margin-bottom: 0.4rem;
+      text-align: center;
+    }
+
+    .calc-subheading {
+      font-size: 0.95rem;
+      color: #64748b;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .calc-subheading a {
+      color: #ec5252;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Step 1: BHK Row Accordions */
+    .bhk-row {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .bhk-row-header {
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      background: #ffffff;
+      user-select: none;
+    }
+
+    .bhk-radio-label-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .custom-radio {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease;
+    }
+
+    .bhk-row.active .custom-radio {
+      border-color: #ec5252;
+    }
+
+    .bhk-row.active .custom-radio::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ec5252;
+    }
+
+    .bhk-label-text {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #334155;
+    }
+
+    .bhk-row.active .bhk-label-text {
+      color: #0f172a;
+    }
+
+    .bhk-chevron {
+      color: #64748b;
+      transition: transform 0.3s ease;
+    }
+
+    .bhk-row.active .bhk-chevron {
+      transform: rotate(180deg);
+    }
+
+    .bhk-row-body {
+      max-height: 0;
+      overflow: hidden;
+      background: #fafafa;
+      transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .bhk-row.active .bhk-row-body {
+      max-height: 150px;
+      border-top: 1px solid #f1f5f9;
+    }
+
+    .sub-choice-grid {
+      display: flex;
+      gap: 16px;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .sub-choice-card {
+      flex: 1;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 1rem;
+      cursor: pointer;
+      background: #ffffff;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sub-choice-card:hover {
+      border-color: #fca5a5;
+    }
+
+    .sub-choice-card.selected {
+      border-color: #ec5252 !important;
+      background: #fef2f2 !important;
+    }
+
+    .sub-choice-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #334155;
+      margin-bottom: 2px;
+    }
+
+    .sub-choice-desc {
+      font-size: 0.78rem;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    /* Step 2: Room Counters */
+    .room-counter-row {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+      background: #ffffff;
+    }
+
+    .room-name-text {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #334155;
+    }
+
+    .counter-control-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .counter-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #ec5252;
+      color: #ffffff;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(236, 82, 82, 0.25);
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    .counter-btn:active {
+      transform: scale(0.95);
+    }
+
+    .counter-btn:disabled {
+      background: #cbd5e1;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+
+    .counter-value-text {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #0f172a;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    /* Step 3: Packages */
+    .package-scroll-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .pkg-choice-card {
+      border: 1.5px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 0.9rem;
+      cursor: pointer;
+      background: #ffffff;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      gap: 12px;
+    }
+
+    .pkg-choice-card:hover {
+      border-color: #fca5a5;
+    }
+
+    .pkg-choice-card.selected {
+      border-color: #ec5252 !important;
+      background: #fef2f2 !important;
+    }
+
+    .pkg-radio-col {
+      width: 20px;
+    }
+
+    .pkg-info-col {
+      flex: 1;
+    }
+
+    .pkg-title-line {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #1e293b !important;
+      margin-bottom: 0.2rem;
+    }
+
+    .pkg-subtitle-line {
+      font-size: 0.78rem;
+      color: #64748b;
+      line-height: 1.4;
+      margin-bottom: 0.6rem;
+    }
+
+    .pkg-image {
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 0.6rem;
+      border: 1px solid #f1f5f9;
+    }
+
+    .pkg-checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .pkg-checklist li {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 4px;
+    }
+
+    .pkg-checklist li i {
+      color: #ec5252;
+    }
+
+    /* Step 4: Quote Form */
+    .lead-form-wrap {
+      max-width: 480px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .calc-input-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .calc-input-field {
+      width: 100%;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 0.85rem 1.25rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1e293b;
+      background: #ffffff;
+      outline: none;
+      transition: all 0.25s ease;
+    }
+
+    .calc-input-field:focus {
+      border-color: #ec5252;
+      box-shadow: 0 0 0 4px rgba(236, 82, 82, 0.1);
+    }
+
+    .whatsapp-checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .whatsapp-check-box {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      border: 2px solid #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: transparent;
+      transition: all 0.2s ease;
+    }
+
+    .whatsapp-checkbox-row.active .whatsapp-check-box {
+      border-color: #ec5252;
+      background: #ec5252;
+      color: #ffffff;
+    }
+
+    .whatsapp-label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #475569;
+    }
+
+    /* Fixed Bottom Action Bar */
+    .calc-bottom-action-bar {
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      padding: 1rem 0;
+      position: sticky;
+      bottom: 0;
+      width: 100%;
+      z-index: 100;
+    }
+
+    .action-bar-container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .calc-btn-pill-back {
+      background: transparent;
+      border: none;
+      font-weight: 700;
+      color: #fca5a5;
+      font-size: 0.95rem;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      transition: color 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .calc-btn-pill-back:hover {
+      color: #ec5252;
+    }
+
+    .calc-btn-pill-next {
+      background: #ec5252 !important;
+      color: #ffffff !important;
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 0.85rem 3.5rem;
+      border-radius: 50px;
+      border: none;
+      box-shadow: 0 6px 18px rgba(236, 82, 82, 0.28);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    .calc-btn-pill-next:disabled {
+      background: #cbd5e1 !important;
+      box-shadow: none !important;
+      cursor: not-allowed;
+    }
+
+    .calc-btn-pill-next:not(:disabled):hover {
+      background: #d93d3d !important;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(236, 82, 82, 0.42);
+    }
+
+    /* Step Containers */
+    .calc-step {
+      display: none;
+      animation: fadeInSlide 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .calc-step.active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar Timeline Progress -->
+  <header class="calc-top-header">
+    <div class="container-fluid px-0 d-flex align-items-center justify-content-between position-relative">
+      
+      <!-- Left Logo and Name Spacer -->
+      <div class="calc-header-logo d-flex align-items-center" style="gap: 12px;">
+      </div>
+
+      <!-- Centered Progress Timeline -->
+      <div class="timeline-container-wrap flex-grow-1 d-none d-md-block position-relative" style="max-width: 600px; margin: 0 auto;">
+        <div class="timeline-container" style="max-width: 100%; padding: 0 10px;">
+          <div class="timeline-line"></div>
+          <div class="timeline-progress" id="timelineProgress"></div>
+
+          <!-- 1. BHK Type -->
+          <div class="timeline-step active" id="timeStep1">
+            <div class="step-dot"><i class="fas fa-check"></i></div>
+            <span class="step-text">BHK Type</span>
+          </div>
+
+          <!-- 2. Rooms to Design -->
+          <div class="timeline-step" id="timeStep2">
+            <div class="step-dot"><i class="fas fa-check"></i></div>
+            <span class="step-text">Rooms to Design</span>
+          </div>
+
+          <!-- 3. Package -->
+          <div class="timeline-step" id="timeStep3">
+            <div class="step-dot"><i class="fas fa-check"></i></div>
+            <span class="step-text">Package</span>
+          </div>
+
+          <!-- 4. Get Quote -->
+          <div class="timeline-step" id="timeStep4">
+            <div class="step-dot"><i class="fas fa-check"></i></div>
+            <span class="step-text">Get Quote</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Right Step Counter -->
+      <div class="calc-header-counter d-flex justify-content-end">
+        <div class="step-counter-label" id="stepCounterLabel">1/4</div>
+      </div>
+      
+    </div>
+  </header>
+
+  <!-- Calculator Main Box -->
+  <div class="calc-card-wrapper">
+    <div class="calc-box">
+
+      <!-- STEP 1: BHK SELECT -->
+      <div class="calc-step active" id="stepBox1">
+        <h1 class="calc-heading">Select your BHK type</h1>
+        <p class="calc-subheading">To know more about this, <a href="#">click here</a></p>
+
+        <!-- Options Container -->
+        <div class="bhk-options-wrap">
+
+          <!-- 1 BHK -->
+          <div class="bhk-row" id="row1bhk">
+            <div class="bhk-row-header" onclick="toggleBhkRow('1bhk', '1 BHK', 350000, 500000)">
+              <div class="bhk-radio-label-group">
+                <div class="custom-radio"></div>
+                <span class="bhk-label-text">1 BHK</span>
+              </div>
+              <i class="fas fa-chevron-down bhk-chevron"></i>
+            </div>
+            <div class="bhk-row-body">
+              <div class="sub-choice-grid">
+                <div class="sub-choice-card selected" onclick="selectBhkSub(this, 'Small')">
+                  <div class="custom-radio"></div>
+                  <div>
+                    <div class="sub-choice-title">Small</div>
+                    <div class="sub-choice-desc">Below 600 sq ft</div>
+                  </div>
+                </div>
+                <div class="sub-choice-card" onclick="selectBhkSub(this, 'Large')">
+                  <div class="custom-radio"></div>
+                  <div>
+                    <div class="sub-choice-title">Large</div>
+                    <div class="sub-choice-desc">Above 600 sq ft</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2 BHK -->
+          <div class="bhk-row" id="row2bhk">
+            <div class="bhk-row-header" onclick="toggleBhkRow('2bhk', '2 BHK', 550000, 850000)">
+              <div class="bhk-radio-label-group">
+                <div class="custom-radio"></div>
+                <span class="bhk-label-text">2 BHK</span>
+              </div>
+              <i class="fas fa-chevron-down bhk-chevron"></i>
+            </div>
+            <div class="bhk-row-body">
+              <div class="sub-choice-grid">
+                <div class="sub-choice-card selected" onclick="selectBhkSub(this, 'Small')">
+                  <div class="custom-radio"></div>
+                  <div>
+                    <div class="sub-choice-title">Small</div>
+                    <div class="sub-choice-desc">Below 1000 sq ft</div>
+                  </div>
+                </div>
+                <div class="sub-choice-card" onclick="selectBhkSub(this, 'Large')">
+                  <div class="custom-radio"></div>
+                  <div>
+                    <div class="sub-choice-title">Large</div>
+                    <div class="sub-choice-desc">Above 1000 sq ft</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3 BHK -->
+          <div class="bhk-row" id="row3bhk">
+            <div class="bhk-row-header" onclick="toggleBhkRow('3bhk', '3 BHK', 900000, 1350000)">
+              <div class="bhk-radio-label-group">
+                <div class="custom-radio"></div>
+                <span class="bhk-label-text">3 BHK</span>
+              </div>
+              <i class="fas fa-chevron-down bhk-chevron"></i>
+            </div>
+            <div class="bhk-row-body">
+              <div class="sub-choice-grid">
+                <div class="sub-choice-card selected" onclick="selectBhkSub(this, 'Small')">
+                  <div class="custom-radio"></div>
+                  <div>
+                    <div class="sub-choice-title">Small</div>
+                    <div class="sub-choice-desc">Below 1400 sq ft</div>
+                  </div>
+                </div>
+                <div class="sub-choice-card" onclick="selectBhkSub(this, 'Large')">
+                  <div class="custom-radio"></div>
+                  <div>
+                    <div class="sub-choice-title">Large</div>
+                    <div class="sub-choice-desc">Above 1400 sq ft</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4 BHK -->
+          <div class="bhk-row" id="row4bhk">
+            <div class="bhk-row-header" onclick="toggleBhkRow('4bhk', '4 BHK', 1400000, 2200000)">
+              <div class="bhk-radio-label-group">
+                <div class="custom-radio"></div>
+                <span class="bhk-label-text">4 BHK</span>
+              </div>
+              <i class="fas fa-chevron-down bhk-chevron"></i>
+            </div>
+            <div class="bhk-row-body">
+              <div class="sub-choice-grid">
+                <div class="sub-choice-card selected" onclick="selectBhkSub(this, 'Small')">
+                  <div class="custom-radio"></div>
+                  <div>
+                    <div class="sub-choice-title">Small</div>
+                    <div class="sub-choice-desc">Below 1800 sq ft</div>
+                  </div>
+                </div>
+                <div class="sub-choice-card" onclick="selectBhkSub(this, 'Large')">
+                  <div class="custom-radio"></div>
+                  <div>
+                    <div class="sub-choice-title">Large</div>
+                    <div class="sub-choice-desc">Above 1800 sq ft</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- STEP 2: ROOM SELECTIONS -->
+      <div class="calc-step" id="stepBox2">
+        <h1 class="calc-heading">Select the rooms you’d like us to design</h1>
+        <p class="calc-subheading">To know more about this, <a href="#">click here</a></p>
+
+        <div class="counters-wrap">
+          <!-- Living Room -->
+          <div class="room-counter-row">
+            <span class="room-name-text">Living Room</span>
+            <div class="counter-control-group">
+              <button class="counter-btn" onclick="adjustCount('living', -1)"><i class="fas fa-minus"></i></button>
+              <span class="counter-value-text" id="cntLiving">1</span>
+              <button class="counter-btn" onclick="adjustCount('living', 1)"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+
+          <!-- Kitchen -->
+          <div class="room-counter-row">
+            <span class="room-name-text">Kitchen</span>
+            <div class="counter-control-group">
+              <button class="counter-btn" onclick="adjustCount('kitchen', -1)"><i class="fas fa-minus"></i></button>
+              <span class="counter-value-text" id="cntKitchen">1</span>
+              <button class="counter-btn" onclick="adjustCount('kitchen', 1)"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+
+          <!-- Bedroom -->
+          <div class="room-counter-row">
+            <span class="room-name-text">Bedroom</span>
+            <div class="counter-control-group">
+              <button class="counter-btn" onclick="adjustCount('bedroom', -1)"><i class="fas fa-minus"></i></button>
+              <span class="counter-value-text" id="cntBedroom">2</span>
+              <button class="counter-btn" onclick="adjustCount('bedroom', 1)"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+
+          <!-- Bathroom -->
+          <div class="room-counter-row">
+            <span class="room-name-text">Bathroom</span>
+            <div class="counter-control-group">
+              <button class="counter-btn" onclick="adjustCount('bathroom', -1)"><i class="fas fa-minus"></i></button>
+              <span class="counter-value-text" id="cntBathroom">2</span>
+              <button class="counter-btn" onclick="adjustCount('bathroom', 1)"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+
+          <!-- Dining -->
+          <div class="room-counter-row">
+            <span class="room-name-text">Dining</span>
+            <div class="counter-control-group">
+              <button class="counter-btn" onclick="adjustCount('dining', -1)"><i class="fas fa-minus"></i></button>
+              <span class="counter-value-text" id="cntDining">1</span>
+              <button class="counter-btn" onclick="adjustCount('dining', 1)"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3: PICK PACKAGE -->
+      <div class="calc-step" id="stepBox3">
+        <h1 class="calc-heading">Pick your package</h1>
+        <p class="calc-subheading">Choose layout designs &amp; material specifications suitable for your lifestyle</p>
+
+        <div class="package-scroll-wrap">
+
+          <!-- Essentials -->
+          <div class="pkg-choice-card selected" onclick="selectPkgCard(this, 'Essentials', 1.0)">
+            <div class="pkg-radio-col">
+              <div class="custom-radio"></div>
+            </div>
+            <div class="pkg-info-col">
+              <h3 class="pkg-title-line">Essentials (₹₹)</h3>
+              <p class="pkg-subtitle-line">A range of essential home interior solutions that's perfect for all your
+                needs.</p>
+              <img src="/assets/images/modular-kitchen/kitchen-with-foldable-breakfast-table-and-yellow-chairs.webp"
+                class="pkg-image" alt="Essentials Package" />
+              <ul class="pkg-checklist">
+                <li><i class="fas fa-check"></i> Affordable pricing</li>
+                <li><i class="fas fa-check"></i> Convenient designs</li>
+                <li><i class="fas fa-check"></i> Basic accessories</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Premium -->
+          <div class="pkg-choice-card" onclick="selectPkgCard(this, 'Premium', 1.25)">
+            <div class="pkg-radio-col">
+              <div class="custom-radio"></div>
+            </div>
+            <div class="pkg-info-col">
+              <h3 class="pkg-title-line">Premium (₹₹₹)</h3>
+              <p class="pkg-subtitle-line">Superior home interior solutions that will take your interiors to the next
+                level.</p>
+              <img src="/assets/images/bedroom/modern-bedroom-in-gray-and-wood.webp" class="pkg-image"
+                alt="Premium Package" />
+              <ul class="pkg-checklist">
+                <li><i class="fas fa-check"></i> Mid-range pricing</li>
+                <li><i class="fas fa-check"></i> Premium designs</li>
+                <li><i class="fas fa-check"></i> Wide range of accessories</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Luxe -->
+          <div class="pkg-choice-card" onclick="selectPkgCard(this, 'Luxe', 1.6)">
+            <div class="pkg-radio-col">
+              <div class="custom-radio"></div>
+            </div>
+            <div class="pkg-info-col">
+              <h3 class="pkg-title-line">Luxe (₹₹₹₹)</h3>
+              <p class="pkg-subtitle-line">High-end interior solutions for the ultimate home interior experience you
+                deserve.</p>
+              <img src="/assets/images/living-room/eclectic-living-room-with-wall-mounted-tv-unit.webp"
+                class="pkg-image" alt="Luxe Package" />
+              <ul class="pkg-checklist">
+                <li><i class="fas fa-check"></i> Elite pricing</li>
+                <li><i class="fas fa-check"></i> Lavish designs</li>
+                <li><i class="fas fa-check"></i> Extensive range of accessories</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- STEP 4: GET ESTIMATE / LEAD FORM -->
+      <div class="calc-step" id="stepBox4">
+        <h1 class="calc-heading">Your estimate is almost ready</h1>
+        <p class="calc-subheading">Submit your contact info to view your instant cost estimate report</p>
+
+        <div class="lead-form-wrap">
+          <form onsubmit="handleFinalSubmit(event)">
+            <div class="calc-input-group">
+              <input type="text" class="calc-input-field" placeholder="Name" id="leadName" required />
+            </div>
+            <div class="calc-input-group">
+              <input type="email" class="calc-input-field" placeholder="Email ID" id="leadEmail" required />
+            </div>
+            <div class="calc-input-group">
+              <input type="tel" class="calc-input-field" placeholder="Phone number" id="leadPhone" required />
+            </div>
+
+            <!-- WhatsApp checkbox -->
+            <div class="whatsapp-checkbox-row active" onclick="toggleWhatsAppCheckbox(this)">
+              <div class="whatsapp-check-box"><i class="fas fa-check"></i></div>
+              <span class="whatsapp-label">Send me updates on WhatsApp</span>
+            </div>
+
+            <div class="calc-input-group">
+              <select class="calc-input-field" id="leadCity" required>
+                <option value="" disabled selected>Select Locality in Navi Mumbai</option>
+                <option value="Vashi">Vashi</option>
+                <option value="Kharghar">Kharghar</option>
+                <option value="Nerul">Nerul</option>
+                <option value="Belapur">Belapur</option>
+                <option value="Sanpada">Sanpada</option>
+                <option value="Airoli">Airoli</option>
+                <option value="Ghansoli">Ghansoli</option>
+                <option value="Kopar Khairane">Kopar Khairane</option>
+                <option value="Panvel">Panvel</option>
+                <option value="Rabale">Rabale</option>
+              </select>
+            </div>
+
+            <!-- Success Message Card (Hidden initially, shown after form submission) -->
+            <div id="priceResultBox"
+              style="display: none; background: #fcfdfd; border: 1.5px dashed #ec5252; border-radius: 12px; padding: 1.5rem; text-align: center; margin-top: 1.5rem;">
+              <h4 style="font-weight: 800; font-size: 1.15rem; color: #2d1e2f;">Thank You!</h4>
+              <p class="text-muted small mb-0">Our professional interior designers will contact you shortly to share
+                your customized room-by-room quote and design catalog.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom Navigation Action Bar -->`;
+---
+<Layout title={title} description={description} canonical={canonical} schema={schema}>
+  <Fragment set:html={bodyContent} />
+</Layout>
+
+<style is:global>
+* {
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    html, body {
+      background-color: #f3f6f8 !important;
+      color: #333333;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    .calc-header-logo {
+      min-width: auto;
+    }
+    .calc-header-counter {
+      min-width: auto;
+    }
+    @media (min-width: 768px) {
+      .calc-header-logo {
+        min-width: 320px;
+      }
+      .calc-header-counter {
+        min-width: 320px;
+      }
+    }
+
+    /* Progress Header */
+    .calc-top-header {
+      background: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 0.75rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .timeline-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .timeline-line {
+      position: absolute;
+      top: 10px;
+      left: 10%;
+      right: 10%;
+      height: 3px;
+      background: #e2e8f0;
+      z-index: 1;
+    }
+
+    .timeline-progress {
+      position: absolute;
+      top: 10px;
+      left: 10%;
+      height: 3px;
+      background: #4a3748;
+      width: 0%;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 2;
+    }
+
+    .timeline-step {
+      flex: 1;
+      text-align: center;
+      position: relative;
+      z-index: 3;
+    }
+
+    .step-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 3px solid #cbd5e1;
+      margin: 0 auto 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      color: transparent;
+      transition: all 0.3s ease;
+    }
+
+    .timeline-step.active .step-dot {
+      border-color: #4a3748;
+      background: #ffffff;
+    }
+
+    .timeline-step.active .step-dot::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4a3748;
+    }
+
+    .timeline-step.completed .step-dot {
+      border-color: #4a3748;
+      background: #4a3748;
+      color: #ffffff;
+    }
+
+    .step-text {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #94a3b8;
+      letter-spacing: 0.5px;
+      display: block;
+    }
+
+    .timeline-step.active .step-text,
+    .timeline-step.completed .step-text {
+      color: #4a3748;
+    }
+
+    .step-counter-label {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #475569;
+    }
+
+    /* Main Calculator Container Card */
+    .calc-card-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1rem;
+    }
+
+    .calc-box {
+      background: #ffffff;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 680px;
+      padding: 3rem 2.5rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      min-height: 480px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .calc-heading {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: #2d1e2f !important;
+      margin-bottom: 0.4rem;
+      text-align: center;
+    }
+
+    .calc-subheading {
+      font-size: 0.95rem;
+      color: #64748b;
+      margin-bottom: 2rem;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .calc-subheading a {
+      color: #ec5252;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Step 1: BHK Row Accordions */
+    .bhk-row {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .bhk-row-header {
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      background: #ffffff;
+      user-select: none;
+    }
+
+    .bhk-radio-label-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .custom-radio {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease;
+    }
+
+    .bhk-row.active .custom-radio {
+      border-color: #ec5252;
+    }
+
+    .bhk-row.active .custom-radio::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ec5252;
+    }
+
+    .bhk-label-text {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #334155;
+    }
+
+    .bhk-row.active .bhk-label-text {
+      color: #0f172a;
+    }
+
+    .bhk-chevron {
+      color: #64748b;
+      transition: transform 0.3s ease;
+    }
+
+    .bhk-row.active .bhk-chevron {
+      transform: rotate(180deg);
+    }
+
+    .bhk-row-body {
+      max-height: 0;
+      overflow: hidden;
+      background: #fafafa;
+      transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .bhk-row.active .bhk-row-body {
+      max-height: 150px;
+      border-top: 1px solid #f1f5f9;
+    }
+
+    .sub-choice-grid {
+      display: flex;
+      gap: 16px;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .sub-choice-card {
+      flex: 1;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 1rem;
+      cursor: pointer;
+      background: #ffffff;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .sub-choice-card:hover {
+      border-color: #fca5a5;
+    }
+
+    .sub-choice-card.selected {
+      border-color: #ec5252 !important;
+      background: #fef2f2 !important;
+    }
+
+    .sub-choice-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #334155;
+      margin-bottom: 2px;
+    }
+
+    .sub-choice-desc {
+      font-size: 0.78rem;
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    /* Step 2: Room Counters */
+    .room-counter-row {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.75rem;
+      background: #ffffff;
+    }
+
+    .room-name-text {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #334155;
+    }
+
+    .counter-control-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .counter-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #ec5252;
+      color: #ffffff;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(236, 82, 82, 0.25);
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    .counter-btn:active {
+      transform: scale(0.95);
+    }
+
+    .counter-btn:disabled {
+      background: #cbd5e1;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+
+    .counter-value-text {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #0f172a;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    /* Step 3: Packages */
+    .package-scroll-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .pkg-choice-card {
+      border: 1.5px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 0.9rem;
+      cursor: pointer;
+      background: #ffffff;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      gap: 12px;
+    }
+
+    .pkg-choice-card:hover {
+      border-color: #fca5a5;
+    }
+
+    .pkg-choice-card.selected {
+      border-color: #ec5252 !important;
+      background: #fef2f2 !important;
+    }
+
+    .pkg-radio-col {
+      width: 20px;
+    }
+
+    .pkg-info-col {
+      flex: 1;
+    }
+
+    .pkg-title-line {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #1e293b !important;
+      margin-bottom: 0.2rem;
+    }
+
+    .pkg-subtitle-line {
+      font-size: 0.78rem;
+      color: #64748b;
+      line-height: 1.4;
+      margin-bottom: 0.6rem;
+    }
+
+    .pkg-image {
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 0.6rem;
+      border: 1px solid #f1f5f9;
+    }
+
+    .pkg-checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .pkg-checklist li {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 4px;
+    }
+
+    .pkg-checklist li i {
+      color: #ec5252;
+    }
+
+    /* Step 4: Quote Form */
+    .lead-form-wrap {
+      max-width: 480px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .calc-input-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .calc-input-field {
+      width: 100%;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 0.85rem 1.25rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1e293b;
+      background: #ffffff;
+      outline: none;
+      transition: all 0.25s ease;
+    }
+
+    .calc-input-field:focus {
+      border-color: #ec5252;
+      box-shadow: 0 0 0 4px rgba(236, 82, 82, 0.1);
+    }
+
+    .whatsapp-checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .whatsapp-check-box {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      border: 2px solid #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: transparent;
+      transition: all 0.2s ease;
+    }
+
+    .whatsapp-checkbox-row.active .whatsapp-check-box {
+      border-color: #ec5252;
+      background: #ec5252;
+      color: #ffffff;
+    }
+
+    .whatsapp-label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #475569;
+    }
+
+    /* Fixed Bottom Action Bar */
+    .calc-bottom-action-bar {
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      padding: 1rem 0;
+      position: sticky;
+      bottom: 0;
+      width: 100%;
+      z-index: 100;
+    }
+
+    .action-bar-container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .calc-btn-pill-back {
+      background: transparent;
+      border: none;
+      font-weight: 700;
+      color: #fca5a5;
+      font-size: 0.95rem;
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      transition: color 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .calc-btn-pill-back:hover {
+      color: #ec5252;
+    }
+
+    .calc-btn-pill-next {
+      background: #ec5252 !important;
+      color: #ffffff !important;
+      font-weight: 800;
+      font-size: 0.95rem;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 0.85rem 3.5rem;
+      border-radius: 50px;
+      border: none;
+      box-shadow: 0 6px 18px rgba(236, 82, 82, 0.28);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    .calc-btn-pill-next:disabled {
+      background: #cbd5e1 !important;
+      box-shadow: none !important;
+      cursor: not-allowed;
+    }
+
+    .calc-btn-pill-next:not(:disabled):hover {
+      background: #d93d3d !important;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(236, 82, 82, 0.42);
+    }
+
+    /* Step Containers */
+    .calc-step {
+      display: none;
+      animation: fadeInSlide 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    .calc-step.active {
+      display: block;
+    }
+</style>
+
+<script is:inline>
+    let currentStep = 1;
+    let selectedBhkKey = '';
+    let selectedBhkName = '';
+    let minBasePrice = 0;
+    let maxBasePrice = 0;
+    let selectedBhkSub = 'Small';
+    let packageMultiplier = 1.0;
+    let packageName = 'Essentials';
+
+    const bhkDefaults = {
+      '1bhk': { living: 1, kitchen: 1, bedroom: 1, bathroom: 1, dining: 1 },
+      '2bhk': { living: 1, kitchen: 1, bedroom: 2, bathroom: 2, dining: 1 },
+      '3bhk': { living: 1, kitchen: 1, bedroom: 3, bathroom: 3, dining: 1 },
+      '4bhk': { living: 1, kitchen: 1, bedroom: 4, bathroom: 4, dining: 1 }
+    };
+
+    const counts = { living: 1, kitchen: 1, bedroom: 2, bathroom: 2, dining: 1 };
+
+    function toggleBhkRow(key, name, minP, maxP) {
+      document.querySelectorAll('.bhk-row').forEach(row => row.classList.remove('active'));
+      const activeRow = document.getElementById('row' + key);
+      activeRow.classList.add('active');
+
+      selectedBhkKey = key;
+      selectedBhkName = name;
+      minBasePrice = minP;
+      maxBasePrice = maxP;
+
+      // Select the active sub-card
+      const subCardSelected = activeRow.querySelector('.sub-choice-card.selected');
+      if (subCardSelected) {
+        selectedBhkSub = subCardSelected.querySelector('.sub-choice-title').textContent;
+      }
+
+      // Auto-set defaults for counters based on BHK
+      if (bhkDefaults[key]) {
+        Object.keys(bhkDefaults[key]).forEach(room => {
+          counts[room] = bhkDefaults[key][room];
+          const textEl = document.getElementById('cnt' + room.charAt(0).toUpperCase() + room.slice(1));
+          if (textEl) textEl.textContent = counts[room];
+        });
+      }
+
+      document.getElementById('btnPillNext').disabled = false;
+    }
+
+    function selectBhkSub(element, subName) {
+      event.stopPropagation();
+      const parentRow = element.closest('.bhk-row');
+      parentRow.querySelectorAll('.sub-choice-card').forEach(c => c.classList.remove('selected'));
+      element.classList.add('selected');
+      selectedBhkSub = subName;
+    }
+
+    function adjustCount(room, change) {
+      const minVal = 0;
+      const maxVal = 8;
+
+      if (counts[room] + change >= minVal && counts[room] + change <= maxVal) {
+        counts[room] += change;
+        document.getElementById('cnt' + room.charAt(0).toUpperCase() + room.slice(1)).textContent = counts[room];
+      }
+    }
+
+    function selectPkgCard(element, pkgName, multiplier) {
+      document.querySelectorAll('.pkg-choice-card').forEach(c => c.classList.remove('selected'));
+      element.classList.add('selected');
+      packageName = pkgName;
+      packageMultiplier = multiplier;
+    }
+
+    function toggleWhatsAppCheckbox(element) {
+      element.classList.toggle('active');
+    }
+
+    function showStepBox(num) {
+      document.querySelectorAll('.calc-step').forEach(box => box.classList.remove('active'));
+      document.getElementById('stepBox' + num).classList.add('active');
+
+      // Update Progress Timeline
+      document.querySelectorAll('.timeline-step').forEach((step, index) => {
+        step.classList.remove('active', 'completed');
+        if (index + 1 < num) {
+          step.classList.add('completed');
+        } else if (index + 1 === num) {
+          step.classList.add('active');
+        }
+      });
+
+      // Update Timeline line progress
+      const progressPercent = ((num - 1) / 3) * 80;
+      document.getElementById('timelineProgress').style.width = progressPercent + '%';
+
+      // Update Counter Label
+      document.getElementById('stepCounterLabel').textContent = num + '/4';
+
+      // Update footer buttons
+      if (num === 1) {
+        document.getElementById('btnPillBack').style.visibility = 'hidden';
+      } else {
+        document.getElementById('btnPillBack').style.visibility = 'visible';
+      }
+
+      if (num === 4) {
+        document.getElementById('btnPillNext').textContent = 'Submit';
+      } else {
+        document.getElementById('btnPillNext').textContent = 'Next';
+        document.getElementById('btnPillNext').style.display = 'inline-block';
+      }
+    }
+
+    function goPillNext() {
+      if (currentStep === 1) {
+        if (!selectedBhkKey) return;
+        currentStep = 2;
+        showStepBox(2);
+      } else if (currentStep === 2) {
+        currentStep = 3;
+        showStepBox(3);
+      } else if (currentStep === 3) {
+        currentStep = 4;
+        showStepBox(4);
+      } else if (currentStep === 4) {
+        // Trigger Submit Form
+        const name = document.getElementById('leadName').value;
+        const email = document.getElementById('leadEmail').value;
+        const phone = document.getElementById('leadPhone').value;
+        const city = document.getElementById('leadCity').value;
+
+        if (name && email && phone && city) {
+          const prices = calculateInstantEstimate();
+
+          // Assemble selected rooms array
+          let selectedRooms = [];
+          if (counts.living > 0) selectedRooms.push("Living Room");
+          if (counts.kitchen > 0) selectedRooms.push("Kitchen");
+          if (counts.bedroom > 0) selectedRooms.push("Bedroom");
+          if (counts.bathroom > 0) selectedRooms.push("Bathroom");
+          if (counts.dining > 0) selectedRooms.push("Dining");
+
+          const summaryData = {
+            bhk: selectedBhkName,
+            rooms: selectedRooms.join(", "),
+            package: packageName
+          };
+
+          localStorage.setItem("calc_summary", JSON.stringify(summaryData));
+
+          window.location.href = `/calculator-result.html?min=${prices.min}&max=${prices.max}`;
+        } else {
+          alert('Please fill out all fields.');
+        }
+      }
+    }
+
+    function goPillBack() {
+      if (currentStep > 1) {
+        currentStep--;
+        showStepBox(currentStep);
+      }
+    }
+
+    function calculateInstantEstimate() {
+      // Calculate multiplier from BHK small vs large
+      let subMultiplier = 1.0;
+      if (selectedBhkSub === 'Large') {
+        subMultiplier = 1.2;
+      }
+
+      // Calculate multiplier from custom counter variations vs standard BHK counts
+      const standardBhk = bhkDefaults[selectedBhkKey];
+      let roomDiffMultiplier = 1.0;
+      if (standardBhk) {
+        let totalCountDiff = 0;
+        Object.keys(counts).forEach(room => {
+          totalCountDiff += (counts[room] - standardBhk[room]);
+        });
+        roomDiffMultiplier += (totalCountDiff * 0.1);
+      }
+
+      const calculatedMin = (minBasePrice * subMultiplier * roomDiffMultiplier * packageMultiplier) / 100000;
+      const calculatedMax = (maxBasePrice * subMultiplier * roomDiffMultiplier * packageMultiplier) / 100000;
+
+      return {
+        min: Math.round(calculatedMin),
+        max: Math.round(calculatedMax)
+      };
+    }
+  </script>
+

@@ -1,0 +1,241 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const title = "Frequently Asked Questions | Siddhivinayak Designers";
+const description = "Get answers about our interior design timeline, custom carpentry warranty, payment stages, and material brands in Koparkhairane &amp; Navi Mumbai.";
+const canonical = "https://siddhivinayakdesigners.in/faqs";
+const schema = `{
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long does a 2BHK interior design project take to complete?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For standard residential flats like a 2BHK or 3BHK, our turnkey execution takes approximately 45 working days. This timeline starts from the date of final 3D design approval and civil/site clearances."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What plywood grades do you use for modular kitchen cabinets?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We strictly use BWR (Boiling Water Resistant) or BWP (Boiling Water Proof) marine grade plywood (IS:710 certified) for all modular kitchen units and sink cabinets. Commercial grade MR plywood is only used for dry cabinets."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you provide customized carpentry or only modular setups?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We provide both. We have our own manufacturing setups to process modular components like kitchen shutters and drawers, and we have in-house carpenters to customize beds, false ceilings, partition designs, and TV panels on site."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a warranty on your customized interior items?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, we provide up to 10-year warranties on customized plywood modular wardrobes, modular kitchens, and structural components. Branded hardware hinges and channels carry direct brand warranties."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the billing pattern for turnkey interior works?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our payment terms are structured in stages: 10% on booking and layout conceptualization, 40% on design confirmation before material dispatch, 40% during site carpentry and plaster execution, and 10% before final handover cleanup."
+          }
+        }
+      ]
+    }`;
+const bodyContent = `<!-- Header Banner -->
+<section class="py-5 bg-dark" style="margin-top: 70px;">
+<div class="container py-4 text-center">
+<h1 class="font-luxury text-white mb-2" data-aos="fade-down">Frequently Asked Questions</h1>
+<div class="custom-breadcrumb text-center justify-content-center d-flex gap-2">
+<a href="/">Home</a>
+<span class="text-muted">/</span>
+<span>FAQs</span>
+</div>
+</div>
+</section>
+<!-- Accordion Section -->
+<section class="py-5 bg-dark text-white">
+<div class="container py-5">
+<div class="row justify-content-center">
+<div class="col-lg-10">
+<div class="accordion accordion-flush bg-dark-card border border-light-subtle p-4" data-aos="fade-up" id="faqAccordion">
+<!-- FAQ 1 -->
+<div class="accordion-item bg-transparent border-bottom border-secondary py-3">
+<h2 class="accordion-header bg-transparent" id="flush-headingOne">
+<button class="accordion-button collapsed bg-transparent text-white font-luxury h5" data-bs-target="#flush-collapseOne" data-bs-toggle="collapse" type="button">
+                                    How long does a 2BHK interior design project take to complete?
+                                </button>
+</h2>
+<div class="accordion-collapse collapse" data-bs-parent="#faqAccordion" id="flush-collapseOne">
+<div class="accordion-body text-muted small">
+                                    For standard residential flats like a 2BHK or 3BHK, our turnkey execution takes approximately 45 working days. This timeline starts from the date of final 3D design approval and site clearance.
+                                </div>
+</div>
+</div>
+<!-- FAQ 2 -->
+<div class="accordion-item bg-transparent border-bottom border-secondary py-3">
+<h2 class="accordion-header bg-transparent" id="flush-headingTwo">
+<button class="accordion-button collapsed bg-transparent text-white font-luxury h5" data-bs-target="#flush-collapseTwo" data-bs-toggle="collapse" type="button">
+                                    What plywood grades do you use for modular kitchen cabinets?
+                                </button>
+</h2>
+<div class="accordion-collapse collapse" data-bs-parent="#faqAccordion" id="flush-collapseTwo">
+<div class="accordion-body text-muted small">
+                                    We strictly use BWR (Boiling Water Resistant) or BWP (Boiling Water Proof) marine grade plywood (IS:710 certified) for all modular kitchen units and sink cabinets. Commercial grade MR plywood is only used for dry bedroom storage cabinets.
+                                </div>
+</div>
+</div>
+<!-- FAQ 3 -->
+<div class="accordion-item bg-transparent border-bottom border-secondary py-3">
+<h2 class="accordion-header bg-transparent" id="flush-headingThree">
+<button class="accordion-button collapsed bg-transparent text-white font-luxury h5" data-bs-target="#flush-collapseThree" data-bs-toggle="collapse" type="button">
+                                    Do you provide customized carpentry or only modular setups?
+                                </button>
+</h2>
+<div class="accordion-collapse collapse" data-bs-parent="#faqAccordion" id="flush-collapseThree">
+<div class="accordion-body text-muted small">
+                                    We provide both. We have our own manufacturing setups to process modular components like kitchen shutters and drawers, and we have in-house carpenters to customize beds, false ceilings, partition designs, and TV panels on site.
+                                </div>
+</div>
+</div>
+<!-- FAQ 4 -->
+<div class="accordion-item bg-transparent border-bottom border-secondary py-3">
+<h2 class="accordion-header bg-transparent" id="flush-headingFour">
+<button class="accordion-button collapsed bg-transparent text-white font-luxury h5" data-bs-target="#flush-collapseFour" data-bs-toggle="collapse" type="button">
+                                    Is there a warranty on your customized interior items?
+                                </button>
+</h2>
+<div class="accordion-collapse collapse" data-bs-parent="#faqAccordion" id="flush-collapseFour">
+<div class="accordion-body text-muted small">
+                                    Yes, we provide up to 10-year warranties on customized plywood modular wardrobes, modular kitchens, and structural components. Branded hardware hinges and channels carry direct brand warranties from manufacturers (Hettich, Blum, Ebco).
+                                </div>
+</div>
+</div>
+<!-- FAQ 5 -->
+<div class="accordion-item bg-transparent border-bottom border-secondary py-3">
+<h2 class="accordion-header bg-transparent" id="flush-headingFive">
+<button class="accordion-button collapsed bg-transparent text-white font-luxury h5" data-bs-target="#flush-collapseFive" data-bs-toggle="collapse" type="button">
+                                    What is the billing pattern for turnkey interior works?
+                                </button>
+</h2>
+<div class="accordion-collapse collapse" data-bs-parent="#faqAccordion" id="flush-collapseFive">
+<div class="accordion-body text-muted small">
+                                    Our payment terms are structured in stages: 10% on booking and layout conceptualization, 40% on design confirmation before material dispatch, 40% during site carpentry and plaster execution, and 10% before final handover cleanup.
+                                </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Search CTA -->
+<section class="py-5 bg-dark">
+<div class="container py-5 text-center">
+<div class="row justify-content-center" data-aos="zoom-in">
+<div class="col-lg-8">
+<h2 class="section-title text-white font-luxury mb-4">Have More Custom Queries?</h2>
+<p class="text-muted mb-5">Our designers are ready to answer any technical questions regarding civil alterations, electrical safety, plumbing, or laminate textures.</p>
+<div class="d-flex justify-content-center gap-3">
+<a class="btn btn-gold px-4 py-3" href="/contact">Speak With Us</a>
+<a style="background-color: #25D366 !important; background: #25D366 !important; color: #ffffff !important; border-color: #25D366 !important;" class="btn btn-outline-gold px-4 py-3" href="https://wa.me/918369297174" target="_blank">
+<i class="fab fa-whatsapp me-2"></i>WhatsApp Connect
+                        </a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Floating Actions -->
+<div class="floating-widgets">
+<a style="background-color: #25D366 !important; background: #25D366 !important; color: #ffffff !important; border-color: #25D366 !important;" class="float-btn float-whatsapp" href="https://wa.me/918369297174?text=Hi%20Siddhivinayak%20Designers,%20I'm%20interested%20in%20a%20free%20design%20consultation." target="_blank">
+<i class="fab fa-whatsapp"></i>
+</a>
+<a class="float-btn float-call" href="tel:+918369297174">
+<i class="fas fa-phone-alt"></i>
+</a>
+</div>`;
+---
+<Layout title={title} description={description} canonical={canonical} schema={schema}>
+  <Fragment set:html={bodyContent} />
+</Layout>
+
+<style is:global>
+html, body {
+      background-color: #ffffff !important;
+      color: #212529 !important;
+      font-family: Arial, Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    }
+    .hero-section, .catalog-directory-hero, .dc-top-section-bg, header.bg-dark, .bg-dark, .bg-dark-card, .bg-dark-contrast {
+      background-color: #f3f6f8 !important;
+      color: #1a1a1a !important;
+    }
+    h1, h2, h3, h4, h5, h6, .section-title {
+      color: #1a1a1a !important;
+    }
+    p, span, li, label, div {
+      color: #444444 !important;
+    }
+    :not(footer) .text-white, body:not(footer) .text-white, a.text-white:not(footer a), .section-title.text-white {
+      color: #1a1a1a !important;
+    }
+    .text-gold {
+      color: #189ba6 !important;
+    }
+    .btn-gold, .btn-primary {
+      background-color: #189ba6 !important;
+      border-color: #189ba6 !important;
+      color: #ffffff !important;
+    }
+    .btn-gold:hover, .btn-primary:hover {
+      background-color: #127c85 !important;
+      border-color: #127c85 !important;
+    }
+    footer, footer * {
+      color: #ffffff !important;
+    }
+    footer p, footer span, footer li, footer div, footer small, footer .text-muted {
+      color: #d1cfc9 !important;
+    }
+  
+    /* Fix headings appearing white on light background inside bg-dark / bg-dark-card / bg-dark-contrast elements */
+    .bg-dark h1, .bg-dark h2, .bg-dark h3, .bg-dark h4, .bg-dark h5, .bg-dark h6,
+    .bg-dark-card h1, .bg-dark-card h2, .bg-dark-card h3, .bg-dark-card h4, .bg-dark-card h5, .bg-dark-card h6,
+    .bg-dark-contrast h1, .bg-dark-contrast h2, .bg-dark-contrast h3, .bg-dark-contrast h4, .bg-dark-contrast h5, .bg-dark-contrast h6 {
+      color: #1a1a1a !important;
+    }
+    /* Fix text elements appearing light grey/white on light background inside bg-dark / bg-dark-card / bg-dark-contrast elements */
+    .bg-dark p, .bg-dark li, .bg-dark span:not(.text-gold):not(.text-teal), .bg-dark label, .bg-dark .text-muted,
+    .bg-dark-card p, .bg-dark-card li, .bg-dark-card span:not(.text-gold):not(.text-teal), .bg-dark-card label, .bg-dark-card .text-muted,
+    .bg-dark-contrast p, .bg-dark-contrast li, .bg-dark-contrast span:not(.text-gold):not(.text-teal), .bg-dark-contrast label, .bg-dark-contrast .text-muted {
+      color: #444444 !important;
+    }
+    .bg-dark strong, .bg-dark-card strong, .bg-dark-contrast strong {
+      color: #1a1a1a !important;
+    }
+</style>
+
+<script is:inline></script>
+
+<script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PLACEHOLDER');
+    </script>
+
+<script is:inline>
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+    </script>
+

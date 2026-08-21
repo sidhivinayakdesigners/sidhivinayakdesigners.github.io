@@ -1,0 +1,100 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const title = "Balcony Garden &amp; Sitout Decor Ideas for Apartments | Siddhivinayak Designers";
+const description = "Artificial grass turf, vertical planter walls, weatherproof teak seating, and warm fairy lights for cozy high-rise balconies.";
+const canonical = "https://siddhivinayakdesigners.in/blog/balcony-garden-sitout-decor";
+const schema = `{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+    "@type": "ListItem",
+    "position": 1,
+    "name": "Home",
+    "item": "https://siddhivinayakdesigners.in/"
+  },{
+    "@type": "ListItem",
+    "position": 2,
+    "name": "Blog",
+    "item": "https://siddhivinayakdesigners.in/blog/"
+  },{
+    "@type": "ListItem",
+    "position": 3,
+    "name": "Balcony Decor Ideas",
+    "item": "https://siddhivinayakdesigners.in/blog/balcony-garden-sitout-decor"
+  }]
+}
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://siddhivinayakdesigners.in/blog/balcony-garden-sitout-decor"
+  },
+  "headline": "Balcony Garden & Sitout Decor Ideas for Apartments",
+  "description": "Artificial grass turf, vertical planter walls, weatherproof teak seating, and warm fairy lights for cozy balconies.",
+  "image": "https://siddhivinayakdesigners.in/assets/images/kitchen2.webp",
+  "author": {
+    "@type": "Organization",
+    "name": "Siddhivinayak Designers"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Siddhivinayak Designers",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://siddhivinayakdesigners.in/assets/images/logo_icon.webp"
+    }
+  },
+  "datePublished": "2026-05-04",
+  "dateModified": "2026-05-04"
+}`;
+const bodyContent = `<!-- Article Header -->
+<section class="py-5 bg-dark" style="margin-top: 70px;">
+  <div class="container py-4">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 text-center">
+        <span class="badge bg-secondary text-gold mb-3 px-3 py-2">Balcony &amp; Sitouts</span>
+        <h1 class="font-luxury text-white display-5 mb-3">Balcony Garden &amp; Sitout Decor Ideas for High-Rise Apartments</h1>
+        <div class="d-flex justify-content-center align-items-center gap-4 text-muted small mb-4">
+          <span><i class="fas fa-calendar-alt text-gold me-1"></i> May 04, 2026</span>
+          <span><i class="far fa-clock text-gold me-1"></i> 4 min read</span>
+          <span><i class="fas fa-user text-gold me-1"></i> By Siddhivinayak Team</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main Article Content -->
+<section class="py-5 bg-dark border-top border-secondary">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <img alt="Balcony Sitout Decor Ideas" class="img-fluid rounded mb-4 shadow" src="/assets/images/kitchen2.webp" style="width:100%; max-height: 450px; object-fit: cover;" />
+
+        <div class="article-body font-body lead-sm text-white-50">
+          <p class="lead text-white">Transforming your apartment balcony into a lush garden sitout provides a refreshing outdoor escape right outside your living room.</p>
+
+          <h3 class="text-white font-luxury h4 mt-4 mb-3">1. Premium Artificial Grass Flooring</h3>
+          <p>Installing high-density artificial turf (30mm to 40mm pile height) provides soft green flooring that is low-maintenance, drainable during monsoons, and instantly brings nature to your balcony.</p>
+
+          <h3 class="text-white font-luxury h4 mt-4 mb-3">2. Vertical Green Planter Walls</h3>
+          <p>Utilize balcony side walls by installing vertical trellis panels or iron planter grids to grow money plants, ferns, and flowering herbs without taking up precious floor space.</p>
+
+          <h3 class="text-white font-luxury h4 mt-4 mb-3">3. Weatherproof Teak Seating &amp; Warm String Lights</h3>
+          <p>Pair a compact teak wood bench or hanging cane swing chair with warm waterproof LED fairy lights for relaxing evening tea sessions.</p>
+
+          <a href="/contact" class="btn btn-gold btn-lg w-100 py-3 font-luxury my-4">Book a Balcony &amp; Interior Consultation</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>`;
+---
+<Layout title={title} description={description} canonical={canonical} schema={schema}>
+  <Fragment set:html={bodyContent} />
+</Layout>
+
+
+
