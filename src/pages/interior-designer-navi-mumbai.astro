@@ -184,19 +184,112 @@ const bodyContent = `<!-- Breadcrumb Header -->
     </div>
   </div>
 
-  <!-- Hero Section -->
-  <section class="py-5 text-center position-relative bg-dark-gradient border-bottom border-secondary">
-    <div class="container py-4">
-      <span class="badge bg-gold text-dark uppercase tracking-wide mb-3 px-3 py-2 fw-bold">Navi Mumbai's Premier Interior Authority</span>
-      <h1 class="display-4 font-luxury text-white mb-3">Turnkey Interior Designer in Navi Mumbai</h1>
-      <p class="lead text-muted mx-auto mb-4" style="max-width: 850px;">
-        Transforming apartments, luxury villas, and commercial spaces across Navi Mumbai with 25+ years of master craftsmanship, 3D VR design visualization, factory precision modular manufacturing, and a 10-year warranty.
-      </p>
-      <div class="d-flex justify-content-center gap-3">
-        <a href="https://wa.me/918369297174?text=Hi%20Siddhivinayak%20Designers,%20I'm%20looking%20for%20an%20interior%20designer%20in%20Navi%20Mumbai." target="_blank" class="btn btn-gold btn-lg px-4 fw-bold">
-          <i class="fab fa-whatsapp me-2"></i>Free WhatsApp Consultation
-        </a>
-        <a href="/contact" class="btn btn-outline-light btn-lg px-4">Book Site Visit</a>
+  <style>
+    .hero-banner-section {
+      background-image: url('/assets/images/home-interiors-interior-designers-bangalore-mumbai-hyderabad-chennai-kolkata-india.webp');
+      background-size: cover;
+      background-position: center;
+      min-height: 520px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .btn-cta-consult {
+      background-color: #189ba6 !important;
+      font-size: 1.15rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(24, 155, 166, 0.4);
+    }
+    .btn-cta-consult:hover {
+      background-color: #127c85 !important;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(24, 155, 166, 0.6);
+    }
+    .badge-circle {
+      width: 60px;
+      height: 60px;
+      background-color: #ffffff;
+      color: #189ba6;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    @media (max-width: 767px) {
+      .hero-banner-section {
+        min-height: 420px !important;
+      }
+      .hero-overlay-box {
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+      }
+      .hero-overlay-box h1 {
+        font-size: 1.6rem !important;
+      }
+      .hero-overlay-box p {
+        font-size: 0.9rem !important;
+      }
+      .btn-cta-consult {
+        font-size: 0.95rem !important;
+        padding: 10px 24px !important;
+      }
+      .badge-circle {
+        width: 45px;
+        height: 45px;
+        font-size: 1.25rem;
+      }
+      .badge-text {
+        font-size: 0.78rem !important;
+      }
+    }
+  </style>
+
+  <!-- Premium Hero Banner with Text Overlay & Bottom Badges -->
+  <section class="position-relative hero-banner-section">
+    <!-- Top Spacer to align overlay to center -->
+    <div></div>
+
+    <!-- Center Overlay Box -->
+    <div class="container text-center my-auto py-4">
+      <div class="hero-overlay-box mx-auto px-4 py-5 rounded-3 shadow-lg" style="background-color: rgba(0, 0, 0, 0.55); max-width: 780px; border: 1px solid rgba(255, 255, 255, 0.1);">
+        <h1 class="display-5 fw-bold text-white mb-3" style="font-family: 'Montserrat', sans-serif; letter-spacing: -0.5px;">Best Home Interior Designers In Navi Mumbai</h1>
+        <p class="fs-5 text-white-50 mb-4" style="font-family: 'Open Sans', sans-serif;">Dream Homes At Dream Budgets & 15,000 Happy Customers</p>
+        <button class="btn btn-cta-consult px-5 py-3 fw-bold rounded-2 text-white border-0" onclick="window.openConsultationPopup && window.openConsultationPopup(true)">
+          Book Free Consultation
+        </button>
+      </div>
+    </div>
+
+    <!-- Teal Bottom Badges Bar -->
+    <div class="py-3 w-100" style="background-color: #189ba6;">
+      <div class="container">
+        <div class="row justify-content-center align-items-center g-3 text-center">
+          <!-- Badge 1 -->
+          <div class="col-4 col-md-3 d-flex flex-column align-items-center text-white">
+            <div class="badge-circle mb-2">
+              <i class="fas fa-boxes"></i>
+            </div>
+            <span class="fw-semibold badge-text" style="font-size: 0.95rem;">20% Extra Storage</span>
+          </div>
+          <!-- Badge 2 -->
+          <div class="col-4 col-md-3 d-flex flex-column align-items-center text-white">
+            <div class="badge-circle mb-2">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <span class="fw-semibold badge-text" style="font-size: 0.95rem;">25-Year Warranty</span>
+          </div>
+          <!-- Badge 3 -->
+          <div class="col-4 col-md-3 d-flex flex-column align-items-center text-white">
+            <div class="badge-circle mb-2">
+              <i class="fas fa-hand-holding-usd"></i>
+            </div>
+            <span class="fw-semibold badge-text" style="font-size: 0.95rem;">No-Cost EMI</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
