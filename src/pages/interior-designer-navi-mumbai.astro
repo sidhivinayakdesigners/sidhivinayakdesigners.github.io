@@ -172,174 +172,250 @@ const schema = `{
       }
     ]
   }`;
-const bodyContent = `<!-- Breadcrumb Header -->
-  <div class="bg-dark-card py-3 border-bottom border-secondary">
-    <div class="container">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb mb-0 small">
-          <li class="breadcrumb-item"><a href="/" class="text-gold text-decoration-none">Home</a></li>
-          <li class="breadcrumb-item active text-white" aria-current="page">Interior Designer Navi Mumbai</li>
-        </ol>
-      </nav>
-    </div>
-  </div>
-
-  <style>
+const bodyContent = `<style>
     .hero-banner-section {
-      background-image: url('/assets/images/hero_bg.webp');
+      background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('/assets/images/interior-designers-navi-mumbai.webp');
       background-size: cover;
       background-position: center;
-      min-height: 520px;
+      min-height: 480px;
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .hero-overlay-box {
+      background-color: rgba(0, 0, 0, 0.45) !important;
+      backdrop-filter: blur(4px);
+      max-width: 780px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 35px 24px !important;
+      border-radius: 8px;
     }
     .btn-cta-consult {
       background-color: #189ba6 !important;
-      font-size: 1.15rem;
+      color: #ffffff !important;
+      font-family: 'Open Sans', sans-serif !important;
+      font-weight: 600 !important;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(24, 155, 166, 0.4);
+      box-shadow: 0 4px 15px rgba(24, 155, 166, 0.3);
     }
     .btn-cta-consult:hover {
       background-color: #127c85 !important;
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(24, 155, 166, 0.6);
+      box-shadow: 0 6px 20px rgba(24, 155, 166, 0.5);
+    }
+    .badges-bar {
+      background-color: #189ba6 !important;
+      position: relative;
+      z-index: 10;
+      padding-top: 15px !important;
+      padding-bottom: 25px !important;
     }
     .badge-circle {
-      width: 60px;
-      height: 60px;
-      background-color: #ffffff;
-      color: #189ba6;
-      border-radius: 50%;
+      width: 110px;
+      height: 110px;
+      background-color: #ffffff !important;
+      border-radius: 50% !important;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.7rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      margin-top: -70px;
+      margin-bottom: 12px !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      border: 4px solid #ffffff !important;
+      transition: transform 0.3s ease;
+    }
+    .badge-circle i {
+      color: #189ba6 !important;
+      font-size: 2.8rem !important;
+    }
+    .badge-circle:hover {
+      transform: translateY(-5px);
     }
     @media (max-width: 767px) {
       .hero-banner-section {
-        min-height: 420px !important;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('/assets/images/interior-designers-navi-mumbai-m.webp') !important;
+        min-height: 520px !important;
       }
       .hero-overlay-box {
-        padding-top: 2rem !important;
-        padding-bottom: 2rem !important;
-        margin-left: 10px !important;
-        margin-right: 10px !important;
-      }
-      .hero-overlay-box h1 {
-        font-size: 1.6rem !important;
-      }
-      .hero-overlay-box p {
-        font-size: 0.9rem !important;
-      }
-      .btn-cta-consult {
-        font-size: 0.95rem !important;
-        padding: 10px 24px !important;
+        padding: 24px 15px !important;
+        margin: 0 10px !important;
       }
       .badge-circle {
-        width: 45px;
-        height: 45px;
-        font-size: 1.25rem;
+        width: 75px;
+        height: 75px;
+        margin-top: -50px;
+        margin-bottom: 8px !important;
+        border: 2px solid #ffffff !important;
       }
-      .badge-text {
-        font-size: 0.78rem !important;
+      .badge-circle i {
+        font-size: 1.8rem !important;
       }
+      .badges-bar {
+        padding-top: 10px !important;
+        padding-bottom: 15px !important;
+      }
+      .glimpse-card {
+        width: 280px !important;
+        height: 380px !important;
+      }
+      .glimpse-title-area h2 {
+        font-size: 1.5rem !important;
+      }
+      .glimpse-title-area p {
+        font-size: 0.85rem !important;
+      }
+      .glimpse-quote-btn {
+        font-size: 0.85rem !important;
+        padding: 8px 16px !important;
+      }
+    }
+    /* Premium Glimpse Card layout overrides */
+    .glimpse-card {
+      width: 380px !important;
+      height: 500px !important;
+      border-radius: 12px !important;
+      overflow: hidden !important;
+      position: relative !important;
+      flex-shrink: 0 !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+      background-color: #222 !important;
+    }
+    .glimpse-card img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    }
+    .glimpse-card:hover img {
+      transform: scale(1.08) !important;
+    }
+    .glimpse-card-overlay {
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 60%, transparent 100%) !important;
+      padding: 20px !important;
+    }
+    .glimpse-card-title, .glimpse-card-title * {
+      font-size: 1rem !important;
+      font-weight: 600 !important;
+      color: #ffffff !important;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
     }
   </style>
 
-  <!-- Premium Hero Banner with Text Overlay & Bottom Badges -->
+  <!-- Premium Hero Banner with Text Overlay -->
   <section class="position-relative hero-banner-section">
-    <!-- Top Spacer to align overlay to center -->
-    <div></div>
-
     <!-- Center Overlay Box -->
-    <div class="container text-center my-auto py-4">
-      <div class="hero-overlay-box mx-auto px-4 py-5 rounded-3 shadow-lg" style="background-color: rgba(0, 0, 0, 0.55); max-width: 780px; border: 1px solid rgba(255, 255, 255, 0.1);">
-        <h1 class="display-5 fw-bold text-white mb-3" style="font-family: 'Montserrat', sans-serif; letter-spacing: -0.5px;">Best Home Interior Designers In Navi Mumbai</h1>
-        <p class="fs-5 text-white-50 mb-4" style="font-family: 'Open Sans', sans-serif;">Dream Homes At Dream Budgets & 15,000 Happy Customers</p>
-        <button class="btn btn-cta-consult px-5 py-3 fw-bold rounded-2 text-white border-0" onclick="window.openConsultationPopup && window.openConsultationPopup(true)">
+    <div class="container text-center py-4">
+      <div class="hero-overlay-box mx-auto px-4 py-4 rounded-3 shadow-lg">
+        <h1 class="fw-bold text-white mb-2" style="font-size: 1.85rem !important; color: #ffffff !important; letter-spacing: -0.5px; font-family: 'Montserrat', sans-serif;">Best Home Interior Designers In Navi Mumbai</h1>
+        <p class="text-white-50 mb-3" style="font-size: 0.95rem !important; color: rgba(255,255,255,0.85) !important; font-family: 'Open Sans', sans-serif;">Dream Homes At Dream Budgets & 15,000 Happy Customers</p>
+        <button class="btn btn-cta-consult px-4 py-2 fw-bold rounded-2 text-white border-0" style="font-size: 0.95rem !important; padding: 10px 28px !important;" onclick="window.openConsultationPopup && window.openConsultationPopup(true)">
           Book Free Consultation
         </button>
       </div>
     </div>
+  </section>
 
-    <!-- Teal Bottom Badges Bar -->
-    <div class="py-3 w-100" style="background-color: #189ba6;">
-      <div class="container">
-        <div class="row justify-content-center align-items-center g-3 text-center">
-          <!-- Badge 1 -->
-          <div class="col-4 col-md-3 d-flex flex-column align-items-center text-white">
-            <div class="badge-circle mb-2">
-              <i class="fas fa-boxes"></i>
-            </div>
-            <span class="fw-semibold badge-text" style="font-size: 0.95rem;">20% Extra Storage</span>
+  <!-- Teal Bottom Badges Bar overlapping the image border -->
+  <div class="badges-bar w-100">
+    <div class="container">
+      <div class="row justify-content-center align-items-center g-3 text-center">
+        <!-- Badge 1 -->
+        <div class="col-4 col-md-3 d-flex flex-column align-items-center text-white">
+          <div class="badge-circle">
+            <i class="fas fa-home"></i>
           </div>
-          <!-- Badge 2 -->
-          <div class="col-4 col-md-3 d-flex flex-column align-items-center text-white">
-            <div class="badge-circle mb-2">
-              <i class="fas fa-shield-alt"></i>
-            </div>
-            <span class="fw-semibold badge-text" style="font-size: 0.95rem;">25-Year Warranty</span>
+          <span class="fw-semibold badge-text" style="color: #ffffff !important; font-size: 0.95rem !important; font-family: 'Open Sans', sans-serif; font-weight: 700 !important; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">20% Extra Storage</span>
+        </div>
+        <!-- Badge 2 -->
+        <div class="col-4 col-md-3 d-flex flex-column align-items-center text-white">
+          <div class="badge-circle">
+            <i class="fas fa-shield-alt"></i>
           </div>
-          <!-- Badge 3 -->
-          <div class="col-4 col-md-3 d-flex flex-column align-items-center text-white">
-            <div class="badge-circle mb-2">
-              <i class="fas fa-hand-holding-usd"></i>
-            </div>
-            <span class="fw-semibold badge-text" style="font-size: 0.95rem;">No-Cost EMI</span>
+          <span class="fw-semibold badge-text" style="color: #ffffff !important; font-size: 0.95rem !important; font-family: 'Open Sans', sans-serif; font-weight: 700 !important; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">25-Year Warranty</span>
+        </div>
+        <!-- Badge 3 -->
+        <div class="col-4 col-md-3 d-flex flex-column align-items-center text-white">
+          <div class="badge-circle">
+            <i class="fas fa-hand-holding-usd"></i>
           </div>
+          <span class="fw-semibold badge-text" style="color: #ffffff !important; font-size: 0.95rem !important; font-family: 'Open Sans', sans-serif; font-weight: 700 !important; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">No-Cost EMI</span>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Content Section: Master Overview -->
-  <section class="py-5 border-bottom border-secondary bg-dark-gradient">
-    <div class="container py-3">
-      <div class="row g-5 align-items-center mb-5">
-        <div class="col-lg-6" data-aos="fade-right">
-          <span class="section-subtitle text-gold fw-bold">25+ Years of Excellence</span>
-          <h2 class="font-luxury text-white display-6 mb-4">Elevating Home Interiors Across Navi Mumbai</h2>
-          <p class="text-muted leading-relaxed mb-3">
-            Finding the right <strong>interior designer in Navi Mumbai</strong> requires balancing modern aesthetics, space efficiency, and durable civil execution suited to Navi Mumbai's coastal climate. As one of the most highly rated <strong>interior designers in Navi Mumbai</strong>, <strong>Siddhivinayak Designers</strong> bridges the gap between high-end architectural concepts and flawless on-site execution.
-          </p>
-          <p class="text-muted leading-relaxed mb-4">
-            Whether you own a luxury 3BHK high-rise apartment in Vashi, a spacious CIDCO flat in Kharghar, a waterfront villa in Belapur, or a contemporary home in Koparkhairane, our turnkey team of <strong>home interior designers in Navi Mumbai</strong> delivers custom spatial planning, ergonomic factory-made modular kitchens, ambient false ceiling lighting, and custom furniture tailored to your lifestyle.
-          </p>
-          <div class="row g-3 text-center">
-            <div class="col-4">
-              <div class="p-3 bg-dark-card rounded-4 border border-secondary">
-                <h3 class="text-gold fw-bold mb-1 fs-4">500+</h3>
-                <small class="text-muted" style="font-size: 0.75rem;">Homes Delivered</small>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="p-3 bg-dark-card rounded-4 border border-secondary">
-                <h3 class="text-gold fw-bold mb-1 fs-4">25+</h3>
-                <small class="text-muted" style="font-size: 0.75rem;">Years Experience</small>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="p-3 bg-dark-card rounded-4 border border-secondary">
-                <h3 class="text-gold fw-bold mb-1 fs-4">10 Yr</h3>
-                <small class="text-muted" style="font-size: 0.75rem;">Warranty</small>
-              </div>
-            </div>
-          </div>
+  <!-- Get a glimpse of Livspace homes Section -->
+  <section class="glimpse-section" id="glimpseSection">
+    <div class="container">
+      <div class="glimpse-header" data-aos="fade-up">
+        <div class="glimpse-title-area">
+          <h2>Get a glimpse of Livspace homes</h2>
+          <p>Latest dream home interiors delivered the hassle-free way</p>
         </div>
-        <div class="col-lg-6" data-aos="fade-left">
-          <div class="position-relative rounded-4 overflow-hidden shadow-lg border border-secondary" style="height: 380px;">
-            <img src="/assets/images/siddhivinayak-designers-vashi.webp" alt="Completed Turnkey Home Interior in Vashi, Navi Mumbai" class="img-fluid w-100 h-100" style="object-fit: cover;" />
-            <div class="position-absolute bottom-0 start-0 end-0 p-4" style="background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 100%);">
-              <h4 class="text-white font-luxury mb-1 h5">Completed Living Room Project, Vashi</h4>
-              <p class="text-muted small mb-0"><i class="fas fa-map-marker-alt text-gold me-2"></i> Navi Mumbai Turnkey Showcase</p>
-            </div>
-          </div>
-        </div>
+        <a href="https://wa.me/918369297174?text=Hi, I'm interested in getting a free quote for my home interiors" class="glimpse-quote-btn" target="_blank">Get Free Quote</a>
       </div>
-
-
+      
+      <div class="glimpse-carousel-wrapper" data-aos="fade-up" data-aos-delay="100">
+        <button class="glimpse-arrow glimpse-arrow-left" id="glimpsePrevBtn" aria-label="Previous">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="glimpse-carousel-container" id="glimpseCarousel">
+          <!-- Card 1 -->
+          <a href="/gallery/modern-4bhk-penthouse-kharghar/" class="glimpse-card" style="text-decoration: none;">
+            <img src="/assets/images/livspace-homes/modern-4bhk-penthouse-bangalore.jpg" alt="Modern 4 BHK Penthouse, Kharghar" loading="lazy" />
+            <div class="glimpse-card-overlay">
+              <h3 class="glimpse-card-title">Modern 4 BHK Penthouse, Kharghar</h3>
+            </div>
+          </a>
+          
+          <!-- Card 2 -->
+          <a href="/gallery/contemporary-4bhk-penthouse-seawoods/" class="glimpse-card" style="text-decoration: none;">
+            <img src="/assets/images/livspace-homes/contemporary-4bhk-penthouse-noida.jpg" alt="Contemporary 4 BHK Penthouse, Seawoods" loading="lazy" />
+            <div class="glimpse-card-overlay">
+              <h3 class="glimpse-card-title">Contemporary 4 BHK Penthouse, Seawoods</h3>
+            </div>
+          </a>
+          
+          <!-- Card 3 -->
+          <a href="/gallery/elegant-2bhk-flat-vashi/" class="glimpse-card" style="text-decoration: none;">
+            <img src="/assets/images/livspace-homes/elegant-2bhk-flat-mumbai.jpg" alt="Elegant 2 BHK Flat, Vashi" loading="lazy" />
+            <div class="glimpse-card-overlay">
+              <h3 class="glimpse-card-title">Elegant 2 BHK Flat, Vashi</h3>
+            </div>
+          </a>
+          
+          <!-- Card 4 -->
+          <a href="/gallery/contemporary-3bhk-house-belapur/" class="glimpse-card" style="text-decoration: none;">
+            <img src="/assets/images/livspace-homes/contemporary-3bhk-house-gurgaon.jpg" alt="Contemporary 3 BHK House, Belapur" loading="lazy" />
+            <div class="glimpse-card-overlay">
+              <h3 class="glimpse-card-title">Contemporary 3 BHK House, Belapur</h3>
+            </div>
+          </a>
+          
+          <!-- Card 5 -->
+          <a href="/gallery/contemporary-3bhk-flat-kopar-khairane/" class="glimpse-card" style="text-decoration: none;">
+            <img src="/assets/images/livspace-homes/contemporary-3bhk-flat-ahmedabad.jpg" alt="Contemporary 3 BHK Flat, Kopar Khairane" loading="lazy" />
+            <div class="glimpse-card-overlay">
+              <h3 class="glimpse-card-title">Contemporary 3 BHK Flat, Kopar Khairane</h3>
+            </div>
+          </a>
+          
+          <!-- Card 6 -->
+          <a href="/gallery/rustic-3bhk-home-nerul/" class="glimpse-card" style="text-decoration: none;">
+            <img src="/assets/images/livspace-homes/rustic-3bhk-home-bangalore.jpg" alt="Rustic 3 BHK Home, Nerul" loading="lazy" />
+            <div class="glimpse-card-overlay">
+              <h3 class="glimpse-card-title">Rustic 3 BHK Home, Nerul</h3>
+            </div>
+          </a>
+        </div>
+        
+        <button class="glimpse-arrow glimpse-arrow-right" id="glimpseNextBtn" aria-label="Next">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
     </div>
   </section>
 
@@ -817,153 +893,7 @@ const bodyContent = `<!-- Breadcrumb Header -->
     })();
   </script>
 
-  <!-- Location Authority Grid -->
-  <section class="py-5 bg-dark-gradient border-bottom border-secondary">
-    <div class="container py-3">
-      <div class="text-center mb-5">
-        <span class="section-subtitle text-gold fw-bold">Navi Mumbai Local Network</span>
-        <h2 class="font-luxury text-white display-6">Interior Design Services Across All Navi Mumbai Nodes</h2>
-        <p class="text-muted mx-auto" style="max-width: 750px;">
-          Explore our localized design teams, completed residential portfolios, and sector-specific project coverage from our expert <strong>interior designers in Navi Mumbai</strong>.
-        </p>
-      </div>
 
-      <span class="d-md-none text-muted d-block text-center small mb-4" style="font-size: 0.8rem; letter-spacing: 0.5px; color: #888888 !important;"><i class="fas fa-hand-pointer me-1" style="color: #189ba6 !important;"></i> Swipe horizontally to explore nodes</span>
-
-      <div class="row g-4" id="naviNodesGrid">
-        <!-- Vashi -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up">
-          <div class="p-4 bg-dark-card rounded border border-secondary h-100 d-flex flex-column justify-content-between">
-            <div>
-              <h3 class="h4 font-luxury text-white mb-2"><i class="fas fa-map-marker-alt text-gold me-2"></i>Vashi</h3>
-              <p class="small text-muted mb-3">
-                Premium interior designs for luxury apartments and redeveloped residential towers in Vashi Sectors 9, 14, 17, and 28. Specialized in high-end living rooms and modular kitchens.
-              </p>
-            </div>
-            <a href="/vashi/" class="btn btn-outline-gold btn-sm w-100 fw-bold">View Vashi Interior Services <i class="fas fa-arrow-right ms-1"></i></a>
-          </div>
-        </div>
-
-        <!-- Kharghar -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="p-4 bg-dark-card rounded border border-secondary h-100 d-flex flex-column justify-content-between">
-            <div>
-              <h3 class="h4 font-luxury text-white mb-2"><i class="fas fa-map-marker-alt text-gold me-2"></i>Kharghar</h3>
-              <p class="small text-muted mb-3">
-                Space-optimized 2BHK and 3BHK flat interiors across Kharghar Sectors 10, 19, 20, 35, and Valley Shilp. Expert CIDCO modification guidance and full home fit-outs.
-              </p>
-            </div>
-            <a href="/interior-designer-kharghar" class="btn btn-outline-gold btn-sm w-100 fw-bold">View Kharghar Interior Services <i class="fas fa-arrow-right ms-1"></i></a>
-          </div>
-        </div>
-
-        <!-- Belapur -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="p-4 bg-dark-card rounded border border-secondary h-100 d-flex flex-column justify-content-between">
-            <div>
-              <h3 class="h4 font-luxury text-white mb-2"><i class="fas fa-map-marker-alt text-gold me-2"></i>CBD Belapur</h3>
-              <p class="small text-muted mb-3">
-                Bespoke villa interiors, hill-facing apartment fit-outs, and commercial office design in Belapur Sectors 11, 15, and Parsik Hill.
-              </p>
-            </div>
-            <a href="/interior-designer-belapur" class="btn btn-outline-gold btn-sm w-100 fw-bold">View Belapur Interior Services <i class="fas fa-arrow-right ms-1"></i></a>
-          </div>
-        </div>
-
-        <!-- Nerul -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up">
-          <div class="p-4 bg-dark-card rounded border border-secondary h-100 d-flex flex-column justify-content-between">
-            <div>
-              <h3 class="h4 font-luxury text-white mb-2"><i class="fas fa-map-marker-alt text-gold me-2"></i>Nerul</h3>
-              <p class="small text-muted mb-3">
-                Modern modular wardrobe & kitchen design for homes near Seawoods Palm Beach Road, Nerul East, and West Sectors 6, 21, and 28.
-              </p>
-            </div>
-            <a href="/interior-designer-nerul" class="btn btn-outline-gold btn-sm w-100 fw-bold">View Nerul Interior Services <i class="fas fa-arrow-right ms-1"></i></a>
-          </div>
-        </div>
-
-        <!-- Koparkhairane -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="p-4 bg-dark-card rounded border border-secondary h-100 d-flex flex-column justify-content-between">
-            <div>
-              <h3 class="h4 font-luxury text-white mb-2"><i class="fas fa-map-marker-alt text-gold me-2"></i>Koparkhairane</h3>
-              <p class="small text-muted mb-3">
-                Home of our flagship experience center at Sector 23. Complete home interiors, civil renovations, and turnkey contracting for Koparkhairane residents.
-              </p>
-            </div>
-            <a href="/interior-designer-kopar-khairane" class="btn btn-outline-gold btn-sm w-100 fw-bold">View Koparkhairane Services <i class="fas fa-arrow-right ms-1"></i></a>
-          </div>
-        </div>
-
-        <!-- Sanpada -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="p-4 bg-dark-card rounded border border-secondary h-100 d-flex flex-column justify-content-between">
-            <div>
-              <h3 class="h4 font-luxury text-white mb-2"><i class="fas fa-map-marker-alt text-gold me-2"></i>Sanpada</h3>
-              <p class="small text-muted mb-3">
-                Sleek minimalist apartment designs, false ceiling profiles, and luxury living room furniture in Sanpada Palm Beach Road & Sector 5.
-              </p>
-            </div>
-            <a href="/interior-designer-sanpada" class="btn btn-outline-gold btn-sm w-100 fw-bold">View Sanpada Interior Services <i class="fas fa-arrow-right ms-1"></i></a>
-          </div>
-        </div>
-
-        <!-- Ghansoli -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up">
-          <div class="p-4 bg-dark-card rounded border border-secondary h-100 d-flex flex-column justify-content-between">
-            <div>
-              <h3 class="h4 font-luxury text-white mb-2"><i class="fas fa-map-marker-alt text-gold me-2"></i>Ghansoli</h3>
-              <p class="small text-muted mb-3">
-                Contemporary flat interiors in Ghansoli Sector 15, 21, and new high-rise townships. Anti-moisture materials and space-saving furniture.
-              </p>
-            </div>
-            <a href="/interior-designer-ghansoli" class="btn btn-outline-gold btn-sm w-100 fw-bold">View Ghansoli Interior Services <i class="fas fa-arrow-right ms-1"></i></a>
-          </div>
-        </div>
-
-        <!-- Airoli -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="p-4 bg-dark-card rounded border border-secondary h-100 d-flex flex-column justify-content-between">
-            <div>
-              <h3 class="h4 font-luxury text-white mb-2"><i class="fas fa-map-marker-alt text-gold me-2"></i>Airoli</h3>
-              <p class="small text-muted mb-3">
-                Ergonomic home office spaces, modular kitchens, and complete home makeovers for tech professionals in Airoli Sectors 5, 8, 19, and 20.
-              </p>
-            </div>
-            <a href="/interior-designer-airoli" class="btn btn-outline-gold btn-sm w-100 fw-bold">View Airoli Interior Services <i class="fas fa-arrow-right ms-1"></i></a>
-          </div>
-        </div>
-
-        <!-- Rabale -->
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="p-4 bg-dark-card rounded border border-secondary h-100 d-flex flex-column justify-content-between">
-            <div>
-              <h3 class="h4 font-luxury text-white mb-2"><i class="fas fa-map-marker-alt text-gold me-2"></i>Rabale</h3>
-              <p class="small text-muted mb-3">
-                Budget-smart home interiors, civil repairs, and durable wardrobe installations across Rabale MIDC residential sectors and surrounding complexes.
-              </p>
-            </div>
-            <a href="/interior-designer-rabale" class="btn btn-outline-gold btn-sm w-100 fw-bold">View Rabale Interior Services <i class="fas fa-arrow-right ms-1"></i></a>
-          </div>
-        </div>
-
-        <!-- Panvel -->
-        <div class="col-md-6 col-lg-4 mx-auto" data-aos="fade-up">
-          <div class="p-4 bg-dark-card rounded border border-secondary h-100 d-flex flex-column justify-content-between">
-            <div>
-              <h3 class="h4 font-luxury text-white mb-2"><i class="fas fa-map-marker-alt text-gold me-2"></i>Panvel & New Panvel</h3>
-              <p class="small text-muted mb-3">
-                Grand living interiors, villa fit-outs, and township apartment designs in Panvel, New Panvel, and Palava expansion zones.
-              </p>
-            </div>
-            <a href="/interior-designer-panvel" class="btn btn-outline-gold btn-sm w-100 fw-bold">View Panvel Interior Services <i class="fas fa-arrow-right ms-1"></i></a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
 
   <!-- Completed Work Gallery Section -->
   <section class="py-5 bg-dark-card border-top border-bottom border-secondary">
@@ -1721,6 +1651,39 @@ html, body {
       });
     })();
   </script>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.getElementById('glimpseCarousel');
+    const prevBtn = document.getElementById('glimpsePrevBtn');
+    const nextBtn = document.getElementById('glimpseNextBtn');
+    
+    if (carousel && prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', () => {
+        const cardWidth = carousel.querySelector('.glimpse-card').offsetWidth + 20; // width + gap
+        carousel.scrollBy({ left: -cardWidth * 2, behavior: 'smooth' });
+      });
+      
+      nextBtn.addEventListener('click', () => {
+        const cardWidth = carousel.querySelector('.glimpse-card').offsetWidth + 20; // width + gap
+        carousel.scrollBy({ left: cardWidth * 2, behavior: 'smooth' });
+      });
+      
+      const toggleArrows = () => {
+        const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+        prevBtn.style.opacity = carousel.scrollLeft <= 5 ? '0.3' : '1';
+        prevBtn.style.pointerEvents = carousel.scrollLeft <= 5 ? 'none' : 'auto';
+        
+        nextBtn.style.opacity = carousel.scrollLeft >= maxScroll - 5 ? '0.3' : '1';
+        nextBtn.style.pointerEvents = carousel.scrollLeft >= maxScroll - 5 ? 'none' : 'auto';
+      };
+      
+      carousel.addEventListener('scroll', toggleArrows);
+      window.addEventListener('resize', toggleArrows);
+      setTimeout(toggleArrows, 500);
+    }
+  });
+</script>
 
 <script is:inline>
     AOS.init({
