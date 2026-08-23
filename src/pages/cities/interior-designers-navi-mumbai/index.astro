@@ -1,19 +1,1694 @@
 ---
-// Redirect page
----
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>Redirecting...</title>
-  <meta name="robots" content="noindex, follow" />
-  <link rel="canonical" href="https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/" />
-  <meta http-equiv="refresh" content="0;url=/cities/interior-designers-navi-mumbai/" />
+import Layout from '../../../layouts/Layout.astro';
+
+const title = "Best Interior Designers in Navi Mumbai | Siddhivinayak Designers";
+const description = "Looking for the best interior designers in Navi Mumbai? Siddhivinayak Designers offers premium turnkey home interiors with 25+ years experience & 10-year warranty.";
+const canonical = "https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/";
+const schema = `{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://siddhivinayakdesigners.in/"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Interior Designer Navi Mumbai",
+      "item": "https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/"
+    }]
+  }
+{
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+    "name": "Siddhivinayak Designers - Navi Mumbai",
+    "image": "https://siddhivinayakdesigners.in/assets/images/hero_bg.webp",
+    "logo": "https://siddhivinayakdesigners.in/assets/images/logo_icon.webp",
+    "email": "admin@siddhivinayakdesigners.in",
+    "hasMap": "https://maps.google.com/?cid=6911458856073113523",
+    "@id": "https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/#localbusiness",
+    "url": "https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/",
+    "telephone": "+918369297174",
+    "priceRange": "$$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Shree Laxmi CHS, A 301, Sector 23, Kopar Khairane",
+      "addressLocality": "Koparkhairane, Navi Mumbai",
+      "addressRegion": "Maharashtra",
+      "postalCode": "400709",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 19.1039,
+      "longitude": 73.0031
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "09:00",
+      "closes": "21:00"
+    },
+    "areaServed": [
+      {
+        "@type": "AdministrativeArea",
+        "name": "Navi Mumbai"
+      }
+    ],
+    "review": [
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Ayush Sabale"
+        },
+        "reviewBody": "Excellent interior design work! The design is modern, creative, and well-planned with great attention to detail. The space is utilized efficiently, and the overall look is both elegant and functional.",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        }
+      },
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Shakuntala Kokate"
+        },
+        "reviewBody": "The owner Dattatray Machale has been our number one guy for our interior of the home. He has made our interior very very great in Vashi. Highly recommended!",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5",
+          "bestRating": "5"
+        }
+      }
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "186"
+    }
+  }
+{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Turnkey Home Interior Design Services in Navi Mumbai",
+    "serviceType": "Interior Design",
+    "provider": {
+      "@type": "LocalBusiness",
+      "name": "Siddhivinayak Designers",
+      "image": "https://siddhivinayakdesigners.in/assets/images/hero_bg.webp",
+      "telephone": "+918369297174",
+      "priceRange": "$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Shree Laxmi CHS, A 301, Sector 23, Kopar Khairane",
+        "addressLocality": "Koparkhairane, Navi Mumbai",
+        "addressRegion": "Maharashtra",
+        "postalCode": "400709",
+        "addressCountry": "IN"
+      }
+    },
+    "areaServed": [
+      {
+        "@type": "AdministrativeArea",
+        "name": "Navi Mumbai"
+      }
+    ],
+    "description": "Premium turnkey residential and commercial interior design and execution services in Navi Mumbai, including Vashi, Kharghar, Belapur, Nerul, and Kopar Khairane. Specializing in custom modular kitchens, space-saving wardrobes, false ceilings, and painting."
+  }
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why hire Siddhivinayak Designers as your interior designer in Navi Mumbai?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Siddhivinayak Designers brings over 25 years of hands-on civil execution experience, 500+ completed residential and commercial projects across Navi Mumbai, transparent fixed pricing, 3D VR design approvals, and a 10-year warranty on modular factory production."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Which areas in Navi Mumbai do you provide interior design services?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We provide complete home interiors, modular kitchens, and turnkey civil renovations across all major nodes of Navi Mumbai, including Vashi, Kharghar, Belapur, Nerul, Koparkhairane, Sanpada, Ghansoli, Airoli, Rabale, and Panvel."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the average cost of interior design for a 2BHK flat in Navi Mumbai?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The cost for a complete 2BHK interior design in Navi Mumbai typically ranges from ₹3.5 Lakhs to ₹7.5 Lakhs depending on material selection, customized furniture requirements, false ceiling work, profile lighting, and appliance integrations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you manufacture custom modular furniture locally in Navi Mumbai?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, all our modular kitchens, wardrobe units, TV units, and storage systems are precision-crafted in our state-of-the-art factory using BWP marine plywood, Hafele/Hettich German hardware, and high-gloss acrylic or veneer finishes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does a complete home interior project take in Navi Mumbai?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Our typical execution timeline is 45 days from 3D design approval to site handover, backed by factory modular production and dedicated site supervisors across Navi Mumbai."
+        }
+      }
+    ]
+  }`;
+const bodyContent = `<style>
+    .hero-banner-section {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('/assets/images/interior-designers-navi-mumbai.webp');
+      background-size: cover;
+      background-position: center;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .hero-overlay-box {
+      background-color: rgba(0, 0, 0, 0.45) !important;
+      backdrop-filter: blur(4px);
+      max-width: 780px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 35px 24px !important;
+      border-radius: 8px;
+    }
+    .btn-cta-consult {
+      background-color: #189ba6 !important;
+      color: #ffffff !important;
+      font-family: 'Open Sans', sans-serif !important;
+      font-weight: 600 !important;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(24, 155, 166, 0.3);
+    }
+    .btn-cta-consult:hover {
+      background-color: #127c85 !important;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(24, 155, 166, 0.5);
+    }
+    .badges-bar {
+      background-color: #189ba6 !important;
+      position: relative;
+      z-index: 10;
+      padding-top: 15px !important;
+      padding-bottom: 25px !important;
+    }
+    .badge-circle {
+      width: 110px;
+      height: 110px;
+      background-color: #ffffff !important;
+      border-radius: 50% !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: -70px;
+      margin-bottom: 12px !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      border: 4px solid #ffffff !important;
+      transition: transform 0.3s ease;
+    }
+    .badge-circle i {
+      color: #189ba6 !important;
+      font-size: 2.8rem !important;
+    }
+    .badge-circle:hover {
+      transform: translateY(-5px);
+    }
+    @media (max-width: 767px) {
+      .hero-banner-section {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('/assets/images/interior-designers-navi-mumbai-m.webp') !important;
+        min-height: 520px !important;
+      }
+      .hero-overlay-box {
+        padding: 24px 15px !important;
+        margin: 0 10px !important;
+      }
+      .badge-circle {
+        width: 75px;
+        height: 75px;
+        margin-top: -50px;
+        margin-bottom: 8px !important;
+        border: 2px solid #ffffff !important;
+      }
+      .badge-circle i {
+        font-size: 1.8rem !important;
+      }
+      .badges-bar {
+        padding-top: 10px !important;
+        padding-bottom: 15px !important;
+      }
+      .glimpse-card {
+        width: 280px !important;
+        height: 380px !important;
+      }
+      .glimpse-title-area h2 {
+        font-size: 1.5rem !important;
+      }
+      .glimpse-title-area p {
+        font-size: 0.85rem !important;
+      }
+      .glimpse-quote-btn {
+        font-size: 0.85rem !important;
+        padding: 8px 16px !important;
+      }
+    }
+    /* Premium Glimpse Card layout overrides */
+    .glimpse-card {
+      width: 380px !important;
+      height: 500px !important;
+      border-radius: 12px !important;
+      overflow: hidden !important;
+      position: relative !important;
+      flex-shrink: 0 !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+      background-color: #222 !important;
+    }
+    .glimpse-card img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    }
+    .glimpse-card:hover img {
+      transform: scale(1.08) !important;
+    }
+    .glimpse-card-overlay {
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 60%, transparent 100%) !important;
+      padding: 20px !important;
+    }
+    .glimpse-card-title, .glimpse-card-title * {
+      font-size: 1rem !important;
+      font-weight: 600 !important;
+      color: #ffffff !important;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4) !important;
+    }
+  </style>
+
+  <!-- Premium Hero Banner with Text Overlay -->
+  <section class="position-relative hero-banner-section">
+    <!-- Center Overlay Box -->
+    <div class="container text-center py-4">
+      <div class="hero-overlay-box mx-auto px-4 py-4 rounded-3 shadow-lg">
+        <h1 class="fw-bold text-white mb-2" style="font-size: 1.85rem !important; color: #ffffff !important; letter-spacing: -0.5px; font-family: 'Montserrat', sans-serif;">Best Home Interior Designers In Navi Mumbai</h1>
+        <p class="text-white-50 mb-3" style="font-size: 0.95rem !important; color: rgba(255,255,255,0.85) !important; font-family: 'Open Sans', sans-serif;">Dream Homes At Dream Budgets & 15,000 Happy Customers</p>
+        <button class="btn btn-cta-consult px-4 py-2 fw-bold rounded-2 text-white border-0" style="font-size: 0.95rem !important; padding: 10px 28px !important;" onclick="window.openConsultationPopup && window.openConsultationPopup(true)">
+          Book Free Consultation
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teal Bottom Badges Bar overlapping the image border -->
+  <div class="badges-bar w-100">
+    <div class="container">
+      <div class="row justify-content-center align-items-center g-3 text-center">
+        <!-- Badge 1 -->
+        <div class="col-4 col-md-3 d-flex flex-column align-items-center text-white">
+          <div class="badge-circle">
+            <i class="fas fa-home"></i>
+          </div>
+          <span class="fw-semibold badge-text" style="color: #ffffff !important; font-size: 0.95rem !important; font-family: 'Open Sans', sans-serif; font-weight: 700 !important; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">20% Extra Storage</span>
+        </div>
+        <!-- Badge 2 -->
+        <div class="col-4 col-md-3 d-flex flex-column align-items-center text-white">
+          <div class="badge-circle">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <span class="fw-semibold badge-text" style="color: #ffffff !important; font-size: 0.95rem !important; font-family: 'Open Sans', sans-serif; font-weight: 700 !important; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">25-Year Warranty</span>
+        </div>
+        <!-- Badge 3 -->
+        <div class="col-4 col-md-3 d-flex flex-column align-items-center text-white">
+          <div class="badge-circle">
+            <i class="fas fa-hand-holding-usd"></i>
+          </div>
+          <span class="fw-semibold badge-text" style="color: #ffffff !important; font-size: 0.95rem !important; font-family: 'Open Sans', sans-serif; font-weight: 700 !important; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">No-Cost EMI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Get a glimpse of Livspace homes Section -->
+  <section class="glimpse-section" id="glimpseSection">
+    <div class="container">
+      <div class="glimpse-header" data-aos="fade-up">
+        <div class="glimpse-title-area">
+          <h2>Get a glimpse of Livspace homes</h2>
+          <p>Latest dream home interiors delivered the hassle-free way</p>
+        </div>
+        <a href="https://wa.me/918369297174?text=Hi, I'm interested in getting a free quote for my home interiors" class="glimpse-quote-btn" target="_blank">Get Free Quote</a>
+      </div>
+      
+      <div class="glimpse-carousel-wrapper" data-aos="fade-up" data-aos-delay="100">
+        <button class="glimpse-arrow glimpse-arrow-left" id="glimpsePrevBtn" aria-label="Previous">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        
+        <div class="glimpse-carousel-container" id="glimpseCarousel">
+          <!-- Card 1 -->
+          <a href="/gallery/modern-4bhk-penthouse-kharghar/" class="glimpse-card" style="text-decoration: none;">
+            <img src="/assets/images/livspace-homes/modern-4bhk-penthouse-bangalore.webp" alt="Modern 4 BHK Penthouse, Kharghar" loading="lazy" />
+            <div class="glimpse-card-overlay">
+              <h3 class="glimpse-card-title">Modern 4 BHK Penthouse, Kharghar</h3>
+            </div>
+          </a>
+          
+          <!-- Card 2 -->
+          <a href="/gallery/contemporary-4bhk-penthouse-seawoods/" class="glimpse-card" style="text-decoration: none;">
+            <img src="/assets/images/livspace-homes/contemporary-4bhk-penthouse-noida.webp" alt="Contemporary 4 BHK Penthouse, Seawoods" loading="lazy" />
+            <div class="glimpse-card-overlay">
+              <h3 class="glimpse-card-title">Contemporary 4 BHK Penthouse, Seawoods</h3>
+            </div>
+          </a>
+          
+          <!-- Card 3 -->
+          <a href="/gallery/elegant-2bhk-flat-vashi/" class="glimpse-card" style="text-decoration: none;">
+            <img src="/assets/images/livspace-homes/elegant-2bhk-flat-mumbai.webp" alt="Elegant 2 BHK Flat, Vashi" loading="lazy" />
+            <div class="glimpse-card-overlay">
+              <h3 class="glimpse-card-title">Elegant 2 BHK Flat, Vashi</h3>
+            </div>
+          </a>
+          
+          <!-- Card 4 -->
+          <a href="/gallery/contemporary-3bhk-house-belapur/" class="glimpse-card" style="text-decoration: none;">
+            <img src="/assets/images/livspace-homes/contemporary-3bhk-house-gurgaon.webp" alt="Contemporary 3 BHK House, Belapur" loading="lazy" />
+            <div class="glimpse-card-overlay">
+              <h3 class="glimpse-card-title">Contemporary 3 BHK House, Belapur</h3>
+            </div>
+          </a>
+          
+          <!-- Card 5 -->
+          <a href="/gallery/contemporary-3bhk-flat-kopar-khairane/" class="glimpse-card" style="text-decoration: none;">
+            <img src="/assets/images/livspace-homes/contemporary-3bhk-flat-ahmedabad.webp" alt="Contemporary 3 BHK Flat, Kopar Khairane" loading="lazy" />
+            <div class="glimpse-card-overlay">
+              <h3 class="glimpse-card-title">Contemporary 3 BHK Flat, Kopar Khairane</h3>
+            </div>
+          </a>
+          
+          <!-- Card 6 -->
+          <a href="/gallery/rustic-3bhk-home-nerul/" class="glimpse-card" style="text-decoration: none;">
+            <img src="/assets/images/livspace-homes/rustic-3bhk-home-bangalore.webp" alt="Rustic 3 BHK Home, Nerul" loading="lazy" />
+            <div class="glimpse-card-overlay">
+              <h3 class="glimpse-card-title">Rustic 3 BHK Home, Nerul</h3>
+            </div>
+          </a>
+        </div>
+        
+        <button class="glimpse-arrow glimpse-arrow-right" id="glimpseNextBtn" aria-label="Next">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- High-Impact Luxury Design Catalog Directory Showcase Section -->
+  <section class="py-5 catalog-directory-section" id="designsShowcase" style="background-color: #ffffff !important; background: #ffffff !important;">
+    <div class="container py-5">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="section-title font-luxury mb-3" style="font-size: 2.4rem; color: #151413 !important;">Browse Our Popular Designs</h2>
+        <div class="mx-auto mb-3" style="width: 40px; height: 1.5px; background: #B89047; opacity: 0.6;"></div>
+        <span class="d-md-none text-muted d-block text-center small" style="font-size: 0.8rem; letter-spacing: 0.5px; color: #888888 !important;"><i class="fas fa-hand-pointer me-1" style="color: #189ba6 !important;"></i> Swipe horizontally to explore designs</span>
+      </div>
+
+      <!-- 6 Premium Minimal Catalog Cards -->
+      <div class="row g-4" id="homeDesignGrid">
+        
+        <!-- 1. Living Room -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up">
+          <a class="text-decoration-none d-block h-100" href="/living-room">
+            <div class="design-catalog-card h-100 d-flex flex-column" style="cursor: pointer; background-color: #ffffff !important; background: #ffffff !important; border: 1px solid #e6e2db !important;">
+              <div class="position-relative overflow-hidden" style="border-radius: 6px 6px 0 0;">
+                <img alt="Living Room Interior Design" class="img-fluid w-100" loading="lazy" src="/assets/images/living-room/eclectic-living-room-with-wall-mounted-tv-unit.webp" draggable="false" style="height: 260px; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+                <span style="position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,0.55);backdrop-filter:blur(8px);color:rgba(255,255,255,0.85);padding:3px 10px;border-radius:20px;font-size:0.7rem;font-weight:500;letter-spacing:0.5px;">62 designs</span>
+              </div>
+              <div class="p-3" style="border-top: 1px solid rgba(184,144,71,0.15);">
+                <h3 class="mb-2 font-luxury" style="font-size: 1rem; font-weight: 600; color: #151413 !important;">Living Room</h3>
+                <span class="d-inline-block px-3 py-1 mt-1" style="border: 1px solid rgba(184,144,71,0.5); border-radius: 4px; color: #B89047; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.5px; transition: all 0.3s ease;">Open Designs <i class="fas fa-arrow-right ms-1"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 2. Master Bedroom -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <a class="text-decoration-none d-block h-100" href="/bedroom-wardrobes">
+            <div class="design-catalog-card h-100 d-flex flex-column" style="cursor: pointer; background-color: #ffffff !important; background: #ffffff !important; border: 1px solid #e6e2db !important;">
+              <div class="position-relative overflow-hidden" style="border-radius: 6px 6px 0 0;">
+                <img alt="Master Bedroom Interior Design" class="img-fluid w-100" loading="lazy" src="/assets/images/bedroom/modern-bedroom-in-gray-and-wood.webp" draggable="false" style="height: 260px; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+                <span style="position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,0.55);backdrop-filter:blur(8px);color:rgba(255,255,255,0.85);padding:3px 10px;border-radius:20px;font-size:0.7rem;font-weight:500;letter-spacing:0.5px;">86 designs</span>
+              </div>
+              <div class="p-3" style="border-top: 1px solid rgba(184,144,71,0.15);">
+                <h3 class="mb-2 font-luxury" style="font-size: 1rem; font-weight: 600; color: #151413 !important;">Master Bedroom</h3>
+                <span class="d-inline-block px-3 py-1 mt-1" style="border: 1px solid rgba(184,144,71,0.5); border-radius: 4px; color: #B89047; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.5px; transition: all 0.3s ease;">Open Designs <i class="fas fa-arrow-right ms-1"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 3. Wardrobe -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <a class="text-decoration-none d-block h-100" href="/wardrobe-design">
+            <div class="design-catalog-card h-100 d-flex flex-column" style="cursor: pointer; background-color: #ffffff !important; background: #ffffff !important; border: 1px solid #e6e2db !important;">
+              <div class="position-relative overflow-hidden" style="border-radius: 6px 6px 0 0;">
+                <img alt="Modular Wardrobe Design" class="img-fluid w-100" loading="lazy" src="/assets/images/wardrobe/wardrobe-with-attached-study-cum-dressing-unit.webp" draggable="false" style="height: 260px; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+                <span style="position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,0.55);backdrop-filter:blur(8px);color:rgba(255,255,255,0.85);padding:3px 10px;border-radius:20px;font-size:0.7rem;font-weight:500;letter-spacing:0.5px;">73 designs</span>
+              </div>
+              <div class="p-3" style="border-top: 1px solid rgba(184,144,71,0.15);">
+                <h3 class="mb-2 font-luxury" style="font-size: 1rem; font-weight: 600; color: #151413 !important;">Wardrobe</h3>
+                <span class="d-inline-block px-3 py-1 mt-1" style="border: 1px solid rgba(184,144,71,0.5); border-radius: 4px; color: #B89047; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.5px; transition: all 0.3s ease;">Open Designs <i class="fas fa-arrow-right ms-1"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 4. Dining Room -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up">
+          <a class="text-decoration-none d-block h-100" href="/dining-room">
+            <div class="design-catalog-card h-100 d-flex flex-column" style="cursor: pointer; background-color: #ffffff !important; background: #ffffff !important; border: 1px solid #e6e2db !important;">
+              <div class="position-relative overflow-hidden" style="border-radius: 6px 6px 0 0;">
+                <img alt="Dining Room Interior Design" class="img-fluid w-100" loading="lazy" src="/assets/images/dining-room/dining-room-interior-design-with-wooden-dining-table-two-chairs-and-bench.webp" draggable="false" style="height: 260px; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+                <span style="position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,0.55);backdrop-filter:blur(8px);color:rgba(255,255,255,0.85);padding:3px 10px;border-radius:20px;font-size:0.7rem;font-weight:500;letter-spacing:0.5px;">54 designs</span>
+              </div>
+              <div class="p-3" style="border-top: 1px solid rgba(184,144,71,0.15);">
+                <h3 class="mb-2 font-luxury" style="font-size: 1rem; font-weight: 600; color: #151413 !important;">Dining Room</h3>
+                <span class="d-inline-block px-3 py-1 mt-1" style="border: 1px solid rgba(184,144,71,0.5); border-radius: 4px; color: #B89047; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.5px; transition: all 0.3s ease;">Open Designs <i class="fas fa-arrow-right ms-1"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 5. Modular Kitchen -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <a class="text-decoration-none d-block h-100" href="/modular-kitchens">
+            <div class="design-catalog-card h-100 d-flex flex-column" style="cursor: pointer; background-color: #ffffff !important; background: #ffffff !important; border: 1px solid #e6e2db !important;">
+              <div class="position-relative overflow-hidden" style="border-radius: 6px 6px 0 0;">
+                <img alt="Modular Kitchen Interior Design" class="img-fluid w-100" loading="lazy" src="/assets/images/modular-kitchen/kitchen-with-foldable-breakfast-table-and-yellow-chairs.webp" draggable="false" style="height: 260px; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+                <span style="position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,0.55);backdrop-filter:blur(8px);color:rgba(255,255,255,0.85);padding:3px 10px;border-radius:20px;font-size:0.7rem;font-weight:500;letter-spacing:0.5px;">69 designs</span>
+              </div>
+              <div class="p-3" style="border-top: 1px solid rgba(184,144,71,0.15);">
+                <h3 class="mb-2 font-luxury" style="font-size: 1rem; font-weight: 600; color: #151413 !important;">Modular Kitchen</h3>
+                <span class="d-inline-block px-3 py-1 mt-1" style="border: 1px solid rgba(184,144,71,0.5); border-radius: 4px; color: #B89047; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.5px; transition: all 0.3s ease;">Open Designs <i class="fas fa-arrow-right ms-1"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- 6. 2 BHK Home -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <a class="text-decoration-none d-block h-100" href="/2bhk-interior">
+            <div class="design-catalog-card h-100 d-flex flex-column" style="cursor: pointer; background-color: #ffffff !important; background: #ffffff !important; border: 1px solid #e6e2db !important;">
+              <div class="position-relative overflow-hidden" style="border-radius: 6px 6px 0 0;">
+                <img alt="2 BHK Full Home Interior" class="img-fluid w-100" loading="lazy" src="/assets/images/2bhk/2bhk-interior-design-with-hidden-tv-unit-storage.webp" draggable="false" style="height: 260px; object-fit: cover; transition: transform 0.5s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" />
+                <span style="position:absolute;bottom:10px;left:10px;background:rgba(0,0,0,0.55);backdrop-filter:blur(8px);color:rgba(255,255,255,0.85);padding:3px 10px;border-radius:20px;font-size:0.7rem;font-weight:500;letter-spacing:0.5px;">111 designs</span>
+              </div>
+              <div class="p-3" style="border-top: 1px solid rgba(184,144,71,0.15);">
+                <h3 class="mb-2 font-luxury" style="font-size: 1rem; font-weight: 600; color: #151413 !important;">2 BHK Home</h3>
+                <span class="d-inline-block px-3 py-1 mt-1" style="border: 1px solid rgba(184,144,71,0.5); border-radius: 4px; color: #B89047; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.5px; transition: all 0.3s ease;">Open Designs <i class="fas fa-arrow-right ms-1"></i></span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-5">
+        <a class="btn btn-outline-gold px-4 py-2 text-uppercase font-luxury" href="/services" style="letter-spacing: 2px; font-size: 0.8rem; font-weight: 600; border: 1px solid rgba(184,144,71,0.6); color: #B89047; border-radius: 4px;">
+          View All Designs <i class="fas fa-arrow-right ms-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ultra-Luxury Livspace Inspired Cost Estimator Section -->
+  <section class="py-5 livspace-estimate-section position-relative" id="livspaceEstimateSection" style="background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%) !important; padding-top: 75px; padding-bottom: 85px;">
+    <!-- Google Font Import for Section -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+      .livspace-estimate-section {
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+      }
+      .ls-luxury-card {
+        background: #ffffff !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 20px !important;
+        padding: 2rem 1.75rem !important;
+        box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 4px 12px -2px rgba(0, 0, 0, 0.02) !important;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        position: relative;
+      }
+      .ls-luxury-card::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 20px;
+        padding: 1.5px;
+        background: linear-gradient(135deg, rgba(24, 155, 166, 0.4), transparent 60%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+      }
+      .ls-luxury-card:hover {
+        transform: translateY(-8px) !important;
+        box-shadow: 0 25px 45px -10px rgba(24, 155, 166, 0.18), 0 12px 24px -5px rgba(0, 0, 0, 0.04) !important;
+      }
+      .ls-luxury-card:hover::after {
+        opacity: 1;
+      }
+      .ls-card-icon-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.75rem;
+      }
+      .ls-icon-box {
+        position: relative;
+        width: 68px;
+        height: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .ls-calc-badge {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #f1f5f9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #e2e8f0;
+        box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.8), 0 2px 6px rgba(0, 0, 0, 0.04);
+        transition: transform 0.3s ease, background-color 0.3s ease;
+      }
+      .ls-luxury-card:hover .ls-calc-badge {
+        transform: rotate(15deg) scale(1.05);
+        background: #e2e8f0;
+      }
+      .ls-card-heading {
+        font-size: 1.35rem;
+        font-weight: 800;
+        color: #0f172a !important;
+        margin-bottom: 0.6rem;
+        letter-spacing: -0.3px;
+      }
+      .ls-card-subtitle {
+        font-size: 0.92rem;
+        color: #64748b !important;
+        line-height: 1.55;
+        min-height: 46px;
+        font-weight: 400;
+        margin-bottom: 2rem;
+      }
+      .ls-pill-btn, .ls-pill-btn *, span.ls-pill-btn, .ls-luxury-card:hover .ls-pill-btn, .ls-luxury-card:hover .ls-pill-btn * {
+        color: #ffffff !important;
+      }
+      .ls-pill-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        background: linear-gradient(135deg, #189ba6 0%, #0d6e77 100%) !important;
+        color: #ffffff !important;
+        font-size: 0.85rem;
+        font-weight: 800;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        padding: 0.85rem 1.75rem;
+        border-radius: 50px;
+        text-decoration: none;
+        border: none;
+        box-shadow: 0 8px 20px rgba(24, 155, 166, 0.28);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      }
+      .ls-pill-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+        transition: left 0.6s ease;
+      }
+      .ls-luxury-card:hover .ls-pill-btn::before {
+        left: 100%;
+      }
+      .ls-luxury-card:hover .ls-pill-btn {
+        background: linear-gradient(135deg, #14838d 0%, #0b5a62 100%) !important;
+        box-shadow: 0 12px 28px rgba(24, 155, 166, 0.42);
+        color: #ffffff !important;
+      }
+      .ls-pill-btn i {
+        font-size: 0.85rem;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .ls-luxury-card:hover .ls-pill-btn i {
+        transform: translateX(5px);
+      }
+      .ls-highlight-text {
+        background: linear-gradient(135deg, #189ba6 0%, #0d6e77 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 800;
+        display: inline-block;
+        transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1), transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .ls-card-link-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 5;
+        cursor: pointer;
+      }
+
+      @media (max-width: 767px) {
+        #homeEstimateGrid {
+          display: flex !important;
+          flex-wrap: nowrap !important;
+          overflow-x: auto !important;
+          scroll-snap-type: x mandatory !important;
+          padding-bottom: 25px !important;
+          padding-left: 15px !important;
+          padding-right: 15px !important;
+          -webkit-overflow-scrolling: touch !important;
+          -ms-overflow-style: none !important;
+          scrollbar-width: none !important;
+        }
+        #homeEstimateGrid > div {
+          flex: 0 0 85% !important;
+          max-width: 85% !important;
+          scroll-snap-align: center !important;
+        }
+        #homeEstimateGrid::-webkit-scrollbar {
+          display: none !important;
+        }
+      }
+    </style>
+
+    <div class="container py-2">
+      <!-- Section Header -->
+      <div class="text-center mb-5" data-aos="fade-up">
+        <h2 class="mb-2" style="font-size: clamp(1.9rem, 4vw, 2.6rem); color: #0f172a !important; font-weight: 800; letter-spacing: -0.5px;">
+          Get the estimate for your <span class="ls-highlight-text" id="lsDynamicWord">Wardrobe</span>
+        </h2>
+        <p class="text-muted mb-0" style="font-size: 1.05rem; color: #64748b !important; font-weight: 500;">
+          Calculate the approximate cost of doing up your home interiors
+        </p>
+      </div>
+
+      <span class="d-md-none text-muted d-block text-center small mb-4" style="font-size: 0.8rem; letter-spacing: 0.5px; color: #888888 !important;"><i class="fas fa-hand-pointer me-1" style="color: #189ba6 !important;"></i> Swipe horizontally to explore estimates</span>
+
+      <!-- 3 Luxury Cards Grid -->
+      <div class="row g-4 justify-content-center" id="homeEstimateGrid">
+        
+        <!-- 1. Full Home Interior -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="0" onmouseenter="setLsActiveWord('Home')">
+          <div class="ls-luxury-card h-100 d-flex flex-column justify-content-between" style="cursor: pointer;">
+            <a href="/calculator" class="ls-card-link-overlay"></a>
+            <div>
+              <div class="ls-card-icon-container">
+                <!-- Multi-tone Sofa Graphic -->
+                <div class="ls-icon-box">
+                  <svg width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="34" cy="34" r="28" fill="#E0F2FE"/>
+                    <!-- Sofa Base -->
+                    <rect x="12" y="34" width="44" height="16" rx="4" fill="#FFFFFF" stroke="#1E293B" stroke-width="2.2"/>
+                    <!-- Cushion lines -->
+                    <path d="M12 42H56" stroke="#E2E8F0" stroke-width="1.5"/>
+                    <path d="M34 34V50" stroke="#E2E8F0" stroke-width="1.5"/>
+                    <!-- Backrest -->
+                    <path d="M16 26C16 23.7909 17.7909 22 20 22H48C50.2091 22 52 23.7909 52 26V34H16V26Z" fill="#FFFFFF" stroke="#1E293B" stroke-width="2.2"/>
+                    <!-- Legs -->
+                    <path d="M18 50V55M50 50V55" stroke="#1E293B" stroke-width="2.5" stroke-linecap="round"/>
+                    <!-- Red Check Badge -->
+                    <circle cx="50" cy="18" r="9" fill="#189ba6"/>
+                    <path d="M46.5 18L49 20.5L53.5 15.5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+
+                <!-- Calculator Badge -->
+                <div class="ls-calc-badge">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 9H11M9 7V11M13 9H17M7 16H11M13 15H17M13 17H17" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+
+              <h3 class="ls-card-heading">Full Home</h3>
+              <p class="ls-card-subtitle">Know the estimate price for your full home interiors</p>
+            </div>
+
+            <div>
+              <a href="/calculator" class="ls-pill-btn" style="color: #ffffff !important; text-decoration: none !important;">
+                <span style="color: #ffffff !important; font-weight: 800; letter-spacing: 1.2px;">CALCULATE</span> <i class="fas fa-chevron-right ms-1" style="color: #ffffff !important;"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Kitchen -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100" onmouseenter="setLsActiveWord('Kitchen')">
+          <div class="ls-luxury-card h-100 d-flex flex-column justify-content-between" style="cursor: pointer;">
+            <a href="/kitchen-calculator" class="ls-card-link-overlay"></a>
+            <div>
+              <div class="ls-card-icon-container">
+                <!-- Multi-tone Kitchen Graphic -->
+                <div class="ls-icon-box">
+                  <svg width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="34" cy="34" r="28" fill="#E0F2FE"/>
+                    <!-- Overhead Cabinet -->
+                    <rect x="14" y="14" width="40" height="12" rx="2" fill="#FFFFFF" stroke="#1E293B" stroke-width="2.2"/>
+                    <!-- Chimney -->
+                    <path d="M24 26L28 38H40L44 26" stroke="#1E293B" stroke-width="2"/>
+                    <!-- Lower Red Counter -->
+                    <rect x="14" y="38" width="40" height="16" rx="2" fill="#189ba6" stroke="#1E293B" stroke-width="2.2"/>
+                    <path d="M34 38V54" stroke="#FFFFFF" stroke-width="1.8"/>
+                    <circle cx="24" cy="46" r="1.8" fill="white"/>
+                    <circle cx="44" cy="46" r="1.8" fill="white"/>
+                  </svg>
+                </div>
+
+                <!-- Calculator Badge -->
+                <div class="ls-calc-badge">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 9H11M9 7V11M13 9H17M7 16H11M13 15H17M13 17H17" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+
+              <h3 class="ls-card-heading">Kitchen</h3>
+              <p class="ls-card-subtitle">Get an approximate costing for your kitchen interior.</p>
+            </div>
+
+            <div>
+              <a href="/kitchen-calculator" class="ls-pill-btn" style="color: #ffffff !important; text-decoration: none !important;">
+                <span style="color: #ffffff !important; font-weight: 800; letter-spacing: 1.2px;">CALCULATE</span> <i class="fas fa-chevron-right ms-1" style="color: #ffffff !important;"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- 3. Wardrobe -->
+        <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200" onmouseenter="setLsActiveWord('Wardrobe')">
+          <div class="ls-luxury-card h-100 d-flex flex-column justify-content-between" style="cursor: pointer;">
+            <a href="/wardrobe-calculator" class="ls-card-link-overlay"></a>
+            <div>
+              <div class="ls-card-icon-container">
+                <!-- Multi-tone Wardrobe Graphic -->
+                <div class="ls-icon-box">
+                  <svg width="68" height="68" viewBox="0 0 68 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="34" cy="34" r="28" fill="#E0F2FE"/>
+                    <!-- Outer frame -->
+                    <rect x="16" y="14" width="36" height="42" rx="3" fill="#FFFFFF" stroke="#1E293B" stroke-width="2.2"/>
+                    <!-- Divider line -->
+                    <path d="M34 14V56" stroke="#1E293B" stroke-width="2.2"/>
+                    <!-- Center Red Accent Shutters -->
+                    <rect x="20" y="26" width="28" height="18" fill="#189ba6" stroke="#1E293B" stroke-width="1.8"/>
+                    <!-- Handles -->
+                    <path d="M28 35H30M38 35H40" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+
+                <!-- Calculator Badge -->
+                <div class="ls-calc-badge">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 9H11M9 7V11M13 9H17M7 16H11M13 15H17M13 17H17" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+
+              <h3 class="ls-card-heading">Wardrobe</h3>
+              <p class="ls-card-subtitle">Our estimate for your dream wardrobe</p>
+            </div>
+
+            <div>
+              <a href="/wardrobe-calculator" class="ls-pill-btn" style="color: #ffffff !important; text-decoration: none !important;">
+                <span style="color: #ffffff !important; font-weight: 800; letter-spacing: 1.2px;">CALCULATE</span> <i class="fas fa-chevron-right ms-1" style="color: #ffffff !important;"></i>
+              </a>
+            </div>
+          </div>
+        </div>      </div>
+    </div>
+  </section>
+
   <script>
-    window.location.href = "/cities/interior-designers-navi-mumbai/";
+    (function() {
+      const words = ["Wardrobe", "Kitchen", "Home"];
+      let idx = 0;
+      let isAnimating = false;
+      
+      window.setLsActiveWord = function(w) {
+        const el = document.getElementById("lsDynamicWord");
+        if (!el || el.textContent === w || isAnimating) return;
+        
+        isAnimating = true;
+        el.style.opacity = "0";
+        el.style.transform = "translateY(-8px)";
+        
+        setTimeout(function() {
+          el.textContent = w;
+          el.style.transform = "translateY(8px)";
+          
+          setTimeout(function() {
+            el.style.opacity = "1";
+            el.style.transform = "translateY(0)";
+            setTimeout(function() { isAnimating = false; }, 450);
+          }, 40);
+        }, 280);
+      };
+
+      function cycleWord() {
+        idx = (idx + 1) % words.length;
+        window.setLsActiveWord(words[idx]);
+      }
+
+      document.addEventListener("DOMContentLoaded", function() {
+        setInterval(cycleWord, 4800);
+      });
+    })();
   </script>
-</head>
-<body>
-  <p>Redirecting to <a href="/cities/interior-designers-navi-mumbai/">/cities/interior-designers-navi-mumbai/</a>...</p>
-</body>
-</html>
+
+
+
+  <!-- Completed Work Gallery Section -->
+  <section class="py-5 bg-dark-card border-top border-bottom border-secondary">
+    <div class="container py-5">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="section-subtitle">Real Executed Projects</span>
+        <h2 class="section-title text-white font-luxury">Our Recent Completion Gallery</h2>
+        <p class="text-muted max-w-600 mx-auto mt-2">Browse actual on-site handover photos of modular kitchens, custom
+          wardrobes, and false ceilings completed by our in-house contracting teams.</p>
+      </div>
+      <div class="row g-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-3 col-md-4 col-6">
+          <div class="premium-card">
+            <div class="premium-card-img">
+              <img alt="Real Acrylic Modular Kitchen in Koparkhairne" class="img-fluid w-100" loading="lazy"
+                src="/assets/images/modular-kitchen-koparkhairne-siddhivinayak-interior.webp"
+                style="height: 180px; object-fit: cover;" />
+              <div class="premium-card-overlay">
+                <a class="btn btn-gold btn-sm lightbox-trigger"
+                  data-caption="Premium Acrylic Modular Kitchen Handover - Koparkhairane"
+                  href="/assets/images/modular-kitchen-koparkhairne-siddhivinayak-interior.webp">View Kitchen</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+          <div class="premium-card">
+            <div class="premium-card-img">
+              <img alt="Real Living Room Wall Paneling in Navi Mumbai" class="img-fluid w-100" loading="lazy"
+                src="/assets/images/living-room-interior-designer-koparkhairne.webp"
+                style="height: 180px; object-fit: cover;" />
+              <div class="premium-card-overlay">
+                <a class="btn btn-gold btn-sm lightbox-trigger"
+                  data-caption="Luxury Living Room - Customized TV Panels &amp; Backlighting"
+                  href="/assets/images/living-room-interior-designer-koparkhairne.webp">View Living</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+          <div class="premium-card">
+            <div class="premium-card-img">
+              <img alt="Real Master Bedroom Wardrobe in Nerul" class="img-fluid w-100" loading="lazy"
+                src="/assets/images/turnkey-residential-interior-navi-mumbai.webp"
+                style="height: 180px; object-fit: cover;" />
+              <div class="premium-card-overlay">
+                <a class="btn btn-gold btn-sm lightbox-trigger"
+                  data-caption="Master Bedroom - Warm Veneered Backing &amp; Bed Headboard"
+                  href="/assets/images/turnkey-residential-interior-navi-mumbai.webp">View Bedroom</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+          <div class="premium-card">
+            <div class="premium-card-img">
+              <img alt="Real False Ceiling Lighting Work in Vashi" class="img-fluid w-100" loading="lazy"
+                src="/assets/images/modern-false-ceiling-design-koparkhairne.webp"
+                style="height: 180px; object-fit: cover;" />
+              <div class="premium-card-overlay">
+                <a class="btn btn-gold btn-sm lightbox-trigger"
+                  data-caption="Gypsum False Ceiling - Linear Track Lighting &amp; Cove Details"
+                  href="/assets/images/modern-false-ceiling-design-koparkhairne.webp">View Ceiling</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+          <div class="premium-card">
+            <div class="premium-card-img">
+              <img alt="Real Parallel Modular Kitchen in CBD Belapur" class="img-fluid w-100" loading="lazy"
+                src="/assets/images/IMG_0804.webp" style="height: 180px; object-fit: cover;" />
+              <div class="premium-card-overlay">
+                <a class="btn btn-gold btn-sm lightbox-trigger"
+                  data-caption="Luxury 4 BHK Duplex Handover - Palm Beach Road, Sanpada"
+                  href="/assets/images/IMG_0804.webp">View Kitchen</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+          <div class="premium-card">
+            <div class="premium-card-img">
+              <img alt="Real Custom Wardrobes Bedrooms in Kharghar" class="img-fluid w-100" loading="lazy"
+                src="/assets/images/images (3).webp" style="height: 180px; object-fit: cover;" />
+              <div class="premium-card-overlay">
+                <a class="btn btn-gold btn-sm lightbox-trigger"
+                  data-caption="Couture Living Concept - Seawoods Grand Central"
+                  href="/assets/images/images (3).webp">View Bedroom</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+          <div class="premium-card">
+            <div class="premium-card-img">
+              <img alt="Real Kitchen Dry Area Cabinetry in Ghansoli" class="img-fluid w-100" loading="lazy"
+                src="/assets/images/luxury-home-interior-designer-vashi (1).webp"
+                style="height: 180px; object-fit: cover;" />
+              <div class="premium-card-overlay">
+                <a class="btn btn-gold btn-sm lightbox-trigger"
+                  data-caption="Project Titan - Urban Minimalist Living Room, Sanpada"
+                  href="/assets/images/luxury-home-interior-designer-vashi (1).webp">View Kitchen</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+          <div class="premium-card">
+            <div class="premium-card-img">
+              <img alt="Real Gypsum Work Ceiling Grid in Sanpada" class="img-fluid w-100" loading="lazy"
+                src="/assets/images/commercial-office-space-designer-navi-mumbai.webp"
+                style="height: 180px; object-fit: cover;" />
+              <div class="premium-card-overlay">
+                <a class="btn btn-gold btn-sm lightbox-trigger"
+                  data-caption="Bespoke Executive Office Cabin &amp; Workstations"
+                  href="/assets/images/commercial-office-space-designer-navi-mumbai.webp">View Ceiling</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-5">
+        <a class="btn btn-outline-gold px-4 py-3" href="/gallery">View Full Inspiration Gallery</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deep Dive Content Section -->
+  <section class="py-5 border-bottom border-secondary">
+    <div class="container py-3">
+      <div class="row g-4">
+        <div class="col-lg-8">
+          <h2 class="font-luxury text-white h2 mb-4">Why Homeowners in Navi Mumbai Choose Siddhivinayak Designers</h2>
+          <p class="text-muted leading-relaxed mb-4">
+            Navi Mumbai has evolved into one of Maharashtra's most planned and vibrant urban centers. From high-rise luxury complexes along Palm Beach Road to bustling residential communities in Kharghar and Airoli, Navi Mumbai homeowners demand interior design solutions that combine space optimization, coastal climate durability, and sophisticated modern aesthetics.
+          </p>
+          <p class="text-muted leading-relaxed mb-4">
+            At <strong>Siddhivinayak Designers</strong>, our end-to-end approach eliminates the stress of coordinating multiple contractors, vendors, and laborers. Here is why we are recognized as the leading <strong>interior designer in Navi Mumbai</strong>, offering premium execution at direct factory rates:
+          </p>
+
+          <div class="row g-4 mt-2 mb-5">
+            <div class="col-md-6" data-aos="zoom-in">
+              <div class="p-4 bg-dark-card rounded-4 border border-secondary shadow-lg h-100 position-relative overflow-hidden" style="background: rgba(255,255,255,0.02) !important; transition: transform 0.3s ease;">
+                <div class="d-flex align-items-center mb-3">
+                  <div class="p-3 rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; background: rgba(24, 155, 166, 0.1);">
+                    <i class="fas fa-drafting-table text-gold fs-5" style="color: #189ba6 !important;"></i>
+                  </div>
+                  <h3 class="h5 text-white font-luxury mb-0">3D VR Visualization</h3>
+                </div>
+                <p class="small text-muted mb-0 leading-relaxed">Experience your future home before construction begins with photorealistic 3D VR walkthroughs and detailed material boards from our <strong>interior designers in Navi Mumbai</strong>.</p>
+              </div>
+            </div>
+            <div class="col-md-6" data-aos="zoom-in" data-aos-delay="100">
+              <div class="p-4 bg-dark-card rounded-4 border border-secondary shadow-lg h-100 position-relative overflow-hidden" style="background: rgba(255,255,255,0.02) !important; transition: transform 0.3s ease;">
+                <div class="d-flex align-items-center mb-3">
+                  <div class="p-3 rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; background: rgba(24, 155, 166, 0.1);">
+                    <i class="fas fa-industry text-gold fs-5" style="color: #189ba6 !important;"></i>
+                  </div>
+                  <h3 class="h5 text-white font-luxury mb-0">German Factory Precision</h3>
+                </div>
+                <p class="small text-muted mb-0 leading-relaxed">All modular cabinets and wardrobes are precision-crafted using automated CNC machinery for zero-defect edge banding and seamless assembly by our expert manufacturing team.</p>
+              </div>
+            </div>
+            <div class="col-md-6" data-aos="zoom-in" data-aos-delay="200">
+              <div class="p-4 bg-dark-card rounded-4 border border-secondary shadow-lg h-100 position-relative overflow-hidden" style="background: rgba(255,255,255,0.02) !important; transition: transform 0.3s ease;">
+                <div class="d-flex align-items-center mb-3">
+                  <div class="p-3 rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; background: rgba(24, 155, 166, 0.1);">
+                    <i class="fas fa-shield-alt text-gold fs-5" style="color: #189ba6 !important;"></i>
+                  </div>
+                  <h3 class="h5 text-white font-luxury mb-0">10-Year Warranty</h3>
+                </div>
+                <p class="small text-muted mb-0 leading-relaxed">We use BWP (Boiling Water Proof) marine plywood and premium Hafele/Hettich fittings backed by a 10-year warranty to guarantee structural durability.</p>
+              </div>
+            </div>
+            <div class="col-md-6" data-aos="zoom-in" data-aos-delay="300">
+              <div class="p-4 bg-dark-card rounded-4 border border-secondary shadow-lg h-100 position-relative overflow-hidden" style="background: rgba(255,255,255,0.02) !important; transition: transform 0.3s ease;">
+                <div class="d-flex align-items-center mb-3">
+                  <div class="p-3 rounded-circle me-3 d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; background: rgba(24, 155, 166, 0.1);">
+                    <i class="fas fa-clock text-gold fs-5" style="color: #189ba6 !important;"></i>
+                  </div>
+                  <h3 class="h5 text-white font-luxury mb-0">45-Day Handover</h3>
+                </div>
+                <p class="small text-muted mb-0 leading-relaxed">Our dedicated project managers ensure on-time completion with weekly progress updates, ensuring a stress-free experience for our clients.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 mb-5">
+            <h2 class="font-luxury text-white h3 mb-3">Navi Mumbai Architectural Compliance &amp; Coastal Climate Execution</h2>
+            <p class="text-muted leading-relaxed mb-3">
+              Designing home interiors in Navi Mumbai comes with unique architectural and environmental demands. Due to high humidity levels near Thane Creek and Palm Beach Road, conventional commercial particle boards and low-grade MDF often swell and degrade within 2 to 3 years. At <strong>Siddhivinayak Designers</strong>, our <strong>home interior designers in Navi Mumbai</strong> ensure that all structural woodwork is executed using <strong>IS:710 Grade Boiling Water Proof (BWP) Marine Plywood</strong> combined with 1mm anti-fingerprint acrylic or wood veneers, guaranteed to withstand Navi Mumbai's heavy monsoon humidity.
+            </p>
+            <p class="text-muted leading-relaxed">
+              Additionally, our turnkey team of <strong>interior designers in Navi Mumbai</strong> assists homeowners with CIDCO structural compliance, housing society NOC approvals, and structural layout blueprints for wall modifications or balcony closures in redeveloped towers across Vashi, Kharghar, Nerul, and Koparkhairane.
+            </p>
+          </div>
+
+          <!-- Process Section [NEW] -->
+          <div class="mt-5 pt-3 mb-5">
+            <h2 class="font-luxury text-white h3 mb-3">Our 5-Step Turnkey Interior Design Process in Navi Mumbai</h2>
+            <p class="text-muted leading-relaxed mb-4">
+              Achieving a flawless home transformation requires a structured, professional approach. As the leading <strong>interior designers in Navi Mumbai</strong>, we have developed a seamless 5-step process that guarantees timely handovers, absolute material quality, and complete alignment with your aesthetic preferences:
+            </p>
+            
+            <div class="timeline-stepper mt-4">
+              <!-- Step 1 -->
+              <div class="step-card mb-4 p-4 rounded-4 border border-secondary" style="background: rgba(255,255,255,0.01) !important; border-left: 4px solid #189ba6 !important;">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                  <span class="step-number font-luxury text-teal fw-bold fs-4" style="color: #189ba6 !important;">01</span>
+                  <h4 class="h5 text-white font-luxury mb-0">Initial Design Consultation</h4>
+                </div>
+                <p class="text-muted small mb-0 leading-relaxed">Meet our team of designers at our experience studio or schedule a site measurement visit. We define your layout goals, styles, and budget constraints.</p>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="step-card mb-4 p-4 rounded-4 border border-secondary" style="background: rgba(255,255,255,0.01) !important; border-left: 4px solid #189ba6 !important;">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                  <span class="step-number font-luxury text-teal fw-bold fs-4" style="color: #189ba6 !important;">02</span>
+                  <h4 class="h5 text-white font-luxury mb-0">Concept &amp; Space Planning</h4>
+                </div>
+                <p class="text-muted small mb-0 leading-relaxed">Our <strong>home interior designers in Navi Mumbai</strong> create detailed 2D furniture layouts and architectural blueprints, optimizing every square foot of your property.</p>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="step-card mb-4 p-4 rounded-4 border border-secondary" style="background: rgba(255,255,255,0.01) !important; border-left: 4px solid #189ba6 !important;">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                  <span class="step-number font-luxury text-teal fw-bold fs-4" style="color: #189ba6 !important;">03</span>
+                  <h4 class="h5 text-white font-luxury mb-0">3D Visualization &amp; VR Walkthrough</h4>
+                </div>
+                <p class="text-muted small mb-0 leading-relaxed">Experience your dream home before execution begins with high-fidelity 3D renders. You sign off on all finishes, color palettes, and material brands.</p>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="step-card mb-4 p-4 rounded-4 border border-secondary" style="background: rgba(255,255,255,0.01) !important; border-left: 4px solid #189ba6 !important;">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                  <span class="step-number font-luxury text-teal fw-bold fs-4" style="color: #189ba6 !important;">04</span>
+                  <h4 class="h5 text-white font-luxury mb-0">Precision Factory Production</h4>
+                </div>
+                <p class="text-muted small mb-0 leading-relaxed">All modular cabinets, wardrobes, and TV units are manufactured at our automated facility with strict quality checks.</p>
+              </div>
+
+              <!-- Step 5 -->
+              <div class="step-card mb-0 p-4 rounded-4 border border-secondary" style="background: rgba(255,255,255,0.01) !important; border-left: 4px solid #189ba6 !important;">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                  <span class="step-number font-luxury text-teal fw-bold fs-4" style="color: #189ba6 !important;">05</span>
+                  <h4 class="h5 text-white font-luxury mb-0">On-Site Assembly &amp; Turnkey Execution</h4>
+                </div>
+                <p class="text-muted small mb-0 leading-relaxed">Our local contracting team manages civil modifications, false ceilings, plumbing, painting, and modular assembly, handovers completed within 45 working days.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Cost Guide Table [NEW] -->
+          <div class="mt-5 pt-3 mb-5">
+            <h2 class="font-luxury text-white h3 mb-3">Estimated Interior Design Costs for Apartments in Navi Mumbai</h2>
+            <p class="text-muted leading-relaxed mb-3">
+              Budget planning is crucial for a successful home interior. The cost of hiring a premium <strong>interior designer in Navi Mumbai</strong> depends on the size of your flat, modular selections, and turnkey civil work. Below is a guide to realistic design and execution packages:
+            </p>
+            <div class="table-responsive my-4 rounded-4 overflow-hidden border border-secondary shadow-lg">
+              <table class="table table-bordered border-secondary text-white mb-0" style="background-color: #0b0b10;">
+                <thead>
+                  <tr class="font-luxury" style="background: linear-gradient(90deg, #189ba6 0%, #0d6e77 100%); color: #ffffff !important; border-bottom: 2px solid #189ba6;">
+                    <th class="py-3 px-4 text-white">Flat Configuration</th>
+                    <th class="py-3 px-4 text-white">Basic Package (Modular woodwork only)</th>
+                    <th class="py-3 px-4 text-white">Premium Package (Full turnkey civil + design)</th>
+                  </tr>
+                </thead>
+                <tbody class="small text-muted">
+                  <tr>
+                    <td class="py-3 px-4 text-white"><strong>1 BHK Flat</strong></td>
+                    <td class="py-3 px-4">₹1.8 Lakhs - ₹2.5 Lakhs</td>
+                    <td class="py-3 px-4 text-teal fw-bold" style="color: #189ba6 !important;">₹3.5 Lakhs - ₹5.0 Lakhs</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 text-white"><strong>2 BHK Flat</strong></td>
+                    <td class="py-3 px-4">₹2.8 Lakhs - ₹4.0 Lakhs</td>
+                    <td class="py-3 px-4 text-teal fw-bold" style="color: #189ba6 !important;">₹5.5 Lakhs - ₹8.0 Lakhs</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 text-white"><strong>3 BHK Flat</strong></td>
+                    <td class="py-3 px-4">₹4.0 Lakhs - ₹6.0 Lakhs</td>
+                    <td class="py-3 px-4 text-teal fw-bold" style="color: #189ba6 !important;">₹8.5 Lakhs - ₹12.0 Lakhs</td>
+                  </tr>
+                  <tr>
+                    <td class="py-3 px-4 text-white"><strong>Villas &amp; Bungalows</strong></td>
+                    <td class="py-3 px-4">₹6.5 Lakhs+</td>
+                    <td class="py-3 px-4 text-teal fw-bold" style="color: #189ba6 !important;">₹15.0 Lakhs+</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-muted leading-relaxed">
+              These cost estimates include BWP marine plywood structural framing, soft-close drawers (Hettich/Hafele), false ceilings, wall painting, and premium modular layouts. For personalized packages, our <strong>interior designers in Navi Mumbai</strong> provide an itemized Bill of Quantities (BOQ) with complete transparency.
+            </p>
+          </div>
+
+          <!-- Structural & CIDCO Approvals Section [NEW] -->
+          <div class="mt-5 pt-3">
+            <h2 class="font-luxury text-white h3 mb-3">Society NOC &amp; CIDCO Approvals for Navi Mumbai Renovations</h2>
+            <p class="text-muted leading-relaxed mb-3">
+              Home renovations in Navi Mumbai redeveloped projects often require structural audits and official NOCs (No Objection Certificates). For major civil alterations, such as wall demolition, toilet relocation, or balcony grid integration, you must comply with NMMC (Navi Mumbai Municipal Corporation) and CIDCO guidelines.
+            </p>
+            <p class="text-muted leading-relaxed">
+              At <strong>Siddhivinayak Designers</strong>, we handle the technical paperwork for you. Our turnkey team provides housing societies with structural engineer certifications, material specifications, electrical load calculations, and safety layout plans. This streamlined coordination speeds up approvals from society committees in Vashi, Nerul, and Kharghar, letting construction begin without administrative delays.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="p-4 bg-dark-card rounded border border-secondary">
+            <h3 class="font-luxury text-white h5 mb-3">Popular Service Pages</h3>
+            <div class="list-group list-group-flush bg-transparent">
+              <a href="/complete-home-interior" class="list-group-item bg-transparent text-muted text-decoration-none border-secondary"><i class="fas fa-chevron-right text-gold me-2 small"></i> Complete Home Interior</a>
+              <a href="/services" class="list-group-item bg-transparent text-muted text-decoration-none border-secondary"><i class="fas fa-chevron-right text-gold me-2 small"></i> Modular Kitchen Designs</a>
+              <a href="/bedroom-wardrobes" class="list-group-item bg-transparent text-muted text-decoration-none border-secondary"><i class="fas fa-chevron-right text-gold me-2 small"></i> Bedroom & Wardrobes</a>
+              <a href="/false-ceiling" class="list-group-item bg-transparent text-muted text-decoration-none border-secondary"><i class="fas fa-chevron-right text-gold me-2 small"></i> False Ceiling & Lighting</a>
+              <a href="/civil-renovations" class="list-group-item bg-transparent text-muted text-decoration-none border-secondary"><i class="fas fa-chevron-right text-gold me-2 small"></i> Contracting & Civil Work</a>
+              <a href="/bespoke-furniture" class="list-group-item bg-transparent text-muted text-decoration-none border-secondary"><i class="fas fa-chevron-right text-gold me-2 small"></i> Bespoke Custom Furniture</a>
+              <a href="/luxury-apartments-villas" class="list-group-item bg-transparent text-muted text-decoration-none border-secondary"><i class="fas fa-chevron-right text-gold me-2 small"></i> Luxury Villas & Apartments</a>
+              <a href="/painting-textures" class="list-group-item bg-transparent text-muted text-decoration-none border-secondary"><i class="fas fa-chevron-right text-gold me-2 small"></i> Painting & Texture Work</a>
+              <a href="/turnkey-contracting" class="list-group-item bg-transparent text-muted text-decoration-none border-secondary"><i class="fas fa-chevron-right text-gold me-2 small"></i> Turnkey Contracting</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Embedded Branded Google Map Section [NEW] -->
+  <section class="py-5 bg-dark border-top border-bottom border-secondary" data-aos="fade-up">
+    <div class="container text-center">
+      <span class="section-subtitle text-gold fw-bold">Locate Our Studio</span>
+      <h2 class="font-luxury text-white h2 mb-4">Our Navi Mumbai Location Map</h2>
+      <div class="mx-auto" style="max-width: 800px; border: 1.5px solid #cbd5e1; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.0811560731135!2d73.0031!3d19.1039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x600b3e68a80e4bc3!2sSiddhivinayak%20Designers!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FAQ Section -->
+  <section class="py-5 bg-dark-gradient border-bottom border-secondary">
+    <div class="container py-3">
+      <div class="text-center mb-5">
+        <span class="section-subtitle text-gold fw-bold">Got Questions?</span>
+        <h2 class="font-luxury text-white display-6">FAQs for Navi Mumbai Projects</h2>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="accordion accordion-flush bg-dark-card border border-secondary p-4 rounded" id="naviFaq">
+            <div class="accordion-item bg-transparent border-bottom border-secondary py-3">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed bg-transparent text-white font-luxury h5" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                  Why hire Siddhivinayak Designers as your interior designer in Navi Mumbai?
+                </button>
+              </h3>
+              <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#naviFaq">
+                <div class="accordion-body text-muted small">
+                  Siddhivinayak Designers brings over 25 years of hands-on civil execution experience, 500+ completed residential and commercial projects across Navi Mumbai, transparent fixed pricing, 3D VR design approvals, and a 10-year warranty on modular factory production.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item bg-transparent border-bottom border-secondary py-3">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed bg-transparent text-white font-luxury h5" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                  Which areas in Navi Mumbai do you provide interior design services?
+                </button>
+              </h3>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#naviFaq">
+                <div class="accordion-body text-muted small">
+                  We provide complete home interiors, modular kitchens, and turnkey civil renovations across all major nodes of Navi Mumbai, including Vashi, Kharghar, Belapur, Nerul, Koparkhairane, Sanpada, Ghansoli, Airoli, Rabale, and Panvel.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item bg-transparent border-bottom border-secondary py-3">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed bg-transparent text-white font-luxury h5" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                  What is the average cost of interior design for a 2BHK flat in Navi Mumbai?
+                </button>
+              </h3>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#naviFaq">
+                <div class="accordion-body text-muted small">
+                  The cost for a complete 2BHK interior design in Navi Mumbai typically ranges from ₹3.5 Lakhs to ₹7.5 Lakhs depending on material selection, customized furniture requirements, false ceiling work, profile lighting, and appliance integrations.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item bg-transparent border-bottom border-secondary py-3">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed bg-transparent text-white font-luxury h5" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                  Do you manufacture custom modular furniture locally in Navi Mumbai?
+                </button>
+              </h3>
+              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#naviFaq">
+                <div class="accordion-body text-muted small">
+                  Yes, all our modular kitchens, wardrobe units, TV units, and storage systems are precision-crafted in our state-of-the-art factory using BWP marine plywood, Hafele/Hettich German hardware, and high-gloss acrylic or veneer finishes.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item bg-transparent py-3">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed bg-transparent text-white font-luxury h5" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                  How long does a complete home interior project take in Navi Mumbai?
+                </button>
+              </h3>
+              <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#naviFaq">
+                <div class="accordion-body text-muted small">
+                  Our typical execution timeline is 45 days from 3D design approval to site handover, backed by factory modular production and dedicated site supervisors across Navi Mumbai.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="py-5 text-center bg-gold text-dark">
+    <div class="container py-3">
+      <h2 class="display-6 font-luxury mb-3 fw-bold">Ready to Transform Your Navi Mumbai Home?</h2>
+      <p class="lead mb-4 mx-auto" style="max-width: 700px;">Book a free 3D design consultation with our senior interior architects today.</p>
+      <a href="https://wa.me/918369297174?text=Hi%20Siddhivinayak%20Designers,%20I'd%20like%20to%20schedule%20a%20free%20design%20consultation." target="_blank" class="btn btn-dark btn-lg px-5 font-luxury fw-bold">
+        <i class="fab fa-whatsapp me-2 text-gold"></i>Chat with Design Expert
+      </a>
+    </div>
+  </section>
+
+  <!-- Floating Buttons -->
+  <div class="floating-widgets">
+    <a style="background-color: #25D366 !important; background: #25D366 !important; color: #ffffff !important; border-color: #25D366 !important;" class="float-btn float-whatsapp" href="https://wa.me/918369297174?text=Hi%20Siddhivinayak%20Designers,%20I'm%20interested%20in%20a%20free%20design%20consultation." target="_blank">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a class="float-btn float-call" href="tel:+918369297174">
+      <i class="fas fa-phone-alt"></i>
+    </a>
+  </div>`;
+---
+<Layout title={title} description={description} canonical={canonical} schema={schema}>
+  <Fragment set:html={bodyContent} />
+</Layout>
+
+<style is:global>
+html, body {
+      background-color: #ffffff !important;
+      color: #000000 !important;
+      font-family: Arial, Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    }
+    .hero-section, .catalog-directory-hero, .dc-top-section-bg, header.bg-dark, .bg-dark, .bg-dark-card, .bg-dark-contrast, .bg-dark-gradient {
+      background-color: #f3f6f8 !important;
+      color: #000000 !important;
+    }
+    h1, h2, h3, h4, h5, h6, .section-title, .display-4, .display-6 {
+      color: #000000 !important;
+    }
+    p, span, li, label, div, small, strong, p *, li *, span *, label *, div *, small *, strong *, .text-muted, .text-white-50, .text-secondary, .text-muted * {
+      color: #000000 !important;
+    }
+    :not(footer) .text-white, body:not(footer) .text-white, a.text-white:not(footer a), .section-title.text-white {
+      color: #000000 !important;
+    }
+    .text-gold, .text-gold * {
+      color: #189ba6 !important;
+    }
+    .btn-gold, .btn-primary {
+      background-color: #189ba6 !important;
+      border-color: #189ba6 !important;
+      color: #ffffff !important;
+    }
+    .btn-gold:hover, .btn-primary:hover {
+      background-color: #127c85 !important;
+      border-color: #127c85 !important;
+      color: #ffffff !important;
+    }
+    .btn-outline-gold {
+      color: #189ba6 !important;
+      border-color: #189ba6 !important;
+    }
+    .btn-outline-gold:hover {
+      background-color: #189ba6 !important;
+      color: #ffffff !important;
+    }
+    .accordion-button:not(.collapsed) {
+      color: #189ba6 !important;
+      background-color: #e6f4f5 !important;
+    }
+    .accordion-button {
+      color: #000000 !important;
+    }
+    .border-secondary, .border-light-subtle {
+      border-color: #e2e8f0 !important;
+    }
+    /* Ensure footer text remains crisp and white/light */
+    footer, footer *, footer p, footer span, footer li, footer div, footer small, footer .text-muted {
+      color: #ffffff !important;
+    }
+    footer p, footer span, footer li, footer div, footer small, footer .text-muted, footer a {
+      color: #d1cfc9 !important;
+    }
+    footer a:hover {
+      color: #ffffff !important;
+    }
+  
+    /* Fix headings appearing white on light background inside bg-dark / bg-dark-card / bg-dark-contrast elements */
+    .bg-dark h1, .bg-dark h2, .bg-dark h3, .bg-dark h4, .bg-dark h5, .bg-dark h6,
+    .bg-dark-card h1, .bg-dark-card h2, .bg-dark-card h3, .bg-dark-card h4, .bg-dark-card h5, .bg-dark-card h6,
+    .bg-dark-contrast h1, .bg-dark-contrast h2, .bg-dark-contrast h3, .bg-dark-contrast h4, .bg-dark-contrast h5, .bg-dark-contrast h6 {
+      color: #1a1a1a !important;
+    }
+    /* Fix text elements appearing light grey/white on light background inside bg-dark / bg-dark-card / bg-dark-contrast elements */
+    .bg-dark p, .bg-dark li, .bg-dark span:not(.text-gold):not(.text-teal), .bg-dark label, .bg-dark .text-muted,
+    .bg-dark-card p, .bg-dark-card li, .bg-dark-card span:not(.text-gold):not(.text-teal), .bg-dark-card label, .bg-dark-card .text-muted,
+    .bg-dark-contrast p, .bg-dark-contrast li, .bg-dark-contrast span:not(.text-gold):not(.text-teal), .bg-dark-contrast label, .bg-dark-contrast .text-muted {
+      color: #444444 !important;
+    }
+    .bg-dark strong, .bg-dark-card strong, .bg-dark-contrast strong {
+      color: #1a1a1a !important;
+    }
+    @media (max-width: 767px) {
+      #homeDesignGrid, #naviNodesGrid {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        padding-bottom: 20px !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        -webkit-overflow-scrolling: touch !important;
+      }
+      #homeDesignGrid > div, #naviNodesGrid > div {
+        flex: 0 0 85% !important;
+        max-width: 85% !important;
+        scroll-snap-align: center !important;
+      }
+      #homeDesignGrid::-webkit-scrollbar, #naviNodesGrid::-webkit-scrollbar {
+        display: none !important;
+      }
+      #homeDesignGrid, #naviNodesGrid {
+        -ms-overflow-style: none !important;
+        scrollbar-width: none !important;
+        cursor: grab;
+      }
+      #homeDesignGrid:active, #naviNodesGrid:active {
+        cursor: grabbing;
+      }
+    }
+</style>
+<style is:global>
+.livspace-estimate-section {
+        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+      }
+      .ls-luxury-card {
+        background: #ffffff !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 20px !important;
+        padding: 2rem 1.75rem !important;
+        box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 4px 12px -2px rgba(0, 0, 0, 0.02) !important;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        position: relative;
+      }
+      .ls-luxury-card::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 20px;
+        padding: 1.5px;
+        background: linear-gradient(135deg, rgba(24, 155, 166, 0.4), transparent 60%);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+      }
+      .ls-luxury-card:hover {
+        transform: translateY(-8px) !important;
+        box-shadow: 0 25px 45px -10px rgba(24, 155, 166, 0.18), 0 12px 24px -5px rgba(0, 0, 0, 0.04) !important;
+      }
+      .ls-luxury-card:hover::after {
+        opacity: 1;
+      }
+      .ls-card-icon-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.75rem;
+      }
+      .ls-icon-box {
+        position: relative;
+        width: 68px;
+        height: 68px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .ls-calc-badge {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #f1f5f9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #e2e8f0;
+        box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.8), 0 2px 6px rgba(0, 0, 0, 0.04);
+        transition: transform 0.3s ease, background-color 0.3s ease;
+      }
+      .ls-luxury-card:hover .ls-calc-badge {
+        transform: rotate(15deg) scale(1.05);
+        background: #e2e8f0;
+      }
+      .ls-card-heading {
+        font-size: 1.35rem;
+        font-weight: 800;
+        color: #0f172a !important;
+        margin-bottom: 0.6rem;
+        letter-spacing: -0.3px;
+      }
+      .ls-card-subtitle {
+        font-size: 0.92rem;
+        color: #64748b !important;
+        line-height: 1.55;
+        min-height: 46px;
+        font-weight: 400;
+        margin-bottom: 2rem;
+      }
+      .ls-pill-btn, .ls-pill-btn *, span.ls-pill-btn, .ls-luxury-card:hover .ls-pill-btn, .ls-luxury-card:hover .ls-pill-btn * {
+        color: #ffffff !important;
+      }
+      .ls-pill-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        background: linear-gradient(135deg, #189ba6 0%, #0d6e77 100%) !important;
+        color: #ffffff !important;
+        font-size: 0.85rem;
+        font-weight: 800;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        padding: 0.85rem 1.75rem;
+        border-radius: 50px;
+        text-decoration: none;
+        border: none;
+        box-shadow: 0 8px 20px rgba(24, 155, 166, 0.28);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      }
+      .ls-pill-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+        transition: left 0.6s ease;
+      }
+      .ls-luxury-card:hover .ls-pill-btn::before {
+        left: 100%;
+      }
+      .ls-luxury-card:hover .ls-pill-btn {
+        background: linear-gradient(135deg, #14838d 0%, #0b5a62 100%) !important;
+        box-shadow: 0 12px 28px rgba(24, 155, 166, 0.42);
+        color: #ffffff !important;
+      }
+      .ls-pill-btn i {
+        font-size: 0.85rem;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .ls-luxury-card:hover .ls-pill-btn i {
+        transform: translateX(5px);
+      }
+      .ls-highlight-text {
+        background: linear-gradient(135deg, #189ba6 0%, #0d6e77 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 800;
+        display: inline-block;
+        transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1), transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .ls-card-link-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 5;
+        cursor: pointer;
+      }
+
+      @media (max-width: 767px) {
+        #homeEstimateGrid {
+          display: flex !important;
+          flex-wrap: nowrap !important;
+          overflow-x: auto !important;
+          scroll-snap-type: x mandatory !important;
+          padding-bottom: 25px !important;
+          padding-left: 15px !important;
+          padding-right: 15px !important;
+          -webkit-overflow-scrolling: touch !important;
+          -ms-overflow-style: none !important;
+          scrollbar-width: none !important;
+        }
+        #homeEstimateGrid > div {
+          flex: 0 0 85% !important;
+          max-width: 85% !important;
+          scroll-snap-align: center !important;
+        }
+        #homeEstimateGrid::-webkit-scrollbar {
+          display: none !important;
+        }
+      }
+</style>
+
+<script is:inline>
+    (function() {
+      const words = ["Wardrobe", "Kitchen", "Home"];
+      let idx = 0;
+      let isAnimating = false;
+      
+      window.setLsActiveWord = function(w) {
+        const el = document.getElementById("lsDynamicWord");
+        if (!el || el.textContent === w || isAnimating) return;
+        
+        isAnimating = true;
+        el.style.opacity = "0";
+        el.style.transform = "translateY(-8px)";
+        
+        setTimeout(function() {
+          el.textContent = w;
+          el.style.transform = "translateY(8px)";
+          
+          setTimeout(function() {
+            el.style.opacity = "1";
+            el.style.transform = "translateY(0)";
+            setTimeout(function() { isAnimating = false; }, 450);
+          }, 40);
+        }, 280);
+      };
+
+      function cycleWord() {
+        idx = (idx + 1) % words.length;
+        window.setLsActiveWord(words[idx]);
+      }
+
+      document.addEventListener("DOMContentLoaded", function() {
+        setInterval(cycleWord, 4800);
+      });
+    })();
+  </script>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.getElementById('glimpseCarousel');
+    const prevBtn = document.getElementById('glimpsePrevBtn');
+    const nextBtn = document.getElementById('glimpseNextBtn');
+    
+    if (carousel && prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', () => {
+        const cardWidth = carousel.querySelector('.glimpse-card').offsetWidth + 20; // width + gap
+        carousel.scrollBy({ left: -cardWidth * 2, behavior: 'smooth' });
+      });
+      
+      nextBtn.addEventListener('click', () => {
+        const cardWidth = carousel.querySelector('.glimpse-card').offsetWidth + 20; // width + gap
+        carousel.scrollBy({ left: cardWidth * 2, behavior: 'smooth' });
+      });
+      
+      const toggleArrows = () => {
+        const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+        prevBtn.style.opacity = carousel.scrollLeft <= 5 ? '0.3' : '1';
+        prevBtn.style.pointerEvents = carousel.scrollLeft <= 5 ? 'none' : 'auto';
+        
+        nextBtn.style.opacity = carousel.scrollLeft >= maxScroll - 5 ? '0.3' : '1';
+        nextBtn.style.pointerEvents = carousel.scrollLeft >= maxScroll - 5 ? 'none' : 'auto';
+      };
+      
+      carousel.addEventListener('scroll', toggleArrows);
+      window.addEventListener('resize', toggleArrows);
+      setTimeout(toggleArrows, 500);
+    }
+  });
+</script>
+
+<script is:inline>
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+  </script>
+

@@ -59,11 +59,11 @@ const mappings = [
   {
     name: 'kopar-khairane',
     oldFile: path.join(PAGES_DIR, 'interior-designer-kopar-khairane.astro'),
-    newFile: path.join(TARGET_DIR, 'kopar-khairane.astro'),
+    newFile: path.join(TARGET_DIR, 'kopar-khairane', 'index.astro'),
     oldUrl: '/interior-designer-kopar-khairane',
-    newUrl: '/cities/interior-designers-navi-mumbai/kopar-khairane',
+    newUrl: '/cities/interior-designers-navi-mumbai/kopar-khairane/',
     canonicalOld: 'https://siddhivinayakdesigners.in/interior-designer-kopar-khairane',
-    canonicalNew: 'https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/kopar-khairane'
+    canonicalNew: 'https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/kopar-khairane/'
   },
   {
     name: 'koparkhairane',
@@ -166,12 +166,21 @@ function getRedirectContent(newUrl, canonicalUrl) {
 console.log('--- Moving files and replacing paths ---');
 
 mappings.forEach(m => {
+  if (m.name === 'kopar-khairane') {
+    console.log(`[INFO] Skipping file relocation for kopar-khairane as it is manually managed.`);
+    return;
+  }
+
   if (!fs.existsSync(m.oldFile)) {
     console.warn(`[WARN] Old file not found: ${m.oldFile}`);
     return;
   }
 
   let content = fs.readFileSync(m.oldFile, 'utf8');
+  if (content.includes('// Redirect page')) {
+    console.warn(`[WARN] Skipping ${m.oldFile} because it is already a redirect page.`);
+    return;
+  }
 
   // Replace old canonical and url strings with the new ones inside the file content
   // First do exact canonical domain strings
@@ -183,6 +192,12 @@ mappings.forEach(m => {
 
   // Then do local path strings
   content = content.replaceAll(m.oldUrl, m.newUrl);
+
+  // Replace layout imports to adjust to 3-level-deep directory structure
+  content = content.replaceAll("import Layout from '../layouts/Layout.astro';", "import Layout from '../../../layouts/Layout.astro';");
+  content = content.replaceAll("import Layout from '../../layouts/Layout.astro';", "import Layout from '../../../layouts/Layout.astro';");
+  content = content.replaceAll('import Layout from "../layouts/Layout.astro";', 'import Layout from "../../../layouts/Layout.astro";');
+  content = content.replaceAll('import Layout from "../../layouts/Layout.astro";', 'import Layout from "../../../layouts/Layout.astro";');
 
   // Write new relocated file
   fs.writeFileSync(m.newFile, content, 'utf8');
@@ -196,6 +211,9 @@ const relocatedFiles = fs.readdirSync(TARGET_DIR);
 
 relocatedFiles.forEach(fileName => {
   const filePath = path.join(TARGET_DIR, fileName);
+  if (fs.statSync(filePath).isDirectory()) {
+    return;
+  }
   let content = fs.readFileSync(filePath, 'utf8');
 
   mappings.forEach(m => {
@@ -223,6 +241,11 @@ relocatedFiles.forEach(fileName => {
 // Third pass: Create redirects at the old locations
 console.log('--- Creating backward-compatible redirect pages ---');
 mappings.forEach(m => {
+  if (m.name === 'kopar-khairane') {
+    console.log(`[INFO] Skipping redirect creation for kopar-khairane as it is manually managed.`);
+    return;
+  }
+
   let redirectDest = m.oldFile;
   
   // Special case: for Vashi, the old file was at `src/pages/vashi/index.astro`.
@@ -233,11 +256,6 @@ mappings.forEach(m => {
     fs.writeFileSync(m.oldFile, getRedirectContent(m.newUrl, m.canonicalNew), 'utf8');
     console.log(`[INFO] Created Vashi index redirect at: ${m.oldFile}`);
 
-    // Also write a vashi.astro redirect in src/pages/
-    const vashiAstro = path.join(PAGES_DIR, 'vashi.astro');
-    fs.writeFileSync(vashiAstro, getRedirectContent(m.newUrl, m.canonicalNew), 'utf8');
-    console.log(`[INFO] Created vashi.astro redirect at: ${vashiAstro}`);
-    
     // Also redirect interior-designer-vashi.astro
     const vashiDesignerAstro = path.join(PAGES_DIR, 'interior-designer-vashi.astro');
     fs.writeFileSync(vashiDesignerAstro, getRedirectContent(m.newUrl, m.canonicalNew), 'utf8');
