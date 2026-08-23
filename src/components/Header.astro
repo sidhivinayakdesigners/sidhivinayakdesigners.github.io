@@ -36,23 +36,23 @@ const cleanPath = pathname.endsWith('/') ? pathname : pathname + '/';
           <li class="nav-item"><a class={`nav-link ${pathname.startsWith('/gallery') ? 'active' : ''}`} href="/gallery">Gallery</a></li>
           <!-- Cities Dropdown -->
           <li class="nav-item dropdown">
-            <a class={`nav-link d-flex align-items-center gap-1 ${pathname.startsWith('/vashi') || pathname.startsWith('/interior-designer-') ? 'active' : ''}`} href="#" id="navCitiesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class={`nav-link d-flex align-items-center gap-1 ${pathname.includes('/cities/') ? 'active' : ''}`} href="#" id="navCitiesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Cities <i class="fas fa-chevron-down ms-1" style="font-size: 0.7rem; opacity: 0.85;"></i>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navCitiesDropdown">
-              <li><a class="dropdown-item" href="/interior-designer-navi-mumbai">Navi Mumbai (Hub)</a></li>
+              <li><a class="dropdown-item" href="/cities/interior-designers-navi-mumbai/">Navi Mumbai (Hub)</a></li>
               <li><hr class="dropdown-divider border-secondary" /></li>
-              <li><a class="dropdown-item" href="/vashi/">Vashi</a></li>
-              <li><a class="dropdown-item" href="/interior-designer-kharghar">Kharghar</a></li>
-              <li><a class="dropdown-item" href="/interior-designer-nerul">Nerul</a></li>
-              <li><a class="dropdown-item" href="/interior-designer-seawoods">Seawoods</a></li>
-              <li><a class="dropdown-item" href="/interior-designer-belapur">Belapur</a></li>
-              <li><a class="dropdown-item" href="/interior-designer-sanpada">Sanpada</a></li>
-              <li><a class="dropdown-item" href="/interior-designer-kopar-khairane">Kopar Khairane</a></li>
-              <li><a class="dropdown-item" href="/interior-designer-ghansoli">Ghansoli</a></li>
-              <li><a class="dropdown-item" href="/interior-designer-airoli">Airoli</a></li>
-              <li><a class="dropdown-item" href="/interior-designer-panvel">Panvel</a></li>
-              <li><a class="dropdown-item" href="/interior-designer-rabale">Rabale</a></li>
+              <li><a class="dropdown-item" href="/cities/interior-designers-navi-mumbai/vashi">Vashi</a></li>
+              <li><a class="dropdown-item" href="/cities/interior-designers-navi-mumbai/kharghar">Kharghar</a></li>
+              <li><a class="dropdown-item" href="/cities/interior-designers-navi-mumbai/nerul">Nerul</a></li>
+              <li><a class="dropdown-item" href="/cities/interior-designers-navi-mumbai/seawoods">Seawoods</a></li>
+              <li><a class="dropdown-item" href="/cities/interior-designers-navi-mumbai/belapur">Belapur</a></li>
+              <li><a class="dropdown-item" href="/cities/interior-designers-navi-mumbai/sanpada">Sanpada</a></li>
+              <li><a class="dropdown-item" href="/cities/interior-designers-navi-mumbai/kopar-khairane">Kopar Khairane</a></li>
+              <li><a class="dropdown-item" href="/cities/interior-designers-navi-mumbai/ghansoli">Ghansoli</a></li>
+              <li><a class="dropdown-item" href="/cities/interior-designers-navi-mumbai/airoli">Airoli</a></li>
+              <li><a class="dropdown-item" href="/cities/interior-designers-navi-mumbai/panvel">Panvel</a></li>
+              <li><a class="dropdown-item" href="/cities/interior-designers-navi-mumbai/rabale">Rabale</a></li>
             </ul>
           </li>
           <li class="nav-item"><a class={`nav-link ${pathname.startsWith('/blog') ? 'active' : ''}`} href="/blog/">Blog</a></li>
