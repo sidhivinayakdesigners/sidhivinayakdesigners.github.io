@@ -230,19 +230,29 @@ const bodyContent = `<style>
       background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('/assets/images/interior-designers-navi-mumbai.webp');
       background-size: cover;
       background-position: center;
-      min-height: 480px;
+      min-height: calc(100vh - 75px);
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
+      margin-top: 0 !important;
+    }
+    .hero-video-bg {
+      position: absolute;
+      top: -75px;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      object-fit: cover;
+      z-index: 1;
+      pointer-events: none;
     }
     .hero-overlay-box {
-      background-color: rgba(0, 0, 0, 0.45) !important;
-      backdrop-filter: blur(4px);
+      background-color: transparent !important;
+      backdrop-filter: none !important;
       max-width: 780px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: none !important;
       padding: 35px 24px !important;
-      border-radius: 8px;
     }
     .btn-cta-consult {
       background-color: #189ba6 !important;
@@ -257,57 +267,17 @@ const bodyContent = `<style>
       transform: translateY(-2px);
       box-shadow: 0 6px 20px rgba(24, 155, 166, 0.5);
     }
-    .badges-bar {
-      background-color: #189ba6 !important;
-      position: relative;
-      z-index: 10;
-      padding-top: 15px !important;
-      padding-bottom: 25px !important;
-    }
-    .badge-circle {
-      width: 110px;
-      height: 110px;
-      background-color: #ffffff !important;
-      border-radius: 50% !important;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: -70px;
-      margin-bottom: 12px !important;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-      border: 4px solid #ffffff !important;
-      transition: transform 0.3s ease;
-    }
-    .badge-circle i {
-      color: #189ba6 !important;
-      font-size: 2.8rem !important;
-    }
-    .badge-circle:hover {
-      transform: translateY(-5px);
-    }
+
     @media (max-width: 767px) {
       .hero-banner-section {
         background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('/assets/images/interior-designers-navi-mumbai-m.webp') !important;
-        min-height: 520px !important;
+        min-height: calc(100vh - 75px) !important;
       }
       .hero-overlay-box {
         padding: 24px 15px !important;
         margin: 0 10px !important;
       }
-      .badge-circle {
-        width: 75px;
-        height: 75px;
-        margin-top: -50px;
-        margin-bottom: 8px !important;
-        border: 2px solid #ffffff !important;
-      }
-      .badge-circle i {
-        font-size: 1.8rem !important;
-      }
-      .badges-bar {
-        padding-top: 10px !important;
-        padding-bottom: 15px !important;
-      }
+
       .glimpse-card {
         width: 280px !important;
         height: 380px !important;
@@ -356,11 +326,14 @@ const bodyContent = `<style>
     }
   </style>
 
-  <!-- Premium Hero Banner with Text Overlay -->
-  <section class="position-relative hero-banner-section">
+  <!-- Premium Hero Banner with Video Background -->
+  <section class="position-relative hero-banner-section overflow-hidden">
+    <video autoplay muted loop playsinline preload="auto" class="hero-video-bg">
+      <source src="/assets/videos/interior-designers-navi-mumbai-siddhivinayak-designers.mp4" type="video/mp4" />
+    </video>
     <!-- Center Overlay Box -->
-    <div class="container text-center py-4">
-      <div class="hero-overlay-box mx-auto px-4 py-4 rounded-3 shadow-lg">
+    <div class="container text-center py-4 position-relative" style="z-index: 2;">
+      <div class="hero-overlay-box mx-auto px-4 py-4">
         <h1 class="fw-bold text-white mb-2" style="font-size: 1.85rem !important; color: #ffffff !important; letter-spacing: -0.5px; font-family: 'Montserrat', sans-serif;">Best Home Interior Designers In Navi Mumbai</h1>
         <p class="text-white-50 mb-3" style="font-size: 0.95rem !important; color: rgba(255,255,255,0.85) !important; font-family: 'Open Sans', sans-serif;">Dream Homes At Dream Budgets & 15,000 Happy Customers</p>
         <button class="btn btn-cta-consult px-4 py-2 fw-bold rounded-2 text-white border-0" style="font-size: 0.95rem !important; padding: 10px 28px !important;" onclick="window.openConsultationPopup && window.openConsultationPopup(true)">
@@ -370,34 +343,7 @@ const bodyContent = `<style>
     </div>
   </section>
 
-  <!-- Teal Bottom Badges Bar overlapping the image border -->
-  <div class="badges-bar w-100">
-    <div class="container">
-      <div class="row justify-content-center align-items-center g-3 text-center">
-        <!-- Badge 1 -->
-        <div class="col-4 col-md-3 d-flex flex-column align-items-center text-white">
-          <div class="badge-circle">
-            <i class="fas fa-home"></i>
-          </div>
-          <span class="fw-semibold badge-text" style="color: #ffffff !important; font-size: 0.95rem !important; font-family: 'Open Sans', sans-serif; font-weight: 700 !important; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">20% Extra Storage</span>
-        </div>
-        <!-- Badge 2 -->
-        <div class="col-4 col-md-3 d-flex flex-column align-items-center text-white">
-          <div class="badge-circle">
-            <i class="fas fa-shield-alt"></i>
-          </div>
-          <span class="fw-semibold badge-text" style="color: #ffffff !important; font-size: 0.95rem !important; font-family: 'Open Sans', sans-serif; font-weight: 700 !important; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">25-Year Warranty</span>
-        </div>
-        <!-- Badge 3 -->
-        <div class="col-4 col-md-3 d-flex flex-column align-items-center text-white">
-          <div class="badge-circle">
-            <i class="fas fa-hand-holding-usd"></i>
-          </div>
-          <span class="fw-semibold badge-text" style="color: #ffffff !important; font-size: 0.95rem !important; font-family: 'Open Sans', sans-serif; font-weight: 700 !important; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">No-Cost EMI</span>
-        </div>
-      </div>
-    </div>
-  </div>
+
 
   <!-- Get a glimpse of Livspace homes Section -->
   <section class="glimpse-section" id="glimpseSection">
