@@ -227,15 +227,13 @@ const schema = `{
 }`;
 const bodyContent = `<style>
     .hero-banner-section {
-      background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('/assets/images/interior-designers-navi-mumbai.webp');
-      background-size: cover;
-      background-position: center;
       min-height: calc(100vh - 75px);
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
       margin-top: 0 !important;
+      background-color: #f3f6f8;
     }
     .hero-video-bg {
       position: absolute;
@@ -270,8 +268,9 @@ const bodyContent = `<style>
 
     @media (max-width: 767px) {
       .hero-banner-section {
-        background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('/assets/images/interior-designers-navi-mumbai-m.webp') !important;
         min-height: calc(100vh - 75px) !important;
+        background-image: none !important;
+        background-color: #f3f6f8 !important;
       }
       .hero-overlay-box {
         padding: 24px 15px !important;
