@@ -266,12 +266,18 @@ const bodyContent = `<style>
       box-shadow: 0 6px 20px rgba(24, 155, 166, 0.5);
     }
 
-    @media (max-width: 767px) {
+    @media (max-width: 991px) {
       .hero-banner-section {
-        min-height: calc(100vh - 75px) !important;
+        min-height: calc(100vh - 139px) !important;
+        min-height: calc(100svh - 139px) !important;
+        max-height: calc(100vh - 139px) !important;
+        max-height: calc(100svh - 139px) !important;
         background-image: none !important;
         background-color: #f3f6f8 !important;
       }
+    }
+
+    @media (max-width: 767px) {
       .hero-overlay-box {
         padding: 24px 15px !important;
         margin: 0 10px !important;
