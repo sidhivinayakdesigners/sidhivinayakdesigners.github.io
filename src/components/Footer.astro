@@ -68,17 +68,30 @@ const { showNaviMumbaiFooter = false } = Astro.props;
               data-domain="siddhivinayakdesigners.in" data-user="admin" href="#">admin [at] siddhivinayakdesigners.in</a></p>
         </div>
       </div>
-      <!-- Kharghar & Navi Mumbai Keyword Links Ribbon -->
+      <!-- Dynamic City Keyword Links Ribbon -->
       <div class="row pt-3 pb-2 border-top border-secondary-subtle my-3" style="font-size: 0.75rem; color: #a6a097;">
         <div class="col-12">
-          <p class="mb-1"><strong class="text-white">Popular Kharghar Services:</strong> 
-            <a href="/cities/interior-designers-navi-mumbai/kharghar/" class="text-white-50 text-decoration-none me-2">Best Interior Designers in Kharghar</a> |
-            <a href="/cities/interior-designers-navi-mumbai/kharghar/2bhk-3bhk-interiors/" class="text-white-50 text-decoration-none mx-2">2BHK &amp; 3BHK Flat Interiors Kharghar</a> |
-            <a href="/cities/interior-designers-navi-mumbai/kharghar/interior-design-cost/" class="text-white-50 text-decoration-none mx-2">Interior Design Cost in Kharghar</a> |
-            <a href="/cities/interior-designers-navi-mumbai/kharghar/modular-kitchen/" class="text-white-50 text-decoration-none mx-2">Modular Kitchen in Kharghar</a> |
-            <a href="/blog/kharghar-2bhk-3bhk-interior-cost-breakdown-2026" class="text-white-50 text-decoration-none mx-2">Kharghar 2026 Price Breakdown</a> |
-            <a href="/blog/kharghar-hill-monsoon-moisture-resistant-interiors" class="text-white-50 text-decoration-none ms-2">Monsoon Moisture Defense</a>
-          </p>
+          {Astro.url.pathname.includes('/panvel') ? (
+            <p class="mb-1"><strong class="text-white">Popular Panvel Services:</strong> 
+              <a href="/cities/interior-designers-navi-mumbai/panvel" class="text-white-50 text-decoration-none me-2">Best Interior Designers in Panvel</a> |
+              <a href="/cities/interior-designers-navi-mumbai/panvel" class="text-white-50 text-decoration-none mx-2">2BHK &amp; 3BHK Flat Interiors Panvel</a> |
+              <a href="/blog/panvel-2bhk-3bhk-interior-cost-breakdown-2026" class="text-white-50 text-decoration-none mx-2">Panvel 2026 Price Breakdown</a> |
+              <a href="/blog/panvel-mega-townships-interior-design-guide" class="text-white-50 text-decoration-none mx-2">Mega-Townships Interior Guide</a> |
+              <a href="/blog/panvel-high-rise-balcony-terrace-garden-monsoon-interiors" class="text-white-50 text-decoration-none mx-2">Foothill Monsoon Moisture Defense</a> |
+              <a href="/gallery/3bhk-luxury-interior-in-sai-world-city-panvel/" class="text-white-50 text-decoration-none mx-2">Sai World City 3BHK</a> |
+              <a href="/gallery/2bhk-interior-in-hiranandani-fortune-city-panvel/" class="text-white-50 text-decoration-none mx-2">Hiranandani Fortune City 2BHK</a> |
+              <a href="/gallery/3bhk-contemporary-home-in-marathon-nexzone-panvel/" class="text-white-50 text-decoration-none ms-2">Marathon Nexzone 3BHK</a>
+            </p>
+          ) : (
+            <p class="mb-1"><strong class="text-white">Popular Kharghar Services:</strong> 
+              <a href="/cities/interior-designers-navi-mumbai/kharghar/" class="text-white-50 text-decoration-none me-2">Best Interior Designers in Kharghar</a> |
+              <a href="/cities/interior-designers-navi-mumbai/kharghar/2bhk-3bhk-interiors/" class="text-white-50 text-decoration-none mx-2">2BHK &amp; 3BHK Flat Interiors Kharghar</a> |
+              <a href="/cities/interior-designers-navi-mumbai/kharghar/interior-design-cost/" class="text-white-50 text-decoration-none mx-2">Interior Design Cost in Kharghar</a> |
+              <a href="/cities/interior-designers-navi-mumbai/kharghar/modular-kitchen/" class="text-white-50 text-decoration-none mx-2">Modular Kitchen in Kharghar</a> |
+              <a href="/blog/kharghar-2bhk-3bhk-interior-cost-breakdown-2026" class="text-white-50 text-decoration-none mx-2">Kharghar 2026 Price Breakdown</a> |
+              <a href="/blog/kharghar-hill-monsoon-moisture-resistant-interiors" class="text-white-50 text-decoration-none ms-2">Monsoon Moisture Defense</a>
+            </p>
+          )}
         </div>
       </div>
       <hr class="border-secondary my-4" style="border-color: rgba(255,255,255,0.2) !important;" />
