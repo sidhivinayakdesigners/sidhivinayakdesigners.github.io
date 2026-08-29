@@ -316,6 +316,7 @@ const canonical = "https://siddhivinayakdesigners.in/gallery/2bhk-modern-style-i
       modal.style.setProperty('display', 'block', 'important');
       modal.classList.add('active');
       document.body.classList.add('lightbox-open');
+      document.documentElement.style.overflow = 'hidden';
       document.body.style.overflow = 'hidden';
     }
   };
@@ -326,6 +327,7 @@ const canonical = "https://siddhivinayakdesigners.in/gallery/2bhk-modern-style-i
       modal.style.setProperty('display', 'none', 'important');
       modal.classList.remove('active');
       document.body.classList.remove('lightbox-open');
+      document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
     }
   };

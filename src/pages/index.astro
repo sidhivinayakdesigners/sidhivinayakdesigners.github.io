@@ -2109,6 +2109,9 @@ const bodyContent = `<!-- Hero Banner Slider Section (Desktop & Mobile Responsiv
       user-select: none;
       opacity: 0;
       transition: opacity 0.3s ease;
+      touch-action: none;
+      overscroll-behavior: contain;
+      overflow: hidden;
     }
     
     .dc-lightbox-overlay.active {
@@ -3134,7 +3137,8 @@ html, body {
         lbIndex = (foundIdx >= 0 && foundIdx < lbPhotos.length) ? foundIdx : 0;
 
         lbOverlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
         showLbSlide();
       };
 
@@ -3205,10 +3209,20 @@ html, body {
       function closeLightbox() {
         lbOverlay.classList.remove('active');
         sliderTrack.innerHTML = '';
+        document.documentElement.style.overflow = '';
         document.body.style.overflow = '';
       }
 
       lbClose.addEventListener('click', closeLightbox);
+      lbOverlay.addEventListener('wheel', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }, { passive: false });
+      lbOverlay.addEventListener('touchmove', function(e) {
+        if (e.cancelable) {
+          e.preventDefault();
+        }
+      }, { passive: false });
       lbOverlay.addEventListener('click', function(e) {
         if (e.target === lbOverlay || e.target === lbCaption) closeLightbox();
       });

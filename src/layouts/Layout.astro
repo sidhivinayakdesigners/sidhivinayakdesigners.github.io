@@ -816,6 +816,8 @@ const isDev = import.meta.env.DEV;
 
         // Bind events
         lightbox.querySelector('.lightbox-close').addEventListener('click', closeGlobalLightbox);
+        lightbox.addEventListener('wheel', (e) => { e.preventDefault(); e.stopPropagation(); }, { passive: false });
+        lightbox.addEventListener('touchmove', (e) => { if (e.cancelable) e.preventDefault(); }, { passive: false });
         lightbox.addEventListener('click', (e) => {
           if (e.target === lightbox || e.target.classList.contains('lightbox-content') || e.target.classList.contains('lightbox-slide')) {
             closeGlobalLightbox();
@@ -894,6 +896,7 @@ const isDev = import.meta.env.DEV;
       function closeGlobalLightbox() {
         if (!lightbox) return;
         lightbox.style.display = 'none';
+        document.documentElement.style.overflow = '';
         document.body.style.overflow = '';
       }
 
@@ -931,6 +934,7 @@ const isDev = import.meta.env.DEV;
         currentTitle = title;
         
         lightbox.style.display = 'flex';
+        document.documentElement.style.overflow = 'hidden';
         document.body.style.overflow = 'hidden';
         
         // Add dynamic arrows if missing
