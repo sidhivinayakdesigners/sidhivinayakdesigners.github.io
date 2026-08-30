@@ -2901,6 +2901,19 @@ const bodyContent = `<!-- Header Banner -->
     }
   }
 
+  /* Ensure zero tap delay and no hover block on mobile touch screens */
+  @media (max-width: 991px), (hover: none) {
+    .premium-card-overlay {
+      display: none !important;
+      pointer-events: none !important;
+    }
+    .premium-card, .premium-card-img, .gallery-item {
+      cursor: pointer !important;
+      -webkit-tap-highlight-color: rgba(24, 155, 166, 0.2) !important;
+      touch-action: manipulation !important;
+    }
+  }
+
   html, body {
     background-color: #ffffff !important;
     color: #000000 !important;
@@ -2984,7 +2997,8 @@ const bodyContent = `<!-- Header Banner -->
 
     function getVisibleItems() {
       const visible = [];
-      galleryItems.forEach(item => {
+      const items = document.querySelectorAll('.gallery-item');
+      items.forEach(item => {
         if (item.style.display !== 'none') {
           const img = item.querySelector('img');
           const trigger = item.querySelector('.lightbox-trigger');
@@ -2996,39 +3010,21 @@ const bodyContent = `<!-- Header Banner -->
           }
         }
       });
+      // Fallback if all items temporarily hidden or not measured
+      if (visible.length === 0) {
+        items.forEach(item => {
+          const img = item.querySelector('img');
+          const trigger = item.querySelector('.lightbox-trigger');
+          if (img) {
+            const src = (trigger && trigger.getAttribute('data-src')) || img.getAttribute('src');
+            const caption = (trigger && trigger.getAttribute('data-caption')) || img.getAttribute('alt') || '';
+            const alt = img.getAttribute('alt') || 'Interior Design';
+            visible.push({ src, caption, alt, el: item });
+          }
+        });
+      }
       return visible;
     }
-
-    // Attach click listeners to cards and triggers
-    galleryItems.forEach(item => {
-      const card = item.querySelector('.premium-card, .premium-card-img');
-      const trigger = item.querySelector('.lightbox-trigger');
-      
-      const openThis = (e) => {
-        if (e) {
-          e.preventDefault();
-          e.stopPropagation();
-        }
-        activePhotoList = getVisibleItems();
-        if (activePhotoList.length === 0) return;
-
-        const img = item.querySelector('img');
-        const clickedSrc = (trigger && trigger.getAttribute('data-src')) || (img && img.getAttribute('src'));
-        
-        let foundIdx = activePhotoList.findIndex(p => p.src === clickedSrc || (clickedSrc && p.src.endsWith(clickedSrc.split('/').pop())));
-        if (foundIdx === -1) foundIdx = 0;
-
-        openGalleryModal(foundIdx);
-      };
-
-      if (card) {
-        card.style.cursor = 'pointer';
-        card.addEventListener('click', openThis);
-      }
-      if (trigger) {
-        trigger.addEventListener('click', openThis);
-      }
-    });
 
     // Modal Elements
     const modal = document.getElementById('galleryPhotoModal');
@@ -3106,6 +3102,76 @@ const bodyContent = `<!-- Header Banner -->
       renderModalSlide(prevIdx);
     };
 
+    // Immediate Tap / Click handler for mobile and desktop
+    function triggerOpenForItem(item) {
+      activePhotoList = getVisibleItems();
+      if (activePhotoList.length === 0) return;
+
+      const img = item.querySelector('img');
+      const trigger = item.querySelector('.lightbox-trigger');
+      const clickedSrc = (trigger && trigger.getAttribute('data-src')) || (img && (img.getAttribute('src') || img.currentSrc));
+
+      let foundIdx = -1;
+      if (clickedSrc) {
+        const filename = clickedSrc.split('/').pop().split('?')[0];
+        foundIdx = activePhotoList.findIndex(p => p.src.includes(filename) || (clickedSrc && p.src === clickedSrc));
+      }
+      if (foundIdx === -1) {
+        foundIdx = activePhotoList.findIndex(p => p.el === item);
+      }
+      if (foundIdx === -1) foundIdx = 0;
+
+      openGalleryModal(foundIdx);
+    }
+
+    let tapStartX = 0;
+    let tapStartY = 0;
+    let tapStartTime = 0;
+    let isTapScrolling = false;
+
+    document.addEventListener('touchstart', (e) => {
+      const item = e.target.closest('.gallery-item');
+      if (item && !e.target.closest('#galleryPhotoModal')) {
+        tapStartX = e.touches[0].clientX;
+        tapStartY = e.touches[0].clientY;
+        tapStartTime = Date.now();
+        isTapScrolling = false;
+      }
+    }, { passive: true });
+
+    document.addEventListener('touchmove', (e) => {
+      if (tapStartTime > 0) {
+        const dX = Math.abs(e.touches[0].clientX - tapStartX);
+        const dY = Math.abs(e.touches[0].clientY - tapStartY);
+        if (dX > 12 || dY > 12) {
+          isTapScrolling = true;
+        }
+      }
+    }, { passive: true });
+
+    document.addEventListener('touchend', (e) => {
+      if (isTapScrolling || tapStartTime === 0) return;
+      const elapsed = Date.now() - tapStartTime;
+      tapStartTime = 0;
+
+      if (elapsed < 350) {
+        const item = e.target.closest('.gallery-item');
+        if (item && !e.target.closest('#galleryPhotoModal')) {
+          e.preventDefault();
+          triggerOpenForItem(item);
+        }
+      }
+    }, { passive: false });
+
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('#galleryPhotoModal')) return;
+      const item = e.target.closest('.gallery-item');
+      if (item) {
+        e.preventDefault();
+        triggerOpenForItem(item);
+      }
+    });
+
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
       if (modal && modal.style.display === 'flex') {
@@ -3118,7 +3184,7 @@ const bodyContent = `<!-- Header Banner -->
     // Prevent background wheel and touch scroll on modal backdrop
     if (modal) {
       modal.addEventListener('wheel', (e) => {
-        if (e.target.closest('#galleryModalFilmstrip')) return; // allow wheel on thumbnail bar
+        if (e.target.closest('#galleryModalFilmstrip')) return;
         e.preventDefault();
         e.stopPropagation();
       }, { passive: false });
