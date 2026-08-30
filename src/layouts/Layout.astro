@@ -26,11 +26,6 @@ const isDev = import.meta.env.DEV;
   <!-- Injected head meta and styling -->
   {schema && <script type="application/ld+json" set:html={schema}></script>}
   
-  <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-  
-  
-  
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <!-- Favicon -->
   <link href="/assets/images/favicon.webp" rel="icon" type="image/png" />
@@ -424,7 +419,7 @@ const isDev = import.meta.env.DEV;
   </script>
 
   <!-- Light Theme Override matching services.html -->
-    <style id="services-light-theme-override">
+  <style id="services-light-theme-override">
     html {
       scroll-behavior: smooth !important;
       text-rendering: optimizeLegibility !important;
@@ -597,7 +592,7 @@ const isDev = import.meta.env.DEV;
       background-color: #189ba6 !important;
       color: #ffffff !important;
     }
-</style>
+  </style>
   <meta name="p:domain_verify" content="5935ed97711f017b4d6c4759ccc92d76"/>
 </head>
 <body>
@@ -670,391 +665,547 @@ const isDev = import.meta.env.DEV;
       }
     })();
 
-    // Global Lightbox handler for catalog pages
+    // ===== UNIFIED CATALOGUE MAXIMIZE LIGHTBOX WITH BOTTOM FILMSTRIP =====
     (function() {
-      let lightbox = document.getElementById('lightboxModal');
+      let modalEl = null;
+      let stageEl = null;
+      let mainImgEl = null;
+      let captionEl = null;
+      let filmstripEl = null;
+      let prevBtn = null;
+      let nextBtn = null;
+      let closeBtn = null;
+
       let currentPhotos = [];
       let currentPhotoIndex = 0;
       let currentTitle = '';
 
-      function initLightbox() {
-        if (lightbox) return;
-        
-        lightbox = document.createElement('div');
-        lightbox.className = 'lightbox-modal';
-        lightbox.id = 'lightboxModal';
-        lightbox.innerHTML = `
-          <div class="lightbox-content">
-            <span class="lightbox-close"><i class="fas fa-times"></i></span>
-            <div class="lightbox-slider-container">
-              <div class="lightbox-slider-track"></div>
+      function initCatalogModal() {
+        if (modalEl) return;
+
+        modalEl = document.createElement('div');
+        modalEl.className = 'dc-catalog-modal';
+        modalEl.id = 'dcCatalogModal';
+        modalEl.innerHTML = `
+          <button class="dc-catalog-modal-close" id="dcCatalogModalClose" aria-label="Close modal">&times;</button>
+          <button class="dc-catalog-modal-nav dc-catalog-modal-prev" id="dcCatalogModalPrev" aria-label="Previous photo">&#10094;</button>
+          <button class="dc-catalog-modal-nav dc-catalog-modal-next" id="dcCatalogModalNext" aria-label="Next photo">&#10095;</button>
+          <div class="dc-catalog-modal-main-stage" id="dcCatalogModalStage">
+            <div class="dc-catalog-modal-img-wrapper">
+              <img id="dcCatalogModalMainImg" class="dc-catalog-modal-main-img" src="" alt="Catalog View" />
             </div>
-            <div class="lightbox-caption" id="lightboxCaption"></div>
+            <div class="dc-catalog-modal-caption" id="dcCatalogModalCaption"></div>
+          </div>
+          <div class="dc-catalog-modal-filmstrip-wrapper" id="dcCatalogModalFilmstripWrapper">
+            <div class="dc-catalog-modal-filmstrip" id="dcCatalogModalFilmstrip"></div>
           </div>
         `;
-        document.body.appendChild(lightbox);
-        
+        document.body.appendChild(modalEl);
+
         const styleEl = document.createElement('style');
         styleEl.innerHTML = `
-          .lightbox-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: rgba(10, 10, 10, 0.98);
-            z-index: 999999;
+          .dc-catalog-modal {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            background: rgba(8, 8, 10, 0.97) !important;
+            z-index: 2147483647 !important;
             display: none;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding: 15px 12px 10px 12px !important;
+            box-sizing: border-box !important;
+            touch-action: none !important;
+            user-select: none !important;
+            -webkit-user-select: none !important;
           }
-          .lightbox-content {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+          body.catalog-lightbox-open,
+          body.lightbox-open {
+            overflow: hidden !important;
           }
-          .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 2rem;
+          body.catalog-lightbox-open .dc-mobile-bottom-bar,
+          body.catalog-lightbox-open #dcMobileBottomBar,
+          body.catalog-lightbox-open .floating-widgets,
+          body.catalog-lightbox-open .navbar {
+            display: none !important;
+          }
+          .dc-catalog-modal-close {
+            position: absolute !important;
+            top: 15px !important;
+            right: 20px !important;
+            width: 44px !important;
+            height: 44px !important;
+            border-radius: 50% !important;
+            background: rgba(255, 255, 255, 0.2) !important;
+            border: none !important;
             color: #ffffff !important;
-            cursor: pointer;
-            z-index: 100000;
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: all 0.2s ease;
+            font-size: 1.6rem !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            cursor: pointer !important;
+            z-index: 2147483647 !important;
+            transition: background 0.2s ease, transform 0.2s ease !important;
+            line-height: 1 !important;
           }
-          .lightbox-close:hover {
-            background: rgba(255, 255, 255, 0.2);
-            color: #189ba6 !important;
+          .dc-catalog-modal-close:hover {
+            background: rgba(255, 255, 255, 0.35) !important;
+            transform: scale(1.08) !important;
           }
-          .lightbox-close i {
+          .dc-catalog-modal-nav {
+            position: absolute !important;
+            top: 45% !important;
+            transform: translateY(-50%) !important;
+            width: 48px !important;
+            height: 48px !important;
+            border-radius: 50% !important;
+            background: rgba(255, 255, 255, 0.18) !important;
+            border: 1px solid rgba(255, 255, 255, 0.3) !important;
             color: #ffffff !important;
+            font-size: 1.4rem !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            cursor: pointer !important;
+            z-index: 2147483647 !important;
+            transition: all 0.2s ease !important;
+            backdrop-filter: blur(4px) !important;
+            -webkit-backdrop-filter: blur(4px) !important;
           }
-          .lightbox-slider-container {
-            width: 85vw;
-            height: 80vh;
-            overflow: hidden;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
+          .dc-catalog-modal-nav:hover {
+            background: #189ba6 !important;
+            border-color: #189ba6 !important;
+            transform: translateY(-50%) scale(1.1) !important;
           }
-          .lightbox-slider-track {
-            display: flex;
-            height: 100%;
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: transform;
+          .dc-catalog-modal-prev { left: 20px !important; }
+          .dc-catalog-modal-next { right: 20px !important; }
+          .dc-catalog-modal-main-stage {
+            flex: 1 !important;
+            width: 100% !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            min-height: 0 !important;
+            position: relative !important;
           }
-          .lightbox-slide {
-            width: 85vw;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
+          .dc-catalog-modal-img-wrapper {
+            flex: 1 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            min-height: 0 !important;
+            width: 100% !important;
           }
-          .lightbox-slide img {
-            max-width: 90%;
-            max-height: 80vh;
-            object-fit: contain;
-            border-radius: 4px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+          .dc-catalog-modal-main-img {
+            max-height: 64vh !important;
+            max-width: 88vw !important;
+            width: auto !important;
+            height: auto !important;
+            object-fit: contain !important;
+            border-radius: 6px !important;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7) !important;
+            pointer-events: auto !important;
+            user-select: none !important;
+            -webkit-user-drag: none !important;
+            transition: opacity 0.2s ease !important;
           }
-          .lightbox-caption {
+          .dc-catalog-modal-caption {
             color: #ffffff !important;
-            margin-top: 20px;
-            font-size: 1.1rem;
-            text-align: center;
-            font-weight: 500;
-            max-width: 80%;
+            font-size: 0.95rem !important;
+            font-weight: 500 !important;
+            margin-top: 10px !important;
+            text-align: center !important;
+            max-width: 85% !important;
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            letter-spacing: 0.3px !important;
           }
-          .lightbox-prev, .lightbox-next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: #ffffff !important;
-            font-size: 1.5rem;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            border-radius: 50%;
-            z-index: 100000;
-            transition: all 0.2s ease;
+          .dc-catalog-modal-filmstrip-wrapper {
+            width: 100% !important;
+            max-width: 92vw !important;
+            height: 72px !important;
+            margin-top: 8px !important;
+            margin-bottom: 6px !important;
+            display: flex !important;
+            justify-content: center !important;
+            z-index: 2147483647 !important;
           }
-          .lightbox-prev:hover, .lightbox-next:hover {
-            background: rgba(255, 255, 255, 0.2);
-            color: #189ba6 !important;
+          .dc-catalog-modal-filmstrip {
+            display: flex !important;
+            gap: 8px !important;
+            overflow-x: auto !important;
+            max-width: 100% !important;
+            padding: 4px 10px !important;
+            scrollbar-width: thin !important;
+            scrollbar-color: rgba(255, 255, 255, 0.4) transparent !important;
+            -webkit-overflow-scrolling: touch !important;
+            touch-action: pan-x !important;
           }
-          .lightbox-prev i, .lightbox-next i {
-            color: #ffffff !important;
+          .dc-catalog-modal-filmstrip::-webkit-scrollbar {
+            height: 5px !important;
           }
-          .lightbox-prev { left: 20px; }
-          .lightbox-next { right: 20px; }
+          .dc-catalog-modal-filmstrip::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.4) !important;
+            border-radius: 4px !important;
+          }
+          .dc-catalog-modal-thumb {
+            flex: 0 0 auto !important;
+            width: 76px !important;
+            height: 52px !important;
+            border-radius: 4px !important;
+            overflow: hidden !important;
+            cursor: pointer !important;
+            opacity: 0.5 !important;
+            border: 2px solid transparent !important;
+            transition: all 0.2s ease !important;
+            box-sizing: border-box !important;
+          }
+          .dc-catalog-modal-thumb.active {
+            opacity: 1 !important;
+            border: 2px solid #ffffff !important;
+            box-shadow: 0 0 12px rgba(255, 255, 255, 0.8) !important;
+            transform: scale(1.06) !important;
+          }
+          .dc-catalog-modal-thumb img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            display: block !important;
+            pointer-events: none !important;
+          }
           @media (max-width: 768px) {
-            .lightbox-slider-container {
-              width: 95vw;
+            .dc-catalog-modal {
+              padding: 10px 4px 6px 4px !important;
             }
-            .lightbox-slide {
-              width: 95vw;
+            .dc-catalog-modal-close {
+              top: 10px !important;
+              right: 12px !important;
+              width: 40px !important;
+              height: 40px !important;
+              font-size: 1.3rem !important;
+              background: rgba(255, 255, 255, 0.25) !important;
             }
-            .lightbox-slide img {
-              max-width: 95%;
+            .dc-catalog-modal-nav {
+              width: 38px !important;
+              height: 38px !important;
+              font-size: 1.1rem !important;
             }
-            .lightbox-prev, .lightbox-next {
-              width: 40px;
-              height: 40px;
-              font-size: 1.2rem;
+            .dc-catalog-modal-prev { left: 6px !important; }
+            .dc-catalog-modal-next { right: 6px !important; }
+            .dc-catalog-modal-main-img {
+              max-height: 52vh !important;
+              max-width: 94vw !important;
             }
-            .lightbox-prev { left: 5px; }
-            .lightbox-next { right: 5px; }
+            .dc-catalog-modal-caption {
+              font-size: 0.82rem !important;
+              margin-top: 6px !important;
+              max-width: 92% !important;
+            }
+            .dc-catalog-modal-filmstrip-wrapper {
+              height: 58px !important;
+              margin-top: 4px !important;
+              margin-bottom: 2px !important;
+            }
+            .dc-catalog-modal-thumb {
+              width: 60px !important;
+              height: 42px !important;
+            }
           }
         `;
         document.head.appendChild(styleEl);
 
-        // Bind events
-        lightbox.querySelector('.lightbox-close').addEventListener('click', closeGlobalLightbox);
-        lightbox.addEventListener('wheel', (e) => { e.preventDefault(); e.stopPropagation(); }, { passive: false });
-        lightbox.addEventListener('touchmove', (e) => { if (e.cancelable) e.preventDefault(); }, { passive: false });
-        lightbox.addEventListener('click', (e) => {
-          if (e.target === lightbox || e.target.classList.contains('lightbox-content') || e.target.classList.contains('lightbox-slide')) {
-            closeGlobalLightbox();
+        stageEl = modalEl.querySelector('#dcCatalogModalStage');
+        mainImgEl = modalEl.querySelector('#dcCatalogModalMainImg');
+        captionEl = modalEl.querySelector('#dcCatalogModalCaption');
+        filmstripEl = modalEl.querySelector('#dcCatalogModalFilmstrip');
+        prevBtn = modalEl.querySelector('#dcCatalogModalPrev');
+        nextBtn = modalEl.querySelector('#dcCatalogModalNext');
+        closeBtn = modalEl.querySelector('#dcCatalogModalClose');
+
+        closeBtn.addEventListener('click', closeCatalogModal);
+        prevBtn.addEventListener('click', (e) => { e.stopPropagation(); navigateCatalogModal(-1); });
+        nextBtn.addEventListener('click', (e) => { e.stopPropagation(); navigateCatalogModal(1); });
+
+        modalEl.addEventListener('click', (e) => {
+          if (e.target === modalEl || e.target.classList.contains('dc-catalog-modal-img-wrapper') || e.target === stageEl) {
+            closeCatalogModal();
           }
         });
 
-        // Touch swipes for lightbox
-        let lStartX = 0;
-        let lStartY = 0;
-        lightbox.addEventListener('touchstart', (e) => {
-          lStartX = e.changedTouches[0].screenX;
-          lStartY = e.changedTouches[0].screenY;
-        }, { passive: true });
-        
-        lightbox.addEventListener('touchend', (e) => {
-          const deltaX = e.changedTouches[0].screenX - lStartX;
-          const deltaY = e.changedTouches[0].screenY - lStartY;
-          
-          if (Math.abs(deltaX) > 40 && Math.abs(deltaY) < 80) {
-            if (deltaX < 0) {
-              navigateLightbox(1);
-            } else {
-              navigateLightbox(-1);
-            }
-          }
-        }, { passive: true });
+        // Touch Drag & Swipe Gestures
+        let startX = 0;
+        let startY = 0;
+        let currentX = 0;
+        let currentY = 0;
+        let isDragging = false;
+        let isSwiping = false;
 
-        // Keyboard
+        const getEventX = (e) => (e.touches ? e.touches[0].clientX : e.clientX);
+        const getEventY = (e) => (e.touches ? e.touches[0].clientY : e.clientY);
+
+        const onDragStart = (e) => {
+          if (currentPhotos.length <= 1) return;
+          if (e.target.closest('.dc-catalog-modal-close') || e.target.closest('.dc-catalog-modal-nav') || e.target.closest('.dc-catalog-modal-filmstrip-wrapper')) return;
+          isDragging = true;
+          isSwiping = false;
+          startX = getEventX(e);
+          startY = getEventY(e);
+          currentX = startX;
+          currentY = startY;
+          mainImgEl.style.transition = 'none';
+        };
+
+        const onDragMove = (e) => {
+          if (!isDragging) return;
+          currentX = getEventX(e);
+          currentY = getEventY(e);
+          const deltaX = currentX - startX;
+          const deltaY = currentY - startY;
+
+          if (!isSwiping && (Math.abs(deltaX) > 6 || Math.abs(deltaY) > 6)) {
+            isSwiping = true;
+          }
+
+          if (isSwiping) {
+            const scale = Math.max(0.88, 1 - Math.abs(deltaX) / 1600);
+            mainImgEl.style.transform = `translate3d(${deltaX}px, 0, 0) scale(${scale})`;
+            mainImgEl.style.opacity = `${Math.max(0.4, 1 - Math.abs(deltaX) / 500)}`;
+          }
+        };
+
+        const onDragEnd = () => {
+          if (!isDragging) return;
+          isDragging = false;
+          const deltaX = currentX - startX;
+          const threshold = window.innerWidth * 0.12;
+
+          mainImgEl.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease';
+
+          if (deltaX < -threshold) {
+            mainImgEl.style.transform = `translate3d(-120px, 0, 0)`;
+            mainImgEl.style.opacity = '0';
+            setTimeout(() => {
+              navigateCatalogModal(1);
+              mainImgEl.style.transition = 'none';
+              mainImgEl.style.transform = `translate3d(80px, 0, 0)`;
+              setTimeout(() => {
+                mainImgEl.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease';
+                mainImgEl.style.transform = 'translate3d(0, 0, 0)';
+                mainImgEl.style.opacity = '1';
+              }, 20);
+            }, 140);
+          } else if (deltaX > threshold) {
+            mainImgEl.style.transform = `translate3d(120px, 0, 0)`;
+            mainImgEl.style.opacity = '0';
+            setTimeout(() => {
+              navigateCatalogModal(-1);
+              mainImgEl.style.transition = 'none';
+              mainImgEl.style.transform = `translate3d(-80px, 0, 0)`;
+              setTimeout(() => {
+                mainImgEl.style.transition = 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease';
+                mainImgEl.style.transform = 'translate3d(0, 0, 0)';
+                mainImgEl.style.opacity = '1';
+              }, 20);
+            }, 140);
+          } else {
+            mainImgEl.style.transform = 'translate3d(0, 0, 0) scale(1)';
+            mainImgEl.style.opacity = '1';
+          }
+        };
+
+        stageEl.addEventListener('touchstart', onDragStart, { passive: true });
+        stageEl.addEventListener('touchmove', onDragMove, { passive: true });
+        stageEl.addEventListener('touchend', onDragEnd, { passive: true });
+
+        stageEl.addEventListener('mousedown', (e) => {
+          if (e.button !== 0) return;
+          onDragStart(e);
+        });
+        window.addEventListener('mousemove', onDragMove);
+        window.addEventListener('mouseup', onDragEnd);
+
+        // Keyboard navigation
         document.addEventListener('keydown', (e) => {
-          if (lightbox.style.display === 'flex') {
-            if (e.key === 'ArrowRight') {
-              navigateLightbox(1);
-            } else if (e.key === 'ArrowLeft') {
-              navigateLightbox(-1);
-            } else if (e.key === 'Escape') {
-              closeGlobalLightbox();
-            }
+          if (modalEl && modalEl.style.display === 'flex') {
+            if (e.key === 'Escape') closeCatalogModal();
+            if (e.key === 'ArrowRight') navigateCatalogModal(1);
+            if (e.key === 'ArrowLeft') navigateCatalogModal(-1);
           }
         });
+
+        // Filmstrip horizontal mousewheel
+        filmstripEl.addEventListener('wheel', (e) => {
+          if (e.deltaY !== 0) {
+            e.preventDefault();
+            filmstripEl.scrollLeft += e.deltaY;
+          }
+        }, { passive: false });
       }
 
-      function renderLightbox() {
-        if (!lightbox) return;
-        const track = lightbox.querySelector('.lightbox-slider-track');
-        const caption = lightbox.querySelector('#lightboxCaption');
-        
-        caption.textContent = currentTitle;
-        track.innerHTML = '';
-        
-        const vwWidth = window.innerWidth <= 768 ? 95 : 85;
-        track.style.width = `${currentPhotos.length * vwWidth}vw`;
-        
-        currentPhotos.forEach((src, idx) => {
-          const slide = document.createElement('div');
-          slide.className = 'lightbox-slide';
-          slide.style.width = `${vwWidth}vw`;
-          slide.innerHTML = `<img src="${src}" alt="Catalog View ${idx + 1}" />`;
-          track.appendChild(slide);
+      function renderCatalogSlide(index) {
+        if (!currentPhotos[index]) return;
+        currentPhotoIndex = index;
+        const total = currentPhotos.length;
+
+        mainImgEl.style.opacity = '0.35';
+        mainImgEl.src = currentPhotos[currentPhotoIndex];
+        mainImgEl.onload = () => { mainImgEl.style.opacity = '1'; };
+
+        captionEl.textContent = (currentTitle ? currentTitle + ' ' : '') + `(${currentPhotoIndex + 1} / ${total})`;
+
+        // Update thumbnails in bottom filmstrip
+        const thumbs = filmstripEl.querySelectorAll('.dc-catalog-modal-thumb');
+        thumbs.forEach((th, idx) => {
+          if (idx === currentPhotoIndex) {
+            th.classList.add('active');
+            th.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          } else {
+            th.classList.remove('active');
+          }
         });
-        
-        const offset = -currentPhotoIndex * vwWidth;
-        track.style.transform = `translate3d(${offset}vw, 0, 0)`;
-        
-        const prevBtn = lightbox.querySelector('.lightbox-prev');
-        const nextBtn = lightbox.querySelector('.lightbox-next');
-        if (prevBtn) prevBtn.style.display = currentPhotos.length > 1 ? 'flex' : 'none';
-        if (nextBtn) nextBtn.style.display = currentPhotos.length > 1 ? 'flex' : 'none';
+
+        if (prevBtn) prevBtn.style.display = total > 1 ? 'flex' : 'none';
+        if (nextBtn) nextBtn.style.display = total > 1 ? 'flex' : 'none';
       }
 
-      function navigateLightbox(direction) {
+      function navigateCatalogModal(dir) {
         if (currentPhotos.length <= 1) return;
-        currentPhotoIndex = (currentPhotoIndex + direction + currentPhotos.length) % currentPhotos.length;
-        renderLightbox();
-        lightbox.addEventListener('touchmove', (e) => { if (e.cancelable) e.preventDefault(); }, { passive: false });
-        lightbox.addEventListener('click', (e) => {
-          if (e.target === lightbox || e.target.classList.contains('lightbox-content') || e.target.classList.contains('lightbox-slide')) {
-            closeGlobalLightbox();
-          }
-        });
-
-        // Touch swipes for lightbox
-        let lStartX = 0;
-        let lStartY = 0;
-        lightbox.addEventListener('touchstart', (e) => {
-          lStartX = e.changedTouches[0].screenX;
-          lStartY = e.changedTouches[0].screenY;
-        }, { passive: true });
-        
-        lightbox.addEventListener('touchend', (e) => {
-          const deltaX = e.changedTouches[0].screenX - lStartX;
-          const deltaY = e.changedTouches[0].screenY - lStartY;
-          
-          if (Math.abs(deltaX) > 40 && Math.abs(deltaY) < 80) {
-            if (deltaX < 0) {
-              navigateLightbox(1);
-            } else {
-              navigateLightbox(-1);
-            }
-          }
-        }, { passive: true });
-
-        // Keyboard
-        document.addEventListener('keydown', (e) => {
-          if (lightbox.style.display === 'flex') {
-            if (e.key === 'ArrowRight') {
-              navigateLightbox(1);
-            } else if (e.key === 'ArrowLeft') {
-              navigateLightbox(-1);
-            } else if (e.key === 'Escape') {
-              closeGlobalLightbox();
-            }
-          }
-        });
+        const nextIdx = (currentPhotoIndex + dir + currentPhotos.length) % currentPhotos.length;
+        renderCatalogSlide(nextIdx);
       }
 
-      function renderLightbox() {
-        if (!lightbox) return;
-        const track = lightbox.querySelector('.lightbox-slider-track');
-        const caption = lightbox.querySelector('#lightboxCaption');
-        
-        caption.textContent = currentTitle;
-        track.innerHTML = '';
-        
-        const vwWidth = window.innerWidth <= 768 ? 95 : 85;
-        track.style.width = `${currentPhotos.length * vwWidth}vw`;
-        
-        currentPhotos.forEach((src, idx) => {
-          const slide = document.createElement('div');
-          slide.className = 'lightbox-slide';
-          slide.style.width = `${vwWidth}vw`;
-          slide.innerHTML = `<img src="${src}" alt="Catalog View ${idx + 1}" />`;
-          track.appendChild(slide);
-        });
-        
-        const offset = -currentPhotoIndex * vwWidth;
-        track.style.transform = `translate3d(${offset}vw, 0, 0)`;
-        
-        const prevBtn = lightbox.querySelector('.lightbox-prev');
-        const nextBtn = lightbox.querySelector('.lightbox-next');
-        if (prevBtn) prevBtn.style.display = currentPhotos.length > 1 ? 'flex' : 'none';
-        if (nextBtn) nextBtn.style.display = currentPhotos.length > 1 ? 'flex' : 'none';
-      }
-
-      function navigateLightbox(direction) {
-        if (currentPhotos.length <= 1) return;
-        currentPhotoIndex = (currentPhotoIndex + direction + currentPhotos.length) % currentPhotos.length;
-        renderLightbox();
-      }
-
-      function closeGlobalLightbox() {
-        if (!lightbox) return;
-        lightbox.style.display = 'none';
-        document.body.classList.remove('lightbox-open');
+      function closeCatalogModal() {
+        if (!modalEl) return;
+        modalEl.style.display = 'none';
+        document.body.classList.remove('catalog-lightbox-open', 'lightbox-open');
         document.documentElement.style.overflow = '';
         document.body.style.overflow = '';
       }
 
-      window.openLightbox = function(imgElement, event) {
-        if (event) {
-          event.stopPropagation();
-          event.preventDefault();
-        }
-        
-        initLightbox();
+      window.openCatalogLightboxModal = function(photos, startIndex, title) {
+        initCatalogModal();
+        if (!photos || photos.length === 0) return;
 
-        const cardImgContainer = imgElement.closest('.dc-exact-card-img');
-        if (!cardImgContainer) return;
-        
-        const title = cardImgContainer.getAttribute('data-lightbox-title') || '';
-        const photosJson = cardImgContainer.getAttribute('data-lightbox-photos');
-        if (!photosJson) return;
-        
-        try {
-          currentPhotos = JSON.parse(photosJson);
-        } catch(e) {
-          console.error(e);
-          return;
+        currentPhotos = photos;
+        currentPhotoIndex = (startIndex >= 0 && startIndex < photos.length) ? startIndex : 0;
+        currentTitle = title || '';
+
+        // Build bottom filmstrip containing ONLY this catalogue's photos
+        filmstripEl.innerHTML = '';
+        currentPhotos.forEach((src, idx) => {
+          const thumb = document.createElement('div');
+          thumb.className = 'dc-catalog-modal-thumb' + (idx === currentPhotoIndex ? ' active' : '');
+          thumb.innerHTML = `<img src="${src}" alt="Thumb ${idx + 1}" loading="lazy" />`;
+          thumb.addEventListener('click', (e) => {
+            e.stopPropagation();
+            renderCatalogSlide(idx);
+          });
+          filmstripEl.appendChild(thumb);
+        });
+
+        const filmstripWrapper = modalEl.querySelector('#dcCatalogModalFilmstripWrapper');
+        if (filmstripWrapper) {
+          filmstripWrapper.style.display = currentPhotos.length > 1 ? 'flex' : 'none';
         }
-        
-        if (currentPhotos.length === 0) return;
-        
-        const currentSrc = imgElement.getAttribute('src');
-        currentPhotoIndex = currentPhotos.indexOf(currentSrc);
-        if (currentPhotoIndex === -1) {
-          currentPhotoIndex = currentPhotos.findIndex(p => p.includes(currentSrc) || currentSrc.includes(p));
-          if (currentPhotoIndex === -1) currentPhotoIndex = 0;
-        }
-        
-        currentTitle = title;
-        
-        lightbox.style.display = 'flex';
-        document.body.classList.add('lightbox-open');
+
+        renderCatalogSlide(currentPhotoIndex);
+        modalEl.style.display = 'flex';
+        document.body.classList.add('catalog-lightbox-open', 'lightbox-open');
         document.documentElement.style.overflow = 'hidden';
         document.body.style.overflow = 'hidden';
-        
-        let prevBtn = lightbox.querySelector('.lightbox-prev');
-        if (!prevBtn) {
-          prevBtn = document.createElement('button');
-          prevBtn.className = 'lightbox-prev';
-          prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
-          prevBtn.setAttribute('aria-label', 'Previous image');
-          lightbox.querySelector('.lightbox-content').appendChild(prevBtn);
-          prevBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            navigateLightbox(-1);
-          });
-        }
-        
-        let nextBtn = lightbox.querySelector('.lightbox-next');
-        if (!nextBtn) {
-          nextBtn = document.createElement('button');
-          nextBtn.className = 'lightbox-next';
-          nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
-          nextBtn.setAttribute('aria-label', 'Next image');
-          lightbox.querySelector('.lightbox-content').appendChild(nextBtn);
-          nextBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            navigateLightbox(1);
-          });
+      };
+
+      // Universal openLightbox handler for all catalogue cards
+      window.openLightbox = function(imgElement, event) {
+        if (event) {
+          try { event.stopPropagation(); event.preventDefault(); } catch(e) {}
         }
 
-        renderLightbox();
+        const container = imgElement ? imgElement.closest('.dc-exact-card-img, .dc-exact-card, .premium-card-img, .premium-card, .catalog-card, .carousel') : null;
+
+        let photos = [];
+        let title = '';
+        let startIndex = 0;
+
+        if (container) {
+          title = (container.getAttribute('data-lightbox-title') || 
+                   container.closest('.dc-exact-card, .premium-card, .catalog-card')?.querySelector('.dc-exact-card-title, .card-title, h3, h4')?.textContent || 
+                   '').replace(/&amp;/g, '&').trim();
+
+          // Strategy A: Carousel inner images from this exact card (100% exact visual sequence)
+          const cardImgs = Array.from(container.querySelectorAll('.carousel-inner img, .carousel-item img'));
+          if (cardImgs.length > 0) {
+            photos = cardImgs.map(img => img.getAttribute('src') || img.src).filter(Boolean);
+            if (imgElement) {
+              startIndex = cardImgs.indexOf(imgElement);
+              if (startIndex < 0) {
+                const activeImg = container.querySelector('.carousel-item.active img');
+                if (activeImg) startIndex = cardImgs.indexOf(activeImg);
+              }
+            }
+          }
+
+          // Strategy B: data-lightbox-photos JSON
+          if (photos.length === 0) {
+            const raw = container.getAttribute('data-lightbox-photos') || container.closest('[data-lightbox-photos]')?.getAttribute('data-lightbox-photos');
+            if (raw) {
+              try {
+                photos = JSON.parse(raw.replace(/&quot;/g, '"').replace(/&amp;/g, '&'));
+              } catch(e) {}
+            }
+          }
+
+          // Strategy C: all img elements inside container
+          if (photos.length === 0) {
+            const allImgs = Array.from(container.querySelectorAll('img'));
+            photos = allImgs.map(img => img.getAttribute('src') || img.src).filter(Boolean);
+            if (imgElement) startIndex = allImgs.indexOf(imgElement);
+          }
+        }
+
+        // Fallback for standalone image
+        if (photos.length === 0 && imgElement) {
+          const src = imgElement.getAttribute('src') || imgElement.src;
+          if (src) photos = [src];
+          title = imgElement.getAttribute('alt') || 'Interior Catalogue';
+          startIndex = 0;
+        }
+
+        if (photos.length === 0) return;
+
+        // Resolve start index by src matching if index is still negative or 0
+        if (startIndex < 0 && imgElement) {
+          const clickedSrc = (imgElement.getAttribute('src') || imgElement.src || '').split('?')[0].split('#')[0].toLowerCase();
+          const clickedFilename = clickedSrc.split('/').pop();
+          for (let i = 0; i < photos.length; i++) {
+            const pSrc = (photos[i] || '').split('?')[0].split('#')[0].toLowerCase();
+            if (pSrc === clickedSrc || (clickedFilename && pSrc.endsWith('/' + clickedFilename))) {
+              startIndex = i;
+              break;
+            }
+          }
+        }
+
+        if (startIndex < 0 || startIndex >= photos.length) startIndex = 0;
+
+        window.openCatalogLightboxModal(photos, startIndex, title);
       };
+
+      // Document-level fast delegation for catalogue card clicks
+      document.addEventListener('click', (e) => {
+        if (e.target.closest('#dcCatalogModal') || e.target.closest('#galleryPhotoModal')) return;
+        const cardImg = e.target.closest('.dc-exact-card-img img, .carousel-inner img');
+        if (cardImg && !cardImg.hasAttribute('onclick')) {
+          e.preventDefault();
+          window.openLightbox(cardImg, e);
+        }
+      });
     })();
   </script>
 </body>
-</html>
+</html>\n
