@@ -259,7 +259,7 @@ const bodyContent = `<style>
         display: none !important;
       }
       .hero-banner-section {
-        background: linear-gradient(rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.85)), url('/assets/images/hero_bg.webp') center/cover no-repeat !important;
+        background: linear-gradient(rgba(15, 23, 42, 0.72), rgba(15, 23, 42, 0.85)), none center/cover no-repeat !important;
       }
       .hero-overlay-box {
         padding: 24px 15px !important;
@@ -316,7 +316,7 @@ const bodyContent = `<style>
 
   <!-- Premium Hero Banner with Video Background & High-Speed Mobile Fallback -->
   <section class="position-relative hero-banner-section overflow-hidden">
-    <video autoplay muted loop playsinline preload="metadata" poster="/assets/images/hero_bg.webp" aria-hidden="true" tabindex="-1" class="hero-video-bg">
+    <video autoplay muted loop playsinline preload="auto"  aria-hidden="true" tabindex="-1" class="hero-video-bg">
       <source src="/assets/videos/interior-designers-navi-mumbai-siddhivinayak-designers.webm" type="video/webm" />
       <source src="/assets/videos/interior-designers-navi-mumbai-siddhivinayak-designers.mp4" type="video/mp4" />
     </video>
