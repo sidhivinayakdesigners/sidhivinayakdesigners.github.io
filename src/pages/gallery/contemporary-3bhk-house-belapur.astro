@@ -59,6 +59,45 @@ const bodyContent = `
 </Layout>
 
 <style is:global>
+
+  /* White Card & Form Text Visibility */
+  .portfolio-detail-wrapper .bg-white h1,
+  .portfolio-detail-wrapper .bg-white h2,
+  .portfolio-detail-wrapper .bg-white h3,
+  .portfolio-detail-wrapper .bg-white h4,
+  .portfolio-detail-wrapper .bg-white h5,
+  .portfolio-detail-wrapper .bg-white strong {
+    color: #111111 !important;
+  }
+  .portfolio-detail-wrapper .bg-white p,
+  .portfolio-detail-wrapper .bg-white span,
+  .portfolio-detail-wrapper .bg-white li,
+  .portfolio-detail-wrapper .bg-white label {
+    color: #475569 !important;
+  }
+  .portfolio-detail-wrapper .form-label {
+    color: #334155 !important;
+    font-weight: 600;
+  }
+  .portfolio-detail-wrapper .form-control,
+  .portfolio-detail-wrapper .form-select {
+    color: #111111 !important;
+    background-color: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+  }
+
+  /* Only Dark CTA Banners get White Text */
+  .portfolio-detail-wrapper [style*="linear-gradient"] h3,
+  .immersive-gallery-wrapper [style*="linear-gradient"] h3 {
+    color: #ffffff !important;
+  }
+  .portfolio-detail-wrapper [style*="linear-gradient"] p,
+  .immersive-gallery-wrapper [style*="linear-gradient"] p {
+    color: #f8fafc !important;
+  }
+
+  
+
   /* Immersive Gallery Styles */
   .immersive-gallery-wrapper {
     background-color: #ffffff !important;

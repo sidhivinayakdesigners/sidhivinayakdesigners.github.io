@@ -86,8 +86,8 @@ const bodyContent = `
 
       <!-- Kharghar Hub Backlink & CTA -->
       <div class="mt-5 p-4 rounded-4 text-center border" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #ffffff;">
-        <h3 class="h4 font-luxury text-white mb-2">Want a Similar Luxury Penthouse Interior in Kharghar?</h3>
-        <p class="small text-white-50 mb-3">Speak with our senior interior designers for custom 3D layouts, German CNC woodwork, and turnkey execution.</p>
+        <h3 class="h4 font-luxury text-white mb-2" style="color: #ffffff !important; font-weight: 700; margin-bottom: 8px;">Want a Similar Luxury Penthouse Interior in Kharghar?</h3>
+        <p class="small mb-3" style="color: #f8fafc !important; font-size: 0.95rem; opacity: 1 !important; line-height: 1.5;">Speak with our senior interior designers for custom 3D layouts, German CNC woodwork, and turnkey execution.</p>
         <div class="d-flex flex-wrap gap-2 justify-content-center">
           <a href="/cities/interior-designers-navi-mumbai/kharghar/" class="btn btn-primary btn-sm px-4 rounded-pill fw-bold" style="background-color: #189ba6; border-color: #189ba6;">Explore Kharghar Hub</a>
           <a href="/cities/interior-designers-navi-mumbai/kharghar/2bhk-3bhk-interiors/" class="btn btn-outline-light btn-sm px-3 rounded-pill">2BHK &amp; 3BHK Interiors</a>
@@ -104,6 +104,45 @@ const bodyContent = `
 </Layout>
 
 <style is:global>
+
+  /* White Card & Form Text Visibility */
+  .portfolio-detail-wrapper .bg-white h1,
+  .portfolio-detail-wrapper .bg-white h2,
+  .portfolio-detail-wrapper .bg-white h3,
+  .portfolio-detail-wrapper .bg-white h4,
+  .portfolio-detail-wrapper .bg-white h5,
+  .portfolio-detail-wrapper .bg-white strong {
+    color: #111111 !important;
+  }
+  .portfolio-detail-wrapper .bg-white p,
+  .portfolio-detail-wrapper .bg-white span,
+  .portfolio-detail-wrapper .bg-white li,
+  .portfolio-detail-wrapper .bg-white label {
+    color: #475569 !important;
+  }
+  .portfolio-detail-wrapper .form-label {
+    color: #334155 !important;
+    font-weight: 600;
+  }
+  .portfolio-detail-wrapper .form-control,
+  .portfolio-detail-wrapper .form-select {
+    color: #111111 !important;
+    background-color: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+  }
+
+  /* Only Dark CTA Banners get White Text */
+  .portfolio-detail-wrapper [style*="linear-gradient"] h3,
+  .immersive-gallery-wrapper [style*="linear-gradient"] h3 {
+    color: #ffffff !important;
+  }
+  .portfolio-detail-wrapper [style*="linear-gradient"] p,
+  .immersive-gallery-wrapper [style*="linear-gradient"] p {
+    color: #f8fafc !important;
+  }
+
+  
+
   /* Immersive Gallery Styles */
   .immersive-gallery-wrapper {
     background-color: #ffffff !important;

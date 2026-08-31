@@ -5,30 +5,47 @@ const title = "Interior Design Cost in Kopar Khairane, Navi Mumbai | Siddhivinay
 const description = "Explore detailed home interior design cost breakdowns for 1BHK, 2BHK, and 3BHK flats in Kopar Khairane. Get direct factory pricing without aggregator markup.";
 const canonical = "https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/kopar-khairane/interior-design-cost/";
 const schema = `{
-      "@context": "https://schema.org",
+  "@context": "https://schema.org",
+  "@graph": [
+    {
       "@type": "BreadcrumbList",
-      "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://siddhivinayakdesigners.in/"
-      },{
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Navi Mumbai Interior Designer",
-        "item": "https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/"
-      },{
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Kopar Khairane",
-        "item": "https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/kopar-khairane/"
-      },{
-        "@type": "ListItem",
-        "position": 4,
-        "name": "Interior Design Cost",
-        "item": "https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/kopar-khairane/interior-design-cost"
-      }]
-    }`;
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://siddhivinayakdesigners.in/" },
+        { "@type": "ListItem", "position": 2, "name": "Navi Mumbai Interior Designer", "item": "https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/" },
+        { "@type": "ListItem", "position": 3, "name": "Kopar Khairane", "item": "https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/kopar-khairane/" },
+        { "@type": "ListItem", "position": 4, "name": "Interior Design Cost", "item": "${canonical}" }
+      ]
+    },
+    {
+      "@type": "Service",
+      "name": "Interior Design Cost Guide Kopar Khairane",
+      "serviceType": "Turnkey Interior Cost Estimation",
+      "description": "Itemized 2026 pricing breakdowns for 1BHK, 2BHK, and 3BHK flats in Kopar Khairane. Direct factory pricing with locked BOQ and zero surprise cost escalation.",
+      "provider": {
+        "@type": "HomeAndConstructionBusiness",
+        "name": "Siddhivinayak Designers",
+        "url": "https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/kopar-khairane/",
+        "telephone": "+918369297174",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Shree Laxmi CHS, A 301, Sector 23, Kopar Khairane",
+          "addressLocality": "Navi Mumbai",
+          "postalCode": "400709",
+          "addressCountry": "IN"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "164"
+        }
+      },
+      "areaServed": {
+        "@type": "Place",
+        "name": "Kopar Khairane, Navi Mumbai 400709"
+      }
+    }
+  ]
+}`;
 
 const bodyContent = `<!-- Breadcrumb Navigation -->
   <div class="bg-dark-card py-2 border-bottom border-secondary">

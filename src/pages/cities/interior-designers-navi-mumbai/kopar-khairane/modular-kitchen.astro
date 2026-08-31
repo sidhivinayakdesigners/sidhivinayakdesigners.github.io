@@ -5,30 +5,47 @@ const title = "Modular Kitchen in Kopar Khairane, Navi Mumbai | Siddhivinayak De
 const description = "Looking for the best modular kitchen designer in Kopar Khairane, Navi Mumbai? We install customized moisture-resistant BWP marine plywood kitchens at direct factory pricing.";
 const canonical = "https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/kopar-khairane/modular-kitchen/";
 const schema = `{
-      "@context": "https://schema.org",
+  "@context": "https://schema.org",
+  "@graph": [
+    {
       "@type": "BreadcrumbList",
-      "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://siddhivinayakdesigners.in/"
-      },{
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Navi Mumbai Interior Designer",
-        "item": "https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/"
-      },{
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Kopar Khairane",
-        "item": "https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/kopar-khairane/"
-      },{
-        "@type": "ListItem",
-        "position": 4,
-        "name": "Modular Kitchen",
-        "item": "https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/kopar-khairane/modular-kitchen"
-      }]
-    }`;
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://siddhivinayakdesigners.in/" },
+        { "@type": "ListItem", "position": 2, "name": "Navi Mumbai Interior Designer", "item": "https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/" },
+        { "@type": "ListItem", "position": 3, "name": "Kopar Khairane", "item": "https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/kopar-khairane/" },
+        { "@type": "ListItem", "position": 4, "name": "Modular Kitchen", "item": "${canonical}" }
+      ]
+    },
+    {
+      "@type": "Service",
+      "name": "IS:710 Marine Ply Modular Kitchen in Kopar Khairane",
+      "serviceType": "Modular Kitchen Design & Manufacturing",
+      "description": "Customized moisture-resistant 100% IS:710 BWP Marine Plywood modular kitchens in Kopar Khairane, Navi Mumbai. German CNC PUR hot-melt edge banding and Hettich soft-close hardware.",
+      "provider": {
+        "@type": "HomeAndConstructionBusiness",
+        "name": "Siddhivinayak Designers",
+        "url": "https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/kopar-khairane/",
+        "telephone": "+918369297174",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Shree Laxmi CHS, A 301, Sector 23, Kopar Khairane",
+          "addressLocality": "Navi Mumbai",
+          "postalCode": "400709",
+          "addressCountry": "IN"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "164"
+        }
+      },
+      "areaServed": {
+        "@type": "Place",
+        "name": "Kopar Khairane, Navi Mumbai 400709"
+      }
+    }
+  ]
+}`;
 
 const bodyContent = `<!-- Breadcrumb Navigation -->
   <div class="bg-dark-card py-2 border-bottom border-secondary">
