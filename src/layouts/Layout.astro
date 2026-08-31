@@ -23,6 +23,12 @@ const isDev = import.meta.env.DEV;
   <meta content={description} name="description" />
   <link href={canonical} rel="canonical" />
   
+  <!-- Resource Hints & Preconnects for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+
   <!-- Injected head meta and styling -->
   {schema && <script type="application/ld+json" set:html={schema}></script>}
   
