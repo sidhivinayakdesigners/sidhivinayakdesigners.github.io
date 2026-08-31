@@ -1282,6 +1282,66 @@ const isDev = import.meta.env.DEV;
         }
       });
     })();
+
+    // Track referring content page across the entire site for seamless catalogue close navigation
+    (function() {
+      try {
+        var path = window.location.pathname;
+        var isImmersive = path.includes('/modern-4bhk-penthouse-kharghar') ||
+                          path.includes('/contemporary-3bhk-flat-kopar-khairane') ||
+                          path.includes('/contemporary-4bhk-penthouse-seawoods') ||
+                          path.includes('/elegant-2bhk-flat-vashi') ||
+                          path.includes('/contemporary-3bhk-house-belapur') ||
+                          path.includes('/rustic-3bhk-home-nerul') ||
+                          path.endsWith('-photos/') ||
+                          path.endsWith('-photos');
+        if (!isImmersive) {
+          sessionStorage.setItem('svd_last_content_page', window.location.href);
+        }
+      } catch(err) {}
+    })();
+
+    // Universal Close Handler for Immersive Catalogues
+    window.closeImmersiveGallery = function(e) {
+      if (e && e.preventDefault) e.preventDefault();
+      if (e && e.stopPropagation) e.stopPropagation();
+      
+      var lastPage = null;
+      try {
+        lastPage = sessionStorage.getItem('svd_last_content_page');
+      } catch(err) {}
+
+      var referrer = document.referrer;
+      var isSameSiteReferrer = referrer && (referrer.indexOf(window.location.host) !== -1 || referrer.startsWith(window.location.origin)) && referrer !== window.location.href;
+
+      // 1. If history back is valid and referrer was internal, use browser history back
+      if (window.history.length > 1 && isSameSiteReferrer) {
+        window.history.back();
+        return false;
+      }
+
+      // 2. If session storage has the page we navigated from, redirect directly to it
+      if (lastPage && lastPage !== window.location.href) {
+        window.location.href = lastPage;
+        return false;
+      }
+
+      // 3. Fallback to same-site referrer
+      if (isSameSiteReferrer) {
+        window.location.href = referrer;
+        return false;
+      }
+
+      // 4. Try history.back
+      if (window.history.length > 1) {
+        window.history.back();
+        return false;
+      }
+
+      // 5. Default fallback to home
+      window.location.href = '/';
+      return false;
+    };
   </script>
 </body>
 </html>\n
