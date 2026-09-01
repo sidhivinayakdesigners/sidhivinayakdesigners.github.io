@@ -27,9 +27,12 @@ const schema = `{
       }]
     },
     {
-      "@type": ["LocalBusiness", "ProfessionalService", "InteriorDesigner"],
+      "@type": ["LocalBusiness", "ProfessionalService", "InteriorDesigner", "HomeAndConstructionBusiness"],
       "@id": "https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/kopar-khairane/#localbusiness",
       "name": "Siddhivinayak Designers - Interior Designer in Kopar Khairane",
+      "parentOrganization": {
+        "@id": "https://siddhivinayakdesigners.in/#organization"
+      },
       "image": "https://siddhivinayakdesigners.in/assets/images/hero_bg.webp",
       "logo": "https://siddhivinayakdesigners.in/assets/images/logo_icon.webp",
       "email": "admin@siddhivinayakdesigners.in",
@@ -37,6 +40,18 @@ const schema = `{
       "url": "https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/kopar-khairane/",
       "telephone": "+918369297174",
       "priceRange": "₹₹₹",
+      "knowsAbout": [
+        "Interior Designer in Kopar Khairane",
+        "Best Interior Designers in Kopar Khairane",
+        "Home Interior Designers in Kopar Khairane",
+        "Modular Kitchen Kopar Khairane",
+        "CIDCO Flat Renovation Kopar Khairane",
+        "Commercial Interior Designer Kopar Khairane",
+        "Office Interior Fitouts Kopar Khairane",
+        "IS:710 BWP Marine Plywood",
+        "NMMC Building NOC Clearance",
+        "3D VR Design Visualization"
+      ],
       "aggregateRating": {
         "@type": "AggregateRating",
         "ratingValue": "4.9",
@@ -91,7 +106,8 @@ const schema = `{
         { "@type": "Place", "name": "Teen Taki Kopar Khairane" },
         { "@type": "Place", "name": "D-Mart Sector 14 Kopar Khairane" },
         { "@type": "Place", "name": "Nisarg Udyan & Sector 19 Market Kopar Khairane" },
-        { "@type": "Place", "name": "Sector 19 & Sector 23 Residential Towers" }
+        { "@type": "Place", "name": "TTC MIDC & Millennium Business Park Industrial Node" },
+        { "@type": "Place", "name": "Sector 19 & Sector 23 Residential & Commercial Towers" }
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -119,6 +135,22 @@ const schema = `{
               "@type": "Service",
               "name": "CIDCO Flat Renovation & Civil Modernization Kopar Khairane",
               "description": "Complete CIDCO flat civil renovation, structural waterproofing, plumbing overhaul, concealed electricals, and turnkey carpentry in Kopar Khairane."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Commercial & Corporate Office Interiors in Kopar Khairane",
+              "description": "Turnkey corporate office fitouts, IT workspaces, commercial retail showrooms, and clinics in Kopar Khairane and TTC MIDC corridor."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Custom Wardrobes & Space Saving Furniture Kopar Khairane",
+              "description": "Anti-warp sliding wardrobes, Murphy beds, acoustic fluted wall louvers, and Saint-Gobain gypsum ceilings in Kopar Khairane."
             }
           }
         ]
@@ -1575,29 +1607,34 @@ const bodyContent = `<style>
     <div class="container py-3">
       <div class="row">
         <div class="col-lg-12">
-          <h2 class="h3 font-luxury text-dark mb-4 text-start" style="color: #000000 !important; font-size: 1.75rem !important;">Why Homeowners in Kopar Khairane Choose Siddhivinayak Designers</h2>
-          <p class="text-secondary leading-relaxed mb-4 text-start" style="color: #444444 !important; font-size: 0.95rem !important;">
-            Kopar Khairane is one of Navi Mumbai's most established and strategically connected residential hubs, situated between the scenic Thane Creek to the west and the Parsik Hill / TTC MIDC corridor to the east. From modern luxury residential towers in <strong>Sectors 11, 14, 17, 19, and 23</strong> (such as <em>Mahavir Universe, Progressive Crown, Fam Society, Juhi Serenity, Gulab Park, Balaji Garden, Moraj Casa Beuana, and Shree Laxmi CHS</em>) to expansive CIDCO cooperative housing societies across <strong>Sectors 1 to 11, 15, and 19</strong>, Kopar Khairane homeowners demand interior designs that seamlessly combine contemporary elegance, space maximization, and robust coastal climate durability.
+          <h2 class="h3 font-luxury text-dark mb-4 text-start" style="color: #000000 !important; font-size: 1.75rem !important;">Why Homeowners & Businesses in Kopar Khairane Choose Siddhivinayak Designers</h2>
+          <p class="text-secondary leading-relaxed mb-4 text-start" style="color: #444444 !important; font-size: 0.98rem !important;">
+            Kopar Khairane is one of Navi Mumbai's most established and strategically connected residential and commercial hubs, situated between the scenic Thane Creek to the west and the Parsik Hill / TTC MIDC corridor to the east. From modern luxury residential towers in <strong>Sectors 11, 14, 17, 19, and 23</strong> (such as <em>Mahavir Universe, Progressive Crown, Fam Society, Juhi Serenity, Gulab Park, Balaji Garden, Moraj Casa Beuana, and Shree Laxmi CHS</em>) to expansive CIDCO cooperative housing societies across <strong>Sectors 1 to 11, 15, and 19</strong>, property owners seek the <strong>best interior designers in Kopar Khairane</strong> who deliver contemporary elegance, space maximization, locked BOQ transparency, and coastal climate durability.
           </p>
           
-          <h3 class="h4 font-luxury text-dark mb-3 text-start" style="color: #000000 !important; font-size: 1.35rem !important;">Luxury High-Rise &amp; 2BHK/3BHK Flat Interiors in Kopar Khairane</h3>
+          <h3 class="h4 font-luxury text-dark mb-3 text-start" style="color: #000000 !important; font-size: 1.35rem !important;">Turnkey Residential &amp; Home Interior Designers in Kopar Khairane (1BHK, 2BHK, 3BHK &amp; Duplexes)</h3>
           <p class="text-secondary leading-relaxed mb-4 text-start" style="color: #444444 !important; font-size: 0.95rem !important;">
-            Modern residential high-rises in Sector 14 (near D-Mart), Sector 19, and Sector 23 feature generous layouts that require smart space planning and sophisticated finishes. Our interior architectural team crafts <strong>warm contemporary luxury themes, Italian marble backdrops, fluted charcoal acoustic louvers, automated smart ambient profile lighting (3000K warm CCT), and custom walk-in sliding wardrobes</strong> with tinted glass shutters and integrated profile illumination.
+            Modern residential high-rises in Sector 14 (near D-Mart), Sector 19, and Sector 23 feature spacious layouts that require smart space planning and sophisticated finishes. As leading <strong>home interior designers in Kopar Khairane</strong>, our architectural team crafts <strong>warm contemporary luxury themes, Italian marble TV feature walls, fluted charcoal acoustic louvers, automated smart ambient profile lighting (3000K warm CCT), and custom walk-in sliding wardrobes</strong> with tinted glass shutters and integrated profile illumination. Explore our dedicated <a href="/cities/interior-designers-navi-mumbai/kopar-khairane/2bhk-3bhk-interiors/" class="text-teal fw-bold" style="color: #189ba6 !important;">2BHK &amp; 3BHK interior design in Kopar Khairane</a> guide for layout inspirations.
           </p>
           
-          <h3 class="h4 font-luxury text-dark mb-3 text-start" style="color: #000000 !important; font-size: 1.35rem !important;">CIDCO Flat Renovation &amp; Civil Structural Modernization</h3>
+          <h3 class="h4 font-luxury text-dark mb-3 text-start" style="color: #000000 !important; font-size: 1.35rem !important;">CIDCO Flat Renovation &amp; Civil Structural Modernization (Sectors 1 to 19)</h3>
           <p class="text-secondary leading-relaxed mb-4 text-start" style="color: #444444 !important; font-size: 0.95rem !important;">
-            For older CIDCO 1BHK, 2BHK, and combined 1+1 Jodi flats across Sectors 1, 3, 4, 5, 8, 15, and 19, standard cosmetic repairs are inadequate. We provide complete turnkey civil modernization: <strong>structural waterproofing, bathroom plumbing overhaul with concealed CPVC lines, rewiring of electrical circuits with modular switchboards, structural wall non-interference, and space-saving furniture (hydraulic storage beds, fold-down workstations, and multi-functional shoe consoles)</strong> that optimize every square foot of carpet area.
+            For older CIDCO 1BHK, 2BHK, and combined 1+1 Jodi flats across Sectors 1, 3, 4, 5, 8, 15, and 19, standard cosmetic repairs are inadequate. We provide complete turnkey civil modernization: <strong>structural waterproofing, bathroom plumbing overhaul with concealed CPVC lines, rewiring of electrical circuits with modular switchboards, structural load-bearing wall preservation, and space-saving multi-functional furniture (hydraulic storage beds, fold-down workstations, and multi-functional shoe consoles)</strong> that optimize every square foot of carpet area.
+          </p>
+
+          <h3 class="h4 font-luxury text-dark mb-3 text-start" style="color: #000000 !important; font-size: 1.35rem !important;">Commercial &amp; Corporate Office Interiors in Kopar Khairane (TTC MIDC &amp; Millennium Business Park Corridor)</h3>
+          <p class="text-secondary leading-relaxed mb-4 text-start" style="color: #444444 !important; font-size: 0.95rem !important;">
+            Beyond luxury homes, Siddhivinayak Designers is a premier <strong>commercial interior designer in Kopar Khairane</strong>. We deliver end-to-end turnkey office fitouts, IT/BPO executive cabins, conference rooms, retail showrooms, diagnostic centers, and co-working spaces across <strong>TTC MIDC Industrial Area, Millennium Business Park corridor, and Sector 19/23 commercial complexes</strong>. Our commercial scope covers fire-retardant electrical wiring, acoustic ceiling baffles, modular workstations, toughened glass demountable partitions, centralized HVAC ducting coordination, and biophilic reception lobbies designed for brand prestige and maximum workforce productivity.
           </p>
           
           <h3 class="h4 font-luxury text-dark mb-3 text-start" style="color: #000000 !important; font-size: 1.35rem !important;">Thane Creek Coastal Humidity Defense: 100% IS:710 BWP Marine Plywood</h3>
           <p class="text-secondary leading-relaxed mb-4 text-start" style="color: #444444 !important; font-size: 0.95rem !important;">
-            Because Kopar Khairane is located in close proximity to Thane Creek, atmospheric monsoon humidity regularly exceeds 90%. Low-grade commercial MDF, particle boards (PLPB), and unsealed carpentry absorb airborne moisture, leading to warped shutters, fungal mold, and corroded hinges within 2 seasons. As the top-rated <strong>interior designer in Kopar Khairane</strong>, we construct all modular kitchens, vanity cabinets, and bedroom wardrobes strictly using <strong>IS:710 Certified Boiling Water Proof (BWP) Marine Plywood</strong> sealed with German CNC hot-melt PUR edge banding and anti-corrosion SS 304 / Hettich fittings, backed by our 10-year warranty.
+            Because Kopar Khairane is located in close proximity to Thane Creek, atmospheric monsoon humidity regularly exceeds 90%. Low-grade commercial MDF, particle boards (PLPB), and unsealed carpentry absorb airborne moisture, leading to warped shutters, fungal mold, and corroded hinges within 2 seasons. As the top-rated <strong>interior design company in Kopar Khairane</strong>, we construct all modular kitchens, vanity cabinets, and bedroom wardrobes strictly using <strong>IS:710 Certified Boiling Water Proof (BWP) Marine Plywood</strong> sealed with German CNC hot-melt PUR edge banding and anti-corrosion SS 304 / Hettich fittings, backed by our 10-year warranty. Check out our specialized <a href="/cities/interior-designers-navi-mumbai/kopar-khairane/modular-kitchen/" class="text-teal fw-bold" style="color: #189ba6 !important;">modular kitchen in Kopar Khairane</a> catalog.
           </p>
           
           <h3 class="h4 font-luxury text-dark mb-3 text-start" style="color: #000000 !important; font-size: 1.35rem !important;">Sector 23 Head Office &amp; Direct Factory Pricing with Locked BOQ</h3>
           <p class="text-secondary leading-relaxed mb-4 text-start" style="color: #444444 !important; font-size: 0.95rem !important;">
-            Unlike design aggregator franchises that outsource work to freelance carpenters, our registered head office is located directly at <strong>Shree Laxmi CHS, Sector 23, Kopar Khairane</strong>. All modular carpentry is precision-manufactured in our automated German CNC factory, eliminating middleman commissions and delivering direct factory savings of <strong>20% to 30%</strong> straight to Kopar Khairane homeowners with a legally binding, itemized Bill of Quantities (BOQ) and zero surprise cost escalations.
+            Unlike design aggregator franchises that outsource work to freelance carpenters, our registered head office is located directly at <strong>Shree Laxmi CHS, Sector 23, Kopar Khairane</strong>. All modular carpentry is precision-manufactured in our automated German CNC factory, eliminating middleman commissions and delivering direct factory savings of <strong>20% to 30%</strong> straight to Kopar Khairane property owners with a legally binding, itemized Bill of Quantities (BOQ) and zero surprise cost escalations. Detailed pricing is available in our <a href="/cities/interior-designers-navi-mumbai/kopar-khairane/interior-design-cost/" class="text-teal fw-bold" style="color: #189ba6 !important;">Kopar Khairane interior design cost guide</a>.
           </p>
         </div>
       </div>
@@ -1927,6 +1964,171 @@ const bodyContent = `<style>
               </div>
               <i class="fab fa-google fs-5" style="color: #4285F4 !important;" title="Google Verified Review"></i>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Before & After CIDCO Flat Transformation Blueprint [AUTHENTIC & COMPLIANT] -->
+  <section class="py-5 bg-white border-top border-bottom" id="cidcoTransformationShowcase" style="background-color: #ffffff !important; color: #111111 !important;">
+    <div class="container py-3">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="badge px-3 py-2 text-uppercase fw-bold mb-2" style="background: rgba(24, 155, 166, 0.1); color: #189ba6; font-size: 0.75rem; letter-spacing: 1px;">Turnkey Engineering Blueprint</span>
+        <h2 class="font-luxury text-dark h2 mt-2 mb-2" style="color: #111111 !important; font-size: 2rem;">CIDCO Flat Renovation Blueprint: Before &amp; After Modernization Framework</h2>
+        <p class="text-secondary mx-auto" style="max-width: 750px; font-size: 0.95rem;">How our Kopar Khairane civil and design team systematically resolves structural dampness, cramped masonry kitchens, and aging electricals in classic CIDCO housing societies (Sectors 1 to 19).</p>
+      </div>
+
+      <div class="row g-4 align-items-stretch" data-aos="fade-up">
+        <!-- Before State Card -->
+        <div class="col-lg-6">
+          <div class="p-4 rounded-4 border h-100 shadow-sm" style="background: #fdf2f2; border-color: #fca5a5 !important;">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <span class="badge bg-danger text-white px-3 py-1 text-uppercase fw-bold" style="font-size: 0.75rem;">TYPICAL PRE-RENOVATION CHALLENGES</span>
+              <span class="text-muted small"><i class="fas fa-exclamation-triangle text-danger me-1"></i> Older CIDCO Layout Issues</span>
+            </div>
+            <div class="mb-3 overflow-hidden rounded-3" style="max-height: 240px;">
+              <img src="/assets/images/3bhk/3-bhk-interior-designers-in-navi-mumbai-living-room.webp" alt="Typical aging CIDCO flat layout challenges before modernization in Kopar Khairane" class="w-100 h-100" style="object-fit: cover; filter: grayscale(85%) contrast(85%);" />
+            </div>
+            <h3 class="h6 fw-bold text-danger mb-2" style="font-size: 1.05rem;">Critical Pain Points Addressed:</h3>
+            <ul class="small text-secondary ps-3 mb-0" style="line-height: 1.7;">
+              <li><strong>Severe Coastal Dampness:</strong> Moisture seepage across exterior brickwork from saline Thane Creek monsoon winds.</li>
+              <li><strong>Dark Masonry Platforms:</strong> Bulky traditional kitchen counters that block natural ventilation and daylight.</li>
+              <li><strong>Outdated Wiring &amp; Plumbing:</strong> Exposed electrical circuits and aging GI/PVC plumbing prone to hidden leaks.</li>
+              <li><strong>Swollen Local Carpentry:</strong> Commercial MDF/particle boards warping due to unsealed edges and humidity.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- After State Card -->
+        <div class="col-lg-6">
+          <div class="p-4 rounded-4 border h-100 shadow-sm" style="background: #f0fdfa; border-color: #189ba6 !important;">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <span class="badge bg-success text-white px-3 py-1 text-uppercase fw-bold" style="font-size: 0.75rem; background-color: #0f766e !important;">TURNKEY EXECUTION STANDARD</span>
+              <span class="text-teal small fw-bold" style="color: #0f766e;"><i class="fas fa-check-circle me-1"></i> 40–45 Day Handover</span>
+            </div>
+            <div class="mb-3 overflow-hidden rounded-3" style="max-height: 240px;">
+              <img src="/assets/images/delivered-projects/kharghar-3bhk/1.webp" alt="Turnkey modernized flat interior with 100% IS:710 Marine Ply and ambient lighting" class="w-100 h-100" style="object-fit: cover;" />
+            </div>
+            <h3 class="h6 fw-bold text-dark mb-2" style="font-size: 1.05rem; color: #0f766e !important;">Siddhivinayak Turnkey Solutions:</h3>
+            <ul class="small text-secondary ps-3 mb-0" style="line-height: 1.7;">
+              <li><strong>Multi-Layer Waterproofing:</strong> 3-coat chemical injection damp-proofing sealing external walls against seepage.</li>
+              <li><strong>100% IS:710 Marine Ply Kitchen:</strong> Anti-scratch acrylic shutters, Blum/Hettich soft-close runners &amp; quartz tops.</li>
+              <li><strong>Concealed Fire-Safe Electrics:</strong> Fire-retardant Finolex wiring with Legrand modular plates and 3000K warm LED strips.</li>
+              <li><strong>Saint-Gobain Gyproc Ceilings:</strong> Ambient recessed illumination and fluted louvers creating a sleek modern aesthetic.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="/blog/kopar-khairane-cidco-flat-renovation/" class="btn btn-outline-dark btn-sm px-4 py-2 fw-bold me-2" style="border-radius: 6px;">
+          Read Complete CIDCO Renovation Guide <i class="fas fa-book-open ms-1"></i>
+        </a>
+        <a href="/gallery/3bhk-luxury-interior-in-shree-laxmi-chs-kopar-khairane/" class="btn btn-gold btn-sm px-4 py-2 fw-bold text-white text-decoration-none" style="background-color: #189ba6 !important; border-radius: 6px;">
+          View Shree Laxmi CHS Project <i class="fas fa-images ms-1"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kopar Khairane Sub-Pillars & Topical Cluster Hub [NEW] -->
+  <section class="py-5 bg-light border-bottom" id="koparKhairaneClusterHub" style="background-color: #f8fafc !important; color: #111111 !important;">
+    <div class="container py-3">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <span class="badge px-3 py-2 text-uppercase fw-bold mb-2" style="background: rgba(24, 155, 166, 0.1); color: #189ba6; font-size: 0.75rem; letter-spacing: 1px;">Kopar Khairane Knowledge Hub</span>
+        <h2 class="font-luxury text-dark h2 mt-2 mb-2" style="color: #111111 !important; font-size: 2rem;">Explore Our Kopar Khairane Interior Services &amp; Guides</h2>
+        <p class="text-secondary mx-auto" style="max-width: 750px; font-size: 0.95rem;">Access dedicated guides, cost matrices, and room portfolios curated specifically for Kopar Khairane property owners.</p>
+      </div>
+
+      <div class="row g-4" data-aos="fade-up">
+        <!-- Sub-Pillar 1: Modular Kitchen -->
+        <div class="col-lg-4 col-md-6">
+          <div class="p-4 rounded-4 bg-white border h-100 shadow-sm d-flex flex-column justify-content-between">
+            <div>
+              <div class="d-inline-block p-3 rounded-3 mb-3" style="background: rgba(24, 155, 166, 0.1); color: #189ba6;">
+                <i class="fas fa-utensils fs-4"></i>
+              </div>
+              <h3 class="h6 fw-bold text-dark mb-2" style="font-size: 1.15rem;">Modular Kitchen in Kopar Khairane</h3>
+              <p class="small text-secondary mb-3">100% IS:710 Boiling Water Proof marine ply modular kitchens engineered for coastal creek humidity. L-shape, Parallel &amp; Island setups.</p>
+            </div>
+            <a href="/cities/interior-designers-navi-mumbai/kopar-khairane/modular-kitchen/" class="text-teal fw-bold small text-decoration-none" style="color: #189ba6;">
+              Explore Modular Kitchens <i class="fas fa-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Sub-Pillar 2: Cost Guide -->
+        <div class="col-lg-4 col-md-6">
+          <div class="p-4 rounded-4 bg-white border h-100 shadow-sm d-flex flex-column justify-content-between">
+            <div>
+              <div class="d-inline-block p-3 rounded-3 mb-3" style="background: rgba(24, 155, 166, 0.1); color: #189ba6;">
+                <i class="fas fa-calculator fs-4"></i>
+              </div>
+              <h3 class="h6 fw-bold text-dark mb-2" style="font-size: 1.15rem;">Interior Design Cost Kopar Khairane</h3>
+              <p class="small text-secondary mb-3">Complete 2026 price breakdown for 1BHK, 2BHK, 3BHK flats, wardrobes, false ceilings, and painting with zero hidden fees.</p>
+            </div>
+            <a href="/cities/interior-designers-navi-mumbai/kopar-khairane/interior-design-cost/" class="text-teal fw-bold small text-decoration-none" style="color: #189ba6;">
+              View 2026 Cost Matrix <i class="fas fa-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Sub-Pillar 3: 2BHK & 3BHK Interiors -->
+        <div class="col-lg-4 col-md-6">
+          <div class="p-4 rounded-4 bg-white border h-100 shadow-sm d-flex flex-column justify-content-between">
+            <div>
+              <div class="d-inline-block p-3 rounded-3 mb-3" style="background: rgba(24, 155, 166, 0.1); color: #189ba6;">
+                <i class="fas fa-couch fs-4"></i>
+              </div>
+              <h3 class="h6 fw-bold text-dark mb-2" style="font-size: 1.15rem;">2BHK &amp; 3BHK Flat Interiors</h3>
+              <p class="small text-secondary mb-3">Turnkey room designs for high-rise towers (Mahavir Universe, Fam Society, Progressive Crown) and CIDCO societies.</p>
+            </div>
+            <a href="/cities/interior-designers-navi-mumbai/kopar-khairane/2bhk-3bhk-interiors/" class="text-teal fw-bold small text-decoration-none" style="color: #189ba6;">
+              Explore 2BHK/3BHK Designs <i class="fas fa-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Blog 1: CIDCO Renovation -->
+        <div class="col-lg-4 col-md-6">
+          <div class="p-4 rounded-4 bg-white border h-100 shadow-sm d-flex flex-column justify-content-between">
+            <div>
+              <span class="badge bg-light text-muted small border mb-2">Legal &amp; Compliance Guide</span>
+              <h3 class="h6 fw-bold text-dark mb-2" style="font-size: 1.05rem;">CIDCO Flat Renovation in Kopar Khairane</h3>
+              <p class="small text-secondary mb-3">Step-by-step guide to housing society NOC clearances, NMMC bylaws, structural safety, and space hacks.</p>
+            </div>
+            <a href="/blog/kopar-khairane-cidco-flat-renovation/" class="text-teal fw-bold small text-decoration-none" style="color: #189ba6;">
+              Read Renovation Guide <i class="fas fa-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Blog 2: Cost Breakdown -->
+        <div class="col-lg-4 col-md-6">
+          <div class="p-4 rounded-4 bg-white border h-100 shadow-sm d-flex flex-column justify-content-between">
+            <div>
+              <span class="badge bg-light text-muted small border mb-2">Cost Analysis</span>
+              <h3 class="h6 fw-bold text-dark mb-2" style="font-size: 1.05rem;">2BHK &amp; 3BHK Cost Breakdown</h3>
+              <p class="small text-secondary mb-3">Understand component-wise budgets for modular kitchens, sliding wardrobes, false ceilings, and turnkey labor.</p>
+            </div>
+            <a href="/blog/kopar-khairane-2bhk-3bhk-interior-costs/" class="text-teal fw-bold small text-decoration-none" style="color: #189ba6;">
+              Read Cost Analysis <i class="fas fa-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Blog 3: Moisture Protection -->
+        <div class="col-lg-4 col-md-6">
+          <div class="p-4 rounded-4 bg-white border h-100 shadow-sm d-flex flex-column justify-content-between">
+            <div>
+              <span class="badge bg-light text-muted small border mb-2">Material Science</span>
+              <h3 class="h6 fw-bold text-dark mb-2" style="font-size: 1.05rem;">Moisture &amp; Creek Humidity Defense</h3>
+              <p class="small text-secondary mb-3">Why IS:710 BWP marine plywood is essential for Kopar Khairane flats near Thane Creek and Parsik Hill.</p>
+            </div>
+            <a href="/blog/kopar-khairane-humidity-moisture-protection/" class="text-teal fw-bold small text-decoration-none" style="color: #189ba6;">
+              Read Protection Guide <i class="fas fa-arrow-right ms-1"></i>
+            </a>
           </div>
         </div>
       </div>
