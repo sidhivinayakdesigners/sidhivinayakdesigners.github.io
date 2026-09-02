@@ -1,0 +1,355 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const title = "Master Bedroom in Gami Asters, Sector 21 Ghansoli | Siddhivinayak Designers";
+const description = "Explore this elegant master bedroom and luxury 3BHK flat interior in Gami Asters, Sector 21, Ghansoli. Features floor-to-ceiling sliding wardrobes, fluted bed backing, and custom dressing console.";
+const canonical = "https://siddhivinayakdesigners.in/gallery/3bhk-luxury-interior-in-gami-asters-ghansoli/";
+
+const schema = `{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://siddhivinayakdesigners.in/" },
+        { "@type": "ListItem", "position": 2, "name": "Interior Designer Ghansoli", "item": "https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/ghansoli/" },
+        { "@type": "ListItem", "position": 3, "name": "Master Bedroom in Gami Asters", "item": "${canonical}" }
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Master Bedroom in Gami Asters, Ghansoli",
+      "headline": "Master Bedroom in Gami Asters, Sector 21 Ghansoli",
+      "description": "Completed turnkey 3BHK flat interior design in Gami Asters, Sector 21, Ghansoli by Siddhivinayak Designers. Features floor-to-ceiling sliding wardrobe, fluted acoustic paneling, and custom vanity dressing console.",
+      "image": "https://siddhivinayakdesigners.in/assets/images/delivered-projects/gami-asters-ghansoli/1.webp",
+      "url": "${canonical}",
+      "author": {
+        "@type": "HomeAndConstructionBusiness",
+        "name": "Siddhivinayak Designers",
+        "url": "https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/ghansoli/",
+        "telephone": "+918369297174",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Shree Laxmi CHS, A 301, Sector 23, Kopar Khairane",
+          "addressLocality": "Navi Mumbai",
+          "postalCode": "400709",
+          "addressCountry": "IN"
+        }
+      },
+      "contentLocation": {
+        "@type": "Place",
+        "name": "Gami Asters, Sector 21, Ghansoli, Navi Mumbai 400701"
+      }
+    }
+  ]
+}`;
+---
+
+<Layout title={title} description={description} canonical={canonical} schema={schema}>
+  <div class="portfolio-detail-wrapper py-4" style="background-color: #f4f5f7 !important;">
+    <div class="container">
+      <!-- Breadcrumb Link -->
+      <nav aria-label="breadcrumb" class="mb-4 d-none d-md-block">
+        <ol class="breadcrumb mb-0 small">
+          <li class="breadcrumb-item"><a href="/" class="text-danger text-decoration-none">Home</a></li>
+          <li class="breadcrumb-item"><a href="/cities/interior-designers-navi-mumbai/ghansoli/" class="text-danger text-decoration-none">Interior Designer Ghansoli</a></li>
+          <li class="breadcrumb-item active text-muted" aria-current="page">Master Bedroom in Gami Asters</li>
+        </ol>
+      </nav>
+
+      <!-- Premium Top Image Grid -->
+      <div class="row g-2 mb-4 align-stretch">
+        <!-- Left Large Image -->
+        <div class="col-md-7">
+          <div class="rounded-3 overflow-hidden position-relative h-100 gami-hero-main-img" style="cursor: pointer;" onclick="openGamiLightbox()">
+            <img src="/assets/images/delivered-projects/gami-asters-ghansoli/1.webp" alt="Master Bedroom in Gami Asters Ghansoli - Luxury Suite" class="w-100 h-100 object-fit-cover" />
+            <div class="position-absolute top-0 start-0 m-3 bg-dark bg-opacity-75 text-white px-3 py-1 rounded-pill small fw-semibold">
+              <i class="fas fa-expand me-1"></i> View Full Gallery (9 Photos)
+            </div>
+          </div>
+        </div>
+        <!-- Right 2x2 Small Images Grid -->
+        <div class="col-md-5">
+          <div class="row g-2">
+            <div class="col-6">
+              <div class="overflow-hidden rounded-2 gami-hero-sub-img" style="cursor: pointer;" onclick="openGamiLightbox()">
+                <img src="/assets/images/delivered-projects/gami-asters-ghansoli/2.webp" alt="Living & Dining Lounge View" class="w-100 h-100 object-fit-cover" />
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="overflow-hidden rounded-2 gami-hero-sub-img" style="cursor: pointer;" onclick="openGamiLightbox()">
+                <img src="/assets/images/delivered-projects/gami-asters-ghansoli/3.webp" alt="Master Bedroom Fluted Bed Backing" class="w-100 h-100 object-fit-cover" />
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="overflow-hidden rounded-2 gami-hero-sub-img" style="cursor: pointer;" onclick="openGamiLightbox()">
+                <img src="/assets/images/delivered-projects/gami-asters-ghansoli/4.webp" alt="Dressing Console & Vanity Mirror" class="w-100 h-100 object-fit-cover" />
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="overflow-hidden rounded-2 position-relative gami-hero-sub-img" style="cursor: pointer;" onclick="openGamiLightbox()">
+                <img src="/assets/images/delivered-projects/gami-asters-ghansoli/5.webp" alt="Kids / Guest Bedroom Details" class="w-100 h-100 object-fit-cover" />
+                <!-- See All Button overlay -->
+                <div class="position-absolute bottom-0 end-0 m-3" style="z-index: 10;">
+                  <button class="btn btn-light btn-sm px-3 rounded-pill fw-bold border-0" style="opacity: 0.95; box-shadow: 0 2px 8px rgba(0,0,0,0.25);" onclick="event.stopPropagation(); openGamiLightbox()">
+                    <i class="fas fa-images me-1"></i> See All
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Columns Grid -->
+      <div class="row g-4">
+        <!-- Left Column: Specs, Highlights & FAQs -->
+        <div class="col-lg-8">
+          <!-- Main Description Card -->
+          <div class="p-4 bg-white rounded-4 border border-light-subtle shadow-sm mb-4">
+            <h1 class="fw-bold mb-2 text-dark" style="font-size: 2.2rem; font-family: 'Open Sans', sans-serif; letter-spacing: -0.5px;">Master Bedroom in Gami Asters</h1>
+            <p class="gami-project-subtitle text-secondary mb-3">Gami Asters, Sector 21, Ghansoli</p>
+            
+            <div class="d-flex flex-wrap gap-2 mb-4">
+              <span class="badge-pill-light">Modern Luxury</span>
+              <span class="badge-pill-light">Space Optimization</span>
+              <span class="badge-pill-light">100% IS:710 Marine Ply</span>
+            </div>
+            
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <div class="d-flex align-items-center text-dark fw-semibold small">
+                <i class="fas fa-map-marker-alt text-danger me-2 fs-5"></i> Sector 21, Ghansoli (Near Palm Beach Extension)
+              </div>
+              <a href="https://wa.me/918369297174?text=Hi%20Siddhivinayak%20Designers,%20I'm%20interested%20in%20a%20similar%203BHK%20interior%20design%20for%20my%20Gami%20Asters%20Ghansoli%20flat" target="_blank" class="btn btn-red-pill px-4 py-2 fw-bold text-white border-0 text-decoration-none" style="background-color: #189ba6 !important;">
+                <i class="fab fa-whatsapp me-1"></i> GET ESTIMATE
+              </a>
+            </div>
+            
+            <hr class="my-4" style="border-color: #e5e8eb;" />
+            
+            <div class="row g-3 text-start">
+              <div class="col-6 col-md">
+                <span class="text-secondary small d-block mb-1">Pricing</span>
+                <strong class="text-dark d-block">₹8.8 - 12.0 Lakhs</strong>
+              </div>
+              <div class="col-6 col-md">
+                <span class="text-secondary small d-block mb-1">BHK</span>
+                <strong class="text-dark d-block">3-BHK</strong>
+              </div>
+              <div class="col-6 col-md">
+                <span class="text-secondary small d-block mb-1">Scope</span>
+                <strong class="text-dark d-block" style="font-size: 0.9rem;">Sliding Wardrobe, Fluted Bed Backing, Dressing Console</strong>
+              </div>
+              <div class="col-6 col-md">
+                <span class="text-secondary small d-block mb-1">Property Type</span>
+                <strong class="text-dark d-block">High-Rise Apartment</strong>
+              </div>
+              <div class="col-6 col-md">
+                <span class="text-secondary small d-block mb-1">Size</span>
+                <strong class="text-dark d-block">1100 to 1600 sq ft</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Details Card -->
+          <div class="p-4 bg-white rounded-4 border border-light-subtle shadow-sm mb-4">
+            <h2 class="h4 font-luxury text-dark mb-4">Project Highlights &amp; Execution Details</h2>
+            
+            <div class="mb-4">
+              <h3 class="h5 font-luxury text-dark mb-2">Master Suite Architecture &amp; Wardrobe Engineering</h3>
+              <p class="text-secondary leading-relaxed">
+                Completed in Gami Asters, Sector 21 Ghansoli, this master bedroom suite is designed for maximum visual serenity and intelligent storage efficiency. The bed backdrop features vertical charcoal fluted panels combined with warm concealed LED strip lighting (3000K CCT). The floor-to-ceiling sliding wardrobe includes top-hung silent tracks, anti-jump rollers, and a dedicated jewelry &amp; accessory organizer drawer.
+              </p>
+            </div>
+            
+            <div>
+              <h3 class="h5 font-luxury text-dark mb-2">Monsoon Dampness Defense &amp; Premium Finishes</h3>
+              <p class="text-secondary leading-relaxed mb-0">
+                To counter Ghansoli's coastal humidity, all carcases and shutters are crafted from 100% certified IS:710 Boiling Water Proof (BWP) Marine Plywood with automated German CNC PUR hot-melt edge banding. Finishes incorporate anti-scratch matte laminates, soft-closing Hettich hinges, and Royale luxury paint on all interior masonry.
+              </p>
+            </div>
+          </div>
+
+          <!-- Back Navigation Card -->
+          <div class="p-4 bg-white rounded-4 border border-light-subtle shadow-sm mb-4 text-center">
+            <h3 class="h5 font-luxury text-dark mb-3">Looking for Turnkey Interiors in Ghansoli?</h3>
+            <p class="text-secondary small mb-4">Visit our Ghansoli hub to explore our 2BHK/3BHK design packages, modular kitchen specs, and transparent 2026 cost guides.</p>
+            <div class="d-flex flex-wrap gap-2 justify-content-center">
+              <a href="/cities/interior-designers-navi-mumbai/ghansoli/" class="btn btn-outline-dark btn-sm px-4 py-2 fw-semibold" style="border-radius: 6px;">
+                <i class="fas fa-city me-1"></i> Explore Ghansoli Hub
+              </a>
+              <a href="/cities/interior-designers-navi-mumbai/ghansoli/interior-design-cost/" class="btn btn-sm px-4 py-2 fw-semibold text-white text-decoration-none" style="background-color: #189ba6 !important; border-radius: 6px;">
+                <i class="fas fa-calculator me-1"></i> View Ghansoli Cost Guide
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Sticky Sidebar -->
+        <div class="col-lg-4">
+          <div class="sticky-sidebar" style="top: 100px; position: sticky; z-index: 100;">
+            <!-- Get Similar Interiors Box -->
+            <div class="p-4 rounded-4 mb-3 text-center text-white" style="background-color: #062639 !important; box-shadow: 0 4px 15px rgba(6, 38, 57, 0.15); color: #ffffff !important;">
+              <h3 class="fw-bold mb-2 h5 text-white" style="font-family: 'Open Sans', sans-serif; color: #ffffff !important;">Get Similar Interiors</h3>
+              <p class="small text-white-50 mb-3">Free 3D Layout &amp; Itemized Locked BOQ Estimate for Your Ghansoli Flat</p>
+              <a href="https://wa.me/918369297174?text=Hi%20Siddhivinayak%20Designers,%20I'm%20interested%20in%20getting%20an%20estimate%20for%20my%20Ghansoli%20home" target="_blank" class="btn w-100 py-3 rounded-pill fw-bold border-0 text-white text-decoration-none" style="background-color: #189ba6 !important; color: #ffffff !important;">
+                <i class="fab fa-whatsapp me-1"></i> Chat on WhatsApp
+              </a>
+            </div>
+            
+            <!-- Quick Project Specs Box -->
+            <div class="p-4 bg-white rounded-4 border border-light-subtle shadow-sm">
+              <h4 class="fw-bold text-dark mb-3 h6" style="font-family: 'Open Sans', sans-serif;">Project Summary</h4>
+              <ul class="list-unstyled small text-secondary mb-0">
+                <li class="py-2 border-bottom d-flex justify-content-between">
+                  <span>Society:</span>
+                  <strong class="text-dark">Gami Asters</strong>
+                </li>
+                <li class="py-2 border-bottom d-flex justify-content-between">
+                  <span>Location:</span>
+                  <strong class="text-dark">Sector 21, Ghansoli</strong>
+                </li>
+                <li class="py-2 border-bottom d-flex justify-content-between">
+                  <span>Configuration:</span>
+                  <strong class="text-dark">3 BHK</strong>
+                </li>
+                <li class="py-2 border-bottom d-flex justify-content-between">
+                  <span>Material:</span>
+                  <strong class="text-dark">100% IS:710 Marine Ply</strong>
+                </li>
+                <li class="py-2 d-flex justify-content-between">
+                  <span>Handover:</span>
+                  <strong class="text-dark">45 Days Guaranteed</strong>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fullscreen Lightbox Modal -->
+  <div id="gamiLightboxModal" class="gami-lightbox-modal" style="display: none !important;">
+    <button class="lightbox-close-btn" onclick="closeGamiLightbox()"><i class="fas fa-times"></i></button>
+    <div class="gami-lightbox-content">
+      <div class="text-center text-white mb-3">
+        <h4 class="fw-bold text-white mb-1">Master Bedroom in Gami Asters, Sector 21, Ghansoli</h4>
+        <p class="small text-white-50">3BHK Luxury Turnkey Project by Siddhivinayak Designers</p>
+      </div>
+      <img src="/assets/images/delivered-projects/gami-asters-ghansoli/1.webp" alt="Master Bedroom Luxury Suite Overview" />
+      <img src="/assets/images/delivered-projects/gami-asters-ghansoli/2.webp" alt="Spacious Living & Dining Lounge" />
+      <img src="/assets/images/delivered-projects/gami-asters-ghansoli/3.webp" alt="Master Bedroom Fluted Bed Backing" />
+      <img src="/assets/images/delivered-projects/gami-asters-ghansoli/4.webp" alt="Dressing Console & Vanity Mirror" />
+      <img src="/assets/images/delivered-projects/gami-asters-ghansoli/5.webp" alt="Kids / Guest Bedroom Details" />
+      <img src="/assets/images/delivered-projects/gami-asters-ghansoli/6.webp" alt="Modular Wardrobe & Lofts Execution" />
+      <img src="/assets/images/delivered-projects/gami-asters-ghansoli/7.webp" alt="Ceiling Profile Lighting & False Ceiling" />
+      <img src="/assets/images/delivered-projects/gami-asters-ghansoli/8.webp" alt="Living Room TV Console & Louver Wall" />
+      <img src="/assets/images/delivered-projects/gami-asters-ghansoli/9.webp" alt="Foyer Entrance & Shoe Console" />
+    </div>
+  </div>
+</Layout>
+
+<script is:inline>
+  window.openGamiLightbox = function() {
+    const modal = document.getElementById('gamiLightboxModal');
+    if (modal) {
+      modal.style.setProperty('display', 'block', 'important');
+      modal.classList.add('active');
+      document.body.classList.add('lightbox-open');
+      document.documentElement.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+    }
+  };
+
+  window.closeGamiLightbox = function() {
+    const modal = document.getElementById('gamiLightboxModal');
+    if (modal) {
+      modal.style.setProperty('display', 'none', 'important');
+      modal.classList.remove('active');
+      document.body.classList.remove('lightbox-open');
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    }
+  };
+
+  function setupGamiLightboxEvents() {
+    const mainImg = document.querySelector('.gami-hero-main-img');
+    if (mainImg) {
+      mainImg.style.cursor = 'pointer';
+      mainImg.onclick = window.openGamiLightbox;
+    }
+    const subImgs = document.querySelectorAll('.gami-hero-sub-img');
+    subImgs.forEach(item => {
+      item.style.cursor = 'pointer';
+      item.onclick = window.openGamiLightbox;
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', setupGamiLightboxEvents);
+  document.addEventListener('astro:page-load', setupGamiLightboxEvents);
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setupGamiLightboxEvents();
+  }
+</script>
+
+<style is:global>
+  .gami-hero-main-img {
+    height: 480px !important;
+  }
+  .gami-hero-sub-img {
+    height: 236px !important;
+  }
+  .gami-lightbox-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 15, 20, 0.95);
+    z-index: 99999;
+    overflow-y: auto;
+    padding: 30px 15px;
+  }
+  .gami-lightbox-modal.active {
+    display: block !important;
+  }
+  .gami-lightbox-content {
+    max-width: 960px;
+    margin: 40px auto 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .gami-lightbox-content img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+  }
+  .lightbox-close-btn {
+    position: fixed;
+    top: 20px;
+    right: 25px;
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 1.3rem;
+    cursor: pointer;
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  }
+  @media (max-width: 767px) {
+    .gami-hero-main-img {
+      height: 240px !important;
+    }
+    .gami-hero-sub-img {
+      height: 120px !important;
+    }
+  }
+</style>
