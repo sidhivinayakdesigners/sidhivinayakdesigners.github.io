@@ -5,6 +5,13 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://siddhivinayakdesigners.in',
   trailingSlash: 'always',
-  integrations: [sitemap()]
+  integrations: [
+    sitemap({
+      serialize(item) {
+        item.lastmod = new Date().toISOString();
+        return item;
+      }
+    })
+  ]
 });
 
