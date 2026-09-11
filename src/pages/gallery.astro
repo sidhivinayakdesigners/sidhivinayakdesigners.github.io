@@ -44,6 +44,14 @@ const bodyContent = `<!-- Header Banner -->
   <!-- Interactive Filter & Masonry Grid -->
   <section class="py-5 bg-dark">
     <div class="container py-4">
+      <!-- Media & Blogger Creative Commons Attribution Banner -->
+      <div class="blogger-media-banner mb-4 p-3 rounded-3" style="background: rgba(24, 155, 166, 0.08); border: 1px dashed rgba(24, 155, 166, 0.35); text-align: center;">
+        <p class="mb-0 small" style="color: #4b5563 !important;">
+          <i class="fas fa-camera-retro text-teal me-2" style="color: #189ba6 !important;"></i>
+          <strong>Editorial &amp; Blogger Image Policy:</strong> All original design photos and 3D renders are free to feature on your home decor blog or publication under <strong>Creative Commons CC BY 4.0</strong>. Simply use our 1-click <em>"Embed / Credit Photo"</em> tool to include an attribution backlink.
+        </p>
+      </div>
+
       <!-- Filters -->
       <div class="text-center mb-5" data-aos="fade-up">
         <button class="gallery-filter-btn active" data-filter="all">
@@ -2511,6 +2519,13 @@ const bodyContent = `<!-- Header Banner -->
     <!-- Backdrop click catcher -->
     <div class="gallery-modal-backdrop" onclick="closeGalleryModal()"></div>
 
+    <!-- Top Left Embed / Attribution Trigger Button -->
+    <div class="gallery-modal-top-bar">
+      <button type="button" class="gallery-modal-embed-trigger" onclick="toggleEmbedAttribution(event)" aria-label="Embed or Credit Photo">
+        <i class="fas fa-code me-1 text-gold"></i> <span>Embed / Credit Photo</span>
+      </button>
+    </div>
+
     <!-- Top Right Close Button -->
     <button class="gallery-modal-close" onclick="closeGalleryModal()" aria-label="Close">
       <i class="fas fa-times"></i>
@@ -2528,6 +2543,24 @@ const bodyContent = `<!-- Header Banner -->
 
     <!-- Main Modal Stage & Filmstrip Wrapper -->
     <div class="gallery-modal-wrapper">
+      <!-- Embed / Credit Modal Box -->
+      <div id="galleryEmbedBox" class="gallery-embed-box" style="display: none;">
+        <div class="gallery-embed-header">
+          <span class="embed-title"><i class="fas fa-link text-gold me-2"></i>Free Editorial Attribution Code</span>
+          <button type="button" onclick="toggleEmbedAttribution(event)" class="embed-box-close" aria-label="Close attribution box">&times;</button>
+        </div>
+        <p class="embed-info-text">Publishers, bloggers &amp; media: You are free to feature this photo on your website under CC BY 4.0 license. Please paste the attribution snippet below:</p>
+        <div class="embed-code-container">
+          <textarea id="embedCodeInput" readonly rows="2" class="embed-code-textarea"></textarea>
+          <button type="button" id="copyEmbedBtn" onclick="copyEmbedCode()" class="btn-copy-embed">
+            <i class="fas fa-copy me-1"></i> <span id="copyBtnText">Copy HTML</span>
+          </button>
+        </div>
+        <div class="embed-license-note">
+          <small><i class="fab fa-creative-commons me-1"></i> Attribution backlink to Siddhivinayak Designers required for free editorial usage.</small>
+        </div>
+      </div>
+
       <!-- Main Photo Stage -->
       <div class="gallery-modal-main-stage">
         <img id="galleryModalMainImg" src="" alt="Interior Design Preview" class="gallery-modal-main-img" />
@@ -2585,6 +2618,138 @@ const bodyContent = `<!-- Header Banner -->
     width: 100%;
     height: 100%;
     z-index: 1;
+  }
+
+  .gallery-modal-top-bar {
+    position: absolute;
+    top: 24px;
+    left: 28px;
+    z-index: 100;
+  }
+  .gallery-modal-embed-trigger {
+    background: rgba(24, 155, 166, 0.25);
+    border: 1px solid rgba(24, 155, 166, 0.6);
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+  }
+  .gallery-modal-embed-trigger:hover {
+    background: #189ba6;
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(24, 155, 166, 0.4);
+  }
+  .gallery-embed-box {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 580px;
+    background: #15161e;
+    border: 1px solid #2a2d3d;
+    border-radius: 12px;
+    padding: 18px 20px;
+    z-index: 200;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    color: #ffffff;
+    animation: fadeInEmbed 0.2s ease;
+  }
+  @keyframes fadeInEmbed {
+    from { opacity: 0; transform: translate(-50%, -10px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+  }
+  .gallery-embed-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 0.98rem;
+  }
+  .embed-box-close {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    font-size: 1.5rem;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .embed-box-close:hover {
+    color: #ffffff;
+  }
+  .embed-info-text {
+    font-size: 0.82rem;
+    color: #9ca3af !important;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+  .embed-code-container {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .embed-code-textarea {
+    flex: 1;
+    background: #0b0c10;
+    border: 1px solid #374151;
+    border-radius: 6px;
+    color: #38bdf8;
+    font-family: monospace;
+    font-size: 0.78rem;
+    padding: 8px 10px;
+    resize: none;
+  }
+  .btn-copy-embed {
+    background: #189ba6;
+    border: none;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+  .btn-copy-embed:hover {
+    background: #13838c;
+  }
+  .btn-copy-embed.copied {
+    background: #10b981;
+  }
+  .embed-license-note {
+    font-size: 0.75rem;
+    color: #6b7280;
+  }
+  @media (max-width: 768px) {
+    .gallery-modal-top-bar {
+      top: 14px;
+      left: 14px;
+    }
+    .gallery-modal-embed-trigger {
+      padding: 6px 12px;
+      font-size: 0.78rem;
+    }
+    .gallery-embed-box {
+      top: 65px;
+      width: 94%;
+      padding: 14px;
+    }
+    .embed-code-container {
+      flex-direction: column;
+    }
+    .btn-copy-embed {
+      padding: 8px;
+    }
   }
 
   .gallery-modal-close {
@@ -3007,6 +3172,12 @@ const bodyContent = `<!-- Header Banner -->
           th.classList.remove('active');
         }
       });
+
+      // Update embed snippet if box is visible
+      const embedBox = document.getElementById('galleryEmbedBox');
+      if (embedBox && embedBox.style.display !== 'none') {
+        updateEmbedSnippet();
+      }
     }
 
     window.openGalleryModal = function(index) {
@@ -3037,9 +3208,56 @@ const bodyContent = `<!-- Header Banner -->
     window.closeGalleryModal = function() {
       if (!modal) return;
       modal.style.display = 'none';
+      const embedBox = document.getElementById('galleryEmbedBox');
+      if (embedBox) embedBox.style.display = 'none';
       document.body.classList.remove('gallery-modal-open', 'lightbox-open');
       document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
+    };
+
+    window.toggleEmbedAttribution = function(e) {
+      if (e) e.stopPropagation();
+      const box = document.getElementById('galleryEmbedBox');
+      if (!box) return;
+      const isHidden = box.style.display === 'none' || !box.style.display;
+      if (isHidden) {
+        updateEmbedSnippet();
+        box.style.display = 'block';
+      } else {
+        box.style.display = 'none';
+      }
+    };
+
+    function updateEmbedSnippet() {
+      const input = document.getElementById('embedCodeInput');
+      if (!input || !activePhotoList[currentPhotoIdx]) return;
+      const item = activePhotoList[currentPhotoIdx];
+      const caption = item.caption || item.alt || 'Interior Design';
+      const currentUrl = window.location.origin + '/gallery/';
+      const htmlSnippet = `<a href="${currentUrl}" target="_blank" rel="noopener">Photo: Siddhivinayak Designers (${caption})</a>`;
+      input.value = htmlSnippet;
+    }
+
+    window.copyEmbedCode = function() {
+      const input = document.getElementById('embedCodeInput');
+      const btnText = document.getElementById('copyBtnText');
+      const copyBtn = document.getElementById('copyEmbedBtn');
+      if (!input) return;
+      input.select();
+      navigator.clipboard.writeText(input.value).then(() => {
+        if (btnText) btnText.textContent = 'Copied!';
+        if (copyBtn) copyBtn.classList.add('copied');
+        setTimeout(() => {
+          if (btnText) btnText.textContent = 'Copy HTML';
+          if (copyBtn) copyBtn.classList.remove('copied');
+        }, 2200);
+      }).catch(() => {
+        document.execCommand('copy');
+        if (btnText) btnText.textContent = 'Copied!';
+        setTimeout(() => {
+          if (btnText) btnText.textContent = 'Copy HTML';
+        }, 2200);
+      });
     };
 
     window.nextGalleryPhoto = function() {

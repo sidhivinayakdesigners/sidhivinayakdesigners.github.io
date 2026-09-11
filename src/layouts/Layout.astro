@@ -34,10 +34,10 @@ const isDev = import.meta.env.DEV;
   {!schema?.includes('sameAs') && (
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "HomeAndConstructionBusiness",
+      "@type": ["HomeAndConstructionBusiness", "ProfessionalService"],
       "@id": "https://siddhivinayakdesigners.in/#business",
-      "name": "Siddhivinayak Designers",
-      "alternateName": "Siddhivinayak Designer Interiors",
+      "name": "Siddhivinayak Designer Interiors - Interior Designer in Navi Mumbai",
+      "alternateName": ["Siddhivinayak Designers", "Siddhivinayak Designer Interiors", "Siddhivinayak Interior Designers"],
       "url": "https://siddhivinayakdesigners.in/",
       "logo": "https://siddhivinayakdesigners.in/assets/images/logo_icon.webp",
       "image": "https://siddhivinayakdesigners.in/assets/images/hero_bg.webp",
@@ -74,6 +74,23 @@ const isDev = import.meta.env.DEV;
       ]
     })}></script>
   )}
+
+  <!-- Google Images Licensable Structured Data & Image Attribution Policy -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ImageObject",
+    "contentUrl": "https://siddhivinayakdesigners.in/assets/images/hero_bg.webp",
+    "license": "https://siddhivinayakdesigners.in/terms-conditions/#image-license",
+    "acquireLicensePage": "https://siddhivinayakdesigners.in/terms-conditions/#image-license",
+    "creditText": "Siddhivinayak Designer Interiors - Interior Designer in Navi Mumbai",
+    "creator": {
+      "@type": "Organization",
+      "name": "Siddhivinayak Designer Interiors - Interior Designer in Navi Mumbai",
+      "alternateName": "Siddhivinayak Designers",
+      "url": "https://siddhivinayakdesigners.in/"
+    },
+    "copyrightNotice": "Siddhivinayak Designer Interiors"
+  })}></script>
   
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <!-- Favicon -->
