@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 
 const title = "Contact Us | Siddhivinayak Designers";
-const description = "Get in touch with Siddhivinayak Designers. Book a free design consultation, visit our Koparkhairane office, or request a quote online.";
+const description = "Get in touch with Siddhivinayak Designers. Book a free design consultation, visit our Ghansoli Experience Centre or Koparkhairane design studio, or request a quote online.";
 const canonical = "https://siddhivinayakdesigners.in/contact/";
 const schema = `{
       "@context": "https://schema.org",
@@ -39,11 +39,31 @@ const bodyContent = `<!-- Header Banner -->
 <span class="section-subtitle">Get In Touch</span>
 <h2 class="section-title text-white font-luxury mb-4">Let's Discuss Your Space</h2>
 <p class="text-muted mb-5">Have an upcoming interior design project or office renovation in Navi Mumbai? Get in touch with our turnkey execution team today.</p>
-<div class="d-flex align-items-start mb-4">
-<div class="text-gold me-3 fs-4"><i class="fas fa-map-marker-alt"></i></div>
-<div>
-<h5 class="text-white h6 font-luxury mb-1">Our Office Address</h5>
-<p class="small text-muted mb-0"><a class="text-muted" href="https://maps.google.com/?cid=6911458856073113523" rel="noopener" target="_blank">Shree Laxmi CHS, A 301, Sector 23, Kopar Khairane, Navi Mumbai, Maharashtra 400709</a></p>
+<div class="mb-4">
+<h5 class="text-white h6 font-luxury mb-3"><i class="fas fa-map-marked-alt text-gold me-2"></i>Our Physical Locations</h5>
+
+<!-- Location 1: Ghansoli Experience Centre & Shop -->
+<div class="p-3 mb-3 rounded border border-secondary-subtle" style="background: rgba(255,255,255,0.03);">
+  <div class="d-flex align-items-center justify-content-between mb-1">
+    <span class="fw-bold text-white small"><i class="fas fa-store text-gold me-2"></i>Ghansoli Experience Centre &amp; Shop</span>
+    <span class="badge" style="background: #189ba6; font-size: 0.65rem;">NEW STORE</span>
+  </div>
+  <p class="small text-muted mb-2">Shop 02, Om Sai Apartment, Rankar Rd, Mhasheshwar Nagar, Talvali, Ghansoli Gaon, Navi Mumbai 400701</p>
+  <a class="btn btn-sm text-white px-3 py-1" style="background: #189ba6; font-size: 0.75rem; text-decoration: none;" href="https://maps.google.com/?cid=14973846516803531003" rel="noopener" target="_blank">
+    <i class="fas fa-directions me-1"></i> Get Directions to Ghansoli
+  </a>
+</div>
+
+<!-- Location 2: Kopar Khairane Design Studio -->
+<div class="p-3 mb-3 rounded border border-secondary-subtle" style="background: rgba(255,255,255,0.03);">
+  <div class="d-flex align-items-center justify-content-between mb-1">
+    <span class="fw-bold text-white small"><i class="fas fa-pencil-ruler text-gold me-2"></i>Kopar Khairane Design Studio</span>
+    <span class="badge bg-secondary" style="font-size: 0.65rem;">HEAD OFFICE</span>
+  </div>
+  <p class="small text-muted mb-2">Shree Laxmi CHS, A 301, Sector 23, Kopar Khairane, Navi Mumbai 400709</p>
+  <a class="btn btn-sm text-white px-3 py-1" style="background: #189ba6; font-size: 0.75rem; text-decoration: none;" href="https://maps.google.com/?cid=6911458856073113523" rel="noopener" target="_blank">
+    <i class="fas fa-directions me-1"></i> Get Directions to Kopar Khairane
+  </a>
 </div>
 </div>
 <div class="d-flex align-items-start mb-4">
@@ -64,7 +84,7 @@ const bodyContent = `<!-- Header Banner -->
 <div class="text-gold me-3 fs-4"><i class="fas fa-clock"></i></div>
 <div>
 <h5 class="text-white h6 font-luxury mb-1">Operating Hours</h5>
-<p class="small text-muted mb-0">Open Daily: 9:00 AM - 9:00 PM (IST)</p>
+<p class="small text-muted mb-0">Open Daily: 9:00 AM - 9:00 PM (IST) at both locations</p>
 </div>
 </div>
 <!-- Social Icons -->
@@ -73,7 +93,8 @@ const bodyContent = `<!-- Header Banner -->
 <a aria-label="Instagram Profile" href="https://www.instagram.com/siddhivinayakdesigners/" target="_blank"><i class="fab fa-instagram"></i></a>
 <a aria-label="LinkedIn Profile" href="https://www.linkedin.com/company/siddhivinayak-designers-interiors-interior-designer-in-navi-mumbai/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
 <a aria-label="Pinterest Profile" href="https://in.pinterest.com/siddhivinayakdesigners/" target="_blank"><i class="fab fa-pinterest-p"></i></a>
-<a aria-label="Google Business Profile" href="https://maps.google.com/?cid=6911458856073113523" target="_blank" title="Google Business Profile"><i class="fab fa-google"></i></a>
+<a aria-label="Google Business Profile - Kopar Khairane" href="https://maps.google.com/?cid=6911458856073113523" target="_blank" title="Google Business Profile - Kopar Khairane Studio"><i class="fab fa-google"></i></a>
+<a aria-label="Google Business Profile - Ghansoli Shop" href="https://maps.google.com/?cid=14973846516803531003" target="_blank" title="Google Business Profile - Ghansoli Experience Centre"><i class="fas fa-map-marker-alt"></i></a>
 <a aria-label="Houzz Profile" href="https://www.houzz.in/pro/siddhesh-machale/siddhivinayak-designers-interiors-navi-mumbai" target="_blank" title="Houzz Profile"><i class="fab fa-houzz"></i></a>
 </div>
 </div>
@@ -146,6 +167,18 @@ const bodyContent = `<!-- Header Banner -->
 </div>
 <!-- Map Section -->
 <div class="row mt-5" data-aos="fade-up">
+<div class="col-12 text-center mb-3">
+  <h3 class="text-white h5 font-luxury mb-1">Find Us On Google Maps</h3>
+  <p class="small text-muted mb-3">Get real-time driving directions to either of our Navi Mumbai locations</p>
+  <div class="d-flex justify-content-center flex-wrap gap-2">
+    <a href="https://maps.google.com/?cid=14973846516803531003" target="_blank" rel="noopener" class="btn btn-sm btn-gold text-white px-3 py-2 fw-semibold">
+      <i class="fas fa-store me-1"></i> Open Ghansoli Shop on Google Maps
+    </a>
+    <a href="https://maps.google.com/?cid=6911458856073113523" target="_blank" rel="noopener" class="btn btn-sm btn-outline-light px-3 py-2 fw-semibold">
+      <i class="fas fa-pencil-ruler me-1"></i> Open Kopar Khairane Studio on Google Maps
+    </a>
+  </div>
+</div>
 <div class="col-12">
 <div class="ratio ratio-21x9" style="max-height: 400px; border: 1px solid var(--glass-border);">
 <iframe allowfullscreen="" height="450" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.1691167440473!2d73.0016462758153!3d19.10014768212132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c0dbf117c093%3A0xe510e14ff28e6789!2sKopar%20Khairane%20Station%20Rd%2C%20Navi%20Mumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" style="border:0;" width="600"></iframe>
