@@ -1,3 +1,15 @@
 [build]
   command = "npm run build"
   publish = "dist"
+
+[[redirects]]
+  from = "/blog/ghansoli-2bhk-3bhk-interior-cost-guide/*"
+  to = "/cities/interior-designers-navi-mumbai/ghansoli/interior-design-cost/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/ghansoli-2bhk-3bhk-interior-cost-guide"
+  to = "/cities/interior-designers-navi-mumbai/ghansoli/interior-design-cost/"
+  status = 301
+  force = true

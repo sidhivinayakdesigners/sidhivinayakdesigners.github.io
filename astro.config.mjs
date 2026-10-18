@@ -7,6 +7,7 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [
     sitemap({
+      filter: (page) => !page.includes('/blog/ghansoli-2bhk-3bhk-interior-cost-guide'),
       serialize(item) {
         item.lastmod = new Date().toISOString();
         return item;

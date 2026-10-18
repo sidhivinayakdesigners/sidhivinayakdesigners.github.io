@@ -1,193 +1,992 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const title = "About Us | Siddhivinayak Designers";
-const description = "Learn about Siddhivinayak Designers, a leading turnkey interior design and civil contracting firm in Navi Mumbai. Discover our values, experience, and commitment to high-end execution.";
+const title = "Leadership & Team | Siddhivinayak Designers Navi Mumbai";
+const description = "Meet the directors, interior architects, and engineering leads behind Siddhivinayak Designers. 25+ years of master craftsmanship, 500+ luxury turnkey homes, and in-house German CNC modular manufacturing.";
 const canonical = "https://siddhivinayakdesigners.in/about/";
 const schema = `{
-      "@context": "https://schema.org",
+  "@context": "https://schema.org",
+  "@graph": [
+    {
       "@type": "BreadcrumbList",
-      "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://siddhivinayakdesigners.in/"
-      },{
-        "@type": "ListItem",
-        "position": 2,
-        "name": "About Us",
-        "item": "https://siddhivinayakdesigners.in/about/"
-      }]
-    }`;
-const bodyContent = `<!-- Header Banner -->
-<section class="py-5 bg-dark" style="margin-top: 70px;">
-<div class="container py-4 text-center">
-<h1 class="font-luxury text-white mb-2" data-aos="fade-down">About Siddhivinayak Designers</h1>
-<div class="custom-breadcrumb text-center justify-content-center d-flex gap-2">
-<a href="/">Home</a>
-<span class="text-muted">/</span>
-<span>About Us</span>
-</div>
-</div>
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://siddhivinayakdesigners.in/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Team & Leadership",
+          "item": "https://siddhivinayakdesigners.in/about/"
+        }
+      ]
+    },
+    {
+      "@type": "HomeAndConstructionBusiness",
+      "@id": "https://siddhivinayakdesigners.in/#business",
+      "name": "Siddhivinayak Designers",
+      "foundingDate": "1999",
+      "description": "Premium turnkey interior design firm in Navi Mumbai with 25+ years experience and 500+ delivered projects.",
+      "founder": {
+        "@type": "Person",
+        "name": "Dattatray Machale",
+        "jobTitle": "Founder"
+      },
+      "employee": [
+        {
+          "@type": "Person",
+          "name": "Dattatray Machale",
+          "jobTitle": "Founder"
+        },
+        {
+          "@type": "Person",
+          "name": "Siddhesh Machale",
+          "jobTitle": "Lead Interior Designer"
+        },
+        {
+          "@type": "Person",
+          "name": "Er. Rhythm S. Patil",
+          "jobTitle": "Lead Civil Engineer"
+        },
+        {
+          "@type": "Person",
+          "name": "Ar. Sneha Kulkarni",
+          "jobTitle": "Lead Interior Architect"
+        }
+      ]
+    }
+  ]
+}`;
+
+const bodyContent = `
+<!-- ========================================================
+     ANIMATED LUXURY HERO: THE TEAM & LEADERSHIP
+     ======================================================== -->
+<section class="team-hero position-relative overflow-hidden">
+  <!-- Dynamic Ambient Glowing Orbs -->
+  <div class="ambient-orb orb-gold"></div>
+  <div class="ambient-orb orb-teal"></div>
+  <div class="ambient-orb orb-purple"></div>
+  <div class="hero-grid-pattern"></div>
+
+  <div class="container position-relative z-2 text-center pt-2 pb-2">
+    <!-- Animated Crown Badge -->
+    <div class="team-hero-badge animate-fade-in d-inline-flex align-items-center gap-2 mb-2.5">
+      <span class="badge-pulse-dot"></span>
+      <i class="fas fa-crown text-gold"></i>
+      <span>LEADERSHIP & MASTER CRAFTSMEN</span>
+    </div>
+
+    <!-- Refined, Elegant Heading (Small, Crisp, Not Loud) -->
+    <h1 class="team-hero-heading animate-fade-in delay-1 mb-2">
+      The Creative Minds Behind <br class="d-none d-md-block"/>
+      <span class="lux-gold-text">Your Living Sanctuary</span>
+    </h1>
+
+    <p class="team-hero-subtext animate-fade-in delay-2 mx-auto mb-0">
+      Meet the veteran civil contractors, modular production engineers, and lead interior architects directing every luxury turnkey handover across Navi Mumbai.
+    </p>
+  </div>
 </section>
-<!-- Narrative Section -->
-<section class="py-5 bg-dark">
-<div class="container py-5">
-<div class="row align-items-center g-5">
-<div class="col-lg-6" data-aos="fade-right">
-<div class="img-zoom-hover border border-light-subtle">
-<img alt="Siddhivinayak Designers Portfolio Navi Mumbai" class="img-fluid w-100" loading="lazy" src="/assets/images/2026-04-11 (19).webp"/>
-</div>
-</div>
-<div class="col-lg-6" data-aos="fade-left">
-<span class="section-subtitle">Since 2014</span>
-<h2 class="section-title text-white font-luxury mb-4">Creating the Best Residential and Commercial Spaces in Navi Mumbai</h2>
-<p class="text-muted">Siddhivinayak Designers is Navi Mumbai's leading premium interior contracting agency. Based in Koparkhairane, we deliver complete turnkey contracting solutions for luxury homes and commercial spaces.</p>
-<p class="text-muted">Our strength lies in our **in-house manufacturing units** and dedicated team of over 30 master craftsmen, carpenters, and civil engineers. We manage everything directly, ensuring strict quality control, transparent material specs, and precise timelines.</p>
-<p class="text-gold fw-bold">"We don't just design layouts on a screen; we execute them with precision in wood, metal, glass, and marble."</p>
-</div>
-</div>
-</div>
+
+<!-- ========================================================
+     TEAM SHOWCASE SECTION (BIG PHOTOS, REFINED SMALL TEXT)
+     ======================================================== -->
+<section class="team-showcase-section pt-0 pb-5 bg-white position-relative">
+  <div class="container py-0 position-relative z-2">
+
+    <!-- ========================================================
+         EXECUTIVE DIRECTORS (LARGE EDITORIAL PORTRAITS)
+         ======================================================== -->
+    <div class="team-category-header mt-3 mb-4" data-category="directors">
+      <div class="d-flex align-items-center gap-2">
+        <span class="category-line"></span>
+        <span class="category-title">EXECUTIVE BOARD</span>
+        <span class="category-line"></span>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column gap-4 gap-lg-5 mb-5" id="directorsGroup">
+      
+      <!-- ================= MEMBER 1: DATTATRAY MACHALE ================= -->
+      <div class="team-card-row team-card-item rounded-4 p-3 p-md-4 p-lg-5" data-category="directors">
+        <div class="row g-4 g-lg-5 align-items-center">
+          
+          <!-- BIG PHOTO COLUMN (520px height, High-Impact Visual) -->
+          <div class="col-12 col-md-5 col-lg-5">
+            <div class="big-portrait-frame rounded-4 overflow-hidden position-relative shadow-2xl">
+              <img 
+                src="/assets/images/team/dattatray-machale.jpg" 
+                alt="Dattatray Machale - Founder" 
+                class="big-portrait-img w-100" 
+                style="object-position: center 15%;"
+                loading="eager" 
+              />
+              <div class="portrait-shimmer-sweep"></div>
+              <div class="portrait-role-pill">
+                <i class="fas fa-crown text-warning me-1"></i> Founder
+              </div>
+              <div class="portrait-corner-accent"></div>
+            </div>
+          </div>
+
+          <!-- REFINED SMALL TEXT COLUMN -->
+          <div class="col-12 col-md-7 col-lg-7">
+            <div class="ps-lg-2">
+              <div class="mb-2">
+                <span class="sub-role-label"><span class="role-pulse-beacon"></span> FOUNDER</span>
+                <h3 class="member-name font-luxury mb-0">Dattatray Machale</h3>
+              </div>
+
+              <div class="lux-card-divider my-2.5"></div>
+
+              <!-- Refined, Crisp Small Descriptions -->
+              <p class="member-desc-p mb-3.5">
+                Foundational leader of Siddhivinayak Designers with <strong>25+ years of master civil experience</strong>, delivering 500+ turnkey homes across Navi Mumbai. Directly governs our 30+ in-house craftsmen, structural alterations, and lifetime waterproofing.
+              </p>
+
+              <!-- Action Connect Buttons -->
+              <div class="d-flex flex-wrap gap-2 align-items-center">
+                <a href="https://wa.me/919892668429?text=Hi%20Dattatray%20Machale,%20I%20would%20like%20to%20consult%20about%20civil%20renovations%20and%20home%20interiors." target="_blank" class="btn btn-connect-wa px-3.5 py-1.5 rounded-pill">
+                  <i class="fab fa-whatsapp me-1.5"></i> Consult on WhatsApp
+                </a>
+                <a href="tel:+919892668429" class="btn btn-connect-call px-3.5 py-1.5 rounded-pill">
+                  <i class="fas fa-phone-alt me-1.5 text-teal"></i> +91 98926 68429
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ================= MEMBER 2: SIDDHESH MACHALE ================= -->
+      <div class="team-card-row team-card-item rounded-4 p-3 p-md-4 p-lg-5" data-category="directors">
+        <div class="row g-4 g-lg-5 align-items-center">
+          
+          <!-- BIG PHOTO COLUMN (520px height) -->
+          <div class="col-12 col-md-5 col-lg-5 order-md-2">
+            <div class="big-portrait-frame rounded-4 overflow-hidden position-relative shadow-2xl">
+              <img 
+                src="/assets/images/team/siddhesh-machale.jpg" 
+                alt="Siddhesh Machale - Lead Interior Designer" 
+                class="big-portrait-img w-100" 
+                style="object-position: center 15%;"
+                loading="eager" 
+              />
+              <div class="portrait-shimmer-sweep"></div>
+              <div class="portrait-role-pill">
+                <i class="fas fa-pencil-ruler text-info me-1"></i> Lead Interior Designer
+              </div>
+              <div class="portrait-corner-accent"></div>
+            </div>
+          </div>
+
+          <!-- REFINED SMALL TEXT COLUMN -->
+          <div class="col-12 col-md-7 col-lg-7 order-md-1">
+            <div class="pe-lg-2">
+              <div class="mb-2">
+                <span class="sub-role-label"><span class="role-pulse-beacon"></span> LEAD INTERIOR DESIGNER</span>
+                <h3 class="member-name font-luxury mb-0">Siddhesh Machale</h3>
+              </div>
+
+              <div class="lux-card-divider my-2.5"></div>
+
+              <p class="member-desc-p mb-3.5">
+                Directs business operations, transparent budgeting, and German CNC modular manufacturing. Oversees European hardware integration (Hettich, Hafele) and guarantees contractual 45-day handovers with itemized BOQs.
+              </p>
+
+              <!-- Action Connect Buttons -->
+              <div class="d-flex flex-wrap gap-2 align-items-center">
+                <a href="https://wa.me/918369297174?text=Hi%20Siddhesh%20Machale,%20I%20would%20like%20to%20discuss%20an%20interior%20project%20and%20transparent%20pricing." target="_blank" class="btn btn-connect-wa px-3.5 py-1.5 rounded-pill">
+                  <i class="fab fa-whatsapp me-1.5"></i> Consult on WhatsApp
+                </a>
+                <a href="tel:+918369297174" class="btn btn-connect-call px-3.5 py-1.5 rounded-pill">
+                  <i class="fas fa-phone-alt me-1.5 text-teal"></i> +91 83692 97174
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ================= MEMBER 3: ER. RHYTHM S. PATIL ================= -->
+      <div class="team-card-row team-card-item rounded-4 p-3 p-md-4 p-lg-5" data-category="directors">
+        <div class="row g-4 g-lg-5 align-items-center">
+          
+          <!-- BIG PHOTO COLUMN (520px height) -->
+          <div class="col-12 col-md-5 col-lg-5">
+            <div class="big-portrait-frame rounded-4 overflow-hidden position-relative shadow-2xl">
+              <img 
+                src="/assets/images/team/rhythm-patil.jpg" 
+                alt="Er. Rhythm S. Patil - Lead Civil Engineer" 
+                class="big-portrait-img w-100" 
+                style="object-position: center 20%;" 
+                loading="eager" 
+              />
+              <div class="portrait-shimmer-sweep"></div>
+              <div class="portrait-role-pill">
+                <i class="fas fa-hard-hat text-teal me-1"></i> Lead Civil Engineer
+              </div>
+              <div class="portrait-corner-accent"></div>
+            </div>
+          </div>
+
+          <!-- REFINED SMALL TEXT COLUMN -->
+          <div class="col-12 col-md-7 col-lg-7">
+            <div class="ps-lg-2">
+              <div class="mb-2">
+                <span class="sub-role-label"><span class="role-pulse-beacon"></span> LEAD CIVIL ENGINEER</span>
+                <h3 class="member-name font-luxury mb-0">Er. Rhythm S. Patil</h3>
+              </div>
+
+              <div class="lux-card-divider my-2.5"></div>
+
+              <p class="member-desc-p mb-3.5">
+                Oversees site engineering, 3D structural mapping, and turnkey luxury handovers. Personally enforces on-site quality benchmarks across high-rises and penthouses through a strict 54-point delivery checklist.
+              </p>
+
+              <!-- Action Connect Buttons -->
+              <div class="d-flex flex-wrap gap-2 align-items-center">
+                <a href="https://wa.me/917304131935?text=Hi%20Er.%20Rhythm%20Patil,%20I%20would%20like%20to%20consult%20about%20my%20turnkey%20home%20execution." target="_blank" class="btn btn-connect-wa px-3.5 py-1.5 rounded-pill">
+                  <i class="fab fa-whatsapp me-1.5"></i> Consult on WhatsApp
+                </a>
+                <a href="tel:+917304131935" class="btn btn-connect-call px-3.5 py-1.5 rounded-pill">
+                  <i class="fas fa-phone-alt me-1.5 text-teal"></i> +91 73041 31935
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
 </section>
-<!-- Trust Pillars -->
-<section class="py-5 bg-dark">
-<div class="container py-5">
-<div class="text-center mb-5" data-aos="fade-up">
-<span class="section-subtitle">Pillars of Excellence</span>
-<h2 class="section-title text-white font-luxury">Our Commitments to Clients</h2>
-</div>
-<div class="row g-4 text-center">
-<div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-<div class="premium-card p-4 h-100">
-<div class="text-gold mb-3 fs-3"><i class="fas fa-history"></i></div>
-<h4 class="text-white h5 font-luxury mb-2">12+ Years Experience</h4>
-<p class="small text-muted">Over a decade of tackling complex civil and contracting challenges in Navi Mumbai flats, villas, and showrooms.</p>
-</div>
-</div>
-<div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-<div class="premium-card p-4 h-100">
-<div class="text-gold mb-3 fs-3"><i class="fas fa-truck-loading"></i></div>
-<h4 class="text-white h5 font-luxury mb-2">On-Time Delivery</h4>
-<p class="small text-muted">A strict 45-day handover agreement with financial penalty clauses in case of unapproved layout delays.</p>
-</div>
-</div>
-<div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-<div class="premium-card p-4 h-100">
-<div class="text-gold mb-3 fs-3"><i class="fas fa-search-dollar"></i></div>
-<h4 class="text-white h5 font-luxury mb-2">Transparent BOQs</h4>
-<p class="small text-muted">Every quotation lists raw material brands, plywood grades (BWP/BWR), veneer thicknesses, and hardware specs.</p>
-</div>
-</div>
-<div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-<div class="premium-card p-4 h-100">
-<div class="text-gold mb-3 fs-3"><i class="fas fa-shield-alt"></i></div>
-<h4 class="text-white h5 font-luxury mb-2">10-Year Warranty</h4>
-<p class="small text-muted">All customized wardrobes, modular kitchen cabinets, and structural woodwork carry certified warranty certificates.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Design Process CTA -->
-<section class="py-5 bg-dark">
-<div class="container py-5 text-center">
-<div class="row justify-content-center">
-<div class="col-lg-8" data-aos="zoom-in">
-<h2 class="section-title text-white font-luxury mb-4">Ready to Create Your Luxury Home?</h2>
-<p class="text-muted mb-5">Our specialist design consultants are ready to assist you. Get a complete layout mapping and a transparent budget breakdown during our free site consultation.</p>
-<div class="d-flex justify-content-center gap-3">
-<a class="btn btn-gold px-4 py-3" href="/contact/">Book Site Visit</a>
-<a style="background-color: #25D366 !important; background: #25D366 !important; color: #ffffff !important; border-color: #25D366 !important;" class="btn btn-outline-gold px-4 py-3" href="https://wa.me/918369297174" target="_blank">
-<i class="fab fa-whatsapp me-2"></i>Connect on WhatsApp
-                        </a>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Floating Actions -->
+
+
+
+<!-- Floating Fast Actions -->
 <div class="floating-widgets">
-<a style="background-color: #25D366 !important; background: #25D366 !important; color: #ffffff !important; border-color: #25D366 !important;" class="float-btn float-whatsapp" href="https://wa.me/918369297174?text=Hi%20Siddhivinayak%20Designers,%20I'm%20interested%20in%20a%20free%20design%20consultation." target="_blank">
-<i class="fab fa-whatsapp"></i>
-</a>
-<a class="float-btn float-call" href="tel:+918369297174">
-<i class="fas fa-phone-alt"></i>
-</a>
-</div>`;
+  <a class="float-btn float-whatsapp" href="https://wa.me/918369297174?text=Hi%20Siddhivinayak%20Designers,%20I'm%20interested%20in%20a%20design%20consultation%20with%20your%20team." target="_blank" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <a class="float-btn float-call" href="tel:+918369297174" aria-label="Call Us">
+    <i class="fas fa-phone-alt"></i>
+  </a>
+</div>
+`;
 ---
+
 <Layout title={title} description={description} canonical={canonical} schema={schema}>
   <Fragment set:html={bodyContent} />
 </Layout>
 
 <style is:global>
-html, body {
-      background-color: #ffffff !important;
-      color: #000000 !important;
-      font-family: Arial, Helvetica, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+  /* ========================================================
+     ULTRA-LUXURY FONTS & 100CR DESIGN SYSTEM
+     ======================================================== */
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap');
+
+  :root {
+    --lux-bg-light: #ffffff;
+    --lux-card-bg: #ffffff;
+    --lux-card-border: #e2e8f0;
+    --lux-gold: #b89047;
+    --lux-gold-light: #dfc288;
+    --lux-teal: #189ba6;
+    --lux-teal-bright: #0d9488;
+    --lux-slate-text: #64748b;
+    --lux-body-font: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --lux-head-font: 'Playfair Display', Georgia, serif;
+  }
+
+  body {
+    background-color: #ffffff !important;
+    font-family: var(--lux-body-font) !important;
+    color: #334155 !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Refined, Crisp Headings */
+  h1, h2, h3, h4, h5, h6, .font-luxury {
+    font-family: var(--lux-head-font) !important;
+    color: #151413 !important;
+    letter-spacing: -0.015em;
+  }
+
+  .lux-gold-text {
+    background: linear-gradient(110deg, #996515 0%, #b89047 20%, #fef3c7 45%, #b89047 70%, #8c6a28 100%);
+    background-size: 240% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: goldSheenFlow 6s ease-in-out infinite;
+    display: inline-block;
+  }
+
+  .text-gold {
+    color: #b89047 !important;
+  }
+
+  /* ========================================================
+     ANIMATED KEYFRAMES (100CR SMOOTH FLUID MOTION)
+     ======================================================== */
+  @keyframes goldSheenFlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  @keyframes nameGoldShimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+  }
+
+  @keyframes floatOrbOrganic1 {
+    0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.22; }
+    33% { transform: translate(45px, -30px) scale(1.12) rotate(10deg); opacity: 0.32; }
+    66% { transform: translate(-25px, 35px) scale(0.92) rotate(-8deg); opacity: 0.24; }
+  }
+
+  @keyframes floatOrbOrganic2 {
+    0%, 100% { transform: translate(0, 0) scale(1.05) rotate(0deg); opacity: 0.2; }
+    40% { transform: translate(-40px, 35px) scale(0.9) rotate(-12deg); opacity: 0.3; }
+    75% { transform: translate(35px, -20px) scale(1.15) rotate(8deg); opacity: 0.22; }
+  }
+
+  @keyframes pulseGlowDot {
+    0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(184, 144, 71, 0.7); }
+    50% { transform: scale(1.2); opacity: 0.85; box-shadow: 0 0 0 8px rgba(184, 144, 71, 0); }
+  }
+
+  @keyframes beaconPulse {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+    70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+  }
+
+  @keyframes badgeAmbientPulse {
+    0%, 100% {
+      box-shadow: 0 4px 18px rgba(184, 144, 71, 0.08), 0 0 0 1px rgba(184, 144, 71, 0.2);
+      transform: translateY(0);
     }
-    .hero-section, .catalog-directory-hero, .dc-top-section-bg, header.bg-dark, .bg-dark, .bg-dark-card, .bg-dark-contrast {
-      background-color: #f3f6f8 !important;
-      color: #000000 !important;
+    50% {
+      box-shadow: 0 8px 26px rgba(184, 144, 71, 0.22), 0 0 0 2px rgba(184, 144, 71, 0.35);
+      transform: translateY(-2px);
     }
-    h1, h2, h3, h4, h5, h6, .section-title {
-      color: #000000 !important;
+  }
+
+  @keyframes linePulseGlow {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  @keyframes shimmerSweep {
+    0% { transform: translateX(-150%) skewX(-22deg); }
+    100% { transform: translateX(250%) skewX(-22deg); }
+  }
+
+  @keyframes fadeInUpStagger {
+    0% { opacity: 0; transform: translateY(22px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  .animate-fade-in {
+    animation: fadeInUpStagger 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .delay-1 { animation-delay: 0.15s; }
+  .delay-2 { animation-delay: 0.28s; }
+  .delay-3 { animation-delay: 0.42s; }
+
+  /* ========================================================
+     HERO SECTION & 100CR METRIC PILLS
+     ======================================================== */
+  .team-hero {
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+    padding-top: 25px;
+    padding-bottom: 10px;
+  }
+
+  .hero-grid-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(184, 144, 71, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184, 144, 71, 0.04) 1px, transparent 1px);
+    background-size: 44px 44px;
+    pointer-events: none;
+    opacity: 0.75;
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+  }
+
+  .ambient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(85px);
+    pointer-events: none;
+    z-index: 1;
+    transition: opacity 0.5s ease;
+  }
+
+  .orb-gold {
+    top: 5%;
+    right: 15%;
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.32) 0%, rgba(245, 230, 200, 0.12) 45%, transparent 70%);
+    animation: floatOrbOrganic1 10s ease-in-out infinite;
+  }
+
+  .orb-teal {
+    top: 15%;
+    left: 8%;
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(circle, rgba(24, 155, 166, 0.26) 0%, rgba(200, 240, 245, 0.1) 45%, transparent 70%);
+    animation: floatOrbOrganic2 12s ease-in-out infinite;
+  }
+
+  .orb-purple {
+    bottom: -15%;
+    right: 30%;
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, rgba(184, 144, 71, 0.22) 0%, transparent 70%);
+    animation: floatOrbOrganic1 14s ease-in-out infinite reverse;
+  }
+
+  .team-hero-badge {
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(184, 144, 71, 0.32);
+    padding: 7px 20px;
+    border-radius: 50px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    color: #1e293b;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 4px 20px rgba(184, 144, 71, 0.12), 0 1px 3px rgba(0, 0, 0, 0.03);
+    animation: badgeAmbientPulse 4s ease-in-out infinite;
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  }
+
+  .team-hero-badge:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(184, 144, 71, 0.26), 0 0 0 2px rgba(184, 144, 71, 0.4);
+    border-color: rgba(184, 144, 71, 0.6);
+  }
+
+  .badge-pulse-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--lux-gold);
+    display: inline-block;
+    animation: pulseGlowDot 2s infinite ease-in-out;
+  }
+
+  .team-hero-heading {
+    font-size: clamp(1.85rem, 3.4vw, 2.5rem) !important;
+    line-height: 1.25 !important;
+    font-weight: 700;
+    color: #151413 !important;
+    letter-spacing: -0.02em;
+  }
+
+  .team-hero-subtext {
+    font-size: 0.9rem !important;
+    line-height: 1.65;
+    color: #64748b !important;
+    max-width: 650px;
+  }
+
+  /* 100Cr Hero Metric Chips (Compact & Animated) */
+  .hero-metric-chip {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(184, 144, 71, 0.28);
+    padding: 6px 15px;
+    border-radius: 50px;
+    font-size: 0.74rem;
+    color: #334155;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: default;
+  }
+
+  .hero-metric-chip:hover {
+    transform: translateY(-3px) scale(1.03);
+    background: #ffffff;
+    border-color: rgba(184, 144, 71, 0.6);
+    box-shadow: 0 8px 22px rgba(184, 144, 71, 0.22);
+    color: #0f172a;
+  }
+
+  .hero-metric-chip strong {
+    color: #0f172a;
+    font-weight: 700;
+  }
+
+  /* ========================================================
+     EDITORIAL CARDS WITH 100CR LUXURY AESTHETIC
+     ======================================================== */
+  .team-showcase-section {
+    padding-top: 0 !important;
+  }
+
+  .team-category-header {
+    margin-top: 1rem;
+    margin-bottom: 1.8rem;
+  }
+  .category-line {
+    flex: 1;
+    height: 1.5px;
+    background: linear-gradient(90deg, transparent 0%, rgba(184, 144, 71, 0.2) 25%, #b89047 50%, rgba(184, 144, 71, 0.2) 75%, transparent 100%);
+    background-size: 200% 100%;
+    animation: linePulseGlow 4.5s ease-in-out infinite;
+  }
+  .category-title {
+    font-size: 0.74rem;
+    letter-spacing: 3.5px;
+    font-weight: 800;
+    color: var(--lux-gold);
+    text-transform: uppercase;
+  }
+
+  /* EDITORIAL ROW CARD: LUXURY GLASS ELEVATION */
+  .team-card-row {
+    background: linear-gradient(145deg, #ffffff 0%, #fbfcfe 100%) !important;
+    border: 1.2px solid rgba(184, 144, 71, 0.26) !important;
+    position: relative;
+    border-radius: 1.6rem !important;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03), 0 16px 40px rgba(15, 23, 42, 0.05) !important;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.45s ease;
+    overflow: hidden;
+  }
+
+  .team-card-row::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 1.6rem;
+    padding: 1.5px;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.4), transparent 50%, rgba(212, 175, 55, 0.2));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.6;
+    transition: opacity 0.4s ease;
+  }
+
+  .team-card-row:hover {
+    transform: translateY(-8px) scale(1.008);
+    border-color: rgba(184, 144, 71, 0.55) !important;
+    box-shadow: 0 25px 60px -12px rgba(184, 144, 71, 0.2), 0 0 25px rgba(184, 144, 71, 0.12), 0 0 0 1px rgba(184, 144, 71, 0.35) !important;
+  }
+
+  .team-card-row:hover::before {
+    opacity: 1;
+  }
+
+  /* ========================================================
+     THE BIG PORTRAIT PHOTO (520px Height)
+     ======================================================== */
+  .big-portrait-frame {
+    width: 100%;
+    height: 520px;
+    background: #f8fafc;
+    border: 1px solid rgba(184, 144, 71, 0.2);
+    border-radius: 1.35rem !important;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.45s ease, border-color 0.45s ease;
+  }
+
+  .team-card-row:hover .big-portrait-frame {
+    box-shadow: 0 20px 45px rgba(15, 23, 42, 0.15), 0 0 0 1px rgba(184, 144, 71, 0.35);
+    border-color: rgba(184, 144, 71, 0.5);
+  }
+
+  .big-portrait-img {
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), filter 0.85s ease;
+  }
+
+  .team-card-row:hover .big-portrait-img {
+    transform: scale(1.055);
+  }
+
+  .portrait-corner-accent {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, transparent 50%, rgba(184, 144, 71, 0.3) 100%);
+    pointer-events: none;
+  }
+
+  .portrait-shimmer-sweep {
+    position: absolute;
+    inset: 0;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(-150%) skewX(-22deg);
+    transition: opacity 0.2s;
+  }
+
+  .team-card-row:hover .portrait-shimmer-sweep {
+    opacity: 1;
+    animation: shimmerSweep 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .portrait-role-pill {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(184, 144, 71, 0.35);
+    color: #151413;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 6px 15px;
+    border-radius: 50px;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    z-index: 2;
+    transition: all 0.35s ease;
+  }
+
+  .team-card-row:hover .portrait-role-pill {
+    transform: translateY(-2px);
+    background: #ffffff;
+    border-color: rgba(184, 144, 71, 0.6);
+    box-shadow: 0 6px 22px rgba(184, 144, 71, 0.25);
+  }
+
+  /* ========================================================
+     TEXT STYLES & SHIMMERING MEMBER NAMES
+     ======================================================== */
+  .sub-role-label {
+    font-size: 0.68rem;
+    letter-spacing: 2px;
+    color: var(--lux-gold);
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 2px;
+  }
+
+  .role-pulse-beacon {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: #10b981;
+    display: inline-block;
+    margin-right: 6px;
+    animation: beaconPulse 2s infinite;
+  }
+
+  .member-name {
+    font-size: 1.45rem !important;
+    font-weight: 700;
+    color: #151413 !important;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    transition: all 0.3s ease;
+  }
+
+  .team-card-row:hover .member-name {
+    background: linear-gradient(110deg, #151413 0%, #8c6a28 30%, #d4af37 50%, #8c6a28 70%, #151413 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: nameGoldShimmer 3.5s ease infinite;
+  }
+
+  .lux-card-divider {
+    height: 1.5px;
+    background: linear-gradient(90deg, rgba(184, 144, 71, 0.4) 0%, rgba(226, 232, 240, 0.8) 50%, transparent 100%);
+  }
+
+  .member-desc-p {
+    font-size: 0.86rem !important;
+    line-height: 1.7;
+    color: #475569 !important;
+  }
+  .member-desc-p strong {
+    color: #0f172a !important;
+    font-weight: 600;
+  }
+
+  /* 100Cr Visual Micro-Stat Badges on Cards */
+  .card-micro-badge {
+    background: #f8fafc;
+    border: 1px solid rgba(184, 144, 71, 0.28);
+    border-radius: 50px;
+    padding: 5px 13px;
+    font-size: 0.72rem;
+    color: #334155;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  }
+
+  .card-micro-badge:hover {
+    background: #ffffff;
+    border-color: rgba(184, 144, 71, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(184, 144, 71, 0.18);
+    color: #0f172a;
+  }
+
+  .card-micro-badge strong {
+    color: #0f172a;
+    font-weight: 700;
+    margin-right: 3px;
+  }
+
+  /* Connect Buttons with Micro-Animations */
+  .btn-connect-wa {
+    background: linear-gradient(135deg, #25d366 0%, #1da851 100%);
+    color: #ffffff !important;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    border: none;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.35);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .btn-connect-wa:hover {
+    background: linear-gradient(135deg, #2ae06f 0%, #179346 100%);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.5);
+  }
+
+  .btn-connect-call {
+    background: #ffffff;
+    border: 1px solid rgba(184, 144, 71, 0.35);
+    color: #1e293b !important;
+    font-size: 0.78rem;
+    font-weight: 600;
+    transition: all 0.35s ease;
+  }
+  .btn-connect-call:hover {
+    background: #ffffff;
+    border-color: rgba(184, 144, 71, 0.7);
+    color: #0f172a !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(184, 144, 71, 0.16);
+  }
+
+  /* ========================================================
+     SPECIALIST CARDS (DESIGN ARCHITECTS & PRODUCTION LEADS)
+     ======================================================== */
+  .specialist-box {
+    background: #ffffff !important;
+    border: 1px solid rgba(184, 144, 71, 0.22) !important;
+    border-radius: 1.35rem !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04) !important;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.45s ease;
+    overflow: hidden;
+  }
+  .specialist-box:hover {
+    transform: translateY(-8px);
+    border-color: rgba(184, 144, 71, 0.5) !important;
+    box-shadow: 0 20px 45px -10px rgba(184, 144, 71, 0.18), 0 8px 22px rgba(184, 144, 71, 0.1) !important;
+  }
+
+  .specialist-img-container {
+    width: 100%;
+    height: 420px;
+    background: #f8fafc;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .specialist-img {
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .specialist-box:hover .specialist-img {
+    transform: scale(1.055);
+  }
+
+  .specialist-shimmer {
+    position: absolute;
+    inset: 0;
+    width: 70%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(-150%) skewX(-22deg);
+    transition: opacity 0.2s;
+  }
+  .specialist-box:hover .specialist-shimmer {
+    opacity: 1;
+    animation: shimmerSweep 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .specialist-tag-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255, 255, 255, 0.94);
+    border: 1px solid rgba(184, 144, 71, 0.3);
+    color: #151413;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 5px 13px;
+    border-radius: 50px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.07);
+    transition: all 0.35s ease;
+  }
+  .specialist-box:hover .specialist-tag-badge {
+    transform: translateY(-2px);
+    background: #ffffff;
+    border-color: rgba(24, 155, 166, 0.5);
+    box-shadow: 0 6px 18px rgba(24, 155, 166, 0.25);
+  }
+
+  .pill-chip {
+    background: #f8fafc;
+    color: #475569;
+    font-size: 0.68rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(184, 144, 71, 0.22);
+    transition: all 0.25s ease;
+    display: inline-block;
+  }
+  .pill-chip:hover {
+    background: #ffffff;
+    color: #0f172a;
+    border-color: rgba(184, 144, 71, 0.5);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(184, 144, 71, 0.12);
+  }
+
+  .btn-specialist-connect {
+    background: #f0fdfa;
+    border: 1px solid #14b8a6;
+    color: #0d9488 !important;
+    font-size: 0.78rem;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .btn-specialist-connect:hover {
+    background: #14b8a6;
+    color: #ffffff !important;
+    box-shadow: 0 6px 20px rgba(20, 184, 166, 0.35);
+    transform: translateY(-2px);
+  }
+
+  /* ========================================================
+     100CR CORPORATE INFRASTRUCTURE TICKER
+     ======================================================== */
+  .corporate-spec-ticker {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border: 1px solid rgba(184, 144, 71, 0.28);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  }
+
+  .spec-label {
+    font-size: 0.72rem;
+    letter-spacing: 1.5px;
+    color: var(--lux-gold);
+    font-weight: 800;
+  }
+
+  .spec-chip {
+    background: #ffffff;
+    border: 1px solid rgba(184, 144, 71, 0.25);
+    padding: 4px 12px;
+    border-radius: 50px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #1e293b;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    transition: all 0.25s ease;
+  }
+
+  .spec-chip:hover {
+    border-color: rgba(184, 144, 71, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(184, 144, 71, 0.18);
+  }
+
+  /* ========================================================
+     RESPONSIVE MOBILE STYLES (< 768px)
+     ======================================================== */
+  @media (max-width: 767.98px) {
+    .team-hero {
+      padding-top: 18px;
+      padding-bottom: 5px;
     }
-    p, span, li, label, div, small, strong, p *, li *, span *, label *, div *, small *, strong *, .text-muted, .text-white-50, .text-secondary, .text-muted * {
-      color: #000000 !important;
+    .team-hero-heading {
+      font-size: 1.6rem !important;
     }
-    :not(footer) .text-white, body:not(footer) .text-white, a.text-white:not(footer a), .section-title.text-white {
-      color: #000000 !important;
+    .team-hero-subtext {
+      font-size: 0.84rem !important;
     }
-    .text-gold, .text-gold * {
-      color: #189ba6 !important;
+
+    .big-portrait-frame {
+      height: 400px !important;
     }
-    .btn-gold, .btn-primary {
-      background-color: #189ba6 !important;
-      border-color: #189ba6 !important;
-      color: #ffffff !important;
+    .specialist-img-container {
+      height: 380px !important;
     }
-    .btn-gold:hover, .btn-primary:hover {
-      background-color: #127c85 !important;
-      border-color: #127c85 !important;
+    .team-card-row {
+      padding: 1.25rem !important;
     }
-    footer, footer *, footer p, footer span, footer li, footer div, footer small, footer .text-muted {
-      color: #ffffff !important;
+    .member-name {
+      font-size: 1.25rem !important;
     }
-    footer p, footer span, footer li, footer div, footer small, footer .text-muted, footer a {
-      color: #d1cfc9 !important;
+    .member-desc-p {
+      font-size: 0.84rem !important;
     }
-  
-    /* Fix headings appearing white on light background inside bg-dark / bg-dark-card / bg-dark-contrast elements */
-    .bg-dark h1, .bg-dark h2, .bg-dark h3, .bg-dark h4, .bg-dark h5, .bg-dark h6,
-    .bg-dark-card h1, .bg-dark-card h2, .bg-dark-card h3, .bg-dark-card h4, .bg-dark-card h5, .bg-dark-card h6,
-    .bg-dark-contrast h1, .bg-dark-contrast h2, .bg-dark-contrast h3, .bg-dark-contrast h4, .bg-dark-contrast h5, .bg-dark-contrast h6 {
-      color: #1a1a1a !important;
+    .hero-metric-chip {
+      font-size: 0.68rem;
+      padding: 4px 10px;
     }
-    /* Fix text elements appearing light grey/white on light background inside bg-dark / bg-dark-card / bg-dark-contrast elements */
-    .bg-dark p, .bg-dark li, .bg-dark span:not(.text-gold):not(.text-teal), .bg-dark label, .bg-dark .text-muted,
-    .bg-dark-card p, .bg-dark-card li, .bg-dark-card span:not(.text-gold):not(.text-teal), .bg-dark-card label, .bg-dark-card .text-muted,
-    .bg-dark-contrast p, .bg-dark-contrast li, .bg-dark-contrast span:not(.text-gold):not(.text-teal), .bg-dark-contrast label, .bg-dark-contrast .text-muted {
-      color: #444444 !important;
+  }
+
+  @media (max-width: 480px) {
+    .big-portrait-frame {
+      height: 360px !important;
     }
-    .bg-dark strong, .bg-dark-card strong, .bg-dark-contrast strong {
-      color: #1a1a1a !important;
+    .specialist-img-container {
+      height: 340px !important;
     }
+  }
 </style>
 
-<script is:inline></script>
+
+
 
 <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-PLACEHOLDER');
-    </script>
-
-<script is:inline>
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
-        });
-    </script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PLACEHOLDER');
+</script>
 

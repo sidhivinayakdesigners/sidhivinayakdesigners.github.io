@@ -2,18 +2,57 @@
 import Layout from '../../layouts/Layout.astro';
 
 const title = "4BHK Modern Style Interior Design in Ghansoli With Foyer | Siddhivinayak Designers";
-const description = "Step into a spacious 4BHK Modern Style Apartment in Ghansoli featuring a premium foyer, soft gold accented living room, elegant dining space, and smart storage solutions.";
+const description = "Step into a spacious 4BHK Modern Style Apartment in Sector 21, Ghansoli featuring a custom entrance foyer, soft gold accented living room, elegant dining space, and smart storage solutions.";
 const canonical = "https://siddhivinayakdesigners.in/gallery/4bhk-modern-style-interior-design-in-ghansoli-with-foyer/";
+
+const schema = `{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://siddhivinayakdesigners.in/" },
+        { "@type": "ListItem", "position": 2, "name": "Interior Designer Ghansoli", "item": "https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/ghansoli/" },
+        { "@type": "ListItem", "position": 3, "name": "4BHK Modern Style Interior Design in Ghansoli With Foyer", "item": "${canonical}" }
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "4BHK Modern Style Interior Design in Ghansoli With Foyer",
+      "headline": "4BHK Modern Style Interior Design in Sector 21 Ghansoli With Foyer",
+      "description": "Spacious 4BHK modern flat interior in Sector 21, Ghansoli featuring custom entrance foyer, Italian marble TV wall, acrylic modular kitchen, and smart space planning.",
+      "image": "https://siddhivinayakdesigners.in/assets/images/delivered-projects/ghansoli-4bhk/1.webp",
+      "url": "${canonical}",
+      "author": {
+        "@type": "HomeAndConstructionBusiness",
+        "name": "Siddhivinayak Designers",
+        "url": "https://siddhivinayakdesigners.in/cities/interior-designers-navi-mumbai/ghansoli/",
+        "telephone": "+918369297174",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Shop 02, Om Sai Apartment, Prabhakar Krishanati Patil Marg, Talvali, Vaman, Ghansoli",
+          "addressLocality": "Ghansoli, Navi Mumbai",
+          "postalCode": "400701",
+          "addressCountry": "IN"
+        }
+      },
+      "contentLocation": {
+        "@type": "Place",
+        "name": "Sector 21, Ghansoli, Navi Mumbai 400701"
+      }
+    }
+  ]
+}`;
 ---
 
-<Layout title={title} description={description} canonical={canonical}>
+<Layout title={title} description={description} canonical={canonical} schema={schema}>
   <div class="portfolio-detail-wrapper py-4" style="background-color: #f4f5f7 !important;">
     <div class="container">
       <!-- Breadcrumb Link -->
       <nav aria-label="breadcrumb" class="mb-4 d-none d-md-block">
         <ol class="breadcrumb mb-0 small">
           <li class="breadcrumb-item"><a href="/" class="text-danger text-decoration-none">Home</a></li>
-          <li class="breadcrumb-item"><a href="/#glimpseSection" class="text-danger text-decoration-none">Delivered Projects</a></li>
+          <li class="breadcrumb-item"><a href="/cities/interior-designers-navi-mumbai/ghansoli/" class="text-danger text-decoration-none">Interior Designer Ghansoli</a></li>
           <li class="breadcrumb-item active text-muted" aria-current="page">4BHK Modern Style Interior Design in Ghansoli With Foyer</li>
         </ol>
       </nav>
@@ -64,16 +103,17 @@ const canonical = "https://siddhivinayakdesigners.in/gallery/4bhk-modern-style-i
           <!-- Main Description Card -->
           <div class="p-4 bg-white rounded-4 border border-light-subtle shadow-sm mb-4">
             <h1 class="fw-bold mb-2 text-dark" style="font-size: 2.2rem; font-family: 'Open Sans', sans-serif; letter-spacing: -0.5px;">4BHK Modern Style Interior Design in Ghansoli With Foyer</h1>
-            <p class="ghansoli4bhk-project-subtitle text-secondary mb-3">Supernova Spira</p>
+            <p class="ghansoli4bhk-project-subtitle text-secondary mb-3">Delivered Project &bull; Sector 21, Ghansoli</p>
             
             <div class="d-flex flex-wrap gap-2 mb-4">
-              <span class="badge-pill-light">Modern</span>
-              <span class="badge-pill-light">Storage Max</span>
+              <span class="badge-pill-light">Modern Luxury</span>
+              <span class="badge-pill-light">Custom Foyer</span>
+              <span class="badge-pill-light">100% IS:710 Marine Ply</span>
             </div>
             
             <div class="d-flex justify-content-between align-items-center mb-4">
               <div class="d-flex align-items-center text-dark fw-semibold small">
-                <i class="fas fa-map-marker-alt text-danger me-2 fs-5"></i> Sector 94, Ghansoli
+                <i class="fas fa-map-marker-alt text-danger me-2 fs-5"></i> Sector 21, Ghansoli
               </div>
               <button class="btn btn-red-pill px-4 py-2 fw-bold text-white border-0" onclick="window.openConsultationPopup && window.openConsultationPopup(true)">
                 GET STARTED
@@ -85,7 +125,7 @@ const canonical = "https://siddhivinayakdesigners.in/gallery/4bhk-modern-style-i
             <div class="row g-3 text-start">
               <div class="col-6 col-md">
                 <span class="text-secondary small d-block mb-1">Pricing</span>
-                <strong class="text-dark d-block">30+ Lakhs</strong>
+                <strong class="text-dark d-block">₹14.5 - 19.5 Lakhs</strong>
               </div>
               <div class="col-6 col-md">
                 <span class="text-secondary small d-block mb-1">BHK</span>
@@ -93,15 +133,15 @@ const canonical = "https://siddhivinayakdesigners.in/gallery/4bhk-modern-style-i
               </div>
               <div class="col-6 col-md">
                 <span class="text-secondary small d-block mb-1">Scope</span>
-                <strong class="text-dark d-block" style="font-size: 0.9rem;">Living Room, Dining Room, Foyer, 3 Bedrooms</strong>
+                <strong class="text-dark d-block" style="font-size: 0.9rem;">Foyer, Living Room, Dining, Kitchen & Bedrooms</strong>
               </div>
               <div class="col-6 col-md">
                 <span class="text-secondary small d-block mb-1">Property Type</span>
-                <strong class="text-dark d-block">Apartment</strong>
+                <strong class="text-dark d-block">High-Rise Apartment</strong>
               </div>
               <div class="col-6 col-md">
-                <span class="text-secondary small d-block mb-1">Size</span>
-                <strong class="text-dark d-block">1500 to 3500 sq ft</strong>
+                <span class="text-secondary small d-block mb-1">Location</span>
+                <strong class="text-dark d-block">Sector 21, Ghansoli</strong>
               </div>
             </div>
           </div>
@@ -113,14 +153,14 @@ const canonical = "https://siddhivinayakdesigners.in/gallery/4bhk-modern-style-i
             <div class="mb-4">
               <h3 class="h5 font-luxury text-dark mb-2">Design Highlights</h3>
               <p class="text-secondary leading-relaxed">
-                The foyer makes a striking first impression with its glossy finishes, sleek shoe console, and bold accents. Moving inside, the living room is bathed in natural light, balancing soft warm neutrals with elegant golden highlights for an inviting, luxurious feel.
+                The entrance foyer creates an immediate impression with sleek shoe consoles, warm ambient accent lighting, and elegant paneling. Moving into the main living zone, floor-to-ceiling windows illuminate an Italian marble TV feature wall and subtle gold highlights, establishing an open, balanced ambiance suited to modern Ghansoli apartments.
               </p>
             </div>
             
             <div>
               <h3 class="h5 font-luxury text-dark mb-2">About the Home</h3>
               <p class="text-secondary leading-relaxed mb-0">
-                Walk into this 4BHK modern style home in Ghansoli, and you’re greeted with a sense of warmth and luxury. The dining area is elegant yet practical, designed for family gatherings. Bedrooms stand out with their unique personalities—pastel pink tones, calming blues, and plush neutral walls—each paired with smart storage. Designed within 30+ Lakhs, this 1500–3500 sq ft apartment showcases modern interiors that feel stylish, spacious, and thoughtfully functional.
+                Executed in Sector 21, Ghansoli, this 4BHK apartment combines contemporary sophistication with practical utility. The modular acrylic kitchen features moisture-resistant IS:710 Marine Plywood carcasses and German soft-close fittings. Each bedroom features bespoke storage—including floor-to-ceiling sliding wardrobes with lofts, integrated dressing areas, and custom study tables. Learn more on our <a href="/cities/interior-designers-navi-mumbai/ghansoli/" class="fw-bold text-danger text-decoration-none">Ghansoli Interior Design Hub</a>.
               </p>
             </div>
           </div>
@@ -222,7 +262,24 @@ const canonical = "https://siddhivinayakdesigners.in/gallery/4bhk-modern-style-i
               </div>
             </div>
           </div>
-          
+
+          <!-- Back Navigation Card -->
+          <div class="p-4 bg-white rounded-4 border border-light-subtle shadow-sm mb-4 text-center">
+            <h3 class="h5 font-luxury text-dark mb-3">Planning Home Interiors in Ghansoli?</h3>
+            <p class="text-secondary small mb-4">Explore our comprehensive design packages, modular kitchen specifications, and transparent 2026 cost guides for Ghansoli flats.</p>
+            <div class="d-flex flex-wrap gap-2 justify-content-center">
+              <a href="/cities/interior-designers-navi-mumbai/ghansoli/" class="btn btn-outline-dark btn-sm px-4 py-2 fw-semibold" style="border-radius: 6px;">
+                <i class="fas fa-city me-1"></i> Visit Ghansoli Hub
+              </a>
+              <a href="/cities/interior-designers-navi-mumbai/ghansoli/interior-design-cost/" class="btn btn-sm px-4 py-2 fw-semibold text-white text-decoration-none" style="background-color: #189ba6 !important; border-radius: 6px;">
+                <i class="fas fa-calculator me-1"></i> Ghansoli Cost Guide
+              </a>
+              <a href="/cities/interior-designers-navi-mumbai/ghansoli/2bhk-3bhk-interiors/" class="btn btn-sm px-4 py-2 fw-semibold text-white text-decoration-none" style="background-color: #062639 !important; border-radius: 6px;">
+                <i class="fas fa-home me-1"></i> 2BHK/3BHK Guide
+              </a>
+            </div>
+          </div>
+
           <!-- Footnotes -->
           <div class="text-secondary small mt-4 pt-3 border-top border-light-subtle">
             <p class="mb-1">*The products shown on the website are subject to availability. Prices are bound to change depending on the market conditions.</p>

@@ -81,7 +81,7 @@ const { showNaviMumbaiFooter = false } = Astro.props;
           <h6 class="font-luxury text-white mb-3" style="color: #ffffff !important;">Our Locations</h6>
           <div class="small mb-2" style="color: #d1cfc9 !important;">
             <strong class="text-white d-block mb-1" style="font-size: 0.8rem;"><i class="fas fa-store text-gold me-1"></i> Ghansoli Experience Centre &amp; Shop:</strong>
-            <a style="color: #d1cfc9 !important; text-decoration: none;" href="https://maps.google.com/?cid=14973846516803531003" rel="noopener" target="_blank">Shop 02, Om Sai Apartment, Rankar Rd, Mhasheshwar Nagar, Talvali, Ghansoli Gaon, Navi Mumbai 400701</a>
+            <a style="color: #d1cfc9 !important; text-decoration: none;" href="https://maps.google.com/?cid=14973846516803531003" rel="noopener" target="_blank">Shop 02, Om Sai Apartment, Prabhakar Krishanati Patil Marg, Talvali, Vaman, Ghansoli, Navi Mumbai, Maharashtra 400701</a>
           </div>
           <div class="small mb-3" style="color: #d1cfc9 !important;">
             <strong class="text-white d-block mb-1" style="font-size: 0.8rem;"><i class="fas fa-pencil-ruler text-gold me-1"></i> Kopar Khairane Design Studio:</strong>
@@ -117,6 +117,15 @@ const { showNaviMumbaiFooter = false } = Astro.props;
               <a href="/blog/kopar-khairane-cidco-flat-renovation/" class="text-white-50 text-decoration-none mx-2">CIDCO Flat Renovation Guide</a> |
               <a href="/blog/kopar-khairane-humidity-moisture-protection/" class="text-white-50 text-decoration-none mx-2">Creek Moisture &amp; Humidity Protection</a> |
               <a href="/gallery/3bhk-luxury-interior-in-shree-laxmi-chs-kopar-khairane/" class="text-white-50 text-decoration-none ms-2">Shree Laxmi CHS Sector 23 Project</a>
+            </p>
+          ) : Astro.url.pathname.includes('/ghansoli') ? (
+            <p class="mb-1"><strong class="text-white">Ghansoli Hub &amp; Guides:</strong> 
+              <a href="/cities/interior-designers-navi-mumbai/ghansoli/" class="text-white-50 text-decoration-none me-2">Ghansoli Overview</a> |
+              <a href="/cities/interior-designers-navi-mumbai/ghansoli/interior-design-cost/" class="text-white-50 text-decoration-none mx-2">Cost &amp; Pricing</a> |
+              <a href="/cities/interior-designers-navi-mumbai/ghansoli/2bhk-3bhk-interiors/" class="text-white-50 text-decoration-none mx-2">2BHK &amp; 3BHK Plans</a> |
+              <a href="/cities/interior-designers-navi-mumbai/ghansoli/modular-kitchen/" class="text-white-50 text-decoration-none mx-2">Modular Kitchens</a> |
+              <a href="/cities/interior-designers-navi-mumbai/ghansoli/cidco-flat-renovation/" class="text-white-50 text-decoration-none mx-2">CIDCO Flat Renovation</a> |
+              <a href="/gallery/3bhk-luxury-interior-in-aurum-q-islands-ghansoli/" class="text-white-50 text-decoration-none ms-2">Delivered Projects</a>
             </p>
           ) : (
             <p class="mb-1"><strong class="text-white">Popular Kharghar Services:</strong> 
