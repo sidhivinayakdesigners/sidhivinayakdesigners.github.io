@@ -364,10 +364,13 @@ body.mobile-nav-open {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
 }
 body {
-  padding-top: 75px !important;
+  padding-top: var(--nav-height, 56px) !important;
 }
 
-/* --- FIXED MOBILE BOTTOM NAVIGATION BAR (1:1 DESIGNCAFE REPLICA) --- */
+/* ========================================================
+   PREMIUM MOBILE BOTTOM NAVIGATION BAR (ACTIVE LUXURY ANIMATIONS)
+   Rich, lively, continuous micro-interactions - always alive
+   ======================================================== */
 .dc-mobile-bottom-bar {
   display: none !important;
 }
@@ -382,20 +385,65 @@ body {
     left: 0 !important;
     right: 0 !important;
     width: 100% !important;
-    height: 64px !important;
-    background: #189ba6 !important;
-    z-index: 10500 !important;
-    box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.25) !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.25) !important;
+    height: 68px !important;
+    background: linear-gradient(180deg, rgba(20, 142, 153, 0.97) 0%, rgba(13, 108, 116, 0.99) 100%) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    z-index: 999999 !important;
+    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.28) !important;
+    padding: 0 4px !important;
+    animation: dcBarSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+    overflow: hidden !important;
   }
+
   body {
-    padding-bottom: 64px !important;
+    padding-bottom: 68px !important;
   }
+
   .floating-widgets {
     display: none !important;
   }
+
+  /* Elegant Luminous Top Hairline Glow - continuously traveling */
+  .dc-mobile-bottom-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(255, 255, 255, 0.2) 15%, 
+      rgba(255, 225, 140, 1) 50%, 
+      rgba(255, 255, 255, 0.2) 85%, 
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: dcBarTopShimmer 3s linear infinite !important;
+    pointer-events: none;
+    z-index: 10;
+  }
 }
 
+@keyframes dcBarSlideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes dcBarTopShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Individual Bar Items - Clean, Uniform & Interactive */
 .dc-bottom-bar-item {
   flex: 1;
   display: flex !important;
@@ -406,28 +454,135 @@ body {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
   cursor: pointer;
-  padding: 4px 0;
-  transition: all 0.2s ease;
+  padding: 6px 2px;
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease !important;
+  -webkit-tap-highlight-color: transparent !important;
+  user-select: none !important;
+  border-radius: 12px;
+  background: transparent !important;
 }
 
-.dc-bottom-bar-item:hover, .dc-bottom-bar-item:active {
-  background-color: rgba(0, 0, 0, 0.12) !important;
+.dc-bottom-bar-item:active {
+  transform: scale(0.88) translateY(2px) !important;
+  background-color: rgba(255, 255, 255, 0.16) !important;
 }
 
-.dc-bottom-bar-item svg {
+.dc-bottom-bar-item i {
   display: block;
-  margin: 0 auto;
+  font-size: 1.42rem;
+  margin-bottom: 2px;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.dc-bottom-bar-item:active i {
+  transform: scale(1.2) !important;
 }
 
 .dc-bottom-bar-item span {
-  font-size: 0.85rem !important;
+  font-size: 0.8rem !important;
   font-weight: 500 !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
   font-family: 'Open Sans', sans-serif !important;
   line-height: 1.1 !important;
-  margin-top: 3px !important;
+  margin-top: 2px !important;
   white-space: nowrap !important;
+  letter-spacing: 0.2px;
+}
+
+/* 1. Designs Item - Continuous smooth floating wave */
+@keyframes dcDesignsLive {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+  }
+  50% {
+    transform: translateY(-4.5px) scale(1.12);
+    filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.35)) drop-shadow(0 0 6px rgba(255, 255, 255, 0.7));
+  }
+}
+.dc-item-designs i {
+  animation: dcDesignsLive 2.4s ease-in-out infinite !important;
+}
+
+/* 2. Call Now Item - Continuous lively phone ring & pulse */
+@keyframes dcPhoneLive {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+  }
+  12% {
+    transform: rotate(-14deg) scale(1.16);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.85));
+  }
+  24% {
+    transform: rotate(14deg) scale(1.16);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.85));
+  }
+  36% {
+    transform: rotate(-10deg) scale(1.12);
+  }
+  48% {
+    transform: rotate(10deg) scale(1.12);
+  }
+  60% {
+    transform: rotate(0deg) scale(1.04);
+  }
+  78% {
+    transform: scale(1.1) translateY(-2px);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  }
+}
+.dc-item-call i {
+  animation: dcPhoneLive 2.3s ease-in-out infinite !important;
+}
+
+/* 3. Get Free Quote - Lively heartbeat & checkmark bounce */
+@keyframes dcQuoteLive {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+  }
+  25% {
+    transform: translateY(-4px) scale(1.18) rotate(-4deg);
+    filter: drop-shadow(0 0 10px rgba(255, 230, 150, 0.95)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  }
+  50% {
+    transform: translateY(0) scale(1.04) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-2px) scale(1.1) rotate(3deg);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.85));
+  }
+}
+.dc-item-quote i {
+  animation: dcQuoteLive 2.1s ease-in-out infinite !important;
+}
+
+/* 4. WhatsApp Item - Continuous heartbeat pulse & glowing halo */
+@keyframes dcWhatsAppLive {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+  }
+  30% {
+    transform: scale(1.22) translateY(-2.5px);
+    filter: drop-shadow(0 0 12px rgba(37, 211, 102, 0.95)) drop-shadow(0 0 6px #ffffff);
+  }
+  60% {
+    transform: scale(1.06) translateY(0);
+    filter: drop-shadow(0 0 6px rgba(37, 211, 102, 0.65));
+  }
+  80% {
+    transform: scale(1.12);
+    filter: drop-shadow(0 0 9px rgba(37, 211, 102, 0.85));
+  }
+}
+.dc-item-whatsapp i {
+  animation: dcWhatsAppLive 2.3s ease-in-out infinite !important;
 }
 
 /* Force bottom navigation bar white colors and SVG properties globally */

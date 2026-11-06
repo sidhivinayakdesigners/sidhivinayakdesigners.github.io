@@ -182,12 +182,25 @@ const isDev = import.meta.env.DEV;
   <link href="/assets/css/aos.css" rel="stylesheet" />
   <link href="/assets/css/style.min.css?v=1011" rel="stylesheet" />
   <style>
+    body {
+      padding-top: var(--nav-height, 56px) !important;
+    }
+
     /* Hero Banner Slider Responsive CSS */
     .hero-banner-slider-section {
       width: 100%;
       overflow: hidden;
       padding-top: 0 !important;
       margin-top: 0 !important;
+      line-height: 0 !important;
+    }
+
+    .hero-banner-slider-section picture,
+    .hero-banner-slider-section a {
+      display: block !important;
+      line-height: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
     }
 
     @media (max-width: 767px) {
@@ -211,8 +224,8 @@ const isDev = import.meta.env.DEV;
     @media (min-width: 768px) {
       .hero-banner-img {
         width: 100% !important;
-        max-height: 620px !important;
-        object-fit: cover !important;
+        height: auto !important;
+        display: block !important;
       }
     }
 
@@ -608,36 +621,239 @@ const isDev = import.meta.env.DEV;
     footer p, footer span, footer li, footer div, footer small, footer .text-muted, footer a {
       color: #d1cfc9 !important;
     }
-    .dc-mobile-bottom-bar, .dc-mobile-bottom-bar *, .dc-bottom-bar-item, .dc-bottom-bar-item * {
-      color: #ffffff !important;
-      -webkit-text-fill-color: #ffffff !important;
-      stroke: #ffffff !important;
-    }
-    .dc-mobile-bottom-bar {
-      display: none !important;
-    }
-    @media (max-width: 991px) {
-      .dc-mobile-bottom-bar {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: space-around !important;
-        position: fixed !important;
-        bottom: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        width: 100% !important;
-        height: 68px !important;
-        background: #189ba6 !important;
-        z-index: 999999 !important;
-        box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.3) !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.25) !important;
-      }
-      body {
-        padding-bottom: 68px !important;
-      }
-      .floating-widgets {
-        display: none !important;
-      }
+/* ========================================================
+   PREMIUM MOBILE BOTTOM NAVIGATION BAR (ACTIVE LUXURY ANIMATIONS)
+   Rich, lively, continuous micro-interactions - always alive
+   ======================================================== */
+.dc-mobile-bottom-bar {
+  display: none !important;
+}
+
+@media (max-width: 991px) {
+  .dc-mobile-bottom-bar {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-around !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 68px !important;
+    background: linear-gradient(180deg, rgba(20, 142, 153, 0.97) 0%, rgba(13, 108, 116, 0.99) 100%) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    z-index: 999999 !important;
+    box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.28) !important;
+    padding: 0 4px !important;
+    animation: dcBarSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+    overflow: hidden !important;
+  }
+
+  body {
+    padding-bottom: 68px !important;
+  }
+
+  .floating-widgets {
+    display: none !important;
+  }
+
+  /* Elegant Luminous Top Hairline Glow - continuously traveling */
+  .dc-mobile-bottom-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(255, 255, 255, 0.2) 15%, 
+      rgba(255, 225, 140, 1) 50%, 
+      rgba(255, 255, 255, 0.2) 85%, 
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: dcBarTopShimmer 3s linear infinite !important;
+    pointer-events: none;
+    z-index: 10;
+  }
+}
+
+@keyframes dcBarSlideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes dcBarTopShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Individual Bar Items - Clean, Uniform & Interactive */
+.dc-bottom-bar-item {
+  flex: 1;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  cursor: pointer;
+  padding: 6px 2px;
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease !important;
+  -webkit-tap-highlight-color: transparent !important;
+  user-select: none !important;
+  border-radius: 12px;
+  background: transparent !important;
+}
+
+.dc-bottom-bar-item:active {
+  transform: scale(0.88) translateY(2px) !important;
+  background-color: rgba(255, 255, 255, 0.16) !important;
+}
+
+.dc-bottom-bar-item i {
+  display: block;
+  font-size: 1.42rem;
+  margin-bottom: 2px;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.dc-bottom-bar-item:active i {
+  transform: scale(1.2) !important;
+}
+
+.dc-bottom-bar-item span {
+  font-size: 0.8rem !important;
+  font-weight: 500 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-family: 'Open Sans', sans-serif !important;
+  line-height: 1.1 !important;
+  margin-top: 2px !important;
+  white-space: nowrap !important;
+  letter-spacing: 0.2px;
+}
+
+/* 1. Designs Item - Continuous smooth floating wave */
+@keyframes dcDesignsLive {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+  }
+  50% {
+    transform: translateY(-4.5px) scale(1.12);
+    filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.35)) drop-shadow(0 0 6px rgba(255, 255, 255, 0.7));
+  }
+}
+.dc-item-designs i {
+  animation: dcDesignsLive 2.4s ease-in-out infinite !important;
+}
+
+/* 2. Call Now Item - Continuous lively phone ring & pulse */
+@keyframes dcPhoneLive {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+  }
+  12% {
+    transform: rotate(-14deg) scale(1.16);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.85));
+  }
+  24% {
+    transform: rotate(14deg) scale(1.16);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.85));
+  }
+  36% {
+    transform: rotate(-10deg) scale(1.12);
+  }
+  48% {
+    transform: rotate(10deg) scale(1.12);
+  }
+  60% {
+    transform: rotate(0deg) scale(1.04);
+  }
+  78% {
+    transform: scale(1.1) translateY(-2px);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  }
+}
+.dc-item-call i {
+  animation: dcPhoneLive 2.3s ease-in-out infinite !important;
+}
+
+/* 3. Get Free Quote - Lively heartbeat & checkmark bounce */
+@keyframes dcQuoteLive {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+  }
+  25% {
+    transform: translateY(-4px) scale(1.18) rotate(-4deg);
+    filter: drop-shadow(0 0 10px rgba(255, 230, 150, 0.95)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  }
+  50% {
+    transform: translateY(0) scale(1.04) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-2px) scale(1.1) rotate(3deg);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.85));
+  }
+}
+.dc-item-quote i {
+  animation: dcQuoteLive 2.1s ease-in-out infinite !important;
+}
+
+/* 4. WhatsApp Item - Continuous heartbeat pulse & glowing halo */
+@keyframes dcWhatsAppLive {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+  }
+  30% {
+    transform: scale(1.22) translateY(-2.5px);
+    filter: drop-shadow(0 0 12px rgba(37, 211, 102, 0.95)) drop-shadow(0 0 6px #ffffff);
+  }
+  60% {
+    transform: scale(1.06) translateY(0);
+    filter: drop-shadow(0 0 6px rgba(37, 211, 102, 0.65));
+  }
+  80% {
+    transform: scale(1.12);
+    filter: drop-shadow(0 0 9px rgba(37, 211, 102, 0.85));
+  }
+}
+.dc-item-whatsapp i {
+  animation: dcWhatsAppLive 2.3s ease-in-out infinite !important;
+}
+
+/* Force bottom navigation bar white colors and SVG properties globally */
+.dc-mobile-bottom-bar,
+.dc-mobile-bottom-bar *,
+.dc-mobile-bottom-bar svg,
+.dc-mobile-bottom-bar svg *,
+.dc-mobile-bottom-bar span,
+.dc-mobile-bottom-bar a,
+.dc-mobile-bottom-bar a * {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+.dc-mobile-bottom-bar svg {
+  fill: none !important;
+}
       body.lightbox-open .dc-mobile-bottom-bar,
       body.lightbox-open #dcMobileBottomBar,
       body.gallery-modal-open .dc-mobile-bottom-bar,
@@ -651,7 +867,6 @@ const isDev = import.meta.env.DEV;
         opacity: 0 !important;
         pointer-events: none !important;
       }
-    }
     @media (max-width: 767px) {
       #homeDesignGrid {
         display: flex !important;
@@ -737,6 +952,25 @@ const isDev = import.meta.env.DEV;
   )}
   
   <Header />
+  <script is:inline>
+    (function() {
+      function syncNavHeight() {
+        var nav = document.querySelector('.navbar');
+        if (nav) {
+          var h = nav.getBoundingClientRect().height;
+          if (h > 0) {
+            document.documentElement.style.setProperty('--nav-height', Math.round(h) + 'px');
+          }
+        }
+      }
+      syncNavHeight();
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', syncNavHeight);
+      }
+      window.addEventListener('load', syncNavHeight);
+      window.addEventListener('resize', syncNavHeight);
+    })();
+  </script>
   
   <main>
     <slot />
@@ -1179,7 +1413,7 @@ const isDev = import.meta.env.DEV;
       }
 
             // Full dataset of all completed project handover photos from the gallery
-      const ALL_GALLERY_PHOTOS = [{"src":"/assets/images/modular-kitchen-koparkhairne-siddhivinayak-interior.webp","caption":"Premium Acrylic Modular Kitchen Handover - Koparkhairane"},{"src":"/assets/images/living-room-interior-designer-koparkhairne.webp","caption":"Luxury Living Room - Customized TV Panels & Backlighting"},{"src":"/assets/images/turnkey-residential-interior-navi-mumbai.webp","caption":"Master Bedroom - Warm Veneered Backing & Bed Headboard"},{"src":"/assets/images/modern-false-ceiling-design-koparkhairne.webp","caption":"Gypsum False Ceiling - Linear Track Lighting & Cove Details"},{"src":"/assets/images/IMG_0804.webp","caption":"Luxury 4 BHK Duplex Handover - Palm Beach Road, Sanpada"},{"src":"/assets/images/images (3).webp","caption":"Couture Living Concept - Seawoods Grand Central"},{"src":"/assets/images/luxury-home-interior-designer-vashi (1).webp","caption":"Project Titan - Urban Minimalist Living Room, Sanpada"},{"src":"/assets/images/commercial-office-space-designer-navi-mumbai.webp","caption":"Bespoke Executive Office Cabin & Workstations"},{"src":"/assets/images/img/hall-interior-design-navi-mumbai.webp","caption":"Modern Living Room Hall Layout with Custom TV Unit & Accent Lighting"},{"src":"/assets/images/img/hallmark-vicinia-modern-dining-area-navi-mumbai.webp","caption":"Modern Dining Area & Buffet Cabinetry - Hallmark Vicinia Project"},{"src":"/assets/images/img/narsingi-cozy-bedroom-design-navi-mumbai.webp","caption":"Cozy Master Bedroom with Premium Headboard & Modern Lighting"},{"src":"/assets/images/img/villa-kids-room-storage-study-navi-mumbai.webp","caption":"Villa Kids Room - Dedicated Study Corner and Built-in Storage Cabinets"},{"src":"/assets/images/img/villa-modular-parallel-kitchen-navi-mumbai.webp","caption":"Luxury Parallel Kitchen Layout with Quartz Countertops & Modular Pantry"},{"src":"/assets/images/img/villa-workspace-navi-mumbai.webp","caption":"Dedicated Home Office Workspace with Premium Floating Desk & Book Cabinetry"},{"src":"/assets/images/kitchen.webp","caption":"Modern Charcoal & Gold Modular Kitchen"},{"src":"/assets/images/kitchen2.webp","caption":"Bespoke Parallel Modular Kitchen - Elegant Veneer Cabinetry"},{"src":"/assets/images/2026-04-11 (1).webp","caption":"Grand Living Room - Warm Cove LED Ceiling & Gold Trim Wall Paneling"},{"src":"/assets/images/2026-04-11 (2).webp","caption":"Master Bedroom - Custom Navy Headboard & Warm Pendant Lights"},{"src":"/assets/images/2026-04-11 (11).webp","caption":"Gypsum False Ceiling - Dual Layer Cove Lighting & Spotlights"},{"src":"/assets/images/2026-04-11 (13).webp","caption":"Modern Parallel Modular Kitchen - CBD Belapur Site"},{"src":"/assets/images/2026-04-11 (18).webp","caption":"Luxury Bedroom - Space-saving Sliding Wardrobe Layout"},{"src":"/assets/images/2026-04-11 (19).webp","caption":"Siddhivinayak Designers Real Project - Premium Living Room Remodeling, Kopar Khairane"},{"src":"/assets/images/2026-04-11 (21).webp","caption":"Ambient Lighting & False Ceiling Gypsum Detailing"},{"src":"/assets/images/2026-04-11 (17).webp","caption":"Custom High-Gloss Modular Kitchen Pantry Cabinetry"},{"src":"/assets/images/2026-04-11 (10).webp","caption":"Luxury Lounge Area - Custom Velvet Sofas & Gold Inlays"},{"src":"/assets/images/2026-04-11 (12).webp","caption":"Bespoke Bedroom Suite - Velvet Tufted Headboard & Ambient Cove Light"},{"src":"/assets/images/2026-04-11 (14).webp","caption":"Parallel Modular Kitchen - Quartz Countertop & Glass Overhead Cabinets"},{"src":"/assets/images/2026-04-11 (15).webp","caption":"Dining Space Design - Marble Top Dining Table & Custom Wooden Paneling"},{"src":"/assets/images/2026-04-11 (16).webp","caption":"Kids Room - Integrated Study Table & Sliding Wardrobe"},{"src":"/assets/images/2026-04-11 (20).webp","caption":"Modern Gypsum Board False Ceiling with Profile Lighting"},{"src":"/assets/images/2026-04-11 (22).webp","caption":"Premium Louvered Timber Wall Panels with Backlit Mirror"},{"src":"/assets/images/2026-04-11 (3).webp","caption":"Contemporary Living Lounge - Custom L-Shape Sofa & Accent Armchairs"},{"src":"/assets/images/2026-04-11 (4).webp","caption":"Master Bedroom - Sliding Mirror Wardrobe & Dressing Unit"},{"src":"/assets/images/2026-04-11 (5).webp","caption":"Elegant Dining Layout - Custom Chairs & Pendant Chandelier"},{"src":"/assets/images/2026-04-11 (6).webp","caption":"Bespoke Floating TV Console - Matte Charcoal & Gold Trim"},{"src":"/assets/images/2026-04-11 (7).webp","caption":"Guest Bedroom Layout - Integrated Hydraulic Bed & Side Tables"},{"src":"/assets/images/2026-04-11 (8).webp","caption":"Intricate Gypsum Ceiling Detailing with Warm LED Stripes"},{"src":"/assets/images/2026-04-11 (9).webp","caption":"Foyer Entrance Design - Console Table & Custom Wall Mirror"},{"src":"/assets/images/2026-04-11.webp","caption":"Grand Living Room - Cove LED Ceilings & Gold Trim Paneling"},{"src":"/assets/images/best-modular-tv-unit-design-vashi.webp","caption":"Custom Floating TV Unit - Integrated Shelves & Backlit Panel"},{"src":"/assets/images/hero_bg.webp","caption":"Bespoke Residential Architecture Concept"},{"src":"/assets/images/living-room-interior-designers-in-pune-mob.webp","caption":"Contemporary Open Concept Living Layout"},{"src":"/assets/images/luxury-home-interior-designer-vashi.webp","caption":"High-end Living Room Design - Marble Flooring & Veneer Panel"},{"src":"/assets/images/modern-living-room-interior-design-vashi.webp","caption":"Sleek Modern Lounge Setup with Ambient Valance Lighting"},{"src":"/assets/images/modern-4bhk-penthouse/1.webp","caption":"Modern 4 BHK Penthouse Kharghar - Living Room Entryway"},{"src":"/assets/images/modern-4bhk-penthouse/2.webp","caption":"Modern 4 BHK Penthouse Kharghar - Premium Living Area Lounge"},{"src":"/assets/images/modern-4bhk-penthouse/3.webp","caption":"Modern 4 BHK Penthouse Kharghar - High-End Accent TV Unit Wall"},{"src":"/assets/images/modern-4bhk-penthouse/4.webp","caption":"Modern 4 BHK Penthouse Kharghar - Master Bedroom Suite Setup"},{"src":"/assets/images/modern-4bhk-penthouse/5.webp","caption":"Modern 4 BHK Penthouse Kharghar - False Ceiling & Profile Lighting Detail"},{"src":"/assets/images/modern-4bhk-penthouse/6.webp","caption":"Modern 4 BHK Penthouse Kharghar - Luxury Dining Area Set with Wooden Details"},{"src":"/assets/images/modern-4bhk-penthouse/7.webp","caption":"Modern 4 BHK Penthouse Kharghar - Custom Walk-in Wardrobe Space"},{"src":"/assets/images/modern-4bhk-penthouse/8.webp","caption":"Modern 4 BHK Penthouse Kharghar - Secondary Guest Bedroom Layout"},{"src":"/assets/images/modern-4bhk-penthouse/9.webp","caption":"Modern 4 BHK Penthouse Kharghar - Modular Kitchen L-Shape Cabinetry"},{"src":"/assets/images/modern-4bhk-penthouse/10.webp","caption":"Modern 4 BHK Penthouse Kharghar - Modular Kitchen Storage Drawers Detail"},{"src":"/assets/images/modern-4bhk-penthouse/11.webp","caption":"Modern 4 BHK Penthouse Kharghar - Kids Bedroom Colorful Setup"},{"src":"/assets/images/modern-4bhk-penthouse/12.webp","caption":"Modern 4 BHK Penthouse Kharghar - Premium Pooja Room Wood Finish Jaali"},{"src":"/assets/images/modern-4bhk-penthouse/13.webp","caption":"Modern 4 BHK Penthouse Kharghar - Balcony Cane Lamps Lighting Detail"},{"src":"/assets/images/modern-4bhk-penthouse/14.webp","caption":"Modern 4 BHK Penthouse Kharghar - Bathroom Hanging Lights Vanity"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img1.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Elegant Living Room Entrance"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img2.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Cozy Living Lounge Seating"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img3.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Custom TV Console Wall Design"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img4.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - False Ceiling Profile Lights"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img5.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Contemporary Dining Layout"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img6.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Dining Area Cabinetry Setup"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img7.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Master Bedroom Bed Backrest Wall"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img8.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Master Bedroom Wardrobe Setup"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img9.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Kids Bedroom Vibrant Play Zone"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img10.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Modern Kitchen Modular Cabinetry"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img11.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Kitchen Chimney Hub Layout"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img12.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Traditional Pooja Room Wood Mandir"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img13.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Balcony Outdoor Sitout Deck"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img14.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Bathroom Glass Partition Vanity"},{"src":"/assets/images/elegant-2bhk-flat-vashi/img1.webp","caption":"Elegant 2 BHK Flat Vashi - Living Room Entrance"},{"src":"/assets/images/elegant-2bhk-flat-vashi/img2.webp","caption":"Elegant 2 BHK Flat Vashi - Living Room Sofa Seating"},{"src":"/assets/images/elegant-2bhk-flat-vashi/img3.webp","caption":"Elegant 2 BHK Flat Vashi - TV Unit Wall Panel"},{"src":"/assets/images/elegant-2bhk-flat-vashi/img4.webp","caption":"Elegant 2 BHK Flat Vashi - False Ceiling & Chandelier"},{"src":"/assets/images/elegant-2bhk-flat-vashi/img5.webp","caption":"Elegant 2 BHK Flat Vashi - Compact Dining Area"},{"src":"/assets/images/elegant-2bhk-flat-vashi/img6.webp","caption":"Elegant 2 BHK Flat Vashi - Master Bedroom Setup"},{"src":"/assets/images/elegant-2bhk-flat-vashi/img7.webp","caption":"Elegant 2 BHK Flat Vashi - Master Bedroom Sliding Wardrobe"},{"src":"/assets/images/elegant-2bhk-flat-vashi/img8.webp","caption":"Elegant 2 BHK Flat Vashi - Kids Bedroom Study Unit"},{"src":"/assets/images/elegant-2bhk-flat-vashi/img9.webp","caption":"Elegant 2 BHK Flat Vashi - Modular Kitchen Layout"},{"src":"/assets/images/elegant-2bhk-flat-vashi/img10.webp","caption":"Elegant 2 BHK Flat Vashi - Kitchen Cabinet Storage"},{"src":"/assets/images/elegant-2bhk-flat-vashi/img11.webp","caption":"Elegant 2 BHK Flat Vashi - Compact Pooja Mandir"},{"src":"/assets/images/elegant-2bhk-flat-vashi/img12.webp","caption":"Elegant 2 BHK Flat Vashi - Modern Bathroom Vanity"},{"src":"/assets/images/contemporary-3bhk-house-belapur/img1.webp","caption":"Contemporary 3 BHK House Belapur - Living Lounge Entrance"},{"src":"/assets/images/contemporary-3bhk-house-belapur/img2.webp","caption":"Contemporary 3 BHK House Belapur - Living Room Seating Accent"},{"src":"/assets/images/contemporary-3bhk-house-belapur/img3.webp","caption":"Contemporary 3 BHK House Belapur - Premium Wooden Panel Wall"},{"src":"/assets/images/contemporary-3bhk-house-belapur/img4.webp","caption":"Contemporary 3 BHK House Belapur - Bedroom Study Desk"},{"src":"/assets/images/contemporary-3bhk-house-belapur/img5.webp","caption":"Contemporary 3 BHK House Belapur - Master Bed Area Setup"},{"src":"/assets/images/contemporary-3bhk-house-belapur/img6.webp","caption":"Contemporary 3 BHK House Belapur - False Ceiling Profile Lights"},{"src":"/assets/images/contemporary-3bhk-flat-kopar-khairane/img1.webp","caption":"Contemporary 3 BHK Flat Kopar Khairane - Living Room Seating Area"},{"src":"/assets/images/contemporary-3bhk-flat-kopar-khairane/img2.webp","caption":"Contemporary 3 BHK Flat Kopar Khairane - Living Room TV Console Wall"},{"src":"/assets/images/contemporary-3bhk-flat-kopar-khairane/img3.webp","caption":"Contemporary 3 BHK Flat Kopar Khairane - Elegant False Ceiling & Lighting"},{"src":"/assets/images/contemporary-3bhk-flat-kopar-khairane/img4.webp","caption":"Contemporary 3 BHK Flat Kopar Khairane - Modern Dining Table Setup"},{"src":"/assets/images/contemporary-3bhk-flat-kopar-khairane/img5.webp","caption":"Contemporary 3 BHK Flat Kopar Khairane - Dining Corner Showcase Cabinetry"},{"src":"/assets/images/contemporary-3bhk-flat-kopar-khairane/img6.webp","caption":"Contemporary 3 BHK Flat Kopar Khairane - Master Bed Accent Wall Design"},{"src":"/assets/images/contemporary-3bhk-flat-kopar-khairane/img7.webp","caption":"Contemporary 3 BHK Flat Kopar Khairane - Master Bedroom Customized Wardrobes"},{"src":"/assets/images/contemporary-3bhk-flat-kopar-khairane/img8.webp","caption":"Contemporary 3 BHK Flat Kopar Khairane - Kids Room Study & Play Station"},{"src":"/assets/images/contemporary-3bhk-flat-kopar-khairane/img9.webp","caption":"Contemporary 3 BHK Flat Kopar Khairane - High-End Modular Kitchen Layout"},{"src":"/assets/images/rustic-3bhk-home-nerul/img1.webp","caption":"Rustic 3 BHK Home Nerul - Warm Living Room Entrance"},{"src":"/assets/images/rustic-3bhk-home-nerul/img2.webp","caption":"Rustic 3 BHK Home Nerul - Cozy Wooden Panel Sofa Seating"},{"src":"/assets/images/rustic-3bhk-home-nerul/img3.webp","caption":"Rustic 3 BHK Home Nerul - Classic TV Cabinet Design"},{"src":"/assets/images/rustic-3bhk-home-nerul/img4.webp","caption":"Rustic 3 BHK Home Nerul - Wooden Accent Ceiling Detail"},{"src":"/assets/images/rustic-3bhk-home-nerul/img5.webp","caption":"Rustic 3 BHK Home Nerul - Traditional Dining Table Layout"},{"src":"/assets/images/rustic-3bhk-home-nerul/img6.webp","caption":"Rustic 3 BHK Home Nerul - Dining Room Storage & Crockery Unit"},{"src":"/assets/images/rustic-3bhk-home-nerul/img7.webp","caption":"Rustic 3 BHK Home Nerul - Master Bedroom Wooden Headboard"},{"src":"/assets/images/rustic-3bhk-home-nerul/img8.webp","caption":"Rustic 3 BHK Home Nerul - Master Bedroom Wardrobes Setup"},{"src":"/assets/images/rustic-3bhk-home-nerul/img9.webp","caption":"Rustic 3 BHK Home Nerul - Children Bedroom Study Desk"},{"src":"/assets/images/rustic-3bhk-home-nerul/img10.webp","caption":"Rustic 3 BHK Home Nerul - Country Style Modular Kitchen"},{"src":"/assets/images/rustic-3bhk-home-nerul/img11.webp","caption":"Rustic 3 BHK Home Nerul - Kitchen Storage Cabinet Overhead"},{"src":"/assets/images/rustic-3bhk-home-nerul/img12.webp","caption":"Rustic 3 BHK Home Nerul - Intricate Wooden Pooja Room Mandir"},{"src":"/assets/images/rustic-3bhk-home-nerul/img13.webp","caption":"Rustic 3 BHK Home Nerul - Balcony Seating Area Lounge"},{"src":"/assets/images/rustic-3bhk-home-nerul/img14.webp","caption":"Rustic 3 BHK Home Nerul - Elegant Bathroom Vanity & Vanity Mirror"},{"src":"/assets/images/delivered-projects/kharghar-3bhk/1.webp","caption":"Kharghar 3BHK - L-shaped Modular Kitchen"},{"src":"/assets/images/delivered-projects/kharghar-3bhk/2.webp","caption":"Kharghar 3BHK - Entrance Lobby"},{"src":"/assets/images/delivered-projects/kharghar-3bhk/3.webp","caption":"Kharghar 3BHK - Wall Paneling"},{"src":"/assets/images/delivered-projects/kharghar-3bhk/4.webp","caption":"Kharghar 3BHK - Sliding Wardrobe"},{"src":"/assets/images/delivered-projects/kharghar-3bhk/5.webp","caption":"Kharghar 3BHK - Bedrooms Layout"},{"src":"/assets/images/delivered-projects/kharghar-3bhk/6.webp","caption":"Kharghar 3BHK - White Wall Cabinet"},{"src":"/assets/images/delivered-projects/seawoods-2bhk/1.webp","caption":"Seawoods 2BHK - Entrance Foyer layout"},{"src":"/assets/images/delivered-projects/seawoods-2bhk/2.webp","caption":"Seawoods 2BHK - Living Room Space Overview"},{"src":"/assets/images/delivered-projects/seawoods-2bhk/3.webp","caption":"Seawoods 2BHK - Dining Space detailing"},{"src":"/assets/images/delivered-projects/seawoods-2bhk/4.webp","caption":"Seawoods 2BHK - Living Area Side profile console"},{"src":"/assets/images/delivered-projects/seawoods-2bhk/5.webp","caption":"Seawoods 2BHK - Dining Table view"},{"src":"/assets/images/delivered-projects/seawoods-2bhk/6.webp","caption":"Seawoods 2BHK - Modular Parallel Kitchen"},{"src":"/assets/images/delivered-projects/seawoods-2bhk/7.webp","caption":"Seawoods 2BHK - Master Suite"},{"src":"/assets/images/delivered-projects/seawoods-2bhk/8.webp","caption":"Seawoods 2BHK - Master suite sliding wardrobe"},{"src":"/assets/images/delivered-projects/seawoods-2bhk/9.webp","caption":"Seawoods 2BHK - Kid Room swing wardrobe"},{"src":"/assets/images/delivered-projects/seawoods-2bhk/10.webp","caption":"Seawoods 2BHK - Kids Bedroom layout"},{"src":"/assets/images/delivered-projects/sanpada-4bhk/1.webp","caption":"Sanpada 4BHK - Living Room Space Overview"},{"src":"/assets/images/delivered-projects/sanpada-4bhk/2.webp","caption":"Sanpada 4BHK - Dining Area Detail View"},{"src":"/assets/images/delivered-projects/sanpada-4bhk/3.webp","caption":"Sanpada 4BHK - Dining Room Table Layout"},{"src":"/assets/images/delivered-projects/sanpada-4bhk/4.webp","caption":"Sanpada 4BHK - Modular Kitchen Parallel Design"},{"src":"/assets/images/delivered-projects/sanpada-4bhk/5.webp","caption":"Sanpada 4BHK - Beige Sliding Wardrobe"},{"src":"/assets/images/delivered-projects/sanpada-4bhk/6.webp","caption":"Sanpada 4BHK - Tranquil Master Suite"},{"src":"/assets/images/delivered-projects/sanpada-4bhk/7.webp","caption":"Sanpada 4BHK - Master Bedroom Side profile"},{"src":"/assets/images/delivered-projects/sanpada-4bhk/8.webp","caption":"Sanpada 4BHK - Master suite brown bed & wall detailing"},{"src":"/assets/images/delivered-projects/sanpada-4bhk/9.webp","caption":"Sanpada 4BHK - Study console & custom cabinetry"},{"src":"/assets/images/delivered-projects/ghansoli-4bhk/1.webp","caption":"Ghansoli 4BHK - Foyer Space Overview"},{"src":"/assets/images/delivered-projects/ghansoli-4bhk/2.webp","caption":"Ghansoli 4BHK - Living Room Angle 1"},{"src":"/assets/images/delivered-projects/ghansoli-4bhk/3.webp","caption":"Ghansoli 4BHK - Dining Room space"},{"src":"/assets/images/delivered-projects/ghansoli-4bhk/4.webp","caption":"Ghansoli 4BHK - Master Bedroom overview"},{"src":"/assets/images/delivered-projects/ghansoli-4bhk/5.webp","caption":"Ghansoli 4BHK - Master suite study desk"},{"src":"/assets/images/delivered-projects/ghansoli-4bhk/6.webp","caption":"Ghansoli 4BHK - Kids Bedroom wardrobe unit"},{"src":"/assets/images/delivered-projects/ghansoli-4bhk/7.webp","caption":"Ghansoli 4BHK - Kids Bedroom play desk"},{"src":"/assets/images/delivered-projects/ghansoli-4bhk/8.webp","caption":"Ghansoli 4BHK - Guest Bedroom custom layout"},{"src":"/assets/images/delivered-projects/ghansoli-4bhk/9.webp","caption":"Ghansoli 4BHK - Living Room detailed console"},{"src":"/assets/images/delivered-projects/ghansoli-4bhk/10.webp","caption":"Ghansoli 4BHK - Foyer details close-up"},{"src":"/assets/images/delivered-projects/belapur-2bhk-parallel/1.webp","caption":"Belapur 2BHK - Living Room Space Overview"},{"src":"/assets/images/delivered-projects/belapur-2bhk-parallel/2.webp","caption":"Belapur 2BHK - Living Room TV Unit Details"},{"src":"/assets/images/delivered-projects/belapur-2bhk-parallel/3.webp","caption":"Belapur 2BHK - Dining Space Layout"},{"src":"/assets/images/delivered-projects/belapur-2bhk-parallel/4.webp","caption":"Belapur 2BHK - Modern Parallel Kitchen Setup"},{"src":"/assets/images/delivered-projects/belapur-2bhk-parallel/5.webp","caption":"Belapur 2BHK - Kitchen Cabinet Overhead details"},{"src":"/assets/images/delivered-projects/belapur-2bhk-parallel/6.webp","caption":"Belapur 2BHK - Elegant Master Bedroom"},{"src":"/assets/images/delivered-projects/belapur-2bhk-parallel/7.webp","caption":"Belapur 2BHK - Master Bedroom Wardrobes"},{"src":"/assets/images/delivered-projects/belapur-2bhk-parallel/8.webp","caption":"Belapur 2BHK - Kid Room bed styling"},{"src":"/assets/images/delivered-projects/belapur-2bhk-parallel/9.webp","caption":"Belapur 2BHK - Kid Room detailed study unit"},{"src":"/assets/images/delivered-projects/belapur-2bhk-parallel/10.webp","caption":"Belapur 2BHK - Kids Bedroom storage cabinetry"},{"src":"/assets/images/delivered-projects/nerul-3bhk-u-shaped/1.webp","caption":"Nerul 3BHK - Kitchen U-shaped layout"},{"src":"/assets/images/delivered-projects/nerul-3bhk-u-shaped/2.webp","caption":"Nerul 3BHK - Living Room wall paneling overview"},{"src":"/assets/images/delivered-projects/nerul-3bhk-u-shaped/3.webp","caption":"Nerul 3BHK - Living Room detailed view"},{"src":"/assets/images/delivered-projects/nerul-3bhk-u-shaped/4.webp","caption":"Nerul 3BHK - Living Room side profile console"},{"src":"/assets/images/delivered-projects/nerul-3bhk-u-shaped/5.webp","caption":"Nerul 3BHK - Living Room space layout"},{"src":"/assets/images/delivered-projects/nerul-3bhk-u-shaped/6.webp","caption":"Nerul 3BHK - Cozy Master Bedroom"},{"src":"/assets/images/siddhivinayak-designers-vashi.webp","caption":"Custom Living Room Woodwork Handover in Vashi"}];
+      const ALL_GALLERY_PHOTOS = [{"src":"/assets/images/siddhivinayak-designers-vashi.webp","caption":"Custom Living Room Woodwork Handover in Vashi"},{"src":"/assets/images/delivered-projects/nerul-3bhk-u-shaped/6.webp","caption":"Nerul 3BHK - Cozy Master Bedroom"},{"src":"/assets/images/delivered-projects/nerul-3bhk-u-shaped/5.webp","caption":"Nerul 3BHK - Living Room space layout"},{"src":"/assets/images/delivered-projects/nerul-3bhk-u-shaped/4.webp","caption":"Nerul 3BHK - Living Room side profile console"},{"src":"/assets/images/delivered-projects/nerul-3bhk-u-shaped/3.webp","caption":"Nerul 3BHK - Living Room detailed view"},{"src":"/assets/images/delivered-projects/nerul-3bhk-u-shaped/2.webp","caption":"Nerul 3BHK - Living Room wall paneling overview"},{"src":"/assets/images/delivered-projects/nerul-3bhk-u-shaped/1.webp","caption":"Nerul 3BHK - Kitchen U-shaped layout"},{"src":"/assets/images/delivered-projects/belapur-2bhk-parallel/10.webp","caption":"Belapur 2BHK - Kids Bedroom storage cabinetry"},{"src":"/assets/images/delivered-projects/belapur-2bhk-parallel/9.webp","caption":"Belapur 2BHK - Kid Room detailed study unit"},{"src":"/assets/images/delivered-projects/belapur-2bhk-parallel/8.webp","caption":"Belapur 2BHK - Kid Room bed styling"},{"src":"/assets/images/delivered-projects/belapur-2bhk-parallel/7.webp","caption":"Belapur 2BHK - Master Bedroom Wardrobes"},{"src":"/assets/images/delivered-projects/belapur-2bhk-parallel/6.webp","caption":"Belapur 2BHK - Elegant Master Bedroom"},{"src":"/assets/images/delivered-projects/belapur-2bhk-parallel/5.webp","caption":"Belapur 2BHK - Kitchen Cabinet Overhead details"},{"src":"/assets/images/delivered-projects/belapur-2bhk-parallel/4.webp","caption":"Belapur 2BHK - Modern Parallel Kitchen Setup"},{"src":"/assets/images/delivered-projects/belapur-2bhk-parallel/3.webp","caption":"Belapur 2BHK - Dining Space Layout"},{"src":"/assets/images/delivered-projects/belapur-2bhk-parallel/2.webp","caption":"Belapur 2BHK - Living Room TV Unit Details"},{"src":"/assets/images/delivered-projects/belapur-2bhk-parallel/1.webp","caption":"Belapur 2BHK - Living Room Space Overview"},{"src":"/assets/images/delivered-projects/ghansoli-4bhk/10.webp","caption":"Ghansoli 4BHK - Foyer details close-up"},{"src":"/assets/images/delivered-projects/ghansoli-4bhk/9.webp","caption":"Ghansoli 4BHK - Living Room detailed console"},{"src":"/assets/images/delivered-projects/ghansoli-4bhk/8.webp","caption":"Ghansoli 4BHK - Guest Bedroom custom layout"},{"src":"/assets/images/delivered-projects/ghansoli-4bhk/7.webp","caption":"Ghansoli 4BHK - Kids Bedroom play desk"},{"src":"/assets/images/delivered-projects/ghansoli-4bhk/6.webp","caption":"Ghansoli 4BHK - Kids Bedroom wardrobe unit"},{"src":"/assets/images/delivered-projects/ghansoli-4bhk/5.webp","caption":"Ghansoli 4BHK - Master suite study desk"},{"src":"/assets/images/delivered-projects/ghansoli-4bhk/4.webp","caption":"Ghansoli 4BHK - Master Bedroom overview"},{"src":"/assets/images/delivered-projects/ghansoli-4bhk/3.webp","caption":"Ghansoli 4BHK - Dining Room space"},{"src":"/assets/images/delivered-projects/ghansoli-4bhk/2.webp","caption":"Ghansoli 4BHK - Living Room Angle 1"},{"src":"/assets/images/delivered-projects/ghansoli-4bhk/1.webp","caption":"Ghansoli 4BHK - Foyer Space Overview"},{"src":"/assets/images/delivered-projects/sanpada-4bhk/9.webp","caption":"Sanpada 4BHK - Study console & custom cabinetry"},{"src":"/assets/images/delivered-projects/sanpada-4bhk/8.webp","caption":"Sanpada 4BHK - Master suite brown bed & wall detailing"},{"src":"/assets/images/delivered-projects/sanpada-4bhk/7.webp","caption":"Sanpada 4BHK - Master Bedroom Side profile"},{"src":"/assets/images/delivered-projects/sanpada-4bhk/6.webp","caption":"Sanpada 4BHK - Tranquil Master Suite"},{"src":"/assets/images/delivered-projects/sanpada-4bhk/5.webp","caption":"Sanpada 4BHK - Beige Sliding Wardrobe"},{"src":"/assets/images/delivered-projects/sanpada-4bhk/4.webp","caption":"Sanpada 4BHK - Modular Kitchen Parallel Design"},{"src":"/assets/images/delivered-projects/sanpada-4bhk/3.webp","caption":"Sanpada 4BHK - Dining Room Table Layout"},{"src":"/assets/images/delivered-projects/sanpada-4bhk/2.webp","caption":"Sanpada 4BHK - Dining Area Detail View"},{"src":"/assets/images/delivered-projects/sanpada-4bhk/1.webp","caption":"Sanpada 4BHK - Living Room Space Overview"},{"src":"/assets/images/delivered-projects/seawoods-2bhk/10.webp","caption":"Seawoods 2BHK - Kids Bedroom layout"},{"src":"/assets/images/delivered-projects/seawoods-2bhk/9.webp","caption":"Seawoods 2BHK - Kid Room swing wardrobe"},{"src":"/assets/images/delivered-projects/seawoods-2bhk/8.webp","caption":"Seawoods 2BHK - Master suite sliding wardrobe"},{"src":"/assets/images/delivered-projects/seawoods-2bhk/7.webp","caption":"Seawoods 2BHK - Master Suite"},{"src":"/assets/images/delivered-projects/seawoods-2bhk/6.webp","caption":"Seawoods 2BHK - Modular Parallel Kitchen"},{"src":"/assets/images/delivered-projects/seawoods-2bhk/5.webp","caption":"Seawoods 2BHK - Dining Table view"},{"src":"/assets/images/delivered-projects/seawoods-2bhk/4.webp","caption":"Seawoods 2BHK - Living Area Side profile console"},{"src":"/assets/images/delivered-projects/seawoods-2bhk/3.webp","caption":"Seawoods 2BHK - Dining Space detailing"},{"src":"/assets/images/delivered-projects/seawoods-2bhk/2.webp","caption":"Seawoods 2BHK - Living Room Space Overview"},{"src":"/assets/images/delivered-projects/seawoods-2bhk/1.webp","caption":"Seawoods 2BHK - Entrance Foyer layout"},{"src":"/assets/images/delivered-projects/kharghar-3bhk/6.webp","caption":"Kharghar 3BHK - White Wall Cabinet"},{"src":"/assets/images/delivered-projects/kharghar-3bhk/5.webp","caption":"Kharghar 3BHK - Bedrooms Layout"},{"src":"/assets/images/delivered-projects/kharghar-3bhk/4.webp","caption":"Kharghar 3BHK - Sliding Wardrobe"},{"src":"/assets/images/delivered-projects/kharghar-3bhk/3.webp","caption":"Kharghar 3BHK - Wall Paneling"},{"src":"/assets/images/delivered-projects/kharghar-3bhk/2.webp","caption":"Kharghar 3BHK - Entrance Lobby"},{"src":"/assets/images/delivered-projects/kharghar-3bhk/1.webp","caption":"Kharghar 3BHK - L-shaped Modular Kitchen"},{"src":"/assets/images/rustic-3bhk-home-nerul/img14.webp","caption":"Rustic 3 BHK Home Nerul - Elegant Bathroom Vanity & Vanity Mirror"},{"src":"/assets/images/rustic-3bhk-home-nerul/img13.webp","caption":"Rustic 3 BHK Home Nerul - Balcony Seating Area Lounge"},{"src":"/assets/images/rustic-3bhk-home-nerul/img12.webp","caption":"Rustic 3 BHK Home Nerul - Intricate Wooden Pooja Room Mandir"},{"src":"/assets/images/rustic-3bhk-home-nerul/img11.webp","caption":"Rustic 3 BHK Home Nerul - Kitchen Storage Cabinet Overhead"},{"src":"/assets/images/rustic-3bhk-home-nerul/img10.webp","caption":"Rustic 3 BHK Home Nerul - Country Style Modular Kitchen"},{"src":"/assets/images/rustic-3bhk-home-nerul/img9.webp","caption":"Rustic 3 BHK Home Nerul - Children Bedroom Study Desk"},{"src":"/assets/images/rustic-3bhk-home-nerul/img8.webp","caption":"Rustic 3 BHK Home Nerul - Master Bedroom Wardrobes Setup"},{"src":"/assets/images/rustic-3bhk-home-nerul/img7.webp","caption":"Rustic 3 BHK Home Nerul - Master Bedroom Wooden Headboard"},{"src":"/assets/images/rustic-3bhk-home-nerul/img6.webp","caption":"Rustic 3 BHK Home Nerul - Dining Room Storage & Crockery Unit"},{"src":"/assets/images/rustic-3bhk-home-nerul/img5.webp","caption":"Rustic 3 BHK Home Nerul - Traditional Dining Table Layout"},{"src":"/assets/images/rustic-3bhk-home-nerul/img4.webp","caption":"Rustic 3 BHK Home Nerul - Wooden Accent Ceiling Detail"},{"src":"/assets/images/rustic-3bhk-home-nerul/img3.webp","caption":"Rustic 3 BHK Home Nerul - Classic TV Cabinet Design"},{"src":"/assets/images/rustic-3bhk-home-nerul/img2.webp","caption":"Rustic 3 BHK Home Nerul - Cozy Wooden Panel Sofa Seating"},{"src":"/assets/images/rustic-3bhk-home-nerul/img1.webp","caption":"Rustic 3 BHK Home Nerul - Warm Living Room Entrance"},{"src":"/assets/images/contemporary-3bhk-flat-kopar-khairane/img9.webp","caption":"Contemporary 3 BHK Flat Kopar Khairane - High-End Modular Kitchen Layout"},{"src":"/assets/images/contemporary-3bhk-flat-kopar-khairane/img8.webp","caption":"Contemporary 3 BHK Flat Kopar Khairane - Kids Room Study & Play Station"},{"src":"/assets/images/contemporary-3bhk-flat-kopar-khairane/img7.webp","caption":"Contemporary 3 BHK Flat Kopar Khairane - Master Bedroom Customized Wardrobes"},{"src":"/assets/images/contemporary-3bhk-flat-kopar-khairane/img6.webp","caption":"Contemporary 3 BHK Flat Kopar Khairane - Master Bed Accent Wall Design"},{"src":"/assets/images/contemporary-3bhk-flat-kopar-khairane/img5.webp","caption":"Contemporary 3 BHK Flat Kopar Khairane - Dining Corner Showcase Cabinetry"},{"src":"/assets/images/contemporary-3bhk-flat-kopar-khairane/img4.webp","caption":"Contemporary 3 BHK Flat Kopar Khairane - Modern Dining Table Setup"},{"src":"/assets/images/contemporary-3bhk-flat-kopar-khairane/img3.webp","caption":"Contemporary 3 BHK Flat Kopar Khairane - Elegant False Ceiling & Lighting"},{"src":"/assets/images/contemporary-3bhk-flat-kopar-khairane/img2.webp","caption":"Contemporary 3 BHK Flat Kopar Khairane - Living Room TV Console Wall"},{"src":"/assets/images/contemporary-3bhk-flat-kopar-khairane/img1.webp","caption":"Contemporary 3 BHK Flat Kopar Khairane - Living Room Seating Area"},{"src":"/assets/images/contemporary-3bhk-house-belapur/img6.webp","caption":"Contemporary 3 BHK House Belapur - False Ceiling Profile Lights"},{"src":"/assets/images/contemporary-3bhk-house-belapur/img5.webp","caption":"Contemporary 3 BHK House Belapur - Master Bed Area Setup"},{"src":"/assets/images/contemporary-3bhk-house-belapur/img4.webp","caption":"Contemporary 3 BHK House Belapur - Bedroom Study Desk"},{"src":"/assets/images/contemporary-3bhk-house-belapur/img3.webp","caption":"Contemporary 3 BHK House Belapur - Premium Wooden Panel Wall"},{"src":"/assets/images/contemporary-3bhk-house-belapur/img2.webp","caption":"Contemporary 3 BHK House Belapur - Living Room Seating Accent"},{"src":"/assets/images/contemporary-3bhk-house-belapur/img1.webp","caption":"Contemporary 3 BHK House Belapur - Living Lounge Entrance"},{"src":"/assets/images/elegant-2bhk-flat-vashi/img12.webp","caption":"Elegant 2 BHK Flat Vashi - Modern Bathroom Vanity"},{"src":"/assets/images/elegant-2bhk-flat-vashi/img11.webp","caption":"Elegant 2 BHK Flat Vashi - Compact Pooja Mandir"},{"src":"/assets/images/elegant-2bhk-flat-vashi/img10.webp","caption":"Elegant 2 BHK Flat Vashi - Kitchen Cabinet Storage"},{"src":"/assets/images/elegant-2bhk-flat-vashi/img9.webp","caption":"Elegant 2 BHK Flat Vashi - Modular Kitchen Layout"},{"src":"/assets/images/elegant-2bhk-flat-vashi/img8.webp","caption":"Elegant 2 BHK Flat Vashi - Kids Bedroom Study Unit"},{"src":"/assets/images/elegant-2bhk-flat-vashi/img7.webp","caption":"Elegant 2 BHK Flat Vashi - Master Bedroom Sliding Wardrobe"},{"src":"/assets/images/elegant-2bhk-flat-vashi/img6.webp","caption":"Elegant 2 BHK Flat Vashi - Master Bedroom Setup"},{"src":"/assets/images/elegant-2bhk-flat-vashi/img5.webp","caption":"Elegant 2 BHK Flat Vashi - Compact Dining Area"},{"src":"/assets/images/elegant-2bhk-flat-vashi/img4.webp","caption":"Elegant 2 BHK Flat Vashi - False Ceiling & Chandelier"},{"src":"/assets/images/elegant-2bhk-flat-vashi/img3.webp","caption":"Elegant 2 BHK Flat Vashi - TV Unit Wall Panel"},{"src":"/assets/images/elegant-2bhk-flat-vashi/img2.webp","caption":"Elegant 2 BHK Flat Vashi - Living Room Sofa Seating"},{"src":"/assets/images/elegant-2bhk-flat-vashi/img1.webp","caption":"Elegant 2 BHK Flat Vashi - Living Room Entrance"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img14.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Bathroom Glass Partition Vanity"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img13.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Balcony Outdoor Sitout Deck"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img12.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Traditional Pooja Room Wood Mandir"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img11.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Kitchen Chimney Hub Layout"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img10.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Modern Kitchen Modular Cabinetry"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img9.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Kids Bedroom Vibrant Play Zone"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img8.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Master Bedroom Wardrobe Setup"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img7.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Master Bedroom Bed Backrest Wall"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img6.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Dining Area Cabinetry Setup"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img5.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Contemporary Dining Layout"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img4.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - False Ceiling Profile Lights"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img3.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Custom TV Console Wall Design"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img2.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Cozy Living Lounge Seating"},{"src":"/assets/images/contemporary-4bhk-penthouse-seawoods/img1.webp","caption":"Contemporary 4 BHK Penthouse Seawoods - Elegant Living Room Entrance"},{"src":"/assets/images/modern-4bhk-penthouse/14.webp","caption":"Modern 4 BHK Penthouse Kharghar - Bathroom Hanging Lights Vanity"},{"src":"/assets/images/modern-4bhk-penthouse/13.webp","caption":"Modern 4 BHK Penthouse Kharghar - Balcony Cane Lamps Lighting Detail"},{"src":"/assets/images/modern-4bhk-penthouse/12.webp","caption":"Modern 4 BHK Penthouse Kharghar - Premium Pooja Room Wood Finish Jaali"},{"src":"/assets/images/modern-4bhk-penthouse/11.webp","caption":"Modern 4 BHK Penthouse Kharghar - Kids Bedroom Colorful Setup"},{"src":"/assets/images/modern-4bhk-penthouse/10.webp","caption":"Modern 4 BHK Penthouse Kharghar - Modular Kitchen Storage Drawers Detail"},{"src":"/assets/images/modern-4bhk-penthouse/9.webp","caption":"Modern 4 BHK Penthouse Kharghar - Modular Kitchen L-Shape Cabinetry"},{"src":"/assets/images/modern-4bhk-penthouse/8.webp","caption":"Modern 4 BHK Penthouse Kharghar - Secondary Guest Bedroom Layout"},{"src":"/assets/images/modern-4bhk-penthouse/7.webp","caption":"Modern 4 BHK Penthouse Kharghar - Custom Walk-in Wardrobe Space"},{"src":"/assets/images/modern-4bhk-penthouse/6.webp","caption":"Modern 4 BHK Penthouse Kharghar - Luxury Dining Area Set with Wooden Details"},{"src":"/assets/images/modern-4bhk-penthouse/5.webp","caption":"Modern 4 BHK Penthouse Kharghar - False Ceiling & Profile Lighting Detail"},{"src":"/assets/images/modern-4bhk-penthouse/4.webp","caption":"Modern 4 BHK Penthouse Kharghar - Master Bedroom Suite Setup"},{"src":"/assets/images/modern-4bhk-penthouse/3.webp","caption":"Modern 4 BHK Penthouse Kharghar - High-End Accent TV Unit Wall"},{"src":"/assets/images/modern-4bhk-penthouse/2.webp","caption":"Modern 4 BHK Penthouse Kharghar - Premium Living Area Lounge"},{"src":"/assets/images/modern-4bhk-penthouse/1.webp","caption":"Modern 4 BHK Penthouse Kharghar - Living Room Entryway"},{"src":"/assets/images/luxury-home-interior-designer-vashi.webp","caption":"High-end Living Room Design - Marble Flooring & Veneer Panel"},{"src":"/assets/images/hero_bg.webp","caption":"Bespoke Residential Architecture Concept"},{"src":"/assets/images/best-modular-tv-unit-design-vashi.webp","caption":"Custom Floating TV Unit - Integrated Shelves & Backlit Panel"},{"src":"/assets/images/2026-04-11.webp","caption":"Grand Living Room - Cove LED Ceilings & Gold Trim Paneling"},{"src":"/assets/images/2026-04-11 (9).webp","caption":"Foyer Entrance Design - Console Table & Custom Wall Mirror"},{"src":"/assets/images/2026-04-11 (8).webp","caption":"Intricate Gypsum Ceiling Detailing with Warm LED Stripes"},{"src":"/assets/images/2026-04-11 (7).webp","caption":"Guest Bedroom Layout - Integrated Hydraulic Bed & Side Tables"},{"src":"/assets/images/2026-04-11 (6).webp","caption":"Bespoke Floating TV Console - Matte Charcoal & Gold Trim"},{"src":"/assets/images/2026-04-11 (5).webp","caption":"Elegant Dining Layout - Custom Chairs & Pendant Chandelier"},{"src":"/assets/images/2026-04-11 (3).webp","caption":"Contemporary Living Lounge - Custom L-Shape Sofa & Accent Armchairs"},{"src":"/assets/images/2026-04-11 (22).webp","caption":"Premium Louvered Timber Wall Panels with Backlit Mirror"},{"src":"/assets/images/2026-04-11 (20).webp","caption":"Modern Gypsum Board False Ceiling with Profile Lighting"},{"src":"/assets/images/2026-04-11 (16).webp","caption":"Kids Room - Integrated Study Table & Sliding Wardrobe"},{"src":"/assets/images/2026-04-11 (15).webp","caption":"Dining Space Design - Marble Top Dining Table & Custom Wooden Paneling"},{"src":"/assets/images/2026-04-11 (14).webp","caption":"Parallel Modular Kitchen - Quartz Countertop & Glass Overhead Cabinets"},{"src":"/assets/images/2026-04-11 (12).webp","caption":"Bespoke Bedroom Suite - Velvet Tufted Headboard & Ambient Cove Light"},{"src":"/assets/images/2026-04-11 (10).webp","caption":"Luxury Lounge Area - Custom Velvet Sofas & Gold Inlays"},{"src":"/assets/images/2026-04-11 (17).webp","caption":"Custom High-Gloss Modular Kitchen Pantry Cabinetry"},{"src":"/assets/images/2026-04-11 (21).webp","caption":"Ambient Lighting & False Ceiling Gypsum Detailing"},{"src":"/assets/images/2026-04-11 (19).webp","caption":"Siddhivinayak Designers Real Project - Premium Living Room Remodeling, Kopar Khairane"},{"src":"/assets/images/2026-04-11 (18).webp","caption":"Luxury Bedroom - Space-saving Sliding Wardrobe Layout"},{"src":"/assets/images/2026-04-11 (13).webp","caption":"Modern Parallel Modular Kitchen - CBD Belapur Site"},{"src":"/assets/images/2026-04-11 (11).webp","caption":"Gypsum False Ceiling - Dual Layer Cove Lighting & Spotlights"},{"src":"/assets/images/2026-04-11 (2).webp","caption":"Master Bedroom - Custom Navy Headboard & Warm Pendant Lights"},{"src":"/assets/images/2026-04-11 (1).webp","caption":"Grand Living Room - Warm Cove LED Ceiling & Gold Trim Wall Paneling"},{"src":"/assets/images/kitchen2.webp","caption":"Bespoke Parallel Modular Kitchen - Elegant Veneer Cabinetry"},{"src":"/assets/images/kitchen.webp","caption":"Modern Charcoal & Gold Modular Kitchen"},{"src":"/assets/images/img/villa-modular-parallel-kitchen-navi-mumbai.webp","caption":"Luxury Parallel Kitchen Layout with Quartz Countertops & Modular Pantry"},{"src":"/assets/images/img/villa-kids-room-storage-study-navi-mumbai.webp","caption":"Villa Kids Room - Dedicated Study Corner and Built-in Storage Cabinets"},{"src":"/assets/images/img/narsingi-cozy-bedroom-design-navi-mumbai.webp","caption":"Cozy Master Bedroom with Premium Headboard & Modern Lighting"},{"src":"/assets/images/commercial-office-space-designer-navi-mumbai.webp","caption":"Bespoke Executive Office Cabin & Workstations"},{"src":"/assets/images/luxury-home-interior-designer-vashi (1).webp","caption":"Project Titan - Urban Minimalist Living Room, Sanpada"},{"src":"/assets/images/modern-false-ceiling-design-koparkhairne.webp","caption":"Gypsum False Ceiling - Linear Track Lighting & Cove Details"},{"src":"/assets/images/turnkey-residential-interior-navi-mumbai.webp","caption":"Master Bedroom - Warm Veneered Backing & Bed Headboard"},{"src":"/assets/images/living-room-interior-designer-koparkhairne.webp","caption":"Luxury Living Room - Customized TV Panels & Backlighting"},{"src":"/assets/images/modular-kitchen-koparkhairne-siddhivinayak-interior.webp","caption":"Premium Acrylic Modular Kitchen Handover - Koparkhairane"}];
 
       let currentCaptions = [];
 
@@ -1238,6 +1472,18 @@ const isDev = import.meta.env.DEV;
           currentTitle = captionsOrTitle || '';
         }
 
+        let lastCatalogOpenTime = 0;
+
+        function normalizePath(u) {
+          if (!u) return '';
+          try {
+            const p = new URL(u, window.location.origin).pathname;
+            return decodeURIComponent(p).toLowerCase().replace(/\/+$/, '');
+          } catch(e) {
+            return (u || '').split('?')[0].split('#')[0].toLowerCase().replace(/\/+$/, '');
+          }
+        }
+
         // Build bottom filmstrip containing this catalogue's photos
         filmstripEl.innerHTML = '';
         currentPhotos.forEach((src, idx) => {
@@ -1245,6 +1491,7 @@ const isDev = import.meta.env.DEV;
           thumb.className = 'dc-catalog-modal-thumb' + (idx === currentPhotoIndex ? ' active' : '');
           thumb.innerHTML = `<img src="${src}" alt="Thumb ${idx + 1}" loading="lazy" />`;
           thumb.addEventListener('click', (e) => {
+            if (Date.now() - lastCatalogOpenTime < 450) return;
             e.stopPropagation();
             renderCatalogSlide(idx);
           });
@@ -1258,6 +1505,7 @@ const isDev = import.meta.env.DEV;
 
         renderCatalogSlide(currentPhotoIndex);
         modalEl.style.display = 'flex';
+        lastCatalogOpenTime = Date.now();
         document.body.classList.add('catalog-lightbox-open', 'lightbox-open');
         document.documentElement.style.overflow = 'hidden';
         document.body.style.overflow = 'hidden';
@@ -1278,7 +1526,17 @@ const isDev = import.meta.env.DEV;
 
         let photos = [];
         let captions = [];
-        let startIndex = 0;
+        let startIndex = -1;
+
+        function normalizePath(u) {
+          if (!u) return '';
+          try {
+            const p = new URL(u, window.location.origin).pathname;
+            return decodeURIComponent(p).toLowerCase().replace(/\/+$/, '');
+          } catch(e) {
+            return (u || '').split('?')[0].split('#')[0].toLowerCase().replace(/\/+$/, '');
+          }
+        }
 
         if (container) {
           // Strategy A: Carousel inner images from this exact card (for multi-image catalogue cards)
@@ -1314,43 +1572,83 @@ const isDev = import.meta.env.DEV;
           if (photos.length === 0) {
             const section = container.closest('section, .container, .row');
             if (section) {
-              const sectionCards = Array.from(section.querySelectorAll('.premium-card, .dc-exact-card'));
-              if (sectionCards.length > 1) {
-                if (typeof ALL_GALLERY_PHOTOS !== 'undefined' && ALL_GALLERY_PHOTOS.length > 0) {
-                  photos = ALL_GALLERY_PHOTOS.map(p => p.src);
-                  captions = ALL_GALLERY_PHOTOS.map(p => p.caption);
-                  if (imgElement) {
-                    const trig = imgElement.closest('.premium-card, .dc-exact-card')?.querySelector('.lightbox-trigger');
-                    const hrefVal = trig ? trig.getAttribute('href') : '';
-                    const clickedSrc = (trig && trig.getAttribute('data-src')) || 
-                                       (hrefVal && !hrefVal.startsWith('javascript') && hrefVal.startsWith('/') ? hrefVal : null) || 
-                                       imgElement.getAttribute('src') || imgElement.src || '';
-                    const cleanClicked = clickedSrc.split('?')[0].split('#')[0].toLowerCase();
-                    const clickedFilename = cleanClicked.split('/').pop();
-                    startIndex = photos.findIndex(src => {
-                      const clean = (src || '').split('?')[0].split('#')[0].toLowerCase();
-                      return clean === cleanClicked || (clickedFilename && clean.endsWith('/' + clickedFilename));
-                    });
+              const isRecentGallery = section.id === 'recentCompletionsSection' || 
+                                     section.querySelector('#rcGalleryGrid') || 
+                                     container.closest('#recentCompletionsSection, #rcGalleryGrid') ||
+                                     container.closest('.premium-card');
+              if (isRecentGallery && typeof ALL_GALLERY_PHOTOS !== 'undefined' && ALL_GALLERY_PHOTOS.length > 0) {
+                photos = ALL_GALLERY_PHOTOS.map(p => p.src);
+                captions = ALL_GALLERY_PHOTOS.map(p => p.caption);
+                if (imgElement) {
+                  const trig = imgElement.closest('.premium-card, .dc-exact-card')?.querySelector('.lightbox-trigger');
+                  const hrefVal = trig ? trig.getAttribute('href') : '';
+                  const clickedSrc = (trig && trig.getAttribute('data-src')) || 
+                                     (hrefVal && !hrefVal.startsWith('javascript') && hrefVal.startsWith('/') ? hrefVal : null) || 
+                                     imgElement.getAttribute('src') || imgElement.src || '';
+                  const cleanClicked = clickedSrc.split('?')[0].split('#')[0].toLowerCase().trim();
+
+                  // Alias check for cover images
+                  if (cleanClicked.includes('siddhivinayak-homes/modern-4bhk-penthouse-kharghar')) {
+                    const diningIdx = photos.findIndex(s => (s || '').toLowerCase().includes('modern-4bhk-penthouse/6.webp'));
+                    if (diningIdx !== -1) startIndex = diningIdx;
                   }
-                } else {
-                  sectionCards.forEach(card => {
+
+                  if (startIndex < 0) {
+                    // 1. Exact match on full path
+                    let found = photos.findIndex(src => {
+                      const clean = (src || '').split('?')[0].split('#')[0].toLowerCase().trim();
+                      return clean === cleanClicked;
+                    });
+                    
+                    // 2. Match last 2 segments (folder + filename)
+                    if (found === -1) {
+                      const parts = cleanClicked.split('/').filter(Boolean);
+                      if (parts.length >= 2) {
+                        const endSlug = parts.slice(-2).join('/');
+                        found = photos.findIndex(src => {
+                          const clean = (src || '').split('?')[0].split('#')[0].toLowerCase().trim();
+                          return clean.endsWith('/' + endSlug) || clean.endsWith(endSlug);
+                        });
+                      }
+                    }
+
+                    // 3. Match unique filename
+                    if (found === -1) {
+                      const filename = cleanClicked.split('/').pop();
+                      if (filename) {
+                        found = photos.findIndex(src => {
+                          const clean = (src || '').split('?')[0].split('#')[0].toLowerCase().trim();
+                          return clean.endsWith('/' + filename);
+                        });
+                      }
+                    }
+
+                    if (found !== -1) startIndex = found;
+                  }
+                }
+              } else {
+                const sectionCards = Array.from(section.querySelectorAll('.premium-card, .dc-exact-card'));
+                if (sectionCards.length > 1) {
+                  const clickedCard = imgElement ? imgElement.closest('.premium-card, .dc-exact-card') : null;
+                  sectionCards.forEach((card, idx) => {
                     const img = card.querySelector('img');
                     const trig = card.querySelector('.lightbox-trigger');
                     const hrefVal = trig ? trig.getAttribute('href') : '';
                     const src = (trig && trig.getAttribute('data-src')) || 
                                 (hrefVal && !hrefVal.startsWith('javascript') && hrefVal.startsWith('/') ? hrefVal : null) || 
                                 (img && (img.getAttribute('src') || img.src));
-                    const cap = (trig && trig.getAttribute('data-caption')) || (img && (img.getAttribute('alt') || '')) || '';
+                    const cap = (trig && (trig.getAttribute('data-caption') || trig.getAttribute('title'))) || 
+                                (img && (img.getAttribute('alt') || '')) || '';
                     if (src) {
                       photos.push(src);
                       captions.push(cap.replace(/&amp;/g, '&').trim());
+                      if (clickedCard && card === clickedCard) {
+                        startIndex = photos.length - 1;
+                      }
                     }
                   });
-                  if (imgElement) {
-                    const clickedCard = imgElement.closest('.premium-card, .dc-exact-card');
-                    if (clickedCard) {
-                      startIndex = sectionCards.indexOf(clickedCard);
-                    }
+                  if (startIndex < 0 && clickedCard) {
+                    startIndex = sectionCards.indexOf(clickedCard);
                   }
                 }
               }
@@ -1377,13 +1675,16 @@ const isDev = import.meta.env.DEV;
 
         if (photos.length === 0) return;
 
-        // Resolve start index by src matching if index is still negative or 0
+        // Resolve start index by exact path matching if still negative
         if (startIndex < 0 && imgElement) {
-          const clickedSrc = (imgElement.getAttribute('src') || imgElement.src || '').split('?')[0].split('#')[0].toLowerCase();
-          const clickedFilename = clickedSrc.split('/').pop();
+          const trig = imgElement.closest('.premium-card, .dc-exact-card')?.querySelector('.lightbox-trigger');
+          const hrefVal = trig ? trig.getAttribute('href') : '';
+          const clickedRaw = (trig && trig.getAttribute('data-src')) || 
+                             (hrefVal && !hrefVal.startsWith('javascript') && hrefVal.startsWith('/') ? hrefVal : null) || 
+                             imgElement.getAttribute('src') || imgElement.src || '';
+          const cleanClicked = normalizePath(clickedRaw);
           for (let i = 0; i < photos.length; i++) {
-            const pSrc = (photos[i] || '').split('?')[0].split('#')[0].toLowerCase();
-            if (pSrc === clickedSrc || (clickedFilename && pSrc.endsWith('/' + clickedFilename))) {
+            if (normalizePath(photos[i]) === cleanClicked) {
               startIndex = i;
               break;
             }
@@ -1394,6 +1695,47 @@ const isDev = import.meta.env.DEV;
 
         window.openCatalogLightboxModal(photos, startIndex, captions.length > 0 ? captions : title);
       };
+
+      let catalogTouchStartX = 0;
+      let catalogTouchStartY = 0;
+      let catalogTouchStartTime = 0;
+      let isCatalogTouchScrolling = false;
+
+      document.addEventListener('touchstart', (e) => {
+        if (e.target.closest('#dcCatalogModal') || e.target.closest('#galleryPhotoModal') || e.target.closest('.gallery-item') || document.getElementById('galleryPhotoModal')) return;
+        const targetCard = e.target.closest('.premium-card, .dc-exact-card');
+        if (targetCard) {
+          catalogTouchStartX = e.touches[0].clientX;
+          catalogTouchStartY = e.touches[0].clientY;
+          catalogTouchStartTime = Date.now();
+          isCatalogTouchScrolling = false;
+        }
+      }, { passive: true });
+
+      document.addEventListener('touchmove', (e) => {
+        if (catalogTouchStartTime > 0) {
+          const dX = Math.abs(e.touches[0].clientX - catalogTouchStartX);
+          const dY = Math.abs(e.touches[0].clientY - catalogTouchStartY);
+          if (dX > 12 || dY > 12) isCatalogTouchScrolling = true;
+        }
+      }, { passive: true });
+
+      document.addEventListener('touchend', (e) => {
+        if (isCatalogTouchScrolling || catalogTouchStartTime === 0) return;
+        const elapsed = Date.now() - catalogTouchStartTime;
+        catalogTouchStartTime = 0;
+        if (elapsed < 350) {
+          if (e.target.closest('#dcCatalogModal') || e.target.closest('#galleryPhotoModal') || e.target.closest('.gallery-item') || document.getElementById('galleryPhotoModal')) return;
+          const targetCard = e.target.closest('.premium-card, .dc-exact-card');
+          if (targetCard) {
+            const trigger = targetCard.querySelector('.lightbox-trigger, .premium-card-overlay a');
+            const cardImg = targetCard.querySelector('img');
+            const targetEl = trigger || cardImg || targetCard;
+            e.preventDefault();
+            window.openLightbox(targetEl, e);
+          }
+        }
+      }, { passive: false });
 
       // Document-level fast delegation for catalogue and recent completion cards
       document.addEventListener('click', (e) => {
