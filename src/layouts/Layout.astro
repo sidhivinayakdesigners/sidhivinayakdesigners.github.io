@@ -206,10 +206,11 @@ const isDev = import.meta.env.DEV;
     @media (max-width: 767px) {
       .hero-banner-slider-section {
         width: 100% !important;
-        height: calc(100vh - 56px - 68px) !important;
-        height: calc(100dvh - 56px - 68px) !important;
-        min-height: calc(100dvh - 56px - 68px) !important;
-        max-height: calc(100dvh - 56px - 68px) !important;
+        height: calc(100vh - var(--nav-height, 56px) - 68px) !important;
+        height: calc(100svh - var(--nav-height, 56px) - 68px) !important;
+        height: calc(100dvh - var(--nav-height, 56px) - 68px) !important;
+        min-height: calc(100dvh - var(--nav-height, 56px) - 68px) !important;
+        max-height: calc(100dvh - var(--nav-height, 56px) - 68px) !important;
         overflow: hidden !important;
         position: relative !important;
         margin: 0 !important;
