@@ -2606,7 +2606,7 @@ html, body {
     right: 0 !important;
     width: 100% !important;
     height: 68px !important;
-    background: linear-gradient(180deg, rgba(20, 142, 153, 0.97) 0%, rgba(13, 108, 116, 0.99) 100%) !important;
+    background: linear-gradient(180deg, rgba(19, 150, 229, 0.98) 0%, rgba(14, 128, 198, 0.99) 100%) !important;
     backdrop-filter: blur(20px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
     z-index: 999999 !important;
@@ -2614,7 +2614,7 @@ html, body {
     border-top: 1px solid rgba(255, 255, 255, 0.28) !important;
     padding: 0 4px !important;
     animation: dcBarSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
-    overflow: hidden !important;
+    overflow: visible !important;
   }
 
   body {
@@ -2665,7 +2665,8 @@ html, body {
 
 /* Individual Bar Items - Clean, Uniform & Interactive */
 .dc-bottom-bar-item {
-  flex: 1;
+  flex: 1 1 0;
+  min-width: 0;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
@@ -2674,7 +2675,7 @@ html, body {
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
   cursor: pointer;
-  padding: 6px 2px;
+  padding: 6px 1px;
   position: relative;
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease !important;
   -webkit-tap-highlight-color: transparent !important;
@@ -2702,7 +2703,7 @@ html, body {
 }
 
 .dc-bottom-bar-item span {
-  font-size: 0.8rem !important;
+  font-size: 0.72rem !important;
   font-weight: 500 !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
@@ -2710,7 +2711,14 @@ html, body {
   line-height: 1.1 !important;
   margin-top: 2px !important;
   white-space: nowrap !important;
-  letter-spacing: 0.2px;
+  letter-spacing: 0.1px;
+}
+
+@media (max-width: 380px) {
+  .dc-bottom-bar-item span {
+    font-size: 0.66rem !important;
+    letter-spacing: -0.1px !important;
+  }
 }
 
 /* 1. Designs Item - Continuous smooth floating wave */
@@ -2803,6 +2811,75 @@ html, body {
 }
 .dc-item-whatsapp i {
   animation: dcWhatsAppLive 2.3s ease-in-out infinite !important;
+}
+
+/* Center Elevated Siddhivinayak Designers Logo Button */
+.dc-bottom-bar-item.dc-item-logo {
+  position: relative !important;
+  flex: 1 1 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  padding: 0 1px 7px 1px !important;
+  text-decoration: none !important;
+  background: transparent !important;
+  z-index: 25 !important;
+}
+
+.dc-bottom-bar-item.dc-item-logo:active {
+  background-color: transparent !important;
+  transform: none !important;
+}
+
+.dc-logo-badge {
+  position: absolute !important;
+  top: -18px !important;
+  width: 52px !important;
+  height: 52px !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.28), 0 6px 20px rgba(19, 150, 229, 0.42), 0 0 0 3px rgba(255, 255, 255, 0.95), 0 0 12px rgba(255, 225, 140, 0.5) !important;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease !important;
+  animation: dcLogoLive 2.8s ease-in-out infinite !important;
+  pointer-events: auto !important;
+}
+
+.dc-logo-badge img {
+  width: 40px !important;
+  height: 40px !important;
+  object-fit: contain !important;
+  border-radius: 50% !important;
+  display: block !important;
+}
+
+.dc-item-logo:active .dc-logo-badge {
+  transform: scale(0.9) !important;
+}
+
+.dc-item-logo .dc-logo-text {
+  font-size: 0.72rem !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  letter-spacing: 0.2px !important;
+  line-height: 1 !important;
+  margin-top: 0 !important;
+}
+
+@keyframes dcLogoLive {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.28), 0 6px 20px rgba(19, 150, 229, 0.42), 0 0 0 3px rgba(255, 255, 255, 0.95), 0 0 10px rgba(255, 225, 140, 0.4);
+  }
+  50% {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 -6px 22px rgba(0, 0, 0, 0.35), 0 8px 26px rgba(19, 150, 229, 0.55), 0 0 0 3.5px #ffe18c, 0 0 18px rgba(255, 225, 140, 0.85);
+  }
 }
 
 /* Force bottom navigation bar white colors and SVG properties globally */
