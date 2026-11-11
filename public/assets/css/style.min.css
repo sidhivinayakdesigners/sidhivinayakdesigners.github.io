@@ -2631,8 +2631,8 @@ body:not(footer) .text-black-50,
 }
 
 .glimpse-quote-btn {
-  background-color: #189ba6 !important;
-  /* Teal/Blue matching website theme */
+  background-color: #1396e5 !important;
+  /* Brand Cerulean Blue */
   color: #ffffff !important;
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
@@ -2641,14 +2641,15 @@ body:not(footer) .text-black-50,
   padding: 12px 30px;
   border-radius: 30px;
   text-decoration: none;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 10px rgba(24, 155, 166, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 14px rgba(19, 150, 229, 0.35);
   white-space: nowrap;
 }
 
 .glimpse-quote-btn:hover {
-  background-color: #127c85 !important;
+  background-color: #0e80c6 !important;
   transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(19, 150, 229, 0.5);
 }
 
 .glimpse-carousel-wrapper {
