@@ -378,7 +378,7 @@ const schema = `{
   }`;
 const bodyContent = `<!-- Hero Banner Slider Section (Desktop & Mobile Responsive WebP Banners) -->
   <section class="hero-banner-slider-section position-relative" style="background-color: transparent;">
-    <div id="heroBannerCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
+    <div id="heroBannerCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000" data-bs-touch="true">
       <!-- Indicators -->
       <div class="carousel-indicators mb-2">
         <button type="button" data-bs-target="#heroBannerCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Banner 1"></button>
@@ -2286,22 +2286,30 @@ const bodyContent = `<!-- Hero Banner Slider Section (Desktop & Mobile Responsiv
     @media (max-width: 767px) {
       .hero-banner-slider-section {
         width: 100% !important;
-        height: calc(100vh - var(--nav-height, 56px) - 68px) !important;
-        height: calc(100svh - var(--nav-height, 56px) - 68px) !important;
-        height: calc(100dvh - var(--nav-height, 56px) - 68px) !important;
-        min-height: calc(100dvh - var(--nav-height, 56px) - 68px) !important;
-        max-height: calc(100dvh - var(--nav-height, 56px) - 68px) !important;
+        height: auto !important;
+        min-height: auto !important;
+        max-height: none !important;
         overflow: hidden !important;
         position: relative !important;
         margin: 0 !important;
         padding: 0 !important;
       }
       .hero-banner-slider-section #heroBannerCarousel,
-      .hero-banner-slider-section .carousel-inner,
-      .hero-banner-slider-section .carousel-item,
+      .hero-banner-slider-section .carousel-inner {
+        height: auto !important;
+        width: 100% !important;
+        position: relative !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+      }
+      .hero-banner-slider-section .carousel-item {
+        height: auto !important;
+        min-height: auto !important;
+      }
       .hero-banner-slider-section .hero-banner-popup-trigger,
       .hero-banner-slider-section picture {
-        height: 100% !important;
+        height: auto !important;
         width: 100% !important;
         display: block !important;
         position: relative !important;
@@ -2310,13 +2318,12 @@ const bodyContent = `<!-- Hero Banner Slider Section (Desktop & Mobile Responsiv
       }
       .hero-banner-img {
         width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-        object-position: center center !important;
+        height: auto !important;
+        object-fit: contain !important;
         display: block !important;
       }
       .carousel-indicators {
-        bottom: 12px !important;
+        bottom: 8px !important;
         margin-bottom: 0 !important;
         z-index: 10 !important;
       }
