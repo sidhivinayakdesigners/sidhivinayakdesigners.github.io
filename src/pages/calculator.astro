@@ -1,602 +1,41 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const title = "Home Interior Price Calculator | Siddhivinayak Designers";
-const description = "";
-const canonical = "";
-const schema = ``;
-const bodyContent = `<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home Interior Price Calculator | Siddhivinayak Designers</title>
-  <!-- Bootstrap 5 CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <!-- Plus Jakarta Sans Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet" />
-
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    }
-
-    html, body {
-      background-color: #f3f6f8 !important;
-      color: #333333;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      margin: 0;
-      overflow-x: hidden;
-      width: 100%;
-    }
-
-    .calc-header-logo {
-      min-width: auto;
-    }
-    .calc-header-counter {
-      min-width: auto;
-    }
-    @media (min-width: 768px) {
-      .calc-header-logo {
-        min-width: 320px;
-      }
-      .calc-header-counter {
-        min-width: 320px;
-      }
-    }
-
-    /* Progress Header */
-    .calc-top-header {
-      background: #ffffff;
-      border-bottom: 1px solid #e2e8f0;
-      padding: 0.75rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .timeline-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .timeline-line {
-      position: absolute;
-      top: 10px;
-      left: 10%;
-      right: 10%;
-      height: 3px;
-      background: #e2e8f0;
-      z-index: 1;
-    }
-
-    .timeline-progress {
-      position: absolute;
-      top: 10px;
-      left: 10%;
-      height: 3px;
-      background: #4a3748;
-      width: 0%;
-      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 2;
-    }
-
-    .timeline-step {
-      flex: 1;
-      text-align: center;
-      position: relative;
-      z-index: 3;
-    }
-
-    .step-dot {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: #ffffff;
-      border: 3px solid #cbd5e1;
-      margin: 0 auto 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.65rem;
-      color: transparent;
-      transition: all 0.3s ease;
-    }
-
-    .timeline-step.active .step-dot {
-      border-color: #4a3748;
-      background: #ffffff;
-    }
-
-    .timeline-step.active .step-dot::after {
-      content: '';
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #4a3748;
-    }
-
-    .timeline-step.completed .step-dot {
-      border-color: #4a3748;
-      background: #4a3748;
-      color: #ffffff;
-    }
-
-    .step-text {
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      color: #94a3b8;
-      letter-spacing: 0.5px;
-      display: block;
-    }
-
-    .timeline-step.active .step-text,
-    .timeline-step.completed .step-text {
-      color: #4a3748;
-    }
-
-    .step-counter-label {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #475569;
-    }
-
-    /* Main Calculator Container Card */
-    .calc-card-wrapper {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2.5rem 1rem 6.5rem !important;
-    }
-
-    .calc-box {
-      background: #ffffff;
-      border-radius: 20px;
-      width: 100%;
-      max-width: 680px;
-      padding: 3rem 2.5rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-      border: 1px solid rgba(226, 232, 240, 0.8);
-      min-height: 480px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .calc-heading {
-      font-size: 1.65rem;
-      font-weight: 800;
-      color: #2d1e2f !important;
-      margin-bottom: 0.4rem;
-      text-align: center;
-    }
-
-    .calc-subheading {
-      font-size: 0.95rem;
-      color: #64748b;
-      margin-bottom: 2rem;
-      text-align: center;
-      font-weight: 500;
-    }
-
-    .calc-subheading a {
-      color: #ec5252;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    /* Step 1: BHK Row Accordions */
-    .bhk-row {
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      margin-bottom: 0.75rem;
-      overflow: hidden;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .bhk-row-header {
-      padding: 1.2rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      background: #ffffff;
-      user-select: none;
-    }
-
-    .bhk-radio-label-group {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .custom-radio {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      border: 2px solid #cbd5e1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.25s ease;
-    }
-
-    .bhk-row.active .custom-radio {
-      border-color: #ec5252;
-    }
-
-    .bhk-row.active .custom-radio::after {
-      content: '';
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #ec5252;
-    }
-
-    .bhk-label-text {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #334155;
-    }
-
-    .bhk-row.active .bhk-label-text {
-      color: #0f172a;
-    }
-
-    .bhk-chevron {
-      color: #64748b;
-      transition: transform 0.3s ease;
-    }
-
-    .bhk-row.active .bhk-chevron {
-      transform: rotate(180deg);
-    }
-
-    .bhk-row-body {
-      max-height: 0;
-      overflow: hidden;
-      background: #fafafa;
-      transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .bhk-row.active .bhk-row-body {
-      max-height: 150px;
-      border-top: 1px solid #f1f5f9;
-    }
-
-    .sub-choice-grid {
-      display: flex;
-      gap: 16px;
-      padding: 1.25rem 1.5rem;
-    }
-
-    .sub-choice-card {
-      flex: 1;
-      border: 1px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 1rem;
-      cursor: pointer;
-      background: #ffffff;
-      transition: all 0.25s ease;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .sub-choice-card:hover {
-      border-color: #fca5a5;
-    }
-
-    .sub-choice-card.selected {
-      border-color: #ec5252 !important;
-      background: #fef2f2 !important;
-    }
-
-    .sub-choice-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #334155;
-      margin-bottom: 2px;
-    }
-
-    .sub-choice-desc {
-      font-size: 0.78rem;
-      color: #64748b;
-      font-weight: 500;
-    }
-
-    /* Step 2: Room Counters */
-    .room-counter-row {
-      border: 1px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 1.1rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 0.75rem;
-      background: #ffffff;
-    }
-
-    .room-name-text {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #334155;
-    }
-
-    .counter-control-group {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .counter-btn {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: #ec5252;
-      color: #ffffff;
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.85rem;
-      cursor: pointer;
-      box-shadow: 0 2px 6px rgba(236, 82, 82, 0.25);
-      transition: background-color 0.2s ease, transform 0.1s ease;
-    }
-
-    .counter-btn:active {
-      transform: scale(0.95);
-    }
-
-    .counter-btn:disabled {
-      background: #cbd5e1;
-      box-shadow: none;
-      cursor: not-allowed;
-    }
-
-    .counter-value-text {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: #0f172a;
-      min-width: 20px;
-      text-align: center;
-    }
-
-    /* Step 3: Packages */
-    .package-scroll-wrap {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .pkg-choice-card {
-      border: 1.5px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 0.9rem;
-      cursor: pointer;
-      background: #ffffff;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      display: flex;
-      gap: 12px;
-    }
-
-    .pkg-choice-card:hover {
-      border-color: #fca5a5;
-    }
-
-    .pkg-choice-card.selected {
-      border-color: #ec5252 !important;
-      background: #fef2f2 !important;
-    }
-
-    .pkg-radio-col {
-      width: 20px;
-    }
-
-    .pkg-info-col {
-      flex: 1;
-    }
-
-    .pkg-title-line {
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: #1e293b !important;
-      margin-bottom: 0.2rem;
-    }
-
-    .pkg-subtitle-line {
-      font-size: 0.78rem;
-      color: #64748b;
-      line-height: 1.4;
-      margin-bottom: 0.6rem;
-    }
-
-    .pkg-image {
-      width: 100%;
-      height: 110px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 0.6rem;
-      border: 1px solid #f1f5f9;
-    }
-
-    .pkg-checklist {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .pkg-checklist li {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: #475569;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      margin-bottom: 4px;
-    }
-
-    .pkg-checklist li i {
-      color: #ec5252;
-    }
-
-    /* Step 4: Quote Form */
-    .lead-form-wrap {
-      max-width: 480px;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .calc-input-group {
-      margin-bottom: 1.25rem;
-    }
-
-    .calc-input-field {
-      width: 100%;
-      border: 1.5px solid #cbd5e1;
-      border-radius: 10px;
-      padding: 0.85rem 1.25rem;
-      font-size: 0.95rem;
-      font-weight: 600;
-      color: #1e293b;
-      background: #ffffff;
-      outline: none;
-      transition: all 0.25s ease;
-    }
-
-    .calc-input-field:focus {
-      border-color: #ec5252;
-      box-shadow: 0 0 0 4px rgba(236, 82, 82, 0.1);
-    }
-
-    .whatsapp-checkbox-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 1.5rem;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .whatsapp-check-box {
-      width: 20px;
-      height: 20px;
-      border-radius: 4px;
-      border: 2px solid #cbd5e1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      color: transparent;
-      transition: all 0.2s ease;
-    }
-
-    .whatsapp-checkbox-row.active .whatsapp-check-box {
-      border-color: #ec5252;
-      background: #ec5252;
-      color: #ffffff;
-    }
-
-    .whatsapp-label {
-      font-size: 0.88rem;
-      font-weight: 600;
-      color: #475569;
-    }
-
-    /* Fixed Bottom Action Bar */
-    .calc-bottom-action-bar {
-      background: #ffffff !important;
-      border-top: 1px solid #e2e8f0;
-      padding: 1rem 0;
-      position: fixed !important;
-      bottom: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      width: 100% !important;
-      z-index: 10000 !important;
-    }
-
-    .action-bar-container {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 0 15px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .calc-btn-pill-back {
-      background: transparent;
-      border: none;
-      font-weight: 700;
-      color: #fca5a5;
-      font-size: 0.95rem;
-      padding: 0.75rem 1.5rem;
-      cursor: pointer;
-      transition: color 0.2s ease;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .calc-btn-pill-back:hover {
-      color: #ec5252;
-    }
-
-    .calc-btn-pill-next {
-      background: #ec5252 !important;
-      color: #ffffff !important;
-      font-weight: 800;
-      font-size: 0.95rem;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      padding: 0.85rem 3.5rem;
-      border-radius: 50px;
-      border: none;
-      box-shadow: 0 6px 18px rgba(236, 82, 82, 0.28);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    }
-
-    .calc-btn-pill-next:disabled {
-      background: #cbd5e1 !important;
-      box-shadow: none !important;
-      cursor: not-allowed;
-    }
-
-    .calc-btn-pill-next:not(:disabled):hover {
-      background: #d93d3d !important;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 24px rgba(236, 82, 82, 0.42);
-    }
-
-    /* Step Containers */
-    .calc-step {
-      display: none;
-      animation: fadeInSlide 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-
-    .calc-step.active {
-      display: block;
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- Navbar Timeline Progress -->
+const title = "Interior Cost Calculator Navi Mumbai | Siddhivinayak";
+const description = "Calculate instant home interior estimates for 1BHK, 2BHK, and 3BHK flats in Navi Mumbai. Transparent pricing packages and locked BOQ quotes.";
+const canonical = "https://siddhivinayakdesigners.in/calculator/";
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://siddhivinayakdesigners.in/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Cost Calculator",
+          "item": "https://siddhivinayakdesigners.in/calculator/"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://siddhivinayakdesigners.in/calculator/#webpage",
+      "name": "Home Interior Cost Calculator Navi Mumbai",
+      "url": "https://siddhivinayakdesigners.in/calculator/",
+      "description": "Calculate instant home interior estimates for 1BHK, 2BHK, and 3BHK flats in Navi Mumbai."
+    }
+  ]
+});
+
+const bodyContent = `<h1 class="visually-hidden">Home Interior Cost Calculator Navi Mumbai | Siddhivinayak Designers</h1>
+<!-- Navbar Timeline Progress -->
   <header class="calc-top-header">
     <div class="container-fluid px-0 d-flex align-items-center justify-content-between position-relative">
       
@@ -650,7 +89,7 @@ const bodyContent = `<!DOCTYPE html>
 
       <!-- STEP 1: BHK SELECT -->
       <div class="calc-step active" id="stepBox1">
-        <h1 class="calc-heading">Select your BHK type</h1>
+        <h2 class="calc-heading">Select your BHK type</h2>
         <p class="calc-subheading">To know more about this, <a href="#">click here</a></p>
 
         <!-- Options Container -->
@@ -777,7 +216,7 @@ const bodyContent = `<!DOCTYPE html>
 
       <!-- STEP 2: ROOM SELECTIONS -->
       <div class="calc-step" id="stepBox2">
-        <h1 class="calc-heading">Select the rooms you’d like us to design</h1>
+        <h2 class="calc-heading">Select the rooms you’d like us to design</h2>
         <p class="calc-subheading">To know more about this, <a href="#">click here</a></p>
 
         <div class="counters-wrap">
@@ -835,7 +274,7 @@ const bodyContent = `<!DOCTYPE html>
 
       <!-- STEP 3: PICK PACKAGE -->
       <div class="calc-step" id="stepBox3">
-        <h1 class="calc-heading">Pick your package</h1>
+        <h2 class="calc-heading">Pick your package</h2>
         <p class="calc-subheading">Choose layout designs &amp; material specifications suitable for your lifestyle</p>
 
         <div class="package-scroll-wrap">
@@ -850,7 +289,7 @@ const bodyContent = `<!DOCTYPE html>
               <p class="pkg-subtitle-line">A range of essential home interior solutions that's perfect for all your
                 needs.</p>
               <img src="/assets/images/modular-kitchen/kitchen-with-foldable-breakfast-table-and-yellow-chairs.webp"
-                class="pkg-image" alt="Essentials Package" />
+                class="pkg-image" alt="Essentials Package" width="940" height="564" />
               <ul class="pkg-checklist">
                 <li><i class="fas fa-check"></i> Affordable pricing</li>
                 <li><i class="fas fa-check"></i> Convenient designs</li>
@@ -869,7 +308,7 @@ const bodyContent = `<!DOCTYPE html>
               <p class="pkg-subtitle-line">Superior home interior solutions that will take your interiors to the next
                 level.</p>
               <img src="/assets/images/bedroom/modern-bedroom-in-gray-and-wood.webp" class="pkg-image"
-                alt="Premium Package" />
+                alt="Premium Package" width="940" height="564" />
               <ul class="pkg-checklist">
                 <li><i class="fas fa-check"></i> Mid-range pricing</li>
                 <li><i class="fas fa-check"></i> Premium designs</li>
@@ -888,7 +327,7 @@ const bodyContent = `<!DOCTYPE html>
               <p class="pkg-subtitle-line">High-end interior solutions for the ultimate home interior experience you
                 deserve.</p>
               <img src="/assets/images/living-room/eclectic-living-room-with-wall-mounted-tv-unit.webp"
-                class="pkg-image" alt="Luxe Package" />
+                class="pkg-image" alt="Luxe Package" width="940" height="564" />
               <ul class="pkg-checklist">
                 <li><i class="fas fa-check"></i> Elite pricing</li>
                 <li><i class="fas fa-check"></i> Lavish designs</li>
@@ -902,7 +341,7 @@ const bodyContent = `<!DOCTYPE html>
 
       <!-- STEP 4: GET ESTIMATE / LEAD FORM -->
       <div class="calc-step" id="stepBox4">
-        <h1 class="calc-heading">Your estimate is almost ready</h1>
+        <h2 class="calc-heading">Your estimate is almost ready</h2>
         <p class="calc-subheading">Submit your contact info to view your instant cost estimate report</p>
 
         <div class="lead-form-wrap">
@@ -942,7 +381,7 @@ const bodyContent = `<!DOCTYPE html>
             <!-- Success Message Card (Hidden initially, shown after form submission) -->
             <div id="priceResultBox"
               style="display: none; background: #fcfdfd; border: 1.5px dashed #ec5252; border-radius: 12px; padding: 1.5rem; text-align: center; margin-top: 1.5rem;">
-              <h4 style="font-weight: 800; font-size: 1.15rem; color: #2d1e2f;">Thank You!</h4>
+              <h3 style="font-weight: 800; font-size: 1.15rem; color: #2d1e2f;">Thank You!</h3>
               <p class="text-muted small mb-0">Our professional interior designers will contact you shortly to share
                 your customized room-by-room quote and design catalog.</p>
             </div>
