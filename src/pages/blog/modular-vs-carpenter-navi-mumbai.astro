@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
-const title = "Modular vs. Custom Carpentry: Navi Mumbai Guide | Siddhivinayak Designers";
+const title = "Modular vs. Custom Carpentry: Navi Mumbai | Siddhivinayak";
 const description = "Modular interiors vs. custom carpentry. Compare finish quality, deployment timelines, moisture resilience, and costs for Navi Mumbai homes.";
 const canonical = "https://siddhivinayakdesigners.in/blog/modular-vs-carpenter-navi-mumbai/";
 const schema = `{
@@ -96,8 +96,8 @@ const bodyContent = `<!-- Split Contrast Header Banner -->
 
         <!-- Kitchen Showcase -->
         <div class="my-4 border border-light-subtle rounded p-3 bg-white" style="box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-          <img src="/assets/images/modular-kitchen/l-shape-modular-kitchen-design-in-dual-tone-finishes.webp" alt="L-Shape Modular Kitchen" class="img-fluid rounded border mb-3" loading="lazy" style="width: 100%; max-height: 350px; object-fit: cover;" />
-          <h4 class="h6 fw-bold text-teal mb-1"><i class="fas fa-kitchen-set me-2"></i>Machine-Finished Modular Kitchen Panels</h4>
+          <img src="/assets/images/modular-kitchen/l-shape-modular-kitchen-design-in-dual-tone-finishes.webp" alt="L-Shape Modular Kitchen" class="img-fluid rounded border mb-3" loading="eager" fetchpriority="high" style="width: 100%; max-height: 350px; object-fit: cover;"  width="940" height="564" />
+          <div class="h6 fw-bold text-teal mb-1"><i class="fas fa-kitchen-set me-2"></i>Machine-Finished Modular Kitchen Panels</div>
           <p class="small text-muted mb-0">
             Modular parallel kitchen setups utilize automated hot-melt PUR edge-banding, which seals panels to prevent moisture damage during humid monsoons.
           </p>
@@ -123,8 +123,8 @@ const bodyContent = `<!-- Split Contrast Header Banner -->
 
         <!-- Wardrobe Showcase -->
         <div class="my-4 border border-light-subtle rounded p-3 bg-white" style="box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-          <img src="/assets/images/wardrobe/bedroom-wardrobe-in-glossy-laminate-finish-with-attached-dressing-unit.webp" alt="Bespoke Wardrobe Design" class="img-fluid rounded border mb-3" loading="lazy" style="width: 100%; max-height: 350px; object-fit: cover;" />
-          <h4 class="h6 fw-bold text-teal mb-1"><i class="fas fa-hammer me-2"></i>Custom Carpentry Fitted Bedroom Wardrobe</h4>
+          <img src="/assets/images/wardrobe/bedroom-wardrobe-in-glossy-laminate-finish-with-attached-dressing-unit.webp" alt="Bespoke Wardrobe Design" class="img-fluid rounded border mb-3" loading="lazy" style="width: 100%; max-height: 350px; object-fit: cover;"  width="940" height="564" />
+          <div class="h6 fw-bold text-teal mb-1"><i class="fas fa-hammer me-2"></i>Custom Carpentry Fitted Bedroom Wardrobe</div>
           <p class="small text-muted mb-0">
             For master bedrooms with offset corner beams, custom carpentry allows woodworkers to scribe panels directly to the wall shape, maximizing closet space.
           </p>
@@ -211,7 +211,7 @@ const bodyContent = `<!-- Split Contrast Header Banner -->
 
         <!-- Centered Premium CTA Callout -->
         <div class="text-center py-5 px-4 rounded-4 my-5" style="background: linear-gradient(135deg, #e6f4f5 0%, #ffffff 100%); border: 1px solid rgba(24, 155, 166, 0.2);">
-          <h4 class="font-luxury mb-2 text-dark fw-bold" style="color: #062639 !important;">Still Undecided on Modular vs. Carpentry?</h4>
+          <h3 class="font-luxury mb-2 text-dark fw-bold" style="color: #062639 !important;">Still Undecided on Modular vs. Carpentry?</h3>
           <p class="small text-secondary mb-4 mx-auto max-w-600" style="color: #555555 !important;">
             Our design experts can inspect your flat layout and provide a hybrid plan using modular units for kitchens and wardrobes, with custom carpentry for complex wall corners.
           </p>
@@ -263,10 +263,10 @@ const bodyContent = `<!-- Split Contrast Header Banner -->
 
 <!-- Floating Actions -->
 <div class="floating-widgets">
-  <a style="background-color: #25D366 !important; background: #25D366 !important; color: #ffffff !important; border-color: #25D366 !important;" class="float-btn float-whatsapp" href="https://wa.me/918369297174?text=Hi%20Siddhivinayak%20Designers,%20I'm%20interested%20in%20a%20free%20design%20consultation." target="_blank">
+  <a style="background-color: #25D366 !important; background: #25D366 !important; color: #ffffff !important; border-color: #25D366 !important;" aria-label="WhatsApp" class="float-btn float-whatsapp" href="https://wa.me/918369297174?text=Hi%20Siddhivinayak%20Designers,%20I'm%20interested%20in%20a%20free%20design%20consultation." target="_blank">
     <i class="fab fa-whatsapp"></i>
   </a>
-  <a class="float-btn float-call" href="tel:+918369297174">
+  <a aria-label="Call Us" class="float-btn float-call" href="tel:+918369297174">
     <i class="fas fa-phone-alt"></i>
   </a>
 </div>`;
