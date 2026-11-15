@@ -214,21 +214,7 @@ const bodyContent = `
 </Layout>
 
 <style is:global>
-  .completed-project-card .position-relative::after {
-    content: "";
-    position: absolute;
-    bottom: 14px;
-    right: 14px;
-    width: clamp(75px, 9vw, 115px);
-    height: clamp(51px, 6.1vw, 78px);
-    background-image: url('/assets/images/watermark-logo.webp');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.55));
-    pointer-events: none;
-    z-index: 2;
-  }
+
   .completed-project-card:hover .completed-project-img {
     transform: scale(1.03);
   }

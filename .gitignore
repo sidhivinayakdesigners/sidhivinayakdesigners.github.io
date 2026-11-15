@@ -28,5 +28,8 @@ run_dev.mjs
 
 # scratch directory
 scratch/
+scratch_*.py
+image_backups/
+
 
 
