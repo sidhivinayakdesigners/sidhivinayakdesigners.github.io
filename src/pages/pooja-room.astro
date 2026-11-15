@@ -128,7 +128,7 @@ const bodyContent = `<!-- Top Gray Header Banner & Category Pills Container (#f3
 </div>
 </div>
 </div>
-<div class="col-lg-4 col-md-6 dc-extra-card">
+<div class="col-lg-4 col-md-6">
 <div class="dc-exact-card">
 <div class="dc-exact-card-img" data-lightbox-photos='["/assets/images/pooja-room/l-shaped-puja-unit-design-blush-pink.webp"]' data-lightbox-title="An L-Shaped Pooja Unit For The Living Room">
 <img alt="An L-Shaped Pooja Unit For The Living Room" loading="lazy" onclick="openLightbox(this, event)" src="/assets/images/pooja-room/l-shaped-puja-unit-design-blush-pink.webp" style="cursor:pointer;" width="940" height="564" />
@@ -155,7 +155,7 @@ const bodyContent = `<!-- Top Gray Header Banner & Category Pills Container (#f3
 </div>
 </div>
 </div>
-<div class="col-lg-4 col-md-6 dc-extra-card">
+<div class="col-lg-4 col-md-6">
 <div class="dc-exact-card">
 <div class="dc-exact-card-img" data-lightbox-photos='["/assets/images/pooja-room/open-mandir-room-design-with-ganesha-jaali-backdrop.webp"]' data-lightbox-title="An Open Mandir Design With Traditional Elements">
 <img alt="An Open Mandir Design With Traditional Elements" loading="lazy" onclick="openLightbox(this, event)" src="/assets/images/pooja-room/open-mandir-room-design-with-ganesha-jaali-backdrop.webp" style="cursor:pointer;" width="940" height="564" />
@@ -182,7 +182,7 @@ const bodyContent = `<!-- Top Gray Header Banner & Category Pills Container (#f3
 </div>
 </div>
 </div>
-<div class="col-lg-4 col-md-6 dc-extra-card">
+<div class="col-lg-4 col-md-6">
 <div class="dc-exact-card">
 <div class="dc-exact-card-img" data-lightbox-photos='["/assets/images/pooja-room/contemporary-pooja-room-design-for-indian-homes.webp"]' data-lightbox-title="A Contemporary Pooja Room For Indian Homes">
 <img alt="A Contemporary Pooja Room For Indian Homes" loading="lazy" onclick="openLightbox(this, event)" src="/assets/images/pooja-room/contemporary-pooja-room-design-for-indian-homes.webp" style="cursor:pointer;" width="940" height="564" />
@@ -209,7 +209,7 @@ const bodyContent = `<!-- Top Gray Header Banner & Category Pills Container (#f3
 </div>
 </div>
 </div>
-<div class="col-lg-4 col-md-6 dc-extra-card">
+<div class="col-lg-4 col-md-6">
 <div class="dc-exact-card">
 <div class="dc-exact-card-img" data-lightbox-photos='["/assets/images/pooja-room/pooja-room-design-with-marble-and-wooden.webp"]' data-lightbox-title="A Spacious Mandir For Large Homes">
 <img alt="A Spacious Mandir For Large Homes" loading="lazy" onclick="openLightbox(this, event)" src="/assets/images/pooja-room/pooja-room-design-with-marble-and-wooden.webp" style="cursor:pointer;" width="940" height="564" />
@@ -236,7 +236,7 @@ const bodyContent = `<!-- Top Gray Header Banner & Category Pills Container (#f3
 </div>
 </div>
 </div>
-<div class="col-lg-4 col-md-6 dc-extra-card">
+<div class="col-lg-4 col-md-6">
 <div class="dc-exact-card">
 <div class="dc-exact-card-img" data-lightbox-photos='["/assets/images/pooja-room/grey-and-white-pooja-unit-with-jaali-backdrop.webp"]' data-lightbox-title="A Pooja Unit In In Neutral Tones">
 <img alt="A Pooja Unit In Neutral Tones" loading="lazy" onclick="openLightbox(this, event)" src="/assets/images/pooja-room/grey-and-white-pooja-unit-with-jaali-backdrop.webp" style="cursor:pointer;" width="940" height="564" />
@@ -263,7 +263,7 @@ const bodyContent = `<!-- Top Gray Header Banner & Category Pills Container (#f3
 </div>
 </div>
 </div>
-<div class="col-lg-4 col-md-6 dc-extra-card">
+<div class="col-lg-4 col-md-6">
 <div class="dc-exact-card">
 <div class="dc-exact-card-img" data-lightbox-photos='["/assets/images/pooja-room/white-and-wooden-finish-pooja-unit-design.webp", "/assets/images/pooja-room/corner-pooja-unit-design-with-carved-backdrop.webp"]' data-lightbox-title="A Sleek White &amp; Wooden Finished Pooja Unit">
 <img alt="A Sleek White &amp; Wooden Finished Pooja Unit" loading="lazy" onclick="openLightbox(this, event)" src="/assets/images/pooja-room/white-and-wooden-finish-pooja-unit-design.webp" style="cursor:pointer;" width="940" height="564" />
@@ -290,7 +290,7 @@ const bodyContent = `<!-- Top Gray Header Banner & Category Pills Container (#f3
 </div>
 </div>
 </div>
-<div class="col-lg-4 col-md-6 dc-extra-card">
+<div class="col-lg-4 col-md-6">
 <div class="dc-exact-card">
 <div class="dc-exact-card-img" data-lightbox-photos='["/assets/images/pooja-room/grey-and-white-tv-unit-with-pooja-room.webp"]' data-lightbox-title="A Compact Pooja Unit In Grey &amp; White Finish">
 <img alt="A Compact Pooja Unit In Grey &amp; White Finish" loading="lazy" onclick="openLightbox(this, event)" src="/assets/images/pooja-room/grey-and-white-tv-unit-with-pooja-room.webp" style="cursor:pointer;" width="940" height="564" />
@@ -318,8 +318,6 @@ const bodyContent = `<!-- Top Gray Header Banner & Category Pills Container (#f3
 </div>
 </div>
 </div>
-<div class="text-center dc-more-link-wrapper"><a class="dc-category-more-link dc-inpage-trigger" data-pill-target="pooja">View More Pooja Room Designs &gt;</a></div>
-
 </div>
 
 <!-- FAQs On Home Interior Designs Section -->
@@ -733,7 +731,7 @@ const bodyContent = `<!-- Top Gray Header Banner & Category Pills Container (#f3
     }
 
     .dc-extra-card {
-      display: none;
+      display: block !important;
     }
 
     /* PREMIUM LIGHTBOX OVERLAY */
@@ -939,9 +937,9 @@ const bodyContent = `<!-- Top Gray Header Banner & Category Pills Container (#f3
           sections.forEach(sec => {
             sec.style.display = 'block';
             const extraCards = sec.querySelectorAll('.dc-extra-card');
-            extraCards.forEach(c => c.style.display = 'none');
+            extraCards.forEach(c => c.style.display = 'block');
             const moreWrap = sec.querySelector('.dc-more-link-wrapper');
-            if (moreWrap) moreWrap.style.display = 'block';
+            if (moreWrap) moreWrap.style.display = 'none';
           });
           window.scrollTo({ top: 0, behavior: 'smooth' });
         } else {
