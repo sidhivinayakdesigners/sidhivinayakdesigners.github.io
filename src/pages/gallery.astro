@@ -2451,8 +2451,8 @@ const bodyContent = `<!-- Header Banner -->
   <!-- Lightbox Modal container -->
   <div class="lightbox-modal" id="lightboxModal">
     <div class="lightbox-content">
-      <span class="lightbox-close">
-        <i class="fas fa-times">
+      <span class="lightbox-close" style="color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;">
+        <i class="fas fa-times" style="color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;">
         </i>
       </span>
       <img alt="Lightbox View" class="lightbox-img" id="lightboxImg" src="" />
@@ -2516,18 +2516,18 @@ const bodyContent = `<!-- Header Banner -->
     </div>
 
     <!-- Top Right Close Button -->
-    <button class="gallery-modal-close" onclick="closeGalleryModal()" aria-label="Close">
-      <i class="fas fa-times"></i>
+    <button class="gallery-modal-close" onclick="closeGalleryModal()" aria-label="Close" style="color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;">
+      <i class="fas fa-times" style="color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;"></i>
     </button>
 
     <!-- Left / Prev Button -->
-    <button class="gallery-modal-nav gallery-modal-prev" onclick="prevGalleryPhoto()" aria-label="Previous photo">
-      <i class="fas fa-chevron-left"></i>
+    <button class="gallery-modal-nav gallery-modal-prev" onclick="prevGalleryPhoto()" aria-label="Previous photo" style="color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;">
+      <i class="fas fa-chevron-left" style="color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;"></i>
     </button>
 
     <!-- Right / Next Button -->
-    <button class="gallery-modal-nav gallery-modal-next" onclick="nextGalleryPhoto()" aria-label="Next photo">
-      <i class="fas fa-chevron-right"></i>
+    <button class="gallery-modal-nav gallery-modal-next" onclick="nextGalleryPhoto()" aria-label="Next photo" style="color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;">
+      <i class="fas fa-chevron-right" style="color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;"></i>
     </button>
 
     <!-- Main Modal Stage & Filmstrip Wrapper -->
@@ -2743,13 +2743,22 @@ const bodyContent = `<!-- Header Banner -->
     }
   }
 
+  .gallery-modal-close,
+  .gallery-modal-close *,
+  .gallery-modal-close i,
+  .gallery-modal-close svg {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    fill: #ffffff !important;
+  }
   .gallery-modal-close {
     position: absolute;
     top: 24px;
     right: 28px;
     background: rgba(255, 255, 255, 0.18);
     border: none;
-    color: #ffffff;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
     width: 44px;
     height: 44px;
     border-radius: 50%;
@@ -2761,19 +2770,37 @@ const bodyContent = `<!-- Header Banner -->
     z-index: 100;
     transition: all 0.2s ease;
   }
-  .gallery-modal-close:hover {
+  .gallery-modal-close:hover,
+  .gallery-modal-close:hover *,
+  .gallery-modal-close:hover i,
+  .gallery-modal-close:hover svg,
+  .gallery-modal-close:focus,
+  .gallery-modal-close:focus *,
+  .gallery-modal-close:focus i,
+  .gallery-modal-close:focus svg {
     background: rgba(255, 255, 255, 0.35);
-    color: #ffffff;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    fill: #ffffff !important;
     transform: scale(1.08);
   }
 
+  .gallery-modal-nav,
+  .gallery-modal-nav *,
+  .gallery-modal-nav i,
+  .gallery-modal-nav svg {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    fill: #ffffff !important;
+  }
   .gallery-modal-nav {
     position: absolute;
     top: 48%;
     transform: translateY(-50%);
     background: rgba(255, 255, 255, 0.22);
     border: none;
-    color: #ffffff;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
     width: 48px;
     height: 72px;
     border-radius: 12px;
@@ -2788,9 +2815,18 @@ const bodyContent = `<!-- Header Banner -->
     transition: all 0.2s ease;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
   }
-  .gallery-modal-nav:hover {
+  .gallery-modal-nav:hover,
+  .gallery-modal-nav:hover *,
+  .gallery-modal-nav:hover i,
+  .gallery-modal-nav:hover svg,
+  .gallery-modal-nav:focus,
+  .gallery-modal-nav:focus *,
+  .gallery-modal-nav:focus i,
+  .gallery-modal-nav:focus svg {
     background: rgba(255, 255, 255, 0.4);
-    color: #ffffff;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    fill: #ffffff !important;
     transform: translateY(-50%) scale(1.06);
   }
   .gallery-modal-prev {
@@ -2930,6 +2966,15 @@ const bodyContent = `<!-- Header Banner -->
       height: 40px !important;
       font-size: 1.1rem !important;
       background: rgba(255, 255, 255, 0.25) !important;
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
+    }
+    .gallery-modal-close *,
+    .gallery-modal-close i,
+    .gallery-modal-close svg {
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
+      fill: #ffffff !important;
     }
     .gallery-modal-main-stage {
       flex: 1 !important;
