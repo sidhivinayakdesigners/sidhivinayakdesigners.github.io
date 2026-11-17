@@ -30,6 +30,8 @@ run_dev.mjs
 scratch/
 scratch_*.py
 image_backups/
+downloads/
+
 
 
 
