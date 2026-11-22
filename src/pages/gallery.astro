@@ -3411,13 +3411,23 @@ const bodyContent = `<!-- Header Banner -->
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    inset: 0 !important;
+    width: 100% !important;
     width: 100vw !important;
+    height: 100% !important;
     height: 100vh !important;
-    z-index: 2147483647 !important; /* Above all sticky bars, headers and widgets */
+    height: 100dvh !important;
+    min-height: 100% !important;
+    min-height: 100vh !important;
+    min-height: 100dvh !important;
+    min-height: -webkit-fill-available !important;
+    z-index: 2147483647 !important;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.96) !important;
+    background-color: rgba(0, 0, 0, 0.98) !important;
     touch-action: none;
     overscroll-behavior: contain;
     user-select: none;

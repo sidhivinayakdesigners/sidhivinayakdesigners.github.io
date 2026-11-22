@@ -231,7 +231,7 @@ const bodyContent = `<style>
       align-items: center;
       justify-content: center;
       position: relative;
-      margin-top: -75px !important;
+      margin-top: 0 !important;
       padding-top: 75px !important;
       background-color: #f3f6f8;
     }
@@ -270,8 +270,10 @@ const bodyContent = `<style>
       .hero-banner-section {
         min-height: calc(100vh - 64px) !important;
         min-height: calc(100svh - 64px) !important;
-        max-height: calc(100vh - 64px) !important;
-        max-height: calc(100svh - 64px) !important;
+        max-height: none !important;
+        min-height: calc(100dvh - var(--nav-height, 56px)) !important;
+        max-height: none !important;
+        min-height: calc(100dvh - var(--nav-height, 56px)) !important;
         background-image: none !important;
         background-color: #f3f6f8 !important;
       }

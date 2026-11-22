@@ -1756,18 +1756,28 @@ body {
 
 /* --- PREMIUM LEAD CAPTURE CONSULTATION POPUP (FULLY ISOLATED NAMESPACE WITH LUXURY ANIMATIONS) --- */
 .consultation-popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  inset: 0 !important;
+  width: 100% !important;
+  width: 100vw !important;
+  height: 100% !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  min-height: 100% !important;
+  min-height: 100vh !important;
+  min-height: 100dvh !important;
+  min-height: -webkit-fill-available !important;
   background: rgba(18, 17, 16, 0.65);
   backdrop-filter: blur(0px) saturate(100%);
   -webkit-backdrop-filter: blur(0px) saturate(100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10500;
+  z-index: 2147483647 !important;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s cubic-bezier(0.16, 1, 0.3, 1), backdrop-filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);

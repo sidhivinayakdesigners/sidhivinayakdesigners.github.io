@@ -215,9 +215,190 @@ const isDev = import.meta.env.DEV;
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
   <link href="/assets/css/aos.css" rel="stylesheet" />
   <link href="/assets/css/style.min.css?v=1011" rel="stylesheet" />
-  <style>
+  <style is:global>
     body {
       padding-top: var(--nav-height, 56px) !important;
+    }
+
+    /* ========================================================
+       FULL-SCREEN MOBILE VIEWPORT FIXES (OVERLAYS, MODALS & MENUS)
+       Ensures lightboxes, consultation popup, mobile menu, and
+       hero banners take 100% full screen on mobile iOS/Android
+       ======================================================== */
+
+    /* Universal Full-Screen Overlays & Lightbox Modals */
+    .dc-catalog-modal,
+    #dcCatalogModal,
+    .gallery-photo-modal,
+    #galleryPhotoModal,
+    .lightbox-modal,
+    #lightboxModal,
+    #projectLightbox,
+    .dc-lightbox-overlay,
+    #dcLightbox,
+    .consultation-popup-overlay,
+    #consultationPopup {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      inset: 0 !important;
+      width: 100% !important;
+      width: 100vw !important;
+      height: 100% !important;
+      height: 100vh !important;
+      height: 100dvh !important;
+      min-height: 100% !important;
+      min-height: 100vh !important;
+      min-height: 100dvh !important;
+      min-height: -webkit-fill-available !important;
+      max-height: 100% !important;
+      max-height: 100vh !important;
+      max-height: 100dvh !important;
+      z-index: 2147483647 !important;
+      box-sizing: border-box !important;
+      margin: 0 !important;
+    }
+
+    /* Full-Screen Mobile Navigation Drawer / Overlay */
+    @media (max-width: 991.98px) {
+      .navbar-collapse {
+        position: fixed !important;
+        top: var(--nav-height, 56px) !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        inset: var(--nav-height, 56px) 0 0 0 !important;
+        width: 100% !important;
+        width: 100vw !important;
+        height: calc(100vh - var(--nav-height, 56px)) !important;
+        height: calc(100dvh - var(--nav-height, 56px)) !important;
+        min-height: calc(100vh - var(--nav-height, 56px)) !important;
+        min-height: calc(100dvh - var(--nav-height, 56px)) !important;
+        min-height: -webkit-fill-available !important;
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+        padding: 2rem 1.75rem 6rem 1.75rem !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+        z-index: 100000 !important;
+        margin-top: 0 !important;
+        border: none !important;
+      }
+      .navbar-collapse:not(.show) {
+        display: none !important;
+      }
+      .navbar-collapse.show {
+        display: block !important;
+      }
+      .navbar-nav {
+        gap: 0.8rem !important;
+        width: 100% !important;
+      }
+      .navbar-nav .nav-item {
+        width: 100% !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+        padding-bottom: 0.5rem !important;
+      }
+      .navbar-nav .nav-link {
+        font-size: 1.1rem !important;
+        font-weight: 600 !important;
+        color: #111111 !important;
+        padding: 0.5rem 0 !important;
+      }
+
+      /* City Hero Banner Full-Screen Viewport */
+      .hero-banner-section {
+        min-height: calc(100vh - var(--nav-height, 56px)) !important;
+        min-height: calc(100dvh - var(--nav-height, 56px)) !important;
+        max-height: none !important;
+        height: auto !important;
+        margin-top: 0 !important;
+        padding-top: 35px !important;
+        padding-bottom: 55px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      .hero-overlay-box {
+        max-width: 100% !important;
+        margin: auto !important;
+      }
+    }
+
+    /* Consultation Popup Modal Backdrop & Mobile Sizing */
+    .consultation-popup-overlay {
+      background: rgba(18, 17, 16, 0.78) !important;
+      backdrop-filter: blur(12px) saturate(130%) !important;
+      -webkit-backdrop-filter: blur(12px) saturate(130%) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    .consultation-popup-overlay:not(.active) {
+      display: none !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+    .consultation-popup-overlay.active {
+      display: flex !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+    }
+
+    @media (max-width: 768px) {
+      .consultation-popup-container {
+        width: 92% !important;
+        max-width: 440px !important;
+        max-height: 90vh !important;
+        max-height: 90dvh !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        border-radius: 16px !important;
+        margin: auto !important;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4) !important;
+      }
+      .dc-catalog-modal-main-img {
+        max-height: 72vh !important;
+        max-height: 72dvh !important;
+        max-width: 96vw !important;
+      }
+      .dc-catalog-modal-filmstrip-wrapper {
+        height: 60px !important;
+        margin-top: 6px !important;
+        margin-bottom: 4px !important;
+        flex-shrink: 0 !important;
+      }
+      .dc-catalog-modal-thumb {
+        width: 68px !important;
+        height: 48px !important;
+      }
+    }
+
+    /* Hide Mobile Bottom Bar and Navbar when Any Modal or Popup is Open */
+    body.catalog-lightbox-open .dc-mobile-bottom-bar,
+    body.catalog-lightbox-open #dcMobileBottomBar,
+    body.lightbox-open .dc-mobile-bottom-bar,
+    body.lightbox-open #dcMobileBottomBar,
+    body.gallery-modal-open .dc-mobile-bottom-bar,
+    body.gallery-modal-open #dcMobileBottomBar,
+    body.consultation-popup-open .dc-mobile-bottom-bar,
+    body.consultation-popup-open #dcMobileBottomBar,
+    body.catalog-lightbox-open .floating-widgets,
+    body.lightbox-open .floating-widgets,
+    body.gallery-modal-open .floating-widgets,
+    body.consultation-popup-open .floating-widgets,
+    body.catalog-lightbox-open .navbar,
+    body.lightbox-open .navbar,
+    body.gallery-modal-open .navbar {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
     }
 
     /* Hero Banner Slider Responsive CSS */
@@ -634,7 +815,7 @@ const isDev = import.meta.env.DEV;
   </script>
 
   <!-- Light Theme Override matching services.html -->
-  <style id="services-light-theme-override">
+  <style is:global id="services-light-theme-override">
     html {
       scroll-behavior: smooth !important;
       text-rendering: optimizeLegibility !important;
@@ -1263,9 +1444,19 @@ const isDev = import.meta.env.DEV;
             position: fixed !important;
             top: 0 !important;
             left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            inset: 0 !important;
+            width: 100% !important;
             width: 100vw !important;
+            height: 100% !important;
             height: 100vh !important;
-            background: rgba(8, 8, 10, 0.97) !important;
+            height: 100dvh !important;
+            min-height: 100% !important;
+            min-height: 100vh !important;
+            min-height: 100dvh !important;
+            min-height: -webkit-fill-available !important;
+            background: rgba(8, 8, 10, 0.98) !important;
             z-index: 2147483647 !important;
             display: none;
             flex-direction: column !important;
@@ -1471,7 +1662,8 @@ const isDev = import.meta.env.DEV;
             .dc-catalog-modal-prev { left: 6px !important; }
             .dc-catalog-modal-next { right: 6px !important; }
             .dc-catalog-modal-main-img {
-              max-height: 52vh !important;
+              max-height: 72vh !important;
+              max-height: 72dvh !important;
               max-width: 94vw !important;
             }
             .dc-catalog-modal-caption {
