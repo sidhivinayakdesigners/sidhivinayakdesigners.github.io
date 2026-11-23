@@ -327,18 +327,34 @@ const isDev = import.meta.env.DEV;
         padding: 0.5rem 0 !important;
       }
 
-      /* City Hero Banner Full-Screen Viewport */
+      /* City Hero Banner Viewport - Static height to prevent video zoom on mobile scroll */
       .hero-banner-section {
+        height: calc(100vh - var(--nav-height, 56px)) !important;
+        height: calc(100svh - var(--nav-height, 56px)) !important;
         min-height: calc(100vh - var(--nav-height, 56px)) !important;
-        min-height: calc(100dvh - var(--nav-height, 56px)) !important;
-        max-height: none !important;
-        height: auto !important;
+        min-height: calc(100svh - var(--nav-height, 56px)) !important;
+        max-height: calc(100vh - var(--nav-height, 56px)) !important;
+        max-height: calc(100svh - var(--nav-height, 56px)) !important;
         margin-top: 0 !important;
-        padding-top: 35px !important;
-        padding-bottom: 55px !important;
+        padding-top: 25px !important;
+        padding-bottom: 25px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
+        position: relative !important;
+        overflow: hidden !important;
+      }
+      .hero-video-bg {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        transform: none !important;
+        pointer-events: none !important;
       }
       .hero-overlay-box {
         max-width: 100% !important;

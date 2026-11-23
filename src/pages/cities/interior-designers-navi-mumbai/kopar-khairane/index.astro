@@ -275,14 +275,28 @@ const bodyContent = `<style>
 
     @media (max-width: 991px) {
       .hero-banner-section {
-        min-height: calc(100vh - 64px) !important;
-        min-height: calc(100svh - 64px) !important;
-        max-height: none !important;
-        min-height: calc(100dvh - var(--nav-height, 56px)) !important;
-        max-height: none !important;
-        min-height: calc(100dvh - var(--nav-height, 56px)) !important;
+        height: calc(100vh - var(--nav-height, 56px)) !important;
+        height: calc(100svh - var(--nav-height, 56px)) !important;
+        min-height: calc(100vh - var(--nav-height, 56px)) !important;
+        min-height: calc(100svh - var(--nav-height, 56px)) !important;
+        max-height: calc(100vh - var(--nav-height, 56px)) !important;
+        max-height: calc(100svh - var(--nav-height, 56px)) !important;
         background-image: none !important;
         background-color: #f3f6f8 !important;
+        position: relative !important;
+        overflow: hidden !important;
+      }
+      .hero-video-bg {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        transform: none !important;
+        pointer-events: none !important;
       }
     }
 
