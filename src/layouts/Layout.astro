@@ -279,7 +279,7 @@ const isDev = import.meta.env.DEV;
       pointer-events: none !important;
     }
 
-    /* Full-Screen Mobile Navigation Drawer / Overlay */
+    /* Mobile Navigation Drawer / Overlay - Refined, Compact & Smaller */
     @media (max-width: 991.98px) {
       .navbar-collapse {
         position: fixed !important;
@@ -294,13 +294,12 @@ const isDev = import.meta.env.DEV;
         height: calc(100dvh - var(--nav-height, 56px)) !important;
         min-height: calc(100vh - var(--nav-height, 56px)) !important;
         min-height: calc(100dvh - var(--nav-height, 56px)) !important;
-        min-height: -webkit-fill-available !important;
         background: #ffffff !important;
         background-color: #ffffff !important;
-        padding: 2rem 1.75rem 6rem 1.75rem !important;
+        padding: 0.75rem 1.25rem 5.5rem 1.25rem !important;
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch !important;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
         z-index: 100000 !important;
         margin-top: 0 !important;
         border: none !important;
@@ -312,19 +311,55 @@ const isDev = import.meta.env.DEV;
         display: block !important;
       }
       .navbar-nav {
-        gap: 0.8rem !important;
+        gap: 0 !important;
         width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        align-items: stretch !important;
       }
       .navbar-nav .nav-item {
         width: 100% !important;
         border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
-        padding-bottom: 0.5rem !important;
+        padding: 0 !important;
+        margin: 0 !important;
       }
       .navbar-nav .nav-link {
-        font-size: 1.1rem !important;
+        font-size: 0.84rem !important;
         font-weight: 600 !important;
-        color: #111111 !important;
-        padding: 0.5rem 0 !important;
+        color: #222222 !important;
+        padding: 0.55rem 0.25rem !important;
+        margin: 0 !important;
+        letter-spacing: 0.8px !important;
+        text-transform: uppercase !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+      }
+      .navbar-nav .nav-link.active {
+        color: #1396e5 !important;
+        font-weight: 700 !important;
+      }
+      .navbar-nav .nav-link::after {
+        display: none !important;
+      }
+      .navbar-nav .dropdown-menu {
+        border: none !important;
+        background: #f8fafc !important;
+        border-radius: 8px !important;
+        padding: 0.25rem 0.5rem !important;
+        margin: 0.15rem 0 0.4rem 0 !important;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04) !important;
+      }
+      .navbar-nav .dropdown-item {
+        font-size: 0.8rem !important;
+        padding: 0.35rem 0.6rem !important;
+        color: #444444 !important;
+        border-radius: 4px !important;
+      }
+      .navbar-collapse .btn-outline-light {
+        color: #333333 !important;
+        border-color: #dddddd !important;
+        margin-top: 0.65rem !important;
       }
 
       /* City Hero Banner Viewport - Static height to prevent video zoom on mobile scroll */
@@ -851,10 +886,16 @@ const isDev = import.meta.env.DEV;
   <!-- Light Theme Override matching services.html -->
   <style is:global id="services-light-theme-override">
     html {
-      scroll-behavior: smooth !important;
-      text-rendering: optimizeLegibility !important;
-      -webkit-font-smoothing: antialiased !important;
-      -moz-osx-font-smoothing: grayscale !important;
+      scroll-behavior: auto;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-overflow-scrolling: touch;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      html:focus-within {
+        scroll-behavior: smooth;
+      }
     }
     html, body {
       background-color: #ffffff !important;
@@ -912,15 +953,16 @@ const isDev = import.meta.env.DEV;
     right: 0 !important;
     width: 100% !important;
     height: 68px !important;
-    background: linear-gradient(180deg, rgba(205, 182, 152, 0.98) 0%, rgba(182, 156, 124, 0.99) 100%) !important;
-    backdrop-filter: blur(20px) saturate(180%) !important;
-    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    background: linear-gradient(180deg, #cdb698 0%, #b69c7c 100%) !important;
     z-index: 999999 !important;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.45) !important;
-    border-top: 1px solid rgba(255, 255, 255, 0.45) !important;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.4) !important;
     padding: 0 4px !important;
-    animation: dcBarSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
     overflow: visible !important;
+    contain: layout paint;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    animation: dcBarSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
   }
 
   body {
@@ -931,23 +973,15 @@ const isDev = import.meta.env.DEV;
     display: none !important;
   }
 
-  /* Elegant Luminous Top Hairline Glow - continuously traveling */
+  /* Elegant Luminous Top Hairline */
   .dc-mobile-bottom-bar::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, 
-      transparent 0%, 
-      rgba(184, 144, 71, 0.2) 15%, 
-      rgba(212, 175, 55, 0.9) 50%, 
-      rgba(184, 144, 71, 0.2) 85%, 
-      transparent 100%
-    );
-    background-size: 200% 100%;
-    animation: dcBarTopShimmer 3s linear infinite !important;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.55);
     pointer-events: none;
     z-index: 10;
   }
@@ -1032,96 +1066,84 @@ const isDev = import.meta.env.DEV;
   }
 }
 
-/* 1. Designs Item - Continuous smooth floating wave */
+/* 1. Designs Item - Pure GPU transform */
 @keyframes dcDesignsLive {
   0%, 100% {
     transform: translateY(0) scale(1);
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
   }
   50% {
-    transform: translateY(-4.5px) scale(1.12);
-    filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.35)) drop-shadow(0 0 6px rgba(255, 255, 255, 0.7));
+    transform: translateY(-3.5px) scale(1.08);
   }
 }
 .dc-item-designs i {
   animation: dcDesignsLive 2.4s ease-in-out infinite !important;
+  transform: translateZ(0);
 }
 
-/* 2. Call Now Item - Continuous lively phone ring & pulse */
+/* 2. Call Now Item - Pure GPU ring & pulse */
 @keyframes dcPhoneLive {
   0%, 100% {
     transform: rotate(0deg) scale(1);
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
   }
-  12% {
-    transform: rotate(-14deg) scale(1.16);
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.85));
+  15% {
+    transform: rotate(-12deg) scale(1.12);
   }
-  24% {
-    transform: rotate(14deg) scale(1.16);
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.85));
+  30% {
+    transform: rotate(12deg) scale(1.12);
   }
-  36% {
-    transform: rotate(-10deg) scale(1.12);
-  }
-  48% {
-    transform: rotate(10deg) scale(1.12);
+  45% {
+    transform: rotate(-6deg) scale(1.06);
   }
   60% {
-    transform: rotate(0deg) scale(1.04);
+    transform: rotate(0deg) scale(1.02);
   }
-  78% {
-    transform: scale(1.1) translateY(-2px);
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  80% {
+    transform: scale(1.08) translateY(-2px);
   }
 }
 .dc-item-call i {
   animation: dcPhoneLive 2.3s ease-in-out infinite !important;
+  transform: translateZ(0);
 }
 
-/* 3. Get Free Quote - Lively heartbeat & checkmark bounce */
+/* 3. Get Free Quote - Pure GPU heartbeat */
 @keyframes dcQuoteLive {
   0%, 100% {
     transform: translateY(0) scale(1);
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
   }
   25% {
-    transform: translateY(-4px) scale(1.18) rotate(-4deg);
-    filter: drop-shadow(0 0 10px rgba(255, 230, 150, 0.95)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    transform: translateY(-3px) scale(1.12);
   }
   50% {
-    transform: translateY(0) scale(1.04) rotate(0deg);
+    transform: translateY(0) scale(1.02);
   }
   75% {
-    transform: translateY(-2px) scale(1.1) rotate(3deg);
-    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.85));
+    transform: translateY(-1.5px) scale(1.06);
   }
 }
 .dc-item-quote i {
   animation: dcQuoteLive 2.1s ease-in-out infinite !important;
+  transform: translateZ(0);
 }
 
-/* 4. WhatsApp Item - Continuous heartbeat pulse & glowing halo */
+/* 4. WhatsApp Item - Pure GPU heartbeat pulse */
 @keyframes dcWhatsAppLive {
   0%, 100% {
     transform: scale(1);
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
   }
   30% {
-    transform: scale(1.22) translateY(-2.5px);
-    filter: drop-shadow(0 0 12px rgba(37, 211, 102, 0.95)) drop-shadow(0 0 6px #ffffff);
+    transform: scale(1.14) translateY(-2px);
   }
   60% {
-    transform: scale(1.06) translateY(0);
-    filter: drop-shadow(0 0 6px rgba(37, 211, 102, 0.65));
+    transform: scale(1.04) translateY(0);
   }
   80% {
-    transform: scale(1.12);
-    filter: drop-shadow(0 0 9px rgba(37, 211, 102, 0.85));
+    transform: scale(1.08);
   }
 }
 .dc-item-whatsapp i {
   animation: dcWhatsAppLive 2.3s ease-in-out infinite !important;
+  transform: translateZ(0);
 }
 
 /* Center Elevated Siddhivinayak Designers Logo Button */
@@ -1154,10 +1176,11 @@ const isDev = import.meta.env.DEV;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.12), 0 4px 14px rgba(182, 156, 124, 0.25), 0 0 0 3px #CDB698, 0 0 10px rgba(205, 182, 152, 0.4) !important;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease !important;
+  box-shadow: 0 -4px 14px rgba(0, 0, 0, 0.12), 0 0 0 3px #CDB698 !important;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
   animation: dcLogoLive 2.8s ease-in-out infinite !important;
   pointer-events: auto !important;
+  transform: translateZ(0);
 }
 
 .dc-logo-badge img {
@@ -1185,11 +1208,9 @@ const isDev = import.meta.env.DEV;
 @keyframes dcLogoLive {
   0%, 100% {
     transform: translateY(0) scale(1);
-    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.12), 0 4px 14px rgba(182, 156, 124, 0.25), 0 0 0 3px #CDB698, 0 0 10px rgba(205, 182, 152, 0.35);
   }
   50% {
-    transform: translateY(-3px) scale(1.04);
-    box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.16), 0 6px 18px rgba(182, 156, 124, 0.35), 0 0 0 3.5px #CDB698, 0 0 14px rgba(205, 182, 152, 0.5);
+    transform: translateY(-2.5px) scale(1.04);
   }
 }
 
@@ -1350,10 +1371,35 @@ const isDev = import.meta.env.DEV;
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" is:inline></script>
   <script src="/assets/js/main.min.js?v=1009" is:inline></script>
   <script is:inline>
-    AOS.init({
-        duration: 800,
-        once: true
-    });
+    (function() {
+      if (typeof window !== 'undefined') {
+        const patchAOS = function() {
+          if (window.AOS && !window.AOS.__patched) {
+            window.AOS.__patched = true;
+            const origInit = window.AOS.init.bind(window.AOS);
+            window.AOS.init = function(options) {
+              const opts = Object.assign({}, options, {
+                duration: 600,
+                once: true,
+                disable: 'mobile',
+                debounceDelay: 50,
+                throttleDelay: 99
+              });
+              return origInit(opts);
+            };
+          }
+        };
+        patchAOS();
+        if (window.AOS) {
+          window.AOS.init();
+        } else {
+          document.addEventListener('DOMContentLoaded', function() {
+            patchAOS();
+            if (window.AOS) window.AOS.init();
+          });
+        }
+      }
+    })();
 
     // Global touch swipe handler for Bootstrap Carousels
     (function() {
