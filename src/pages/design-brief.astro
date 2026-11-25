@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 
 const title = "Client Design Taste & Style Brief | Siddhivinayak Designers";
-const description = "Share your home interior taste and style preferences—false ceiling, wardrobes, modular kitchen, living room, lighting, colors, and budget—with Siddhivinayak Designers.";
+const description = "Discover your home interior taste in 90 seconds—tap your favorite false ceilings, wardrobes, modular kitchens, lighting tones, and color palettes with Siddhivinayak Designers.";
 const canonical = "https://siddhivinayakdesigners.in/design-brief/";
 const schema = JSON.stringify({
   "@context": "https://schema.org",
@@ -27,938 +27,1115 @@ const schema = JSON.stringify({
     {
       "@type": "WebPage",
       "@id": "https://siddhivinayakdesigners.in/design-brief/#webpage",
-      "name": "Client Design Taste & Style Brief",
+      "name": "Interactive Home Interior Taste Quiz & Design Brief",
       "url": "https://siddhivinayakdesigners.in/design-brief/",
-      "description": "Interactive visual interior design taste questionnaire for Navi Mumbai homeowners."
+      "description": "Mobile-first visual interior design taste configurator for Navi Mumbai homeowners."
     }
   ]
 });
 ---
 
 <Layout title={title} description={description} canonical={canonical} schema={schema}>
-  <!-- Hero Header -->
-  <section class="brief-hero">
-    <div class="container">
-      <div class="brief-hero-inner text-center mx-auto">
-        <span class="brief-badge">
-          <i class="fas fa-swatchbook me-1"></i> Client Onboarding &amp; Taste Form
-        </span>
-        <h1 class="brief-title">Tell Us How You Envision Your Dream Home</h1>
-        <p class="brief-subtitle">
-          Tap the designs, finishes, lighting, and color palettes you naturally love. Takes just 2 minutes—no design jargon needed. Your choices help our team craft 3D concepts made specifically for your family.
-        </p>
-        <div class="brief-hero-actions">
-          <button type="button" class="brief-share-btn" id="copyPageLinkBtn">
-            <i class="fas fa-share-nodes me-1"></i> Share Form with Spouse / Partner
+  <div class="studio-app-shell" id="studioAppShell">
+    <!-- Top App Progress & Live Moodboard Header -->
+    <div class="studio-topbar" id="studioTopbar">
+      <div class="container studio-topbar-inner">
+        <div class="studio-step-meta">
+          <div class="studio-step-pills" id="studioStepDots">
+            <button type="button" class="step-dot active" data-goto="0" aria-label="Step 1"></button>
+            <button type="button" class="step-dot" data-goto="1" aria-label="Step 2"></button>
+            <button type="button" class="step-dot" data-goto="2" aria-label="Step 3"></button>
+            <button type="button" class="step-dot" data-goto="3" aria-label="Step 4"></button>
+            <button type="button" class="step-dot" data-goto="4" aria-label="Step 5"></button>
+            <button type="button" class="step-dot" data-goto="5" aria-label="Step 6"></button>
+            <button type="button" class="step-dot" data-goto="6" aria-label="Step 7"></button>
+            <button type="button" class="step-dot" data-goto="7" aria-label="Your Design DNA"></button>
+          </div>
+          <span class="studio-step-counter" id="studioStepCounter">Step 1 of 7</span>
+        </div>
+
+        <div class="studio-topbar-actions">
+          <button type="button" class="moodboard-pill-btn" id="openMoodboardBtn" title="View your live moodboard picks">
+            <span class="moodboard-thumb-stack" id="moodboardThumbStack">
+              <span class="stack-empty-dot"></span>
+            </span>
+            <span class="moodboard-pill-text">Moodboard <strong id="moodboardCount">0</strong></span>
+          </button>
+          <button type="button" class="view-mode-btn d-none d-sm-inline-flex" id="toggleViewModeBtn" title="Switch between Guided Step Mode and Full List">
+            <i class="fas fa-layer-group me-1"></i> <span>All Steps</span>
           </button>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Sticky Progress & Quick Navigation -->
-  <div class="brief-progress-bar-wrap" id="briefProgressWrap">
-    <div class="container">
-      <div class="brief-progress-top">
-        <span class="brief-progress-label" id="briefProgressText">0 of 7 Sections Filled</span>
-        <span class="brief-progress-pct" id="briefProgressPct">0%</span>
-      </div>
-      <div class="brief-progress-track">
-        <div class="brief-progress-fill" id="briefProgressFill"></div>
-      </div>
-      <div class="brief-nav-pills">
-        <a href="#sec-basics" class="brief-nav-pill">1. Basics</a>
-        <a href="#sec-vibe" class="brief-nav-pill">2. Home Vibe</a>
-        <a href="#sec-ceiling" class="brief-nav-pill">3. Ceiling &amp; Lights</a>
-        <a href="#sec-wardrobe" class="brief-nav-pill">4. Wardrobes</a>
-        <a href="#sec-kitchen" class="brief-nav-pill">5. Kitchen</a>
-        <a href="#sec-living" class="brief-nav-pill">6. Living &amp; Pooja</a>
-        <a href="#sec-lifestyle" class="brief-nav-pill">7. Colors &amp; Budget</a>
+      <div class="studio-progress-line">
+        <div class="studio-progress-fill" id="studioProgressFill" style="width: 12.5%;"></div>
       </div>
     </div>
-  </div>
 
-  <!-- Main Questionnaire Form -->
-  <section class="brief-main-section">
-    <div class="container">
-      <form id="designBriefForm" class="brief-form" novalidate>
+    <!-- Live Selection Feedback Toast -->
+    <div class="studio-toast" id="studioToast" aria-live="polite"></div>
 
-        <!-- SECTION 1: BASICS -->
-        <div class="brief-card" id="sec-basics">
-          <div class="brief-card-head">
-            <span class="brief-step-num">01</span>
-            <div>
-              <h2 class="brief-section-title">Client &amp; Property Details</h2>
-              <p class="brief-section-desc">Basic details about your home so we can tag this brief to your project file.</p>
-            </div>
-          </div>
+    <!-- Interactive Wizard Container -->
+    <main class="studio-stage">
+      <div class="container studio-stage-container">
+        <form id="designBriefForm" novalidate>
 
-          <div class="row g-3 mt-1">
-            <div class="col-md-4">
-              <label for="clientName" class="brief-field-label">Your Full Name <span class="text-danger">*</span></label>
-              <input type="text" id="clientName" class="form-control brief-input" placeholder="e.g., Rahul Sharma" required />
-            </div>
-            <div class="col-md-4">
-              <label for="clientPhone" class="brief-field-label">WhatsApp / Mobile Number <span class="text-danger">*</span></label>
-              <div class="input-group">
-                <span class="input-group-text brief-addon">+91</span>
-                <input type="tel" id="clientPhone" class="form-control brief-input" placeholder="10-digit mobile number" pattern="[6-9][0-9]{9}" required />
-              </div>
-            </div>
-            <div class="col-md-4">
-              <label for="clientLocation" class="brief-field-label">Node / Area &amp; Society Name</label>
-              <input type="text" id="clientLocation" class="form-control brief-input" placeholder="e.g., Kharghar - Sai World Empire" />
-            </div>
-          </div>
-
-          <div class="mt-4">
-            <label class="brief-field-label">Property Configuration</label>
-            <div class="brief-chip-group" data-group="propertyType" data-mode="single">
-              <button type="button" class="brief-chip" data-value="1 BHK">1 BHK</button>
-              <button type="button" class="brief-chip" data-value="2 BHK">2 BHK</button>
-              <button type="button" class="brief-chip" data-value="3 BHK">3 BHK</button>
-              <button type="button" class="brief-chip" data-value="4+ BHK / Duplex">4+ BHK / Duplex</button>
-              <button type="button" class="brief-chip" data-value="Villa / Bungalow">Villa / Bungalow</button>
-              <button type="button" class="brief-chip" data-value="Commercial / Office">Commercial / Office</button>
-            </div>
-          </div>
-
-          <div class="mt-4">
-            <label class="brief-field-label">Expected Move-In / Handover Timeline</label>
-            <div class="brief-chip-group" data-group="timeline" data-mode="single">
-              <button type="button" class="brief-chip" data-value="Urgent (Within 45-60 Days)">Urgent (45–60 Days)</button>
-              <button type="button" class="brief-chip" data-value="2-4 Months">2–4 Months</button>
-              <button type="button" class="brief-chip" data-value="4-6 Months (Under Possession)">4–6 Months</button>
-              <button type="button" class="brief-chip" data-value="Flexible / Planning Ahead">Flexible / Planning</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- SECTION 2: OVERALL HOME VIBE -->
-        <div class="brief-card" id="sec-vibe">
-          <div class="brief-card-head">
-            <span class="brief-step-num">02</span>
-            <div>
-              <h2 class="brief-section-title">Overall Home Vibe &amp; Aesthetic</h2>
-              <p class="brief-section-desc">Tap 1 or 2 styles that feel closest to what you want to come home to every day.</p>
-            </div>
-          </div>
-
-          <div class="brief-visual-grid" data-group="homeStyle" data-mode="multi">
-            <div class="brief-visual-card" data-value="Bright & Minimalist">
-              <div class="brief-img-box">
-                <img src="/assets/images/minimal-2bhk-seawoods/img1.webp" alt="Bright and Minimalist interior style" loading="lazy" decoding="async" />
-                <span class="brief-check-badge"><i class="fas fa-check"></i></span>
-                <button type="button" class="brief-zoom-btn" data-zoom="/assets/images/minimal-2bhk-seawoods/img1.webp" data-caption="Bright & Minimalist — Clean surfaces, airy light tones & clutter-free calm" aria-label="Zoom preview"><i class="fas fa-expand-alt"></i></button>
-              </div>
-              <div class="brief-visual-body">
-                <h3>Bright &amp; Minimalist</h3>
-                <p>Crisp whites, warm greige, clean flat surfaces, clutter-free calm.</p>
-              </div>
+          <!-- STEP 0: HOME BASICS & WELCOME HOOK -->
+          <section class="studio-step active" data-step="0" id="step-0">
+            <div class="step-header-block">
+              <span class="step-eyebrow"><i class="fas fa-wand-magic-sparkles me-1"></i> 90-Second Interior Taste Studio</span>
+              <h1 class="step-headline">Let’s Discover Your Dream Home DNA</h1>
+              <p class="step-subtext">Tap the spaces, lights &amp; textures you naturally love—zero technical jargon. We’ll turn your picks into custom 3D concepts.</p>
             </div>
 
-            <div class="brief-visual-card" data-value="Luxury Neo-Classical">
-              <div class="brief-img-box">
-                <img src="/assets/images/contemporary-2bhk-kharghar/img1.webp" alt="Luxury Neo-Classical wall mouldings interior" loading="lazy" decoding="async" />
-                <span class="brief-check-badge"><i class="fas fa-check"></i></span>
-                <button type="button" class="brief-zoom-btn" data-zoom="/assets/images/contemporary-2bhk-kharghar/img1.webp" data-caption="Luxury Neo-Classical — Wall mouldings, soft creams & chandelier elegance" aria-label="Zoom preview"><i class="fas fa-expand-alt"></i></button>
-              </div>
-              <div class="brief-visual-body">
-                <h3>Luxury Neo-Classical</h3>
-                <p>European wall mouldings, soft neutrals, chandeliers &amp; refined grace.</p>
-              </div>
-            </div>
-
-            <div class="brief-visual-card" data-value="Warm Wooden & Cozy">
-              <div class="brief-img-box">
-                <img src="/assets/images/rustic-3bhk-home-nerul/img4.webp" alt="Warm wooden and earthy cozy interior" loading="lazy" decoding="async" />
-                <span class="brief-check-badge"><i class="fas fa-check"></i></span>
-                <button type="button" class="brief-zoom-btn" data-zoom="/assets/images/rustic-3bhk-home-nerul/img4.webp" data-caption="Warm Wooden & Cozy — Natural wood textures, earthy warmth & ambient lighting" aria-label="Zoom preview"><i class="fas fa-expand-alt"></i></button>
-              </div>
-              <div class="brief-visual-body">
-                <h3>Warm Wooden &amp; Cozy</h3>
-                <p>Rich walnut/teak grain, earthy tones, warm inviting homeliness.</p>
-              </div>
-            </div>
-
-            <div class="brief-visual-card" data-value="Opulent Modern & Marble">
-              <div class="brief-img-box">
-                <img src="/assets/images/premium-4bhk-ghansoli/img3.webp" alt="Opulent Modern Marble and Gold interior" loading="lazy" decoding="async" />
-                <span class="brief-check-badge"><i class="fas fa-check"></i></span>
-                <button type="button" class="brief-zoom-btn" data-zoom="/assets/images/premium-4bhk-ghansoli/img3.webp" data-caption="Opulent Modern & Marble — Fluted textures, gold trims & grand statement accents" aria-label="Zoom preview"><i class="fas fa-expand-alt"></i></button>
-              </div>
-              <div class="brief-visual-body">
-                <h3>Opulent Modern &amp; Marble</h3>
-                <p>Italian marble look, fluted panels, brass/gold trims &amp; statement luxury.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SECTION 3: FALSE CEILING & LIGHTING -->
-        <div class="brief-card" id="sec-ceiling">
-          <div class="brief-card-head">
-            <span class="brief-step-num">03</span>
-            <div>
-              <h2 class="brief-section-title">False Ceiling &amp; Lighting Taste</h2>
-              <p class="brief-section-desc">Choose your favorite ceiling patterns and preferred light warmth.</p>
-            </div>
-          </div>
-
-          <div class="brief-visual-grid" data-group="ceilingStyle" data-mode="multi">
-            <div class="brief-visual-card" data-value="Peripheral Border + Warm Cove Glow">
-              <div class="brief-img-box">
-                <img src="/assets/images/premium-4bhk-ghansoli/img9.webp" alt="Peripheral border ceiling with cove lighting" loading="lazy" decoding="async" />
-                <span class="brief-check-badge"><i class="fas fa-check"></i></span>
-                <button type="button" class="brief-zoom-btn" data-zoom="/assets/images/premium-4bhk-ghansoli/img9.webp" data-caption="Peripheral Border + Warm Cove — Keeps center height open with soft perimeter glow" aria-label="Zoom preview"><i class="fas fa-expand-alt"></i></button>
-              </div>
-              <div class="brief-visual-body">
-                <h3>Peripheral Border + Cove Glow</h3>
-                <p>Maximizes full center ceiling height with soft indirect perimeter lighting.</p>
-              </div>
-            </div>
-
-            <div class="brief-visual-card" data-value="Dual-Layer Gypsum + COB Spotlights">
-              <div class="brief-img-box">
-                <img src="/assets/images/2026-04-11 (11).webp" alt="Dual-layer gypsum ceiling with spotlights" loading="lazy" decoding="async" />
-                <span class="brief-check-badge"><i class="fas fa-check"></i></span>
-                <button type="button" class="brief-zoom-btn" data-zoom="/assets/images/2026-04-11 (11).webp" data-caption="Dual-Layer Gypsum + COB Spotlights — Architectural stepped ceiling with focused spots" aria-label="Zoom preview"><i class="fas fa-expand-alt"></i></button>
-              </div>
-              <div class="brief-visual-body">
-                <h3>Dual-Layer Gypsum + Spotlights</h3>
-                <p>Multi-level POP drop ceiling with directional COB spots for rich depth.</p>
-              </div>
-            </div>
-
-            <div class="brief-visual-card" data-value="Linear Recessed Profile LEDs">
-              <div class="brief-img-box">
-                <img src="/assets/images/contemporary-3bhk-house-belapur/img6.webp" alt="Linear recessed profile LED ceiling" loading="lazy" decoding="async" />
-                <span class="brief-check-badge"><i class="fas fa-check"></i></span>
-                <button type="button" class="brief-zoom-btn" data-zoom="/assets/images/contemporary-3bhk-house-belapur/img6.webp" data-caption="Linear Profile LEDs — Sleek modern geometric light strips recessed flush" aria-label="Zoom preview"><i class="fas fa-expand-alt"></i></button>
-              </div>
-              <div class="brief-visual-body">
-                <h3>Linear Recessed Profile LEDs</h3>
-                <p>Sleek architectural light lines seamlessly flush inside gypsum ceiling.</p>
-              </div>
-            </div>
-
-            <div class="brief-visual-card" data-value="Wooden Rafters / Slatted Ceiling Accent">
-              <div class="brief-img-box">
-                <img src="/assets/images/rustic-3bhk-home-nerul/img4.webp" alt="Wooden ceiling panel and rafters" loading="lazy" decoding="async" />
-                <span class="brief-check-badge"><i class="fas fa-check"></i></span>
-                <button type="button" class="brief-zoom-btn" data-zoom="/assets/images/rustic-3bhk-home-nerul/img4.webp" data-caption="Wooden Rafters / Ceiling Accents — Warm veneer/laminate paneling detail" aria-label="Zoom preview"><i class="fas fa-expand-alt"></i></button>
-              </div>
-              <div class="brief-visual-body">
-                <h3>Wooden Rafters / Panel Accent</h3>
-                <p>Warm wooden ceiling beams or veneer inlays in living &amp; dining zones.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="row g-4 mt-2">
-            <div class="col-md-6">
-              <label class="brief-field-label">Preferred Lighting Tone</label>
-              <div class="brief-chip-group" data-group="lightTone" data-mode="single">
-                <button type="button" class="brief-chip" data-value="Warm White (3000K — Hotel Cozy)"><span class="tone-dot" style="background:#ffe0a3;"></span> Warm White (3000K)</button>
-                <button type="button" class="brief-chip" data-value="Natural Daylight (4000K — Balanced)"><span class="tone-dot" style="background:#fff4dc;"></span> Natural White (4000K)</button>
-                <button type="button" class="brief-chip" data-value="Cool White (6000K — Crisp Bright)"><span class="tone-dot" style="background:#eef7ff;"></span> Cool White (6000K)</button>
-                <button type="button" class="brief-chip" data-value="Smart 3-in-1 / Dimmable">3-in-1 Smart Lights</button>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <label class="brief-field-label">Decorative Fixtures &amp; Extras</label>
-              <div class="brief-chip-group" data-group="lightExtras" data-mode="multi">
-                <button type="button" class="brief-chip" data-value="Statement Chandelier">Living / Dining Chandelier</button>
-                <button type="button" class="brief-chip" data-value="Bedside Hanging Pendants">Bedside Hanging Pendants</button>
-                <button type="button" class="brief-chip" data-value="No Heavy POP in Bedrooms (Plain Ceiling)">Simple Ceiling in Bedrooms</button>
-                <button type="button" class="brief-chip" data-value="Concealed Curtain Pelmets">Concealed Curtain Pelmets</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SECTION 4: WARDROBES & BEDROOM STORAGE -->
-        <div class="brief-card" id="sec-wardrobe">
-          <div class="brief-card-head">
-            <span class="brief-step-num">04</span>
-            <div>
-              <h2 class="brief-section-title">Wardrobes &amp; Bedroom Finishes</h2>
-              <p class="brief-section-desc">Select door styles, laminate finishes, loft design, and internal organizers you want.</p>
-            </div>
-          </div>
-
-          <div class="brief-visual-grid" data-group="wardrobeStyle" data-mode="multi">
-            <div class="brief-visual-card" data-value="Full-Height Sliding Wardrobe with Metallic Trim">
-              <div class="brief-img-box">
-                <img src="/assets/images/minimal-2bhk-seawoods/img12.webp" alt="Full height sliding wardrobe with gold trim" loading="lazy" decoding="async" />
-                <span class="brief-check-badge"><i class="fas fa-check"></i></span>
-                <button type="button" class="brief-zoom-btn" data-zoom="/assets/images/minimal-2bhk-seawoods/img12.webp" data-caption="Full-Height Sliding Wardrobe — Space-saving doors with sleek metallic profiles" aria-label="Zoom preview"><i class="fas fa-expand-alt"></i></button>
-              </div>
-              <div class="brief-visual-body">
-                <h3>Full-Height Sliding + Gold Trim</h3>
-                <p>Zero door-swing clearance needed; sleek floor-to-ceiling tracks.</p>
-              </div>
-            </div>
-
-            <div class="brief-visual-card" data-value="Sliding Mirrored Wardrobe with Dresser">
-              <div class="brief-img-box">
-                <img src="/assets/images/minimal-2bhk-seawoods/img11.webp" alt="Sliding mirrored wardrobe" loading="lazy" decoding="async" />
-                <span class="brief-check-badge"><i class="fas fa-check"></i></span>
-                <button type="button" class="brief-zoom-btn" data-zoom="/assets/images/minimal-2bhk-seawoods/img11.webp" data-caption="Sliding Mirrored Wardrobe — Full-length mirror panels make bedrooms look 2x larger" aria-label="Zoom preview"><i class="fas fa-expand-alt"></i></button>
-              </div>
-              <div class="brief-visual-body">
-                <h3>Mirrored Sliding + Dresser</h3>
-                <p>Reflects light and saves separate dressing table wall space.</p>
-              </div>
-            </div>
-
-            <div class="brief-visual-card" data-value="Tinted / Fluted Glass Profile Shutters">
-              <div class="brief-img-box">
-                <img src="/assets/images/wardrobe/four-door-modern-wardrobe-with-tinted-glass-shutters.webp" alt="Tinted glass shutter wardrobe" loading="lazy" decoding="async" />
-                <span class="brief-check-badge"><i class="fas fa-check"></i></span>
-                <button type="button" class="brief-zoom-btn" data-zoom="/assets/images/wardrobe/four-door-modern-wardrobe-with-tinted-glass-shutters.webp" data-caption="Tinted / Fluted Glass Wardrobe — Boutique luxury aesthetic with sensor LED strips" aria-label="Zoom preview"><i class="fas fa-expand-alt"></i></button>
-              </div>
-              <div class="brief-visual-body">
-                <h3>Tinted / Fluted Glass Shutters</h3>
-                <p>Luxury boutique walk-in closet look with internal sensor lights.</p>
-              </div>
-            </div>
-
-            <div class="brief-visual-card" data-value="Classic Hinged Doors + Overhead Loft">
-              <div class="brief-img-box">
-                <img src="/assets/images/wardrobe/4-door-wardrobe-design-with-cabinets-and-drawers-for-storage.webp" alt="4 door hinged wardrobe with drawers and loft" loading="lazy" decoding="async" />
-                <span class="brief-check-badge"><i class="fas fa-check"></i></span>
-                <button type="button" class="brief-zoom-btn" data-zoom="/assets/images/wardrobe/4-door-wardrobe-design-with-cabinets-and-drawers-for-storage.webp" data-caption="Classic Hinged Wardrobe + Loft — 100% full interior visibility and durable hardware" aria-label="Zoom preview"><i class="fas fa-expand-alt"></i></button>
-              </div>
-              <div class="brief-visual-body">
-                <h3>Classic Hinged + Loft Storage</h3>
-                <p>Opens all doors together for easy access; zero dust-track maintenance.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="row g-4 mt-2">
-            <div class="col-md-6">
-              <label class="brief-field-label">Wardrobe Shutter Finish</label>
-              <div class="brief-chip-group" data-group="wardrobeFinish" data-mode="single">
-                <button type="button" class="brief-chip" data-value="Matte / Suede Laminate">Matte / Suede Laminate</button>
-                <button type="button" class="brief-chip" data-value="High-Gloss Acrylic / Laminate">High-Gloss Acrylic</button>
-                <button type="button" class="brief-chip" data-value="Textured Wood-Grain">Wooden Texture</button>
-                <button type="button" class="brief-chip" data-value="PU Lacquered / Fluted">PU Painted / Fluted</button>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <label class="brief-field-label">Loft Preference</label>
-              <div class="brief-chip-group" data-group="loftPref" data-mode="single">
-                <button type="button" class="brief-chip" data-value="Flush Full-Height Doors (Single seamless shutter)">Seamless Full-Height</button>
-                <button type="button" class="brief-chip" data-value="Separate Overhead Loft Doors">Separate Overhead Lofts</button>
-                <button type="button" class="brief-chip" data-value="No Loft (Clean Minimal)">No Loft Needed</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-4">
-            <label class="brief-field-label">Must-Have Wardrobe &amp; Bedroom Features</label>
-            <div class="brief-chip-group" data-group="wardrobeExtras" data-mode="multi">
-              <button type="button" class="brief-chip" data-value="Saree / Trouser Pull-Out">Saree / Trouser Pull-Out</button>
-              <button type="button" class="brief-chip" data-value="Velvet Jewelry Drawer">Jewelry Organizer Drawer</button>
-              <button type="button" class="brief-chip" data-value="Hidden / Pull-Out Dressing Mirror">Pull-Out Mirror</button>
-              <button type="button" class="brief-chip" data-value="Digital Safe / Secret Locker">Secret Locker Drawer</button>
-              <button type="button" class="brief-chip" data-value="Wardrobe-cum-Study / Vanity">Attached Study / Vanity</button>
-              <button type="button" class="brief-chip" data-value="Hydraulic Storage Bed">Hydraulic Storage Bed</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- SECTION 5: MODULAR KITCHEN -->
-        <div class="brief-card" id="sec-kitchen">
-          <div class="brief-card-head">
-            <span class="brief-step-num">05</span>
-            <div>
-              <h2 class="brief-section-title">Modular Kitchen Taste</h2>
-              <p class="brief-section-desc">Pick the kitchen aesthetic, finish, countertop, and smart accessories you prefer.</p>
-            </div>
-          </div>
-
-          <div class="brief-visual-grid" data-group="kitchenStyle" data-mode="multi">
-            <div class="brief-visual-card" data-value="High-Gloss Handleless Acrylic Kitchen">
-              <div class="brief-img-box">
-                <img src="/assets/images/minimal-2bhk-seawoods/img7.webp" alt="High gloss handleless acrylic kitchen" loading="lazy" decoding="async" />
-                <span class="brief-check-badge"><i class="fas fa-check"></i></span>
-                <button type="button" class="brief-zoom-btn" data-zoom="/assets/images/minimal-2bhk-seawoods/img7.webp" data-caption="High-Gloss Handleless Acrylic — Bright mirror sheen, sleek G-profile & easy stain wipe" aria-label="Zoom preview"><i class="fas fa-expand-alt"></i></button>
-              </div>
-              <div class="brief-visual-body">
-                <h3>High-Gloss Handleless Acrylic</h3>
-                <p>Bright reflective sheen, Gola handleless profiles, easy wipe-down.</p>
-              </div>
-            </div>
-
-            <div class="brief-visual-card" data-value="Fluted Glass Overhead Display Cabinets">
-              <div class="brief-img-box">
-                <img src="/assets/images/contemporary-2bhk-kharghar/img3.webp" alt="Modular kitchen with fluted glass cabinets" loading="lazy" decoding="async" />
-                <span class="brief-check-badge"><i class="fas fa-check"></i></span>
-                <button type="button" class="brief-zoom-btn" data-zoom="/assets/images/contemporary-2bhk-kharghar/img3.webp" data-caption="Fluted Glass Upper Cabinets — Designer ribbed glass shutters with warm backlit glow" aria-label="Zoom preview"><i class="fas fa-expand-alt"></i></button>
-              </div>
-              <div class="brief-visual-body">
-                <h3>Fluted Glass Overhead Cabinets</h3>
-                <p>Translucent ribbed glass upper shutters paired with profile lights.</p>
-              </div>
-            </div>
-
-            <div class="brief-visual-card" data-value="Silky Matte Anti-Fingerprint Finish">
-              <div class="brief-img-box">
-                <img src="/assets/images/modular-kitchen/a-u-shaped-kitchen-home-interior-design-with-black-matte-finish-cabinets-that-add-a-sleek-look.webp" alt="Matte finish modern kitchen" loading="lazy" decoding="async" />
-                <span class="brief-check-badge"><i class="fas fa-check"></i></span>
-                <button type="button" class="brief-zoom-btn" data-zoom="/assets/images/modular-kitchen/a-u-shaped-kitchen-home-interior-design-with-black-matte-finish-cabinets-that-add-a-sleek-look.webp" data-caption="Silky Matte Kitchen — Fingerprint-resistant sophisticated architectural look" aria-label="Zoom preview"><i class="fas fa-expand-alt"></i></button>
-              </div>
-              <div class="brief-visual-body">
-                <h3>Silky Matte / Anti-Fingerprint</h3>
-                <p>Zero glare, ultra-modern soft-touch matte shutters &amp; dark accents.</p>
-              </div>
-            </div>
-
-            <div class="brief-visual-card" data-value="Dual-Tone Pastel & Light Upper Cabinets">
-              <div class="brief-img-box">
-                <img src="/assets/images/modular-kitchen/an-l-shaped-kitchen-with-green-base-cabinets-and-white-upper-cabinets-kitchen-interior-design.webp" alt="Two tone pastel green and white kitchen" loading="lazy" decoding="async" />
-                <span class="brief-check-badge"><i class="fas fa-check"></i></span>
-                <button type="button" class="brief-zoom-btn" data-zoom="/assets/images/modular-kitchen/an-l-shaped-kitchen-with-green-base-cabinets-and-white-upper-cabinets-kitchen-interior-design.webp" data-caption="Dual-Tone Pastel & White — Fresh sage/pastel base cabinets with bright white wall units" aria-label="Zoom preview"><i class="fas fa-expand-alt"></i></button>
-              </div>
-              <div class="brief-visual-body">
-                <h3>Two-Tone Pastel &amp; Bright Top</h3>
-                <p>Colored lower cabinets (sage, teal, blue) balanced with bright upper units.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="row g-4 mt-2">
-            <div class="col-md-6">
-              <label class="brief-field-label">Countertop Choice</label>
-              <div class="brief-chip-group" data-group="countertop" data-mode="single">
-                <button type="button" class="brief-chip" data-value="White / Statuario Quartz">White / Marble Quartz</button>
-                <button type="button" class="brief-chip" data-value="Black Granite (Classic Stain-Proof)">Black Granite</button>
-                <button type="button" class="brief-chip" data-value="Nano White">Nano White</button>
-                <button type="button" class="brief-chip" data-value="Grey / Beige Quartz">Grey / Beige Quartz</button>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <label class="brief-field-label">Kitchen Layout / Counter Add-On</label>
-              <div class="brief-chip-group" data-group="kitchenLayout" data-mode="single">
-                <button type="button" class="brief-chip" data-value="L-Shaped">L-Shaped</button>
-                <button type="button" class="brief-chip" data-value="Parallel / Galley">Parallel</button>
-                <button type="button" class="brief-chip" data-value="U-Shaped">U-Shaped</button>
-                <button type="button" class="brief-chip" data-value="With Breakfast Counter">Breakfast Counter</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-4">
-            <label class="brief-field-label">Appliances &amp; Storage Mechanisms</label>
-            <div class="brief-chip-group" data-group="kitchenExtras" data-mode="multi">
-              <button type="button" class="brief-chip" data-value="Built-in Hob & Chimney">Built-in Hob &amp; Chimney</button>
-              <button type="button" class="brief-chip" data-value="Built-in Oven / Microwave Tall Unit">Microwave / OTG Tall Unit</button>
-              <button type="button" class="brief-chip" data-value="Dishwasher Provision">Dishwasher Space</button>
-              <button type="button" class="brief-chip" data-value="Pantry Pull-Out Unit">Tall Pantry Pull-Out</button>
-              <button type="button" class="brief-chip" data-value="Appliance Garage (Rolling Shutter)">Rolling Shutter Garage</button>
-              <button type="button" class="brief-chip" data-value="Magic Corner / Carousel">Magic Corner Unit</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- SECTION 6: LIVING ROOM, TV UNIT & POOJA -->
-        <div class="brief-card" id="sec-living">
-          <div class="brief-card-head">
-            <span class="brief-step-num">06</span>
-            <div>
-              <h2 class="brief-section-title">Living Room, TV Wall &amp; Pooja Mandir</h2>
-              <p class="brief-section-desc">How should your living focal wall and sacred space look?</p>
-            </div>
-          </div>
-
-          <div class="brief-visual-grid" data-group="livingElements" data-mode="multi">
-            <div class="brief-visual-card" data-value="Sleek Floating TV Console + Airy Wall">
-              <div class="brief-img-box">
-                <img src="/assets/images/minimal-2bhk-seawoods/img1.webp" alt="Floating sleek TV unit in living room" loading="lazy" decoding="async" />
-                <span class="brief-check-badge"><i class="fas fa-check"></i></span>
-                <button type="button" class="brief-zoom-btn" data-zoom="/assets/images/minimal-2bhk-seawoods/img1.webp" data-caption="Floating TV Console — Clean, open floor space below and subtle backlit panel" aria-label="Zoom preview"><i class="fas fa-expand-alt"></i></button>
-              </div>
-              <div class="brief-visual-body">
-                <h3>Floating Minimal TV Console</h3>
-                <p>Clean drawer console with light wall; maximizes floor visibility.</p>
-              </div>
-            </div>
-
-            <div class="brief-visual-card" data-value="Grand Marble + Fluted Panel TV Wall">
-              <div class="brief-img-box">
-                <img src="/assets/images/premium-4bhk-ghansoli/img9.webp" alt="Grand marble and fluted TV panel" loading="lazy" decoding="async" />
-                <span class="brief-check-badge"><i class="fas fa-check"></i></span>
-                <button type="button" class="brief-zoom-btn" data-zoom="/assets/images/premium-4bhk-ghansoli/img9.webp" data-caption="Marble & Fluted TV Wall — Full-height statement backdrop with profile LEDs" aria-label="Zoom preview"><i class="fas fa-expand-alt"></i></button>
-              </div>
-              <div class="brief-visual-body">
-                <h3>Grand Marble + Fluted TV Wall</h3>
-                <p>Floor-to-ceiling marble/acrylic sheet with fluted louvers &amp; warm LEDs.</p>
-              </div>
-            </div>
-
-            <div class="brief-visual-card" data-value="Modern Compact Backlit Pooja Mandir">
-              <div class="brief-img-box">
-                <img src="/assets/images/devesh-arya/img5.webp" alt="Modern backlit compact Pooja Mandir" loading="lazy" decoding="async" />
-                <span class="brief-check-badge"><i class="fas fa-check"></i></span>
-                <button type="button" class="brief-zoom-btn" data-zoom="/assets/images/devesh-arya/img5.webp" data-caption="Modern Backlit Pooja Unit — Sleek integrated mandir with concealed pooja drawer" aria-label="Zoom preview"><i class="fas fa-expand-alt"></i></button>
-              </div>
-              <div class="brief-visual-body">
-                <h3>Modern Compact Mandir</h3>
-                <p>Seamless backlit Corian/CNC panel with soft drawers for essentials.</p>
-              </div>
-            </div>
-
-            <div class="brief-visual-card" data-value="Traditional Carved Wood / Jaali Mandir">
-              <div class="brief-img-box">
-                <img src="/assets/images/rustic-3bhk-home-nerul/img12.webp" alt="Traditional carved wooden Pooja Mandir" loading="lazy" decoding="async" />
-                <span class="brief-check-badge"><i class="fas fa-check"></i></span>
-                <button type="button" class="brief-zoom-btn" data-zoom="/assets/images/rustic-3bhk-home-nerul/img12.webp" data-caption="Traditional Carved Wood Mandir — Intricate jaali doors, bells & classic wood warmth" aria-label="Zoom preview"><i class="fas fa-expand-alt"></i></button>
-              </div>
-              <div class="brief-visual-body">
-                <h3>Carved Wooden / Jaali Mandir</h3>
-                <p>Dedicated wooden mandir cabinet with brass bells &amp; traditional jaali.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-4">
-            <label class="brief-field-label">Wall Accent Styles You Like</label>
-            <div class="brief-chip-group" data-group="wallDecor" data-mode="multi">
-              <button type="button" class="brief-chip" data-value="WPC / Wooden Fluted Louvers">Fluted Louvers / Panelling</button>
-              <button type="button" class="brief-chip" data-value="POP Classic Moulding Frames">Wall Moulding Frames</button>
-              <button type="button" class="brief-chip" data-value="Designer Wallpaper">Designer Wallpaper</button>
-              <button type="button" class="brief-chip" data-value="Texture Paint">Texture Paint</button>
-              <button type="button" class="brief-chip" data-value="Clean Matte Paint + Artwork">Plain Paint + Wall Art</button>
-              <button type="button" class="brief-chip" data-value="Foyer Shoe Rack + Seating">Foyer Shoe Rack &amp; Bench</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- SECTION 7: COLOR PALETTE, LIFESTYLE, DISLIKES & BUDGET -->
-        <div class="brief-card" id="sec-lifestyle">
-          <div class="brief-card-head">
-            <span class="brief-step-num">07</span>
-            <div>
-              <h2 class="brief-section-title">Color Palette, Lifestyle &amp; Budget</h2>
-              <p class="brief-section-desc">Help us align colors, daily family needs, Vastu, and budget comfort.</p>
-            </div>
-          </div>
-
-          <div class="mt-2">
-            <label class="brief-field-label">Pick Color Palettes You Gravitate Toward</label>
-            <div class="brief-palette-grid" data-group="colorPalette" data-mode="multi">
-              <button type="button" class="brief-palette-card" data-value="Warm Beige, Cream & Walnut">
-                <div class="palette-dots">
-                  <span style="background:#f5efe6;"></span>
-                  <span style="background:#d5c3aa;"></span>
-                  <span style="background:#6f4e37;"></span>
+            <div class="studio-panel-card">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="clientName" class="studio-label">Your Name <span class="text-danger">*</span></label>
+                  <input type="text" id="clientName" class="form-control studio-input" placeholder="e.g., Rahul &amp; Priya" required />
                 </div>
-                <span class="palette-name">Warm Beige &amp; Walnut</span>
-              </button>
-              <button type="button" class="brief-palette-card" data-value="Crisp White, Greige & Oak">
-                <div class="palette-dots">
-                  <span style="background:#ffffff;"></span>
-                  <span style="background:#d8d5d0;"></span>
-                  <span style="background:#b89b72;"></span>
+                <div class="col-md-6">
+                  <label for="clientPhone" class="studio-label">WhatsApp Number <span class="text-danger">*</span></label>
+                  <div class="input-group">
+                    <span class="input-group-text studio-addon">+91</span>
+                    <input type="tel" id="clientPhone" class="form-control studio-input" placeholder="10-digit WhatsApp number" pattern="[6-9][0-9]{9}" required />
+                  </div>
                 </div>
-                <span class="palette-name">Crisp White &amp; Light Oak</span>
-              </button>
-              <button type="button" class="brief-palette-card" data-value="Sage / Olive Green & Cream">
-                <div class="palette-dots">
-                  <span style="background:#7c9070;"></span>
-                  <span style="background:#c7d3bf;"></span>
-                  <span style="background:#f7f4ef;"></span>
+                <div class="col-12">
+                  <label for="clientLocation" class="studio-label">Area &amp; Society Name</label>
+                  <input type="text" id="clientLocation" class="form-control studio-input" placeholder="e.g., Kharghar - Sai World Empire / Seawoods" />
                 </div>
-                <span class="palette-name">Sage Green &amp; Cream</span>
-              </button>
-              <button type="button" class="brief-palette-card" data-value="Navy Blue / Slate & Gold">
-                <div class="palette-dots">
-                  <span style="background:#1e293b;"></span>
-                  <span style="background:#64748b;"></span>
-                  <span style="background:#d4af37;"></span>
-                </div>
-                <span class="palette-name">Navy / Slate &amp; Gold</span>
-              </button>
-              <button type="button" class="brief-palette-card" data-value="Soft Blush / Champagne Taupe">
-                <div class="palette-dots">
-                  <span style="background:#e8d5d1;"></span>
-                  <span style="background:#ccb7ae;"></span>
-                  <span style="background:#f5ebe6;"></span>
-                </div>
-                <span class="palette-name">Champagne &amp; Blush</span>
-              </button>
-              <button type="button" class="brief-palette-card" data-value="Charcoal Grey, Black & Teak">
-                <div class="palette-dots">
-                  <span style="background:#1f2937;"></span>
-                  <span style="background:#6b7280;"></span>
-                  <span style="background:#9a6b42;"></span>
-                </div>
-                <span class="palette-name">Charcoal &amp; Teak</span>
-              </button>
-            </div>
-          </div>
+              </div>
 
-          <div class="row g-4 mt-2">
-            <div class="col-md-6">
-              <label class="brief-field-label">Family &amp; Lifestyle Needs</label>
-              <div class="brief-chip-group" data-group="lifestyle" data-mode="multi">
-                <button type="button" class="brief-chip" data-value="Kids Room Design">Kids Bedroom / Study</button>
-                <button type="button" class="brief-chip" data-value="Senior Citizen Friendly (Low bed, soft corners)">Parents / Senior Friendly</button>
-                <button type="button" class="brief-chip" data-value="Work From Home Setup">Work-From-Home Desk</button>
-                <button type="button" class="brief-chip" data-value="Pet-Friendly Durable Finishes">Pet-Friendly Materials</button>
-                <button type="button" class="brief-chip" data-value="Frequent Guests / Extra Dining">Frequent Entertaining</button>
+              <div class="mt-4">
+                <label class="studio-label">Tap Your Home Type</label>
+                <div class="studio-tile-grid cols-3" data-group="propertyType" data-mode="single">
+                  <button type="button" class="studio-tile" data-value="1 BHK">
+                    <i class="fas fa-home tile-ico"></i>
+                    <span>1 BHK</span>
+                  </button>
+                  <button type="button" class="studio-tile" data-value="2 BHK">
+                    <i class="fas fa-building tile-ico"></i>
+                    <span>2 BHK</span>
+                  </button>
+                  <button type="button" class="studio-tile" data-value="3 BHK">
+                    <i class="fas fa-city tile-ico"></i>
+                    <span>3 BHK</span>
+                  </button>
+                  <button type="button" class="studio-tile" data-value="4+ BHK / Duplex">
+                    <i class="fas fa-crown tile-ico"></i>
+                    <span>4+ BHK</span>
+                  </button>
+                  <button type="button" class="studio-tile" data-value="Villa / Bungalow">
+                    <i class="fas fa-archway tile-ico"></i>
+                    <span>Villa</span>
+                  </button>
+                  <button type="button" class="studio-tile" data-value="Office / Studio">
+                    <i class="fas fa-briefcase tile-ico"></i>
+                    <span>Office</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <label class="studio-label">When Do You Want to Move In?</label>
+                <div class="studio-pill-wrap" data-group="timeline" data-mode="single">
+                  <button type="button" class="studio-pill" data-value="Urgent (45-60 Days)">⚡ 45–60 Days</button>
+                  <button type="button" class="studio-pill" data-value="2-4 Months">📅 2–4 Months</button>
+                  <button type="button" class="studio-pill" data-value="4-6 Months">🏗️ 4–6 Months</button>
+                  <button type="button" class="studio-pill" data-value="Just Exploring">💭 Exploring</button>
+                </div>
               </div>
             </div>
-            <div class="col-md-6">
-              <label class="brief-field-label">Vastu &amp; Storage Approach</label>
-              <div class="brief-chip-group mb-3" data-group="vastu" data-mode="single">
-                <button type="button" class="brief-chip" data-value="Strict Vastu">Strict Vastu</button>
-                <button type="button" class="brief-chip" data-value="Basic Vastu (Mandir & Kitchen)">Basic Vastu</button>
-                <button type="button" class="brief-chip" data-value="No Specific Vastu">Flexible / No Restriction</button>
+          </section>
+
+          <!-- STEP 1: HOME VIBE VISUAL SWIPE CARDS -->
+          <section class="studio-step" data-step="1" id="step-1">
+            <div class="step-header-block">
+              <span class="step-eyebrow">Step 2 of 7 • Aesthetic DNA</span>
+              <h2 class="step-headline">Which Room Vibe Gives You Butterflies?</h2>
+              <p class="step-subtext">Tap 1 or 2 photos that immediately feel like "you". Tap <i class="fas fa-expand-alt"></i> to zoom full-screen.</p>
+            </div>
+
+            <div class="visual-choice-grid" data-group="homeStyle" data-mode="multi">
+              <div class="v-card" data-value="Bright & Minimalist" data-img="/assets/images/minimal-2bhk-seawoods/img1.webp" data-toast="✨ Minimalist Calm added to your Moodboard">
+                <div class="v-img-wrap">
+                  <img src="/assets/images/minimal-2bhk-seawoods/img1.webp" alt="Bright and Minimalist living room" loading="eager" decoding="async" />
+                  <span class="v-badge"><i class="fas fa-heart"></i></span>
+                  <button type="button" class="v-zoom" data-zoom="/assets/images/minimal-2bhk-seawoods/img1.webp" data-caption="Bright & Minimalist — Clean surfaces, airy light tones & clutter-free calm" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                </div>
+                <div class="v-body">
+                  <h3>Bright &amp; Minimalist</h3>
+                  <p>Airy whites, sleek surfaces, peaceful &amp; clutter-free.</p>
+                </div>
               </div>
-              <div class="brief-chip-group" data-group="storageStyle" data-mode="single">
-                <button type="button" class="brief-chip" data-value="100% Hidden Closed Storage">Everything Hidden (Clean)</button>
-                <button type="button" class="brief-chip" data-value="Mix of Closed + Glass Showcase">Closed + Crockery Showcase</button>
+
+              <div class="v-card" data-value="Luxury Neo-Classical" data-img="/assets/images/contemporary-2bhk-kharghar/img1.webp" data-toast="🏛️ Neo-Classical Elegance added to Moodboard">
+                <div class="v-img-wrap">
+                  <img src="/assets/images/contemporary-2bhk-kharghar/img1.webp" alt="Luxury Neo-Classical wall mouldings" loading="eager" decoding="async" />
+                  <span class="v-badge"><i class="fas fa-heart"></i></span>
+                  <button type="button" class="v-zoom" data-zoom="/assets/images/contemporary-2bhk-kharghar/img1.webp" data-caption="Luxury Neo-Classical — Wall mouldings, soft creams & chandelier elegance" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                </div>
+                <div class="v-body">
+                  <h3>Luxury Neo-Classical</h3>
+                  <p>Wall mouldings, chandeliers &amp; timeless soft neutrals.</p>
+                </div>
+              </div>
+
+              <div class="v-card" data-value="Warm Wooden & Cozy" data-img="/assets/images/rustic-3bhk-home-nerul/img4.webp" data-toast="🪵 Warm Wooden Sanctuary added to Moodboard">
+                <div class="v-img-wrap">
+                  <img src="/assets/images/rustic-3bhk-home-nerul/img4.webp" alt="Warm wooden and earthy cozy interior" loading="eager" decoding="async" />
+                  <span class="v-badge"><i class="fas fa-heart"></i></span>
+                  <button type="button" class="v-zoom" data-zoom="/assets/images/rustic-3bhk-home-nerul/img4.webp" data-caption="Warm Wooden & Cozy — Rich natural teak/walnut textures & warm lights" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                </div>
+                <div class="v-body">
+                  <h3>Warm Wooden &amp; Cozy</h3>
+                  <p>Rich teak &amp; walnut grains with cozy warm lighting.</p>
+                </div>
+              </div>
+
+              <div class="v-card" data-value="Opulent Modern & Marble" data-img="/assets/images/premium-4bhk-ghansoli/img3.webp" data-toast="💎 Opulent Marble & Gold added to Moodboard">
+                <div class="v-img-wrap">
+                  <img src="/assets/images/premium-4bhk-ghansoli/img3.webp" alt="Opulent Modern Marble and Gold interior" loading="eager" decoding="async" />
+                  <span class="v-badge"><i class="fas fa-heart"></i></span>
+                  <button type="button" class="v-zoom" data-zoom="/assets/images/premium-4bhk-ghansoli/img3.webp" data-caption="Opulent Modern & Marble — Fluted panels, gold trims & grand luxury" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                </div>
+                <div class="v-body">
+                  <h3>Opulent Modern &amp; Marble</h3>
+                  <p>Marble veining, fluted louvers &amp; brushed gold trims.</p>
+                </div>
               </div>
             </div>
-          </div>
+          </section>
 
-          <div class="mt-4">
-            <label class="brief-field-label">Comfortable Budget Range</label>
-            <div class="brief-chip-group" data-group="budget" data-mode="single">
-              <button type="button" class="brief-chip" data-value="₹3L – ₹6L (Essential Modular)">₹3L – ₹6L</button>
-              <button type="button" class="brief-chip" data-value="₹6L – ₹10L (Premium Full Home)">₹6L – ₹10L</button>
-              <button type="button" class="brief-chip" data-value="₹10L – ₹16L (Turnkey Luxury)">₹10L – ₹16L</button>
-              <button type="button" class="brief-chip" data-value="₹16L+ (Bespoke Designer)">₹16L+</button>
-              <button type="button" class="brief-chip" data-value="Guide me based on my selections">Suggest Best Value</button>
+          <!-- STEP 2: FALSE CEILING & LIVE LIGHTING SIMULATOR -->
+          <section class="studio-step" data-step="2" id="step-2">
+            <div class="step-header-block">
+              <span class="step-eyebrow">Step 3 of 7 • Ceiling &amp; Lighting</span>
+              <h2 class="step-headline">Pick Your False Ceiling &amp; Test Light Warmth</h2>
+              <p class="step-subtext">Tap lighting tones below to preview how the room glow transforms live!</p>
             </div>
-          </div>
 
-          <div class="row g-3 mt-3">
-            <div class="col-md-6">
-              <label for="clientDislikes" class="brief-field-label">Any Colors, Materials or Designs You Strictly DISLIKE?</label>
-              <textarea id="clientDislikes" class="form-control brief-input" rows="3" placeholder="e.g., No bright glossy red, no heavy dropped ceiling in bedrooms, no open shelves where dust collects..."></textarea>
+            <!-- Interactive Live Lighting Simulator -->
+            <div class="light-sim-card mb-3">
+              <div class="light-sim-preview" id="lightSimPreview">
+                <img src="/assets/images/premium-4bhk-ghansoli/img9.webp" alt="Live room lighting preview" id="lightSimImg" />
+                <div class="light-sim-tint" id="lightSimTint"></div>
+                <div class="light-sim-badge" id="lightSimLabel">Warm White 3000K — Hotel Cozy</div>
+              </div>
+              <div class="light-sim-controls">
+                <span class="studio-label mb-2">Tap to Test Light Mood:</span>
+                <div class="studio-pill-wrap" data-group="lightTone" data-mode="single" id="lightToneGroup">
+                  <button type="button" class="studio-pill selected" data-value="Warm White (3000K — Hotel Cozy)" data-tint="rgba(255, 196, 112, 0.22)" data-badge="Warm White 3000K — Hotel Cozy">
+                    <span class="dot-swatch" style="background:#ffcf7d;"></span> 3000K Warm Cozy
+                  </button>
+                  <button type="button" class="studio-pill" data-value="Natural Daylight (4000K — Balanced)" data-tint="rgba(255, 246, 224, 0.12)" data-badge="Natural Daylight 4000K — Balanced">
+                    <span class="dot-swatch" style="background:#fff4d9;"></span> 4000K Natural
+                  </button>
+                  <button type="button" class="studio-pill" data-value="Cool White (6000K — Crisp Bright)" data-tint="rgba(205, 232, 255, 0.22)" data-badge="Cool White 6000K — Crisp Bright">
+                    <span class="dot-swatch" style="background:#d9eeff;"></span> 6000K Cool Crisp
+                  </button>
+                  <button type="button" class="studio-pill" data-value="Smart 3-in-1 / Dimmable" data-tint="rgba(255, 215, 150, 0.16)" data-badge="Smart 3-in-1 Switchable Modes">
+                    ✨ 3-in-1 Smart
+                  </button>
+                </div>
+              </div>
             </div>
-            <div class="col-md-6">
-              <label for="clientNotes" class="brief-field-label">Pinterest / Instagram Links or Special Requests</label>
-              <textarea id="clientNotes" class="form-control brief-input" rows="3" placeholder="Paste any reference links, existing furniture you want to keep (e.g., sofa/dining table), or civil changes..."></textarea>
-            </div>
-          </div>
-        </div>
 
-        <!-- LIVE SUMMARY & SUBMIT PANEL -->
-        <div class="brief-submit-card" id="sec-submit">
-          <div class="row align-items-center g-4">
-            <div class="col-lg-7">
-              <span class="brief-summary-eyebrow"><i class="fas fa-clipboard-check me-1"></i> Ready to Share</span>
-              <h2 class="brief-summary-title">Your Custom Design Taste Brief</h2>
-              <p class="brief-summary-text mb-3">
-                Review your live summary below. Click <strong>Send on WhatsApp</strong> to send your complete brief straight to Siddhivinayak Designers so we can start crafting your tailored moodboard &amp; 3D concepts.
-              </p>
-              <pre class="brief-live-preview" id="liveBriefPreview">Select your preferences above to build your live design brief...</pre>
+            <label class="studio-label mt-3">Tap False Ceiling Designs You Like:</label>
+            <div class="visual-choice-grid" data-group="ceilingStyle" data-mode="multi">
+              <div class="v-card" data-value="Peripheral Border + Warm Cove" data-img="/assets/images/premium-4bhk-ghansoli/img9.webp" data-toast="💡 Peripheral Cove Ceiling selected">
+                <div class="v-img-wrap">
+                  <img src="/assets/images/premium-4bhk-ghansoli/img9.webp" alt="Peripheral border ceiling with cove glow" loading="lazy" decoding="async" />
+                  <span class="v-badge"><i class="fas fa-check"></i></span>
+                  <button type="button" class="v-zoom" data-zoom="/assets/images/premium-4bhk-ghansoli/img9.webp" data-caption="Peripheral Border + Warm Cove — Keeps center height open with soft perimeter glow" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                </div>
+                <div class="v-body">
+                  <h3>Peripheral Cove</h3>
+                  <p>Open center height + soft indirect glow.</p>
+                </div>
+              </div>
+
+              <div class="v-card" data-value="Dual-Layer Gypsum + COB Spots" data-img="/assets/images/2026-04-11 (11).webp" data-toast="✨ Dual-Layer Gypsum Ceiling selected">
+                <div class="v-img-wrap">
+                  <img src="/assets/images/2026-04-11 (11).webp" alt="Dual-layer gypsum ceiling" loading="lazy" decoding="async" />
+                  <span class="v-badge"><i class="fas fa-check"></i></span>
+                  <button type="button" class="v-zoom" data-zoom="/assets/images/2026-04-11 (11).webp" data-caption="Dual-Layer Gypsum + COB Spots — Stepped designer depth" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                </div>
+                <div class="v-body">
+                  <h3>Dual-Layer POP</h3>
+                  <p>Stepped ceiling depth + COB spotlights.</p>
+                </div>
+              </div>
+
+              <div class="v-card" data-value="Linear Recessed Profile LEDs" data-img="/assets/images/contemporary-3bhk-house-belapur/img6.webp" data-toast="⚡ Linear Profile LEDs selected">
+                <div class="v-img-wrap">
+                  <img src="/assets/images/contemporary-3bhk-house-belapur/img6.webp" alt="Linear profile LED ceiling" loading="lazy" decoding="async" />
+                  <span class="v-badge"><i class="fas fa-check"></i></span>
+                  <button type="button" class="v-zoom" data-zoom="/assets/images/contemporary-3bhk-house-belapur/img6.webp" data-caption="Linear Profile LEDs — Sleek flush geometric light lines" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                </div>
+                <div class="v-body">
+                  <h3>Profile LED Lines</h3>
+                  <p>Sleek architectural flush light strips.</p>
+                </div>
+              </div>
+
+              <div class="v-card" data-value="Wooden Rafters / Ceiling Accents" data-img="/assets/images/rustic-3bhk-home-nerul/img4.webp" data-toast="🪵 Wooden Ceiling Accents selected">
+                <div class="v-img-wrap">
+                  <img src="/assets/images/rustic-3bhk-home-nerul/img4.webp" alt="Wooden ceiling accents" loading="lazy" decoding="async" />
+                  <span class="v-badge"><i class="fas fa-check"></i></span>
+                  <button type="button" class="v-zoom" data-zoom="/assets/images/rustic-3bhk-home-nerul/img4.webp" data-caption="Wooden Rafters / Ceiling Accents — Warm veneer/laminate slats" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                </div>
+                <div class="v-body">
+                  <h3>Wooden Rafters</h3>
+                  <p>Warm wood ceiling slats &amp; accents.</p>
+                </div>
+              </div>
             </div>
-            <div class="col-lg-5">
-              <div class="d-grid gap-3">
-                <button type="submit" class="brief-whatsapp-btn" id="sendWhatsAppBtn">
-                  <i class="fab fa-whatsapp fa-lg me-2"></i> Send My Design Brief on WhatsApp
+
+            <div class="mt-3">
+              <label class="studio-label">Ceiling Add-Ons:</label>
+              <div class="studio-pill-wrap" data-group="lightExtras" data-mode="multi">
+                <button type="button" class="studio-pill" data-value="Statement Chandelier">✨ Dining Chandelier</button>
+                <button type="button" class="studio-pill" data-value="Bedside Hanging Pendants">💡 Hanging Pendants</button>
+                <button type="button" class="studio-pill" data-value="Simple Bedrooms (No heavy POP)">🌿 Minimal Bedroom Ceilings</button>
+                <button type="button" class="studio-pill" data-value="Concealed Curtain Pelmets">🪟 Hidden Curtain Pelmets</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- STEP 3: WARDROBE CONFIGURATOR -->
+          <section class="studio-step" data-step="3" id="step-3">
+            <div class="step-header-block">
+              <span class="step-eyebrow">Step 4 of 7 • Wardrobes &amp; Bedrooms</span>
+              <h2 class="step-headline">Customize Your Ideal Wardrobes</h2>
+              <p class="step-subtext">Pick your favorite shutter look, surface finish, and hidden storage upgrades.</p>
+            </div>
+
+            <div class="visual-choice-grid" data-group="wardrobeStyle" data-mode="multi">
+              <div class="v-card" data-value="Sliding Doors + Gold Trim" data-img="/assets/images/minimal-2bhk-seawoods/img12.webp" data-toast="🚪 Sliding Wardrobe selected">
+                <div class="v-img-wrap">
+                  <img src="/assets/images/minimal-2bhk-seawoods/img12.webp" alt="Full height sliding wardrobe" loading="lazy" decoding="async" />
+                  <span class="v-badge"><i class="fas fa-check"></i></span>
+                  <button type="button" class="v-zoom" data-zoom="/assets/images/minimal-2bhk-seawoods/img12.webp" data-caption="Sliding Doors + Gold Trim — Zero door swing space, full-height tracks" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                </div>
+                <div class="v-body">
+                  <h3>Sliding + Gold Trim</h3>
+                  <p>Space-saving tracks &amp; metallic trims.</p>
+                </div>
+              </div>
+
+              <div class="v-card" data-value="Mirrored Sliding + Dresser" data-img="/assets/images/minimal-2bhk-seawoods/img11.webp" data-toast="🪞 Mirrored Sliding Wardrobe selected">
+                <div class="v-img-wrap">
+                  <img src="/assets/images/minimal-2bhk-seawoods/img11.webp" alt="Mirrored wardrobe" loading="lazy" decoding="async" />
+                  <span class="v-badge"><i class="fas fa-check"></i></span>
+                  <button type="button" class="v-zoom" data-zoom="/assets/images/minimal-2bhk-seawoods/img11.webp" data-caption="Mirrored Sliding — Makes bedrooms feel brighter and 2x larger" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                </div>
+                <div class="v-body">
+                  <h3>Mirrored Sliding</h3>
+                  <p>Built-in mirror brightens the room.</p>
+                </div>
+              </div>
+
+              <div class="v-card" data-value="Tinted / Fluted Glass Shutters" data-img="/assets/images/wardrobe/four-door-modern-wardrobe-with-tinted-glass-shutters.webp" data-toast="🥂 Tinted Glass Wardrobe selected">
+                <div class="v-img-wrap">
+                  <img src="/assets/images/wardrobe/four-door-modern-wardrobe-with-tinted-glass-shutters.webp" alt="Tinted glass shutter wardrobe" loading="lazy" decoding="async" />
+                  <span class="v-badge"><i class="fas fa-check"></i></span>
+                  <button type="button" class="v-zoom" data-zoom="/assets/images/wardrobe/four-door-modern-wardrobe-with-tinted-glass-shutters.webp" data-caption="Tinted / Fluted Glass — Luxury boutique look with internal sensor strips" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                </div>
+                <div class="v-body">
+                  <h3>Fluted / Tinted Glass</h3>
+                  <p>Luxury boutique closet + internal LEDs.</p>
+                </div>
+              </div>
+
+              <div class="v-card" data-value="Classic Hinged + Loft" data-img="/assets/images/wardrobe/4-door-wardrobe-design-with-cabinets-and-drawers-for-storage.webp" data-toast="🗄️ Classic Hinged Wardrobe selected">
+                <div class="v-img-wrap">
+                  <img src="/assets/images/wardrobe/4-door-wardrobe-design-with-cabinets-and-drawers-for-storage.webp" alt="4 door hinged wardrobe" loading="lazy" decoding="async" />
+                  <span class="v-badge"><i class="fas fa-check"></i></span>
+                  <button type="button" class="v-zoom" data-zoom="/assets/images/wardrobe/4-door-wardrobe-design-with-cabinets-and-drawers-for-storage.webp" data-caption="Classic Hinged + Loft — 100% open visibility & zero sliding track dust" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                </div>
+                <div class="v-body">
+                  <h3>Classic Hinged</h3>
+                  <p>Full interior view + dedicated lofts.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="studio-panel-card mt-3">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="studio-label">Finish Touch Preference</label>
+                  <div class="studio-pill-wrap" data-group="wardrobeFinish" data-mode="single">
+                    <button type="button" class="studio-pill" data-value="Matte / Suede Laminate">Matte Suede</button>
+                    <button type="button" class="studio-pill" data-value="High-Gloss Acrylic">High-Gloss</button>
+                    <button type="button" class="studio-pill" data-value="Textured Wood-Grain">Wood Texture</button>
+                    <button type="button" class="studio-pill" data-value="PU Lacquered / Fluted">PU / Fluted</button>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label class="studio-label">Loft Style</label>
+                  <div class="studio-pill-wrap" data-group="loftPref" data-mode="single">
+                    <button type="button" class="studio-pill" data-value="Seamless Flush Full-Height">Flush Seamless</button>
+                    <button type="button" class="studio-pill" data-value="Separate Overhead Lofts">Separate Lofts</button>
+                    <button type="button" class="studio-pill" data-value="No Loft">No Loft</button>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <label class="studio-label">Internal Accessories Upgrade (Tap all you need)</label>
+                  <div class="studio-pill-wrap" data-group="wardrobeExtras" data-mode="multi">
+                    <button type="button" class="studio-pill" data-value="Saree / Trouser Pull-Out">👗 Saree / Trouser Rack</button>
+                    <button type="button" class="studio-pill" data-value="Velvet Jewelry Drawer">💍 Jewelry Drawer</button>
+                    <button type="button" class="studio-pill" data-value="Pull-Out Mirror">🪞 Pull-Out Mirror</button>
+                    <button type="button" class="studio-pill" data-value="Secret Safe Locker">🔒 Locker Drawer</button>
+                    <button type="button" class="studio-pill" data-value="Attached Study / Vanity">💻 Attached Vanity/Desk</button>
+                    <button type="button" class="studio-pill" data-value="Hydraulic Storage Bed">🛏️ Hydraulic Bed</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- STEP 4: MODULAR KITCHEN -->
+          <section class="studio-step" data-step="4" id="step-4">
+            <div class="step-header-block">
+              <span class="step-eyebrow">Step 5 of 7 • Modular Kitchen</span>
+              <h2 class="step-headline">Pick Your Dream Kitchen Look</h2>
+              <p class="step-subtext">Choose shutter aesthetics, platform stone, and smart cooking appliances.</p>
+            </div>
+
+            <div class="visual-choice-grid" data-group="kitchenStyle" data-mode="multi">
+              <div class="v-card" data-value="High-Gloss Acrylic Handleless" data-img="/assets/images/minimal-2bhk-seawoods/img7.webp" data-toast="✨ High-Gloss Acrylic Kitchen selected">
+                <div class="v-img-wrap">
+                  <img src="/assets/images/minimal-2bhk-seawoods/img7.webp" alt="High gloss handleless acrylic kitchen" loading="lazy" decoding="async" />
+                  <span class="v-badge"><i class="fas fa-check"></i></span>
+                  <button type="button" class="v-zoom" data-zoom="/assets/images/minimal-2bhk-seawoods/img7.webp" data-caption="High-Gloss Acrylic — Bright mirror finish, handleless Gola & easy oil wipe" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                </div>
+                <div class="v-body">
+                  <h3>Glossy Acrylic</h3>
+                  <p>Mirror sheen, handleless &amp; easy wipe.</p>
+                </div>
+              </div>
+
+              <div class="v-card" data-value="Fluted Glass Upper Cabinets" data-img="/assets/images/contemporary-2bhk-kharghar/img3.webp" data-toast="🥂 Fluted Glass Kitchen selected">
+                <div class="v-img-wrap">
+                  <img src="/assets/images/contemporary-2bhk-kharghar/img3.webp" alt="Kitchen with fluted glass cabinets" loading="lazy" decoding="async" />
+                  <span class="v-badge"><i class="fas fa-check"></i></span>
+                  <button type="button" class="v-zoom" data-zoom="/assets/images/contemporary-2bhk-kharghar/img3.webp" data-caption="Fluted Glass Cabinets — Translucent upper shutters with warm profile lighting" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                </div>
+                <div class="v-body">
+                  <h3>Fluted Glass Top</h3>
+                  <p>Ribbed glass shutters + warm glow.</p>
+                </div>
+              </div>
+
+              <div class="v-card" data-value="Silky Matte Anti-Fingerprint" data-img="/assets/images/modular-kitchen/a-u-shaped-kitchen-home-interior-design-with-black-matte-finish-cabinets-that-add-a-sleek-look.webp" data-toast="🖤 Silky Matte Kitchen selected">
+                <div class="v-img-wrap">
+                  <img src="/assets/images/modular-kitchen/a-u-shaped-kitchen-home-interior-design-with-black-matte-finish-cabinets-that-add-a-sleek-look.webp" alt="Silky matte finish kitchen" loading="lazy" decoding="async" />
+                  <span class="v-badge"><i class="fas fa-check"></i></span>
+                  <button type="button" class="v-zoom" data-zoom="/assets/images/modular-kitchen/a-u-shaped-kitchen-home-interior-design-with-black-matte-finish-cabinets-that-add-a-sleek-look.webp" data-caption="Silky Matte Anti-Fingerprint — Zero glare modern architectural kitchen" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                </div>
+                <div class="v-body">
+                  <h3>Silky Matte</h3>
+                  <p>Anti-fingerprint ultra-modern matte.</p>
+                </div>
+              </div>
+
+              <div class="v-card" data-value="Two-Tone Pastel & Light Top" data-img="/assets/images/modular-kitchen/an-l-shaped-kitchen-with-green-base-cabinets-and-white-upper-cabinets-kitchen-interior-design.webp" data-toast="🌿 Two-Tone Pastel Kitchen selected">
+                <div class="v-img-wrap">
+                  <img src="/assets/images/modular-kitchen/an-l-shaped-kitchen-with-green-base-cabinets-and-white-upper-cabinets-kitchen-interior-design.webp" alt="Two tone pastel kitchen" loading="lazy" decoding="async" />
+                  <span class="v-badge"><i class="fas fa-check"></i></span>
+                  <button type="button" class="v-zoom" data-zoom="/assets/images/modular-kitchen/an-l-shaped-kitchen-with-green-base-cabinets-and-white-upper-cabinets-kitchen-interior-design.webp" data-caption="Two-Tone Pastel & White — Color lower units paired with airy white upper cabinets" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                </div>
+                <div class="v-body">
+                  <h3>Two-Tone Pastel</h3>
+                  <p>Fresh color base + bright light uppers.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="studio-panel-card mt-3">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="studio-label">Platform Stone Choice</label>
+                  <div class="studio-pill-wrap" data-group="countertop" data-mode="single">
+                    <button type="button" class="studio-pill" data-value="White / Statuario Quartz"><span class="dot-swatch" style="background:#f8fafc;"></span> White Quartz</button>
+                    <button type="button" class="studio-pill" data-value="Black Granite"><span class="dot-swatch" style="background:#1e293b;"></span> Black Granite</button>
+                    <button type="button" class="studio-pill" data-value="Nano White"><span class="dot-swatch" style="background:#ffffff;"></span> Nano White</button>
+                    <button type="button" class="studio-pill" data-value="Grey / Beige Quartz"><span class="dot-swatch" style="background:#cbd5e1;"></span> Grey Quartz</button>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label class="studio-label">Layout / Add-On</label>
+                  <div class="studio-pill-wrap" data-group="kitchenLayout" data-mode="single">
+                    <button type="button" class="studio-pill" data-value="L-Shaped">L-Shaped</button>
+                    <button type="button" class="studio-pill" data-value="Parallel">Parallel</button>
+                    <button type="button" class="studio-pill" data-value="U-Shaped">U-Shaped</button>
+                    <button type="button" class="studio-pill" data-value="With Breakfast Counter">Breakfast Counter</button>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <label class="studio-label">Appliances &amp; Hardware Needed</label>
+                  <div class="studio-pill-wrap" data-group="kitchenExtras" data-mode="multi">
+                    <button type="button" class="studio-pill" data-value="Built-in Hob & Chimney">🔥 Hob &amp; Chimney</button>
+                    <button type="button" class="studio-pill" data-value="Microwave / OTG Tall Unit">🍰 Oven Tall Unit</button>
+                    <button type="button" class="studio-pill" data-value="Dishwasher Provision">🍽️ Dishwasher Space</button>
+                    <button type="button" class="studio-pill" data-value="Tall Pantry Pull-Out">🥫 Pantry Pull-Out</button>
+                    <button type="button" class="studio-pill" data-value="Rolling Shutter Garage">⚡ Rolling Shutter</button>
+                    <button type="button" class="studio-pill" data-value="Magic Corner Unit">🔄 Magic Corner</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- STEP 5: LIVING TV WALL & POOJA MANDIR -->
+          <section class="studio-step" data-step="5" id="step-5">
+            <div class="step-header-block">
+              <span class="step-eyebrow">Step 6 of 7 • Living &amp; Pooja</span>
+              <h2 class="step-headline">TV Showcase Wall &amp; Mandir Style</h2>
+              <p class="step-subtext">Pick how you want your living centerpiece and Pooja unit designed.</p>
+            </div>
+
+            <div class="visual-choice-grid" data-group="livingElements" data-mode="multi">
+              <div class="v-card" data-value="Floating Minimal TV Console" data-img="/assets/images/minimal-2bhk-seawoods/img1.webp" data-toast="📺 Minimal Floating TV Unit selected">
+                <div class="v-img-wrap">
+                  <img src="/assets/images/minimal-2bhk-seawoods/img1.webp" alt="Minimal floating TV unit" loading="lazy" decoding="async" />
+                  <span class="v-badge"><i class="fas fa-check"></i></span>
+                  <button type="button" class="v-zoom" data-zoom="/assets/images/minimal-2bhk-seawoods/img1.webp" data-caption="Floating Minimal TV Console — Clean floor clearance & calm backdrop" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                </div>
+                <div class="v-body">
+                  <h3>Minimal TV Console</h3>
+                  <p>Floating drawers + clean open floor.</p>
+                </div>
+              </div>
+
+              <div class="v-card" data-value="Marble + Fluted Panel TV Wall" data-img="/assets/images/premium-4bhk-ghansoli/img9.webp" data-toast="✨ Grand Marble TV Wall selected">
+                <div class="v-img-wrap">
+                  <img src="/assets/images/premium-4bhk-ghansoli/img9.webp" alt="Grand marble and fluted TV panel" loading="lazy" decoding="async" />
+                  <span class="v-badge"><i class="fas fa-check"></i></span>
+                  <button type="button" class="v-zoom" data-zoom="/assets/images/premium-4bhk-ghansoli/img9.webp" data-caption="Marble & Fluted TV Wall — Full-height statement backdrop with profile LEDs" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                </div>
+                <div class="v-body">
+                  <h3>Grand Marble TV Wall</h3>
+                  <p>Marble sheet + fluted louvers + LEDs.</p>
+                </div>
+              </div>
+
+              <div class="v-card" data-value="Modern Backlit Compact Mandir" data-img="/assets/images/devesh-arya/img5.webp" data-toast="🪔 Modern Backlit Mandir selected">
+                <div class="v-img-wrap">
+                  <img src="/assets/images/devesh-arya/img5.webp" alt="Modern backlit compact Mandir" loading="lazy" decoding="async" />
+                  <span class="v-badge"><i class="fas fa-check"></i></span>
+                  <button type="button" class="v-zoom" data-zoom="/assets/images/devesh-arya/img5.webp" data-caption="Modern Backlit Mandir — Seamless Corian/CNC panel with concealed drawer" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                </div>
+                <div class="v-body">
+                  <h3>Modern Backlit Mandir</h3>
+                  <p>Compact CNC/Corian backlit unit.</p>
+                </div>
+              </div>
+
+              <div class="v-card" data-value="Carved Wood / Jaali Mandir" data-img="/assets/images/rustic-3bhk-home-nerul/img12.webp" data-toast="🛕 Traditional Wooden Mandir selected">
+                <div class="v-img-wrap">
+                  <img src="/assets/images/rustic-3bhk-home-nerul/img12.webp" alt="Carved wooden Pooja Mandir" loading="lazy" decoding="async" />
+                  <span class="v-badge"><i class="fas fa-check"></i></span>
+                  <button type="button" class="v-zoom" data-zoom="/assets/images/rustic-3bhk-home-nerul/img12.webp" data-caption="Carved Wood Mandir — Traditional jaali doors, bells & rich wood warmth" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                </div>
+                <div class="v-body">
+                  <h3>Carved Wood Mandir</h3>
+                  <p>Traditional jaali doors &amp; brass bells.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="studio-panel-card mt-3">
+              <label class="studio-label">Wall Treatments You Love</label>
+              <div class="studio-pill-wrap" data-group="wallDecor" data-mode="multi">
+                <button type="button" class="studio-pill" data-value="WPC / Wooden Fluted Louvers">Fluted Louvers</button>
+                <button type="button" class="studio-pill" data-value="POP Wall Moulding Frames">POP Mouldings</button>
+                <button type="button" class="studio-pill" data-value="Designer Wallpaper">Wallpaper</button>
+                <button type="button" class="studio-pill" data-value="Texture Paint Accent">Texture Paint</button>
+                <button type="button" class="studio-pill" data-value="Plain Paint + Artwork">Solid Paint + Art</button>
+                <button type="button" class="studio-pill" data-value="Foyer Shoe Rack + Seating">Foyer Shoe Bench</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- STEP 6: COLORS, LIFESTYLE, VASTU, BUDGET & DISLIKES -->
+          <section class="studio-step" data-step="6" id="step-6">
+            <div class="step-header-block">
+              <span class="step-eyebrow">Step 7 of 7 • Colors &amp; Lifestyle</span>
+              <h2 class="step-headline">Colors, Family Needs &amp; Budget</h2>
+              <p class="step-subtext">Final touches so we avoid anything you dislike and respect your budget.</p>
+            </div>
+
+            <div class="studio-panel-card">
+              <label class="studio-label">Tap Your Favorite Color Palettes</label>
+              <div class="palette-swipe-grid" data-group="colorPalette" data-mode="multi">
+                <button type="button" class="p-swatch-card" data-value="Warm Beige, Cream & Walnut" data-colors="#f5efe6,#d5c3aa,#6f4e37">
+                  <div class="p-circles"><span style="background:#f5efe6"></span><span style="background:#d5c3aa"></span><span style="background:#6f4e37"></span></div>
+                  <span>Beige &amp; Walnut</span>
                 </button>
-                <div class="d-flex gap-2">
-                  <button type="button" class="brief-secondary-btn flex-grow-1" id="copyBriefBtn">
-                    <i class="far fa-copy me-1"></i> Copy Brief Text
+                <button type="button" class="p-swatch-card" data-value="Crisp White, Greige & Oak" data-colors="#ffffff,#d8d5d0,#b89b72">
+                  <div class="p-circles"><span style="background:#ffffff"></span><span style="background:#d8d5d0"></span><span style="background:#b89b72"></span></div>
+                  <span>White &amp; Oak</span>
+                </button>
+                <button type="button" class="p-swatch-card" data-value="Sage Olive Green & Cream" data-colors="#7c9070,#c7d3bf,#f7f4ef">
+                  <div class="p-circles"><span style="background:#7c9070"></span><span style="background:#c7d3bf"></span><span style="background:#f7f4ef"></span></div>
+                  <span>Sage &amp; Cream</span>
+                </button>
+                <button type="button" class="p-swatch-card" data-value="Navy Slate & Brushed Gold" data-colors="#1e293b,#64748b,#d4af37">
+                  <div class="p-circles"><span style="background:#1e293b"></span><span style="background:#64748b"></span><span style="background:#d4af37"></span></div>
+                  <span>Navy &amp; Gold</span>
+                </button>
+                <button type="button" class="p-swatch-card" data-value="Champagne Taupe & Blush" data-colors="#e8d5d1,#ccb7ae,#f5ebe6">
+                  <div class="p-circles"><span style="background:#e8d5d1"></span><span style="background:#ccb7ae"></span><span style="background:#f5ebe6"></span></div>
+                  <span>Champagne</span>
+                </button>
+                <button type="button" class="p-swatch-card" data-value="Charcoal Black & Teak" data-colors="#1f2937,#6b7280,#9a6b42">
+                  <div class="p-circles"><span style="background:#1f2937"></span><span style="background:#6b7280"></span><span style="background:#9a6b42"></span></div>
+                  <span>Charcoal &amp; Teak</span>
+                </button>
+              </div>
+
+              <div class="row g-3 mt-3">
+                <div class="col-md-6">
+                  <label class="studio-label">Who Lives Here / Special Needs?</label>
+                  <div class="studio-pill-wrap" data-group="lifestyle" data-mode="multi">
+                    <button type="button" class="studio-pill" data-value="Kids Bedroom / Study">🧸 Kids Room</button>
+                    <button type="button" class="studio-pill" data-value="Senior Friendly (Low bed, anti-skid)">👵 Senior Comfort</button>
+                    <button type="button" class="studio-pill" data-value="Work From Home Desk">💻 WFH Setup</button>
+                    <button type="button" class="studio-pill" data-value="Pet-Friendly Finishes">🐾 Pet-Friendly</button>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label class="studio-label">Vastu &amp; Storage</label>
+                  <div class="studio-pill-wrap mb-2" data-group="vastu" data-mode="single">
+                    <button type="button" class="studio-pill" data-value="Strict Vastu">Strict Vastu</button>
+                    <button type="button" class="studio-pill" data-value="Basic Vastu (Mandir & Kitchen)">Basic Vastu</button>
+                    <button type="button" class="studio-pill" data-value="Flexible">Flexible</button>
+                  </div>
+                  <div class="studio-pill-wrap" data-group="storageStyle" data-mode="single">
+                    <button type="button" class="studio-pill" data-value="100% Hidden Clean Storage">100% Closed Storage</button>
+                    <button type="button" class="studio-pill" data-value="Closed + Display Showcase">Closed + Showcase</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <label class="studio-label">Comfortable Budget Range</label>
+                <div class="budget-tier-grid" data-group="budget" data-mode="single">
+                  <button type="button" class="budget-tier-btn" data-value="₹3L – ₹6L (Essential Modular)">
+                    <strong>₹3L – ₹6L</strong><span>Essential Modular</span>
                   </button>
-                  <button type="button" class="brief-secondary-btn" id="printBriefBtn" aria-label="Print or Save PDF">
-                    <i class="fas fa-print me-1"></i> Print / PDF
+                  <button type="button" class="budget-tier-btn" data-value="₹6L – ₹10L (Premium Full Home)">
+                    <strong>₹6L – ₹10L</strong><span>Premium Full Home</span>
+                  </button>
+                  <button type="button" class="budget-tier-btn" data-value="₹10L – ₹16L (Turnkey Luxury)">
+                    <strong>₹10L – ₹16L</strong><span>Turnkey Luxury</span>
+                  </button>
+                  <button type="button" class="budget-tier-btn" data-value="₹16L+ (Bespoke Designer)">
+                    <strong>₹16L+</strong><span>Bespoke High-End</span>
                   </button>
                 </div>
-                <div id="briefFormFeedback" class="brief-feedback d-none"></div>
+              </div>
+
+              <div class="row g-3 mt-3">
+                <div class="col-md-6">
+                  <label for="clientDislikes" class="studio-label">Things You Strictly DISLIKE?</label>
+                  <textarea id="clientDislikes" class="form-control studio-input" rows="2" placeholder="e.g., No bright glossy red, no heavy dropped ceiling, no open dust shelves..."></textarea>
+                </div>
+                <div class="col-md-6">
+                  <label for="clientNotes" class="studio-label">Pinterest Links or Extra Notes</label>
+                  <textarea id="clientNotes" class="form-control studio-input" rows="2" placeholder="Any reference links, existing sofa/bed to keep, or special requests..."></textarea>
+                </div>
               </div>
             </div>
-          </div>
+          </section>
+
+          <!-- STEP 7: DESIGN DNA RESULT CARD & WHATSAPP SEND -->
+          <section class="studio-step" data-step="7" id="step-7">
+            <div class="dna-reveal-card" id="dnaRevealCard">
+              <div class="confetti-burst" id="confettiBurst"></div>
+              <div class="dna-header text-center">
+                <span class="dna-eyebrow">🎉 YOUR CUSTOM DESIGN PROFILE UNLOCKED</span>
+                <h2 class="dna-persona-title" id="dnaPersonaTitle">The Modern Luxury Curator</h2>
+                <p class="dna-persona-sub" id="dnaPersonaSub">Tailored interior DNA prepared for <strong id="dnaClientLabel">Your Dream Home</strong></p>
+              </div>
+
+              <!-- Visual Moodboard Mosaic -->
+              <div class="dna-moodboard-section">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                  <span class="studio-label mb-0">Your Visual Moodboard</span>
+                  <div class="dna-palette-dots" id="dnaPaletteDots"></div>
+                </div>
+                <div class="dna-mosaic" id="dnaMosaic">
+                  <div class="dna-mosaic-empty">Tap photos in Steps 2–6 to see your custom moodboard mosaic here!</div>
+                </div>
+              </div>
+
+              <!-- Full Structured Brief Box -->
+              <div class="mt-3">
+                <label class="studio-label">Complete Brief Summary</label>
+                <pre class="dna-summary-pre" id="liveBriefPreview"></pre>
+              </div>
+
+              <!-- Quick Validation / Edit missing fields if skipped -->
+              <div id="briefFormFeedback" class="studio-feedback d-none mt-3"></div>
+
+              <!-- Primary Actions -->
+              <div class="dna-actions mt-4">
+                <button type="submit" class="dna-wa-submit" id="sendWhatsAppBtn">
+                  <i class="fab fa-whatsapp fa-lg me-2"></i> Send Design DNA on WhatsApp
+                </button>
+                <div class="dna-sub-actions">
+                  <button type="button" class="studio-sec-btn" id="copyBriefBtn"><i class="far fa-copy me-1"></i> Copy Brief</button>
+                  <button type="button" class="studio-sec-btn" id="printBriefBtn"><i class="fas fa-print me-1"></i> Save PDF</button>
+                  <button type="button" class="studio-sec-btn" id="copyPageLinkBtn"><i class="fas fa-share-nodes me-1"></i> Share Quiz</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </form>
+      </div>
+    </main>
+
+    <!-- Thumb-Friendly Bottom Action Dock (Native App Feel) -->
+    <div class="studio-bottom-dock" id="studioBottomDock">
+      <div class="container studio-dock-inner">
+        <button type="button" class="dock-back-btn" id="dockBackBtn" disabled>
+          <i class="fas fa-arrow-left me-1"></i> Back
+        </button>
+
+        <div class="dock-center-status">
+          <span class="dock-step-text" id="dockStepText">1 / 7</span>
         </div>
 
-      </form>
+        <button type="button" class="dock-next-btn" id="dockNextBtn">
+          <span>Start Styling</span> <i class="fas fa-arrow-right ms-1"></i>
+        </button>
+      </div>
     </div>
-  </section>
 
-  <!-- Image Zoom Preview Modal -->
-  <div class="brief-zoom-modal d-none" id="briefZoomModal" aria-hidden="true">
-    <button type="button" class="brief-zoom-close" id="briefZoomClose" aria-label="Close Preview">&times;</button>
-    <div class="brief-zoom-inner">
-      <img src="" alt="Design Reference Preview" id="briefZoomImg" />
-      <p id="briefZoomCaption"></p>
+    <!-- Moodboard Peek Bottom Sheet Drawer -->
+    <div class="moodboard-drawer-backdrop d-none" id="moodboardDrawerBackdrop">
+      <div class="moodboard-drawer-sheet" id="moodboardDrawerSheet">
+        <div class="drawer-handle"></div>
+        <div class="drawer-header">
+          <div>
+            <h3 class="mb-0">Your Live Moodboard</h3>
+            <small class="text-muted">Tap any step pill above to add or change items</small>
+          </div>
+          <button type="button" class="drawer-close" id="closeMoodboardBtn">&times;</button>
+        </div>
+        <div class="drawer-grid" id="drawerGrid"></div>
+      </div>
+    </div>
+
+    <!-- Image Zoom Modal -->
+    <div class="brief-zoom-modal d-none" id="briefZoomModal" aria-hidden="true">
+      <button type="button" class="brief-zoom-close" id="briefZoomClose" aria-label="Close Preview">&times;</button>
+      <div class="brief-zoom-inner">
+        <img src="" alt="Design Reference Preview" id="briefZoomImg" />
+        <p id="briefZoomCaption"></p>
+      </div>
     </div>
   </div>
 </Layout>
 
 <style>
-  .brief-hero {
-    margin-top: 64px;
-    padding: 3rem 0 2.25rem 0;
-    background: linear-gradient(135deg, #faf8f5 0%, #f1f6f8 100%);
-    border-bottom: 1px solid rgba(184, 144, 71, 0.18);
-  }
-  .brief-hero-inner {
-    max-width: 780px;
-  }
-  .brief-badge {
-    display: inline-block;
-    background: rgba(24, 155, 166, 0.1);
-    color: #127c85 !important;
-    font-size: 0.74rem;
-    font-weight: 700;
-    letter-spacing: 1.4px;
-    text-transform: uppercase;
-    padding: 0.4rem 0.9rem;
-    border-radius: 50px;
-    border: 1px solid rgba(24, 155, 166, 0.25);
-    margin-bottom: 1rem;
-  }
-  .brief-title {
-    font-family: 'Playfair Display', Georgia, serif !important;
-    font-weight: 700;
-    font-size: clamp(1.75rem, 3.6vw, 2.65rem);
-    color: #151413 !important;
-    margin-bottom: 0.85rem;
-    line-height: 1.2;
-  }
-  .brief-subtitle {
-    color: #4b5563 !important;
-    font-size: 1rem;
-    line-height: 1.65;
-    margin-bottom: 1.25rem;
-  }
-  .brief-share-btn {
-    background: #ffffff;
-    border: 1px solid #d1d5db;
-    color: #374151 !important;
-    font-size: 0.84rem;
-    font-weight: 600;
-    padding: 0.45rem 1rem;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  .brief-share-btn:hover {
-    border-color: #189ba6;
-    color: #189ba6 !important;
-    background: #f0fdfa;
+  .studio-app-shell {
+    margin-top: 56px;
+    background: #f6f8fa;
+    min-height: calc(100vh - 56px);
+    padding-bottom: 86px;
   }
 
-  /* Progress Sticky Bar */
-  .brief-progress-bar-wrap {
+  /* Sticky App Top Bar */
+  .studio-topbar {
     position: sticky;
     top: 56px;
-    z-index: 900;
-    background: rgba(255, 255, 255, 0.97);
+    z-index: 950;
+    background: rgba(255, 255, 255, 0.98);
     border-bottom: 1px solid #e5e7eb;
-    padding: 0.75rem 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
   }
-  .brief-progress-top {
+  .studio-topbar-inner {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.35rem;
+    justify-content: space-between;
+    padding: 0.65rem 0.75rem;
+    gap: 0.5rem;
   }
-  .brief-progress-label {
-    font-size: 0.8rem;
+  .studio-step-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+  }
+  .studio-step-pills {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .step-dot {
+    width: 18px;
+    height: 6px;
+    border-radius: 99px;
+    border: none;
+    background: #dbe3eb;
+    padding: 0;
+    cursor: pointer;
+    transition: width 0.25s ease, background-color 0.25s ease;
+  }
+  .step-dot.completed {
+    background: #b89047;
+  }
+  .step-dot.active {
+    width: 28px;
+    background: #189ba6;
+  }
+  @media (max-width: 480px) {
+    .step-dot {
+      width: 12px;
+    }
+    .step-dot.active {
+      width: 22px;
+    }
+  }
+  .studio-step-counter {
+    font-size: 0.78rem;
     font-weight: 700;
+    color: #374151 !important;
+  }
+
+  .studio-topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .moodboard-pill-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: #faf6f0;
+    border: 1.5px solid #d5c1a3;
+    border-radius: 50px;
+    padding: 0.3rem 0.7rem 0.3rem 0.4rem;
+    cursor: pointer;
+    font-size: 0.76rem;
     color: #1f2937 !important;
+    transition: transform 0.18s ease, border-color 0.2s ease;
   }
-  .brief-progress-pct {
-    font-size: 0.8rem;
-    font-weight: 700;
+  .moodboard-pill-btn:active {
+    transform: scale(0.95);
+  }
+  .moodboard-thumb-stack {
+    display: flex;
+    align-items: center;
+  }
+  .moodboard-thumb-stack img {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid #ffffff;
+    margin-left: -6px;
+  }
+  .moodboard-thumb-stack img:first-child {
+    margin-left: 0;
+  }
+  .stack-empty-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #e5ddd0;
+    display: inline-block;
+  }
+  .moodboard-pill-text strong {
     color: #189ba6 !important;
   }
-  .brief-progress-track {
-    width: 100%;
-    height: 6px;
-    background: #e5e7eb;
-    border-radius: 99px;
-    overflow: hidden;
-    margin-bottom: 0.6rem;
-  }
-  .brief-progress-fill {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, #189ba6 0%, #b89047 100%);
-    transition: width 0.35s ease;
-  }
-  .brief-nav-pills {
-    display: flex;
-    gap: 0.45rem;
-    overflow-x: auto;
-    padding-bottom: 2px;
-    scrollbar-width: none;
-  }
-  .brief-nav-pills::-webkit-scrollbar {
-    display: none;
-  }
-  .brief-nav-pill {
-    flex: 0 0 auto;
+  .view-mode-btn {
+    background: #f3f4f6;
+    border: 1px solid #d1d5db;
+    border-radius: 50px;
+    padding: 0.32rem 0.75rem;
     font-size: 0.76rem;
     font-weight: 600;
-    color: #4b5563 !important;
-    background: #f3f4f6;
-    padding: 0.3rem 0.75rem;
-    border-radius: 50px;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    white-space: nowrap;
+    color: #374151 !important;
+    cursor: pointer;
   }
-  .brief-nav-pill:hover {
-    background: #189ba6;
-    color: #ffffff !important;
+  .studio-progress-line {
+    height: 3px;
+    width: 100%;
+    background: #eef2f6;
+  }
+  .studio-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #189ba6 0%, #b89047 100%);
+    transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
-  /* Main Section & Cards */
-  .brief-main-section {
-    padding: 2rem 0 4rem 0;
-    background: #f8fafc;
-  }
-  .brief-card {
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 16px;
-    padding: 1.75rem;
-    margin-bottom: 1.75rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    scroll-margin-top: 150px;
-  }
-  .brief-card-head {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    margin-bottom: 1.25rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #f1f5f9;
-  }
-  .brief-step-num {
-    flex: 0 0 auto;
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #189ba6 0%, #127c85 100%);
+  /* Toast Notification */
+  .studio-toast {
+    position: fixed;
+    top: 112px;
+    left: 50%;
+    transform: translate(-50%, -14px);
+    background: #151413;
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
-    font-weight: 700;
-    font-size: 0.95rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+    z-index: 1200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    white-space: nowrap;
+    max-width: 90vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
-  .brief-section-title {
-    font-family: 'Playfair Display', Georgia, serif !important;
-    font-size: clamp(1.2rem, 2.2vw, 1.55rem);
-    font-weight: 700;
-    color: #151413 !important;
-    margin: 0 0 0.25rem 0;
-  }
-  .brief-section-desc {
-    color: #6b7280 !important;
-    font-size: 0.88rem;
-    margin: 0;
+  .studio-toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
   }
 
-  /* Inputs & Labels */
-  .brief-field-label {
+  /* Stage */
+  .studio-stage {
+    padding: 1.5rem 0 2rem 0;
+  }
+  .studio-stage-container {
+    max-width: 880px;
+  }
+  .studio-step {
+    display: none;
+    animation: stepSlideIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .studio-step.active {
     display: block;
-    font-size: 0.82rem;
+  }
+  .studio-app-shell.all-steps-mode .studio-step {
+    display: block !important;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px dashed #d1d5db;
+  }
+  .studio-app-shell.all-steps-mode .studio-bottom-dock {
+    display: none !important;
+  }
+  @keyframes stepSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .step-header-block {
+    text-align: center;
+    margin-bottom: 1.35rem;
+  }
+  .step-eyebrow {
+    display: inline-block;
+    font-size: 0.72rem;
     font-weight: 700;
-    color: #1f2937 !important;
-    margin-bottom: 0.5rem;
     text-transform: uppercase;
-    letter-spacing: 0.4px;
+    letter-spacing: 1.2px;
+    color: #189ba6 !important;
+    background: rgba(24, 155, 166, 0.1);
+    padding: 0.3rem 0.85rem;
+    border-radius: 50px;
+    margin-bottom: 0.65rem;
   }
-  .brief-input {
-    border: 1.5px solid #d1d5db;
-    border-radius: 10px;
-    padding: 0.65rem 0.85rem;
-    font-size: 0.95rem;
-    color: #111827 !important;
+  .step-headline {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: clamp(1.45rem, 3.8vw, 2.15rem);
+    font-weight: 700;
+    color: #151413 !important;
+    margin-bottom: 0.45rem;
+    line-height: 1.2;
+  }
+  .step-subtext {
+    font-size: 0.9rem;
+    color: #525d6d !important;
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  /* Panels & Form Elements */
+  .studio-panel-card {
     background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 1.35rem;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
   }
-  .brief-input:focus {
+  .studio-label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #374151 !important;
+    margin-bottom: 0.5rem;
+  }
+  .studio-input {
+    border: 1.5px solid #d1d5db;
+    border-radius: 12px;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.95rem;
+    background: #ffffff;
+    color: #111827 !important;
+  }
+  .studio-input:focus {
     border-color: #189ba6;
     box-shadow: 0 0 0 3px rgba(24, 155, 166, 0.12);
     outline: none;
   }
-  .brief-addon {
+  .studio-addon {
     background: #f3f4f6;
     border: 1.5px solid #d1d5db;
     border-right: none;
-    border-radius: 10px 0 0 10px;
+    border-radius: 12px 0 0 12px;
     font-weight: 700;
-    color: #374151 !important;
   }
 
-  /* Visual Card Grid */
-  .brief-visual-grid {
+  /* Tactile Property Tiles */
+  .studio-tile-grid.cols-3 {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
   }
-  @media (max-width: 991.98px) {
-    .brief-visual-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.75rem;
-    }
-    .brief-card {
-      padding: 1.25rem 1rem;
-    }
-  }
-  @media (max-width: 480px) {
-    .brief-visual-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-  .brief-visual-card {
-    border: 2px solid #e5e7eb;
+  .studio-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.85rem 0.5rem;
     border-radius: 14px;
-    overflow: hidden;
+    border: 1.5px solid #d1d5db;
     background: #ffffff;
     cursor: pointer;
-    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.16s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.2s ease, background-color 0.2s ease;
+    color: #374151 !important;
+    font-size: 0.84rem;
+    font-weight: 700;
+  }
+  .studio-tile .tile-ico {
+    font-size: 1.15rem;
+    color: #6b7280 !important;
+  }
+  .studio-tile:active {
+    transform: scale(0.94);
+  }
+  .studio-tile.selected {
+    border-color: #189ba6;
+    background: #f0fdfa;
+    color: #127c85 !important;
+    box-shadow: 0 4px 14px rgba(24, 155, 166, 0.16);
+  }
+  .studio-tile.selected .tile-ico {
+    color: #189ba6 !important;
+  }
+
+  /* Pill Chips */
+  .studio-pill-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .studio-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.52rem 0.9rem;
+    border-radius: 50px;
+    border: 1.5px solid #d1d5db;
+    background: #ffffff;
+    color: #374151 !important;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.16s cubic-bezier(0.34, 1.56, 0.64, 1), all 0.2s ease;
+  }
+  .studio-pill:active {
+    transform: scale(0.94);
+  }
+  .studio-pill.selected {
+    background: #189ba6;
+    border-color: #189ba6;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    box-shadow: 0 3px 10px rgba(24, 155, 166, 0.24);
+  }
+  .dot-swatch {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    display: inline-block;
+  }
+
+  /* 2-Column Mobile-First Visual Choice Cards */
+  .visual-choice-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+  }
+  @media (min-width: 992px) {
+    .visual-choice-grid {
+      gap: 1.15rem;
+    }
+  }
+  .v-card {
+    background: #ffffff;
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     user-select: none;
+    transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.2s ease, box-shadow 0.2s ease;
   }
-  .brief-visual-card:hover {
-    border-color: #99d5da;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  .v-card:active {
+    transform: scale(0.96);
   }
-  .brief-visual-card.selected {
+  .v-card.selected {
     border-color: #189ba6;
     background: #f0fdfa;
-    box-shadow: 0 8px 22px rgba(24, 155, 166, 0.16);
+    box-shadow: 0 8px 22px rgba(24, 155, 166, 0.18);
   }
-  .brief-img-box {
+  .v-img-wrap {
     position: relative;
     width: 100%;
     aspect-ratio: 4 / 3;
     overflow: hidden;
     background: #e5e7eb;
   }
-  .brief-img-box img {
+  .v-img-wrap img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
     transition: transform 0.35s ease;
   }
-  .brief-visual-card:hover .brief-img-box img {
+  .v-card:hover .v-img-wrap img {
     transform: scale(1.04);
   }
-  .brief-check-badge {
+  .v-badge {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 28px;
-    height: 28px;
+    top: 8px;
+    left: 8px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.9);
     border: 2px solid #cbd5e1;
@@ -966,241 +1143,459 @@ const schema = JSON.stringify({
     align-items: center;
     justify-content: center;
     color: transparent !important;
-    font-size: 0.78rem;
-    transition: all 0.2s ease;
+    font-size: 0.72rem;
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
-  .brief-visual-card.selected .brief-check-badge {
+  .v-card.selected .v-badge {
     background: #189ba6;
     border-color: #189ba6;
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
-    transform: scale(1.1);
-    box-shadow: 0 2px 8px rgba(24, 155, 166, 0.45);
+    transform: scale(1.12);
   }
-  .brief-zoom-btn {
+  .v-zoom {
     position: absolute;
     bottom: 8px;
     right: 8px;
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
     border-radius: 50%;
-    background: rgba(15, 23, 42, 0.68);
+    background: rgba(15, 23, 42, 0.65);
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     cursor: pointer;
-    z-index: 5;
+    z-index: 4;
   }
-  .brief-zoom-btn:hover {
-    background: #189ba6;
+  .v-body {
+    padding: 0.65rem 0.75rem;
   }
-  .brief-visual-body {
-    padding: 0.85rem;
-    flex: 1;
-  }
-  .brief-visual-body h3 {
-    font-size: 0.94rem;
+  .v-body h3 {
+    font-size: 0.88rem;
     font-weight: 700;
     color: #111827 !important;
-    margin: 0 0 0.3rem 0;
-    line-height: 1.3;
+    margin: 0 0 0.2rem 0;
+    line-height: 1.25;
   }
-  .brief-visual-body p {
-    font-size: 0.78rem;
+  .v-body p {
+    font-size: 0.74rem;
     color: #6b7280 !important;
     margin: 0;
-    line-height: 1.45;
+    line-height: 1.35;
   }
 
-  /* Pill Chips */
-  .brief-chip-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.55rem;
-  }
-  .brief-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.5rem 0.95rem;
-    border-radius: 50px;
-    border: 1.5px solid #d1d5db;
+  /* Live Lighting Simulator */
+  .light-sim-card {
     background: #ffffff;
-    color: #374151 !important;
-    font-size: 0.84rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
   }
-  .brief-chip:hover {
-    border-color: #189ba6;
-    background: #f0fdfa;
+  .light-sim-preview {
+    position: relative;
+    width: 100%;
+    height: 190px;
+    overflow: hidden;
   }
-  .brief-chip.selected {
-    background: #189ba6;
-    border-color: #189ba6;
-    color: #ffffff !important;
-    -webkit-text-fill-color: #ffffff !important;
-    box-shadow: 0 3px 10px rgba(24, 155, 166, 0.25);
-  }
-  .tone-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    border: 1px solid rgba(0,0,0,0.2);
-    display: inline-block;
-  }
-
-  /* Color Palettes */
-  .brief-palette-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
-  }
-  @media (max-width: 767.98px) {
-    .brief-palette-grid {
-      grid-template-columns: repeat(2, 1fr);
+  @media (min-width: 768px) {
+    .light-sim-preview {
+      height: 250px;
     }
   }
-  .brief-palette-card {
+  .light-sim-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .light-sim-tint {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 196, 112, 0.22);
+    mix-blend-mode: overlay;
+    transition: background-color 0.35s ease;
+    pointer-events: none;
+  }
+  .light-sim-badge {
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+    background: rgba(15, 23, 42, 0.78);
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    font-size: 0.74rem;
+    font-weight: 700;
+    padding: 0.3rem 0.75rem;
+    border-radius: 50px;
+  }
+  .light-sim-controls {
+    padding: 0.9rem 1rem;
+  }
+
+  /* Color Swatches */
+  .palette-swipe-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+  @media (min-width: 768px) {
+    .palette-swipe-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .p-swatch-card {
     display: flex;
     align-items: center;
-    gap: 0.7rem;
-    padding: 0.75rem 0.9rem;
+    gap: 0.55rem;
+    padding: 0.65rem 0.75rem;
     border-radius: 12px;
     border: 1.5px solid #d1d5db;
     background: #ffffff;
     cursor: pointer;
     text-align: left;
-    transition: all 0.2s ease;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #1f2937 !important;
+    transition: transform 0.15s ease, border-color 0.2s ease, background-color 0.2s ease;
   }
-  .brief-palette-card:hover {
-    border-color: #189ba6;
+  .p-swatch-card:active {
+    transform: scale(0.95);
   }
-  .brief-palette-card.selected {
+  .p-swatch-card.selected {
     border-color: #189ba6;
     background: #f0fdfa;
     box-shadow: 0 4px 12px rgba(24, 155, 166, 0.16);
   }
-  .palette-dots {
+  .p-circles {
     display: flex;
-    align-items: center;
+    flex-shrink: 0;
   }
-  .palette-dots span {
-    width: 18px;
-    height: 18px;
+  .p-circles span {
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     border: 1.5px solid #ffffff;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
-    margin-left: -5px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.15);
+    margin-left: -4px;
   }
-  .palette-dots span:first-child {
-    margin-left: 0;
+  .p-circles span:first-child { margin-left: 0; }
+
+  /* Budget Tiers */
+  .budget-tier-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
   }
-  .palette-name {
-    font-size: 0.82rem;
-    font-weight: 700;
-    color: #1f2937 !important;
-    line-height: 1.25;
+  @media (min-width: 768px) {
+    .budget-tier-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .budget-tier-btn {
+    padding: 0.75rem 0.65rem;
+    border-radius: 12px;
+    border: 1.5px solid #d1d5db;
+    background: #ffffff;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    transition: transform 0.15s ease, all 0.2s ease;
+  }
+  .budget-tier-btn strong {
+    font-size: 0.92rem;
+    color: #111827 !important;
+  }
+  .budget-tier-btn span {
+    font-size: 0.72rem;
+    color: #6b7280 !important;
+  }
+  .budget-tier-btn:active {
+    transform: scale(0.95);
+  }
+  .budget-tier-btn.selected {
+    background: #189ba6;
+    border-color: #189ba6;
+    box-shadow: 0 4px 14px rgba(24, 155, 166, 0.25);
+  }
+  .budget-tier-btn.selected strong,
+  .budget-tier-btn.selected span {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
   }
 
-  /* Submit Summary Card */
-  .brief-submit-card {
-    background: linear-gradient(135deg, #ffffff 0%, #f5f1ea 100%);
+  /* DNA Reveal Card */
+  .dna-reveal-card {
+    position: relative;
+    background: linear-gradient(135deg, #ffffff 0%, #f9f5ee 100%);
     border: 2px solid #cdb698;
-    border-radius: 18px;
-    padding: 2rem;
-    box-shadow: 0 10px 30px rgba(182, 156, 124, 0.15);
+    border-radius: 20px;
+    padding: 1.5rem 1.25rem;
+    box-shadow: 0 12px 35px rgba(182, 156, 124, 0.18);
+    overflow: hidden;
   }
-  .brief-summary-eyebrow {
+  .dna-eyebrow {
     display: inline-block;
-    font-size: 0.76rem;
-    font-weight: 700;
-    color: #189ba6 !important;
-    text-transform: uppercase;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #b89047 !important;
     letter-spacing: 1px;
-    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    margin-bottom: 0.35rem;
   }
-  .brief-summary-title {
+  .dna-persona-title {
     font-family: 'Playfair Display', Georgia, serif !important;
-    font-size: 1.55rem;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
     font-weight: 700;
     color: #151413 !important;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
   }
-  .brief-summary-text {
-    font-size: 0.9rem;
+  .dna-persona-sub {
+    font-size: 0.88rem;
     color: #4b5563 !important;
+    margin-bottom: 1.25rem;
   }
-  .brief-live-preview {
+  .dna-palette-dots {
+    display: flex;
+    gap: 4px;
+  }
+  .dna-palette-dots span {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1.5px solid #ffffff;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.15);
+  }
+  .dna-mosaic {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.45rem;
+  }
+  @media (max-width: 576px) {
+    .dna-mosaic {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  .dna-mosaic-item {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  .dna-mosaic-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .dna-mosaic-item span {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.62);
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    font-size: 0.62rem;
+    padding: 2px 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .dna-mosaic-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 1.25rem;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px dashed #cbd5e1;
+    border-radius: 12px;
+    font-size: 0.82rem;
+    color: #6b7280 !important;
+  }
+  .dna-summary-pre {
     background: #ffffff;
     border: 1px solid #e5e7eb;
     border-radius: 12px;
-    padding: 1rem;
+    padding: 0.85rem;
     font-family: 'Open Sans', sans-serif;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     color: #374151 !important;
     white-space: pre-wrap;
     word-break: break-word;
-    max-height: 240px;
+    max-height: 200px;
     overflow-y: auto;
     margin: 0;
-    line-height: 1.5;
   }
-  .brief-whatsapp-btn {
+  .dna-wa-submit {
+    width: 100%;
     background: #25D366;
     border: none;
     color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
     font-weight: 700;
     font-size: 1rem;
-    padding: 1rem 1.25rem;
-    border-radius: 12px;
+    padding: 0.95rem 1rem;
+    border-radius: 14px;
     cursor: pointer;
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
-    transition: transform 0.2s ease, background-color 0.2s ease;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.32);
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: transform 0.16s ease;
   }
-  .brief-whatsapp-btn:hover {
-    background: #1fb857;
-    transform: translateY(-2px);
+  .dna-wa-submit:active {
+    transform: scale(0.97);
   }
-  .brief-secondary-btn {
+  .dna-sub-actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-top: 0.65rem;
+  }
+  .studio-sec-btn {
     background: #ffffff;
     border: 1.5px solid #d1d5db;
+    border-radius: 10px;
+    padding: 0.55rem 0.4rem;
+    font-size: 0.78rem;
+    font-weight: 600;
     color: #374151 !important;
-    font-weight: 600;
-    font-size: 0.86rem;
-    padding: 0.7rem 1rem;
-    border-radius: 10px;
     cursor: pointer;
-    transition: all 0.2s ease;
   }
-  .brief-secondary-btn:hover {
-    border-color: #189ba6;
-    color: #189ba6 !important;
-  }
-  .brief-feedback {
-    padding: 0.75rem 1rem;
+  .studio-feedback {
+    padding: 0.7rem 0.9rem;
     border-radius: 10px;
-    font-size: 0.85rem;
+    font-size: 0.84rem;
     font-weight: 600;
   }
-  .brief-feedback.error {
+  .studio-feedback.error {
     background: #fef2f2;
     border: 1px solid #fecaca;
     color: #b91c1c !important;
   }
-  .brief-feedback.success {
+  .studio-feedback.success {
     background: #ecfdf5;
     border: 1px solid #a7f3d0;
     color: #047857 !important;
+  }
+
+  /* Thumb-Zone Bottom Dock */
+  .studio-bottom-dock {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+    padding: 0.65rem 0 calc(0.65rem + env(safe-area-inset-bottom, 0px)) 0;
+    z-index: 1000000;
+  }
+  .studio-dock-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    max-width: 880px;
+  }
+  .dock-back-btn {
+    background: #f3f4f6;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    padding: 0.65rem 1rem;
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: #374151 !important;
+    cursor: pointer;
+  }
+  .dock-back-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  .dock-center-status {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #6b7280 !important;
+  }
+  .dock-next-btn {
+    background: linear-gradient(135deg, #189ba6 0%, #127c85 100%);
+    border: none;
+    border-radius: 12px;
+    padding: 0.7rem 1.35rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(24, 155, 166, 0.3);
+    transition: transform 0.16s ease;
+  }
+  .dock-next-btn:active {
+    transform: scale(0.95);
+  }
+
+  /* Moodboard Drawer Bottom Sheet */
+  .moodboard-drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.55);
+    z-index: 2147482000;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .moodboard-drawer-sheet {
+    background: #ffffff;
+    width: 100%;
+    max-width: 640px;
+    max-height: 75vh;
+    border-radius: 22px 22px 0 0;
+    padding: 0.75rem 1.25rem 1.5rem 1.25rem;
+    overflow-y: auto;
+    animation: drawerUp 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  @keyframes drawerUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+  .drawer-handle {
+    width: 40px;
+    height: 4px;
+    border-radius: 99px;
+    background: #cbd5e1;
+    margin: 0 auto 0.75rem auto;
+  }
+  .drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  .drawer-header h3 {
+    font-family: 'Playfair Display', Georgia, serif !important;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  .drawer-close {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: none;
+    background: #f3f4f6;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .drawer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem;
   }
 
   /* Zoom Modal */
@@ -1244,39 +1639,62 @@ const schema = JSON.stringify({
   .brief-zoom-inner p {
     color: #e5e7eb !important;
     -webkit-text-fill-color: #e5e7eb !important;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     margin: 0;
   }
 
+  /* Lightweight Celebration Confetti */
+  .confetti-burst {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .confetti-piece {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    animation: confettiFall 1.4s ease-out forwards;
+  }
+  @keyframes confettiFall {
+    0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(220px) rotate(360deg); opacity: 0; }
+  }
+
   @media print {
-    .brief-progress-bar-wrap, .brief-zoom-btn, .brief-share-btn, .brief-whatsapp-btn, .brief-secondary-btn, nav, footer, .dc-mobile-bottom-bar {
+    .studio-topbar, .studio-bottom-dock, .v-zoom, .dna-actions, nav, footer {
       display: none !important;
     }
-    .brief-hero {
-      margin-top: 0 !important;
+    .studio-step {
+      display: block !important;
     }
-    .brief-card {
-      break-inside: avoid;
-      border: 1px solid #ccc;
+    .studio-app-shell {
+      margin-top: 0 !important;
+      padding-bottom: 0 !important;
     }
   }
 </style>
 
 <script is:inline>
   (function() {
-    // Prevent auto consultation popup from interrupting clients while filling out the Design Brief
+    // Isolate app-like bottom thumb bar & suppress popup specifically on /design-brief/
     if (window.location.pathname.includes('design-brief')) {
-      const hidePopupStyle = document.createElement('style');
-      hidePopupStyle.textContent = '#consultationPopup { display: none !important; } body.consultation-popup-open { overflow: auto !important; }';
-      document.head.appendChild(hidePopupStyle);
+      const appStyle = document.createElement('style');
+      appStyle.textContent = '#consultationPopup { display: none !important; } body.consultation-popup-open { overflow: auto !important; } @media (max-width: 991px) { .dc-mobile-bottom-bar, #dcMobileBottomBar { display: none !important; } body { padding-bottom: 0 !important; } }';
+      document.head.appendChild(appStyle);
     }
+
+    const totalInteractiveSteps = 8; // 0..6 + 7 (Reveal)
+    let currentStep = 0;
+    let allStepsMode = false;
 
     const state = {
       propertyType: [],
       timeline: [],
       homeStyle: [],
       ceilingStyle: [],
-      lightTone: [],
+      lightTone: ['Warm White (3000K — Hotel Cozy)'],
       lightExtras: [],
       wardrobeStyle: [],
       wardrobeFinish: [],
@@ -1295,27 +1713,130 @@ const schema = JSON.stringify({
       budget: []
     };
 
+    const selectedImages = new Map(); // value -> { img, label }
+    const selectedColorDots = new Map(); // value -> [colors]
+
+    const appShell = document.getElementById('studioAppShell');
+    const stepEls = document.querySelectorAll('.studio-step');
+    const dotEls = document.querySelectorAll('.step-dot');
+    const stepCounterEl = document.getElementById('studioStepCounter');
+    const dockStepTextEl = document.getElementById('dockStepText');
+    const progressFillEl = document.getElementById('studioProgressFill');
+    const dockBackBtn = document.getElementById('dockBackBtn');
+    const dockNextBtn = document.getElementById('dockNextBtn');
+    const toastEl = document.getElementById('studioToast');
+    const thumbStackEl = document.getElementById('moodboardThumbStack');
+    const moodboardCountEl = document.getElementById('moodboardCount');
+
     const nameEl = document.getElementById('clientName');
     const phoneEl = document.getElementById('clientPhone');
     const locEl = document.getElementById('clientLocation');
     const dislikesEl = document.getElementById('clientDislikes');
     const notesEl = document.getElementById('clientNotes');
     const previewEl = document.getElementById('liveBriefPreview');
-    const progressTextEl = document.getElementById('briefProgressText');
-    const progressPctEl = document.getElementById('briefProgressPct');
-    const progressFillEl = document.getElementById('briefProgressFill');
     const feedbackEl = document.getElementById('briefFormFeedback');
 
-    function toggleGroupSelection(groupContainer, itemEl) {
-      const groupName = groupContainer.getAttribute('data-group');
-      const mode = groupContainer.getAttribute('data-mode') || 'multi';
+    function triggerHaptic() {
+      if (navigator.vibrate) {
+        try { navigator.vibrate(12); } catch(e) {}
+      }
+    }
+
+    let toastTimer = null;
+    function showToast(msg) {
+      if (!msg) return;
+      toastEl.textContent = msg;
+      toastEl.classList.add('show');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toastEl.classList.remove('show'), 1900);
+    }
+
+    function goToStep(idx) {
+      if (idx < 0 || idx >= totalInteractiveSteps) return;
+      triggerHaptic();
+
+      currentStep = idx;
+      stepEls.forEach((el, i) => {
+        el.classList.toggle('active', i === idx);
+      });
+      dotEls.forEach((dot, i) => {
+        dot.classList.toggle('active', i === idx);
+        dot.classList.toggle('completed', i < idx);
+      });
+
+      const pct = Math.round(((idx + 1) / totalInteractiveSteps) * 100);
+      progressFillEl.style.width = `${pct}%`;
+
+      if (idx < 7) {
+        stepCounterEl.textContent = `Step ${idx + 1} of 7`;
+        dockStepTextEl.textContent = `${idx + 1} / 7`;
+      } else {
+        stepCounterEl.textContent = `Design DNA Ready ✨`;
+        dockStepTextEl.textContent = `Final DNA`;
+      }
+
+      dockBackBtn.disabled = idx === 0;
+      if (idx === 0) {
+        dockNextBtn.innerHTML = `<span>Start Styling</span> <i class="fas fa-arrow-right ms-1"></i>`;
+        dockNextBtn.style.display = 'inline-flex';
+      } else if (idx === 6) {
+        dockNextBtn.innerHTML = `<span>Reveal Design DNA ✨</span>`;
+        dockNextBtn.style.display = 'inline-flex';
+      } else if (idx === 7) {
+        dockNextBtn.style.display = 'none';
+        renderDnaReveal();
+        fireConfetti();
+      } else {
+        dockNextBtn.innerHTML = `<span>Next</span> <i class="fas fa-arrow-right ms-1"></i>`;
+        dockNextBtn.style.display = 'inline-flex';
+      }
+
+      window.scrollTo({ top: 0, behavior: 'auto' });
+      updateLiveUI();
+    }
+
+    dockBackBtn.addEventListener('click', () => goToStep(currentStep - 1));
+    dockNextBtn.addEventListener('click', () => {
+      if (currentStep === 0 && !nameEl.value.trim()) {
+        nameEl.focus();
+        showToast('👋 Enter your name first so we can personalize your DNA!');
+        return;
+      }
+      goToStep(currentStep + 1);
+    });
+    dotEls.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const target = parseInt(dot.getAttribute('data-goto'), 10);
+        if (allStepsMode) {
+          document.getElementById('step-' + target)?.scrollIntoView({ behavior: 'auto' });
+        } else {
+          goToStep(target);
+        }
+      });
+    });
+
+    // All Steps Toggle
+    const toggleViewBtn = document.getElementById('toggleViewModeBtn');
+    if (toggleViewBtn) {
+      toggleViewBtn.addEventListener('click', () => {
+        allStepsMode = !allStepsMode;
+        appShell.classList.toggle('all-steps-mode', allStepsMode);
+        toggleViewBtn.querySelector('span').textContent = allStepsMode ? 'Step Mode' : 'All Steps';
+        if (allStepsMode) renderDnaReveal();
+      });
+    }
+
+    function toggleGroupSelection(container, itemEl) {
+      const groupName = container.getAttribute('data-group');
+      const mode = container.getAttribute('data-mode') || 'multi';
       const val = itemEl.getAttribute('data-value');
       if (!groupName || !val) return;
+      triggerHaptic();
 
       if (mode === 'single') {
-        const wasSelected = itemEl.classList.contains('selected');
-        groupContainer.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
-        if (wasSelected) {
+        const wasSel = itemEl.classList.contains('selected');
+        container.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
+        if (wasSel) {
           state[groupName] = [];
         } else {
           itemEl.classList.add('selected');
@@ -1329,19 +1850,53 @@ const schema = JSON.stringify({
           state[groupName] = state[groupName].filter(v => v !== val);
         }
       }
-      updateBrief();
+
+      // Track Moodboard photo
+      const imgSrc = itemEl.getAttribute('data-img');
+      if (imgSrc) {
+        if (itemEl.classList.contains('selected')) {
+          selectedImages.set(val, { img: imgSrc, label: val });
+          const simImg = document.getElementById('lightSimImg');
+          if (groupName === 'ceilingStyle' && simImg) simImg.src = imgSrc;
+          showToast(itemEl.getAttribute('data-toast') || `✨ Added ${val}`);
+        } else {
+          selectedImages.delete(val);
+        }
+      }
+
+      // Track Color dots
+      const colorsAttr = itemEl.getAttribute('data-colors');
+      if (colorsAttr) {
+        if (itemEl.classList.contains('selected')) {
+          selectedColorDots.set(val, colorsAttr.split(','));
+          showToast(`🎨 ${val} palette added`);
+        } else {
+          selectedColorDots.delete(val);
+        }
+      }
+
+      // Live lighting simulator reaction
+      if (container.id === 'lightToneGroup' && itemEl.classList.contains('selected')) {
+        const tint = itemEl.getAttribute('data-tint');
+        const badge = itemEl.getAttribute('data-badge');
+        const tintEl = document.getElementById('lightSimTint');
+        const labelEl = document.getElementById('lightSimLabel');
+        if (tintEl && tint) tintEl.style.background = tint;
+        if (labelEl && badge) labelEl.textContent = badge;
+      }
+
+      updateLiveUI();
     }
 
-    // Bind visual cards, chips, and palette cards
-    document.querySelectorAll('.brief-visual-card').forEach(card => {
+    document.querySelectorAll('.v-card').forEach(card => {
       card.addEventListener('click', (e) => {
-        if (e.target.closest('.brief-zoom-btn')) return;
+        if (e.target.closest('.v-zoom')) return;
         const container = card.closest('[data-group]');
         if (container) toggleGroupSelection(container, card);
       });
     });
 
-    document.querySelectorAll('.brief-chip, .brief-palette-card').forEach(btn => {
+    document.querySelectorAll('.studio-tile, .studio-pill, .p-swatch-card, .budget-tier-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const container = btn.closest('[data-group]');
         if (container) toggleGroupSelection(container, btn);
@@ -1349,12 +1904,12 @@ const schema = JSON.stringify({
     });
 
     [nameEl, phoneEl, locEl, dislikesEl, notesEl].forEach(el => {
-      if (el) el.addEventListener('input', updateBrief);
+      if (el) el.addEventListener('input', updateLiveUI);
     });
 
     function buildSummaryText() {
       const lines = [];
-      lines.push('CLIENT DESIGN TASTE BRIEF — SIDDHIVINAYAK DESIGNERS');
+      lines.push('CLIENT DESIGN DNA BRIEF — SIDDHIVINAYAK DESIGNERS');
       lines.push('----------------------------------------');
       if (nameEl.value.trim()) lines.push('Client Name: ' + nameEl.value.trim());
       if (phoneEl.value.trim()) lines.push('Phone: +91 ' + phoneEl.value.trim());
@@ -1363,20 +1918,20 @@ const schema = JSON.stringify({
       if (state.timeline.length) lines.push('Timeline: ' + state.timeline.join(', '));
       lines.push('');
 
-      if (state.homeStyle.length) lines.push('Overall Home Vibe: ' + state.homeStyle.join(' | '));
+      if (state.homeStyle.length) lines.push('Home Vibe: ' + state.homeStyle.join(' | '));
       if (state.ceilingStyle.length) lines.push('False Ceiling: ' + state.ceilingStyle.join(' | '));
-      if (state.lightTone.length) lines.push('Lighting Tone: ' + state.lightTone.join(', '));
-      if (state.lightExtras.length) lines.push('Lighting Extras: ' + state.lightExtras.join(', '));
+      if (state.lightTone.length) lines.push('Light Tone: ' + state.lightTone.join(', '));
+      if (state.lightExtras.length) lines.push('Light Extras: ' + state.lightExtras.join(', '));
 
       if (state.wardrobeStyle.length) lines.push('Wardrobe Style: ' + state.wardrobeStyle.join(' | '));
       if (state.wardrobeFinish.length) lines.push('Wardrobe Finish: ' + state.wardrobeFinish.join(', '));
       if (state.loftPref.length) lines.push('Loft Design: ' + state.loftPref.join(', '));
       if (state.wardrobeExtras.length) lines.push('Wardrobe Accessories: ' + state.wardrobeExtras.join(', '));
 
-      if (state.kitchenStyle.length) lines.push('Modular Kitchen Style: ' + state.kitchenStyle.join(' | '));
+      if (state.kitchenStyle.length) lines.push('Kitchen Style: ' + state.kitchenStyle.join(' | '));
       if (state.kitchenLayout.length) lines.push('Kitchen Layout: ' + state.kitchenLayout.join(', '));
       if (state.countertop.length) lines.push('Countertop: ' + state.countertop.join(', '));
-      if (state.kitchenExtras.length) lines.push('Kitchen Appliances & Units: ' + state.kitchenExtras.join(', '));
+      if (state.kitchenExtras.length) lines.push('Kitchen Appliances: ' + state.kitchenExtras.join(', '));
 
       if (state.livingElements.length) lines.push('Living & Pooja: ' + state.livingElements.join(' | '));
       if (state.wallDecor.length) lines.push('Wall Decor: ' + state.wallDecor.join(', '));
@@ -1385,7 +1940,7 @@ const schema = JSON.stringify({
       if (state.lifestyle.length) lines.push('Family Needs: ' + state.lifestyle.join(', '));
       if (state.vastu.length) lines.push('Vastu: ' + state.vastu.join(', '));
       if (state.storageStyle.length) lines.push('Storage Approach: ' + state.storageStyle.join(', '));
-      if (state.budget.length) lines.push('Budget Range: ' + state.budget.join(', '));
+      if (state.budget.length) lines.push('Budget Comfort: ' + state.budget.join(', '));
 
       if (dislikesEl.value.trim()) lines.push('Strict Dislikes: ' + dislikesEl.value.trim());
       if (notesEl.value.trim()) lines.push('Notes / Links: ' + notesEl.value.trim());
@@ -1393,25 +1948,90 @@ const schema = JSON.stringify({
       return lines.join('\n');
     }
 
-    function updateBrief() {
-      const sec1 = Boolean(nameEl.value.trim() || phoneEl.value.trim() || state.propertyType.length || state.timeline.length);
-      const sec2 = state.homeStyle.length > 0;
-      const sec3 = (state.ceilingStyle.length + state.lightTone.length + state.lightExtras.length) > 0;
-      const sec4 = (state.wardrobeStyle.length + state.wardrobeFinish.length + state.loftPref.length + state.wardrobeExtras.length) > 0;
-      const sec5 = (state.kitchenStyle.length + state.countertop.length + state.kitchenLayout.length + state.kitchenExtras.length) > 0;
-      const sec6 = (state.livingElements.length + state.wallDecor.length) > 0;
-      const sec7 = (state.colorPalette.length + state.lifestyle.length + state.vastu.length + state.storageStyle.length + state.budget.length) > 0 || Boolean(dislikesEl.value.trim() || notesEl.value.trim());
-
-      const completed = [sec1, sec2, sec3, sec4, sec5, sec6, sec7].filter(Boolean).length;
-      const pct = Math.round((completed / 7) * 100);
-
-      progressTextEl.textContent = `${completed} of 7 Sections Filled`;
-      progressPctEl.textContent = `${pct}%`;
-      progressFillEl.style.width = `${pct}%`;
-
-      const summary = buildSummaryText();
-      previewEl.textContent = completed === 0 ? 'Select your preferences above to build your live design brief...' : summary;
+    function updateLiveUI() {
+      moodboardCountEl.textContent = String(selectedImages.size);
+      if (selectedImages.size === 0) {
+        thumbStackEl.innerHTML = '<span class="stack-empty-dot"></span>';
+      } else {
+        const imgs = Array.from(selectedImages.values()).slice(-3);
+        thumbStackEl.innerHTML = imgs.map(item => `<img src="${item.img}" alt="" />`).join('');
+      }
+      previewEl.textContent = buildSummaryText();
     }
+
+    function computePersona() {
+      const styles = state.homeStyle.join(' ');
+      if (styles.includes('Opulent')) return 'The Modern Luxury Curator';
+      if (styles.includes('Neo-Classical')) return 'The Timeless Heritage Connoisseur';
+      if (styles.includes('Wooden')) return 'The Warm Earthy Sanctuary';
+      if (styles.includes('Minimalist')) return 'The Serene Minimalist';
+      return 'Custom Signature Home DNA';
+    }
+
+    function renderDnaReveal() {
+      document.getElementById('dnaPersonaTitle').textContent = computePersona();
+      const cName = nameEl.value.trim();
+      document.getElementById('dnaClientLabel').textContent = cName ? `${cName}'s Home` : 'Your Dream Home';
+
+      const mosaicEl = document.getElementById('dnaMosaic');
+      if (selectedImages.size === 0) {
+        mosaicEl.innerHTML = '<div class="dna-mosaic-empty">No reference photos tapped yet — tap the step dots above to pick your favorite looks!</div>';
+      } else {
+        mosaicEl.innerHTML = Array.from(selectedImages.values()).map(item => `
+          <div class="dna-mosaic-item">
+            <img src="${item.img}" alt="${item.label}" />
+            <span>${item.label}</span>
+          </div>
+        `).join('');
+      }
+
+      const paletteDotsEl = document.getElementById('dnaPaletteDots');
+      const allColors = [];
+      selectedColorDots.forEach(arr => arr.forEach(c => allColors.push(c)));
+      paletteDotsEl.innerHTML = allColors.slice(0, 9).map(c => `<span style="background:${c}"></span>`).join('');
+
+      previewEl.textContent = buildSummaryText();
+    }
+
+    function fireConfetti() {
+      const burst = document.getElementById('confettiBurst');
+      if (!burst) return;
+      burst.innerHTML = '';
+      const colors = ['#189ba6', '#b89047', '#25D366', '#f59e0b', '#ec4899'];
+      for (let i = 0; i < 24; i++) {
+        const dot = document.createElement('span');
+        dot.className = 'confetti-piece';
+        dot.style.left = Math.random() * 100 + '%';
+        dot.style.top = '-10px';
+        dot.style.background = colors[i % colors.length];
+        dot.style.animationDelay = (Math.random() * 0.4) + 's';
+        burst.appendChild(dot);
+      }
+      setTimeout(() => burst.innerHTML = '', 2000);
+    }
+
+    // Moodboard Drawer Sheet
+    const drawerBackdrop = document.getElementById('moodboardDrawerBackdrop');
+    const drawerGrid = document.getElementById('drawerGrid');
+    document.getElementById('openMoodboardBtn').addEventListener('click', () => {
+      triggerHaptic();
+      if (selectedImages.size === 0) {
+        drawerGrid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:1.5rem;color:#6b7280;">Tap photos in any step to collect them into your personal moodboard!</div>';
+      } else {
+        drawerGrid.innerHTML = Array.from(selectedImages.values()).map(item => `
+          <div class="dna-mosaic-item">
+            <img src="${item.img}" alt="${item.label}" />
+            <span>${item.label}</span>
+          </div>
+        `).join('');
+      }
+      drawerBackdrop.classList.remove('d-none');
+    });
+    const closeDrawer = () => drawerBackdrop.classList.add('d-none');
+    document.getElementById('closeMoodboardBtn').addEventListener('click', closeDrawer);
+    drawerBackdrop.addEventListener('click', (e) => {
+      if (e.target === drawerBackdrop) closeDrawer();
+    });
 
     // Submit -> WhatsApp
     document.getElementById('designBriefForm').addEventListener('submit', function(e) {
@@ -1422,12 +2042,14 @@ const schema = JSON.stringify({
       const clientPhone = phoneEl.value.replace(/\D/g, '').slice(-10);
 
       if (!clientName) {
-        showFeedback('Please enter your Name in Section 1 before sending.', 'error');
+        showToast('👋 Please enter your Name first');
+        goToStep(0);
         nameEl.focus();
         return;
       }
       if (!clientPhone || clientPhone.length < 10) {
-        showFeedback('Please enter a valid 10-digit Mobile Number in Section 1.', 'error');
+        showToast('📱 Please enter your 10-digit WhatsApp Number');
+        goToStep(0);
         phoneEl.focus();
         return;
       }
@@ -1435,46 +2057,35 @@ const schema = JSON.stringify({
       const fullBrief = buildSummaryText();
       const waUrl = `https://wa.me/918369297174?text=${encodeURIComponent(fullBrief)}`;
       window.open(waUrl, '_blank');
-      showFeedback('Opening WhatsApp with your Design Brief ready to send!', 'success');
+      feedbackEl.textContent = 'Opening WhatsApp with your Design DNA ready to send!';
+      feedbackEl.className = 'studio-feedback success mt-3';
     });
 
-    function showFeedback(msg, type) {
-      feedbackEl.textContent = msg;
-      feedbackEl.className = 'brief-feedback ' + type;
-    }
-
-    // Copy summary button
     document.getElementById('copyBriefBtn').addEventListener('click', function() {
       const btn = this;
-      const text = buildSummaryText();
-      navigator.clipboard.writeText(text).then(() => {
+      navigator.clipboard.writeText(buildSummaryText()).then(() => {
         const orig = btn.innerHTML;
         btn.innerHTML = '<i class="fas fa-check me-1"></i> Copied!';
         setTimeout(() => btn.innerHTML = orig, 2200);
       });
     });
 
-    // Share Form Link button
     document.getElementById('copyPageLinkBtn').addEventListener('click', function() {
       const btn = this;
-      const url = window.location.href;
-      navigator.clipboard.writeText(url).then(() => {
+      navigator.clipboard.writeText(window.location.href).then(() => {
         const orig = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-check me-1"></i> Link Copied! Send to Partner';
-        setTimeout(() => btn.innerHTML = orig, 2500);
+        btn.innerHTML = '<i class="fas fa-check me-1"></i> Link Copied!';
+        setTimeout(() => btn.innerHTML = orig, 2400);
       });
     });
 
-    // Print / PDF
     document.getElementById('printBriefBtn').addEventListener('click', () => window.print());
 
-    // Zoom modal logic
+    // Zoom modal
     const zoomModal = document.getElementById('briefZoomModal');
     const zoomImg = document.getElementById('briefZoomImg');
     const zoomCap = document.getElementById('briefZoomCaption');
-    const zoomClose = document.getElementById('briefZoomClose');
-
-    document.querySelectorAll('.brief-zoom-btn').forEach(btn => {
+    document.querySelectorAll('.v-zoom').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
         zoomImg.src = btn.getAttribute('data-zoom');
@@ -1483,15 +2094,16 @@ const schema = JSON.stringify({
         zoomModal.setAttribute('aria-hidden', 'false');
       });
     });
-
     const closeZoom = () => {
       zoomModal.classList.add('d-none');
       zoomModal.setAttribute('aria-hidden', 'true');
       zoomImg.src = '';
     };
-    zoomClose.addEventListener('click', closeZoom);
+    document.getElementById('briefZoomClose').addEventListener('click', closeZoom);
     zoomModal.addEventListener('click', (e) => {
       if (e.target === zoomModal) closeZoom();
     });
+
+    updateLiveUI();
   })();
 </script>
