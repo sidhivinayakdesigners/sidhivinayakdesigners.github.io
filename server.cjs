@@ -23,8 +23,8 @@ const MIME_TYPES = {
 };
 
 const server = http.createServer((req, res) => {
-  // Strip query strings (e.g. ?v=1011)
-  const cleanUrl = req.url.split('?')[0].split('#')[0];
+  // Strip query strings (e.g. ?v=1011) and decode %20 spaces
+  const cleanUrl = decodeURIComponent(req.url.split('?')[0].split('#')[0]);
   let filePath = path.join(PUBLIC_DIR, cleanUrl === '/' ? 'index.html' : cleanUrl);
   
   // If no extension, check if it's a directory with index.html or needs .html
