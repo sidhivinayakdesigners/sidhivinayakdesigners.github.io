@@ -1154,32 +1154,97 @@ const schema = JSON.stringify({
             </div>
 
             <div class="studio-panel-card">
-              <label class="studio-label">Tap Your Favorite Color Palettes</label>
-              <div class="palette-swipe-grid" data-group="colorPalette" data-mode="multi">
-                <button type="button" class="p-swatch-card" data-value="Warm Beige, Cream & Walnut" data-colors="#f5efe6,#d5c3aa,#6f4e37">
-                  <div class="p-circles"><span style="background:#f5efe6"></span><span style="background:#d5c3aa"></span><span style="background:#6f4e37"></span></div>
-                  <span>Beige &amp; Walnut</span>
-                </button>
-                <button type="button" class="p-swatch-card" data-value="Crisp White, Greige & Oak" data-colors="#ffffff,#d8d5d0,#b89b72">
-                  <div class="p-circles"><span style="background:#ffffff"></span><span style="background:#d8d5d0"></span><span style="background:#b89b72"></span></div>
-                  <span>White &amp; Oak</span>
-                </button>
-                <button type="button" class="p-swatch-card" data-value="Sage Olive Green & Cream" data-colors="#7c9070,#c7d3bf,#f7f4ef">
-                  <div class="p-circles"><span style="background:#7c9070"></span><span style="background:#c7d3bf"></span><span style="background:#f7f4ef"></span></div>
-                  <span>Sage &amp; Cream</span>
-                </button>
-                <button type="button" class="p-swatch-card" data-value="Navy Slate & Brushed Gold" data-colors="#1e293b,#64748b,#d4af37">
-                  <div class="p-circles"><span style="background:#1e293b"></span><span style="background:#64748b"></span><span style="background:#d4af37"></span></div>
-                  <span>Navy &amp; Gold</span>
-                </button>
-                <button type="button" class="p-swatch-card" data-value="Champagne Taupe & Blush" data-colors="#e8d5d1,#ccb7ae,#f5ebe6">
-                  <div class="p-circles"><span style="background:#e8d5d1"></span><span style="background:#ccb7ae"></span><span style="background:#f5ebe6"></span></div>
-                  <span>Champagne</span>
-                </button>
-                <button type="button" class="p-swatch-card" data-value="Charcoal Black & Teak" data-colors="#1f2937,#6b7280,#9a6b42">
-                  <div class="p-circles"><span style="background:#1f2937"></span><span style="background:#6b7280"></span><span style="background:#9a6b42"></span></div>
-                  <span>Charcoal &amp; Teak</span>
-                </button>
+              <label class="studio-label">Tap Your Favorite Interior Color Themes:</label>
+              <div class="visual-choice-grid visual-choice-grid--wardrobe" data-group="colorPalette" data-mode="multi" id="colorThemeGrid">
+                <div class="v-card" data-value="Warm Beige, Cream & Walnut" data-colors="#f5efe6,#d5c3aa,#6f4e37" data-img="/assets/images/design-brief/palette-beige-walnut.webp" data-toast="🤎 Beige & Walnut theme added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/palette-beige-walnut.webp" alt="Beige & Walnut Interior Theme" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/palette-beige-walnut.webp" data-caption="Beige & Walnut — Warm neutral fabric paired with rich dark walnut panels" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <div class="palette-card-head">
+                      <h3>Beige &amp; Walnut</h3>
+                      <div class="p-circles"><span style="background:#f5efe6"></span><span style="background:#d5c3aa"></span><span style="background:#6f4e37"></span></div>
+                    </div>
+                    <p>Timeless warm sand upholstery &amp; dark walnut timber warmth.</p>
+                  </div>
+                </div>
+
+                <div class="v-card" data-value="Crisp White, Greige & Oak" data-colors="#ffffff,#d8d5d0,#b89b72" data-img="/assets/images/design-brief/palette-white-oak.webp" data-toast="🤍 White & Oak theme added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/palette-white-oak.webp" alt="White & Oak Interior Theme" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/palette-white-oak.webp" data-caption="White & Oak — Airy Scandinavian white & light warm oak wood tones" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <div class="palette-card-head">
+                      <h3>White &amp; Oak</h3>
+                      <div class="p-circles"><span style="background:#ffffff"></span><span style="background:#d8d5d0"></span><span style="background:#b89b72"></span></div>
+                    </div>
+                    <p>Bright daylight white walls softened by warm honey oak.</p>
+                  </div>
+                </div>
+
+                <div class="v-card" data-value="Sage Olive Green & Cream" data-colors="#7c9070,#c7d3bf,#f7f4ef" data-img="/assets/images/design-brief/palette-sage-cream.webp" data-toast="🌿 Sage & Cream theme added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/palette-sage-cream.webp" alt="Sage & Cream Interior Theme" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/palette-sage-cream.webp" data-caption="Sage & Cream — Calming muted olive tones against fresh creamy moldings" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <div class="palette-card-head">
+                      <h3>Sage &amp; Cream</h3>
+                      <div class="p-circles"><span style="background:#7c9070"></span><span style="background:#c7d3bf"></span><span style="background:#f7f4ef"></span></div>
+                    </div>
+                    <p>Serene botanical sage accents framed with cream wainscoting.</p>
+                  </div>
+                </div>
+
+                <div class="v-card" data-value="Navy Slate & Brushed Gold" data-colors="#1e293b,#64748b,#d4af37" data-img="/assets/images/design-brief/palette-navy-gold.webp" data-toast="✨ Navy & Gold theme added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/palette-navy-gold.webp" alt="Navy & Gold Interior Theme" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/palette-navy-gold.webp" data-caption="Navy & Gold — Regal deep midnight blue lifted by brushed brass hardware" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <div class="palette-card-head">
+                      <h3>Navy &amp; Gold</h3>
+                      <div class="p-circles"><span style="background:#1e293b"></span><span style="background:#64748b"></span><span style="background:#d4af37"></span></div>
+                    </div>
+                    <p>Rich deep navy feature walls elevated by metallic gold trims.</p>
+                  </div>
+                </div>
+
+                <div class="v-card" data-value="Champagne Taupe & Blush" data-colors="#e8d5d1,#ccb7ae,#f5ebe6" data-img="/assets/images/design-brief/palette-champagne.webp" data-toast="🥂 Champagne & Blush theme added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/palette-champagne.webp" alt="Champagne Taupe & Blush Interior Theme" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/palette-champagne.webp" data-caption="Champagne & Blush — Soft velvety taupe balanced with muted rose accents" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <div class="palette-card-head">
+                      <h3>Champagne</h3>
+                      <div class="p-circles"><span style="background:#e8d5d1"></span><span style="background:#ccb7ae"></span><span style="background:#f5ebe6"></span></div>
+                    </div>
+                    <p>Plush champagne suede, rose blush seating &amp; soft stone veining.</p>
+                  </div>
+                </div>
+
+                <div class="v-card" data-value="Charcoal Black & Teak" data-colors="#1f2937,#6b7280,#9a6b42" data-img="/assets/images/design-brief/palette-charcoal-teak.webp" data-toast="🖤 Charcoal & Teak theme added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/palette-charcoal-teak.webp" alt="Charcoal & Teak Interior Theme" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/palette-charcoal-teak.webp" data-caption="Charcoal & Teak — Crisp architectural matte black paired with solid teak" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <div class="palette-card-head">
+                      <h3>Charcoal &amp; Teak</h3>
+                      <div class="p-circles"><span style="background:#1f2937"></span><span style="background:#6b7280"></span><span style="background:#9a6b42"></span></div>
+                    </div>
+                    <p>Bold charcoal upholstery &amp; dark frames over warm solid teak.</p>
+                  </div>
+                </div>
               </div>
 
               <div class="row g-3 mt-3">
@@ -2173,6 +2238,16 @@ const schema = JSON.stringify({
     margin-left: -4px;
   }
   #studioAppShell .p-circles span:first-child { margin-left: 0; }
+  #studioAppShell .palette-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.45rem;
+    margin-bottom: 0.2rem;
+  }
+  #studioAppShell .palette-card-head h3 {
+    margin: 0 !important;
+  }
 
   /* Budget Tiers */
   #studioAppShell .budget-tier-grid {
