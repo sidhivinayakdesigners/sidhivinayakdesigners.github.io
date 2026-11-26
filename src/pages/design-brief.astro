@@ -90,6 +90,59 @@ const KITCHEN_DESIGNS = [
   { img: "/assets/images/design-brief/kitchen-40.webp", cat: "lshape", title: "Blue L-Shape + Wicker Baskets", desc: "Practical coastal blue kitchen complete with woven vegetable pull-outs.", val: "Blue L-Shape + Wicker Baskets", toast: "🧺 Blue + Wicker Baskets added" }
 ];
 
+const TV_UNIT_DESIGNS = [
+  { img: "/assets/images/design-brief/tv-unit-01.webp", cat: "wood", title: "Acacia Wood + Fluted Slat TV Wall", desc: "Floating light acacia media console backed by vertical fluted slats.", val: "Acacia Wood + Fluted Slat TV Unit", toast: "🪵 Acacia Fluted TV Unit added" },
+  { img: "/assets/images/design-brief/tv-unit-02.webp", cat: "shelves", title: "Chevron Panel + Glass Display", desc: "Modern chevron wood accent paired with backlit glass side tower.", val: "Chevron Panel + Glass Lights TV", toast: "💎 Chevron + Glass TV added" },
+  { img: "/assets/images/design-brief/tv-unit-03.webp", cat: "shelves", title: "Chevron Backlit + Open Shelves", desc: "Glowing perimeter chevron backboard with floating trophy ledges.", val: "Chevron Backlit + Shelves TV", toast: "💡 Chevron Backlit TV added" },
+  { img: "/assets/images/design-brief/tv-unit-04.webp", cat: "minimal", title: "Scandinavian Pink & Green Gloss", desc: "Fresh pastel high-gloss TV cabinets with cheerful Nordic proportions.", val: "Pink & Green Gloss TV Unit", toast: "🌸 Pastel Gloss TV added" },
+  { img: "/assets/images/design-brief/tv-unit-05.webp", cat: "minimal", title: "Geometric Color-Block TV Wall", desc: "Crisp low drawers set beneath a bold geometric painted backdrop.", val: "Geometric Color Block TV Unit", toast: "🎨 Geometric Color-Block TV added" },
+  { img: "/assets/images/design-brief/tv-unit-06.webp", cat: "minimal", title: "Rounded Arch + Dark Drawers", desc: "Soft curved paneling framing deep matte charcoal console drawers.", val: "Rounded Panel + Dark Drawers TV", toast: "🖤 Rounded Dark TV added" },
+  { img: "/assets/images/design-brief/tv-unit-07.webp", cat: "minimal", title: "Violet Drawers + Forest Art", desc: "Muted violet media base set against tropical botanical wall decor.", val: "Violet Drawers + Forest TV Unit", toast: "💜 Violet Botanical TV added" },
+  { img: "/assets/images/design-brief/tv-unit-08.webp", cat: "wood", title: "Irish Cappuccino + Wood Panel", desc: "Warm neutral cappuccino storage base paired with timber backboard.", val: "Cappuccino + Wood Panel TV Unit", toast: "🤎 Cappuccino Wood TV added" },
+  { img: "/assets/images/design-brief/tv-unit-09.webp", cat: "wood", title: "Terracotta Wall + Fluted Drawer", desc: "Earthy terracotta paneling above a textured fluted bottom console.", val: "Terracotta + Fluted Drawer TV", toast: "🪵 Terracotta Fluted TV added" },
+  { img: "/assets/images/design-brief/tv-unit-10.webp", cat: "shelves", title: "Backlit Panel + Oak Bookcase", desc: "Soft edge-lit TV panel joined to an open natural oak bookcase tower.", val: "Backlit Panel + Oak Bookcase TV", toast: "📚 Backlit + Oak Bookcase added" },
+  { img: "/assets/images/design-brief/tv-unit-11.webp", cat: "minimal", title: "Green Drawers + Sunshine Accent", desc: "Playful green floating drawer run set on a warm mustard feature wall.", val: "Green Drawers + Yellow Wall TV", toast: "🌿 Green & Yellow TV added" },
+  { img: "/assets/images/design-brief/tv-unit-12.webp", cat: "shelves", title: "Fluted Panel + Glass Tower", desc: "Tactile ribbed wall panel flanked by lit glass display cupboards.", val: "Fluted Panel + Glass Tower TV", toast: "💎 Fluted + Glass Tower added" },
+  { img: "/assets/images/design-brief/tv-unit-13.webp", cat: "shelves", title: "Fluted Blue Drawers + Arch Nook", desc: "Powder-blue fluted console paired with an illuminated arched niche.", val: "Blue Fluted + Arched Nook TV", toast: "💙 Blue Fluted + Arch TV added" },
+  { img: "/assets/images/design-brief/tv-unit-14.webp", cat: "shelves", title: "Sage Green + Slat & Bookshelf", desc: "Built-in reading shelves wrapping vertical wood slats and TV bay.", val: "Green + Slat Bookshelf TV Unit", toast: "📚 Sage + Slat Bookshelf added" },
+  { img: "/assets/images/design-brief/tv-unit-15.webp", cat: "marble", title: "Santana Oak + Marble Backboard", desc: "Luxury white marble sheet centered between warm Santana oak drawers.", val: "Santana Oak + Marble Backboard TV", toast: "🪨 Oak & Marble TV added" },
+  { img: "/assets/images/design-brief/tv-unit-16.webp", cat: "wood", title: "Green Fluted Drawers + Botanical", desc: "Compact green grooved TV console balanced by serene wall paneling.", val: "Green Fluted + Botanical TV", toast: "🌿 Green Fluted TV added" },
+  { img: "/assets/images/design-brief/tv-unit-17.webp", cat: "shelves", title: "Blue Twin Bookcase + Backlit", desc: "Symmetrical tall library towers framing a glowing central TV niche.", val: "Blue Twin Bookcase TV Unit", toast: "📚 Twin Bookcase TV added" },
+  { img: "/assets/images/design-brief/tv-unit-18.webp", cat: "minimal", title: "Minimal Grey Fluted Floating", desc: "Zero-clutter dove grey wall cabinet with subtle vertical paneling.", val: "Minimal Grey Fluted TV Unit", toast: "🩶 Minimal Grey Fluted added" },
+  { img: "/assets/images/design-brief/tv-unit-19.webp", cat: "shelves", title: "Forest Green Open Bookshelf", desc: "Airy open side shelves lit softly from behind a matte green TV bay.", val: "Green Open Bookshelf TV Unit", toast: "💚 Forest Green TV added" },
+  { img: "/assets/images/design-brief/tv-unit-20.webp", cat: "shelves", title: "Lilac & Oak Fluted + Open Rack", desc: "Contemporary pastel lilac fluted drawers with light oak media rack.", val: "Lilac & Oak Fluted TV Unit", toast: "💜 Lilac & Oak TV added" },
+  { img: "/assets/images/design-brief/tv-unit-21.webp", cat: "minimal", title: "Misty Floral + Wainscoting Wall", desc: "Soft botanical wallpaper framed by classical moulding wainscoting.", val: "Floral + Wainscoting TV Wall", toast: "🏛️ Floral + Wainscoting TV added" },
+  { img: "/assets/images/design-brief/tv-unit-22.webp", cat: "marble", title: "Canadian Walnut + Gold Arch", desc: "Statement walnut console beneath an artistic gold lotus arch motif.", val: "Walnut + Gold Arch TV Wall", toast: "✨ Walnut + Gold Arch TV added" },
+  { img: "/assets/images/design-brief/tv-unit-23.webp", cat: "wood", title: "Enigma Dark + Light Wood Board", desc: "Crisp two-tone timber backing anchored by dark enigma base units.", val: "Enigma Dark + Light Wood TV", toast: "🪵 Enigma & Wood TV added" },
+  { img: "/assets/images/design-brief/tv-unit-24.webp", cat: "marble", title: "Matte Grey + Gold Glass Cabinet", desc: "Rich brushed-gold glass showcase elevating a cool grey media wall.", val: "Grey + Gold Glass Cabinet TV", toast: "✨ Grey + Gold Glass TV added" },
+  { img: "/assets/images/design-brief/tv-unit-25.webp", cat: "shelves", title: "Wood Fluted + Tall Bookshelf", desc: "Full-height fluted timber backing integrated with vertical display storage.", val: "Wood Fluted + Tall Bookshelf TV", toast: "🪵 Wood + Bookshelf TV added" },
+  { img: "/assets/images/design-brief/tv-unit-26.webp", cat: "wood", title: "Warm Brown + Curved Arch Board", desc: "Rounded top wood arch framing TV flanked by closed side cabinets.", val: "Brown Arch Board + Cabinets TV", toast: "🪵 Brown Arch TV added" },
+  { img: "/assets/images/design-brief/tv-unit-27.webp", cat: "wood", title: "Beige + Charcoal Fluted Pillars", desc: "Two dramatic dark fluted columns flanking a neutral beige TV wall.", val: "Beige + Charcoal Pillars TV", toast: "🖤 Charcoal Fluted Pillars added" },
+  { img: "/assets/images/design-brief/tv-unit-28.webp", cat: "minimal", title: "Navy Blue + Terracotta Arch", desc: "Warm terracotta semi-arch wall contrasting deep blue console drawers.", val: "Blue + Terracotta Arch TV", toast: "💙 Terracotta Arch TV added" },
+  { img: "/assets/images/design-brief/tv-unit-29.webp", cat: "wood", title: "White + Slatted Wood & Pendants", desc: "Minimal white drawer bench under warm wood slats & hanging globe light.", val: "White + Slatted Wood Pendants", toast: "💡 White & Wood Slats TV added" },
+  { img: "/assets/images/design-brief/tv-unit-30.webp", cat: "marble", title: "Oak & Blue + Backlit Marble Slab", desc: "Showstopping backlit stone veins bordered by blue & oak side storage.", val: "Oak & Blue Backlit Marble TV", toast: "🪨 Oak & Backlit Marble added" },
+  { img: "/assets/images/design-brief/tv-unit-31.webp", cat: "wood", title: "Scandinavian Ashwood Floating", desc: "Clean ashwood floating ledges with warm ambient backdrop lighting.", val: "Scandinavian Ashwood TV Unit", toast: "🪵 Scandinavian Ashwood added" },
+  { img: "/assets/images/design-brief/tv-unit-32.webp", cat: "minimal", title: "Classic Ivory 9-Drawer Wainscot", desc: "Traditional framed paneling above nine neatly aligned ivory storage drawers.", val: "Classic Ivory 9-Drawer TV Unit", toast: "🏛️ Classic Ivory TV added" },
+  { img: "/assets/images/design-brief/tv-unit-33.webp", cat: "shelves", title: "Full-Height Fluted + LED Tower", desc: "Floor-to-ceiling teak slats joined seamlessly to a lit vertical display column.", val: "Full-Height Fluted + LED TV", toast: "🪵 Full-Height Fluted + LED added" },
+  { img: "/assets/images/design-brief/tv-unit-34.webp", cat: "shelves", title: "White Jali Panel + Overheads", desc: "CNC laser-cut jali panels paired with crisp overhead wall storage.", val: "White Jali + Overheads TV", toast: "🏛️ White Jali TV Unit added" },
+  { img: "/assets/images/design-brief/tv-unit-35.webp", cat: "shelves", title: "White TV Unit + Glass & Ledges", desc: "Pure white media center combining transparent display & open cubes.", val: "White + Glass & Ledges TV", toast: "🤍 White & Glass Display added" },
+  { img: "/assets/images/design-brief/tv-unit-36.webp", cat: "wood", title: "Nordic White & Walnut Console", desc: "Warm walnut open base nested smoothly inside sleek white wall units.", val: "White & Walnut Nordic TV", toast: "🪵 White & Walnut TV added" },
+  { img: "/assets/images/design-brief/tv-unit-37.webp", cat: "wood", title: "Crisp White + Wood Fluted Slat", desc: "Half-wall timber louvres adding organic warmth to a bright white console.", val: "White + Wood Fluted TV Unit", toast: "🪵 White & Fluted Wood added" },
+  { img: "/assets/images/design-brief/tv-unit-38.webp", cat: "minimal", title: "Compact White + Dark Wood Ledge", desc: "Space-smart wall TV setup ideal for compact 2BHK living rooms.", val: "Compact White + Dark Ledge TV", toast: "🤍 Compact 2BHK TV added" },
+  { img: "/assets/images/design-brief/tv-unit-39.webp", cat: "minimal", title: "Classic White Moulding TV Wall", desc: "Elegant neo-classical picture frame mouldings in spotless matte white.", val: "Classic White Mouldings TV", toast: "🏛️ Classic Mouldings TV added" },
+  { img: "/assets/images/design-brief/tv-unit-40.webp", cat: "shelves", title: "Champagne + Desk & Glass Unit", desc: "Multi-purpose champagne TV wall extending cleanly into a compact desk.", val: "Champagne + Study Desk TV", toast: "💻 Champagne + Desk TV added" },
+  { img: "/assets/images/design-brief/tv-unit-41.webp", cat: "shelves", title: "Bronze Metallic + Geometric Shelf", desc: "Rich bronze tones with angular open shelves framing the center screen.", val: "Bronze + Geometric Shelf TV", toast: "✨ Bronze Geometric TV added" },
+  { img: "/assets/images/design-brief/tv-unit-42.webp", cat: "shelves", title: "TV Unit + Geometric Room Divider", desc: "Smart partitioned living centerpiece creating an airy foyer zone.", val: "TV Unit + Room Divider", toast: "🏛️ TV + Partition Divider added" },
+  { img: "/assets/images/design-brief/tv-unit-43.webp", cat: "marble", title: "Frosty White + Luxury Marble", desc: "Veined Statuario marble backdrop floating above handleless white drawers.", val: "Frosty White + Marble TV Wall", toast: "🪨 White & Marble TV added" },
+  { img: "/assets/images/design-brief/tv-unit-44.webp", cat: "wood", title: "Scandinavian Wood + Tall Storage", desc: "Light birch/oak woodgrain media unit paired with tall pantry closet.", val: "Scandinavian Wood + Tall Unit", toast: "🪵 Nordic Wood + Tall Unit added" },
+  { img: "/assets/images/design-brief/tv-unit-45.webp", cat: "minimal", title: "Minimal White + Open Media Shelf", desc: "Floating boxy shelf layout tailored for set-top boxes and decor.", val: "White + Open Media Compartment", toast: "🤍 Minimal Open Media TV added" },
+  { img: "/assets/images/design-brief/tv-unit-46.webp", cat: "marble", title: "Fluted Panel + Illuminated Bar Unit", desc: "Entertainment wall integrating a glowing glass-front mini home bar.", val: "Fluted + Illuminated Bar TV", toast: "🥂 Fluted + Bar Unit TV added" },
+  { img: "/assets/images/design-brief/tv-unit-47.webp", cat: "marble", title: "Wall-Mounted Champagne Marble", desc: "Suspended minimalist champagne drawers crowned by sweeping stone slab.", val: "Champagne + Marble Slab TV", toast: "🪨 Champagne Marble TV added" },
+  { img: "/assets/images/design-brief/tv-unit-48.webp", cat: "shelves", title: "White Fluted + Glass Showcase", desc: "Crisp white vertical grooving joined neatly to backlit glass tall shelves.", val: "White Fluted + Glass Cabinet TV", toast: "💎 White Fluted + Glass added" },
+  { img: "/assets/images/design-brief/tv-unit-49.webp", cat: "shelves", title: "Teak Wood Fluted + Partition", desc: "Natural wooden TV wall flowing seamlessly into a slatted display partition.", val: "Wood Fluted + Partition TV", toast: "🪵 Wood + Partition TV added" },
+  { img: "/assets/images/design-brief/tv-unit-50.webp", cat: "shelves", title: "Blush Rose + Glass Cabinet TV", desc: "Soft matte dusty-rose cabinetry paired with translucent display shelves.", val: "Rose Matte + Glass Cabinet TV", toast: "🌸 Rose & Glass TV added" }
+];
+
 const schema = JSON.stringify({
   "@context": "https://schema.org",
   "@graph": [
@@ -950,62 +1003,41 @@ const schema = JSON.stringify({
             </div>
           </section>
 
-          <!-- STEP 5: LIVING TV WALL & POOJA MANDIR -->
+          <!-- STEP 5: TV UNIT DESIGNS -->
           <section class="studio-step" data-step="5" id="step-5">
             <div class="step-header-block">
-              <span class="step-eyebrow">Step 6 of 7 • Living &amp; Pooja</span>
-              <h2 class="step-headline">TV Showcase Wall &amp; Mandir Style</h2>
-              <p class="step-subtext">Pick how you want your living centerpiece and Pooja unit designed.</p>
+              <span class="step-eyebrow">Step 6 of 7 • TV Unit Designs</span>
+              <h2 class="step-headline">Pick Your Dream TV Unit Style</h2>
+              <p class="step-subtext">Browse 50 modern TV showcase walls with backlit panels, marble, wood slats &amp; wall treatments.</p>
             </div>
 
-            <div class="visual-choice-grid" data-group="livingElements" data-mode="multi">
-              <div class="v-card" data-value="Floating Minimal TV Console" data-img="/assets/images/minimal-2bhk-seawoods/img1.webp" data-toast="📺 Minimal Floating TV Unit added">
-                <div class="v-img-wrap">
-                  <img src="/assets/images/minimal-2bhk-seawoods/img1.webp" alt="Minimal floating TV unit" loading="lazy" decoding="async" />
-                  <span class="v-badge"><i class="fas fa-check"></i></span>
-                  <button type="button" class="v-zoom" data-zoom="/assets/images/minimal-2bhk-seawoods/img1.webp" data-caption="Floating Minimal TV Console — Clean floor clearance & calm backdrop" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
-                </div>
-                <div class="v-body">
-                  <h3>Minimal TV Console</h3>
-                  <p>Floating drawers + clean open floor.</p>
-                </div>
-              </div>
+            <div class="wtype-bar-head">
+              <span class="studio-label mb-0">50 TV Unit Designs — Tap Favorites:</span>
+              <span class="wtype-count-pill" id="tvPickedBadge">0 Selected</span>
+            </div>
 
-              <div class="v-card" data-value="Marble + Fluted Panel TV Wall" data-img="/assets/images/premium-4bhk-ghansoli/img9.webp" data-toast="✨ Grand Marble TV Wall added">
-                <div class="v-img-wrap">
-                  <img src="/assets/images/premium-4bhk-ghansoli/img9.webp" alt="Grand marble and fluted TV panel" loading="lazy" decoding="async" />
-                  <span class="v-badge"><i class="fas fa-check"></i></span>
-                  <button type="button" class="v-zoom" data-zoom="/assets/images/premium-4bhk-ghansoli/img9.webp" data-caption="Marble & Fluted TV Wall — Full-height statement backdrop with profile LEDs" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
-                </div>
-                <div class="v-body">
-                  <h3>Grand Marble TV Wall</h3>
-                  <p>Marble sheet + fluted louvers + LEDs.</p>
-                </div>
-              </div>
+            <div class="filter-chip-bar mt-2 mb-3" id="tvUnitFilterBar" data-target-grid="tvUnitGalleryGrid">
+              <button type="button" class="filter-chip active" data-cat="all">All (50)</button>
+              <button type="button" class="filter-chip" data-cat="wood">🪵 Wood &amp; Fluted</button>
+              <button type="button" class="filter-chip" data-cat="marble">🪨 Marble &amp; Gold</button>
+              <button type="button" class="filter-chip" data-cat="shelves">📚 Shelves &amp; Glass</button>
+              <button type="button" class="filter-chip" data-cat="minimal">🤍 Minimal &amp; Modern</button>
+            </div>
 
-              <div class="v-card" data-value="Modern Backlit Compact Mandir" data-img="/assets/images/devesh-arya/img5.webp" data-toast="🪔 Modern Backlit Mandir added">
-                <div class="v-img-wrap">
-                  <img src="/assets/images/devesh-arya/img5.webp" alt="Modern backlit compact Mandir" loading="lazy" decoding="async" />
-                  <span class="v-badge"><i class="fas fa-check"></i></span>
-                  <button type="button" class="v-zoom" data-zoom="/assets/images/devesh-arya/img5.webp" data-caption="Modern Backlit Mandir — Seamless Corian/CNC panel with concealed drawer" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+            <div class="visual-choice-grid visual-choice-grid--wardrobe" data-group="livingElements" data-mode="multi" id="tvUnitGalleryGrid">
+              {TV_UNIT_DESIGNS.map((item) => (
+                <div class="v-card" data-cat={item.cat} data-value={item.val} data-img={item.img} data-toast={item.toast}>
+                  <div class="v-img-wrap">
+                    <img src={item.img} alt={item.title} loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom={item.img} data-caption={`${item.title} — ${item.desc}`} aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <h3>{item.title}</h3>
+                    <p>{item.desc}</p>
+                  </div>
                 </div>
-                <div class="v-body">
-                  <h3>Modern Backlit Mandir</h3>
-                  <p>Compact CNC/Corian backlit unit.</p>
-                </div>
-              </div>
-
-              <div class="v-card" data-value="Carved Wood / Jaali Mandir" data-img="/assets/images/rustic-3bhk-home-nerul/img12.webp" data-toast="🛕 Traditional Wooden Mandir added">
-                <div class="v-img-wrap">
-                  <img src="/assets/images/rustic-3bhk-home-nerul/img12.webp" alt="Carved wooden Pooja Mandir" loading="lazy" decoding="async" />
-                  <span class="v-badge"><i class="fas fa-check"></i></span>
-                  <button type="button" class="v-zoom" data-zoom="/assets/images/rustic-3bhk-home-nerul/img12.webp" data-caption="Carved Wood Mandir — Traditional jaali doors, bells & rich wood warmth" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
-                </div>
-                <div class="v-body">
-                  <h3>Carved Wood Mandir</h3>
-                  <p>Traditional jaali doors &amp; brass bells.</p>
-                </div>
-              </div>
+              ))}
             </div>
 
             <div class="studio-panel-card mt-3">
@@ -2692,21 +2724,15 @@ const schema = JSON.stringify({
         if (target === 'hinged') showToast('🛋️ 40 Normal / Hinged Wardrobe designs unlocked!');
       }
 
-      const slidingBadge = document.getElementById('slidingPickedBadge');
-      if (slidingBadge) {
-        const slidingCount = document.querySelectorAll('#slidingWardrobeGrid .v-card.selected').length;
-        slidingBadge.textContent = slidingCount + ' Selected';
-      }
-      const normalBadge = document.getElementById('normalPickedBadge');
-      if (normalBadge) {
-        const normalCount = document.querySelectorAll('#normalWardrobeGrid .v-card.selected').length;
-        normalBadge.textContent = normalCount + ' Selected';
-      }
-      const kitchenBadge = document.getElementById('kitchenPickedBadge');
-      if (kitchenBadge) {
-        const kitchenCount = document.querySelectorAll('#kitchenGalleryGrid .v-card.selected').length;
-        kitchenBadge.textContent = kitchenCount + ' Selected';
-      }
+      [
+        ['slidingWardrobeGrid', 'slidingPickedBadge'],
+        ['normalWardrobeGrid', 'normalPickedBadge'],
+        ['kitchenGalleryGrid', 'kitchenPickedBadge'],
+        ['tvUnitGalleryGrid', 'tvPickedBadge']
+      ].forEach(([gridId, badgeId]) => {
+        const b = document.getElementById(badgeId);
+        if (b) b.textContent = document.querySelectorAll('#' + gridId + ' .v-card.selected').length + ' Selected';
+      });
 
       updateLiveUI();
     }
@@ -2834,7 +2860,7 @@ const schema = JSON.stringify({
       if (state.countertop.length) lines.push('Countertop: ' + state.countertop.join(', '));
       if (state.kitchenExtras.length) lines.push('Kitchen Appliances: ' + state.kitchenExtras.join(', '));
 
-      if (state.livingElements.length) lines.push('Living & Pooja: ' + state.livingElements.join(' | '));
+      if (state.livingElements.length) lines.push('TV Unit Designs: ' + state.livingElements.join(' | '));
       if (state.wallDecor.length) lines.push('Wall Decor: ' + state.wallDecor.join(', '));
 
       if (state.colorPalette.length) lines.push('Color Palettes: ' + state.colorPalette.join(' | '));
