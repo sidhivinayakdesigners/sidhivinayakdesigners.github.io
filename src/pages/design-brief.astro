@@ -4,6 +4,49 @@ import Layout from '../layouts/Layout.astro';
 const title = "Client Design Taste & Style Brief | Siddhivinayak Designers";
 const description = "Discover your home interior taste in 90 seconds—tap your favorite false ceilings, wardrobes, modular kitchens, lighting tones, and color palettes with Siddhivinayak Designers.";
 const canonical = "https://siddhivinayakdesigners.in/design-brief/";
+const HINGED_WARDROBES = [
+  { img: "/assets/images/design-brief/wardrobe-hinged-01.webp", cat: "classic", title: "6-Door Geometric Contemporary", desc: "Six crisp matte shutters with sleek geometric pattern lines.", val: "6-Door Geometric Swing Wardrobe", toast: "✨ 6-Door Geometric Swing added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-02.webp", cat: "classic", title: "4-Door Matte Membrane", desc: "Clean bevelled membrane shutters with matching overhead lofts.", val: "4-Door Matte Membrane Swing", toast: "✨ 4-Door Matte Membrane added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-03.webp", cat: "glass", title: "Gold Topographical Line Mural", desc: "Statement sculptural gold line art across hinged shutters.", val: "Gold Line Pattern Mural Swing", toast: "✨ Gold Line Mural Swing added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-04.webp", cat: "vanity", title: "4-Door + Backlit Vanity Counter", desc: "Attached illuminated dresser counter & backlit vanity mirror.", val: "4-Door + Backlit Vanity Swing", toast: "🪞 4-Door + Backlit Vanity added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-05.webp", cat: "classic", title: "Matte Irish Cream Setup", desc: "Soft pastel cream hinged doors with flush vertical handles.", val: "Matte Irish Cream Swing Wardrobe", toast: "🤍 Irish Cream Swing added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-06.webp", cat: "color", title: "5-Door Mint Green Vertical", desc: "Fresh sage-mint finish paired with tall slim side storage.", val: "5-Door Mint Green Swing", toast: "🌿 5-Door Mint Green added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-07.webp", cat: "glass", title: "6-Door L-Shape + Glass Shutters", desc: "Corner L-shaped wardrobe combining opaque & illuminated glass doors.", val: "6-Door L-Shape Glass Swing", toast: "💎 6-Door L-Shape Glass added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-08.webp", cat: "vanity", title: "Integrated TV Unit Wardrobe", desc: "Seamless TV bay framed inside a full-wall hinged closet.", val: "Integrated TV Unit Wardrobe", toast: "📺 Integrated TV Wardrobe added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-09.webp", cat: "color", title: "Plum & Marble Panel Wardrobe", desc: "Deep plum hinged doors accented by open marble-back shelving.", val: "Plum & Marble Panel Swing", toast: "🟣 Plum & Marble Swing added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-10.webp", cat: "vanity", title: "Terracotta Swing + Study Corner", desc: "Warm earthy terracotta shutters paired with compact study nook.", val: "Terracotta Swing + Study Corner", toast: "💻 Terracotta + Study added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-11.webp", cat: "vanity", title: "Violet Swing + Integrated Study", desc: "Muted violet laminated shutters leading into a work desk.", val: "Violet Swing + Study Desk", toast: "💻 Violet + Study Desk added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-12.webp", cat: "vanity", title: "Color-Blocked Swing + Study", desc: "Two-tone hinged storage smoothly extended into a wall desk.", val: "Color-Blocked Swing + Study", toast: "💻 Color-Blocked Study added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-13.webp", cat: "color", title: "Olive Green Full-Height", desc: "Ceiling-touch olive green shutters with attached dresser bay.", val: "Green Full-Height Swing Wardrobe", toast: "🌿 Green Full-Height added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-14.webp", cat: "vanity", title: "Green Swing + Arched Mirror Dresser", desc: "Boutique dressing alcove with arch mirror carved into greenery.", val: "Green Swing + Arched Dresser", toast: "🪞 Green + Arched Mirror added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-15.webp", cat: "vanity", title: "Grey Swing + Oval Mirror Niche", desc: "Matte grey doors wrapping around a cozy oval mirror dresser.", val: "Grey Swing + Oval Mirror Niche", toast: "🪞 Grey + Oval Mirror added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-16.webp", cat: "glass", title: "Cajun Brown + Cane Infill", desc: "Open wood shelving paired with trendy woven rattan cane shutters.", val: "Cajun Swing + Cane Infill", toast: "🪵 Cane Infill Swing added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-17.webp", cat: "vanity", title: "Tan & Acacia + TV Console", desc: "Warm woodgrain shutters wrapping a bedroom media unit.", val: "Tan & Acacia + TV Console", toast: "📺 Tan & Acacia TV Unit added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-18.webp", cat: "glass", title: "Mustard Yellow & Grey Fluted", desc: "Playful ribbed fluted panels balanced by soft grey doors.", val: "Yellow & Grey Fluted Swing", toast: "💛 Yellow & Grey Fluted added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-19.webp", cat: "vanity", title: "Powder Blue + Vanity Mirror", desc: "Pastel blue hinged wardrobe paired with illuminated dressing corner.", val: "Powder Blue + Vanity Swing", toast: "🪞 Powder Blue + Vanity added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-20.webp", cat: "color", title: "Sage Green Recessed Panel", desc: "Neo-classical shaker recessed panels in calming muted green.", val: "Green Recessed Panel Swing", toast: "🏛️ Sage Shaker Swing added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-21.webp", cat: "color", title: "Cobalt Blue & Oak High-Gloss", desc: "Two-tone glossy ocean blue & natural oak finish combination.", val: "Blue & Oak High-Gloss Swing", toast: "🌊 Blue & Oak Gloss added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-22.webp", cat: "glass", title: "Ceramic Red + Glass LED Display", desc: "Bold red shutters contrasted by sunlit glass accessory cabinet.", val: "Ceramic Red + Glass LED Swing", toast: "💎 Ceramic Red + Glass added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-23.webp", cat: "glass", title: "Forest Green & Walnut + Cane", desc: "Organic dark walnut paired with woven cane framed doors.", val: "Green & Walnut + Cane Swing", toast: "🌿 Walnut + Cane Swing added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-24.webp", cat: "classic", title: "Cream 4-Door Patterned Panels", desc: "Warm off-white four-door closet with subtle tonal grooves.", val: "Cream 4-Door Patterned Swing", toast: "🤍 Cream 4-Door Swing added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-25.webp", cat: "glass", title: "Blue & Taupe + Illuminated Shelves", desc: "Muted blue shutters paired with backlit corner display niches.", val: "Blue & Taupe + LED Shelves", toast: "💡 Illuminated Shelves Swing added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-26.webp", cat: "glass", title: "Red & Cane 4-Door + Tower", desc: "Rattan cane texture blended with rich terracotta-red shutters.", val: "Red & Cane 4-Door + Tower", toast: "🪵 Red & Cane Tower added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-27.webp", cat: "color", title: "Red & Oak 4-Door + Bookcase", desc: "Side open bookcase built neatly alongside crimson-oak doors.", val: "Red & Oak + Bookcase Swing", toast: "📚 Oak + Bookcase Swing added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-28.webp", cat: "color", title: "Yellow & Grey 3-Door + Lofts", desc: "Bright cheerful accent door framed with overhead ceiling storage.", val: "Yellow & Grey 3-Door + Lofts", toast: "💛 Yellow & Grey 3-Door added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-29.webp", cat: "glass", title: "Blue & White 3-Door Fluted", desc: "Vertical textured fluted stripes across soft blue-white doors.", val: "Blue & White 3-Door Fluted", toast: "🏛️ Blue & White Fluted added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-30.webp", cat: "glass", title: "Fluted Glass + Warm LED Lighting", desc: "Boutique aluminum fluted glass doors glowing with interior strips.", val: "Fluted Glass + LED Swing Wardrobe", toast: "✨ Fluted Glass LED added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-31.webp", cat: "glass", title: "Off-White Arched Fluted Paneling", desc: "Sculpted soft-arch grooving in creamy ivory matte finish.", val: "Off-White Arched Fluted Swing", toast: "🏛️ Arched Fluted Swing added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-32.webp", cat: "classic", title: "Frosty White + Black Handles", desc: "Clean crisp white shutters contrasted by tall matte black pulls.", val: "Frosty White + Black Handles", toast: "🤍 White + Black Pulls added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-33.webp", cat: "classic", title: "Warm Beige + Top Lofts", desc: "Zero-clutter beige hinged storage with black bar handles & lofts.", val: "Beige Swing + Top Lofts", toast: "🤎 Warm Beige + Lofts added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-34.webp", cat: "vanity", title: "White & Lavender + Study Table", desc: "Airy white & soft lilac bedroom unit with matching desk.", val: "White & Lavender + Study", toast: "💻 Lavender + Study added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-35.webp", cat: "vanity", title: "White Swing + Mirror & Drawers", desc: "Built-in mirror niche above compact dresser drawers in pure white.", val: "White Swing + Mirror Niche", toast: "🪞 White Mirror Niche added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-36.webp", cat: "vanity", title: "Irish Cream + Vanity & Window Seat", desc: "Dream bay-window bench linked seamlessly to a 4-door closet.", val: "Irish Cream + Window Seating", toast: "🛋️ Vanity & Window Seat added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-37.webp", cat: "vanity", title: "2-Door Gloss + Compact Study", desc: "High-sheen two-door hinged wardrobe ideal for guest & kid rooms.", val: "2-Door High-Gloss + Study", toast: "✨ 2-Door Gloss + Study added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-38.webp", cat: "glass", title: "5-Door Matte Grey + Glass", desc: "Spacious dark-grey matte unit with lit glass corner display.", val: "5-Door Matte Grey + Glass", toast: "💎 5-Door Grey + Glass added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-39.webp", cat: "classic", title: "White 4-Door + Brass Handles", desc: "Timeless pure white hinged shutters finished in brushed gold brass.", val: "White 4-Door + Brass Handles", toast: "✨ White + Brass Pulls added" },
+  { img: "/assets/images/design-brief/wardrobe-hinged-40.webp", cat: "vanity", title: "Minimal Study Desk & Overheads", desc: "Seamless light-neutral wardrobe wrapped over a study workstation.", val: "Minimal Desk & Lofts Swing", toast: "💻 Minimal Study & Lofts added" }
+];
+
 const schema = JSON.stringify({
   "@context": "https://schema.org",
   "@graph": [
@@ -453,11 +496,11 @@ const schema = JSON.stringify({
               <button type="button" class="wtype-card" data-value="Normal / Hinged Door Wardrobe" data-target="hinged">
                 <div class="wtype-top">
                   <span class="wtype-ico"><i class="fas fa-door-open"></i></span>
-                  <span class="wtype-pill wtype-pill--muted">Classic Swing</span>
+                  <span class="wtype-pill">40 Designs</span>
                 </div>
                 <h3>Normal Door</h3>
                 <p>Full-open swing shutters, zero track dust &amp; wide clear internal access.</p>
-                <span class="wtype-cta">Tap to Select <i class="fas fa-arrow-right"></i></span>
+                <span class="wtype-cta">Tap to Explore <i class="fas fa-arrow-right"></i></span>
               </button>
             </div>
 
@@ -474,7 +517,7 @@ const schema = JSON.stringify({
                 <span class="wtype-count-pill" id="slidingPickedBadge">0 Selected</span>
               </div>
 
-              <div class="filter-chip-bar mt-2 mb-3" id="slidingFilterBar">
+              <div class="filter-chip-bar mt-2 mb-3" id="slidingFilterBar" data-target-grid="slidingWardrobeGrid">
                 <button type="button" class="filter-chip active" data-cat="all">All (20)</button>
                 <button type="button" class="filter-chip" data-cat="mirror">🪞 Mirror &amp; Vanity</button>
                 <button type="button" class="filter-chip" data-cat="gloss">✨ High-Gloss</button>
@@ -726,23 +769,35 @@ const schema = JSON.stringify({
               </div>
             </div>
 
-            <!-- NORMAL / HINGED DOOR SECTION -->
+            <!-- NORMAL / HINGED DOOR SECTION (40 Designs) -->
             <div class="wtype-drawer" id="normalDoorWrap" hidden>
-              <div class="normal-door-card">
-                <div class="normal-door-head">
-                  <span class="normal-door-badge"><i class="fas fa-door-open"></i> Normal / Hinged Door Selected</span>
-                  <h3>Classic Swing Shutters &amp; Lofts</h3>
-                  <p>100% open visibility with zero sliding tracks to clean. Pick your preferred door format, laminate finish, loft style &amp; internal accessories below!</p>
-                </div>
-                <div class="mt-2">
-                  <label class="studio-label">Preferred Hinged Size:</label>
-                  <div class="studio-pill-wrap" data-group="wardrobeStyle" data-mode="multi">
-                    <button type="button" class="studio-pill" data-value="2-Door Hinged Wardrobe">2-Door Hinged</button>
-                    <button type="button" class="studio-pill" data-value="3-Door Hinged + Loft">3-Door Hinged + Loft</button>
-                    <button type="button" class="studio-pill" data-value="4-Door Master Hinged">4-Door Master Hinged</button>
-                    <button type="button" class="studio-pill" data-value="Hinged + Glass Display">Hinged + Glass Shutter</button>
+              <div class="wtype-bar-head">
+                <span class="studio-label mb-0">40 Normal / Hinged Wardrobe Designs — Tap Favorites:</span>
+                <span class="wtype-count-pill" id="normalPickedBadge">0 Selected</span>
+              </div>
+
+              <div class="filter-chip-bar mt-2 mb-3" id="normalFilterBar" data-target-grid="normalWardrobeGrid">
+                <button type="button" class="filter-chip active" data-cat="all">All (40)</button>
+                <button type="button" class="filter-chip" data-cat="vanity">🪞 Vanity &amp; Study</button>
+                <button type="button" class="filter-chip" data-cat="glass">💎 Glass &amp; Fluted</button>
+                <button type="button" class="filter-chip" data-cat="color">🪵 Color &amp; Wood</button>
+                <button type="button" class="filter-chip" data-cat="classic">🩶 Matte &amp; Classic</button>
+              </div>
+
+              <div class="visual-choice-grid visual-choice-grid--wardrobe" data-group="wardrobeStyle" data-mode="multi" id="normalWardrobeGrid">
+                {HINGED_WARDROBES.map((item) => (
+                  <div class="v-card" data-cat={item.cat} data-value={item.val} data-img={item.img} data-toast={item.toast}>
+                    <div class="v-img-wrap">
+                      <img src={item.img} alt={item.title} loading="lazy" decoding="async" />
+                      <span class="v-badge"><i class="fas fa-check"></i></span>
+                      <button type="button" class="v-zoom" data-zoom={item.img} data-caption={`${item.title} — ${item.desc}`} aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                    </div>
+                    <div class="v-body">
+                      <h3>{item.title}</h3>
+                      <p>{item.desc}</p>
+                    </div>
                   </div>
-                </div>
+                ))}
               </div>
             </div>
 
@@ -2612,13 +2667,18 @@ const schema = JSON.stringify({
         if (slidingEl) slidingEl.hidden = target !== 'sliding';
         if (normalEl) normalEl.hidden = target !== 'hinged';
         if (target === 'sliding') showToast('🚪 20 Sliding Wardrobe designs unlocked!');
-        if (target === 'hinged') showToast('🛋️ Normal / Hinged Door selected');
+        if (target === 'hinged') showToast('🛋️ 40 Normal / Hinged Wardrobe designs unlocked!');
       }
 
       const slidingBadge = document.getElementById('slidingPickedBadge');
       if (slidingBadge) {
         const slidingCount = document.querySelectorAll('#slidingWardrobeGrid .v-card.selected').length;
         slidingBadge.textContent = slidingCount + ' Selected';
+      }
+      const normalBadge = document.getElementById('normalPickedBadge');
+      if (normalBadge) {
+        const normalCount = document.querySelectorAll('#normalWardrobeGrid .v-card.selected').length;
+        normalBadge.textContent = normalCount + ' Selected';
       }
 
       updateLiveUI();
@@ -2696,15 +2756,19 @@ const schema = JSON.stringify({
       });
     });
 
-    // Sliding Wardrobe Category Filter Bar
-    document.querySelectorAll('#slidingFilterBar .filter-chip').forEach(chip => {
-      chip.addEventListener('click', () => {
-        triggerHaptic();
-        document.querySelectorAll('#slidingFilterBar .filter-chip').forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-        const cat = chip.getAttribute('data-cat');
-        document.querySelectorAll('#slidingWardrobeGrid .v-card').forEach(card => {
-          card.style.display = (cat === 'all' || card.getAttribute('data-cat') === cat) ? '' : 'none';
+    // Wardrobe Category Filter Bars (Sliding & Normal)
+    document.querySelectorAll('.filter-chip-bar[data-target-grid]').forEach(bar => {
+      const gridId = bar.getAttribute('data-target-grid');
+      const chips = bar.querySelectorAll('.filter-chip');
+      chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          triggerHaptic();
+          chips.forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          const cat = chip.getAttribute('data-cat');
+          document.querySelectorAll('#' + gridId + ' .v-card').forEach(card => {
+            card.style.display = (cat === 'all' || card.getAttribute('data-cat') === cat) ? '' : 'none';
+          });
         });
       });
     });
