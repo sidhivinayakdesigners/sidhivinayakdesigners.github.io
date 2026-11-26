@@ -246,23 +246,24 @@ const schema = JSON.stringify({
             <!-- Interactive Live Lighting Simulator -->
             <div class="light-sim-card mb-3">
               <div class="light-sim-preview" id="lightSimPreview">
-                <img src="/assets/images/premium-4bhk-ghansoli/img9.webp" alt="Live room lighting preview" id="lightSimImg" class="sim-warm" />
+                <img src="/assets/images/false_ceiling.webp" alt="False ceiling live lighting simulator" id="lightSimImg" class="sim-warm" />
                 <div class="light-sim-tint" id="lightSimTint"></div>
+                <div class="light-sim-glow" id="lightSimGlow"></div>
                 <div class="light-sim-badge" id="lightSimLabel">Warm White 3000K — Hotel Cozy</div>
               </div>
               <div class="light-sim-controls">
                 <span class="studio-label mb-2">Tap to Test Light Mood:</span>
                 <div class="studio-pill-wrap" data-group="lightTone" data-mode="single" id="lightToneGroup">
-                  <button type="button" class="studio-pill selected" data-value="Warm White (3000K — Hotel Cozy)" data-tint="rgba(255, 180, 70, 0.28)" data-filter="sim-warm" data-badge="Warm White 3000K — Hotel Cozy">
+                  <button type="button" class="studio-pill selected" data-value="Warm White (3000K — Hotel Cozy)" data-tint="rgba(255, 165, 45, 0.34)" data-glow="radial-gradient(ellipse 85% 55% at 50% 22%, rgba(255, 185, 70, 0.38), rgba(255, 150, 40, 0.12) 62%, transparent 92%)" data-filter="sim-warm" data-badge="Warm White 3000K — Hotel Cozy">
                     <span class="dot-swatch" style="background:#ffcf7d;"></span> 3000K Warm
                   </button>
-                  <button type="button" class="studio-pill" data-value="Natural Daylight (4000K — Balanced)" data-tint="rgba(255, 248, 232, 0.08)" data-filter="sim-natural" data-badge="Natural Daylight 4000K — Balanced">
+                  <button type="button" class="studio-pill" data-value="Natural Daylight (4000K — Balanced)" data-tint="rgba(248, 250, 255, 0.16)" data-glow="radial-gradient(ellipse 85% 55% at 50% 22%, rgba(255, 252, 242, 0.34), rgba(235, 242, 255, 0.12) 62%, transparent 92%)" data-filter="sim-natural" data-badge="Natural Daylight 4000K — Balanced">
                     <span class="dot-swatch" style="background:#fff4d9;"></span> 4000K Natural
                   </button>
-                  <button type="button" class="studio-pill" data-value="Cool White (6000K — Crisp Bright)" data-tint="rgba(175, 222, 255, 0.30)" data-filter="sim-cool" data-badge="Cool White 6000K — Crisp Bright">
+                  <button type="button" class="studio-pill" data-value="Cool White (6000K — Crisp Bright)" data-tint="rgba(135, 205, 255, 0.34)" data-glow="radial-gradient(ellipse 85% 55% at 50% 22%, rgba(220, 244, 255, 0.44), rgba(135, 205, 255, 0.18) 62%, transparent 92%)" data-filter="sim-cool" data-badge="Cool White 6000K — Crisp Bright">
                     <span class="dot-swatch" style="background:#d9eeff;"></span> 6000K Cool
                   </button>
-                  <button type="button" class="studio-pill" data-value="Smart 3-in-1 / Dimmable" data-tint="rgba(255, 210, 130, 0.18)" data-filter="sim-smart" data-badge="Smart 3-in-1 Switchable Modes">
+                  <button type="button" class="studio-pill" data-value="Smart 3-in-1 / Dimmable" data-smart="true" data-badge="✨ 3-in-1 Smart • Auto Cycling">
                     ✨ 3-in-1 Smart
                   </button>
                 </div>
@@ -295,11 +296,11 @@ const schema = JSON.stringify({
                 </div>
               </div>
 
-              <div class="v-card" data-value="Linear Recessed Profile LEDs" data-img="/assets/images/contemporary-3bhk-house-belapur/img6.webp" data-toast="⚡ Linear Profile LEDs added">
+              <div class="v-card" data-value="Linear Recessed Profile LEDs" data-img="/assets/images/modern-4bhk-penthouse/1.webp" data-toast="⚡ Linear Profile LEDs added">
                 <div class="v-img-wrap">
-                  <img src="/assets/images/contemporary-3bhk-house-belapur/img6.webp" alt="Linear profile LED ceiling" loading="lazy" decoding="async" />
+                  <img src="/assets/images/modern-4bhk-penthouse/1.webp" alt="Linear profile LED ceiling" loading="lazy" decoding="async" />
                   <span class="v-badge"><i class="fas fa-check"></i></span>
-                  <button type="button" class="v-zoom" data-zoom="/assets/images/contemporary-3bhk-house-belapur/img6.webp" data-caption="Linear Profile LEDs — Sleek flush geometric light lines" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  <button type="button" class="v-zoom" data-zoom="/assets/images/modern-4bhk-penthouse/1.webp" data-caption="Linear Profile LEDs — Sleek flush geometric light lines" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
                 </div>
                 <div class="v-body">
                   <h3>Profile LED Lines</h3>
@@ -1311,12 +1312,13 @@ const schema = JSON.stringify({
   #studioAppShell .light-sim-preview {
     position: relative;
     width: 100%;
-    height: 185px;
+    height: 225px;
     overflow: hidden;
+    background: #0f172a;
   }
   @media (min-width: 768px) {
     #studioAppShell .light-sim-preview {
-      height: 245px;
+      height: 290px;
     }
   }
   #studioAppShell .light-sim-preview img {
@@ -1324,26 +1326,31 @@ const schema = JSON.stringify({
     height: 100% !important;
     object-fit: cover !important;
     display: block !important;
-    transition: filter 0.35s ease;
+    transition: filter 0.45s ease;
   }
   #studioAppShell .light-sim-preview img.sim-warm {
-    filter: sepia(0.18) saturate(1.22) brightness(0.98);
+    filter: sepia(0.28) saturate(1.42) brightness(0.97) contrast(1.03);
   }
   #studioAppShell .light-sim-preview img.sim-natural {
-    filter: none;
+    filter: hue-rotate(14deg) saturate(0.72) brightness(1.07) contrast(1.03);
   }
   #studioAppShell .light-sim-preview img.sim-cool {
-    filter: saturate(0.9) brightness(1.06) contrast(1.04);
-  }
-  #studioAppShell .light-sim-preview img.sim-smart {
-    filter: saturate(1.1) brightness(1.02);
+    filter: hue-rotate(175deg) saturate(0.78) brightness(1.11) contrast(1.06);
   }
   #studioAppShell .light-sim-tint {
     position: absolute;
     inset: 0;
-    background: rgba(255, 180, 70, 0.28);
+    background: rgba(255, 165, 45, 0.34);
     mix-blend-mode: soft-light;
-    transition: background-color 0.35s ease;
+    transition: background 0.45s ease;
+    pointer-events: none;
+  }
+  #studioAppShell .light-sim-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 85% 55% at 50% 22%, rgba(255, 185, 70, 0.38), rgba(255, 150, 40, 0.12) 62%, transparent 92%);
+    mix-blend-mode: screen;
+    transition: background 0.45s ease;
     pointer-events: none;
   }
   #studioAppShell .light-sim-badge {
@@ -2001,7 +2008,7 @@ const schema = JSON.stringify({
       if (mode === 'single') {
         const wasSel = itemEl.classList.contains('selected');
         container.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
-        if (wasSel) {
+        if (wasSel && container.id !== 'lightToneGroup') {
           state[groupName] = [];
         } else {
           itemEl.classList.add('selected');
@@ -2020,8 +2027,6 @@ const schema = JSON.stringify({
       if (imgSrc) {
         if (itemEl.classList.contains('selected')) {
           selectedImages.set(val, { img: imgSrc, label: val });
-          const simImg = document.getElementById('lightSimImg');
-          if (groupName === 'ceilingStyle' && simImg) simImg.src = imgSrc;
           showToast(itemEl.getAttribute('data-toast') || `✨ Added ${val}`);
         } else {
           selectedImages.delete(val);
@@ -2039,20 +2044,67 @@ const schema = JSON.stringify({
       }
 
       if (container.id === 'lightToneGroup' && itemEl.classList.contains('selected')) {
-        const tint = itemEl.getAttribute('data-tint');
-        const badge = itemEl.getAttribute('data-badge');
-        const filterClass = itemEl.getAttribute('data-filter');
-        const tintEl = document.getElementById('lightSimTint');
-        const labelEl = document.getElementById('lightSimLabel');
-        const simImg = document.getElementById('lightSimImg');
-        if (tintEl && tint) tintEl.style.background = tint;
-        if (labelEl && badge) labelEl.textContent = badge;
-        if (simImg && filterClass) {
-          simImg.className = filterClass;
-        }
+        applyLightSimulatorMode(itemEl);
       }
 
       updateLiveUI();
+    }
+
+    let smartLightTimer = null;
+    const SMART_LIGHT_STEPS = [
+      {
+        filter: 'sim-warm',
+        tint: 'rgba(255, 165, 45, 0.34)',
+        glow: 'radial-gradient(ellipse 85% 55% at 50% 22%, rgba(255, 185, 70, 0.38), rgba(255, 150, 40, 0.12) 62%, transparent 92%)',
+        badge: '✨ 3-in-1 Smart • 3000K Warm'
+      },
+      {
+        filter: 'sim-natural',
+        tint: 'rgba(248, 250, 255, 0.16)',
+        glow: 'radial-gradient(ellipse 85% 55% at 50% 22%, rgba(255, 252, 242, 0.34), rgba(235, 242, 255, 0.12) 62%, transparent 92%)',
+        badge: '✨ 3-in-1 Smart • 4000K Natural'
+      },
+      {
+        filter: 'sim-cool',
+        tint: 'rgba(135, 205, 255, 0.34)',
+        glow: 'radial-gradient(ellipse 85% 55% at 50% 22%, rgba(220, 244, 255, 0.44), rgba(135, 205, 255, 0.18) 62%, transparent 92%)',
+        badge: '✨ 3-in-1 Smart • 6000K Cool'
+      }
+    ];
+
+    function setLightPreviewVisual(filterClass, tint, glow, badge) {
+      const tintEl = document.getElementById('lightSimTint');
+      const glowEl = document.getElementById('lightSimGlow');
+      const labelEl = document.getElementById('lightSimLabel');
+      const simImg = document.getElementById('lightSimImg');
+      if (tintEl && tint) tintEl.style.background = tint;
+      if (glowEl && glow) glowEl.style.background = glow;
+      if (labelEl && badge) labelEl.textContent = badge;
+      if (simImg && filterClass) simImg.className = filterClass;
+    }
+
+    function applyLightSimulatorMode(btn) {
+      if (smartLightTimer) {
+        clearInterval(smartLightTimer);
+        smartLightTimer = null;
+      }
+      if (btn.getAttribute('data-smart') === 'true') {
+        let idx = 1; // Start immediately on 4000K Natural so tap feels responsive, then cycle all 3
+        const runStep = () => {
+          const s = SMART_LIGHT_STEPS[idx % SMART_LIGHT_STEPS.length];
+          setLightPreviewVisual(s.filter, s.tint, s.glow, s.badge);
+          idx++;
+        };
+        runStep();
+        smartLightTimer = setInterval(runStep, 1400);
+      } else {
+        setLightPreviewVisual(
+          btn.getAttribute('data-filter'),
+          btn.getAttribute('data-tint'),
+          btn.getAttribute('data-glow'),
+          btn.getAttribute('data-badge')
+        );
+      }
     }
 
     document.querySelectorAll('.v-card').forEach(card => {
