@@ -434,56 +434,314 @@ const schema = JSON.stringify({
           <section class="studio-step" data-step="3" id="step-3">
             <div class="step-header-block">
               <span class="step-eyebrow">Step 4 of 7 • Wardrobes &amp; Bedrooms</span>
-              <h2 class="step-headline">Customize Your Ideal Wardrobes</h2>
-              <p class="step-subtext">Pick shutter style, surface finish &amp; hidden storage accessories.</p>
+              <h2 class="step-headline">What Wardrobe Type Are You Looking For?</h2>
+              <p class="step-subtext">Choose Sliding or Normal Door first to unlock matching designs, finishes &amp; internals.</p>
             </div>
 
-            <div class="visual-choice-grid" data-group="wardrobeStyle" data-mode="multi">
-              <div class="v-card" data-value="Sliding Doors + Gold Trim" data-img="/assets/images/minimal-2bhk-seawoods/img12.webp" data-toast="🚪 Sliding Wardrobe added">
-                <div class="v-img-wrap">
-                  <img src="/assets/images/minimal-2bhk-seawoods/img12.webp" alt="Full height sliding wardrobe" loading="lazy" decoding="async" />
-                  <span class="v-badge"><i class="fas fa-check"></i></span>
-                  <button type="button" class="v-zoom" data-zoom="/assets/images/minimal-2bhk-seawoods/img12.webp" data-caption="Sliding Doors + Gold Trim — Zero door swing space, full-height tracks" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+            <!-- Interactive Door Type Question -->
+            <div class="wardrobe-type-grid mb-3" data-group="wardrobeType" data-mode="single" id="wardrobeTypeGroup">
+              <button type="button" class="wtype-card" data-value="Sliding Door Wardrobe" data-target="sliding">
+                <div class="wtype-top">
+                  <span class="wtype-ico"><i class="fas fa-columns"></i></span>
+                  <span class="wtype-pill">20 Designs</span>
                 </div>
-                <div class="v-body">
-                  <h3>Sliding + Gold Trim</h3>
-                  <p>Space-saving tracks &amp; metallic trims.</p>
+                <h3>Sliding Door</h3>
+                <p>Zero door-swing space, sleek aluminum tracks &amp; floor-to-ceiling panels.</p>
+                <span class="wtype-cta">Tap to Explore <i class="fas fa-arrow-right"></i></span>
+              </button>
+
+              <button type="button" class="wtype-card" data-value="Normal / Hinged Door Wardrobe" data-target="hinged">
+                <div class="wtype-top">
+                  <span class="wtype-ico"><i class="fas fa-door-open"></i></span>
+                  <span class="wtype-pill wtype-pill--muted">Classic Swing</span>
                 </div>
+                <h3>Normal Door</h3>
+                <p>Full-open swing shutters, zero track dust &amp; wide clear internal access.</p>
+                <span class="wtype-cta">Tap to Select <i class="fas fa-arrow-right"></i></span>
+              </button>
+            </div>
+
+            <!-- Prompt before selecting door type -->
+            <div class="wtype-empty-prompt" id="wardrobeEmptyPrompt">
+              <i class="fas fa-hand-pointer"></i>
+              <span>Tap <strong>Sliding Door</strong> or <strong>Normal Door</strong> above to reveal wardrobe designs</span>
+            </div>
+
+            <!-- SLIDING DOOR: 20 Interactive Designs + Smart Filter Bar -->
+            <div class="wtype-drawer" id="slidingGalleryWrap" hidden>
+              <div class="wtype-bar-head">
+                <span class="studio-label mb-0">20 Sliding Wardrobe Designs — Tap Favorites:</span>
+                <span class="wtype-count-pill" id="slidingPickedBadge">0 Selected</span>
               </div>
 
-              <div class="v-card" data-value="Mirrored Sliding + Dresser" data-img="/assets/images/minimal-2bhk-seawoods/img11.webp" data-toast="🪞 Mirrored Sliding added">
-                <div class="v-img-wrap">
-                  <img src="/assets/images/minimal-2bhk-seawoods/img11.webp" alt="Mirrored wardrobe" loading="lazy" decoding="async" />
-                  <span class="v-badge"><i class="fas fa-check"></i></span>
-                  <button type="button" class="v-zoom" data-zoom="/assets/images/minimal-2bhk-seawoods/img11.webp" data-caption="Mirrored Sliding — Makes bedrooms feel brighter and 2x larger" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
-                </div>
-                <div class="v-body">
-                  <h3>Mirrored Sliding</h3>
-                  <p>Built-in mirror brightens the room.</p>
-                </div>
+              <div class="filter-chip-bar mt-2 mb-3" id="slidingFilterBar">
+                <button type="button" class="filter-chip active" data-cat="all">All (20)</button>
+                <button type="button" class="filter-chip" data-cat="mirror">🪞 Mirror &amp; Vanity</button>
+                <button type="button" class="filter-chip" data-cat="gloss">✨ High-Gloss</button>
+                <button type="button" class="filter-chip" data-cat="wood">🪵 Wood &amp; Walnut</button>
+                <button type="button" class="filter-chip" data-cat="minimal">🩶 Matte &amp; Minimal</button>
+                <button type="button" class="filter-chip" data-cat="glass">💎 Glass &amp; Lofts</button>
               </div>
 
-              <div class="v-card" data-value="Tinted / Fluted Glass Shutters" data-img="/assets/images/wardrobe/four-door-modern-wardrobe-with-tinted-glass-shutters.webp" data-toast="🥂 Tinted Glass Wardrobe added">
-                <div class="v-img-wrap">
-                  <img src="/assets/images/wardrobe/four-door-modern-wardrobe-with-tinted-glass-shutters.webp" alt="Tinted glass shutter wardrobe" loading="lazy" decoding="async" />
-                  <span class="v-badge"><i class="fas fa-check"></i></span>
-                  <button type="button" class="v-zoom" data-zoom="/assets/images/wardrobe/four-door-modern-wardrobe-with-tinted-glass-shutters.webp" data-caption="Tinted / Fluted Glass — Luxury boutique look with internal sensor strips" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+              <div class="visual-choice-grid visual-choice-grid--wardrobe" data-group="wardrobeStyle" data-mode="multi" id="slidingWardrobeGrid">
+                <div class="v-card" data-cat="mirror" data-value="Cream Sliding + Arched Vanity Mirror" data-img="/assets/images/design-brief/wardrobe-slide-01.webp" data-toast="🪞 Cream Sliding + Arched Vanity added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/wardrobe-slide-01.webp" alt="Contemporary Cream Sliding Wardrobe Design with Arched Vanity Mirror" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/wardrobe-slide-01.webp" data-caption="Cream Sliding + Arched Vanity Mirror — Backlit dresser niche + overhead lofts" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <h3>Cream Sliding + Arched Vanity</h3>
+                    <p>Seamless gloss doors paired with backlit arched dresser.</p>
+                  </div>
                 </div>
-                <div class="v-body">
-                  <h3>Fluted / Tinted Glass</h3>
-                  <p>Luxury boutique closet + internal LEDs.</p>
+
+                <div class="v-card" data-cat="mirror" data-value="Cambric Sliding + Vanity & Study Desk" data-img="/assets/images/design-brief/wardrobe-slide-02.webp" data-toast="💻 Sliding + Study & Vanity added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/wardrobe-slide-02.webp" alt="Modern Handspun Cambric Sliding Wardrobe Design with Vanity Unit and Study Desk" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/wardrobe-slide-02.webp" data-caption="Cambric Sliding + Vanity & Study Desk — All-in-one bedroom storage wall" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <h3>Cambric Sliding + Study Desk</h3>
+                    <p>Integrated work desk &amp; floating vanity beside sliders.</p>
+                  </div>
+                </div>
+
+                <div class="v-card" data-cat="gloss" data-value="Glossy Teal Sliding + Console" data-img="/assets/images/design-brief/wardrobe-slide-03.webp" data-toast="🌊 Glossy Teal Sliding added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/wardrobe-slide-03.webp" alt="Contemporary Wardrobe Design with Glossy Teal Sliding Doors and Console" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/wardrobe-slide-03.webp" data-caption="Glossy Teal Sliding + Console — Vibrant high-gloss lacquer look" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <h3>Glossy Teal Sliding + Console</h3>
+                    <p>Rich glossy teal shutters with attached chest console.</p>
+                  </div>
+                </div>
+
+                <div class="v-card" data-cat="glass" data-value="Contemporary Blue 2-Door + Loft" data-img="/assets/images/design-brief/wardrobe-slide-04.webp" data-toast="📘 Blue 2-Door + Loft added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/wardrobe-slide-04.webp" alt="Contemporary Blue 2-Door Sliding Wardrobe Design with Loft" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/wardrobe-slide-04.webp" data-caption="Contemporary Blue 2-Door + Loft — Deep coastal blue with ceiling loft" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <h3>Cobalt Blue 2-Door + Loft</h3>
+                    <p>Matte blue two-door track system with full overhead loft.</p>
+                  </div>
+                </div>
+
+                <div class="v-card" data-cat="glass" data-value="Glossy Champagne Sliding + Overhead Cabinets" data-img="/assets/images/design-brief/wardrobe-slide-05.webp" data-toast="🥂 Champagne Gloss + Loft added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/wardrobe-slide-05.webp" alt="Modern Wardrobe Design with Glossy Champagne Sliding Doors and Overhead Cabinets" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/wardrobe-slide-05.webp" data-caption="Glossy Champagne Sliding + Overhead Cabinets — Bright neutral luxury" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <h3>Champagne Gloss + Lofts</h3>
+                    <p>Warm neutral glossy doors topped with flush overhead storage.</p>
+                  </div>
+                </div>
+
+                <div class="v-card" data-cat="glass" data-value="4-Door Frosted Glass Sliding Wardrobe" data-img="/assets/images/design-brief/wardrobe-slide-06.webp" data-toast="💎 4-Door Frosted Glass added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/wardrobe-slide-06.webp" alt="Contemporary 4-Door Wardrobe Design with Frosted Glass Sliding Doors" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/wardrobe-slide-06.webp" data-caption="4-Door Frosted Glass Sliding — Expansive full-wall translucent shutters" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <h3>4-Door Frosted Glass</h3>
+                    <p>Soft frosted glass grid in slim aluminum framing.</p>
+                  </div>
+                </div>
+
+                <div class="v-card" data-cat="wood" data-value="Walnut Transitional + Grey Alu Frame" data-img="/assets/images/design-brief/wardrobe-slide-07.webp" data-toast="🪵 Walnut Grey-Frame added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/wardrobe-slide-07.webp" alt="Walnut Transitional Sliding Wardrobe Design with Grey Aluminium Profile Frames" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/wardrobe-slide-07.webp" data-caption="Walnut Transitional + Grey Aluminium Frames — Rich wood grain aesthetic" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <h3>Walnut + Grey Alu Frames</h3>
+                    <p>Dark walnut wood finish bordered by slim grey channels.</p>
+                  </div>
+                </div>
+
+                <div class="v-card" data-cat="mirror" data-value="Walnut Bronze + Integrated Mirror Panels" data-img="/assets/images/design-brief/wardrobe-slide-08.webp" data-toast="🪞 Walnut Bronze Mirror added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/wardrobe-slide-08.webp" alt="Walnut Bronze Contemporary Sliding Wardrobe Design with Integrated Mirror Panels" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/wardrobe-slide-08.webp" data-caption="Walnut Bronze + Mirror Panels — Full-height dressing mirrors in shutters" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <h3>Walnut Bronze + Mirrors</h3>
+                    <p>Warm walnut shutters with full-length dressing mirrors.</p>
+                  </div>
+                </div>
+
+                <div class="v-card" data-cat="gloss" data-value="Lime Green High-Gloss Sliding" data-img="/assets/images/design-brief/wardrobe-slide-09.webp" data-toast="🌿 Lime Green High-Gloss added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/wardrobe-slide-09.webp" alt="Contemporary Sliding Wardrobe Design with Lime Green High Gloss Shutters" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/wardrobe-slide-09.webp" data-caption="Lime Green High-Gloss Shutters — Fresh playful statement color" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <h3>Lime Green High-Gloss</h3>
+                    <p>Energetic acrylic gloss pop great for vibrant &amp; kids rooms.</p>
+                  </div>
+                </div>
+
+                <div class="v-card" data-cat="minimal" data-value="Champagne 3-Tone Matte Grid Sliding" data-img="/assets/images/design-brief/wardrobe-slide-10.webp" data-toast="🤎 3-Tone Matte Grid added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/wardrobe-slide-10.webp" alt="Minimal Sliding Wardrobe Design with Champagne Three Tone Matte Grid Panels" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/wardrobe-slide-10.webp" data-caption="Champagne 3-Tone Matte Grid — Subtle horizontal color blocking" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <h3>Champagne 3-Tone Matte Grid</h3>
+                    <p>Three-band neutral champagne panels in silky matte finish.</p>
+                  </div>
+                </div>
+
+                <div class="v-card" data-cat="gloss" data-value="Bold Wine Red Acrylic Sliding" data-img="/assets/images/design-brief/wardrobe-slide-11.webp" data-toast="🍷 Wine Red Acrylic added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/wardrobe-slide-11.webp" alt="Contemporary Sliding Wardrobe Design with Bold Wine Red Acrylic Shutters" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/wardrobe-slide-11.webp" data-caption="Wine Red Acrylic Shutters — Dramatic glossy statement wall" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <h3>Bold Wine Red Acrylic</h3>
+                    <p>High-sheen wine acrylic shutters contrasting crisp whites.</p>
+                  </div>
+                </div>
+
+                <div class="v-card" data-cat="gloss" data-value="Champagne High-Gloss Acrylic Sliding" data-img="/assets/images/design-brief/wardrobe-slide-12.webp" data-toast="✨ Champagne Acrylic added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/wardrobe-slide-12.webp" alt="Contemporary Sliding Wardrobe Design with Champagne High Gloss Acrylic Panels" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/wardrobe-slide-12.webp" data-caption="Champagne High-Gloss Acrylic — Smooth light-reflecting shutters" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <h3>Champagne Gloss Acrylic</h3>
+                    <p>Seamless champagne panels brightening medium bedrooms.</p>
+                  </div>
+                </div>
+
+                <div class="v-card" data-cat="mirror" data-value="Classic Walnut Bronze + Center Mirrors" data-img="/assets/images/design-brief/wardrobe-slide-13.webp" data-toast="🪞 Walnut + Center Mirror added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/wardrobe-slide-13.webp" alt="Classic Sliding Wardrobe Design with Walnut Bronze Matte Laminate Center Mirrors" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/wardrobe-slide-13.webp" data-caption="Walnut Bronze Matte + Center Mirrors — Twin mirror bands over walnut" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <h3>Walnut Matte + Center Mirrors</h3>
+                    <p>Balanced dual center mirror strip in warm bronze laminate.</p>
+                  </div>
+                </div>
+
+                <div class="v-card" data-cat="minimal" data-value="Grey Acrylic Horizontal Stripe Sliding" data-img="/assets/images/design-brief/wardrobe-slide-14.webp" data-toast="🩶 Grey Stripe Sliding added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/wardrobe-slide-14.webp" alt="Contemporary Sliding Wardrobe Design with Grey Acrylic Horizontal Stripe Pattern Shutters" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/wardrobe-slide-14.webp" data-caption="Grey Acrylic Horizontal Stripe — Linear two-tone architectural shutters" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <h3>Grey Horizontal Stripe Pattern</h3>
+                    <p>Two-tone grey &amp; white horizontal bands for visual width.</p>
+                  </div>
+                </div>
+
+                <div class="v-card" data-cat="gloss" data-value="Metallic Beige High-Gloss Sliding" data-img="/assets/images/design-brief/wardrobe-slide-15.webp" data-toast="✨ Metallic Beige Gloss added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/wardrobe-slide-15.webp" alt="Transitional Sliding Wardrobe Design Featuring High Gloss Metallic Beige Sliding Shutters" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/wardrobe-slide-15.webp" data-caption="Metallic Beige High-Gloss — Warm champagne shimmer finish" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <h3>Metallic Beige High-Gloss</h3>
+                    <p>Rich bronze-beige sheen suiting warm modern bedrooms.</p>
+                  </div>
+                </div>
+
+                <div class="v-card" data-cat="gloss" data-value="Apple Green Glossy Sliding Shutters" data-img="/assets/images/design-brief/wardrobe-slide-16.webp" data-toast="🍏 Apple Green Gloss added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/wardrobe-slide-16.webp" alt="Contemporary Sliding Wardrobe Design Featuring High Gloss Apple Green Sliding Shutters" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/wardrobe-slide-16.webp" data-caption="Apple Green Glossy Shutters — Crisp cheerful pastel pop" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <h3>Apple Green High-Gloss</h3>
+                    <p>Fresh green gloss finish framed by clean light neutral borders.</p>
+                  </div>
+                </div>
+
+                <div class="v-card" data-cat="minimal" data-value="Minimal 2-Door Grey Gloss Sliding" data-img="/assets/images/design-brief/wardrobe-slide-17.webp" data-toast="🩶 Minimal 2-Door Grey added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/wardrobe-slide-17.webp" alt="2-Door Minimal Wardrobe Design with Sliding Doors and Grey Gloss Finish" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/wardrobe-slide-17.webp" data-caption="Minimal 2-Door Grey Gloss — Compact luxury for urban bedrooms" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <h3>Minimal 2-Door Grey Gloss</h3>
+                    <p>Streamlined zero-clutter two-door grey sliding unit.</p>
+                  </div>
+                </div>
+
+                <div class="v-card" data-cat="glass" data-value="3-Door Smoked Glass + LED Display Shelves" data-img="/assets/images/design-brief/wardrobe-slide-18.webp" data-toast="🥂 Smoked Glass + LED Shelves added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/wardrobe-slide-18.webp" alt="3-Door Modern Sliding Wardrobe Design with Gloss Finish and Display Shelves" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/wardrobe-slide-18.webp" data-caption="Smoked Glass + LED Display Shelves — Boutique dark closet aesthetic" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <h3>Smoked Glass + LED Shelves</h3>
+                    <p>Tinted glass sliders alongside warm backlit open shelving.</p>
+                  </div>
+                </div>
+
+                <div class="v-card" data-cat="minimal" data-value="Light Grey 2-Door Sliding + Profile LED" data-img="/assets/images/design-brief/wardrobe-slide-19.webp" data-toast="💡 Light Grey + Profile LED added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/wardrobe-slide-19.webp" alt="Modern 2-Door Sliding Wardrobe Design with Light Grey Finish and LED Lighting" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/wardrobe-slide-19.webp" data-caption="Light Grey 2-Door + Profile LED — Crisp minimal grey with edge glow" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <h3>Light Grey + Profile LED</h3>
+                    <p>Soft dove-grey shutters accented by built-in edge lighting.</p>
+                  </div>
+                </div>
+
+                <div class="v-card" data-cat="minimal" data-value="3-Door Dark Grey Matte Minimal Sliding" data-img="/assets/images/design-brief/wardrobe-slide-20.webp" data-toast="🖤 Dark Grey Matte Minimal added">
+                  <div class="v-img-wrap">
+                    <img src="/assets/images/design-brief/wardrobe-slide-20.webp" alt="Modern 3-Door Sliding Wardrobe Design with Dark Grey Minimal Finish" loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom="/assets/images/design-brief/wardrobe-slide-20.webp" data-caption="3-Door Dark Grey Matte Minimal — Charcoal elegance for master suites" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <h3>3-Door Charcoal Matte Minimal</h3>
+                    <p>Wide three-door charcoal finish with handleless tracks.</p>
+                  </div>
                 </div>
               </div>
+            </div>
 
-              <div class="v-card" data-value="Classic Hinged + Loft" data-img="/assets/images/wardrobe/4-door-wardrobe-design-with-cabinets-and-drawers-for-storage.webp" data-toast="🗄️ Classic Hinged Wardrobe added">
-                <div class="v-img-wrap">
-                  <img src="/assets/images/wardrobe/4-door-wardrobe-design-with-cabinets-and-drawers-for-storage.webp" alt="4 door hinged wardrobe" loading="lazy" decoding="async" />
-                  <span class="v-badge"><i class="fas fa-check"></i></span>
-                  <button type="button" class="v-zoom" data-zoom="/assets/images/wardrobe/4-door-wardrobe-design-with-cabinets-and-drawers-for-storage.webp" data-caption="Classic Hinged + Loft — 100% open visibility & zero sliding track dust" aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+            <!-- NORMAL / HINGED DOOR SECTION -->
+            <div class="wtype-drawer" id="normalDoorWrap" hidden>
+              <div class="normal-door-card">
+                <div class="normal-door-head">
+                  <span class="normal-door-badge"><i class="fas fa-door-open"></i> Normal / Hinged Door Selected</span>
+                  <h3>Classic Swing Shutters &amp; Lofts</h3>
+                  <p>100% open visibility with zero sliding tracks to clean. Pick your preferred door format, laminate finish, loft style &amp; internal accessories below!</p>
                 </div>
-                <div class="v-body">
-                  <h3>Classic Hinged</h3>
-                  <p>Full interior view + dedicated lofts.</p>
+                <div class="mt-2">
+                  <label class="studio-label">Preferred Hinged Size:</label>
+                  <div class="studio-pill-wrap" data-group="wardrobeStyle" data-mode="multi">
+                    <button type="button" class="studio-pill" data-value="2-Door Hinged Wardrobe">2-Door Hinged</button>
+                    <button type="button" class="studio-pill" data-value="3-Door Hinged + Loft">3-Door Hinged + Loft</button>
+                    <button type="button" class="studio-pill" data-value="4-Door Master Hinged">4-Door Master Hinged</button>
+                    <button type="button" class="studio-pill" data-value="Hinged + Glass Display">Hinged + Glass Shutter</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1325,6 +1583,203 @@ const schema = JSON.stringify({
   #studioAppShell .visual-choice-grid--ceiling .v-img-wrap {
     aspect-ratio: 16 / 9;
   }
+  #studioAppShell .visual-choice-grid--wardrobe .v-img-wrap {
+    aspect-ratio: 4 / 3;
+  }
+
+  /* Wardrobe Type Interactive Switcher */
+  #studioAppShell .wardrobe-type-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
+  }
+  #studioAppShell .wtype-card {
+    text-align: left;
+    background: #ffffff;
+    border: 2px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 0.85rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    cursor: pointer;
+    transition: transform 0.16s ease, border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+  #studioAppShell .wtype-card:active {
+    transform: scale(0.96);
+  }
+  #studioAppShell .wtype-card.selected {
+    border-color: #189ba6;
+    background: linear-gradient(135deg, #f0fdfa 0%, #ffffff 100%);
+    box-shadow: 0 8px 20px rgba(24, 155, 166, 0.16);
+  }
+  #studioAppShell .wtype-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.3rem;
+    width: 100%;
+  }
+  #studioAppShell .wtype-ico {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: #f1f5f9;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    color: #189ba6 !important;
+    -webkit-text-fill-color: #189ba6 !important;
+  }
+  #studioAppShell .wtype-card.selected .wtype-ico {
+    background: #189ba6;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+  #studioAppShell .wtype-pill {
+    font-size: 0.66rem;
+    font-weight: 800;
+    background: #e6f7f8;
+    color: #0e747d !important;
+    -webkit-text-fill-color: #0e747d !important;
+    padding: 0.2rem 0.5rem;
+    border-radius: 50px;
+  }
+  #studioAppShell .wtype-pill--muted {
+    background: #f1f5f9;
+    color: #475569 !important;
+    -webkit-text-fill-color: #475569 !important;
+  }
+  #studioAppShell .wtype-card h3 {
+    font-size: 0.92rem;
+    font-weight: 800;
+    color: #0f172a !important;
+    margin: 0.2rem 0 0 0;
+    line-height: 1.2;
+  }
+  #studioAppShell .wtype-card p {
+    font-size: 0.72rem;
+    color: #64748b !important;
+    margin: 0;
+    line-height: 1.35;
+  }
+  #studioAppShell .wtype-cta {
+    margin-top: auto;
+    padding-top: 0.3rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #189ba6 !important;
+    -webkit-text-fill-color: #189ba6 !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  #studioAppShell .wtype-empty-prompt {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.9rem 1rem;
+    background: #f8fafc;
+    border: 1.5px dashed #cbd5e1;
+    border-radius: 14px;
+    font-size: 0.82rem;
+    color: #475569 !important;
+  }
+  #studioAppShell .wtype-empty-prompt i {
+    color: #189ba6 !important;
+    -webkit-text-fill-color: #189ba6 !important;
+    font-size: 1.05rem;
+  }
+  #studioAppShell .wtype-empty-prompt[hidden],
+  #studioAppShell .wtype-drawer[hidden] {
+    display: none !important;
+  }
+  #studioAppShell .wtype-drawer {
+    animation: wtypeReveal 0.28s ease;
+  }
+  @keyframes wtypeReveal {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  #studioAppShell .wtype-bar-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  #studioAppShell .wtype-count-pill {
+    font-size: 0.72rem;
+    font-weight: 800;
+    background: #189ba6;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    padding: 0.2rem 0.65rem;
+    border-radius: 50px;
+    white-space: nowrap;
+  }
+  #studioAppShell .filter-chip-bar {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0.4rem;
+    padding-bottom: 0.25rem;
+    scrollbar-width: none;
+    max-width: 100%;
+  }
+  #studioAppShell .filter-chip-bar::-webkit-scrollbar {
+    display: none;
+  }
+  #studioAppShell .filter-chip {
+    flex: 0 0 auto;
+    padding: 0.42rem 0.85rem;
+    border-radius: 50px;
+    border: 1.5px solid #d1d5db;
+    background: #ffffff;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #374151 !important;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    white-space: nowrap;
+  }
+  #studioAppShell .filter-chip.active {
+    background: #0f172a;
+    border-color: #0f172a;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+  #studioAppShell .normal-door-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border: 1.5px solid #cbd5e1;
+    border-radius: 16px;
+    padding: 1.1rem;
+  }
+  #studioAppShell .normal-door-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.7rem;
+    font-weight: 800;
+    background: #e6f7f8;
+    color: #127c85 !important;
+    -webkit-text-fill-color: #127c85 !important;
+    padding: 0.25rem 0.65rem;
+    border-radius: 50px;
+    margin-bottom: 0.45rem;
+  }
+  #studioAppShell .normal-door-head h3 {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #0f172a !important;
+    margin: 0 0 0.3rem 0;
+  }
+  #studioAppShell .normal-door-head p {
+    font-size: 0.8rem;
+    color: #475569 !important;
+    margin: 0 0 0.7rem 0;
+    line-height: 1.45;
+  }
   #studioAppShell .v-img-wrap img {
     width: 100% !important;
     height: 100% !important;
@@ -1953,6 +2408,7 @@ const schema = JSON.stringify({
       homeStyle: [],
       ceilingStyle: [],
       lightTone: ['Warm White (3000K — Hotel Cozy)'],
+      wardrobeType: [],
       wardrobeStyle: [],
       wardrobeFinish: [],
       loftPref: [],
@@ -2147,6 +2603,24 @@ const schema = JSON.stringify({
         applyLightSimulatorMode(itemEl);
       }
 
+      if (container.id === 'wardrobeTypeGroup') {
+        const target = itemEl.classList.contains('selected') ? itemEl.getAttribute('data-target') : null;
+        const emptyEl = document.getElementById('wardrobeEmptyPrompt');
+        const slidingEl = document.getElementById('slidingGalleryWrap');
+        const normalEl = document.getElementById('normalDoorWrap');
+        if (emptyEl) emptyEl.hidden = !!target;
+        if (slidingEl) slidingEl.hidden = target !== 'sliding';
+        if (normalEl) normalEl.hidden = target !== 'hinged';
+        if (target === 'sliding') showToast('🚪 20 Sliding Wardrobe designs unlocked!');
+        if (target === 'hinged') showToast('🛋️ Normal / Hinged Door selected');
+      }
+
+      const slidingBadge = document.getElementById('slidingPickedBadge');
+      if (slidingBadge) {
+        const slidingCount = document.querySelectorAll('#slidingWardrobeGrid .v-card.selected').length;
+        slidingBadge.textContent = slidingCount + ' Selected';
+      }
+
       updateLiveUI();
     }
 
@@ -2215,10 +2689,23 @@ const schema = JSON.stringify({
       });
     });
 
-    document.querySelectorAll('.studio-tile, .studio-pill, .p-swatch-card, .budget-tier-btn').forEach(btn => {
+    document.querySelectorAll('.studio-tile, .studio-pill, .p-swatch-card, .budget-tier-btn, .wtype-card').forEach(btn => {
       btn.addEventListener('click', () => {
         const container = btn.closest('[data-group]');
         if (container) toggleGroupSelection(container, btn);
+      });
+    });
+
+    // Sliding Wardrobe Category Filter Bar
+    document.querySelectorAll('#slidingFilterBar .filter-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        triggerHaptic();
+        document.querySelectorAll('#slidingFilterBar .filter-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        const cat = chip.getAttribute('data-cat');
+        document.querySelectorAll('#slidingWardrobeGrid .v-card').forEach(card => {
+          card.style.display = (cat === 'all' || card.getAttribute('data-cat') === cat) ? '' : 'none';
+        });
       });
     });
 
@@ -2245,6 +2732,7 @@ const schema = JSON.stringify({
       if (state.ceilingStyle.length) lines.push('False Ceiling: ' + state.ceilingStyle.join(' | '));
       if (state.lightTone.length) lines.push('Light Tone: ' + state.lightTone.join(', '));
 
+      if (state.wardrobeType.length) lines.push('Wardrobe Door Type: ' + state.wardrobeType.join(', '));
       if (state.wardrobeStyle.length) lines.push('Wardrobe Style: ' + state.wardrobeStyle.join(' | '));
       if (state.wardrobeFinish.length) lines.push('Wardrobe Finish: ' + state.wardrobeFinish.join(', '));
       if (state.loftPref.length) lines.push('Loft Design: ' + state.loftPref.join(', '));
