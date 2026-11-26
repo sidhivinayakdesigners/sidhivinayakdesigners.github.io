@@ -53,7 +53,11 @@ const server = http.createServer((req, res) => {
         res.end(`Server Error: ${err.code}`);
       }
     } else {
-      res.writeHead(200, { 'Content-Type': contentType });
+      const headers = { 'Content-Type': contentType };
+      if (/\.(webp|jpg|jpeg|png|gif|svg|ico|woff2|woff|ttf|css|js)$/i.test(fileExt)) {
+        headers['Cache-Control'] = 'public, max-age=86400';
+      }
+      res.writeHead(200, headers);
       res.end(content);
     }
   });

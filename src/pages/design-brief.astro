@@ -2753,6 +2753,28 @@ const schema = JSON.stringify({
     phoneEl?.addEventListener('input', () => { syncContactFields(phoneEl, finalPhoneEl); updateLiveUI(); });
     finalPhoneEl?.addEventListener('input', () => { syncContactFields(finalPhoneEl, phoneEl); updateLiveUI(); });
 
+    const warmedUrls = new Set();
+    function warmImages(container, limit = 999) {
+      if (!container) return;
+      const imgs = container.querySelectorAll('img');
+      let count = 0;
+      imgs.forEach(img => {
+        if (img.closest('[hidden]') && img.closest('[hidden]') !== container) return;
+        const src = img.getAttribute('src');
+        if (!src) return;
+        if (limit === 999) {
+          img.loading = 'eager';
+        }
+        if (count < limit && !warmedUrls.has(src)) {
+          warmedUrls.add(src);
+          const pre = new Image();
+          pre.decoding = 'async';
+          pre.src = src;
+        }
+        count++;
+      });
+    }
+
     function goToStep(idx) {
       if (idx < 0 || idx >= totalInteractiveSteps) return;
       triggerHaptic();
@@ -2798,9 +2820,20 @@ const schema = JSON.stringify({
         dockNextBtn.style.display = 'inline-flex';
       }
 
+      warmImages(stepEls[idx], 999);
+      if (stepEls[idx + 1]) {
+        setTimeout(() => warmImages(stepEls[idx + 1], 14), 120);
+      }
+
       window.scrollTo({ top: 0, behavior: 'auto' });
       updateLiveUI();
     }
+
+    // Quietly pre-warm Step 2 (Aesthetic DNA) & Step 3 (Ceilings) while user is on Step 1
+    setTimeout(() => {
+      warmImages(stepEls[1], 10);
+      warmImages(stepEls[2], 8);
+    }, 300);
 
     dockBackBtn.addEventListener('click', () => goToStep(currentStep - 1));
     dockNextBtn.addEventListener('click', () => {
@@ -2827,7 +2860,10 @@ const schema = JSON.stringify({
         allStepsMode = !allStepsMode;
         appShell.classList.toggle('all-steps-mode', allStepsMode);
         toggleViewBtn.querySelector('span').textContent = allStepsMode ? 'Step Mode' : 'All Steps';
-        if (allStepsMode) renderDnaReveal();
+        if (allStepsMode) {
+          stepEls.forEach(s => warmImages(s, 8));
+          renderDnaReveal();
+        }
       });
     }
 
@@ -2888,8 +2924,14 @@ const schema = JSON.stringify({
         if (emptyEl) emptyEl.hidden = !!target;
         if (slidingEl) slidingEl.hidden = target !== 'sliding';
         if (normalEl) normalEl.hidden = target !== 'hinged';
-        if (target === 'sliding') showToast('🚪 20 Sliding Wardrobe designs unlocked!');
-        if (target === 'hinged') showToast('🛋️ 40 Normal / Hinged Wardrobe designs unlocked!');
+        if (target === 'sliding') {
+          warmImages(slidingEl, 999);
+          showToast('🚪 20 Sliding Wardrobe designs unlocked!');
+        }
+        if (target === 'hinged') {
+          warmImages(normalEl, 999);
+          showToast('🛋️ 40 Normal / Hinged Wardrobe designs unlocked!');
+        }
       }
 
       [
