@@ -143,6 +143,59 @@ const TV_UNIT_DESIGNS = [
   { img: "/assets/images/design-brief/tv-unit-50.webp", cat: "shelves", title: "Blush Rose + Glass Cabinet TV", desc: "Soft matte dusty-rose cabinetry paired with translucent display shelves.", val: "Rose Matte + Glass Cabinet TV", toast: "🌸 Rose & Glass TV added" }
 ];
 
+const POOJA_DESIGNS = [
+  { img: "/assets/images/design-brief/pooja-01.webp", cat: "om", title: "Backlit Circular Om + Glass Shelves", desc: "Walnut backdrop with glowing concentric Om cut-out & glass diya shelves.", val: "Backlit Circular Om + Glass Pooja", toast: "🕉️ Backlit Circular Om added" },
+  { img: "/assets/images/design-brief/pooja-02.webp", cat: "om", title: "Walnut + Backlit Om Emblem", desc: "Warm backlit sanctuary featuring sculptural Om wall emblem & walnut trim.", val: "Walnut + Backlit Om Pooja", toast: "🕉️ Walnut Om Mandir added" },
+  { img: "/assets/images/design-brief/pooja-03.webp", cat: "wood", title: "Walnut Bronze + Golden Jaali", desc: "Laser-cut metallic lotus lattice glow framed in rich walnut bronze.", val: "Walnut Bronze + Golden Jaali", toast: "✨ Golden Jaali Mandir added" },
+  { img: "/assets/images/design-brief/pooja-04.webp", cat: "marble", title: "Marble + 3D Brass Sunburst", desc: "Clean stone-finish backdrop elevated by raised solid brass sunburst.", val: "Marble + 3D Brass Sunburst Pooja", toast: "🪨 Marble & Brass Sunburst added" },
+  { img: "/assets/images/design-brief/pooja-05.webp", cat: "wood", title: "Backlit Jaali + Open Shelving", desc: "Indian traditional glowing jaali screen paired with organized prayer ledges.", val: "Traditional Backlit Jaali Pooja", toast: "🛕 Traditional Backlit Jaali added" },
+  { img: "/assets/images/design-brief/pooja-06.webp", cat: "marble", title: "Blush Pink CNC Marble Walls", desc: "Soft pink CNC carved temple panels crowned by pure marble altar.", val: "Blush Pink CNC Marble Pooja", toast: "🌸 Pink CNC Marble Mandir added" },
+  { img: "/assets/images/design-brief/pooja-07.webp", cat: "om", title: "Backlit Om + Star Pattern Panels", desc: "Geometric star lattice flanking a warm ambient lit central Om panel.", val: "Backlit Om + Star Lattice Pooja", toast: "🕉️ Star Lattice Om added" },
+  { img: "/assets/images/design-brief/pooja-08.webp", cat: "marble", title: "Marble Archway + Carved Medallion", desc: "Soft arched marble niche with embossed devotional wall medallion.", val: "Marble Arch + Medallion Pooja", toast: "🪨 Marble Archway Mandir added" },
+  { img: "/assets/images/design-brief/pooja-09.webp", cat: "wood", title: "Terracotta Wall + Kolam Art", desc: "Earthy traditional terracotta niche painted with auspicious kolam motifs.", val: "Terracotta + Kolam Art Pooja", toast: "🪔 Terracotta Kolam Mandir added" },
+  { img: "/assets/images/design-brief/pooja-10.webp", cat: "wall", title: "White & Walnut + Lattice Doors", desc: "Space-saving wall-hung mandir with folding wooden lattice shutters.", val: "Wall-Mounted Walnut Lattice Pooja", toast: "🪔 Wall Lattice Mandir added" },
+  { img: "/assets/images/design-brief/pooja-11.webp", cat: "marble", title: "Marble Backdrop + Wood Pillars", desc: "Classical carved wood pillars framing a calm white veined stone panel.", val: "Marble + Wood Pillars Pooja", toast: "🛕 Marble & Wood Pillars added" },
+  { img: "/assets/images/design-brief/pooja-12.webp", cat: "wall", title: "Wall-Mounted Red + Fluted Drawers", desc: "Festive sindoor-red wall unit with textured fluted storage drawers.", val: "Wall Red + Fluted Drawers Pooja", toast: "❤️ Red Fluted Mandir added" },
+  { img: "/assets/images/design-brief/pooja-13.webp", cat: "wall", title: "Red Cabinet + Yellow Sun Halo", desc: "Vibrant glowing yellow halo set atop a compact pooja cabinet.", val: "Red Cabinet + Yellow Halo Pooja", toast: "☀️ Yellow Halo Mandir added" },
+  { img: "/assets/images/design-brief/pooja-14.webp", cat: "wood", title: "Backlit Arch + Brass Lotus Lamp", desc: "Rich wooden altar lit by an arched halo and hanging lotus lamps.", val: "Wood Backlit Arch + Lotus Lamp", toast: "🪔 Backlit Lotus Mandir added" },
+  { img: "/assets/images/design-brief/pooja-15.webp", cat: "marble", title: "Pastel Green + Pichwai Art Wall", desc: "Serene Pichwai traditional mural backdrop above sage storage drawers.", val: "Green Drawer + Pichwai Pooja", toast: "🎨 Pichwai Art Mandir added" },
+  { img: "/assets/images/design-brief/pooja-16.webp", cat: "wood", title: "Tall Green Cabinet + Jaali Door", desc: "Full-height sage temple cupboard enclosed with ventilated jaali doors.", val: "Tall Green + Jaali Door Pooja", toast: "🛕 Tall Green Jaali added" },
+  { img: "/assets/images/design-brief/pooja-17.webp", cat: "om", title: "Floor Unit + Backlit Om Arch", desc: "Floor-mounted base cabinets under an illuminated Om curved arch.", val: "Floor Unit + Om Arch Pooja", toast: "🕉️ Floor Om Arch added" },
+  { img: "/assets/images/design-brief/pooja-18.webp", cat: "wall", title: "Wall Unit + White Jali Sides", desc: "Compact wall temple framed by delicate CNC white jali wings.", val: "Wall Unit + White Jali Pooja", toast: "🤍 White Jali Wall Mandir added" },
+  { img: "/assets/images/design-brief/pooja-19.webp", cat: "marble", title: "Floral Archway + Glass Displays", desc: "Transitional mandir nook with carved arch & side heirloom cabinets.", val: "Floral Arch + Glass Pooja", toast: "🏛️ Floral Arch Mandir added" },
+  { img: "/assets/images/design-brief/pooja-20.webp", cat: "wood", title: "Walnut Slat Frame + Pendants", desc: "Modern timber louvres wrapped around dual hanging brass diyas.", val: "Walnut Slat + Pendants Pooja", toast: "🪵 Walnut Slat Mandir added" },
+  { img: "/assets/images/design-brief/pooja-21.webp", cat: "wood", title: "Acacia Wood Trim + Krishna Art", desc: "Devotional framed Krishna artwork nested inside warm acacia panelling.", val: "Acacia Trim + Krishna Art Pooja", toast: "🪔 Acacia + Krishna Mandir added" },
+  { img: "/assets/images/design-brief/pooja-22.webp", cat: "wood", title: "Walnut Frame + Fluted Glass", desc: "Semi-private pooja space behind sleek black-framed fluted glass doors.", val: "Walnut + Fluted Glass Pooja", toast: "💎 Fluted Glass Mandir added" },
+  { img: "/assets/images/design-brief/pooja-23.webp", cat: "wood", title: "Taupe & White + Jaali Shutters", desc: "Minimal contemporary mandir enclosure with crisp bi-fold jaali shutters.", val: "Taupe & White Jaali Pooja", toast: "🤍 Taupe Jaali Mandir added" },
+  { img: "/assets/images/design-brief/pooja-24.webp", cat: "wall", title: "White Wall-Mounted + Om Panel", desc: "Ultracompact white apartment mandir with glowing etched Om back.", val: "White Wall + Backlit Om Pooja", toast: "🕉️ Compact White Om added" },
+  { img: "/assets/images/design-brief/pooja-25.webp", cat: "om", title: "Pure White + Golden Lotus Backdrop", desc: "White altar anchored by shimmering metallic lotus relief pattern.", val: "White + Golden Lotus Pooja", toast: "✨ Golden Lotus Mandir added" },
+  { img: "/assets/images/design-brief/pooja-26.webp", cat: "marble", title: "Irish Cream + Lower Cabinet Unit", desc: "Cream matte paneling with generous bottom prasad & samagri drawers.", val: "Irish Cream Lower Storage Pooja", toast: "🤍 Cream Storage Mandir added" },
+  { img: "/assets/images/design-brief/pooja-27.webp", cat: "marble", title: "Living Platform + Seating Ottoman", desc: "Integrated open living room pooja corner with matching cushion bench.", val: "Living Platform + Ottoman Pooja", toast: "🛋️ Living Platform Mandir added" },
+  { img: "/assets/images/design-brief/pooja-28.webp", cat: "om", title: "Denim Blue + Backlit Lotus Arch", desc: "Deep serene blue arch illuminated behind sculpted Ganesha idol.", val: "Denim Blue + Lotus Arch Pooja", toast: "💙 Blue Lotus Arch added" },
+  { img: "/assets/images/design-brief/pooja-29.webp", cat: "wood", title: "Carved Archway + Pull-Out Tray", desc: "Intricate traditional wooden arch with convenient aarti thali drawer.", val: "Carved Arch + Pull-Out Tray", toast: "🛕 Carved Arch + Tray added" },
+  { img: "/assets/images/design-brief/pooja-30.webp", cat: "marble", title: "White Marble Altar + Elephants", desc: "Hand-carved elephant pillars holding a grand pure marble shikhara.", val: "Marble Altar + Carved Elephants", toast: "🐘 Grand Marble Temple added" },
+  { img: "/assets/images/design-brief/pooja-31.webp", cat: "om", title: "Sunburst Motif + Cream Gold Doors", desc: "Glowing radial sunburst wall behind cream-and-gold cabinet base.", val: "Sunburst + Cream Gold Pooja", toast: "☀️ Cream Gold Sunburst added" },
+  { img: "/assets/images/design-brief/pooja-32.webp", cat: "marble", title: "White Lotus Relief + Arched Niche", desc: "Sculptural 3D white lotus reliefs inside a soft arched backlight.", val: "White Lotus Relief Arch Pooja", toast: "🪷 3D Lotus Relief Mandir added" },
+  { img: "/assets/images/design-brief/pooja-33.webp", cat: "om", title: "Bronze Om Arch + Globe Pendants", desc: "Minimalist brushed-bronze Om wall framed by warm twin pendant globes.", val: "Minimal Bronze Om + Globes", toast: "🕉️ Minimal Bronze Om added" },
+  { img: "/assets/images/design-brief/pooja-34.webp", cat: "marble", title: "Charcoal Modern + Black Marble", desc: "Dramatic dark veined stone sanctuary with glowing architectural light.", val: "Charcoal & Black Marble Pooja", toast: "🖤 Black Marble Mandir added" },
+  { img: "/assets/images/design-brief/pooja-35.webp", cat: "om", title: "Fluted Gold Screens + Arched Niche", desc: "Warm fluted gold side screens lighting an arched central altar.", val: "Fluted Gold Screen Arch Pooja", toast: "✨ Fluted Gold Mandir added" },
+  { img: "/assets/images/design-brief/pooja-36.webp", cat: "wood", title: "Walnut Bronze + Geometric Door", desc: "Enclosed private pooja room with striking wooden geometric jaali door.", val: "Walnut + Geometric Jaali Door", toast: "🪵 Geometric Jaali Door added" },
+  { img: "/assets/images/design-brief/pooja-37.webp", cat: "om", title: "Walnut Bronze + Gold Mandala", desc: "Textured circular mandala glowing softly behind brass oil lamps.", val: "Walnut + Gold Mandala Pooja", toast: "🕉️ Gold Mandala Mandir added" },
+  { img: "/assets/images/design-brief/pooja-38.webp", cat: "wall", title: "White Louvered Bifold + Walnut", desc: "Ventilated louvered bi-fold shutters closing neatly over walnut base.", val: "White Louvers + Walnut Pooja", toast: "🪟 Louvered Bifold Mandir added" },
+  { img: "/assets/images/design-brief/pooja-39.webp", cat: "wood", title: "Brown Pooja + Mythological Mural", desc: "Hand-painted classical wall art enclosed in rich timber trim.", val: "Brown + Mythological Mural Pooja", toast: "🎨 Mural Wall Mandir added" },
+  { img: "/assets/images/design-brief/pooja-40.webp", cat: "marble", title: "Golden Mosaic Tile Arch Halo", desc: "Shimmering gold mosaic tiles illuminating a classical arch alcove.", val: "Golden Mosaic Tile Arch Pooja", toast: "✨ Golden Mosaic Mandir added" },
+  { img: "/assets/images/design-brief/pooja-41.webp", cat: "marble", title: "Walnut Bronze + Dark Stone Top", desc: "Sturdy granite/quartz platform paired with bronze laminate drawers.", val: "Walnut + Dark Stone Altar", toast: "🪨 Dark Stone Altar added" },
+  { img: "/assets/images/design-brief/pooja-42.webp", cat: "wood", title: "Dark Folding Jaali Privacy Doors", desc: "Floor-mounted unit featuring dark folding fretwork privacy doors.", val: "Dark Folding Jaali Doors Pooja", toast: "🛕 Folding Jaali Mandir added" },
+  { img: "/assets/images/design-brief/pooja-43.webp", cat: "wall", title: "Wall Bronze & Pearl + Dark Wood", desc: "Clean floating temple unit with pearl backplate & dark side shelves.", val: "Wall Bronze Pearl + Shelves", toast: "🪔 Bronze & Pearl Mandir added" },
+  { img: "/assets/images/design-brief/pooja-44.webp", cat: "wall", title: "Modern White Storage Pooja Unit", desc: "Full matte white cabinetry dedicating upper arch + deep base drawers.", val: "Modern White Cabinet Pooja", toast: "🤍 White Storage Mandir added" },
+  { img: "/assets/images/design-brief/pooja-45.webp", cat: "om", title: "Laser-Cut Om Mandala Backdrop", desc: "Precision CNC glowing Om mandala centered in clean vertical tower.", val: "Laser-Cut Om Mandala Pooja", toast: "🕉️ Om Mandala Tower added" },
+  { img: "/assets/images/design-brief/pooja-46.webp", cat: "wall", title: "White & Grey Classic Cabinet", desc: "Subtle dual-tone white & dove-grey mandir fitting modern hallways.", val: "White & Grey Cabinet Pooja", toast: "🩶 White & Grey Mandir added" },
+  { img: "/assets/images/design-brief/pooja-47.webp", cat: "marble", title: "Traditional Marble Shikhara Temple", desc: "Authentic Indian carved marble mandir with tiered idol pedestals.", val: "Traditional Marble Temple Unit", toast: "🛕 Carved Marble Temple added" },
+  { img: "/assets/images/design-brief/pooja-48.webp", cat: "wall", title: "Minimal Grey & Balsam Cabinet", desc: "Compact serene apartment corner unit in soft grey and wood tones.", val: "Minimal Grey & Balsam Pooja", toast: "🤍 Compact Balsam Mandir added" },
+  { img: "/assets/images/design-brief/pooja-49.webp", cat: "om", title: "Grey & Walnut + Backlit Panel", desc: "Contemporary dual-finish cabinet crowned by warm diffused panel.", val: "Grey & Walnut Backlit Pooja", toast: "🪵 Grey & Walnut Mandir added" },
+  { img: "/assets/images/design-brief/pooja-50.webp", cat: "wood", title: "Traditional Walnut Storage Display", desc: "Rich walnut woodwork housing spacious drawers and brass bell hangers.", val: "Walnut Bronze Wooden Pooja", toast: "🪵 Traditional Walnut Mandir added" }
+];
+
 const schema = JSON.stringify({
   "@context": "https://schema.org",
   "@graph": [
@@ -188,9 +241,10 @@ const schema = JSON.stringify({
             <button type="button" class="step-dot" data-goto="4" aria-label="Step 5"></button>
             <button type="button" class="step-dot" data-goto="5" aria-label="Step 6"></button>
             <button type="button" class="step-dot" data-goto="6" aria-label="Step 7"></button>
-            <button type="button" class="step-dot" data-goto="7" aria-label="Your Design DNA"></button>
+            <button type="button" class="step-dot" data-goto="7" aria-label="Step 8"></button>
+            <button type="button" class="step-dot" data-goto="8" aria-label="Your Design DNA"></button>
           </div>
-          <span class="studio-step-counter" id="studioStepCounter">Step 1 of 7</span>
+          <span class="studio-step-counter" id="studioStepCounter">Step 1 of 8</span>
         </div>
 
         <div class="studio-topbar-actions">
@@ -306,7 +360,7 @@ const schema = JSON.stringify({
           <!-- STEP 1: HOME VIBE VISUAL SWIPE CARDS -->
           <section class="studio-step" data-step="1" id="step-1">
             <div class="step-header-block">
-              <span class="step-eyebrow">Step 2 of 7 • Aesthetic DNA</span>
+              <span class="step-eyebrow">Step 2 of 8 • Aesthetic DNA</span>
               <h2 class="step-headline">Which Room Vibe Feels Most Like "Home"?</h2>
               <p class="step-subtext">Tap 1 or 2 photos you love. Tap <i class="fas fa-expand-alt"></i> to inspect full-screen.</p>
             </div>
@@ -377,7 +431,7 @@ const schema = JSON.stringify({
           <!-- STEP 2: FALSE CEILING & LIVE LIGHTING SIMULATOR -->
           <section class="studio-step" data-step="2" id="step-2">
             <div class="step-header-block">
-              <span class="step-eyebrow">Step 3 of 7 • Ceiling &amp; Lighting</span>
+              <span class="step-eyebrow">Step 3 of 8 • Ceiling &amp; Lighting</span>
               <h2 class="step-headline">Pick False Ceiling &amp; Test Light Glow</h2>
               <p class="step-subtext">Tap lighting tones below to see the room glow shift live.</p>
             </div>
@@ -572,7 +626,7 @@ const schema = JSON.stringify({
           <!-- STEP 3: WARDROBE CONFIGURATOR -->
           <section class="studio-step" data-step="3" id="step-3">
             <div class="step-header-block">
-              <span class="step-eyebrow">Step 4 of 7 • Wardrobes &amp; Bedrooms</span>
+              <span class="step-eyebrow">Step 4 of 8 • Wardrobes &amp; Bedrooms</span>
               <h2 class="step-headline">What Wardrobe Type Are You Looking For?</h2>
               <p class="step-subtext">Choose Sliding or Normal Door first to unlock matching designs, finishes &amp; internals.</p>
             </div>
@@ -934,7 +988,7 @@ const schema = JSON.stringify({
           <!-- STEP 4: MODULAR KITCHEN -->
           <section class="studio-step" data-step="4" id="step-4">
             <div class="step-header-block">
-              <span class="step-eyebrow">Step 5 of 7 • Modular Kitchen</span>
+              <span class="step-eyebrow">Step 5 of 8 • Modular Kitchen</span>
               <h2 class="step-headline">Pick Your Dream Kitchen Look</h2>
               <p class="step-subtext">Explore 40 modular kitchen styles, platform stones &amp; smart appliances.</p>
             </div>
@@ -1006,7 +1060,7 @@ const schema = JSON.stringify({
           <!-- STEP 5: TV UNIT DESIGNS -->
           <section class="studio-step" data-step="5" id="step-5">
             <div class="step-header-block">
-              <span class="step-eyebrow">Step 6 of 7 • TV Unit Designs</span>
+              <span class="step-eyebrow">Step 6 of 8 • TV Unit Designs</span>
               <h2 class="step-headline">Pick Your Dream TV Unit Style</h2>
               <p class="step-subtext">Browse 50 modern TV showcase walls with backlit panels, marble, wood slats &amp; wall treatments.</p>
             </div>
@@ -1053,10 +1107,48 @@ const schema = JSON.stringify({
             </div>
           </section>
 
-          <!-- STEP 6: COLORS, LIFESTYLE, VASTU, BUDGET & DISLIKES -->
+          <!-- STEP 6: POOJA MANDIR DESIGNS (NEW DEDICATED STEP) -->
           <section class="studio-step" data-step="6" id="step-6">
             <div class="step-header-block">
-              <span class="step-eyebrow">Step 7 of 7 • Colors &amp; Lifestyle</span>
+              <span class="step-eyebrow">Step 7 of 8 • Pooja Mandir</span>
+              <h2 class="step-headline">Select Your Dream Pooja Mandir</h2>
+              <p class="step-subtext">Browse 50 backlit Om, marble temple, jaali &amp; wall-mounted mandir styles.</p>
+            </div>
+
+            <div class="wtype-bar-head">
+              <span class="studio-label mb-0">50 Pooja Mandir Designs — Tap Favorites:</span>
+              <span class="wtype-count-pill" id="poojaPickedBadge">0 Selected</span>
+            </div>
+
+            <div class="filter-chip-bar mt-2 mb-3" id="poojaFilterBar" data-target-grid="poojaGalleryGrid">
+              <button type="button" class="filter-chip active" data-cat="all">All (50)</button>
+              <button type="button" class="filter-chip" data-cat="om">🕉️ Backlit Om</button>
+              <button type="button" class="filter-chip" data-cat="wood">🛕 Wood &amp; Jaali</button>
+              <button type="button" class="filter-chip" data-cat="marble">🪨 Marble &amp; Arch</button>
+              <button type="button" class="filter-chip" data-cat="wall">🪔 Wall &amp; Compact</button>
+            </div>
+
+            <div class="visual-choice-grid visual-choice-grid--wardrobe" data-group="poojaMandir" data-mode="multi" id="poojaGalleryGrid">
+              {POOJA_DESIGNS.map((item) => (
+                <div class="v-card" data-cat={item.cat} data-value={item.val} data-img={item.img} data-toast={item.toast}>
+                  <div class="v-img-wrap">
+                    <img src={item.img} alt={item.title} loading="lazy" decoding="async" />
+                    <span class="v-badge"><i class="fas fa-check"></i></span>
+                    <button type="button" class="v-zoom" data-zoom={item.img} data-caption={`${item.title} — ${item.desc}`} aria-label="Zoom"><i class="fas fa-expand-alt"></i></button>
+                  </div>
+                  <div class="v-body">
+                    <h3>{item.title}</h3>
+                    <p>{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <!-- STEP 7: COLORS, LIFESTYLE, VASTU, BUDGET & DISLIKES -->
+          <section class="studio-step" data-step="7" id="step-7">
+            <div class="step-header-block">
+              <span class="step-eyebrow">Step 8 of 8 • Colors &amp; Lifestyle</span>
               <h2 class="step-headline">Colors, Family Needs &amp; Budget</h2>
               <p class="step-subtext">Final touches so we avoid anything you dislike and respect your budget.</p>
             </div>
@@ -1145,8 +1237,8 @@ const schema = JSON.stringify({
             </div>
           </section>
 
-          <!-- STEP 7: DESIGN DNA RESULT CARD & WHATSAPP SEND -->
-          <section class="studio-step" data-step="7" id="step-7">
+          <!-- STEP 8: DESIGN DNA RESULT CARD & WHATSAPP SEND -->
+          <section class="studio-step" data-step="8" id="step-8">
             <div class="dna-reveal-card" id="dnaRevealCard">
               <div class="confetti-burst" id="confettiBurst"></div>
               <div class="dna-header text-center">
@@ -1215,7 +1307,7 @@ const schema = JSON.stringify({
         </button>
 
         <div class="dock-center-status">
-          <span class="dock-step-text" id="dockStepText">1 / 7</span>
+          <span class="dock-step-text" id="dockStepText">1 / 8</span>
         </div>
 
         <button type="button" class="dock-next-btn" id="dockNextBtn">
@@ -2506,7 +2598,7 @@ const schema = JSON.stringify({
       document.head.appendChild(appStyle);
     }
 
-    const totalInteractiveSteps = 8; // 0..6 + 7 (Reveal)
+    const totalInteractiveSteps = 9; // 0..7 + 8 (Reveal)
     let currentStep = 0;
     let allStepsMode = false;
 
@@ -2528,6 +2620,7 @@ const schema = JSON.stringify({
       kitchenExtras: [],
       livingElements: [],
       wallDecor: [],
+      poojaMandir: [],
       colorPalette: [],
       lifestyle: [],
       vastu: [],
@@ -2601,9 +2694,9 @@ const schema = JSON.stringify({
       const pct = Math.round(((idx + 1) / totalInteractiveSteps) * 100);
       progressFillEl.style.width = `${pct}%`;
 
-      if (idx < 7) {
-        stepCounterEl.textContent = `Step ${idx + 1} of 7`;
-        dockStepTextEl.textContent = `${idx + 1} / 7`;
+      if (idx < 8) {
+        stepCounterEl.textContent = `Step ${idx + 1} of 8`;
+        dockStepTextEl.textContent = `${idx + 1} / 8`;
       } else {
         stepCounterEl.textContent = `Design DNA Ready ✨`;
         dockStepTextEl.textContent = `Final DNA`;
@@ -2614,11 +2707,11 @@ const schema = JSON.stringify({
         dockNextBtn.innerHTML = `<span>Start Styling</span> <i class="fas fa-arrow-right ms-1"></i>`;
         dockNextBtn.style.background = '';
         dockNextBtn.style.display = 'inline-flex';
-      } else if (idx === 6) {
+      } else if (idx === 7) {
         dockNextBtn.innerHTML = `<span>Reveal Design DNA ✨</span>`;
         dockNextBtn.style.background = '';
         dockNextBtn.style.display = 'inline-flex';
-      } else if (idx === 7) {
+      } else if (idx === 8) {
         dockNextBtn.innerHTML = `<i class="fab fa-whatsapp me-1"></i> <span>Send WhatsApp</span>`;
         dockNextBtn.style.background = '#25D366';
         dockNextBtn.style.display = 'inline-flex';
@@ -2636,7 +2729,7 @@ const schema = JSON.stringify({
 
     dockBackBtn.addEventListener('click', () => goToStep(currentStep - 1));
     dockNextBtn.addEventListener('click', () => {
-      if (currentStep === 7) {
+      if (currentStep === 8) {
         document.getElementById('designBriefForm').requestSubmit();
       } else {
         goToStep(currentStep + 1);
@@ -2728,7 +2821,8 @@ const schema = JSON.stringify({
         ['slidingWardrobeGrid', 'slidingPickedBadge'],
         ['normalWardrobeGrid', 'normalPickedBadge'],
         ['kitchenGalleryGrid', 'kitchenPickedBadge'],
-        ['tvUnitGalleryGrid', 'tvPickedBadge']
+        ['tvUnitGalleryGrid', 'tvPickedBadge'],
+        ['poojaGalleryGrid', 'poojaPickedBadge']
       ].forEach(([gridId, badgeId]) => {
         const b = document.getElementById(badgeId);
         if (b) b.textContent = document.querySelectorAll('#' + gridId + ' .v-card.selected').length + ' Selected';
@@ -2862,6 +2956,7 @@ const schema = JSON.stringify({
 
       if (state.livingElements.length) lines.push('TV Unit Designs: ' + state.livingElements.join(' | '));
       if (state.wallDecor.length) lines.push('Wall Decor: ' + state.wallDecor.join(', '));
+      if (state.poojaMandir.length) lines.push('Pooja Mandir: ' + state.poojaMandir.join(' | '));
 
       if (state.colorPalette.length) lines.push('Color Palettes: ' + state.colorPalette.join(' | '));
       if (state.lifestyle.length) lines.push('Family Needs: ' + state.lifestyle.join(', '));
